@@ -17,7 +17,7 @@
         /// <param name="level">0,1</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_LEVEL, or PI_BAD_PULSELEN.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioTrigger")]
-        public static extern ResultCode GpioTrigger(Gpio user_gpio, uint pulseLen, Level level);
+        public static extern ResultCode GpioTrigger(UserGpio user_gpio, uint pulseLen, Level level);
 
         /// <summary>
         /// Sets a watchdog for a GPIO.
@@ -58,7 +58,7 @@
         /// <param name="timeout">0-60000</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_WDOG_TIMEOUT.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetWatchdog")]
-        public static extern ResultCode GpioSetWatchdog(Gpio user_gpio, uint timeout);
+        public static extern ResultCode GpioSetWatchdog(UserGpio user_gpio, uint timeout);
 
         /// <summary>
         /// Selects the dutycycle range to be used for the GPIO.  Subsequent calls
@@ -88,7 +88,7 @@
         /// <param name="range">25-40000</param>
         /// <returns>Returns the real range for the given GPIO's frequency if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_DUTYRANGE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetPWMrange")]
-        public static extern ResultCode GpioSetPWMrange(Gpio user_gpio, uint range);
+        public static extern ResultCode GpioSetPWMrange(UserGpio user_gpio, uint range);
 
         /// <summary>
         ///
@@ -104,7 +104,7 @@
         /// <param name="user_gpio">0-31</param>
         /// <returns>Returns the dutycycle range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMrange")]
-        public static extern int GpioGetPWMrange(Gpio user_gpio);
+        public static extern int GpioGetPWMrange(UserGpio user_gpio);
 
         /// <summary>
         /// Sets the frequency in hertz to be used for the GPIO.
@@ -156,7 +156,7 @@
         /// <param name="frequency">&gt;=0</param>
         /// <returns>Returns the numerically closest frequency if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetPWMfrequency")]
-        public static extern ResultCode GpioSetPWMfrequency(Gpio user_gpio, uint frequency);
+        public static extern ResultCode GpioSetPWMfrequency(UserGpio user_gpio, uint frequency);
 
         /// <summary>
         ///
@@ -178,7 +178,7 @@
         /// <param name="user_gpio">0-31</param>
         /// <returns>Returns the frequency (in hertz) used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMfrequency")]
-        public static extern int GpioGetPWMfrequency(Gpio user_gpio);
+        public static extern int GpioGetPWMfrequency(UserGpio user_gpio);
 
         /// <summary>
         /// Returns the current level of GPIO 0-31.

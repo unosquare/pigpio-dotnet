@@ -40,17 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\LevelChange.cs" />
     <Compile Include="NativeMethods.Events.cs" />
     <Compile Include="NativeTypes\BscTransfer.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Delegates.cs" />
-    <Compile Include="Enums\Edge.cs" />
-    <Compile Include="Enums\Gpio.cs" />
+    <Compile Include="Enums\EdgeDetection.cs" />
+    <Compile Include="Enums\UserGpio.cs" />
     <Compile Include="Enums\GpioMode.cs" />
     <Compile Include="Enums\GpioPullMode.cs" />
     <Compile Include="NativeTypes\GpioPulse.cs" />
     <Compile Include="NativeTypes\GpioSample.cs" />
-    <Compile Include="Enums\HardwareTimer.cs" />
+    <Compile Include="Enums\TimerId.cs" />
     <Compile Include="NativeTypes\I2CMessageSegment.cs" />
     <Compile Include="Enums\Level.cs" />
     <Compile Include="NativeMethods.Advanced.cs" />

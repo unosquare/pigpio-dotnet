@@ -1,6 +1,6 @@
 ﻿namespace Unosquare.PiGpio.Enums
 {
-    public enum Edge : int
+    public enum EdgeDetection : int
     {
         FallingEdge = 0,
         RisingEdge = 1,

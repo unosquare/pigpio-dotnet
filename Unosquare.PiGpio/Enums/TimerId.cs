@@ -1,6 +1,6 @@
 ﻿namespace Unosquare.PiGpio.Enums
 {
-    public enum HardwareTimer : int
+    public enum TimerId : int
     {
         /// <summary>The GPIO Hardware Timer 00</summary>
         Timer00 = 0,

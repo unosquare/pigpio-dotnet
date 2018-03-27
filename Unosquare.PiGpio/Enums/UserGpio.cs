@@ -3,7 +3,7 @@
     /// <summary>
     /// Provides an enumeration of User GPIOs from 0 to 31
     /// </summary>
-    public enum Gpio : int
+    public enum UserGpio : int
     {
         /// <summary>The GPIO Pin 00</summary>
         Pin00 = 0,

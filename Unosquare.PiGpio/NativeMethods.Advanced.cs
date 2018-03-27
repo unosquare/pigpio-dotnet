@@ -23,7 +23,7 @@
         /// <param name="user_gpio">0-31</param>
         /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMrealRange")]
-        public static extern int GpioGetPWMrealRange(Gpio user_gpio);
+        public static extern int GpioGetPWMrealRange(UserGpio user_gpio);
 
         /// <summary>
         /// Registers a function to be called (a callback) when the specified
@@ -54,12 +54,12 @@
         ///
         /// userData    pointer  Pointer to an arbitrary object
         /// </remarks>
-        /// <param name="user_gpio">0-31</param>
+        /// <param name="userGpio">0-31</param>
         /// <param name="callback">the callback function</param>
         /// <param name="userData">pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetAlertFuncEx")]
-        public static extern ResultCode GpioSetAlertFuncEx(Gpio user_gpio, GpioAlertExDelegate callback, IntPtr userData);
+        public static extern ResultCode GpioSetAlertFuncEx(UserGpio userGpio, GpioAlertExDelegate callback, IntPtr userData);
 
         /// <summary>
         /// Registers a function to be called (a callback) whenever the specified
@@ -116,7 +116,7 @@
         /// <param name="callback">the callback function</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_BAD_EDGE, or PI_BAD_ISR_INIT.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetISRFunc")]
-        public static extern ResultCode GpioSetISRFunc(SystemGpio gpio, Edge edge, int timeout, GpioISRDelegate callback);
+        public static extern ResultCode GpioSetISRFunc(SystemGpio gpio, EdgeDetection edge, int timeout, GpioISRDelegate callback);
 
         /// <summary>
         /// Registers a function to be called (a callback) whenever the specified
@@ -152,7 +152,7 @@
         /// <param name="userData">pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_BAD_EDGE, or PI_BAD_ISR_INIT.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetISRFuncEx")]
-        public static extern ResultCode GpioSetISRFuncEx(SystemGpio gpio, Edge edge, int timeout, GpioISRExDelegate callback, IntPtr userData);
+        public static extern ResultCode GpioSetISRFuncEx(SystemGpio gpio, EdgeDetection edge, int timeout, GpioISRExDelegate callback, IntPtr userData);
 
         /// <summary>
         /// Registers a function to be called (a callback) when a signal occurs.
