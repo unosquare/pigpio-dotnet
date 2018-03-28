@@ -263,6 +263,25 @@
         public static extern int FileRead(UIntPtr handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
+        /// Reads from a file handle up to count bytes.
+        /// </summary>
+        /// <param name="handle">The handle.</param>
+        /// <param name="count">The count.</param>
+        /// <returns></returns>
+        public static byte[] FileRead(UIntPtr handle, int count)
+        {
+            var buffer = new byte[count];
+            var result = FileRead(handle, buffer, (uint)count);
+            if (result < 0)
+                throw new IOException($"Unable to read from file handle '{handle:X}'" +
+                    $"Error Code {result}: {(ResultCode)result}");
+
+            var outputBuffer = new byte[result];
+            Buffer.BlockCopy(buffer, 0, outputBuffer, 0, result);
+            return outputBuffer;
+        }
+
+        /// <summary>
         /// Writes the given buffer to a file handle
         /// </summary>
         /// <param name="handle">The handle.</param>
