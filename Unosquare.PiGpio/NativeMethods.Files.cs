@@ -1,10 +1,16 @@
 ﻿namespace Unosquare.PiGpio
 {
     using Enums;
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
     using System.Runtime.InteropServices;
+    using System.Text;
 
     public static partial class NativeMethods
     {
+        #region Unmanaged Methods
+
         /// <summary>
         /// This function returns a handle to a file opened in a specified mode.
         ///
@@ -102,66 +108,7 @@
         /// <param name="mode">the file open mode</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_NO_HANDLE, PI_NO_FILE_ACCESS, PI_BAD_FILE_MODE, PI_FILE_OPEN_FAILED, or PI_FILE_IS_A_DIR.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileOpen")]
-        public static extern int FileOpen(string file, uint mode);
-
-        /// <summary>
-        /// This function closes the file associated with handle.
-        ///
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// fileClose(h);
-        /// </code>
-        /// </example>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
-        /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileClose")]
-        public static extern ResultCode FileClose(uint handle);
-
-        /// <summary>
-        /// This function writes count bytes from buf to the the file
-        /// associated with handle.
-        ///
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// status = fileWrite(h, buf, count);
-        /// if (status == 0)
-        /// {
-        ///    // okay
-        /// }
-        /// else
-        /// {
-        ///    // error
-        /// }
-        /// </code>
-        /// </example>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
-        /// <param name="buffer">the array of bytes to write</param>
-        /// <param name="count">the number of bytes to write</param>
-        /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_WOPEN, or PI_BAD_FILE_WRITE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileWrite")]
-        public static extern ResultCode FileWrite(uint handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
-
-        /// <summary>
-        /// This function reads up to count bytes from the the file
-        /// associated with handle and writes them to buf.
-        ///
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// if (fileRead(h, buf, sizeof(buf)) &gt; 0)
-        /// {
-        ///    // process read data
-        /// }
-        /// </code>
-        /// </example>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
-        /// <param name="buf">an array to receive the read data</param>
-        /// <param name="count">the maximum number of bytes to read</param>
-        /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_ROPEN, or PI_BAD_FILE_WRITE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileRead")]
-        public static extern int FileRead(uint handle, byte[] buf, uint count);
+        private static extern int FileOpenUnmanaged(string file, uint mode);
 
         /// <summary>
         /// This function seeks to a position within the file associated
@@ -186,7 +133,7 @@
         /// <param name="seekFrom">one of PI_FROM_START (0), PI_FROM_CURRENT (1),</param>
         /// <returns>Returns the new byte position within the file (&gt;=0) if OK, otherwise PI_BAD_HANDLE, or PI_BAD_FILE_SEEK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileSeek")]
-        public static extern int FileSeek(uint handle, int seekOffset, int seekFrom);
+        private static extern int FileSeekUnmanaged(UIntPtr handle, int seekOffset, int seekFrom);
 
         /// <summary>
         /// This function returns a list of files which match a pattern.  The
@@ -230,11 +177,174 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="fpat">file pattern to match</param>
-        /// <param name="buf">an array to receive the matching file names</param>
+        /// <param name="pathPattern">file pattern to match</param>
+        /// <param name="buffer">an array to receive the matching file names</param>
         /// <param name="count">the maximum number of bytes to read</param>
         /// <returns>Returns the number of returned bytes if OK, otherwise PI_NO_FILE_ACCESS, or PI_NO_FILE_MATCH.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileList")]
-        public static extern int FileList(string fpat, byte[] buf, uint count);
+        private static extern int FileListUnmanaged(string pathPattern, byte[] buffer, uint count);
+
+        /// <summary>
+        /// This function writes count bytes from buf to the the file
+        /// associated with handle.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// status = fileWrite(h, buf, count);
+        /// if (status == 0)
+        /// {
+        ///    // okay
+        /// }
+        /// else
+        /// {
+        ///    // error
+        /// }
+        /// </code>
+        /// </example>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
+        /// <param name="buffer">the array of bytes to write</param>
+        /// <param name="count">the number of bytes to write</param>
+        /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_WOPEN, or PI_BAD_FILE_WRITE.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileWrite")]
+        public static extern ResultCode FileWriteUnmanaged(UIntPtr handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
+
+        #endregion
+
+        /// <summary>
+        /// A wrapper function for <see cref="FileOpenUnmanaged"/>
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <param name="mode">The mode.</param>
+        /// <returns>A file handle</returns>
+        /// <exception cref="System.IO.IOException">When the file fails to open</exception>
+        public static UIntPtr FileOpen(string filePath, FileModeFlags mode)
+        {
+            var result = FileOpenUnmanaged(filePath, (uint)mode);
+            if (result < 0)
+                throw new IOException($"Unable to open file '{filePath}'. Error Code {(ResultCode)result}: {(ResultCode)result}");
+
+            var handle = new UIntPtr((uint)result);
+            return handle;
+        }
+
+        /// <summary>
+        /// This function closes the file associated with handle.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// fileClose(h);
+        /// </code>
+        /// </example>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
+        /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileClose")]
+        public static extern ResultCode FileClose(UIntPtr handle);
+
+        /// <summary>
+        /// This function reads up to count bytes from the the file
+        /// associated with handle and writes them to buf.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// if (fileRead(h, buf, sizeof(buf)) &gt; 0)
+        /// {
+        ///    // process read data
+        /// }
+        /// </code>
+        /// </example>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
+        /// <param name="buffer">an array to receive the read data</param>
+        /// <param name="count">the maximum number of bytes to read</param>
+        /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_ROPEN, or PI_BAD_FILE_WRITE.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileRead")]
+        public static extern int FileRead(UIntPtr handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
+
+        /// <summary>
+        /// Writes the given buffer to a file handle
+        /// </summary>
+        /// <param name="handle">The handle.</param>
+        /// <param name="buffer">The buffer.</param>
+        /// <returns></returns>
+        public static void FileWrite(UIntPtr handle, byte[] buffer)
+        {
+            var result = FileWriteUnmanaged(handle, buffer, (uint)buffer.Length);
+            if (result != ResultCode.Ok)
+                throw new IOException($"Unable to write to file handle '{handle:X}'" +
+                    $"Error Code {(int)result}: {result}");
+        }
+
+        /// <summary>
+        /// Writes the given buffer to a file handle
+        /// </summary>
+        /// <param name="handle">The handle.</param>
+        /// <param name="buffer">The buffer.</param>
+        /// <param name="length">The length.</param>
+        /// <returns></returns>
+        public static void FileWrite(UIntPtr handle, byte[] buffer, int length)
+        {
+            var result = FileWriteUnmanaged(handle, buffer, (uint)length);
+            if (result != ResultCode.Ok)
+                throw new IOException($"Unable to write to file handle '{handle:X}'" +
+                    $"Error Code {(int)result}: {result}");
+        }
+
+        /// <summary>
+        /// Seeks within a file
+        /// </summary>
+        /// <param name="handle">The handle.</param>
+        /// <param name="seekOffset">The seek offset.</param>
+        /// <param name="seekFrom">The seek from.</param>
+        /// <returns></returns>
+        /// <exception cref="System.IO.IOException"></exception>
+        public static int FileSeek(UIntPtr handle, int seekOffset, SeekMode seekFrom)
+        {
+            var result = FileSeekUnmanaged(handle, seekOffset, (int)seekFrom);
+            if (result < 0)
+                throw new IOException($"Unable to seek file with handle '{handle:X}', Offset {seekOffset}, Seek Mode: {(SeekMode)seekFrom}. " +
+                    $"Error Code {result}: {(ResultCode)result}");
+
+            return result;
+        }
+
+        /// <summary>
+        /// Retrieves a list of files matching the given pattern. See <see cref="FileListUnmanaged"/>
+        /// </summary>
+        /// <param name="pathPattern">The path pattern.</param>
+        /// <returns></returns>
+        /// <exception cref="System.IO.IOException"></exception>
+        public static string[] FileList(string pathPattern)
+        {
+            var buffer = new byte[1024 * 128]; // 128kb of file paths
+            var result = FileListUnmanaged(pathPattern, buffer, (uint)buffer.Length);
+            if (result < 0)
+                throw new IOException($"Unable to list files with pattern '{pathPattern}'" +
+                    $"Error Code {result}: {(ResultCode)result}");
+
+            var encoding = Encoding.GetEncoding(0);
+            var fileList = new List<string>();
+            var lastZeroIndex = 0;
+            var runLength = 0;
+            var byteValue = default(byte);
+            for (var byteIndex = 0; byteIndex < result; byteIndex++)
+            {
+                byteValue = buffer[byteIndex];
+                if (byteValue == 0 || byteIndex >= result - 1)
+                {
+                    if (runLength > 0)
+                        fileList.Add(encoding.GetString(buffer, lastZeroIndex + 1, runLength));
+
+                    runLength = 0;
+                    lastZeroIndex = byteIndex;
+                    continue;
+                }
+
+                runLength++;
+            }
+
+            return fileList.ToArray();
+        }
     }
 }

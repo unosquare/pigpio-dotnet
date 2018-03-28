@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\FileModeFlags.cs" />
     <Compile Include="Enums\GpioPad.cs" />
     <Compile Include="Enums\GpioPadStrength.cs" />
     <Compile Include="Enums\LevelChange.cs" />
+    <Compile Include="Enums\SeekMode.cs" />
     <Compile Include="NativeMethods.Events.cs" />
     <Compile Include="NativeTypes\BscTransfer.cs" />
     <Compile Include="Constants.cs" />
