@@ -1,5 +1,6 @@
 ﻿namespace Unosquare.PiGpio
 {
+    using Enums;
     using System.Runtime.InteropServices;
 
     public static partial class NativeMethods
@@ -112,10 +113,10 @@
         /// fileClose(h);
         /// </code>
         /// </example>
-        /// <param name="handle">&gt;=0, as returned by a call to [*fileOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileClose")]
-        public static extern int FileClose(uint handle);
+        public static extern ResultCode FileClose(uint handle);
 
         /// <summary>
         /// This function writes count bytes from buf to the the file
@@ -135,12 +136,12 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="handle">&gt;=0, as returned by a call to [*fileOpen*]</param>
-        /// <param name="buf">the array of bytes to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
+        /// <param name="buffer">the array of bytes to write</param>
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_WOPEN, or PI_BAD_FILE_WRITE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileWrite")]
-        public static extern int FileWrite(uint handle, byte[] buf, uint count);
+        public static extern ResultCode FileWrite(uint handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
         /// This function reads up to count bytes from the the file
@@ -155,7 +156,7 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="handle">&gt;=0, as returned by a call to [*fileOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
         /// <param name="buf">an array to receive the read data</param>
         /// <param name="count">the maximum number of bytes to read</param>
         /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_ROPEN, or PI_BAD_FILE_WRITE.</returns>
@@ -180,7 +181,7 @@
         ///             move forward, negative offsets backwards.
         ///             or PI_FROM_END (2)
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to [*fileOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
         /// <param name="seekOffset">the number of bytes to move.  Positive offsets</param>
         /// <param name="seekFrom">one of PI_FROM_START (0), PI_FROM_CURRENT (1),</param>
         /// <returns>Returns the new byte position within the file (&gt;=0) if OK, otherwise PI_BAD_HANDLE, or PI_BAD_FILE_SEEK.</returns>
@@ -192,7 +193,7 @@
         /// pattern may contain wildcards.
         ///
         /// The pattern must match an entry in /opt/pigpio/access.  The pattern
-        /// may contain wildcards.  See [*fileOpen*].
+        /// may contain wildcards.  See <see cref="fileOpen"/>.
         ///
         /// NOTE
         ///

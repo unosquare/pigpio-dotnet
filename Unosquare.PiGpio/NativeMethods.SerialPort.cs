@@ -1,5 +1,6 @@
 ﻿namespace Unosquare.PiGpio
 {
+    using Enums;
     using System.Runtime.InteropServices;
 
     public static partial class NativeMethods
@@ -26,17 +27,17 @@
         /// This function closes the serial device associated with handle.
         ///
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to [*serOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="serOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serClose")]
-        public static extern int SerClose(uint handle);
+        public static extern ResultCode SerClose(uint handle);
 
         /// <summary>
         /// This function reads a byte from the serial port associated with handle.
         ///
         /// If no data is ready PI_SER_READ_NO_DATA is returned.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to [*serOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="serOpen"/></param>
         /// <returns>Returns the read byte (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_SER_READ_NO_DATA, or PI_SER_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serReadByte")]
         public static extern int SerReadByte(uint handle);
@@ -46,10 +47,10 @@
         ///
         /// PI_SER_WRITE_FAILED.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to [*serOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="serOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serWriteByte")]
-        public static extern int SerWriteByte(uint handle, uint bVal);
+        public static extern ResultCode SerWriteByte(uint handle, uint byteValue);
 
         /// <summary>
         /// This function reads up count bytes from the the serial port
@@ -57,12 +58,12 @@
         ///
         /// If no data is ready zero is returned.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to [*serOpen*]</param>
-        /// <param name="buf">an array to receive the read data</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="serOpen"/></param>
+        /// <param name="buffer">an array to receive the read data</param>
         /// <param name="count">the maximum number of bytes to read</param>
         /// <returns>Returns the number of bytes read (&gt;0=) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_READ_NO_DATA.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serRead")]
-        public static extern int SerRead(uint handle, byte[] buf, uint count);
+        public static extern int SerRead(uint handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
         /// This function writes count bytes from buf to the the serial port
@@ -70,12 +71,12 @@
         ///
         /// PI_SER_WRITE_FAILED.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to [*serOpen*]</param>
-        /// <param name="buf">the array of bytes to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="serOpen"/></param>
+        /// <param name="buffer">the array of bytes to write</param>
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serWrite")]
-        public static extern int SerWrite(uint handle, byte[] buf, uint count);
+        public static extern ResultCode SerWrite(uint handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
         /// This function returns the number of bytes available
@@ -83,7 +84,7 @@
         ///
         /// otherwise PI_BAD_HANDLE.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to [*serOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="serOpen"/></param>
         /// <returns>Returns the number of bytes of data available (&gt;=0) if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serDataAvailable")]
         public static extern int SerDataAvailable(uint handle);

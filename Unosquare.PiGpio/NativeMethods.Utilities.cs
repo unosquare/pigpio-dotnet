@@ -1,5 +1,6 @@
 ﻿namespace Unosquare.PiGpio
 {
+    using Enums;
     using System.Runtime.InteropServices;
 
     public static partial class NativeMethods
@@ -43,7 +44,7 @@
         /// /proc/cpuinfo.
         ///
         /// The revision number can be used to determine the assignment of GPIO
-        /// to pins (see [*gpio*]).
+        /// to pins (see <see cref="Gpio"/>).
         ///
         /// There are at least three types of board.
         ///
@@ -106,12 +107,12 @@
         /// printf("library started %d.%03d seconds ago", secs, mics/1000);
         /// </code>
         /// </example>
-        /// <param name="timetype">0 (relative), 1 (absolute)</param>
+        /// <param name="timeType">0 (relative), 1 (absolute)</param>
         /// <param name="seconds">a pointer to an int to hold seconds</param>
-        /// <param name="micros">a pointer to an int to hold microseconds</param>
+        /// <param name="microseconds">a pointer to an int to hold microseconds</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMETYPE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioTime")]
-        public static extern int GpioTime(uint timetype, out int seconds, out int micros);
+        public static extern int GpioTime(uint timeType, out int seconds, out int microseconds);
 
         /// <summary>
         /// Sleeps for the number of seconds and microseconds specified by seconds
@@ -125,7 +126,7 @@
         /// of seconds and microseconds.  System clock changes do not effect the
         /// sleep length.
         ///
-        /// For short delays (say, 50 microseonds or less) use [*gpioDelay*].
+        /// For short delays (say, 50 microseonds or less) use <see cref="GpioDelay"/>.
         ///
         /// </summary>
         /// <example>
@@ -139,10 +140,10 @@
         /// </example>
         /// <param name="timetype">0 (relative), 1 (absolute)</param>
         /// <param name="seconds">seconds to sleep</param>
-        /// <param name="micros">microseconds to sleep</param>
+        /// <param name="microseconds">microseconds to sleep</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMETYPE, PI_BAD_SECONDS, or PI_BAD_MICROS.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSleep")]
-        public static extern int GpioSleep(uint timetype, int seconds, int micros);
+        public static extern ResultCode GpioSleep(uint timetype, int seconds, int microseconds);
 
         /// <summary>
         /// Delay execution for a given number of seconds

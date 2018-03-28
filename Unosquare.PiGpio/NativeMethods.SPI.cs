@@ -1,5 +1,6 @@
 ﻿namespace Unosquare.PiGpio
 {
+    using Enums;
     using NativeTypes;
     using System.Runtime.InteropServices;
 
@@ -46,7 +47,7 @@
         /// bbbbbb defines the word size in bits (0-32).  The default (0)
         /// sets 8 bits per word.  Auxiliary SPI device only.
         ///
-        /// The [*spiRead*], [*spiWrite*], and [*spiXfer*] functions
+        /// The <see cref="spiRead"/>, <see cref="spiWrite"/>, and <see cref="spiXfer"/> functions
         /// transfer data packed into 1, 2, or 4 bytes according to
         /// the word size in bits.
         ///
@@ -84,10 +85,10 @@
         /// This functions closes the SPI device identified by the handle.
         ///
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to [*spiOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="spiOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiClose")]
-        public static extern int SpiClose(uint handle);
+        public static extern ResultCode SpiClose(uint handle);
 
         /// <summary>
         /// This function reads count bytes of data from the SPI
@@ -95,7 +96,7 @@
         ///
         /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to [*spiOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="spiOpen"/></param>
         /// <param name="buf">an array to receive the read data bytes</param>
         /// <param name="count">the number of bytes to read</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
@@ -108,7 +109,7 @@
         ///
         /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to [*spiOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="spiOpen"/></param>
         /// <param name="buf">the data bytes to write</param>
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
@@ -122,7 +123,7 @@
         ///
         /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to [*spiOpen*]</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="spiOpen"/></param>
         /// <param name="txBuf">the data bytes to write</param>
         /// <param name="rxBuf">the received data bytes</param>
         /// <param name="count">the number of bytes to transfer</param>
@@ -167,25 +168,25 @@
         ///  2    1    0
         ///  3    1    1
         /// </remarks>
-        /// <param name="CS">0-31</param>
-        /// <param name="MISO">0-31</param>
-        /// <param name="MOSI">0-31</param>
-        /// <param name="SCLK">0-31</param>
-        /// <param name="baud">50-250000</param>
+        /// <param name="csPin">0-31</param>
+        /// <param name="misoPin">0-31</param>
+        /// <param name="mosiPin">0-31</param>
+        /// <param name="clockPin">0-31</param>
+        /// <param name="baudRate">50-250000</param>
         /// <param name="spiFlags">see below</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_SPI_BAUD, or PI_GPIO_IN_USE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbSPIOpen")]
-        public static extern int BbSPIOpen(uint CS, uint MISO, uint MOSI, uint SCLK, uint baud, uint spiFlags);
+        public static extern ResultCode BbSPIOpen(UserGpio csPin, UserGpio misoPin, UserGpio mosiPin, UserGpio clockPin, uint baudRate, uint spiFlags);
 
         /// <summary>
         /// This function stops bit banging SPI on a set of GPIO
-        /// opened with [*bbSPIOpen*].
+        /// opened with <see cref="bbSPIOpen"/>.
         ///
         /// </summary>
-        /// <param name="CS">0-31, the CS GPIO used in a prior call to [*bbSPIOpen*]</param>
+        /// <param name="csPin">0-31, the CS GPIO used in a prior call to <see cref="bbSPIOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_NOT_SPI_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbSPIClose")]
-        public static extern int BbSPIClose(uint CS);
+        public static extern ResultCode BbSPIClose(UserGpio csPin);
 
         /// <summary>
         /// This function executes a bit banged SPI transfer.
@@ -258,7 +259,7 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="CS">0-31 (as used in a prior call to [*bbSPIOpen*])</param>
+        /// <param name="CS">0-31 (as used in a prior call to <see cref="bbSPIOpen"/>)</param>
         /// <param name="inBuf">pointer to buffer to hold data to be sent</param>
         /// <param name="outBuf">pointer to buffer to hold returned data</param>
         /// <param name="count">size of data transfer</param>

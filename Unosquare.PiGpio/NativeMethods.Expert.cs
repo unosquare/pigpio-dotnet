@@ -60,7 +60,7 @@
         /// </summary>
         /// <param name="cbNum">the cb of interest</param>
         /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "*rawWaveCBAdr")]
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveCBAdr")]
         public static extern RawCBS RawWaveCBAdr(int cbNum);
 
         /// <summary>
@@ -155,7 +155,7 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="script_id">&gt;=0, a script_id returned by [*gpioStoreScript*]</param>
+        /// <param name="script_id">&gt;=0, a script_id returned by <see cref="GpioStoreScript"/></param>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawDumpScript")]
         public static extern void RawDumpScript(uint script_id);
     }

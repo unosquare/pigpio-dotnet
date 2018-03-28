@@ -8,7 +8,7 @@
         /// <summary>
         /// Configures pigpio to buffer cfgMillis milliseconds of GPIO samples.
         ///
-        /// This function is only effective if called before [*gpioInitialise*].
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// The default setting is 120 milliseconds.
         ///
@@ -41,7 +41,7 @@
         /// Configures pigpio to use a particular sample rate timed by a specified
         /// peripheral.
         ///
-        /// This function is only effective if called before [*gpioInitialise*].
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// The timings are provided by the specified peripheral (PWM or PCM).
         ///
@@ -72,7 +72,7 @@
         /// <summary>
         /// Configures pigpio to use the specified DMA channel.
         ///
-        /// This function is only effective if called before [*gpioInitialise*].
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// The default setting is to use channel 14.
         /// </summary>
@@ -87,7 +87,7 @@
         /// <summary>
         /// Configures pigpio to use the specified DMA channels.
         ///
-        /// This function is only effective if called before [*gpioInitialise*].
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// The default setting is to use channel 14 for the primary channel and
         /// channel 6 for the secondary channel.
@@ -116,7 +116,7 @@
         /// affected).  A GPIO update is a write to a GPIO or a GPIO mode
         /// change or any function which would force such an action.
         ///
-        /// This function is only effective if called before [*gpioInitialise*].
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// The default setting depends upon the Pi model. The user GPIO are
         /// added to the mask.
@@ -136,7 +136,7 @@
         /// <summary>
         /// Configures pigpio to use the specified socket port.
         ///
-        /// This function is only effective if called before [*gpioInitialise*].
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// The default setting is to use port 8888.
         /// </summary>
@@ -148,7 +148,7 @@
         /// <summary>
         /// Configures pigpio support of the fifo and socket interfaces.
         ///
-        /// This function is only effective if called before [*gpioInitialise*].
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// The default setting (0) is that both interfaces are enabled.
         ///
@@ -168,14 +168,14 @@
         /// <summary>
         /// Selects the method of DMA memory allocation.
         ///
-        /// This function is only effective if called before [*gpioInitialise*].
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// There are two methods of DMA memory allocation.  The original method
         /// uses the /proc/self/pagemap file to allocate bus memory.  The new
         /// method uses the mailbox property interface to allocate bus memory.
         ///
         /// Auto will use the mailbox method unless a larger than default buffer
-        /// size is requested with [*gpioCfgBufferSize*].
+        /// size is requested with <see cref="GpioCfgBufferSize"/>.
         /// </summary>
         /// <param name="memAllocMode">0-2</param>
         /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
@@ -186,7 +186,7 @@
         /// Sets the network addresses which are allowed to talk over the
         /// socket interface.
         ///
-        /// This function is only effective if called before [*gpioInitialise*].
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// </summary>
         /// <param name="numSockAddr">0-256 (0 means all addresses allowed)</param>

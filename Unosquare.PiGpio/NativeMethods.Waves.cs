@@ -1,13 +1,14 @@
 ﻿namespace Unosquare.PiGpio
 {
-    using System.Runtime.InteropServices;
+    using Enums;
     using NativeTypes;
+    using System.Runtime.InteropServices;
 
     public static partial class NativeMethods
     {
         /// <summary>
         /// This function clears all waveforms and any data added by calls to the
-        /// [*gpioWaveAdd**] functions.
+        /// <see cref="GpioWaveAdd*"/> functions.
         ///
         /// </summary>
         /// <example>
@@ -23,7 +24,7 @@
         /// This function starts a new empty waveform.
         ///
         /// You wouldn't normally need to call this function as it is automatically
-        /// called after a waveform is created with the [*gpioWaveCreate*] function.
+        /// called after a waveform is created with the <see cref="GpioWaveCreate"/> function.
         ///
         /// </summary>
         /// <example>
@@ -143,30 +144,30 @@
 
         /// <summary>
         /// This function creates a waveform from the data provided by the prior
-        /// calls to the [*gpioWaveAdd**] functions.  Upon success a wave id
+        /// calls to the <see cref="GpioWaveAdd*"/> functions.  Upon success a wave id
         /// greater than or equal to 0 is returned, otherwise PI_EMPTY_WAVEFORM,
         /// PI_TOO_MANY_CBS, PI_TOO_MANY_OOL, or PI_NO_WAVEFORM_ID.
         ///
-        /// The data provided by the [*gpioWaveAdd**] functions is consumed by this
+        /// The data provided by the <see cref="GpioWaveAdd*"/> functions is consumed by this
         /// function.
         ///
         /// As many waveforms may be created as there is space available.  The
-        /// wave id is passed to [*gpioWaveTxSend*] to specify the waveform to transmit.
+        /// wave id is passed to <see cref="GpioWaveTxSend"/> to specify the waveform to transmit.
         ///
         /// Normal usage would be
         ///
-        /// Step 1. [*gpioWaveClear*] to clear all waveforms and added data.
+        /// Step 1. <see cref="GpioWaveClear"/> to clear all waveforms and added data.
         ///
-        /// Step 2. [*gpioWaveAdd**] calls to supply the waveform data.
+        /// Step 2. <see cref="GpioWaveAdd*"/> calls to supply the waveform data.
         ///
-        /// Step 3. [*gpioWaveCreate*] to create the waveform and get a unique id
+        /// Step 3. <see cref="GpioWaveCreate"/> to create the waveform and get a unique id
         ///
         /// Repeat steps 2 and 3 as needed.
         ///
-        /// Step 4. [*gpioWaveTxSend*] with the id of the waveform to transmit.
+        /// Step 4. <see cref="GpioWaveTxSend"/> with the id of the waveform to transmit.
         ///
         /// A waveform comprises one of more pulses.  Each pulse consists of a
-        /// [*gpioPulse_t*] structure.
+        /// <see cref="GpioPulse_t"/> structure.
         ///
         /// The fields specify
         ///
@@ -209,10 +210,10 @@
         /// Wave ids are allocated in order, 0, 1, 2, etc.
         ///
         /// </summary>
-        /// <param name="wave_id">&gt;=0, as returned by [*gpioWaveCreate*]</param>
+        /// <param name="waveId">&gt;=0, as returned by <see cref="GpioWaveCreate"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_WAVE_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveDelete")]
-        public static extern int GpioWaveDelete(uint wave_id);
+        public static extern ResultCode GpioWaveDelete(uint waveId);
 
         /// <summary>
         /// This function transmits the waveform with id wave_id.  The mode
@@ -223,14 +224,14 @@
         /// WARNING: bad things may happen if you delete the previous
         /// waveform before it has been synced to the new waveform.
         ///
-        /// NOTE: Any hardware PWM started by [*gpioHardwarePWM*] will be cancelled.
+        /// NOTE: Any hardware PWM started by <see cref="GpioHardwarePWM"/> will be cancelled.
         ///
         /// otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.
         /// </summary>
         /// <remarks>
         ///            PI_WAVE_MODE_ONE_SHOT_SYNC, PI_WAVE_MODE_REPEAT_SYNC
         /// </remarks>
-        /// <param name="wave_id">&gt;=0, as returned by [*gpioWaveCreate*]</param>
+        /// <param name="wave_id">&gt;=0, as returned by <see cref="GpioWaveCreate"/></param>
         /// <param name="wave_mode">PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT,</param>
         /// <returns>Returns the number of DMA control blocks in the waveform if OK, otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveTxSend")]
@@ -239,10 +240,10 @@
         /// <summary>
         /// This function transmits a chain of waveforms.
         ///
-        /// NOTE: Any hardware PWM started by [*gpioHardwarePWM*] will be cancelled.
+        /// NOTE: Any hardware PWM started by <see cref="GpioHardwarePWM"/> will be cancelled.
         ///
         /// The waves to be transmitted are specified by the contents of buf
-        /// which contains an ordered list of [*wave_id*]s and optional command
+        /// which contains an ordered list of <see cref="wave_id"/>s and optional command
         /// codes and related data.
         ///
         /// Each wave is transmitted in the order specified.  A wave may
@@ -324,11 +325,11 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="buf">pointer to the wave_ids and optional command codes</param>
-        /// <param name="bufSize">the number of bytes in buf</param>
+        /// <param name="buffer">pointer to the wave_ids and optional command codes</param>
+        /// <param name="bufferSize">the number of bytes in buf</param>
         /// <returns>Returns 0 if OK, otherwise PI_CHAIN_NESTING, PI_CHAIN_LOOP_CNT, PI_BAD_CHAIN_LOOP, PI_BAD_CHAIN_CMD, PI_CHAIN_COUNTER, PI_BAD_CHAIN_DELAY, PI_CHAIN_TOO_BIG, or PI_BAD_WAVE_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveChain")]
-        public static extern int GpioWaveChain(byte[] buf, uint bufSize);
+        public static extern ResultCode GpioWaveChain([MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint bufferSize);
 
         /// <summary>
         /// This function returns the id of the waveform currently being
@@ -369,7 +370,7 @@
 
         /// <summary>
         /// This function returns the length in microseconds of the longest waveform
-        /// created since [*gpioInitialise*] was called.
+        /// created since <see cref="GpioInitialise"/> was called.
         /// </summary>
         /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighMicros")]
@@ -392,7 +393,7 @@
 
         /// <summary>
         /// This function returns the length in pulses of the longest waveform
-        /// created since [*gpioInitialise*] was called.
+        /// created since <see cref="GpioInitialise"/> was called.
         /// </summary>
         /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighPulses")]
@@ -415,7 +416,7 @@
 
         /// <summary>
         /// This function returns the length in DMA control blocks of the longest
-        /// waveform created since [*gpioInitialise*] was called.
+        /// waveform created since <see cref="GpioInitialise"/> was called.
         /// </summary>
         /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighCbs")]

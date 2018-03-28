@@ -6,6 +6,7 @@
     /// <summary>
     /// Provides a wrapper class for the pigpio library
     /// https://github.com/joan2937/pigpio
+    /// This class should contain 164 calls to the library
     /// Created on 3/26/2018 for Version V67 by Mario Di Vece.
     /// This code is free and public-domain. Use at your own risk.
     /// </summary>
@@ -31,9 +32,9 @@
         /// </code>
         /// </example>
         /// <remarks>
-        /// [*gpioCfg**]
-        /// [*gpioVersion*]
-        /// [*gpioHardwareRevision*]
+        /// <see cref="GpioCfg*"/>
+        /// <see cref="GpioVersion"/>
+        /// <see cref="GpioHardwareRevision"/>
         /// </remarks>
         /// <returns>Returns the pigpio version number if OK, otherwise PI_INIT_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioInitialise")]

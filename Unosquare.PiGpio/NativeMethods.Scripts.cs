@@ -26,7 +26,7 @@
         /// param is an array of up to 10 parameters which may be referenced in
         /// the script as p0 to p9.
         /// </summary>
-        /// <param name="script_id">&gt;=0, as returned by [*gpioStoreScript*]</param>
+        /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <param name="numPar">0-10, the number of parameters</param>
         /// <param name="param">an array of parameters</param>
         /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
@@ -44,7 +44,7 @@
         /// param is an array of up to 10 parameters which may be referenced in
         /// the script as p0 to p9.
         /// </summary>
-        /// <param name="script_id">&gt;=0, as returned by [*gpioStoreScript*]</param>
+        /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <param name="numPar">0-10, the number of parameters</param>
         /// <param name="param">an array of parameters</param>
         /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
@@ -69,7 +69,7 @@
         /// PI_SCRIPT_WAITING
         /// PI_SCRIPT_FAILED
         /// </remarks>
-        /// <param name="script_id">&gt;=0, as returned by [*gpioStoreScript*]</param>
+        /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <param name="param">an array to hold the returned 10 parameters</param>
         /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioScriptStatus")]
@@ -80,7 +80,7 @@
         ///
         /// The function returns 0 if OK, otherwise PI_BAD_SCRIPT_ID.
         /// </summary>
-        /// <param name="script_id">&gt;=0, as returned by [*gpioStoreScript*]</param>
+        /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioStopScript")]
         public static extern int GpioStopScript(uint script_id);
@@ -90,7 +90,7 @@
         ///
         /// The function returns 0 if OK, otherwise PI_BAD_SCRIPT_ID.
         /// </summary>
-        /// <param name="script_id">&gt;=0, as returned by [*gpioStoreScript*]</param>
+        /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioDeleteScript")]
         public static extern int GpioDeleteScript(uint script_id);

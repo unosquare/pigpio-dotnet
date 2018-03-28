@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\GpioPad.cs" />
+    <Compile Include="Enums\GpioPadStrength.cs" />
     <Compile Include="Enums\LevelChange.cs" />
     <Compile Include="NativeMethods.Events.cs" />
     <Compile Include="NativeTypes\BscTransfer.cs" />
@@ -53,7 +55,7 @@
     <Compile Include="NativeTypes\GpioSample.cs" />
     <Compile Include="Enums\TimerId.cs" />
     <Compile Include="NativeTypes\I2CMessageSegment.cs" />
-    <Compile Include="Enums\Level.cs" />
+    <Compile Include="Enums\DigitalValue.cs" />
     <Compile Include="NativeMethods.Advanced.cs" />
     <Compile Include="NativeMethods.Basic.cs" />
     <Compile Include="NativeMethods.Configuration.cs" />

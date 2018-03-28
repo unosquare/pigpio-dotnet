@@ -93,10 +93,10 @@
         /// </code>
         /// </example>
         /// <param name="gpio">0-53</param>
-        /// <param name="level">0-1</param>
+        /// <param name="value">0-1</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_LEVEL.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite")]
-        public static extern ResultCode GpioWrite(SystemGpio gpio, Level level);
+        public static extern ResultCode GpioWrite(SystemGpio gpio, DigitalValue value);
 
         /// <summary>
         /// Starts PWM on the GPIO, dutycycle between 0 (off) and range (fully on).
@@ -107,7 +107,7 @@
         /// This and the servo functionality use the DMA and PWM or PCM peripherals
         /// to control and schedule the pulse lengths and dutycycles.
         ///
-        /// The [*gpioSetPWMrange*] function may be used to change the default
+        /// The <see cref="GpioSetPWMrange"/> function may be used to change the default
         /// range of 255.
         ///
         /// </summary>
@@ -121,15 +121,15 @@
         /// </code>
         /// </example>
         /// <param name="userGpio">0-31</param>
-        /// <param name="dutycycle">0-range</param>
+        /// <param name="dutyCycle">0-range</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_DUTYCYCLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioPWM")]
-        public static extern ResultCode GpioPWM(UserGpio userGpio, uint dutycycle);
+        public static extern ResultCode GpioPwm(UserGpio userGpio, uint dutyCycle);
 
         /// <summary>
         ///
         /// For normal PWM the dutycycle will be out of the defined range
-        /// for the GPIO (see [*gpioGetPWMrange*]).
+        /// for the GPIO (see <see cref="GpioGetPWMrange"/>).
         ///
         /// If a hardware clock is active on the GPIO the reported dutycycle
         /// will be 500000 (500k) out of 1000000 (1M).
@@ -162,9 +162,9 @@
         /// This function updates servos at 50Hz.  If you wish to use a different
         /// update frequency you will have to use the PWM functions.
         ///
-        /// Firstly set the desired PWM frequency using [*gpioSetPWMfrequency*].
+        /// Firstly set the desired PWM frequency using <see cref="GpioSetPWMfrequency"/>.
         ///
-        /// Then set the PWM range using [*gpioSetPWMrange*] to 1E6/frequency.
+        /// Then set the PWM range using <see cref="GpioSetPWMrange"/> to 1E6/frequency.
         /// Doing this allows you to use units of microseconds when setting
         /// the servo pulsewidth.
         ///
@@ -190,10 +190,10 @@
         /// gpioSetPWMrange(25, 2500);
         /// </remarks>
         /// <param name="userGpio">0-31</param>
-        /// <param name="pulsewidth">0, 500-2500</param>
+        /// <param name="pulseWidth">0, 500-2500</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_PULSEWIDTH.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioServo")]
-        public static extern ResultCode GpioServo(UserGpio userGpio, uint pulsewidth);
+        public static extern ResultCode GpioServo(UserGpio userGpio, uint pulseWidth);
 
         /// <summary>
         /// if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.
@@ -207,10 +207,10 @@
         /// Delays for at least the number of microseconds specified by micros.
         /// Delays of 100 microseconds or less use busy waits.
         /// </summary>
-        /// <param name="micros">the number of microseconds to sleep</param>
+        /// <param name="microSeconds">the number of microseconds to sleep</param>
         /// <returns>Returns the actual length of the delay in microseconds.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioDelay")]
-        public static extern uint GpioDelay(uint micros);
+        public static extern uint GpioDelay(uint microSeconds);
 
         /// <summary>
         /// Registers a function to be called (a callback) when the specified
@@ -237,7 +237,7 @@
         /// will be a latency.
         ///
         /// The tick value is the time stamp of the sample in microseconds, see
-        /// [*gpioTick*] for more details.
+        /// <see cref="GpioTick"/> for more details.
         ///
         /// </summary>
         /// <example>
