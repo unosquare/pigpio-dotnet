@@ -2,6 +2,9 @@
 {
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Represents Raw SPI channel data
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class RawSpiData
     {

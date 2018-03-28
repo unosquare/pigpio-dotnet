@@ -2,6 +2,10 @@
 {
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// A pulse representing microseconds in the high position,
+    /// microseconds in the low position, and a delay measure.
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class GpioPulse
     {

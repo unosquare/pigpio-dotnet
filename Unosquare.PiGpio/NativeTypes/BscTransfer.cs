@@ -2,6 +2,9 @@
 {
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// A data structure representing a BSC transfer.
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class BscTransfer
     {

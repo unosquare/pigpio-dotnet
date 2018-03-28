@@ -1,7 +1,9 @@
 ﻿namespace Unosquare.PiGpio.Enums
 {
     /// <summary>
-    /// Provides an enumeration of User GPIOs from 0 to 31
+    /// Provides an enumeration of User GPIOs from 0 to 31.
+    /// Do not use undocumented pin numbers because they might be reserved or crash the hardware
+    /// and corrupt the SD card.
     /// </summary>
     public enum UserGpio : int
     {

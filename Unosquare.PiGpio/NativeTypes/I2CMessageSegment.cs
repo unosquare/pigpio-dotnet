@@ -2,6 +2,9 @@
 {
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// An I2C Message Segment
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class I2CMessageSegment
     {

@@ -2,6 +2,9 @@
 {
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Represents raw waveform information
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class RawWaveInformation
     {

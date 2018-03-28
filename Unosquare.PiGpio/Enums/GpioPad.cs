@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.Enums
 {
     /// <summary>
-    /// Enumerates the GPIO Pads
+    /// Enumerates the GPIO (electrical) Pads
     /// 0   @ 0-27
     /// 1   @ 28-45
     /// 2   @ 46-53

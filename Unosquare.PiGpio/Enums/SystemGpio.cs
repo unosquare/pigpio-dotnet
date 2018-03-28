@@ -2,6 +2,9 @@
 {
     /// <summary>
     /// Provides an enumeration of System GPIOs from 0 to 53.
+    /// User GPIOs are from 0 to 31 (some of them are reserved depending on hardware).
+    /// All chip GPIOs go from 0 to 53. It is safe to read all of them but writing to some
+    /// of them might crash the hardware and corrupt the SD card. So use documetned ones only.
     /// </summary>
     public enum SystemGpio : int
     {

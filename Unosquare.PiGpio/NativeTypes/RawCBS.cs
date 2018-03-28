@@ -2,6 +2,9 @@
 {
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// The Raw CBS (Linux Control Block)
+    /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class RawCBS
     {

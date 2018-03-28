@@ -1,5 +1,9 @@
 ﻿namespace Unosquare.PiGpio.Enums
 {
+    /// <summary>
+    /// The Pi can register up to 10 hardware timers. 
+    /// This lists all 10 hardware timers from 0 to 9.
+    /// </summary>
     public enum TimerId : int
     {
         /// <summary>The GPIO Hardware Timer 00</summary>

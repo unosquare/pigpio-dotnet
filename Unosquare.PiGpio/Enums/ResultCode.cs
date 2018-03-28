@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.Enums
 {
     /// <summary>
-    /// Defines the different return codes.
+    /// Defines the different operation result codes.
     /// 0 is OK. Anything negative is an error
     /// </summary>
     public enum ResultCode : int

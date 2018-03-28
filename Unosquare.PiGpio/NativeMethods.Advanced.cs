@@ -193,7 +193,7 @@
         /// with the latest GPIO samples.
         ///
         /// The function is passed a pointer to the samples (an array of
-        /// <see cref="GpioSample_t"/>),  and the number of samples.
+        /// <see cref="GpioSample"/>),  and the number of samples.
         ///
         /// Only one function can be registered.
         ///
