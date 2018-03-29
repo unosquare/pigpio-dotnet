@@ -224,7 +224,7 @@
         /// WARNING: bad things may happen if you delete the previous
         /// waveform before it has been synced to the new waveform.
         ///
-        /// NOTE: Any hardware PWM started by <see cref="GpioHardwarePWM"/> will be cancelled.
+        /// NOTE: Any hardware PWM started by <see cref="GpioHardwarePwm"/> will be cancelled.
         ///
         /// otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.
         /// </summary>
@@ -240,7 +240,7 @@
         /// <summary>
         /// This function transmits a chain of waveforms.
         ///
-        /// NOTE: Any hardware PWM started by <see cref="GpioHardwarePWM"/> will be cancelled.
+        /// NOTE: Any hardware PWM started by <see cref="GpioHardwarePwm"/> will be cancelled.
         ///
         /// The waves to be transmitted are specified by the contents of buf
         /// which contains an ordered list of <see cref="wave_id"/>s and optional command

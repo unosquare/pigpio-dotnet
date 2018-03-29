@@ -88,6 +88,40 @@
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialRead")]
         private static extern int GpioSerialReadUnmanaged(UserGpio userGpio, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint bufferSize);
 
+        /// <summary>
+        /// This function configures the level logic for bit bang serial reads.
+        ///
+        /// Use PI_BB_SER_INVERT to invert the serial logic and PI_BB_SER_NORMAL for
+        /// normal logic.  Default is PI_BB_SER_NORMAL.
+        ///
+        /// The GPIO must be opened for bit bang reading of serial data using
+        /// <see cref="GpioSerialReadOpen"/> prior to calling this function.
+        /// </summary>
+        /// <param name="userGpio">0-31</param>
+        /// <param name="invert">0-1</param>
+        /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_GPIO_IN_USE, PI_NOT_SERIAL_GPIO, or PI_BAD_SER_INVERT.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialReadInvert")]
+        private static extern ResultCode GpioSerialReadInvertUnmanaged(UserGpio userGpio, DigitalValue invert);
+
+        /// <summary>
+        /// This function returns the pad drive strength in mA.
+        ///
+        /// Pad @ GPIO
+        /// 0   @ 0-27
+        /// 1   @ 28-45
+        /// 2   @ 46-53
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// strength = gpioGetPad(1); // get pad 1 strength
+        /// </code>
+        /// </example>
+        /// <param name="pad">0-2, the pad to get</param>
+        /// <returns>Returns the pad drive strength if OK, otherwise PI_BAD_PAD.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPad")]
+        private static extern int GpioGetPadUnmanaged(GpioPad pad);
+
         #endregion
 
         /// <summary>
@@ -512,8 +546,10 @@
         /// <param name="userGpio">0-31</param>
         /// <param name="invert">0-1</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_GPIO_IN_USE, PI_NOT_SERIAL_GPIO, or PI_BAD_SER_INVERT.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialReadInvert")]
-        public static extern ResultCode GpioSerialReadInvert(UserGpio userGpio, DigitalValue invert);
+        public static ResultCode GpioSerialReadInvert(UserGpio userGpio, bool invert)
+        {
+            return GpioSerialReadInvertUnmanaged(userGpio, invert ? DigitalValue.True : DigitalValue.False);
+        }
 
         /// <summary>
         /// Wrapper for the native <see cref="GpioSerialReadUnmanaged"/>
@@ -628,7 +664,7 @@
         /// <param name="pwmDytuCycle">0 (off) to 1000000 (1M)(fully on)</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_NOT_HPWM_GPIO, PI_BAD_HPWM_DUTY, PI_BAD_HPWM_FREQ, or PI_HPWM_ILLEGAL.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioHardwarePWM")]
-        public static extern ResultCode GpioHardwarePWM(SystemGpio gpio, uint pwmFrequency, uint pwmDytuCycle);
+        public static extern ResultCode GpioHardwarePwm(SystemGpio gpio, uint pwmFrequency, uint pwmDytuCycle);
 
         /// <summary>
         /// Sets a glitch filter on a GPIO.
@@ -698,8 +734,11 @@
         /// </example>
         /// <param name="pad">0-2, the pad to get</param>
         /// <returns>Returns the pad drive strength if OK, otherwise PI_BAD_PAD.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPad")]
-        public static extern int GpioGetPad(GpioPad pad);
+        public static GpioPadStrength GpioGetPad(GpioPad pad)
+        {
+            var result = PiGpioException.ValidateResult(GpioGetPadUnmanaged(pad));
+            return (GpioPadStrength)result;
+        }
 
         /// <summary>
         /// This function sets the pad drive strength in mA.

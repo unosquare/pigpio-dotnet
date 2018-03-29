@@ -55,7 +55,7 @@
     <Compile Include="Delegates.cs" />
     <Compile Include="Enums\EdgeDetection.cs" />
     <Compile Include="Enums\UserGpio.cs" />
-    <Compile Include="Enums\GpioMode.cs" />
+    <Compile Include="Enums\PortMode.cs" />
     <Compile Include="Enums\GpioPullMode.cs" />
     <Compile Include="NativeTypes\GpioPulse.cs" />
     <Compile Include="NativeTypes\GpioSample.cs" />
@@ -85,5 +85,6 @@
     <Compile Include="Enums\ResultCode.cs" />
     <Compile Include="Enums\SystemGpio.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,100 +7,100 @@
     /// </summary>
     public enum UserGpio : int
     {
-        /// <summary>The GPIO Pin 00</summary>
-        Pin00 = 0,
+        /// <summary>The BCM GPIO 00</summary>
+        Bcm00 = 0,
 
-        /// <summary>The GPIO Pin 01</summary>
-        Pin01 = 1,
+        /// <summary>The BCM GPIO 01</summary>
+        Bcm01 = 1,
 
-        /// <summary>The GPIO Pin 02</summary>
-        Pin02 = 2,
+        /// <summary>The BCM GPIO 02</summary>
+        Bcm02 = 2,
 
-        /// <summary>The GPIO Pin 03</summary>
-        Pin03 = 3,
+        /// <summary>The BCM GPIO 03</summary>
+        Bcm03 = 3,
 
-        /// <summary>The GPIO Pin 04</summary>
-        Pin04 = 4,
+        /// <summary>The BCM GPIO 04</summary>
+        Bcm04 = 4,
 
-        /// <summary>The GPIO Pin 05</summary>
-        Pin05 = 5,
+        /// <summary>The BCM GPIO 05</summary>
+        Bcm05 = 5,
 
-        /// <summary>The GPIO Pin 06</summary>
-        Pin06 = 6,
+        /// <summary>The BCM GPIO 06</summary>
+        Bcm06 = 6,
 
-        /// <summary>The GPIO Pin 07</summary>
-        Pin07 = 7,
+        /// <summary>The BCM GPIO 07</summary>
+        Bcm07 = 7,
 
-        /// <summary>The GPIO Pin 08</summary>
-        Pin08 = 8,
+        /// <summary>The BCM GPIO 08</summary>
+        Bcm08 = 8,
 
-        /// <summary>The GPIO Pin 09</summary>
-        Pin09 = 9,
+        /// <summary>The BCM GPIO 09</summary>
+        Bcm09 = 9,
 
-        /// <summary>The GPIO Pin 10</summary>
-        Pin10 = 10,
+        /// <summary>The BCM GPIO 10</summary>
+        Bcm10 = 10,
 
-        /// <summary>The GPIO Pin 11</summary>
-        Pin11 = 11,
+        /// <summary>The BCM GPIO 11</summary>
+        Bcm11 = 11,
 
-        /// <summary>The GPIO Pin 12</summary>
-        Pin12 = 12,
+        /// <summary>The BCM GPIO 12</summary>
+        Bcm12 = 12,
 
-        /// <summary>The GPIO Pin 13</summary>
-        Pin13 = 13,
+        /// <summary>The BCM GPIO 13</summary>
+        Bcm13 = 13,
 
-        /// <summary>The GPIO Pin 14</summary>
-        Pin14 = 14,
+        /// <summary>The BCM GPIO 14</summary>
+        Bcm14 = 14,
 
-        /// <summary>The GPIO Pin 15</summary>
-        Pin15 = 15,
+        /// <summary>The BCM GPIO 15</summary>
+        Bcm15 = 15,
 
-        /// <summary>The GPIO Pin 16</summary>
-        Pin16 = 16,
+        /// <summary>The BCM GPIO 16</summary>
+        Bcm16 = 16,
 
-        /// <summary>The GPIO Pin 17</summary>
-        Pin17 = 17,
+        /// <summary>The BCM GPIO 17</summary>
+        Bcm17 = 17,
 
-        /// <summary>The GPIO Pin 18</summary>
-        Pin18 = 18,
+        /// <summary>The BCM GPIO 18</summary>
+        Bcm18 = 18,
 
-        /// <summary>The GPIO Pin 19</summary>
-        Pin19 = 19,
+        /// <summary>The BCM GPIO 19</summary>
+        Bcm19 = 19,
 
-        /// <summary>The GPIO Pin 20</summary>
-        Pin20 = 20,
+        /// <summary>The BCM GPIO 20</summary>
+        Bcm20 = 20,
 
-        /// <summary>The GPIO Pin 21</summary>
-        Pin21 = 21,
+        /// <summary>The BCM GPIO 21</summary>
+        Bcm21 = 21,
 
-        /// <summary>The GPIO Pin 22</summary>
-        Pin22 = 22,
+        /// <summary>The BCM GPIO 22</summary>
+        Bcm22 = 22,
 
-        /// <summary>The GPIO Pin 23</summary>
-        Pin23 = 23,
+        /// <summary>The BCM GPIO 23</summary>
+        Bcm23 = 23,
 
-        /// <summary>The GPIO Pin 24</summary>
-        Pin24 = 24,
+        /// <summary>The BCM GPIO 24</summary>
+        Bcm24 = 24,
 
-        /// <summary>The GPIO Pin 25</summary>
-        Pin25 = 25,
+        /// <summary>The BCM GPIO 25</summary>
+        Bcm25 = 25,
 
-        /// <summary>The GPIO Pin 26</summary>
-        Pin26 = 26,
+        /// <summary>The BCM GPIO 26</summary>
+        Bcm26 = 26,
 
-        /// <summary>The GPIO Pin 27</summary>
-        Pin27 = 27,
+        /// <summary>The BCM GPIO 27</summary>
+        Bcm27 = 27,
 
-        /// <summary>The GPIO Pin 28</summary>
-        Pin28 = 28,
+        /// <summary>The BCM GPIO 28</summary>
+        Bcm28 = 28,
 
-        /// <summary>The GPIO Pin 29</summary>
-        Pin29 = 29,
+        /// <summary>The BCM GPIO 29</summary>
+        Bcm29 = 29,
 
-        /// <summary>The GPIO Pin 30</summary>
-        Pin30 = 30,
+        /// <summary>The BCM GPIO 30</summary>
+        Bcm30 = 30,
 
-        /// <summary>The GPIO Pin 31</summary>
-        Pin31 = 31,
+        /// <summary>The BCM GPIO 31</summary>
+        Bcm31 = 31,
     }
 }

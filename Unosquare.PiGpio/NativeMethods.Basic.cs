@@ -51,7 +51,7 @@
         /// <summary>
         ///
         /// For normal PWM the dutycycle will be out of the defined range
-        /// for the GPIO (see <see cref="GpioGetPWMrange"/>).
+        /// for the GPIO (see <see cref="GpioGetPwmRange"/>).
         ///
         /// If a hardware clock is active on the GPIO the reported dutycycle
         /// will be 500000 (500k) out of 1000000 (1M).
@@ -65,6 +65,25 @@
         /// <returns>Returns between 0 (off) and range (fully on) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_PWM_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMdutycycle")]
         private static extern int GpioGetPwmDutyCycleUnmanaged(UserGpio userGpio);
+
+        /// <summary>
+        /// Sets the GPIO level, on or off.
+        ///
+        /// If PWM or servo pulses are active on the GPIO they are switched off.
+        ///
+        /// Arduino style: digitalWrite
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// gpioWrite(24, 1); // Set GPIO24 high.
+        /// </code>
+        /// </example>
+        /// <param name="gpio">0-53</param>
+        /// <param name="value">0-1</param>
+        /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_LEVEL.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite")]
+        private static extern ResultCode GpioWriteUnmanaged(SystemGpio gpio, DigitalValue value);
 
         #endregion
 
@@ -88,17 +107,17 @@
         /// <param name="mode">0-7</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_MODE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetMode")]
-        public static extern ResultCode GpioSetMode(SystemGpio gpio, GpioMode mode);
+        public static extern ResultCode GpioSetMode(SystemGpio gpio, PortMode mode);
 
         /// <summary>
         /// Gest the current mode for the given GPIO
         /// </summary>
         /// <param name="gpio">The gpio.</param>
         /// <returns></returns>
-        public static GpioMode GpioGetMode(SystemGpio gpio)
+        public static PortMode GpioGetMode(SystemGpio gpio)
         {
             var result = PiGpioException.ValidateResult(GpioGetModeUnmanaged(gpio));
-            return (GpioMode)result;
+            return (PortMode)result;
         }
 
         /// <summary>
@@ -125,10 +144,10 @@
         /// </summary>
         /// <param name="gpio">The gpio.</param>
         /// <returns></returns>
-        public static DigitalValue GpioRead(SystemGpio gpio)
+        public static bool GpioRead(SystemGpio gpio)
         {
             var result = PiGpioException.ValidateResult(GpioReadUnmanaged(gpio));
-            return (DigitalValue)result;
+            return (DigitalValue)result == DigitalValue.True;
         }
 
         /// <summary>
@@ -147,8 +166,10 @@
         /// <param name="gpio">0-53</param>
         /// <param name="value">0-1</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_LEVEL.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite")]
-        public static extern ResultCode GpioWrite(SystemGpio gpio, DigitalValue value);
+        public static ResultCode GpioWrite(SystemGpio gpio, bool value)
+        {
+            return GpioWriteUnmanaged(gpio, value ? DigitalValue.True : DigitalValue.False);
+        }
 
         /// <summary>
         /// Starts PWM on the GPIO, dutycycle between 0 (off) and range (fully on).
@@ -159,7 +180,7 @@
         /// This and the servo functionality use the DMA and PWM or PCM peripherals
         /// to control and schedule the pulse lengths and dutycycles.
         ///
-        /// The <see cref="GpioSetPWMrange"/> function may be used to change the default
+        /// The <see cref="GpioSetPwmRange"/> function may be used to change the default
         /// range of 255.
         ///
         /// </summary>
@@ -206,9 +227,9 @@
         /// This function updates servos at 50Hz.  If you wish to use a different
         /// update frequency you will have to use the PWM functions.
         ///
-        /// Firstly set the desired PWM frequency using <see cref="GpioSetPWMfrequency"/>.
+        /// Firstly set the desired PWM frequency using <see cref="GpioSetPwmFrequency"/>.
         ///
-        /// Then set the PWM range using <see cref="GpioSetPWMrange"/> to 1E6/frequency.
+        /// Then set the PWM range using <see cref="GpioSetPwmRange"/> to 1E6/frequency.
         /// Doing this allows you to use units of microseconds when setting
         /// the servo pulsewidth.
         ///
@@ -253,10 +274,10 @@
         /// Delays for at least the number of microseconds specified by micros.
         /// Delays of 100 microseconds or less use busy waits.
         /// </summary>
-        /// <param name="microSeconds">the number of microseconds to sleep</param>
+        /// <param name="microSecs">the number of microseconds to sleep</param>
         /// <returns>Returns the actual length of the delay in microseconds.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioDelay")]
-        public static extern uint GpioDelay(uint microSeconds);
+        public static extern uint GpioDelay(uint microSecs);
 
         /// <summary>
         /// Registers a function to be called (a callback) when the specified

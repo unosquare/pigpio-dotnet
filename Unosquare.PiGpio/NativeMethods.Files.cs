@@ -320,7 +320,7 @@
             var result = PiGpioException.ValidateResult(FileListUnmanaged(pathPattern, buffer, (uint)buffer.Length));
             var encoding = Encoding.GetEncoding(0);
             var fileList = new List<string>();
-            var lastZeroIndex = 0;
+            var lastZeroIndex = -1;
             var runLength = 0;
             var byteValue = default(byte);
 

@@ -6,6 +6,8 @@
 
     public static partial class NativeMethods
     {
+        #region Unmanaged Methods
+
         /// <summary>
         /// This function sends a trigger pulse to a GPIO.  The GPIO is set to
         /// level for pulseLen microseconds and then reset to not level.
@@ -17,7 +19,24 @@
         /// <param name="value">0,1</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_LEVEL, or PI_BAD_PULSELEN.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioTrigger")]
-        public static extern ResultCode GpioTrigger(UserGpio userGpio, uint pulseLength, DigitalValue value);
+        private static extern ResultCode GpioTriggerUnmanaged(UserGpio userGpio, uint pulseLength, DigitalValue value);
+
+        #endregion
+
+        /// <summary>
+        /// This function sends a trigger pulse to a GPIO.  The GPIO is set to
+        /// level for pulseLen microseconds and then reset to not level.
+        ///
+        /// or PI_BAD_PULSELEN.
+        /// </summary>
+        /// <param name="userGpio">0-31</param>
+        /// <param name="pulseLength">1-100</param>
+        /// <param name="value">0,1</param>
+        /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_LEVEL, or PI_BAD_PULSELEN.</returns>
+        public static ResultCode GpioTrigger(UserGpio userGpio, uint pulseLength, bool value)
+        {
+            return GpioTriggerUnmanaged(userGpio, pulseLength, value ? DigitalValue.True : DigitalValue.False);
+        }
 
         /// <summary>
         /// Sets a watchdog for a GPIO.
@@ -88,7 +107,7 @@
         /// <param name="range">25-40000</param>
         /// <returns>Returns the real range for the given GPIO's frequency if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_DUTYRANGE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetPWMrange")]
-        public static extern ResultCode GpioSetPWMrange(UserGpio userGpio, uint range);
+        public static extern ResultCode GpioSetPwmRange(UserGpio userGpio, uint range);
 
         /// <summary>
         ///
@@ -104,7 +123,7 @@
         /// <param name="userGpio">0-31</param>
         /// <returns>Returns the dutycycle range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMrange")]
-        public static extern int GpioGetPWMrange(UserGpio userGpio);
+        public static extern int GpioGetPwmRange(UserGpio userGpio);
 
         /// <summary>
         /// Sets the frequency in hertz to be used for the GPIO.
@@ -156,18 +175,18 @@
         /// <param name="frequency">&gt;=0</param>
         /// <returns>Returns the numerically closest frequency if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetPWMfrequency")]
-        public static extern ResultCode GpioSetPWMfrequency(UserGpio userGpio, uint frequency);
+        public static extern ResultCode GpioSetPwmFrequency(UserGpio userGpio, uint frequency);
 
         /// <summary>
         ///
         /// For normal PWM the frequency will be that defined for the GPIO by
-        /// <see cref="GpioSetPWMfrequency"/>.
+        /// <see cref="GpioSetPwmFrequency"/>.
         ///
         /// If a hardware clock is active on the GPIO the reported frequency
         /// will be that set by <see cref="GpioHardwareClock"/>.
         ///
         /// If hardware PWM is active on the GPIO the reported frequency
-        /// will be that set by <see cref="GpioHardwarePWM"/>.
+        /// will be that set by <see cref="GpioHardwarePwm"/>.
         ///
         /// </summary>
         /// <example>
@@ -178,14 +197,14 @@
         /// <param name="userGpio">0-31</param>
         /// <returns>Returns the frequency (in hertz) used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMfrequency")]
-        public static extern int GpioGetPWMfrequency(UserGpio userGpio);
+        public static extern int GpioGetPwmFrequency(UserGpio userGpio);
 
         /// <summary>
         /// Returns the current level of GPIO 0-31.
         /// </summary>
         /// <returns>Returns the current level of GPIO 0-31.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioRead_Bits_0_31")]
-        public static extern uint GpioReadBits0To31();
+        public static extern uint GpioReadBits00To31();
 
         /// <summary>
         /// Returns the current level of GPIO 32-53.
@@ -207,7 +226,7 @@
         /// <param name="bits">a bit mask of GPIO to clear</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite_Bits_0_31_Clear")]
-        public static extern int GpioWriteBits0To31Clear(uint bits);
+        public static extern int GpioWriteBits00To31Clear(uint bits);
 
         /// <summary>
         /// Clears GPIO 32-53 if the corresponding bit (0-21) in bits is set.
@@ -225,7 +244,7 @@
         /// <param name="bits">a bit mask of GPIO to set</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite_Bits_0_31_Set")]
-        public static extern int GpioWriteBits0To31Set(uint bits);
+        public static extern int GpioWriteBits00To31Set(uint bits);
 
         /// <summary>
         /// Sets GPIO 32-53 if the corresponding bit (0-21) in bits is set.
@@ -300,8 +319,8 @@
         ///
         /// The thread to be stopped should have been started with <see cref="GpioStartThread"/>.
         /// </summary>
-        /// <param name="threadHandle">a thread pointer returned by <see cref="GpioStartThread"/></param>
+        /// <param name="handle">a thread pointer returned by <see cref="GpioStartThread"/></param>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioStopThread")]
-        public static extern void GpioStopThread(UIntPtr threadHandle);
+        public static extern void GpioStopThread(UIntPtr handle);
     }
 }

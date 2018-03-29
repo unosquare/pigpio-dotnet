@@ -271,9 +271,9 @@
         /// settings.
         ///
         /// </summary>
-        /// <param name="cfgVal">see source code</param>
+        /// <param name="configFlags">see source code</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgSetInternals")]
-        public static extern ResultCode GpioCfgSetInternals(uint cfgVal);
+        public static extern ResultCode GpioCfgSetInternals(uint configFlags);
     }
 }

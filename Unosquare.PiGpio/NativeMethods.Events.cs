@@ -6,7 +6,6 @@
 
     public static partial class NativeMethods
     {
-
         /// <summary>
         /// This function selects the events to be reported on a previously
         /// opened handle.
@@ -28,10 +27,10 @@
         /// </code>
         /// </example>
         /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
-        /// <param name="bits">a bit mask indicating the events of interest</param>
+        /// <param name="bitMask">a bit mask indicating the events of interest</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventMonitor")]
-        public static extern ResultCode EventMonitor(UIntPtr handle, uint bits);
+        public static extern ResultCode EventMonitor(UIntPtr handle, uint bitMask);
 
         /// <summary>
         /// Registers a function to be called (a callback) when the specified
