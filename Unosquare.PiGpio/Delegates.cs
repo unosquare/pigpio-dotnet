@@ -25,9 +25,9 @@
 
     public delegate void GpioSignalExDelegate(int signalNumber, IntPtr userData);
 
-    public delegate void GpioGetSamplesDelegate([MarshalAs(UnmanagedType.LPArray)] GpioSample[] samples, int numSamples);
+    public delegate void GpioGetSamplesDelegate([In, MarshalAs(UnmanagedType.LPArray)] GpioSample[] samples, int numSamples);
 
-    public delegate void GpioGetSamplesExDelegate([MarshalAs(UnmanagedType.LPArray)] GpioSample[] samples, int numSamples, IntPtr userData);
+    public delegate void GpioGetSamplesExDelegate([In, MarshalAs(UnmanagedType.LPArray)] GpioSample[] samples, int numSamples, IntPtr userData);
 
     public delegate void GpioThreadDelegate();
 }

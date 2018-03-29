@@ -76,7 +76,7 @@
         /// <param name="numBits">number of valid bits in buf</param>
         /// <returns>Returns the value of the bit bitPos bits from the start of buf.  Returns 0 if bitPos is greater than or equal to numBits.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "getBitInBytes")]
-        public static extern int GetBitInBytes(int bitPos, byte[] buf, int numBits);
+        public static extern int GetBitInBytes(int bitPos, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buf, int numBits);
 
         /// <summary>
         /// Sets the bit bitPos bits from the start of buf to bit.
@@ -86,7 +86,7 @@
         /// <param name="buf">array of bits</param>
         /// <param name="bit">0-1, value to set</param>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "putBitInBytes")]
-        public static extern void PutBitInBytes(int bitPos, byte[] buf, int bit);
+        public static extern void PutBitInBytes(int bitPos, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buf, int bit);
 
         /// <summary>
         /// Updates the seconds and micros variables with the current time.
@@ -156,7 +156,7 @@
         /// <summary>
         /// Return the current time in seconds since the Epoch.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "time_time")]
         public static extern double TimeTime();
     }

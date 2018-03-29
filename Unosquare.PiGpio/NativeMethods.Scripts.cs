@@ -13,7 +13,7 @@
         /// otherwise PI_BAD_SCRIPT.
         /// </summary>
         /// <param name="script">the text of the script</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioStoreScript")]
         public static extern int GpioStoreScript(string script);
 
@@ -29,9 +29,9 @@
         /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <param name="numPar">0-10, the number of parameters</param>
         /// <param name="param">an array of parameters</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioRunScript")]
-        public static extern int GpioRunScript(uint script_id, uint numPar, uint[] param);
+        public static extern int GpioRunScript(uint script_id, uint numPar, [In, MarshalAs(UnmanagedType.LPArray)] uint[] param);
 
         /// <summary>
         /// This function sets the parameters of a script.  The script may or
@@ -47,9 +47,9 @@
         /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <param name="numPar">0-10, the number of parameters</param>
         /// <param name="param">an array of parameters</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioUpdateScript")]
-        public static extern int GpioUpdateScript(uint script_id, uint numPar, uint[] param);
+        public static extern int GpioUpdateScript(uint script_id, uint numPar, [In, MarshalAs(UnmanagedType.LPArray)] uint[] param);
 
         /// <summary>
         /// This function returns the run status of a stored script as well as
@@ -71,9 +71,9 @@
         /// </remarks>
         /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <param name="param">an array to hold the returned 10 parameters</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioScriptStatus")]
-        public static extern int GpioScriptStatus(uint script_id, uint[] param);
+        public static extern int GpioScriptStatus(uint script_id, [In, MarshalAs(UnmanagedType.LPArray)] uint[] param);
 
         /// <summary>
         /// This function stops a running script.
@@ -81,7 +81,7 @@
         /// The function returns 0 if OK, otherwise PI_BAD_SCRIPT_ID.
         /// </summary>
         /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioStopScript")]
         public static extern int GpioStopScript(uint script_id);
 
@@ -91,7 +91,7 @@
         /// The function returns 0 if OK, otherwise PI_BAD_SCRIPT_ID.
         /// </summary>
         /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioDeleteScript")]
         public static extern int GpioDeleteScript(uint script_id);
     }

@@ -40,9 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\AllocationMode.cs" />
+    <Compile Include="Enums\CpuPeripheral.cs" />
+    <Compile Include="Enums\DmaChannel.cs" />
     <Compile Include="Enums\FileModeFlags.cs" />
     <Compile Include="Enums\GpioPad.cs" />
     <Compile Include="Enums\GpioPadStrength.cs" />
+    <Compile Include="Enums\InterfaceFlags.cs" />
     <Compile Include="Enums\LevelChange.cs" />
     <Compile Include="Enums\SeekMode.cs" />
     <Compile Include="NativeMethods.Events.cs" />
@@ -72,6 +76,7 @@
     <Compile Include="NativeMethods.SPI.cs" />
     <Compile Include="NativeMethods.Utilities.cs" />
     <Compile Include="NativeMethods.Waves.cs" />
+    <Compile Include="PiGpioException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NativeTypes\RawCBS.cs" />
     <Compile Include="NativeTypes\RawSpiData.cs" />

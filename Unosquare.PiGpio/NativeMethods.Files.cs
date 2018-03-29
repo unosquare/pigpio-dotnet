@@ -3,7 +3,6 @@
     using Enums;
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Runtime.InteropServices;
     using System.Text;
 
@@ -133,7 +132,7 @@
         /// <param name="seekFrom">one of PI_FROM_START (0), PI_FROM_CURRENT (1),</param>
         /// <returns>Returns the new byte position within the file (&gt;=0) if OK, otherwise PI_BAD_HANDLE, or PI_BAD_FILE_SEEK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileSeek")]
-        private static extern int FileSeekUnmanaged(UIntPtr handle, int seekOffset, int seekFrom);
+        private static extern int FileSeekUnmanaged(UIntPtr handle, int seekOffset, SeekMode seekFrom);
 
         /// <summary>
         /// This function returns a list of files which match a pattern.  The
@@ -182,7 +181,7 @@
         /// <param name="count">the maximum number of bytes to read</param>
         /// <returns>Returns the number of returned bytes if OK, otherwise PI_NO_FILE_ACCESS, or PI_NO_FILE_MATCH.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileList")]
-        private static extern int FileListUnmanaged(string pathPattern, byte[] buffer, uint count);
+        private static extern int FileListUnmanaged(string pathPattern, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
         /// This function writes count bytes from buf to the the file
@@ -207,7 +206,7 @@
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_WOPEN, or PI_BAD_FILE_WRITE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileWrite")]
-        public static extern ResultCode FileWriteUnmanaged(UIntPtr handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
+        public static extern ResultCode FileWriteUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         #endregion
 
@@ -220,12 +219,8 @@
         /// <exception cref="System.IO.IOException">When the file fails to open</exception>
         public static UIntPtr FileOpen(string filePath, FileModeFlags mode)
         {
-            var result = FileOpenUnmanaged(filePath, (uint)mode);
-            if (result < 0)
-                throw new IOException($"Unable to open file '{filePath}'. Error Code {(ResultCode)result}: {(ResultCode)result}");
-
-            var handle = new UIntPtr((uint)result);
-            return handle;
+            var result = PiGpioException.ValidateResult(FileOpenUnmanaged(filePath, (uint)mode));
+            return new UIntPtr((uint)result);
         }
 
         /// <summary>
@@ -260,7 +255,7 @@
         /// <param name="count">the maximum number of bytes to read</param>
         /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_ROPEN, or PI_BAD_FILE_WRITE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileRead")]
-        public static extern int FileRead(UIntPtr handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
+        public static extern int FileRead(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
         /// Reads from a file handle up to count bytes.
@@ -271,11 +266,7 @@
         public static byte[] FileRead(UIntPtr handle, int count)
         {
             var buffer = new byte[count];
-            var result = FileRead(handle, buffer, (uint)count);
-            if (result < 0)
-                throw new IOException($"Unable to read from file handle '{handle:X}'" +
-                    $"Error Code {result}: {(ResultCode)result}");
-
+            var result = PiGpioException.ValidateResult(FileRead(handle, buffer, (uint)count));
             var outputBuffer = new byte[result];
             Buffer.BlockCopy(buffer, 0, outputBuffer, 0, result);
             return outputBuffer;
@@ -287,12 +278,9 @@
         /// <param name="handle">The handle.</param>
         /// <param name="buffer">The buffer.</param>
         /// <returns></returns>
-        public static void FileWrite(UIntPtr handle, byte[] buffer)
+        public static ResultCode FileWrite(UIntPtr handle, byte[] buffer)
         {
-            var result = FileWriteUnmanaged(handle, buffer, (uint)buffer.Length);
-            if (result != ResultCode.Ok)
-                throw new IOException($"Unable to write to file handle '{handle:X}'" +
-                    $"Error Code {(int)result}: {result}");
+            return PiGpioException.ValidateResult(FileWriteUnmanaged(handle, buffer, (uint)buffer.Length));
         }
 
         /// <summary>
@@ -302,12 +290,9 @@
         /// <param name="buffer">The buffer.</param>
         /// <param name="length">The length.</param>
         /// <returns></returns>
-        public static void FileWrite(UIntPtr handle, byte[] buffer, int length)
+        public static ResultCode FileWrite(UIntPtr handle, byte[] buffer, int length)
         {
-            var result = FileWriteUnmanaged(handle, buffer, (uint)length);
-            if (result != ResultCode.Ok)
-                throw new IOException($"Unable to write to file handle '{handle:X}'" +
-                    $"Error Code {(int)result}: {result}");
+            return PiGpioException.ValidateResult(FileWriteUnmanaged(handle, buffer, (uint)length));
         }
 
         /// <summary>
@@ -320,12 +305,7 @@
         /// <exception cref="System.IO.IOException"></exception>
         public static int FileSeek(UIntPtr handle, int seekOffset, SeekMode seekFrom)
         {
-            var result = FileSeekUnmanaged(handle, seekOffset, (int)seekFrom);
-            if (result < 0)
-                throw new IOException($"Unable to seek file with handle '{handle:X}', Offset {seekOffset}, Seek Mode: {(SeekMode)seekFrom}. " +
-                    $"Error Code {result}: {(ResultCode)result}");
-
-            return result;
+            return PiGpioException.ValidateResult(FileSeekUnmanaged(handle, seekOffset, seekFrom));
         }
 
         /// <summary>
@@ -337,16 +317,14 @@
         public static string[] FileList(string pathPattern)
         {
             var buffer = new byte[1024 * 128]; // 128kb of file paths
-            var result = FileListUnmanaged(pathPattern, buffer, (uint)buffer.Length);
-            if (result < 0)
-                throw new IOException($"Unable to list files with pattern '{pathPattern}'" +
-                    $"Error Code {result}: {(ResultCode)result}");
-
+            var result = PiGpioException.ValidateResult(FileListUnmanaged(pathPattern, buffer, (uint)buffer.Length));
             var encoding = Encoding.GetEncoding(0);
             var fileList = new List<string>();
             var lastZeroIndex = 0;
             var runLength = 0;
             var byteValue = default(byte);
+
+            // Split the bytes into 0-terminated strings
             for (var byteIndex = 0; byteIndex < result; byteIndex++)
             {
                 byteValue = buffer[byteIndex];

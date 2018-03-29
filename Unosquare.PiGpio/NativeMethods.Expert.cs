@@ -1,6 +1,7 @@
 ﻿namespace Unosquare.PiGpio
 {
     using NativeTypes;
+    using System;
     using System.Runtime.InteropServices;
 
     public static partial class NativeMethods
@@ -14,14 +15,14 @@
         /// <param name="spi">a pointer to a spi object</param>
         /// <param name="offset">microseconds from the start of the waveform</param>
         /// <param name="spiSS">the slave select GPIO</param>
-        /// <param name="buf">the bits to transmit, most significant bit first</param>
+        /// <param name="buffer">the bits to transmit, most significant bit first</param>
         /// <param name="spiTxBits">the number of bits to write</param>
         /// <param name="spiBitFirst">the first bit to read</param>
         /// <param name="spiBitLast">the last bit to read</param>
         /// <param name="spiBits">the number of bits to transfer</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_SER_OFFSET, or PI_TOO_MANY_PULSES.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveAddSPI")]
-        public static extern int RawWaveAddSPI(RawSpiData spi, uint offset, uint spiSS, byte[] buf, uint spiTxBits, uint spiBitFirst, uint spiBitLast, uint spiBits);
+        public static extern int RawWaveAddSPI(RawSpiData spi, uint offset, uint spiSS, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint spiTxBits, uint spiBitFirst, uint spiBitLast, uint spiBits);
 
         /// <summary>
         /// This function adds a number of pulses to the current waveform.
@@ -44,7 +45,7 @@
         /// <param name="pulses">the array containing the pulses</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_TOO_MANY_PULSES.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveAddGeneric")]
-        public static extern int RawWaveAddGeneric(uint numPulses, [MarshalAs(UnmanagedType.LPArray)] RawWave[] pulses);
+        public static extern int RawWaveAddGeneric(uint numPulses, [In, MarshalAs(UnmanagedType.LPArray)] RawWave[] pulses);
 
         /// <summary>
         /// Not intended for general use.
@@ -58,30 +59,30 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="cbNum">the cb of interest</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <param name="controlBlockNumber">the cb of interest</param>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveCBAdr")]
-        public static extern RawCBS RawWaveCBAdr(int cbNum);
+        public static extern RawCBS RawWaveCBAdr(int controlBlockNumber);
 
         /// <summary>
         /// Gets the OOL parameter stored at pos.
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="pos">the position of interest.</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <param name="position">the position of interest.</param>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveGetOOL")]
-        public static extern uint RawWaveGetOOL(int pos);
+        public static extern uint RawWaveGetOOL(int position);
 
         /// <summary>
         /// Sets the OOL parameter stored at pos to value.
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="pos">the position of interest</param>
-        /// <param name="lVal">the value to write</param>
+        /// <param name="position">the position of interest</param>
+        /// <param name="value">the value to write</param>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveSetOOL")]
-        public static extern void RawWaveSetOOL(int pos, uint lVal);
+        public static extern void RawWaveSetOOL(int position, uint value);
 
         /// <summary>
         /// Gets the wave output parameter stored at pos.
@@ -90,10 +91,11 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="pos">the position of interest.</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <param name="position">the position of interest.</param>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveGetOut")]
-        public static extern uint RawWaveGetOut(int pos);
+        [Obsolete("use rawWaveGetOOL instead.")]
+        public static extern uint RawWaveGetOut(int position);
 
         /// <summary>
         /// Sets the wave output parameter stored at pos to value.
@@ -102,10 +104,11 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="pos">the position of interest</param>
-        /// <param name="lVal">the value to write</param>
+        /// <param name="position">the position of interest</param>
+        /// <param name="value">the value to write</param>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveSetOut")]
-        public static extern void RawWaveSetOut(int pos, uint lVal);
+        [Obsolete("use rawWaveSetOOL instead")]
+        public static extern void RawWaveSetOut(int position, uint value);
 
         /// <summary>
         /// Gets the wave input value parameter stored at pos.
@@ -114,10 +117,11 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="pos">the position of interest</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <param name="position">the position of interest</param>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveGetIn")]
-        public static extern uint RawWaveGetIn(int pos);
+        [Obsolete("use rawWaveGetOOL instead")]
+        public static extern uint RawWaveGetIn(int position);
 
         /// <summary>
         /// Sets the wave input value stored at pos to value.
@@ -126,10 +130,11 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="pos">the position of interest</param>
-        /// <param name="lVal">the value to write</param>
+        /// <param name="position">the position of interest</param>
+        /// <param name="value">the value to write</param>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveSetIn")]
-        public static extern void RawWaveSetIn(int pos, uint lVal);
+        [Obsolete("use rawWaveSetOOL instead")]
+        public static extern void RawWaveSetIn(int position, uint value);
 
         /// <summary>
         /// Gets details about the wave with id wave_id.
@@ -137,7 +142,7 @@
         /// Not intended for general use.
         /// </summary>
         /// <param name="waveId">the wave of interest</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveInfo")]
         [return: MarshalAs(UnmanagedType.Struct)]
         public static extern RawWaveInformation RawWaveInfo(int waveId);
@@ -155,8 +160,8 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="script_id">&gt;=0, a script_id returned by <see cref="GpioStoreScript"/></param>
+        /// <param name="scriptId">&gt;=0, a script_id returned by <see cref="GpioStoreScript"/></param>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawDumpScript")]
-        public static extern void RawDumpScript(uint script_id);
+        public static extern void RawDumpScript(uint scriptId);
     }
 }

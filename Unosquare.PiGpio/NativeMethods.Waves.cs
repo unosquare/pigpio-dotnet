@@ -89,7 +89,7 @@
         /// <param name="pulses">an array of pulses</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_TOO_MANY_PULSES.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveAddGeneric")]
-        public static extern int GpioWaveAddGeneric(uint numPulses, [MarshalAs(UnmanagedType.LPArray)] GpioPulse[] pulses);
+        public static extern int GpioWaveAddGeneric(uint numPulses, [In, MarshalAs(UnmanagedType.LPArray)] GpioPulse[] pulses);
 
         /// <summary>
         /// This function adds a waveform representing serial data to the
@@ -140,7 +140,7 @@
         /// <param name="str">an array of chars (which may contain nulls)</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_WAVE_BAUD, PI_BAD_DATABITS, PI_BAD_STOPBITS, PI_TOO_MANY_CHARS, PI_BAD_SER_OFFSET, or PI_TOO_MANY_PULSES.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveAddSerial")]
-        public static extern int GpioWaveAddSerial(uint user_gpio, uint baud, uint data_bits, uint stop_bits, uint offset, uint numBytes, byte[] str);
+        public static extern int GpioWaveAddSerial(uint user_gpio, uint baud, uint data_bits, uint stop_bits, uint offset, uint numBytes, [In, MarshalAs(UnmanagedType.LPArray)] byte[] str);
 
         /// <summary>
         /// This function creates a waveform from the data provided by the prior
@@ -329,7 +329,7 @@
         /// <param name="bufferSize">the number of bytes in buf</param>
         /// <returns>Returns 0 if OK, otherwise PI_CHAIN_NESTING, PI_CHAIN_LOOP_CNT, PI_BAD_CHAIN_LOOP, PI_BAD_CHAIN_CMD, PI_CHAIN_COUNTER, PI_BAD_CHAIN_DELAY, PI_CHAIN_TOO_BIG, or PI_BAD_WAVE_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveChain")]
-        public static extern ResultCode GpioWaveChain([MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint bufferSize);
+        public static extern ResultCode GpioWaveChain([In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint bufferSize);
 
         /// <summary>
         /// This function returns the id of the waveform currently being
@@ -364,7 +364,7 @@
         /// This function returns the length in microseconds of the current
         /// waveform.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetMicros")]
         public static extern int GpioWaveGetMicros();
 
@@ -372,7 +372,7 @@
         /// This function returns the length in microseconds of the longest waveform
         /// created since <see cref="GpioInitialise"/> was called.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighMicros")]
         public static extern int GpioWaveGetHighMicros();
 
@@ -380,14 +380,14 @@
         /// This function returns the maximum possible size of a waveform in
         /// microseconds.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetMaxMicros")]
         public static extern int GpioWaveGetMaxMicros();
 
         /// <summary>
         /// This function returns the length in pulses of the current waveform.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetPulses")]
         public static extern int GpioWaveGetPulses();
 
@@ -395,14 +395,14 @@
         /// This function returns the length in pulses of the longest waveform
         /// created since <see cref="GpioInitialise"/> was called.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighPulses")]
         public static extern int GpioWaveGetHighPulses();
 
         /// <summary>
         /// This function returns the maximum possible size of a waveform in pulses.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetMaxPulses")]
         public static extern int GpioWaveGetMaxPulses();
 
@@ -410,7 +410,7 @@
         /// This function returns the length in DMA control blocks of the current
         /// waveform.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetCbs")]
         public static extern int GpioWaveGetCbs();
 
@@ -418,7 +418,7 @@
         /// This function returns the length in DMA control blocks of the longest
         /// waveform created since <see cref="GpioInitialise"/> was called.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighCbs")]
         public static extern int GpioWaveGetHighCbs();
 
@@ -426,7 +426,7 @@
         /// This function returns the maximum possible size of a waveform in DMA
         /// control blocks.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetMaxCbs")]
         public static extern int GpioWaveGetMaxCbs();
     }

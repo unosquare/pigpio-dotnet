@@ -4,7 +4,7 @@
     /// Pins can operate in different modes.
     /// This enumeration defines the fdifferent operation modes from 0 to 7.
     /// </summary>
-    public enum GpioMode
+    public enum GpioMode : int
     {
         /// <summary>
         /// The input operating mode

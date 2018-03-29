@@ -1,6 +1,7 @@
 ﻿namespace Unosquare.PiGpio
 {
     using Enums;
+    using System;
     using System.Runtime.InteropServices;
 
     public static partial class NativeMethods
@@ -30,7 +31,7 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="serOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serClose")]
-        public static extern ResultCode SerClose(uint handle);
+        public static extern ResultCode SerClose(UIntPtr handle);
 
         /// <summary>
         /// This function reads a byte from the serial port associated with handle.
@@ -40,7 +41,7 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="serOpen"/></param>
         /// <returns>Returns the read byte (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_SER_READ_NO_DATA, or PI_SER_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serReadByte")]
-        public static extern int SerReadByte(uint handle);
+        public static extern int SerReadByte(UIntPtr handle);
 
         /// <summary>
         /// This function writes bVal to the serial port associated with handle.
@@ -50,7 +51,7 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="serOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serWriteByte")]
-        public static extern ResultCode SerWriteByte(uint handle, uint byteValue);
+        public static extern ResultCode SerWriteByte(UIntPtr handle, uint byteValue);
 
         /// <summary>
         /// This function reads up count bytes from the the serial port
@@ -63,7 +64,7 @@
         /// <param name="count">the maximum number of bytes to read</param>
         /// <returns>Returns the number of bytes read (&gt;0=) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_READ_NO_DATA.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serRead")]
-        public static extern int SerRead(uint handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
+        public static extern int SerRead(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
         /// This function writes count bytes from buf to the the serial port
@@ -76,7 +77,7 @@
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serWrite")]
-        public static extern ResultCode SerWrite(uint handle, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
+        public static extern ResultCode SerWrite(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
         /// This function returns the number of bytes available
@@ -87,6 +88,6 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="serOpen"/></param>
         /// <returns>Returns the number of bytes of data available (&gt;=0) if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serDataAvailable")]
-        public static extern int SerDataAvailable(uint handle);
+        public static extern int SerDataAvailable(UIntPtr handle);
     }
 }

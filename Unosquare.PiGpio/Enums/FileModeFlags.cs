@@ -6,7 +6,7 @@
     /// Enumerates the different file acces modes
     /// </summary>
     [Flags]
-    public enum FileModeFlags
+    public enum FileModeFlags : int
     {
         /// <summary>
         /// The read mode flag

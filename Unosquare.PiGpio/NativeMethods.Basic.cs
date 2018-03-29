@@ -5,6 +5,69 @@
 
     public static partial class NativeMethods
     {
+        #region Unmanaged Methods
+
+        /// <summary>
+        /// Gets the GPIO mode.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// if (gpioGetMode(17) != PI_ALT0)
+        /// {
+        ///    gpioSetMode(17, PI_ALT0);  // set GPIO17 to ALT0
+        /// }
+        /// </code>
+        /// </example>
+        /// <param name="gpio">0-53</param>
+        /// <returns>Returns the GPIO mode if OK, otherwise PI_BAD_GPIO.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetMode")]
+        private static extern int GpioGetModeUnmanaged(SystemGpio gpio);
+
+        /// <summary>
+        /// Reads the GPIO level, on or off.
+        ///
+        /// Arduino style: digitalRead.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// printf("GPIO24 is level %d", gpioRead(24));
+        /// </code>
+        /// </example>
+        /// <param name="gpio">0-53</param>
+        /// <returns>Returns the GPIO level if OK, otherwise PI_BAD_GPIO.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioRead")]
+        private static extern int GpioReadUnmanaged(SystemGpio gpio);
+
+        /// <summary>
+        /// if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.
+        /// </summary>
+        /// <param name="userGpio">0-31</param>
+        /// <returns>Returns 0 (off), 500 (most anti-clockwise) to 2500 (most clockwise) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetServoPulsewidth")]
+        private static extern int GpioGetServoPulseWidthUnmanaged(UserGpio userGpio);
+
+        /// <summary>
+        ///
+        /// For normal PWM the dutycycle will be out of the defined range
+        /// for the GPIO (see <see cref="GpioGetPWMrange"/>).
+        ///
+        /// If a hardware clock is active on the GPIO the reported dutycycle
+        /// will be 500000 (500k) out of 1000000 (1M).
+        ///
+        /// If hardware PWM is active on the GPIO the reported dutycycle
+        /// will be out of a 1000000 (1M).
+        ///
+        /// Normal PWM range defaults to 255.
+        /// </summary>
+        /// <param name="userGpio">0-31</param>
+        /// <returns>Returns between 0 (off) and range (fully on) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_PWM_GPIO.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMdutycycle")]
+        private static extern int GpioGetPwmDutyCycleUnmanaged(UserGpio userGpio);
+
+        #endregion
+
         /// <summary>
         /// Sets the GPIO mode, typically input or output.
         ///
@@ -28,21 +91,15 @@
         public static extern ResultCode GpioSetMode(SystemGpio gpio, GpioMode mode);
 
         /// <summary>
-        /// Gets the GPIO mode.
-        ///
+        /// Gest the current mode for the given GPIO
         /// </summary>
-        /// <example>
-        /// <code>
-        /// if (gpioGetMode(17) != PI_ALT0)
-        /// {
-        ///    gpioSetMode(17, PI_ALT0);  // set GPIO17 to ALT0
-        /// }
-        /// </code>
-        /// </example>
-        /// <param name="gpio">0-53</param>
-        /// <returns>Returns the GPIO mode if OK, otherwise PI_BAD_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetMode")]
-        public static extern int GpioGetMode(SystemGpio gpio);
+        /// <param name="gpio">The gpio.</param>
+        /// <returns></returns>
+        public static GpioMode GpioGetMode(SystemGpio gpio)
+        {
+            var result = PiGpioException.ValidateResult(GpioGetModeUnmanaged(gpio));
+            return (GpioMode)result;
+        }
 
         /// <summary>
         /// Sets or clears resistor pull ups or downs on the GPIO.
@@ -58,26 +115,21 @@
         /// </code>
         /// </example>
         /// <param name="gpio">0-53</param>
-        /// <param name="pud">0-2</param>
+        /// <param name="pullMode">0-2</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_PUD.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetPullUpDown")]
-        public static extern ResultCode GpioSetPullUpDown(SystemGpio gpio, GpioPullMode pud);
+        public static extern ResultCode GpioSetPullUpDown(SystemGpio gpio, GpioPullMode pullMode);
 
         /// <summary>
-        /// Reads the GPIO level, on or off.
-        ///
-        /// Arduino style: digitalRead.
-        ///
+        /// Reads the value of the GPIO
         /// </summary>
-        /// <example>
-        /// <code>
-        /// printf("GPIO24 is level %d", gpioRead(24));
-        /// </code>
-        /// </example>
-        /// <param name="gpio">0-53</param>
-        /// <returns>Returns the GPIO level if OK, otherwise PI_BAD_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioRead")]
-        public static extern int GpioRead(SystemGpio gpio);
+        /// <param name="gpio">The gpio.</param>
+        /// <returns></returns>
+        public static DigitalValue GpioRead(SystemGpio gpio)
+        {
+            var result = PiGpioException.ValidateResult(GpioReadUnmanaged(gpio));
+            return (DigitalValue)result;
+        }
 
         /// <summary>
         /// Sets the GPIO level, on or off.
@@ -127,22 +179,14 @@
         public static extern ResultCode GpioPwm(UserGpio userGpio, uint dutyCycle);
 
         /// <summary>
-        ///
-        /// For normal PWM the dutycycle will be out of the defined range
-        /// for the GPIO (see <see cref="GpioGetPWMrange"/>).
-        ///
-        /// If a hardware clock is active on the GPIO the reported dutycycle
-        /// will be 500000 (500k) out of 1000000 (1M).
-        ///
-        /// If hardware PWM is active on the GPIO the reported dutycycle
-        /// will be out of a 1000000 (1M).
-        ///
-        /// Normal PWM range defaults to 255.
+        /// Gets the PWM duty cycle.
         /// </summary>
-        /// <param name="userGpio">0-31</param>
-        /// <returns>Returns between 0 (off) and range (fully on) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_PWM_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMdutycycle")]
-        public static extern int GpioGetPWMdutycycle(UserGpio userGpio);
+        /// <param name="userGpio">The user gpio.</param>
+        /// <returns>The PWM duty cycle</returns>
+        public static int GpioGetPwmDutyCycle(UserGpio userGpio)
+        {
+            return PiGpioException.ValidateResult(GpioGetPwmDutyCycleUnmanaged(userGpio));
+        }
 
         /// <summary>
         /// Starts servo pulses on the GPIO, 0 (off), 500 (most anti-clockwise) to
@@ -196,12 +240,14 @@
         public static extern ResultCode GpioServo(UserGpio userGpio, uint pulseWidth);
 
         /// <summary>
-        /// if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.
+        /// Returns 0 (off), 500 (most anti-clockwise) to 2500 (most clockwise)
         /// </summary>
-        /// <param name="userGpio">0-31</param>
-        /// <returns>Returns 0 (off), 500 (most anti-clockwise) to 2500 (most clockwise) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetServoPulsewidth")]
-        public static extern int GpioGetServoPulsewidth(UserGpio userGpio);
+        /// <param name="userGpio">The user gpio.</param>
+        /// <returns>The Servo pulse width</returns>
+        public static int GpioGetServoPulseWidth(UserGpio userGpio)
+        {
+            return PiGpioException.ValidateResult(GpioGetServoPulseWidthUnmanaged(userGpio));
+        }
 
         /// <summary>
         /// Delays for at least the number of microseconds specified by micros.
@@ -302,10 +348,10 @@
         /// </code>
         /// </example>
         /// <param name="timer">0-9</param>
-        /// <param name="millis">10-60000</param>
+        /// <param name="periodMilliseconds">10-60000</param>
         /// <param name="callback">the function to call</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMER, PI_BAD_MS, or PI_TIMER_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetTimerFunc")]
-        public static extern ResultCode GpioSetTimerFunc(TimerId timer, uint millis, GpioTimerDelegate callback);
+        public static extern ResultCode GpioSetTimerFunc(TimerId timer, uint periodMilliseconds, GpioTimerDelegate callback);
     }
 }

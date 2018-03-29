@@ -6,7 +6,9 @@
 
     public static partial class NativeMethods
     {
-        // <summary>
+        #region Unmanaged Methods
+        
+        /// <summary>
         /// If a hardware clock is active on the GPIO the reported real
         /// range will be 1000000 (1M).
         ///
@@ -22,7 +24,91 @@
         /// <param name="userGpio">0-31</param>
         /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMrealRange")]
-        public static extern int GpioGetPwmRealRange(UserGpio userGpio);
+        private static extern int GpioGetPwmRealRangeUnmanaged(UserGpio userGpio);
+
+        /// <summary>
+        /// This function requests a free notification handle.
+        ///
+        /// A notification is a method for being notified of GPIO state changes
+        /// via a pipe or socket.
+        ///
+        /// Pipe notifications for handle x will be available at the pipe
+        /// named /dev/pigpiox (where x is the handle number).  E.g. if the
+        /// function returns 15 then the notifications must be read
+        /// from /dev/pigpio15.
+        ///
+        /// Socket notifications are returned to the socket which requested the
+        /// handle.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// h = gpioNotifyOpen();
+        ///
+        /// if (h &gt;= 0)
+        /// {
+        ///    sprintf(str, "/dev/pigpio%d", h);
+        ///
+        ///    fd = open(str, O_RDONLY);
+        ///
+        ///    if (fd &gt;= 0)
+        ///    {
+        ///       // Okay.
+        ///    }
+        ///    else
+        ///    {
+        ///       // Error.
+        ///    }
+        /// }
+        /// else
+        /// {
+        ///    // Error.
+        /// }
+        /// </code>
+        /// </example>
+        /// <returns>Returns a handle greater than or equal to zero if OK, otherwise PI_NO_HANDLE.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyOpen")]
+        private static extern int GpioNotifyOpenUnmanaged();
+
+        /// <summary>
+        /// This function copies up to bufSize bytes of data read from the
+        /// bit bang serial cyclic buffer to the buffer starting at buf.
+        ///
+        /// The bytes returned for each character depend upon the number of
+        /// data bits <see cref="data_bits"/> specified in the <see cref="GpioSerialReadOpen"/> command.
+        ///
+        /// For <see cref="data_bits"/> 1-8 there will be one byte per character.
+        /// For <see cref="data_bits"/> 9-16 there will be two bytes per character.
+        /// For <see cref="data_bits"/> 17-32 there will be four bytes per character.
+        /// </summary>
+        /// <param name="userGpio">0-31, previously opened with <see cref="GpioSerialReadOpen"/></param>
+        /// <param name="buffer">an array to receive the read bytes</param>
+        /// <param name="bufferSize">&gt;=0</param>
+        /// <returns>Returns the number of bytes copied if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERIAL_GPIO.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialRead")]
+        private static extern int GpioSerialReadUnmanaged(UserGpio userGpio, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint bufferSize);
+
+        #endregion
+
+        /// <summary>
+        /// If a hardware clock is active on the GPIO the reported real
+        /// range will be 1000000 (1M).
+        ///
+        /// If hardware PWM is active on the GPIO the reported real range
+        /// will be approximately 250M divided by the set PWM frequency.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// rr = gpioGetPWMrealRange(17);
+        /// </code>
+        /// </example>
+        /// <param name="userGpio">0-31</param>
+        /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
+        public static int GpioGetPwmRealRange(UserGpio userGpio)
+        {
+            return PiGpioException.ValidateResult(GpioGetPwmRealRangeUnmanaged(userGpio));
+        }
 
         /// <summary>
         /// Registers a function to be called (a callback) when the specified
@@ -206,11 +292,11 @@
         /// 8, 10, 23, 24, and bits is (1&lt;&lt;23)|(1&lt;&lt;17) then samples for GPIO
         /// 7, 8, 9, 10, 17, 23, and 24 will be reported.
         /// </summary>
-        /// <param name="f">the function to call</param>
+        /// <param name="callback">the function to call</param>
         /// <param name="bits">the GPIO of interest</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetGetSamplesFunc")]
-        public static extern int GpioSetGetSamplesFunc(GpioGetSamplesDelegate f, uint bits);
+        public static extern ResultCode GpioSetGetSamplesFunc(GpioGetSamplesDelegate callback, uint bits);
 
         /// <summary>
         /// Registers a function to be called (a callback) every millisecond
@@ -224,12 +310,12 @@
         ///
         /// See <see cref="GpioSetGetSamplesFunc"/> for further details.
         /// </summary>
-        /// <param name="f">the function to call</param>
+        /// <param name="callback">the function to call</param>
         /// <param name="bits">the GPIO of interest</param>
         /// <param name="userData">a pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetGetSamplesFuncEx")]
-        public static extern int GpioSetGetSamplesFuncEx(GpioGetSamplesExDelegate f, uint bits, IntPtr userData);
+        public static extern ResultCode GpioSetGetSamplesFuncEx(GpioGetSamplesExDelegate callback, uint bits, IntPtr userData);
 
         /// <summary>
         /// Registers a function to be called (a callback) every millis milliseconds.
@@ -290,8 +376,11 @@
         /// </code>
         /// </example>
         /// <returns>Returns a handle greater than or equal to zero if OK, otherwise PI_NO_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyOpen")]
-        public static extern int GpioNotifyOpen();
+        public static UIntPtr GpioNotifyOpen()
+        {
+            var result = PiGpioException.ValidateResult(GpioNotifyOpenUnmanaged());
+            return new UIntPtr((uint)result);
+        }
 
         /// <summary>
         /// This function requests a free notification handle.
@@ -301,9 +390,9 @@
         ///
         /// See <see cref="GpioNotifyOpen"/> for further details.
         /// </summary>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyOpenWithSize")]
-        public static extern int GpioNotifyOpenWithSize(int bufferSize);
+        public static extern ResultCode GpioNotifyOpenWithSize(int bufferSize);
 
         /// <summary>
         /// This function starts notifications on a previously opened handle.
@@ -361,7 +450,7 @@
         /// <param name="bits">a bit mask indicating the GPIO of interest</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyBegin")]
-        public static extern ResultCode GpioNotifyBegin(uint handle, uint bits);
+        public static extern ResultCode GpioNotifyBegin(UIntPtr handle, uint bits);
 
         /// <summary>
         /// This function pauses notifications on a previously opened handle.
@@ -378,7 +467,7 @@
         /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyPause")]
-        public static extern ResultCode GpioNotifyPause(uint handle);
+        public static extern ResultCode GpioNotifyPause(UIntPtr handle);
 
         /// <summary>
         /// This function stops notifications on a previously opened handle
@@ -393,7 +482,7 @@
         /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyClose")]
-        public static extern ResultCode GpioNotifyClose(uint handle);
+        public static extern ResultCode GpioNotifyClose(UIntPtr handle);
 
         /// <summary>
         /// This function opens a GPIO for bit bang reading of serial data.
@@ -406,10 +495,10 @@
         /// </summary>
         /// <param name="userGpio">0-31</param>
         /// <param name="baudRate">50-250000</param>
-        /// <param name="data_bits">1-32</param>
+        /// <param name="dataBits">1-32</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_WAVE_BAUD, PI_BAD_DATABITS, or PI_GPIO_IN_USE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialReadOpen")]
-        public static extern ResultCode GpioSerialReadOpen(UserGpio userGpio, uint baudRate, uint data_bits);
+        public static extern ResultCode GpioSerialReadOpen(UserGpio userGpio, uint baudRate, uint dataBits);
 
         /// <summary>
         /// This function configures the level logic for bit bang serial reads.
@@ -424,25 +513,35 @@
         /// <param name="invert">0-1</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_GPIO_IN_USE, PI_NOT_SERIAL_GPIO, or PI_BAD_SER_INVERT.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialReadInvert")]
-        public static extern ResultCode GpioSerialReadInvert(UserGpio userGpio, uint invert);
+        public static extern ResultCode GpioSerialReadInvert(UserGpio userGpio, DigitalValue invert);
 
         /// <summary>
-        /// This function copies up to bufSize bytes of data read from the
-        /// bit bang serial cyclic buffer to the buffer starting at buf.
-        ///
-        /// The bytes returned for each character depend upon the number of
-        /// data bits <see cref="data_bits"/> specified in the <see cref="GpioSerialReadOpen"/> command.
-        ///
-        /// For <see cref="data_bits"/> 1-8 there will be one byte per character.
-        /// For <see cref="data_bits"/> 9-16 there will be two bytes per character.
-        /// For <see cref="data_bits"/> 17-32 there will be four bytes per character.
+        /// Wrapper for the native <see cref="GpioSerialReadUnmanaged"/>
         /// </summary>
-        /// <param name="userGpio">0-31, previously opened with <see cref="GpioSerialReadOpen"/></param>
-        /// <param name="buffer">an array to receive the read bytes</param>
-        /// <param name="bufferSize">&gt;=0</param>
-        /// <returns>Returns the number of bytes copied if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERIAL_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialRead")]
-        public static extern int GpioSerialRead(UserGpio userGpio, [MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint bufferSize);
+        /// <param name="userGpio">The user gpio.</param>
+        /// <param name="buffer">The buffer.</param>
+        /// <param name="readLength">Length of the read.</param>
+        /// <returns></returns>
+        public static int GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
+        {
+            var result = PiGpioException.ValidateResult(GpioSerialReadUnmanaged(userGpio, buffer, (uint)readLength));
+            return result;
+        }
+
+        /// <summary>
+        /// Wrapper for the native <see cref="GpioSerialReadUnmanaged"/>
+        /// </summary>
+        /// <param name="userGpio">The user gpio.</param>
+        /// <param name="readLength">Length of the read.</param>
+        /// <returns></returns>
+        public static byte[] GpioSerialRead(UserGpio userGpio, int readLength)
+        {
+            var buffer = new byte[readLength];
+            var result = PiGpioException.ValidateResult(GpioSerialReadUnmanaged(userGpio, buffer, (uint)readLength));
+            var outputBuffer = new byte[result];
+            Buffer.BlockCopy(buffer, 0, outputBuffer, 0, result);
+            return outputBuffer;
+        }
 
         /// <summary>
         /// This function closes a GPIO for bit bang reading of serial data.
@@ -551,10 +650,10 @@
         /// after it was first detected.
         /// </summary>
         /// <param name="userGpio">0-31</param>
-        /// <param name="steady">0-300000</param>
+        /// <param name="steadyMicroseconds">0-300000</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_BAD_FILTER.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGlitchFilter")]
-        public static extern ResultCode GpioGlitchFilter(UserGpio userGpio, uint steady);
+        public static extern ResultCode GpioGlitchFilter(UserGpio userGpio, uint steadyMicroseconds);
 
         /// <summary>
         /// Sets a noise filter on a GPIO.
@@ -577,11 +676,11 @@
         /// such reports.
         /// </summary>
         /// <param name="userGpio">0-31</param>
-        /// <param name="steady">0-300000</param>
-        /// <param name="active">0-1000000</param>
+        /// <param name="steadyMicroseconds">0-300000</param>
+        /// <param name="activeMicroseconds">0-1000000</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_BAD_FILTER.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNoiseFilter")]
-        public static extern ResultCode GpioNoiseFilter(UserGpio userGpio, uint steady, uint active);
+        public static extern ResultCode GpioNoiseFilter(UserGpio userGpio, uint steadyMicroseconds, uint activeMicroseconds);
 
         /// <summary>
         /// This function returns the pad drive strength in mA.
@@ -662,7 +761,7 @@
         /// </remarks>
         /// <param name="scriptName">the name of the script, only alphanumeric characters,</param>
         /// <param name="scriptString">the string to pass to the script</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "shell")]
         public static extern ResultCode Shell(string scriptName, string scriptString);
     }

@@ -2,6 +2,7 @@
 {
     using Enums;
     using NativeTypes;
+    using System;
     using System.Runtime.InteropServices;
 
     public static partial class NativeMethods
@@ -88,7 +89,7 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="spiOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiClose")]
-        public static extern ResultCode SpiClose(uint handle);
+        public static extern ResultCode SpiClose(UIntPtr handle);
 
         /// <summary>
         /// This function reads count bytes of data from the SPI
@@ -101,7 +102,7 @@
         /// <param name="count">the number of bytes to read</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiRead")]
-        public static extern int SpiRead(uint handle, byte[] buf, uint count);
+        public static extern int SpiRead(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buf, uint count);
 
         /// <summary>
         /// This function writes count bytes of data from buf to the SPI
@@ -110,11 +111,11 @@
         /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
         /// </summary>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="spiOpen"/></param>
-        /// <param name="buf">the data bytes to write</param>
+        /// <param name="buffer">the data bytes to write</param>
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiWrite")]
-        public static extern int SpiWrite(uint handle, byte[] buf, uint count);
+        public static extern int SpiWrite(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
         /// This function transfers count bytes of data from txBuf to the SPI
@@ -129,7 +130,7 @@
         /// <param name="count">the number of bytes to transfer</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiXfer")]
-        public static extern int SpiXfer(uint handle, byte[] txBuf, byte[] rxBuf, uint count);
+        public static extern int SpiXfer(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] txBuf, [In, MarshalAs(UnmanagedType.LPArray)] byte[] rxBuf, uint count);
 
         /// <summary>
         /// This function selects a set of GPIO for bit banging SPI with
@@ -265,7 +266,7 @@
         /// <param name="count">size of data transfer</param>
         /// <returns>Returns &gt;= 0 if OK (the number of bytes read), otherwise PI_BAD_USER_GPIO, PI_NOT_SPI_GPIO or PI_BAD_POINTER.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbSPIXfer")]
-        public static extern int BbSPIXfer(uint CS, byte[] inBuf, byte[] outBuf, uint count);
+        public static extern int BbSPIXfer(uint CS, [In, MarshalAs(UnmanagedType.LPArray)] byte[] inBuf, [In, MarshalAs(UnmanagedType.LPArray)] byte[] outBuf, uint count);
 
         #region Methods: I2C/SPI Slave
 
@@ -382,7 +383,7 @@
         ///  S  S  S  S  S  R  R  R  R  R  T  T  T  T  T RB TE RF TF RE TB
         /// </remarks>
         /// <param name="bsc_xfer">= a structure defining the transfer</param>
-        /// <returns>The result code. 0 for success. See the ErroeCodes enumeration.</returns>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bscXfer")]
         public static extern int BscXfer(BscTransfer bsc_xfer);
 

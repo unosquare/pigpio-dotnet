@@ -31,7 +31,7 @@
         /// <param name="bits">a bit mask indicating the events of interest</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventMonitor")]
-        public static extern ResultCode EventMonitor(uint handle, uint bits);
+        public static extern ResultCode EventMonitor(UIntPtr handle, uint bits);
 
         /// <summary>
         /// Registers a function to be called (a callback) when the specified
