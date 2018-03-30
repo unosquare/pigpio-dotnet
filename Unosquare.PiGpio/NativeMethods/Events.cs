@@ -65,6 +65,7 @@
         ///
         /// See <see cref="GpioNotifyOpen"/> for further details.
         /// </summary>
+        /// <param name="bufferSize">The pipe size of the the buffer</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         public static UIntPtr GpioNotifyOpenWithSize(int bufferSize)
         {

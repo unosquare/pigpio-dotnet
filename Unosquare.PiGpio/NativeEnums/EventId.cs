@@ -2,9 +2,15 @@
 {
     using System;
 
+    /// <summary>
+    /// Enumerates the different Event Identifiers
+    /// </summary>
     [Flags]
     public enum EventId : uint
     {
+        /// <summary>
+        /// No event
+        /// </summary>
         None = 0,
 
         /// <summary>The Event Identifier for GPIO 00</summary>

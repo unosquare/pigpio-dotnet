@@ -58,7 +58,7 @@
         /// fileClose(h);
         /// </code>
         /// </example>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="FileOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileClose")]
         public static extern ResultCode FileClose(UIntPtr handle);
@@ -76,7 +76,7 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="FileOpen"/></param>
         /// <param name="buffer">an array to receive the read data</param>
         /// <param name="count">the maximum number of bytes to read</param>
         /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_ROPEN, or PI_BAD_FILE_WRITE.</returns>
@@ -88,7 +88,7 @@
         /// </summary>
         /// <param name="handle">The handle.</param>
         /// <param name="count">The count.</param>
-        /// <returns></returns>
+        /// <returns>The array of bytes read.</returns>
         public static byte[] FileRead(UIntPtr handle, int count)
         {
             var buffer = new byte[count];
@@ -103,7 +103,7 @@
         /// </summary>
         /// <param name="handle">The handle.</param>
         /// <param name="buffer">The buffer.</param>
-        /// <returns></returns>
+        /// <returns>The Result Code.</returns>
         public static ResultCode FileWrite(UIntPtr handle, byte[] buffer)
         {
             return PiGpioException.ValidateResult(FileWriteUnmanaged(handle, buffer, (uint)buffer.Length));
@@ -115,7 +115,7 @@
         /// <param name="handle">The handle.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="length">The length.</param>
-        /// <returns></returns>
+        /// <returns>The Result Code</returns>
         public static ResultCode FileWrite(UIntPtr handle, byte[] buffer, int length)
         {
             return PiGpioException.ValidateResult(FileWriteUnmanaged(handle, buffer, (uint)length));
@@ -287,7 +287,7 @@
         ///             move forward, negative offsets backwards.
         ///             or PI_FROM_END (2)
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="FileOpen"/></param>
         /// <param name="seekOffset">the number of bytes to move.  Positive offsets</param>
         /// <param name="seekFrom">one of PI_FROM_START (0), PI_FROM_CURRENT (1),</param>
         /// <returns>Returns the new byte position within the file (&gt;=0) if OK, otherwise PI_BAD_HANDLE, or PI_BAD_FILE_SEEK.</returns>
@@ -299,7 +299,7 @@
         /// pattern may contain wildcards.
         ///
         /// The pattern must match an entry in /opt/pigpio/access.  The pattern
-        /// may contain wildcards.  See <see cref="fileOpen"/>.
+        /// may contain wildcards.  See <see cref="FileOpen"/>.
         ///
         /// NOTE
         ///
@@ -361,12 +361,12 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="fileOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="FileOpen"/></param>
         /// <param name="buffer">the array of bytes to write</param>
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_WOPEN, or PI_BAD_FILE_WRITE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileWrite")]
-        public static extern ResultCode FileWriteUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
+        private static extern ResultCode FileWriteUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         #endregion
     }
