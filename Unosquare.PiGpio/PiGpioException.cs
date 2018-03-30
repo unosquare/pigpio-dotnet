@@ -6,7 +6,7 @@
     /// <summary>
     /// Represents a PiGpio Library call exception
     /// </summary>
-    /// <seealso cref="System.Exception" />
+    /// <seealso cref="Exception" />
     public class PiGpioException : Exception
     {
         /// <summary>
@@ -40,7 +40,7 @@
         /// Validates the result.
         /// </summary>
         /// <param name="resultCode">The result code.</param>
-        /// <returns></returns>
+        /// <returns>The Result Code</returns>
         internal static ResultCode ValidateResult(ResultCode resultCode)
         {
             return (ResultCode)ValidateResult((int)resultCode);
@@ -50,7 +50,7 @@
         /// Validates the result.
         /// </summary>
         /// <param name="resultCode">The result code.</param>
-        /// <returns></returns>
+        /// <returns>The integer result</returns>
         internal static int ValidateResult(int resultCode)
         {
             return ValidateResult(resultCode, $"GPIO Exception Encountered. Error Code {resultCode}: {(ResultCode)resultCode}.");
@@ -61,8 +61,8 @@
         /// </summary>
         /// <param name="resultCode">The result code.</param>
         /// <param name="message">The message.</param>
-        /// <returns></returns>
-        /// <exception cref="Unosquare.PiGpio.PiGpioException"></exception>
+        /// <returns>The integer result</returns>
+        /// <exception cref="PiGpioException">When the result is negative</exception>
         internal static int ValidateResult(int resultCode, string message)
         {
             if (resultCode < 0)

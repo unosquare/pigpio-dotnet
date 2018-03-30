@@ -5,96 +5,11 @@
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Defines basic IO methods for the GPIO
+    /// </summary>
     public static partial class IO
     {
-        #region Unmanaged Methods
-
-        /// <summary>
-        /// This function returns the pad drive strength in mA.
-        ///
-        /// Pad @ GPIO
-        /// 0   @ 0-27
-        /// 1   @ 28-45
-        /// 2   @ 46-53
-        ///
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// strength = gpioGetPad(1); // get pad 1 strength
-        /// </code>
-        /// </example>
-        /// <param name="pad">0-2, the pad to get</param>
-        /// <returns>Returns the pad drive strength if OK, otherwise PI_BAD_PAD.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPad")]
-        private static extern int GpioGetPadUnmanaged(GpioPad pad);
-
-        /// <summary>
-        /// Gets the GPIO mode.
-        ///
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// if (gpioGetMode(17) != PI_ALT0)
-        /// {
-        ///    gpioSetMode(17, PI_ALT0);  // set GPIO17 to ALT0
-        /// }
-        /// </code>
-        /// </example>
-        /// <param name="gpio">0-53</param>
-        /// <returns>Returns the GPIO mode if OK, otherwise PI_BAD_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetMode")]
-        private static extern int GpioGetModeUnmanaged(SystemGpio gpio);
-
-        /// <summary>
-        /// Reads the GPIO level, on or off.
-        ///
-        /// Arduino style: digitalRead.
-        ///
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// printf("GPIO24 is level %d", gpioRead(24));
-        /// </code>
-        /// </example>
-        /// <param name="gpio">0-53</param>
-        /// <returns>Returns the GPIO level if OK, otherwise PI_BAD_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioRead")]
-        private static extern int GpioReadUnmanaged(SystemGpio gpio);
-
-        /// <summary>
-        /// Sets the GPIO level, on or off.
-        ///
-        /// If PWM or servo pulses are active on the GPIO they are switched off.
-        ///
-        /// Arduino style: digitalWrite
-        ///
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// gpioWrite(24, 1); // Set GPIO24 high.
-        /// </code>
-        /// </example>
-        /// <param name="gpio">0-53</param>
-        /// <param name="value">0-1</param>
-        /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_LEVEL.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite")]
-        private static extern ResultCode GpioWriteUnmanaged(SystemGpio gpio, DigitalValue value);
-
-        /// <summary>
-        /// This function sends a trigger pulse to a GPIO.  The GPIO is set to
-        /// level for pulseLen microseconds and then reset to not level.
-        ///
-        /// or PI_BAD_PULSELEN.
-        /// </summary>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="pulseLength">1-100</param>
-        /// <param name="value">0,1</param>
-        /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_LEVEL, or PI_BAD_PULSELEN.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioTrigger")]
-        private static extern ResultCode GpioTriggerUnmanaged(UserGpio userGpio, uint pulseLength, DigitalValue value);
-
-        #endregion
-
         #region Single Bit Reads / Writes
 
         /// <summary>
@@ -123,7 +38,7 @@
         /// Gest the current mode for the given GPIO
         /// </summary>
         /// <param name="gpio">The gpio.</param>
-        /// <returns></returns>
+        /// <returns>The port mode</returns>
         public static PortMode GpioGetMode(SystemGpio gpio)
         {
             var result = PiGpioException.ValidateResult(GpioGetModeUnmanaged(gpio));
@@ -153,7 +68,7 @@
         /// Reads the value of the GPIO
         /// </summary>
         /// <param name="gpio">The gpio.</param>
-        /// <returns></returns>
+        /// <returns>The digital value</returns>
         public static bool GpioRead(SystemGpio gpio)
         {
             var result = PiGpioException.ValidateResult(GpioReadUnmanaged(gpio));
@@ -203,14 +118,14 @@
         /// <summary>
         /// Returns the current level of GPIO 0-31.
         /// </summary>
-        /// <returns>Returns the current level of GPIO 0-31.</returns>
+        /// <returns>The current level of GPIO 0-31.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioRead_Bits_0_31")]
         public static extern uint GpioReadBits00To31();
 
         /// <summary>
         /// Returns the current level of GPIO 32-53.
         /// </summary>
-        /// <returns>Returns the current level of GPIO 32-53.</returns>
+        /// <returns>The current level of GPIO 32-53.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioRead_Bits_32_53")]
         public static extern uint GpioReadBits32To53();
 
@@ -568,9 +483,9 @@
         /// with the latest GPIO samples.
         ///
         /// The function is passed a pointer to the samples (an array of
-        /// <see cref="GpioSample_t"/>), the number of samples, and the userData pointer.
+        /// <see cref="GpioSample"/>), the number of samples, and the userData pointer.
         ///
-        /// Only one of <see cref="GpioGetSamplesFunc"/> or <see cref="GpioGetSamplesFuncEx"/> can be
+        /// Only one of <see cref="GpioSetGetSamplesFunc"/> or <see cref="GpioSetGetSamplesFuncEx"/> can be
         /// registered.
         ///
         /// See <see cref="GpioSetGetSamplesFunc"/> for further details.
@@ -683,6 +598,94 @@
         /// <returns>Returns 0 if OK, otherwise PI_BAD_PAD, or PI_BAD_STRENGTH.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetPad")]
         public static extern ResultCode GpioSetPad(GpioPad pad, GpioPadStrength padStrength);
+
+        #endregion
+
+        #region Unmanaged Methods
+
+        /// <summary>
+        /// This function returns the pad drive strength in mA.
+        ///
+        /// Pad @ GPIO
+        /// 0   @ 0-27
+        /// 1   @ 28-45
+        /// 2   @ 46-53
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// strength = gpioGetPad(1); // get pad 1 strength
+        /// </code>
+        /// </example>
+        /// <param name="pad">0-2, the pad to get</param>
+        /// <returns>Returns the pad drive strength if OK, otherwise PI_BAD_PAD.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPad")]
+        private static extern int GpioGetPadUnmanaged(GpioPad pad);
+
+        /// <summary>
+        /// Gets the GPIO mode.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// if (gpioGetMode(17) != PI_ALT0)
+        /// {
+        ///    gpioSetMode(17, PI_ALT0);  // set GPIO17 to ALT0
+        /// }
+        /// </code>
+        /// </example>
+        /// <param name="gpio">0-53</param>
+        /// <returns>Returns the GPIO mode if OK, otherwise PI_BAD_GPIO.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetMode")]
+        private static extern int GpioGetModeUnmanaged(SystemGpio gpio);
+
+        /// <summary>
+        /// Reads the GPIO level, on or off.
+        ///
+        /// Arduino style: digitalRead.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// printf("GPIO24 is level %d", gpioRead(24));
+        /// </code>
+        /// </example>
+        /// <param name="gpio">0-53</param>
+        /// <returns>Returns the GPIO level if OK, otherwise PI_BAD_GPIO.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioRead")]
+        private static extern int GpioReadUnmanaged(SystemGpio gpio);
+
+        /// <summary>
+        /// Sets the GPIO level, on or off.
+        ///
+        /// If PWM or servo pulses are active on the GPIO they are switched off.
+        ///
+        /// Arduino style: digitalWrite
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// gpioWrite(24, 1); // Set GPIO24 high.
+        /// </code>
+        /// </example>
+        /// <param name="gpio">0-53</param>
+        /// <param name="value">0-1</param>
+        /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_LEVEL.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite")]
+        private static extern ResultCode GpioWriteUnmanaged(SystemGpio gpio, DigitalValue value);
+
+        /// <summary>
+        /// This function sends a trigger pulse to a GPIO.  The GPIO is set to
+        /// level for pulseLen microseconds and then reset to not level.
+        ///
+        /// or PI_BAD_PULSELEN.
+        /// </summary>
+        /// <param name="userGpio">0-31</param>
+        /// <param name="pulseLength">1-100</param>
+        /// <param name="value">0,1</param>
+        /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_LEVEL, or PI_BAD_PULSELEN.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioTrigger")]
+        private static extern ResultCode GpioTriggerUnmanaged(UserGpio userGpio, uint pulseLength, DigitalValue value);
 
         #endregion
     }

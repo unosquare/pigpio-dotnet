@@ -123,15 +123,16 @@
 
         /// <summary>
         /// Configures pigpio to use the specified DMA channel.
-        ///
-        /// This function is only effective if called before <see cref="GpioInitialise"/>.
-        ///
+        /// This function is only effective if called before <see cref="GpioInitialise" />.
         /// The default setting is to use channel 14.
         /// </summary>
+        /// <param name="dmaChannel">The DMA channel.</param>
+        /// <returns>
+        /// The result code. 0 for success. See the <see cref="ResultCode" /> enumeration.
+        /// </returns>
         /// <remarks>
         /// DMAchannel: 0-14
         /// </remarks>
-        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgDMAchannel")]
         [Obsolete]
         public static extern ResultCode GpioCfgDmaChannel(DmaChannel dmaChannel);
@@ -155,8 +156,8 @@
         /// a 10 second pulse delay requires one control block on a full channel
         /// and 611 control blocks on a lite channel.
         /// </summary>
-        /// <param name="primaryChannel">0-14</param>
-        /// <param name="secondaryChannel">0-14</param>
+        /// <param name="primaryChannel">Channel 1: 0-14</param>
+        /// <param name="secondaryChannel">Channel 2: 0-14</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgDMAchannels")]
         public static extern ResultCode GpioCfgDmaChannels(DmaChannel primaryChannel, DmaChannel secondaryChannel);
@@ -252,8 +253,8 @@
         /// Used to tune internal settings.
         ///
         /// </summary>
-        /// <param name="key">see source code</param>
-        /// <param name="value">see source code</param>
+        /// <param name="key">Key: see source code</param>
+        /// <param name="value">Value: see source code</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgInternals")]
         [Obsolete]

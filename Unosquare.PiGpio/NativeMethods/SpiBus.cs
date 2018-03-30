@@ -173,9 +173,9 @@
         ///  3    1    1
         /// </remarks>
         /// <param name="csPin">0-31</param>
-        /// <param name="misoPin">0-31</param>
-        /// <param name="mosiPin">0-31</param>
-        /// <param name="clockPin">0-31</param>
+        /// <param name="misoPin">MISO 0-31</param>
+        /// <param name="mosiPin">MOSI 0-31</param>
+        /// <param name="clockPin">CLOCK 0-31</param>
         /// <param name="baudRate">50-250000</param>
         /// <param name="spiFlags">see below</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_SPI_BAUD, or PI_GPIO_IN_USE.</returns>

@@ -283,12 +283,12 @@
         /// Starts hardware PWM on a GPIO at the specified frequency and dutycycle.
         /// Frequencies above 30MHz are unlikely to work.
         ///
-        /// NOTE: Any waveform started by <see cref="GpioWaveTxSend"/>, or
-        /// <see cref="GpioWaveChain"/> will be cancelled.
+        /// NOTE: Any waveform started by <see cref="Waves.GpioWaveTxSend"/>, or
+        /// <see cref="Waves.GpioWaveChain"/> will be cancelled.
         ///
         /// This function is only valid if the pigpio main clock is PCM.  The
         /// main clock defaults to PCM but may be overridden by a call to
-        /// <see cref="GpioCfgClock"/>.
+        /// <see cref="Setup.GpioCfgClock"/>.
         ///
         /// The same PWM channel is available on multiple GPIO.  The latest
         /// frequency and dutycycle setting will be used by all GPIO which

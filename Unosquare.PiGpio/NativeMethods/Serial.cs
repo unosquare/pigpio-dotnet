@@ -13,7 +13,7 @@
         /// This function opens a GPIO for bit bang reading of serial data.
         ///
         /// The serial data is returned in a cyclic buffer and is read using
-        /// <see cref="GpioSerialRead"/>.
+        /// <see cref="GpioSerialRead(UserGpio, int)"/>.
         ///
         /// It is the caller's responsibility to read data from the cyclic buffer
         /// in a timely fashion.
@@ -48,7 +48,7 @@
         /// <param name="userGpio">The user gpio.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="readLength">Length of the read.</param>
-        /// <returns></returns>
+        /// <returns>The amount of bytes read</returns>
         public static int GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
         {
             var result = PiGpioException.ValidateResult(GpioSerialReadUnmanaged(userGpio, buffer, (uint)readLength));
@@ -60,7 +60,7 @@
         /// </summary>
         /// <param name="userGpio">The user gpio.</param>
         /// <param name="readLength">Length of the read.</param>
-        /// <returns></returns>
+        /// <returns>The array containing the bytes that were read</returns>
         public static byte[] GpioSerialRead(UserGpio userGpio, int readLength)
         {
             var buffer = new byte[readLength];

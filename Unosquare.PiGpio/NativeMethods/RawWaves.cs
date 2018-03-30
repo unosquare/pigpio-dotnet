@@ -5,6 +5,9 @@
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Raw waveform generation methods
+    /// </summary>
     public static class RawWaves
     {
         /// <summary>
