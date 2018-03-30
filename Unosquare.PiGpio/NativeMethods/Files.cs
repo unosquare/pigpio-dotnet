@@ -6,6 +6,34 @@
     using System.Runtime.InteropServices;
     using System.Text;
 
+    /// <summary>
+    /// A file may only be opened if permission is granted by an entry in
+    /// /opt/pigpio/access.  This is intended to allow remote access to files
+    /// in a more or less controlled manner.
+    ///
+    /// Each entry in /opt/pigpio/access takes the form of a file path
+    /// which may contain wildcards followed by a single letter permission.
+    /// The permission may be R for read, W for write, U for read/write,
+    /// and N for no access.
+    ///
+    /// Where more than one entry matches a file the most specific rule
+    /// applies.  If no entry matches a file then access is denied.
+    ///
+    /// Suppose /opt/pigpio/access contains the following entries
+    ///
+    /// Files may be written in directory dir_1 with the exception
+    /// of file.txt.
+    ///
+    /// Files may be read in directory dir_2.
+    ///
+    /// Files may be read and written in directory dir_3.
+    ///
+    /// If a directory allows read, write, or read/write access then files may
+    /// be created in that directory.
+    ///
+    /// In an attempt to prevent risky permissions the following paths are
+    /// ignored in /opt/pigpio/access.
+    /// </summary>
     public static class Files
     {
         #region Unmanaged Methods

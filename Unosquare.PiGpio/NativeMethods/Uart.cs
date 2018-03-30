@@ -4,8 +4,10 @@
     using System;
     using System.Runtime.InteropServices;
 
-    public static class SerialPort
+    public static class Uart
     {
+        #region Unmanaged Methods
+
         /// <summary>
         /// This function opens a serial device at a specified baud rate
         /// and with specified flags.  The device name must start with
@@ -22,7 +24,30 @@
         /// <param name="serFlags">0</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_NO_HANDLE, or PI_SER_OPEN_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serOpen")]
-        public static extern int SerOpen(string sertty, uint baud, uint serFlags);
+        public static extern int SerOpenUnmanaged(string sertty, uint baud, uint serFlags);
+
+        #endregion
+
+        /// <summary>
+        /// This function opens a serial device at a specified baud rate
+        /// and with specified flags.  The device name must start with
+        /// /dev/tty or /dev/serial.
+        ///
+        /// The baud rate must be one of 50, 75, 110, 134, 150,
+        /// 200, 300, 600, 1200, 1800, 2400, 4800, 9600, 19200,
+        /// 38400, 57600, 115200, or 230400.
+        ///
+        /// No flags are currently defined.  This parameter should be set to zero.
+        /// </summary>
+        /// <param name="sertty">the serial device to open</param>
+        /// <param name="baud">the baud rate in bits per second, see below</param>
+        /// <param name="serFlags">0</param>
+        /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_NO_HANDLE, or PI_SER_OPEN_FAILED.</returns>
+        public static UIntPtr SerOpen(string sertty, uint baud, uint serFlags)
+        {
+            var result = PiGpioException.ValidateResult(SerOpenUnmanaged(sertty, baud, serFlags));
+            return new UIntPtr((uint)result);
+        }
 
         /// <summary>
         /// This function closes the serial device associated with handle.

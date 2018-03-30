@@ -2,6 +2,10 @@
 {
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Defines method calls for cutom functions.
+    /// These calls are reserved but still provided for reference purposes.
+    /// </summary>
     public static class Custom
     {
         /// <summary>

@@ -18,15 +18,15 @@
             }
 
             var pin = SystemGpio.Bcm18;
-            Controller.GpioSetMode(pin, PortMode.Output);
+            IO.GpioSetMode(pin, PortMode.Output);
 
-            Controller.GpioSetAlertFunc((UserGpio)pin, OnPinChange);
+            IO.GpioSetAlertFunc((UserGpio)pin, OnPinChange);
 
             while (true)
             {
-                Controller.GpioWrite(pin, true);
+                IO.GpioWrite(pin, true);
                 Thread.Sleep(500);
-                Controller.GpioWrite(pin, false);
+                IO.GpioWrite(pin, false);
                 Thread.Sleep(500);
             }
 

@@ -6,6 +6,38 @@
     public static class Utilities
     {
         /// <summary>
+        /// If the hardware revision can not be found or is not a valid hexadecimal
+        /// number the function returns 0.
+        ///
+        /// The hardware revision is the last few characters on the Revision line of
+        /// /proc/cpuinfo.
+        ///
+        /// The revision number can be used to determine the assignment of GPIO
+        /// to pins (see <see cref="IO"/>).
+        ///
+        /// There are at least three types of board.
+        ///
+        /// Type 1 boards have hardware revision numbers of 2 and 3.
+        ///
+        /// Type 2 boards have hardware revision numbers of 4, 5, 6, and 15.
+        ///
+        /// Type 3 boards have hardware revision numbers of 16 or greater.
+        ///
+        /// for "Revision       : 0002" the function returns 2.
+        /// for "Revision       : 000f" the function returns 15.
+        /// for "Revision       : 000g" the function returns 0.
+        /// </summary>
+        /// <returns>Returns the hardware revision.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioHardwareRevision")]
+        public static extern uint GpioHardwareRevision();
+
+        /// <summary>
+        /// </summary>
+        /// <returns>Returns the pigpio version.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioVersion")]
+        public static extern uint GpioVersion();
+
+        /// <summary>
         /// Tick is the number of microseconds since system boot.
         ///
         /// As tick is an unsigned 32 bit quantity it wraps around after
@@ -37,59 +69,7 @@
         public static extern uint GpioTick();
 
         /// <summary>
-        /// If the hardware revision can not be found or is not a valid hexadecimal
-        /// number the function returns 0.
-        ///
-        /// The hardware revision is the last few characters on the Revision line of
-        /// /proc/cpuinfo.
-        ///
-        /// The revision number can be used to determine the assignment of GPIO
-        /// to pins (see <see cref="Gpio"/>).
-        ///
-        /// There are at least three types of board.
-        ///
-        /// Type 1 boards have hardware revision numbers of 2 and 3.
-        ///
-        /// Type 2 boards have hardware revision numbers of 4, 5, 6, and 15.
-        ///
-        /// Type 3 boards have hardware revision numbers of 16 or greater.
-        ///
-        /// for "Revision       : 0002" the function returns 2.
-        /// for "Revision       : 000f" the function returns 15.
-        /// for "Revision       : 000g" the function returns 0.
-        /// </summary>
-        /// <returns>Returns the hardware revision.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioHardwareRevision")]
-        public static extern uint GpioHardwareRevision();
-
-        /// <summary>
-        /// </summary>
-        /// <returns>Returns the pigpio version.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioVersion")]
-        public static extern uint GpioVersion();
-
-        /// <summary>
-        ///
-        /// </summary>
-        /// <param name="bitPos">bit index from the start of buf</param>
-        /// <param name="buf">array of bits</param>
-        /// <param name="numBits">number of valid bits in buf</param>
-        /// <returns>Returns the value of the bit bitPos bits from the start of buf.  Returns 0 if bitPos is greater than or equal to numBits.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "getBitInBytes")]
-        public static extern int GetBitInBytes(int bitPos, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buf, int numBits);
-
-        /// <summary>
-        /// Sets the bit bitPos bits from the start of buf to bit.
-        ///
-        /// </summary>
-        /// <param name="bitPos">bit index from the start of buf</param>
-        /// <param name="buf">array of bits</param>
-        /// <param name="bit">0-1, value to set</param>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "putBitInBytes")]
-        public static extern void PutBitInBytes(int bitPos, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buf, int bit);
-
-        /// <summary>
-        /// Updates the seconds and micros variables with the current time.
+        /// Retrieves the seconds and micros variables with the current time.
         ///
         /// If timetype is PI_TIME_ABSOLUTE updates seconds and micros with the
         /// number of seconds and microseconds since the epoch (1st January 1970).
@@ -112,46 +92,7 @@
         /// <param name="microseconds">a pointer to an int to hold microseconds</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMETYPE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioTime")]
-        public static extern int GpioTime(uint timeType, out int seconds, out int microseconds);
-
-        /// <summary>
-        /// Sleeps for the number of seconds and microseconds specified by seconds
-        /// and micros.
-        ///
-        /// If timetype is PI_TIME_ABSOLUTE the sleep ends when the number of seconds
-        /// and microseconds since the epoch (1st January 1970) has elapsed.  System
-        /// clock changes are taken into account.
-        ///
-        /// If timetype is PI_TIME_RELATIVE the sleep is for the specified number
-        /// of seconds and microseconds.  System clock changes do not effect the
-        /// sleep length.
-        ///
-        /// For short delays (say, 50 microseonds or less) use <see cref="GpioDelay"/>.
-        ///
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// gpioSleep(PI_TIME_RELATIVE, 2, 500000); // sleep for 2.5 seconds
-        ///
-        /// gpioSleep(PI_TIME_RELATIVE, 0, 100000); // sleep for 0.1 seconds
-        ///
-        /// gpioSleep(PI_TIME_RELATIVE, 60, 0);     // sleep for one minute
-        /// </code>
-        /// </example>
-        /// <param name="timetype">0 (relative), 1 (absolute)</param>
-        /// <param name="seconds">seconds to sleep</param>
-        /// <param name="microseconds">microseconds to sleep</param>
-        /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMETYPE, PI_BAD_SECONDS, or PI_BAD_MICROS.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSleep")]
-        public static extern ResultCode GpioSleep(uint timetype, int seconds, int microseconds);
-
-        /// <summary>
-        /// Delay execution for a given number of seconds
-        ///
-        /// </summary>
-        /// <param name="seconds">the number of seconds to sleep</param>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "time_sleep")]
-        public static extern void TimeSleep(double seconds);
+        public static extern int GpioTime(TimeType timeType, out int seconds, out int microseconds);
 
         /// <summary>
         /// Return the current time in seconds since the Epoch.
@@ -159,5 +100,69 @@
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "time_time")]
         public static extern double TimeTime();
+
+        /// <summary>
+        ///
+        /// </summary>
+        /// <param name="bitPos">bit index from the start of buf</param>
+        /// <param name="buf">array of bits</param>
+        /// <param name="numBits">number of valid bits in buf</param>
+        /// <returns>Returns the value of the bit bitPos bits from the start of buf.  Returns 0 if bitPos is greater than or equal to numBits.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "getBitInBytes")]
+        public static extern int GetBitInBytes(int bitPos, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buf, int numBits);
+
+        /// <summary>
+        /// Sets the bit bitPos bits from the start of buf to bit.
+        ///
+        /// </summary>
+        /// <param name="bitPos">bit index from the start of buf</param>
+        /// <param name="buf">array of bits</param>
+        /// <param name="bit">0-1, value to set</param>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "putBitInBytes")]
+        public static extern void PutBitInBytes(int bitPos, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buf, int bit);
+
+        /// <summary>
+        /// This function uses the system call to execute a shell script
+        /// with the given string as its parameter.
+        ///
+        /// The exit status of the system call is returned if OK, otherwise
+        /// PI_BAD_SHELL_STATUS.
+        ///
+        /// scriptName must exist in /opt/pigpio/cgi and must be executable.
+        ///
+        /// The returned exit status is normally 256 times that set by the
+        /// shell script exit function.  If the script can't be found 32512 will
+        /// be returned.
+        ///
+        /// The following table gives some example returned statuses.
+        ///
+        /// Script exit status @ Returned system call status
+        /// 1                  @ 256
+        /// 5                  @ 1280
+        /// 10                 @ 2560
+        /// 200                @ 51200
+        /// script not found   @ 32512
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// // pass two parameters, hello and world
+        /// status = shell("scr1", "hello world");
+        ///
+        /// // pass three parameters, hello, string with spaces, and world
+        /// status = shell("scr1", "hello 'string with spaces' world");
+        ///
+        /// // pass one parameter, hello string with spaces world
+        /// status = shell("scr1", "\"hello string with spaces world\"");
+        /// </code>
+        /// </example>
+        /// <remarks>
+        ///               '-' and '_' are allowed in the name
+        /// </remarks>
+        /// <param name="scriptName">the name of the script, only alphanumeric characters,</param>
+        /// <param name="scriptString">the string to pass to the script</param>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "shell")]
+        public static extern ResultCode Shell(string scriptName, string scriptString);
     }
 }

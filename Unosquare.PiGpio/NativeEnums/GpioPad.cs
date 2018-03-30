@@ -11,7 +11,7 @@
         /// <summary>
         /// The pad of GPIO 0 to 27
         /// </summary>
-        Pad0To27 = 0,
+        Pad00To27 = 0,
 
         /// <summary>
         /// The pad of GPIO 28 to 45

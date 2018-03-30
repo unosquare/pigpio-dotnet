@@ -259,7 +259,7 @@
         /// <param name="callback">the callback function</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventSetFunc")]
-        public static extern ResultCode EventSetFunc(uint eventId, EventDelegate callback);
+        public static extern ResultCode EventSetFunc(uint eventId, PiGpioEventDelegate callback);
 
         /// <summary>
         /// Registers a function to be called (a callback) when the specified
@@ -279,7 +279,7 @@
         /// <param name="userData">pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventSetFuncEx")]
-        public static extern ResultCode EventSetFuncEx(UserGpio eventId, EventExDelegate callback, IntPtr userData);
+        public static extern ResultCode EventSetFuncEx(UserGpio eventId, PiGpioEventExDelegate callback, UIntPtr userData);
 
         /// <summary>
         /// This function signals the occurrence of an event.
