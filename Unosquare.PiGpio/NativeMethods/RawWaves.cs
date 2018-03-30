@@ -1,5 +1,6 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods
 {
+    using NativeEnums;
     using NativeTypes;
     using System;
     using System.Runtime.InteropServices;
@@ -154,14 +155,5 @@
         /// </summary>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawDumpWave")]
         public static extern void RawDumpWave();
-
-        /// <summary>
-        /// Used to print a readable version of a script to stderr.
-        ///
-        /// Not intended for general use.
-        /// </summary>
-        /// <param name="scriptId">&gt;=0, a script_id returned by <see cref="GpioStoreScript"/></param>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawDumpScript")]
-        public static extern void RawDumpScript(uint scriptId);
     }
 }

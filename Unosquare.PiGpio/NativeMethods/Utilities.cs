@@ -3,6 +3,10 @@
     using NativeEnums;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Provides various utility methods to retrieve hardware and software versions,
+    /// time, shell commands, and bitwise maskling.
+    /// </summary>
     public static class Utilities
     {
         /// <summary>
@@ -32,6 +36,7 @@
         public static extern uint GpioHardwareRevision();
 
         /// <summary>
+        /// Returns the pigpio version number.
         /// </summary>
         /// <returns>Returns the pigpio version.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioVersion")]
@@ -83,7 +88,7 @@
         /// int secs, mics;
         ///
         /// // print the number of seconds since the library was started
-        /// gpioTime(PI_TIME_RELATIVE, &secs, &mics);
+        /// gpioTime(PI_TIME_RELATIVE, &amp;secs, &amp;mics);
         /// printf("library started %d.%03d seconds ago", secs, mics/1000);
         /// </code>
         /// </example>
@@ -102,7 +107,7 @@
         public static extern double TimeTime();
 
         /// <summary>
-        ///
+        /// Gets the bit value at the bit position.
         /// </summary>
         /// <param name="bitPos">bit index from the start of buf</param>
         /// <param name="buf">array of bits</param>

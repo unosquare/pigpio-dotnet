@@ -1,7 +1,11 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods
 {
+    using NativeEnums;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Provides access to scripting methods of the pigpio library.
+    /// </summary>
     public static class Scripts
     {
         /// <summary>
@@ -94,5 +98,14 @@
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioDeleteScript")]
         public static extern int GpioDeleteScript(uint script_id);
+
+        /// <summary>
+        /// Used to print a readable version of a script to stderr.
+        ///
+        /// Not intended for general use.
+        /// </summary>
+        /// <param name="scriptId">&gt;=0, a script_id returned by <see cref="GpioStoreScript"/></param>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawDumpScript")]
+        public static extern void RawDumpScript(uint scriptId);
     }
 }

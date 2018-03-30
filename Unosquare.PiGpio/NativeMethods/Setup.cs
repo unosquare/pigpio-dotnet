@@ -4,57 +4,11 @@
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Library setup and configuration methods.
+    /// </summary>
     public static partial class Setup
     {
-        #region Unmanaged Methods
-
-        /// <summary>
-        /// Configures pigpio to use a particular sample rate timed by a specified
-        /// peripheral.
-        ///
-        /// This function is only effective if called before <see cref="GpioInitialise"/>.
-        ///
-        /// The timings are provided by the specified peripheral (PWM or PCM).
-        ///
-        /// The default setting is 5 microseconds using the PCM peripheral.
-        ///
-        /// The approximate CPU percentage used for each sample rate is:
-        ///
-        /// A sample rate of 5 microseconds seeems to be the sweet spot.
-        /// </summary>
-        /// <remarks>
-        /// sample  cpu
-        ///  rate    %
-        ///
-        ///   1     25
-        ///   2     16
-        ///   4     11
-        ///   5     10
-        ///   8     15
-        ///  10     14
-        /// </remarks>
-        /// <param name="microSecs">1, 2, 4, 5, 8, 10</param>
-        /// <param name="peripheral">0 (PWM), 1 (PCM)</param>
-        /// <param name="configSource">deprecated, value is ignored</param>
-        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgClock")]
-        private static extern ResultCode GpioCfgClockUnmanaged(uint microSecs, CpuPeripheral peripheral, uint configSource);
-
-        /// <summary>
-        /// Sets the network addresses which are allowed to talk over the
-        /// socket interface.
-        ///
-        /// This function is only effective if called before <see cref="GpioInitialise"/>.
-        ///
-        /// </summary>
-        /// <param name="numSockAddr">0-256 (0 means all addresses allowed)</param>
-        /// <param name="sockAddr">an array of permitted network addresses.</param>
-        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgNetAddr")]
-        private static extern ResultCode GpioCfgNetAddrUnmanaged(int numSockAddr, [In, MarshalAs(UnmanagedType.LPArray)] uint[] sockAddr);
-
-        #endregion
-
         /// <summary>
         /// Initialises the library.
         ///
@@ -75,9 +29,9 @@
         /// </code>
         /// </example>
         /// <remarks>
-        /// <see cref="GpioCfg*"/>
-        /// <see cref="GpioVersion"/>
-        /// <see cref="GpioHardwareRevision"/>
+        /// GpioCfg methods.
+        /// <see cref="Utilities.GpioVersion"/>
+        /// <see cref="Utilities.GpioHardwareRevision"/>
         /// </remarks>
         /// <returns>Returns the pigpio version number if OK, otherwise PI_INIT_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioInitialise")]
@@ -322,5 +276,54 @@
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgSetInternals")]
         public static extern ResultCode GpioCfgSetInternals(uint configFlags);
+
+        #region Unmanaged Methods
+
+        /// <summary>
+        /// Configures pigpio to use a particular sample rate timed by a specified
+        /// peripheral.
+        ///
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
+        ///
+        /// The timings are provided by the specified peripheral (PWM or PCM).
+        ///
+        /// The default setting is 5 microseconds using the PCM peripheral.
+        ///
+        /// The approximate CPU percentage used for each sample rate is:
+        ///
+        /// A sample rate of 5 microseconds seeems to be the sweet spot.
+        /// </summary>
+        /// <remarks>
+        /// sample  cpu
+        ///  rate    %
+        ///
+        ///   1     25
+        ///   2     16
+        ///   4     11
+        ///   5     10
+        ///   8     15
+        ///  10     14
+        /// </remarks>
+        /// <param name="microSecs">1, 2, 4, 5, 8, 10</param>
+        /// <param name="peripheral">0 (PWM), 1 (PCM)</param>
+        /// <param name="configSource">deprecated, value is ignored</param>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgClock")]
+        private static extern ResultCode GpioCfgClockUnmanaged(uint microSecs, CpuPeripheral peripheral, uint configSource);
+
+        /// <summary>
+        /// Sets the network addresses which are allowed to talk over the
+        /// socket interface.
+        ///
+        /// This function is only effective if called before <see cref="GpioInitialise"/>.
+        ///
+        /// </summary>
+        /// <param name="numSockAddr">0-256 (0 means all addresses allowed)</param>
+        /// <param name="sockAddr">an array of permitted network addresses.</param>
+        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgNetAddr")]
+        private static extern ResultCode GpioCfgNetAddrUnmanaged(int numSockAddr, [In, MarshalAs(UnmanagedType.LPArray)] uint[] sockAddr);
+
+        #endregion
     }
 }

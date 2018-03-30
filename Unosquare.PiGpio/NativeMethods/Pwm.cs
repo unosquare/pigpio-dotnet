@@ -1,60 +1,13 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods
 {
     using NativeEnums;
-    using NativeTypes;
-    using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Provides methods for software and hardware based PWM
+    /// </summary>
     public static class Pwm
     {
-        #region Unmanaged Methods
-
-        /// <summary>
-        /// if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.
-        /// </summary>
-        /// <param name="userGpio">0-31</param>
-        /// <returns>Returns 0 (off), 500 (most anti-clockwise) to 2500 (most clockwise) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetServoPulsewidth")]
-        private static extern int GpioGetServoPulseWidthUnmanaged(UserGpio userGpio);
-
-        /// <summary>
-        ///
-        /// For normal PWM the dutycycle will be out of the defined range
-        /// for the GPIO (see <see cref="GpioGetPwmRange"/>).
-        ///
-        /// If a hardware clock is active on the GPIO the reported dutycycle
-        /// will be 500000 (500k) out of 1000000 (1M).
-        ///
-        /// If hardware PWM is active on the GPIO the reported dutycycle
-        /// will be out of a 1000000 (1M).
-        ///
-        /// Normal PWM range defaults to 255.
-        /// </summary>
-        /// <param name="userGpio">0-31</param>
-        /// <returns>Returns between 0 (off) and range (fully on) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_PWM_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMdutycycle")]
-        private static extern int GpioGetPwmDutyCycleUnmanaged(UserGpio userGpio);
-
-        /// <summary>
-        /// If a hardware clock is active on the GPIO the reported real
-        /// range will be 1000000 (1M).
-        ///
-        /// If hardware PWM is active on the GPIO the reported real range
-        /// will be approximately 250M divided by the set PWM frequency.
-        ///
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// rr = gpioGetPWMrealRange(17);
-        /// </code>
-        /// </example>
-        /// <param name="userGpio">0-31</param>
-        /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMrealRange")]
-        private static extern int GpioGetPwmRealRangeUnmanaged(UserGpio userGpio);
-
-        #endregion
-
         /// <summary>
         /// Starts PWM on the GPIO, dutycycle between 0 (off) and range (fully on).
         /// Range defaults to 255.
@@ -371,5 +324,53 @@
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_NOT_HPWM_GPIO, PI_BAD_HPWM_DUTY, PI_BAD_HPWM_FREQ, or PI_HPWM_ILLEGAL.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioHardwarePWM")]
         public static extern ResultCode GpioHardwarePwm(SystemGpio gpio, uint pwmFrequency, uint pwmDytuCycle);
+
+        #region Unmanaged Methods
+
+        /// <summary>
+        /// if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.
+        /// </summary>
+        /// <param name="userGpio">0-31</param>
+        /// <returns>Returns 0 (off), 500 (most anti-clockwise) to 2500 (most clockwise) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetServoPulsewidth")]
+        private static extern int GpioGetServoPulseWidthUnmanaged(UserGpio userGpio);
+
+        /// <summary>
+        ///
+        /// For normal PWM the dutycycle will be out of the defined range
+        /// for the GPIO (see <see cref="GpioGetPwmRange"/>).
+        ///
+        /// If a hardware clock is active on the GPIO the reported dutycycle
+        /// will be 500000 (500k) out of 1000000 (1M).
+        ///
+        /// If hardware PWM is active on the GPIO the reported dutycycle
+        /// will be out of a 1000000 (1M).
+        ///
+        /// Normal PWM range defaults to 255.
+        /// </summary>
+        /// <param name="userGpio">0-31</param>
+        /// <returns>Returns between 0 (off) and range (fully on) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_PWM_GPIO.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMdutycycle")]
+        private static extern int GpioGetPwmDutyCycleUnmanaged(UserGpio userGpio);
+
+        /// <summary>
+        /// If a hardware clock is active on the GPIO the reported real
+        /// range will be 1000000 (1M).
+        ///
+        /// If hardware PWM is active on the GPIO the reported real range
+        /// will be approximately 250M divided by the set PWM frequency.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// rr = gpioGetPWMrealRange(17);
+        /// </code>
+        /// </example>
+        /// <param name="userGpio">0-31</param>
+        /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPWMrealRange")]
+        private static extern int GpioGetPwmRealRangeUnmanaged(UserGpio userGpio);
+
+        #endregion
     }
 }

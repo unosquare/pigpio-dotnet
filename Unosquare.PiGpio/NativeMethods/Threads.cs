@@ -1,10 +1,13 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods
 {
-    using NativeTypes;
     using NativeEnums;
+    using NativeTypes;
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// PRovides threading and delay operations.
+    /// </summary>
     public static class Threads
     {
         /// <summary>

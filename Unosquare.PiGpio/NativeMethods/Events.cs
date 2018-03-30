@@ -5,68 +5,11 @@
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Provides event notification warapper APIs for the pigpio library.
+    /// </summary>
     public static class Events
     {
-        #region Unmanaged Methods
-
-        /// <summary>
-        /// This function requests a free notification handle.
-        ///
-        /// A notification is a method for being notified of GPIO state changes
-        /// via a pipe or socket.
-        ///
-        /// Pipe notifications for handle x will be available at the pipe
-        /// named /dev/pigpiox (where x is the handle number).  E.g. if the
-        /// function returns 15 then the notifications must be read
-        /// from /dev/pigpio15.
-        ///
-        /// Socket notifications are returned to the socket which requested the
-        /// handle.
-        ///
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// h = gpioNotifyOpen();
-        ///
-        /// if (h &gt;= 0)
-        /// {
-        ///    sprintf(str, "/dev/pigpio%d", h);
-        ///
-        ///    fd = open(str, O_RDONLY);
-        ///
-        ///    if (fd &gt;= 0)
-        ///    {
-        ///       // Okay.
-        ///    }
-        ///    else
-        ///    {
-        ///       // Error.
-        ///    }
-        /// }
-        /// else
-        /// {
-        ///    // Error.
-        /// }
-        /// </code>
-        /// </example>
-        /// <returns>Returns a handle greater than or equal to zero if OK, otherwise PI_NO_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyOpen")]
-        private static extern int GpioNotifyOpenUnmanaged();
-
-        /// <summary>
-        /// This function requests a free notification handle.
-        ///
-        /// It differs from <see cref="GpioNotifyOpen"/> in that the pipe size may be
-        /// specified, whereas <see cref="GpioNotifyOpen"/> uses the default pipe size.
-        ///
-        /// See <see cref="GpioNotifyOpen"/> for further details.
-        /// </summary>
-        /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyOpenWithSize")]
-        private static extern int GpioNotifyOpenWithSizeUnmanaged(int bufferSize);
-
-        #endregion
-
         /// <summary>
         /// This function requests a free notification handle.
         ///
@@ -301,5 +244,66 @@
         /// <returns>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventTrigger")]
         public static extern ResultCode EventTrigger(UserGpio eventId);
+
+        #region Unmanaged Methods
+
+        /// <summary>
+        /// This function requests a free notification handle.
+        ///
+        /// A notification is a method for being notified of GPIO state changes
+        /// via a pipe or socket.
+        ///
+        /// Pipe notifications for handle x will be available at the pipe
+        /// named /dev/pigpiox (where x is the handle number).  E.g. if the
+        /// function returns 15 then the notifications must be read
+        /// from /dev/pigpio15.
+        ///
+        /// Socket notifications are returned to the socket which requested the
+        /// handle.
+        ///
+        /// </summary>
+        /// <example>
+        /// <code>
+        /// h = gpioNotifyOpen();
+        ///
+        /// if (h &gt;= 0)
+        /// {
+        ///    sprintf(str, "/dev/pigpio%d", h);
+        ///
+        ///    fd = open(str, O_RDONLY);
+        ///
+        ///    if (fd &gt;= 0)
+        ///    {
+        ///       // Okay.
+        ///    }
+        ///    else
+        ///    {
+        ///       // Error.
+        ///    }
+        /// }
+        /// else
+        /// {
+        ///    // Error.
+        /// }
+        /// </code>
+        /// </example>
+        /// <returns>Returns a handle greater than or equal to zero if OK, otherwise PI_NO_HANDLE.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyOpen")]
+        private static extern int GpioNotifyOpenUnmanaged();
+
+        /// <summary>
+        /// This function requests a free notification handle.
+        /// It differs from <see cref="GpioNotifyOpen" /> in that the pipe size may be
+        /// specified, whereas <see cref="GpioNotifyOpen" /> uses the default pipe size.
+        /// See <see cref="GpioNotifyOpen" /> for further details.
+        /// </summary>
+        /// <param name="bufferSize">Size of the buffer.</param>
+        /// <returns>
+        /// The result code. 0 for success. See the <see cref="ResultCode" /> enumeration.
+        /// </returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyOpenWithSize")]
+        private static extern int GpioNotifyOpenWithSizeUnmanaged(int bufferSize);
+
+        #endregion
     }
 }

@@ -5,6 +5,9 @@
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Provides methods for SPI bus management.
+    /// </summary>
     public static class SpiBus
     {
         /// <summary>
@@ -48,7 +51,7 @@
         /// bbbbbb defines the word size in bits (0-32).  The default (0)
         /// sets 8 bits per word.  Auxiliary SPI device only.
         ///
-        /// The <see cref="spiRead"/>, <see cref="spiWrite"/>, and <see cref="spiXfer"/> functions
+        /// The <see cref="SpiRead"/>, <see cref="SpiWrite"/>, and <see cref="SpiXfer"/> functions
         /// transfer data packed into 1, 2, or 4 bytes according to
         /// the word size in bits.
         ///
@@ -86,7 +89,7 @@
         /// This functions closes the SPI device identified by the handle.
         ///
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="spiOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiClose")]
         public static extern ResultCode SpiClose(UIntPtr handle);
@@ -97,7 +100,7 @@
         ///
         /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="spiOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
         /// <param name="buf">an array to receive the read data bytes</param>
         /// <param name="count">the number of bytes to read</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
@@ -110,7 +113,7 @@
         ///
         /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="spiOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
         /// <param name="buffer">the data bytes to write</param>
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
@@ -124,7 +127,7 @@
         ///
         /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="spiOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
         /// <param name="txBuf">the data bytes to write</param>
         /// <param name="rxBuf">the received data bytes</param>
         /// <param name="count">the number of bytes to transfer</param>
@@ -181,10 +184,10 @@
 
         /// <summary>
         /// This function stops bit banging SPI on a set of GPIO
-        /// opened with <see cref="bbSPIOpen"/>.
+        /// opened with <see cref="BbSPIOpen"/>.
         ///
         /// </summary>
-        /// <param name="csPin">0-31, the CS GPIO used in a prior call to <see cref="bbSPIOpen"/></param>
+        /// <param name="csPin">0-31, the CS GPIO used in a prior call to <see cref="BbSPIOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_NOT_SPI_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbSPIClose")]
         public static extern ResultCode BbSPIClose(UserGpio csPin);
@@ -244,7 +247,7 @@
         ///
         ///             if (count == 3)
         ///             {
-        ///                read_val = ((inBuf[1]&3)&lt;&lt;8) | inBuf[2];
+        ///                read_val = ((inBuf[1]&amp;3)&lt;&lt;8) | inBuf[2];
         ///                printf("%d %d\n", set_val, read_val);
         ///             }
         ///          }
@@ -260,13 +263,13 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="CS">0-31 (as used in a prior call to <see cref="bbSPIOpen"/>)</param>
-        /// <param name="inBuf">pointer to buffer to hold data to be sent</param>
-        /// <param name="outBuf">pointer to buffer to hold returned data</param>
-        /// <param name="count">size of data transfer</param>
+        /// <param name="csPin">0-31 (as used in a prior call to <see cref="BbSPIOpen"/>)</param>
+        /// <param name="inputBuffer">pointer to buffer to hold data to be sent</param>
+        /// <param name="outputBuffer">pointer to buffer to hold returned data</param>
+        /// <param name="count">size of data transfer, which is the same as the data received.</param>
         /// <returns>Returns &gt;= 0 if OK (the number of bytes read), otherwise PI_BAD_USER_GPIO, PI_NOT_SPI_GPIO or PI_BAD_POINTER.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbSPIXfer")]
-        public static extern int BbSPIXfer(uint CS, [In, MarshalAs(UnmanagedType.LPArray)] byte[] inBuf, [In, MarshalAs(UnmanagedType.LPArray)] byte[] outBuf, uint count);
+        public static extern int BbSPIXfer(UserGpio csPin, [In, MarshalAs(UnmanagedType.LPArray)] byte[] inputBuffer, [In, MarshalAs(UnmanagedType.LPArray)] byte[] outputBuffer, uint count);
 
         #region Methods: I2C/SPI Slave
 
@@ -359,7 +362,7 @@
         /// memcpy(xfer.txBuf, "ABCD", 4);
         /// xfer.txCnt = 4;
         ///
-        /// status = bscXfer(&xfer);
+        /// status = bscXfer(&amp;xfer);
         ///
         /// if (status &gt;= 0)
         /// {
@@ -382,10 +385,10 @@
         /// 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
         ///  S  S  S  S  S  R  R  R  R  R  T  T  T  T  T RB TE RF TF RE TB
         /// </remarks>
-        /// <param name="bsc_xfer">= a structure defining the transfer</param>
+        /// <param name="bscTransfer">= a structure defining the transfer</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bscXfer")]
-        public static extern int BscXfer(BscTransfer bsc_xfer);
+        public static extern int BscXfer(BscTransfer bscTransfer);
 
         #endregion
     }

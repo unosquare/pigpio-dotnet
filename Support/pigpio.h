@@ -1901,11 +1901,11 @@ D*/
 int gpioWaveCreate(void);
 /*D
 This function creates a waveform from the data provided by the prior
-calls to the <see cref="GpioWaveAdd*"/> functions.  Upon success a wave id
+calls to the GpioWaveAdd* functions.  Upon success a wave id
 greater than or equal to 0 is returned, otherwise PI_EMPTY_WAVEFORM,
 PI_TOO_MANY_CBS, PI_TOO_MANY_OOL, or PI_NO_WAVEFORM_ID.
 
-The data provided by the <see cref="GpioWaveAdd*"/> functions is consumed by this
+The data provided by the GpioWaveAdd* functions is consumed by this
 function.
 
 As many waveforms may be created as there is space available.  The
@@ -1915,7 +1915,7 @@ Normal usage would be
 
 Step 1. <see cref="GpioWaveClear"/> to clear all waveforms and added data.
 
-Step 2. <see cref="GpioWaveAdd*"/> calls to supply the waveform data.
+Step 2. GpioWaveAdd* calls to supply the waveform data.
 
 Step 3. <see cref="GpioWaveCreate"/> to create the waveform and get a unique id
 
@@ -2260,11 +2260,11 @@ Returns the number of bytes copied if OK, otherwise PI_BAD_USER_GPIO
 or PI_NOT_SERIAL_GPIO.
 
 The bytes returned for each character depend upon the number of
-data bits <see cref="data_bits"/> specified in the <see cref="GpioSerialReadOpen"/> command.
+data bits data bits specified in the <see cref="GpioSerialReadOpen"/> command.
 
-For <see cref="data_bits"/> 1-8 there will be one byte per character. 
-For <see cref="data_bits"/> 9-16 there will be two bytes per character. 
-For <see cref="data_bits"/> 17-32 there will be four bytes per character.
+For data bits 1-8 there will be one byte per character. 
+For data bits 9-16 there will be two bytes per character. 
+For data bits 17-32 there will be four bytes per character.
 D*/
 
 
@@ -2323,7 +2323,7 @@ int i2cClose(unsigned handle);
 This closes the I2C device associated with the handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE.
@@ -2337,7 +2337,7 @@ This sends a single bit (in the Rd/Wr bit) to the device associated
 with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
    bit: 0-1, the value to write
 . .
 
@@ -2357,7 +2357,7 @@ int i2cWriteByte(unsigned handle, unsigned bVal);
 This sends a single byte to the device associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
   bVal: 0-0xFF, the value to write
 . .
 
@@ -2377,7 +2377,7 @@ int i2cReadByte(unsigned handle);
 This reads a single byte from the device associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 . .
 
 Returns the byte read (>=0) if OK, otherwise PI_BAD_HANDLE,
@@ -2397,7 +2397,7 @@ This writes a single byte to the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 i2cReg: 0-255, the register to write
   bVal: 0-0xFF, the value to write
 . .
@@ -2419,7 +2419,7 @@ This writes a single 16 bit word to the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 i2cReg: 0-255, the register to write
   wVal: 0-0xFFFF, the value to write
 . .
@@ -2441,7 +2441,7 @@ This reads a single byte from the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 i2cReg: 0-255, the register to read
 . .
 
@@ -2462,7 +2462,7 @@ This reads a single 16 bit word from the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 i2cReg: 0-255, the register to read
 . .
 
@@ -2483,7 +2483,7 @@ This writes 16 bits of data to the specified register of the device
 associated with handle and reads 16 bits of data in return.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 i2cReg: 0-255, the register to write/read
   wVal: 0-0xFFFF, the value to write
 . .
@@ -2507,7 +2507,7 @@ This writes up to 32 bytes to the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 i2cReg: 0-255, the register to write
    buf: an array with the data to send
  count: 1-32, the number of bytes to write
@@ -2531,7 +2531,7 @@ This reads a block of up to 32 bytes from the specified register of
 the device associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 i2cReg: 0-255, the register to read
    buf: an array to receive the read data
 . .
@@ -2558,7 +2558,7 @@ associated with handle and reads a device specified number
 of bytes of data in return.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 i2cReg: 0-255, the register to write/read
    buf: an array with the data to send and to receive the read data
  count: 1-32, the number of bytes to write
@@ -2587,7 +2587,7 @@ This reads count bytes from the specified register of the device
 associated with handle .  The count may be 1-32.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 i2cReg: 0-255, the register to read
    buf: an array to receive the read data
  count: 1-32, the number of bytes to read
@@ -2611,7 +2611,7 @@ This writes 1 to 32 bytes to the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
 i2cReg: 0-255, the register to write
    buf: the data to write
  count: 1-32, the number of bytes to write
@@ -2631,7 +2631,7 @@ int i2cReadDevice(unsigned handle, char *buf, unsigned count);
 This reads count bytes from the raw device into buf.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
    buf: an array to receive the read data bytes
  count: >0, the number of bytes to read
 . .
@@ -2651,7 +2651,7 @@ int i2cWriteDevice(unsigned handle, char *buf, unsigned count);
 This writes count bytes from buf to the raw device.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
    buf: an array containing the data bytes to write
  count: >0, the number of bytes to write
 . .
@@ -2686,7 +2686,7 @@ This function executes multiple I2C segments in one transaction by
 calling the I2C_RDWR ioctl.
 
 . .
- handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+ handle: >=0, as returned by a call to <see cref="I2cOpen"/>
    segs: an array of I2C segments
 numSegs: >0, the number of I2C segments
 . .
@@ -2707,7 +2707,7 @@ operations to be performed are specified by the contents of inBuf
 which contains the concatenated command codes and associated data.
 
 . .
-handle: >=0, as returned by a call to <see cref="i2cOpen"/>
+handle: >=0, as returned by a call to <see cref="I2cOpen"/>
  inBuf: pointer to the concatenated I2C commands, see below
  inLen: size of command buffer
 outBuf: pointer to buffer to hold returned data
@@ -3233,7 +3233,7 @@ int spiClose(unsigned handle);
 This functions closes the SPI device identified by the handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="spiOpen"/>
+handle: >=0, as returned by a call to <see cref="SpiOpen"/>
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE.
@@ -3247,7 +3247,7 @@ This function reads count bytes of data from the SPI
 device associated with the handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="spiOpen"/>
+handle: >=0, as returned by a call to <see cref="SpiOpen"/>
    buf: an array to receive the read data bytes
  count: the number of bytes to read
 . .
@@ -3264,7 +3264,7 @@ This function writes count bytes of data from buf to the SPI
 device associated with the handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="spiOpen"/>
+handle: >=0, as returned by a call to <see cref="SpiOpen"/>
    buf: the data bytes to write
  count: the number of bytes to write
 . .
@@ -3281,7 +3281,7 @@ device associated with the handle.  Simultaneously count bytes of
 data are read from the device and placed in rxBuf.
 
 . .
-handle: >=0, as returned by a call to <see cref="spiOpen"/>
+handle: >=0, as returned by a call to <see cref="SpiOpen"/>
  txBuf: the data bytes to write
  rxBuf: the received data bytes
  count: the number of bytes to transfer
@@ -3322,7 +3322,7 @@ int serClose(unsigned handle);
 This function closes the serial device associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="serOpen"/>
+handle: >=0, as returned by a call to <see cref="SerOpen"/>
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE.
@@ -3334,7 +3334,7 @@ int serWriteByte(unsigned handle, unsigned bVal);
 This function writes bVal to the serial port associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="serOpen"/>
+handle: >=0, as returned by a call to <see cref="SerOpen"/>
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or
@@ -3347,7 +3347,7 @@ int serReadByte(unsigned handle);
 This function reads a byte from the serial port associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="serOpen"/>
+handle: >=0, as returned by a call to <see cref="SerOpen"/>
 . .
 
 Returns the read byte (>=0) if OK, otherwise PI_BAD_HANDLE,
@@ -3363,7 +3363,7 @@ This function writes count bytes from buf to the the serial port
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="serOpen"/>
+handle: >=0, as returned by a call to <see cref="SerOpen"/>
    buf: the array of bytes to write
  count: the number of bytes to write
 . .
@@ -3380,7 +3380,7 @@ This function reads up count bytes from the the serial port
 associated with handle and writes them to buf.
 
 . .
-handle: >=0, as returned by a call to <see cref="serOpen"/>
+handle: >=0, as returned by a call to <see cref="SerOpen"/>
    buf: an array to receive the read data
  count: the maximum number of bytes to read
 . .
@@ -3399,7 +3399,7 @@ This function returns the number of bytes available
 to be read from the device associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="serOpen"/>
+handle: >=0, as returned by a call to <see cref="SerOpen"/>
 . .
 
 Returns the number of bytes of data available (>=0) if OK,
@@ -5921,7 +5921,7 @@ spiChan::
 A SPI channel, 0-2.
 
 spiFlags::
-See <see cref="spiOpen"/> and <see cref="bbSPIOpen"/>.
+See <see cref="SpiOpen"/> and <see cref="bbSPIOpen"/>.
 
 spiSS::
 The SPI slave select GPIO in a raw SPI transaction.

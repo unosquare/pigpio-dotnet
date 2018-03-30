@@ -4,11 +4,14 @@
     using NativeTypes;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Provides Waveform methods for the pigpio library.
+    /// </summary>
     public static class Waves
     {
         /// <summary>
         /// This function clears all waveforms and any data added by calls to the
-        /// <see cref="GpioWaveAdd*"/> functions.
+        /// GpioWaveAdd functions.
         ///
         /// </summary>
         /// <example>
@@ -144,11 +147,11 @@
 
         /// <summary>
         /// This function creates a waveform from the data provided by the prior
-        /// calls to the <see cref="GpioWaveAdd*"/> functions.  Upon success a wave id
+        /// calls to the GpioWaveAdd* functions.  Upon success a wave id
         /// greater than or equal to 0 is returned, otherwise PI_EMPTY_WAVEFORM,
         /// PI_TOO_MANY_CBS, PI_TOO_MANY_OOL, or PI_NO_WAVEFORM_ID.
         ///
-        /// The data provided by the <see cref="GpioWaveAdd*"/> functions is consumed by this
+        /// The data provided by the GpioWaveAdd* functions is consumed by this
         /// function.
         ///
         /// As many waveforms may be created as there is space available.  The
@@ -158,7 +161,7 @@
         ///
         /// Step 1. <see cref="GpioWaveClear"/> to clear all waveforms and added data.
         ///
-        /// Step 2. <see cref="GpioWaveAdd*"/> calls to supply the waveform data.
+        /// Step 2. GpioWaveAdd* calls to supply the waveform data.
         ///
         /// Step 3. <see cref="GpioWaveCreate"/> to create the waveform and get a unique id
         ///
@@ -167,7 +170,7 @@
         /// Step 4. <see cref="GpioWaveTxSend"/> with the id of the waveform to transmit.
         ///
         /// A waveform comprises one of more pulses.  Each pulse consists of a
-        /// <see cref="GpioPulse_t"/> structure.
+        /// <see cref="GpioPulse"/> structure.
         ///
         /// The fields specify
         ///
@@ -224,7 +227,7 @@
         /// WARNING: bad things may happen if you delete the previous
         /// waveform before it has been synced to the new waveform.
         ///
-        /// NOTE: Any hardware PWM started by <see cref="GpioHardwarePwm"/> will be cancelled.
+        /// NOTE: Any hardware PWM started by <see cref="Pwm.GpioHardwarePwm"/> will be cancelled.
         ///
         /// otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.
         /// </summary>
@@ -240,10 +243,10 @@
         /// <summary>
         /// This function transmits a chain of waveforms.
         ///
-        /// NOTE: Any hardware PWM started by <see cref="GpioHardwarePwm"/> will be cancelled.
+        /// NOTE: Any hardware PWM started by <see cref="Pwm.GpioHardwarePwm"/> will be cancelled.
         ///
         /// The waves to be transmitted are specified by the contents of buf
-        /// which contains an ordered list of <see cref="wave_id"/>s and optional command
+        /// which contains an ordered list of wave Ids and optional command
         /// codes and related data.
         ///
         /// Each wave is transmitted in the order specified.  A wave may
@@ -257,7 +260,7 @@
         ///
         /// The following command codes are supported:
         ///
-        /// Name         @ Cmd & Data @ Meaning
+        /// Name         @ Cmd &amp; Data @ Meaning
         /// Loop Start   @ 255 0      @ Identify start of a wave block
         /// Loop Repeat  @ 255 1 x y  @ loop x + y*256 times
         /// Delay        @ 255 2 x y  @ delay x + y*256 microseconds
@@ -370,7 +373,7 @@
 
         /// <summary>
         /// This function returns the length in microseconds of the longest waveform
-        /// created since <see cref="GpioInitialise"/> was called.
+        /// created since <see cref="Setup.GpioInitialise"/> was called.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighMicros")]
@@ -393,7 +396,7 @@
 
         /// <summary>
         /// This function returns the length in pulses of the longest waveform
-        /// created since <see cref="GpioInitialise"/> was called.
+        /// created since <see cref="Setup.GpioInitialise"/> was called.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighPulses")]
@@ -416,7 +419,7 @@
 
         /// <summary>
         /// This function returns the length in DMA control blocks of the longest
-        /// waveform created since <see cref="GpioInitialise"/> was called.
+        /// waveform created since <see cref="Setup.GpioInitialise"/> was called.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighCbs")]
