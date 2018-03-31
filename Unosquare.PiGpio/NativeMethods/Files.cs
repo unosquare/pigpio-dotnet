@@ -45,7 +45,7 @@
         /// <exception cref="System.IO.IOException">When the file fails to open</exception>
         public static UIntPtr FileOpen(string filePath, FileModeFlags mode)
         {
-            var result = PiGpioException.ValidateResult(FileOpenUnmanaged(filePath, (uint)mode));
+            var result = BoardException.ValidateResult(FileOpenUnmanaged(filePath, (uint)mode));
             return new UIntPtr((uint)result);
         }
 
@@ -92,7 +92,7 @@
         public static byte[] FileRead(UIntPtr handle, int count)
         {
             var buffer = new byte[count];
-            var result = PiGpioException.ValidateResult(FileRead(handle, buffer, (uint)count));
+            var result = BoardException.ValidateResult(FileRead(handle, buffer, (uint)count));
             var outputBuffer = new byte[result];
             Buffer.BlockCopy(buffer, 0, outputBuffer, 0, result);
             return outputBuffer;
@@ -106,7 +106,7 @@
         /// <returns>The Result Code.</returns>
         public static ResultCode FileWrite(UIntPtr handle, byte[] buffer)
         {
-            return PiGpioException.ValidateResult(FileWriteUnmanaged(handle, buffer, (uint)buffer.Length));
+            return BoardException.ValidateResult(FileWriteUnmanaged(handle, buffer, (uint)buffer.Length));
         }
 
         /// <summary>
@@ -118,7 +118,7 @@
         /// <returns>The Result Code</returns>
         public static ResultCode FileWrite(UIntPtr handle, byte[] buffer, int length)
         {
-            return PiGpioException.ValidateResult(FileWriteUnmanaged(handle, buffer, (uint)length));
+            return BoardException.ValidateResult(FileWriteUnmanaged(handle, buffer, (uint)length));
         }
 
         /// <summary>
@@ -130,7 +130,7 @@
         /// <returns>The new byte position within the file.</returns>
         public static int FileSeek(UIntPtr handle, int seekOffset, SeekMode seekFrom)
         {
-            return PiGpioException.ValidateResult(FileSeekUnmanaged(handle, seekOffset, seekFrom));
+            return BoardException.ValidateResult(FileSeekUnmanaged(handle, seekOffset, seekFrom));
         }
 
         /// <summary>
@@ -141,7 +141,7 @@
         public static string[] FileList(string pathPattern)
         {
             var buffer = new byte[1024 * 128]; // 128kb of file paths
-            var result = PiGpioException.ValidateResult(FileListUnmanaged(pathPattern, buffer, (uint)buffer.Length));
+            var result = BoardException.ValidateResult(FileListUnmanaged(pathPattern, buffer, (uint)buffer.Length));
             var encoding = Encoding.GetEncoding(0);
             var fileList = new List<string>();
             var lastZeroIndex = -1;

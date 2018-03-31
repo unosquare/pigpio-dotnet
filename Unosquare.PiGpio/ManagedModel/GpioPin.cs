@@ -56,7 +56,7 @@
             }
             set
             {
-                PiGpioException.ValidateResult(IO.GpioSetPullUpDown(SystemGpio, value));
+                BoardException.ValidateResult(IO.GpioSetPullUpDown(SystemGpio, value));
                 m_PullMode = value;
             }
         }
@@ -68,7 +68,7 @@
         public bool Value
         {
             get => IO.GpioRead(SystemGpio);
-            set => PiGpioException.ValidateResult(IO.GpioWrite(SystemGpio, value));
+            set => BoardException.ValidateResult(IO.GpioWrite(SystemGpio, value));
         }
 
         /// <summary>
@@ -100,7 +100,7 @@
         /// <param name="value">if set to <c>true</c> [value].</param>
         public void Pulsate(int microSecs, bool value)
         {
-            PiGpioException.ValidateResult(
+            BoardException.ValidateResult(
                 IO.GpioTrigger((UserGpio)PinNumber, Convert.ToUInt32(microSecs), value));
         }
     }

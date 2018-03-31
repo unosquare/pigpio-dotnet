@@ -43,7 +43,7 @@
         /// <returns>The PWM duty cycle</returns>
         public static int GpioGetPwmDutyCycle(UserGpio userGpio)
         {
-            return PiGpioException.ValidateResult(GpioGetPwmDutyCycleUnmanaged(userGpio));
+            return BoardException.ValidateResult(GpioGetPwmDutyCycleUnmanaged(userGpio));
         }
 
         /// <summary>
@@ -104,7 +104,7 @@
         /// <returns>The Servo pulse width</returns>
         public static int GpioGetServoPulseWidth(UserGpio userGpio)
         {
-            return PiGpioException.ValidateResult(GpioGetServoPulseWidthUnmanaged(userGpio));
+            return BoardException.ValidateResult(GpioGetServoPulseWidthUnmanaged(userGpio));
         }
 
         /// <summary>
@@ -170,7 +170,7 @@
         /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         public static int GpioGetPwmRealRange(UserGpio userGpio)
         {
-            return PiGpioException.ValidateResult(GpioGetPwmRealRangeUnmanaged(userGpio));
+            return BoardException.ValidateResult(GpioGetPwmRealRangeUnmanaged(userGpio));
         }
 
         /// <summary>

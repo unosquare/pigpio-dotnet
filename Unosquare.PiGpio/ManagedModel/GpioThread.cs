@@ -76,7 +76,7 @@
 
             if (componentSeconds <= int.MaxValue && componentMicrosecs <= int.MaxValue)
             {
-                PiGpioException.ValidateResult(
+                BoardException.ValidateResult(
                     Threads.GpioSleep(
                         TimeType.Relative,
                         Convert.ToInt32(componentSeconds),

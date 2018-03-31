@@ -92,7 +92,7 @@
     <Compile Include="NativeMethods\Utilities.cs" />
     <Compile Include="NativeMethods\Waves.cs" />
     <Compile Include="Board.cs" />
-    <Compile Include="PiGpioException.cs" />
+    <Compile Include="BoardException.cs" />
     <Compile Include="ManagedModel\GpioPin.cs" />
     <Compile Include="ManagedModel\GpioThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

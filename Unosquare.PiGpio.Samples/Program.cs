@@ -10,7 +10,7 @@
         static void Main(string[] args)
         {
             Setup.GpioInitialise();
-            var sharedFiles = NativeMethods.Files.FileList("/home/pi/pigpio-dotnet/*.exe");
+            var sharedFiles = Files.FileList("/home/pi/pigpio-dotnet/*.exe");
             foreach (var entry in sharedFiles)
             {
                 Console.WriteLine(entry);

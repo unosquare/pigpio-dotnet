@@ -19,7 +19,7 @@
             else if (gpioNumber.IsBetween(46, 53))
                 return GpioPadId.Pad46To53;
 
-            throw new PiGpioException(ResultCode.BadPad, $"Invalid {nameof(SystemGpio)} '{gpioNumber}'");
+            throw new BoardException(ResultCode.BadPad, $"Invalid {nameof(SystemGpio)} '{gpioNumber}'");
         }
 
         internal static GpioPullMode GetDefaultPullMode(SystemGpio gpio)
@@ -42,7 +42,7 @@
             if (gpioNumber.IsBetween(46, 53))
                 return GpioPullMode.Up;
 
-            throw new PiGpioException(ResultCode.BadPud, $"Invalid {nameof(GpioPullMode)} '{gpioNumber}'");
+            throw new BoardException(ResultCode.BadPud, $"Invalid {nameof(GpioPullMode)} '{gpioNumber}'");
         }
 
         internal static bool IsBetween(this int number, int min, int max)

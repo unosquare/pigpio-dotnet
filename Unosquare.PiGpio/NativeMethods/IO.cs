@@ -41,7 +41,7 @@
         /// <returns>The port mode</returns>
         public static PortMode GpioGetMode(SystemGpio gpio)
         {
-            var result = PiGpioException.ValidateResult(GpioGetModeUnmanaged(gpio));
+            var result = BoardException.ValidateResult(GpioGetModeUnmanaged(gpio));
             return (PortMode)result;
         }
 
@@ -71,7 +71,7 @@
         /// <returns>The digital value</returns>
         public static bool GpioRead(SystemGpio gpio)
         {
-            var result = PiGpioException.ValidateResult(GpioReadUnmanaged(gpio));
+            var result = BoardException.ValidateResult(GpioReadUnmanaged(gpio));
             return (DigitalValue)result == DigitalValue.True;
         }
 
@@ -575,7 +575,7 @@
         /// <returns>Returns the pad drive strength if OK, otherwise PI_BAD_PAD.</returns>
         public static GpioPadStrength GpioGetPad(GpioPadId pad)
         {
-            var result = PiGpioException.ValidateResult(GpioGetPadUnmanaged(pad));
+            var result = BoardException.ValidateResult(GpioGetPadUnmanaged(pad));
             return (GpioPadStrength)result;
         }
 

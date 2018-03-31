@@ -53,7 +53,7 @@
         /// <returns>Returns a handle greater than or equal to zero if OK, otherwise PI_NO_HANDLE.</returns>
         public static UIntPtr GpioNotifyOpen()
         {
-            var result = PiGpioException.ValidateResult(GpioNotifyOpenUnmanaged());
+            var result = BoardException.ValidateResult(GpioNotifyOpenUnmanaged());
             return new UIntPtr((uint)result);
         }
 
@@ -69,7 +69,7 @@
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         public static UIntPtr GpioNotifyOpenWithSize(int bufferSize)
         {
-            var result = PiGpioException.ValidateResult(GpioNotifyOpenWithSizeUnmanaged(bufferSize));
+            var result = BoardException.ValidateResult(GpioNotifyOpenWithSizeUnmanaged(bufferSize));
             return new UIntPtr((uint)result);
         }
 

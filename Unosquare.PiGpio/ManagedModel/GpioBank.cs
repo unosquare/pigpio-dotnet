@@ -137,7 +137,7 @@
         /// <param name="bitMask">The bit mask.</param>
         public void ClearBits(BitMask bitMask)
         {
-            PiGpioException.ValidateResult(ClearBitsCallback(bitMask));
+            BoardException.ValidateResult(ClearBitsCallback(bitMask));
         }
 
         /// <summary>
@@ -149,7 +149,7 @@
         /// <param name="bitMask">The bit mask.</param>
         public void SetBits(BitMask bitMask)
         {
-            PiGpioException.ValidateResult(SetBitsCallback(bitMask));
+            BoardException.ValidateResult(SetBitsCallback(bitMask));
         }
 
         /// <summary>

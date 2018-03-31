@@ -29,7 +29,7 @@
         public GpioPadStrength PadStrength
         {
             get => IO.GpioGetPad(PadId);
-            set => PiGpioException.ValidateResult(IO.GpioSetPad(PadId, value));
+            set => BoardException.ValidateResult(IO.GpioSetPad(PadId, value));
         }
     }
 }

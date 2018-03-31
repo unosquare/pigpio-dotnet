@@ -51,7 +51,7 @@
         /// <returns>The amount of bytes read</returns>
         public static int GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
         {
-            var result = PiGpioException.ValidateResult(GpioSerialReadUnmanaged(userGpio, buffer, (uint)readLength));
+            var result = BoardException.ValidateResult(GpioSerialReadUnmanaged(userGpio, buffer, (uint)readLength));
             return result;
         }
 
@@ -64,7 +64,7 @@
         public static byte[] GpioSerialRead(UserGpio userGpio, int readLength)
         {
             var buffer = new byte[readLength];
-            var result = PiGpioException.ValidateResult(GpioSerialReadUnmanaged(userGpio, buffer, (uint)readLength));
+            var result = BoardException.ValidateResult(GpioSerialReadUnmanaged(userGpio, buffer, (uint)readLength));
             var outputBuffer = new byte[result];
             Buffer.BlockCopy(buffer, 0, outputBuffer, 0, result);
             return outputBuffer;

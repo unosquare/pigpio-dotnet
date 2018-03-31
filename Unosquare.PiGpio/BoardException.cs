@@ -7,25 +7,25 @@
     /// Represents a PiGpio Library call exception
     /// </summary>
     /// <seealso cref="Exception" />
-    public class PiGpioException : Exception
+    public class BoardException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="PiGpioException"/> class.
+        /// Initializes a new instance of the <see cref="BoardException"/> class.
         /// </summary>
         /// <param name="resultCode">The result code.</param>
         /// <param name="message">The message.</param>
-        public PiGpioException(ResultCode resultCode, string message)
+        public BoardException(ResultCode resultCode, string message)
             : base(message)
         {
             ResultCode = resultCode;
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PiGpioException"/> class.
+        /// Initializes a new instance of the <see cref="BoardException"/> class.
         /// </summary>
         /// <param name="resultCode">The result code.</param>
         /// <param name="message">The message.</param>
-        public PiGpioException(int resultCode, string message)
+        public BoardException(int resultCode, string message)
             : base(message)
         {
             ResultCode = (ResultCode)resultCode;
@@ -62,11 +62,11 @@
         /// <param name="resultCode">The result code.</param>
         /// <param name="message">The message.</param>
         /// <returns>The integer result</returns>
-        /// <exception cref="PiGpioException">When the result is negative</exception>
+        /// <exception cref="BoardException">When the result is negative</exception>
         internal static int ValidateResult(int resultCode, string message)
         {
             if (resultCode < 0)
-                throw new PiGpioException(resultCode, message);
+                throw new BoardException(resultCode, message);
 
             return resultCode;
         }

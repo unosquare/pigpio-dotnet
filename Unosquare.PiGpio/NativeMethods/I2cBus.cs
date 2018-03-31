@@ -39,7 +39,7 @@
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_BAD_I2C_BUS, PI_BAD_I2C_ADDR, PI_BAD_FLAGS, PI_NO_HANDLE, or PI_I2C_OPEN_FAILED.</returns>
         public static UIntPtr I2cOpen(uint i2cBus, uint i2cAddress)
         {
-            var result = PiGpioException.ValidateResult(I2cOpenUnmanaged(i2cBus, i2cAddress, 0));
+            var result = BoardException.ValidateResult(I2cOpenUnmanaged(i2cBus, i2cAddress, 0));
             return new UIntPtr((uint)result);
         }
 
@@ -97,7 +97,7 @@
         /// <returns>Returns the byte read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, or PI_I2C_READ_FAILED.</returns>
         public static byte I2cReadByte(UIntPtr handle)
         {
-            var result = PiGpioException.ValidateResult(I2cReadByteUnmanaged(handle));
+            var result = BoardException.ValidateResult(I2cReadByteUnmanaged(handle));
             return (byte)result;
         }
 

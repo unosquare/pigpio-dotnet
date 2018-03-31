@@ -41,12 +41,12 @@
         {
             get
             {
-                return PiGpioException.ValidateResult(
+                return BoardException.ValidateResult(
                     Pwm.GpioGetServoPulseWidth((UserGpio)Pin.PinNumber));
             }
             set
             {
-                PiGpioException.ValidateResult(
+                BoardException.ValidateResult(
                     Pwm.GpioServo((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
             }
         }

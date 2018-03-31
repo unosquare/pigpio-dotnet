@@ -26,7 +26,7 @@
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_NO_HANDLE, or PI_SER_OPEN_FAILED.</returns>
         public static UIntPtr SerOpen(string sertty, uint baud, uint serFlags)
         {
-            var result = PiGpioException.ValidateResult(SerOpenUnmanaged(sertty, baud, serFlags));
+            var result = BoardException.ValidateResult(SerOpenUnmanaged(sertty, baud, serFlags));
             return new UIntPtr((uint)result);
         }
 

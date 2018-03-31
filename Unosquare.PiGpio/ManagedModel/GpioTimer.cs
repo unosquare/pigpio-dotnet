@@ -48,7 +48,7 @@
             if (callback == null)
                 throw new ArgumentNullException(nameof(callback));
 
-            PiGpioException.ValidateResult(
+            BoardException.ValidateResult(
                 Threads.GpioSetTimerFunc(TimerId, Convert.ToUInt32(periodMilliseconds), callback));
             Callback = callback;
             PeriodMilliseconds = periodMilliseconds;
@@ -63,7 +63,7 @@
             if (Callback == null)
                 return;
 
-            PiGpioException.ValidateResult(
+            BoardException.ValidateResult(
                 Threads.GpioSetTimerFunc(TimerId, Convert.ToUInt32(PeriodMilliseconds), null));
             Callback = null;
             IsRunning = false;
