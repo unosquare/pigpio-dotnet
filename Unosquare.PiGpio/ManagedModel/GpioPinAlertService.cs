@@ -49,7 +49,7 @@
                 lock (SyncLock)
                 {
                     PiGpioException.ValidateResult(
-                        IO.GpioSetWatchdog((UserGpio)Pin.PortId, Convert.ToUInt32(value)));
+                        IO.GpioSetWatchdog((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
                     m_TimeoutMilliseconds = value;
                 }
             }
@@ -85,7 +85,7 @@
             lock (SyncLock)
             {
                 PiGpioException.ValidateResult(
-                    IO.GpioGlitchFilter((UserGpio)Pin.PortId, Convert.ToUInt32(steadyMicroseconds)));
+                    IO.GpioGlitchFilter((UserGpio)Pin.PinNumber, Convert.ToUInt32(steadyMicroseconds)));
 
                 m_GlitchFilterSteadyMicros = steadyMicroseconds;
             }
@@ -112,7 +112,7 @@
             lock (SyncLock)
             {
                 PiGpioException.ValidateResult(
-                    IO.GpioNoiseFilter((UserGpio)Pin.PortId, Convert.ToUInt32(steadyMicroseconds), Convert.ToUInt32(activeMicroseconds)));
+                    IO.GpioNoiseFilter((UserGpio)Pin.PinNumber, Convert.ToUInt32(steadyMicroseconds), Convert.ToUInt32(activeMicroseconds)));
 
                 m_NoiseFilterSteadyMicros = steadyMicroseconds;
                 m_NoiseFilterActiveMicros = activeMicroseconds;
@@ -144,7 +144,7 @@
                     throw new ArgumentException("A callback is already registered. Clear the current callback before registering a new one.", nameof(callback));
 
                 PiGpioException.ValidateResult(
-                    IO.GpioSetAlertFunc((UserGpio)Pin.PortId, callback));
+                    IO.GpioSetAlertFunc((UserGpio)Pin.PinNumber, callback));
                 Callback = callback;
             }
         }
@@ -160,7 +160,7 @@
             lock (SyncLock)
             {
                 PiGpioException.ValidateResult(
-                    IO.GpioSetAlertFunc((UserGpio)Pin.PortId, null));
+                    IO.GpioSetAlertFunc((UserGpio)Pin.PinNumber, null));
                 Callback = null;
             }
         }

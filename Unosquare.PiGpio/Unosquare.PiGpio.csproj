@@ -49,6 +49,7 @@
     <Compile Include="ManagedModel\GpioPad.cs" />
     <Compile Include="ManagedModel\GpioPinInterruptService.cs" />
     <Compile Include="ManagedModel\GpioPinServiceBase.cs" />
+    <Compile Include="ManagedModel\GpioPinServoService.cs" />
     <Compile Include="ManagedModel\TimingService.cs" />
     <Compile Include="NativeEnums\AllocationMode.cs" />
     <Compile Include="NativeEnums\CpuPeripheral.cs" />

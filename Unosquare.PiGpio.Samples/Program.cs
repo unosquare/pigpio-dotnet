@@ -11,7 +11,7 @@
         {
             
             Setup.GpioInitialise();
-            
+
             var sharedFiles = NativeMethods.Files.FileList("/home/pi/pigpio-dotnet/*.exe");
             foreach (var entry in sharedFiles)
             {

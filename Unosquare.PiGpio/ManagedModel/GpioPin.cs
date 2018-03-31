@@ -19,21 +19,22 @@
         internal GpioPin(SystemGpio gpio)
         {
             SystemGpio = gpio;
-            PortId = (int)gpio;
-            IsUserGpio = PortId < 32;
+            PinNumber = (int)gpio;
+            IsUserGpio = PinNumber < 32;
             PadId = Constants.GetPad(SystemGpio);
             m_PullMode = Constants.GetDefaultPullMode(SystemGpio);
             Alerts = new GpioPinAlertService(this);
             Interrupts = new GpioPinInterruptService(this);
+            Servo = new GpioPinServoService(this);
         }
 
         /// <summary>
-        /// Gets the port identifier.
+        /// Gets the BCM pin identifier.
         /// </summary>
-        public int PortId { get; }
+        public int PinNumber { get; }
 
         /// <summary>
-        /// Gets a value indicating whether this pin is user gpio.
+        /// Gets a value indicating whether this pin is a user gpio (0 to 31).
         /// </summary>
         public bool IsUserGpio { get; }
 
@@ -43,7 +44,9 @@
         public GpioPadId PadId { get; }
 
         /// <summary>
-        /// Gets or sets the resustor pull mode in input mode.
+        /// Gets or sets the resistor pull mode in input mode.
+        /// You typically will need to set this to pull-up mode
+        /// for most sensors to perform reliable reads.
         /// </summary>
         public GpioPullMode PullMode
         {
@@ -59,7 +62,8 @@
         }
 
         /// <summary>
-        /// Gets or sets the digital value of the pin
+        /// Gets or sets the digital value of the pin.
+        /// This call actively reads or writes the pin.
         /// </summary>
         public bool Value
         {
@@ -69,13 +73,24 @@
 
         /// <summary>
         /// Provides GPIO change alert services.
+        /// This provides more sophisticated notification settings
+        /// but it is based on sampling.
         /// </summary>
         public GpioPinAlertService Alerts { get; }
 
         /// <summary>
         /// Provides GPIO Interrupt Service Routine services.
+        /// This is hardware-based input-only notifications.
         /// </summary>
         public GpioPinInterruptService Interrupts { get; }
+
+        /// <summary>
+        /// Gets the servo pin service.
+        /// This is a standard 50Hz PWM servo that operates
+        /// in pulse widths between 500 and 2500 microseconds.
+        /// Use the PWM service instead if you wish further flexibility.
+        /// </summary>
+        public GpioPinServoService Servo { get; }
 
         /// <summary>
         /// Pulsates the pin for the specified micro seconds.
@@ -86,7 +101,7 @@
         public void Pulsate(int microSecs, bool value)
         {
             PiGpioException.ValidateResult(
-                IO.GpioTrigger((UserGpio)PortId, Convert.ToUInt32(microSecs), value));
+                IO.GpioTrigger((UserGpio)PinNumber, Convert.ToUInt32(microSecs), value));
         }
     }
 }

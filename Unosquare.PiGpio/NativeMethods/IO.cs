@@ -499,7 +499,7 @@
 
         #endregion
 
-        #region Digital Filtering
+        #region Digital Filtering (for Alerts)
 
         /// <summary>
         /// Sets a glitch filter on a GPIO.

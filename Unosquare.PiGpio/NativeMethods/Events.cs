@@ -203,7 +203,7 @@
         /// <param name="callback">the callback function</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventSetFunc")]
-        public static extern ResultCode EventSetFunc(uint eventId, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioEventDelegate callback);
+        public static extern ResultCode EventSetFunc(UserGpio eventId, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioEventDelegate callback);
 
         /// <summary>
         /// Registers a function to be called (a callback) when the specified
