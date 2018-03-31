@@ -129,7 +129,7 @@
         /// <param name="bitMask">a bit mask indicating the GPIO of interest</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyBegin")]
-        public static extern ResultCode GpioNotifyBegin(UIntPtr handle, EventId bitMask);
+        public static extern ResultCode GpioNotifyBegin(UIntPtr handle, BitMask bitMask);
 
         /// <summary>
         /// This function pauses notifications on a previously opened handle.
@@ -187,7 +187,7 @@
         /// <param name="bitMask">a bit mask indicating the events of interest</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventMonitor")]
-        public static extern ResultCode EventMonitor(UIntPtr handle, EventId bitMask);
+        public static extern ResultCode EventMonitor(UIntPtr handle, BitMask bitMask);
 
         /// <summary>
         /// Registers a function to be called (a callback) when the specified

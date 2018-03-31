@@ -42,13 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Collections\GpioPadCollection.cs" />
-    <Compile Include="Collections\GpioPinCollection.cs" />
-    <Compile Include="GpioPad.cs" />
+    <Compile Include="ManagedModel\GpioBank.cs" />
+    <Compile Include="ManagedModel\GpioPadCollection.cs" />
+    <Compile Include="ManagedModel\GpioPinAlertService.cs" />
+    <Compile Include="ManagedModel\GpioPinCollection.cs" />
+    <Compile Include="ManagedModel\GpioPad.cs" />
+    <Compile Include="ManagedModel\GpioPinInterruptService.cs" />
+    <Compile Include="ManagedModel\GpioPinServiceBase.cs" />
+    <Compile Include="ManagedModel\TimingService.cs" />
     <Compile Include="NativeEnums\AllocationMode.cs" />
     <Compile Include="NativeEnums\CpuPeripheral.cs" />
     <Compile Include="NativeEnums\DmaChannel.cs" />
-    <Compile Include="NativeEnums\EventId.cs" />
+    <Compile Include="NativeEnums\BitMask.cs" />
     <Compile Include="NativeEnums\FileModeFlags.cs" />
     <Compile Include="NativeEnums\GpioPadId.cs" />
     <Compile Include="NativeEnums\GpioPadStrength.cs" />
@@ -85,7 +90,7 @@
     <Compile Include="NativeMethods\Waves.cs" />
     <Compile Include="Board.cs" />
     <Compile Include="PiGpioException.cs" />
-    <Compile Include="GpioPin.cs" />
+    <Compile Include="ManagedModel\GpioPin.cs" />
     <Compile Include="PiGpioThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NativeTypes\RawCBS.cs" />

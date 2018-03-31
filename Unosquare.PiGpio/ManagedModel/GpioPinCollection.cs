@@ -1,4 +1,4 @@
-﻿namespace Unosquare.PiGpio.Collections
+﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
     using System;

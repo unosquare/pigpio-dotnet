@@ -1,4 +1,4 @@
-﻿namespace Unosquare.PiGpio
+﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
     using NativeMethods;
@@ -23,6 +23,8 @@
             IsUserGpio = PortId < 32;
             PadId = Constants.GetPad(SystemGpio);
             m_PullMode = Constants.GetDefaultPullMode(SystemGpio);
+            Alerts = new GpioPinAlertService(this);
+            Interrupts = new GpioPinInterruptService(this);
         }
 
         /// <summary>
@@ -64,6 +66,16 @@
             get => IO.GpioRead(SystemGpio);
             set => PiGpioException.ValidateResult(IO.GpioWrite(SystemGpio, value));
         }
+
+        /// <summary>
+        /// Provides GPIO change alert services.
+        /// </summary>
+        public GpioPinAlertService Alerts { get; }
+
+        /// <summary>
+        /// Provides GPIO Interrupt Service Routine services.
+        /// </summary>
+        public GpioPinInterruptService Interrupts { get; }
 
         /// <summary>
         /// Pulsates the pin for the specified micro seconds.

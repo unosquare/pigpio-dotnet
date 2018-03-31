@@ -1,7 +1,6 @@
 ﻿namespace Unosquare.PiGpio
 {
     using NativeEnums;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the constants used by the libpigpio library

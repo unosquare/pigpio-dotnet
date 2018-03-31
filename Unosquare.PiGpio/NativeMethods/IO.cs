@@ -113,7 +113,7 @@
 
         #endregion
 
-        #region Parallel Reads / Writes
+        #region Bank Reads / Writes
 
         /// <summary>
         /// Returns the current level of GPIO 0-31.
@@ -142,7 +142,7 @@
         /// <param name="bits">a bit mask of GPIO to clear</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite_Bits_0_31_Clear")]
-        public static extern int GpioWriteBits00To31Clear(uint bits);
+        public static extern ResultCode GpioWriteBits00To31Clear(BitMask bits);
 
         /// <summary>
         /// Clears GPIO 32-53 if the corresponding bit (0-31) in bits is set.
@@ -151,7 +151,7 @@
         /// <param name="bits">a bit mask of GPIO to clear</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite_Bits_32_53_Clear")]
-        public static extern int GpioWriteBits32To53Clear(uint bits);
+        public static extern ResultCode GpioWriteBits32To53Clear(BitMask bits);
 
         /// <summary>
         /// Sets GPIO 0-31 if the corresponding bit in bits is set.
@@ -160,7 +160,7 @@
         /// <param name="bits">a bit mask of GPIO to set</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite_Bits_0_31_Set")]
-        public static extern int GpioWriteBits00To31Set(uint bits);
+        public static extern ResultCode GpioWriteBits00To31Set(BitMask bits);
 
         /// <summary>
         /// Sets GPIO 32-53 if the corresponding bit (0-21) in bits is set.
@@ -175,7 +175,7 @@
         /// <param name="bits">a bit mask of GPIO to set</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWrite_Bits_32_53_Set")]
-        public static extern int GpioWriteBits32To53Set(uint bits);
+        public static extern ResultCode GpioWriteBits32To53Set(BitMask bits);
 
         #endregion
 
@@ -381,7 +381,7 @@
         /// <param name="callback">the callback function</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_BAD_EDGE, or PI_BAD_ISR_INIT.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetISRFunc")]
-        public static extern ResultCode GpioSetIsrFunc(SystemGpio gpio, EdgeDetection edge, int timeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioISRDelegate callback);
+        public static extern ResultCode GpioSetIsrFunc(SystemGpio gpio, EdgeDetection edge, int timeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioIsrDelegate callback);
 
         /// <summary>
         /// Registers a function to be called (a callback) whenever the specified
@@ -417,7 +417,7 @@
         /// <param name="userData">pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_BAD_EDGE, or PI_BAD_ISR_INIT.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetISRFuncEx")]
-        public static extern ResultCode GpioSetIsrFuncEx(SystemGpio gpio, EdgeDetection edge, int timeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioISRExDelegate callback, UIntPtr userData);
+        public static extern ResultCode GpioSetIsrFuncEx(SystemGpio gpio, EdgeDetection edge, int timeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioIsrExDelegate callback, UIntPtr userData);
 
         /// <summary>
         /// Registers a function to be called (a callback) when a signal occurs.
@@ -476,7 +476,7 @@
         /// <param name="bits">the GPIO of interest</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetGetSamplesFunc")]
-        public static extern ResultCode GpioSetGetSamplesFunc([In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioGetSamplesDelegate callback, uint bits);
+        public static extern ResultCode GpioSetGetSamplesFunc([In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioGetSamplesDelegate callback, BitMask bits);
 
         /// <summary>
         /// Registers a function to be called (a callback) every millisecond
@@ -495,7 +495,7 @@
         /// <param name="userData">a pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetGetSamplesFuncEx")]
-        public static extern ResultCode GpioSetGetSamplesFuncEx([In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioGetSamplesExDelegate callback, uint bits, UIntPtr userData);
+        public static extern ResultCode GpioSetGetSamplesFuncEx([In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioGetSamplesExDelegate callback, BitMask bits, UIntPtr userData);
 
         #endregion
 

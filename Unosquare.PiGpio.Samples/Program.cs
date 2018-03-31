@@ -9,6 +9,7 @@
     {
         static void Main(string[] args)
         {
+            
             Setup.GpioInitialise();
             
             var sharedFiles = NativeMethods.Files.FileList("/home/pi/pigpio-dotnet/*.exe");
@@ -19,7 +20,6 @@
 
             var pin = SystemGpio.Bcm18;
             IO.GpioSetMode(pin, PortMode.Output);
-
             IO.GpioSetAlertFunc((UserGpio)pin, OnPinChange);
 
             while (true)
@@ -29,7 +29,6 @@
                 IO.GpioWrite(pin, false);
                 Thread.Sleep(500);
             }
-
         }
 
         static void OnPinChange(UserGpio userGpio, LevelChange levelChange, uint tick)
