@@ -7,21 +7,21 @@
     /// <summary>
     /// A class representing a GPIO port (pin)
     /// </summary>
-    public sealed class PiGpioPort
+    public sealed class GpioPin
     {
         private SystemGpio SystemGpio = default(SystemGpio);
         private GpioPullMode m_PullMode = GpioPullMode.Off;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PiGpioPort"/> class.
+        /// Initializes a new instance of the <see cref="GpioPin"/> class.
         /// </summary>
         /// <param name="gpio">The gpio.</param>
-        internal PiGpioPort(SystemGpio gpio)
+        internal GpioPin(SystemGpio gpio)
         {
             SystemGpio = gpio;
             PortId = (int)gpio;
             IsUserGpio = PortId < 32;
-            Pad = Constants.GetPad(SystemGpio);
+            PadId = Constants.GetPad(SystemGpio);
             m_PullMode = Constants.GetDefaultPullMode(SystemGpio);
         }
 
@@ -38,16 +38,7 @@
         /// <summary>
         /// Gets the electrical pad this pin belongs to.
         /// </summary>
-        public GpioPad Pad { get; }
-
-        /// <summary>
-        /// Gets or sets the electrical pad strength.
-        /// </summary>
-        public GpioPadStrength PadStrength
-        {
-            get => IO.GpioGetPad(Pad);
-            set => PiGpioException.ValidateResult(IO.GpioSetPad(Pad, value));
-        }
+        public GpioPadId PadId { get; }
 
         /// <summary>
         /// Gets or sets the resustor pull mode in input mode.

@@ -10,15 +10,15 @@
     {
         internal const string PiGpioLibrary = "libpigpio.so";
 
-        internal static GpioPad GetPad(SystemGpio gpio)
+        internal static GpioPadId GetPad(SystemGpio gpio)
         {
             var gpioNumber = (int)gpio;
             if (gpioNumber.IsBetween(0, 27))
-                return GpioPad.Pad00To27;
+                return GpioPadId.Pad00To27;
             else if (gpioNumber.IsBetween(28, 45))
-                return GpioPad.Pad28To45;
+                return GpioPadId.Pad28To45;
             else if (gpioNumber.IsBetween(46, 53))
-                return GpioPad.Pad46To53;
+                return GpioPadId.Pad46To53;
 
             throw new PiGpioException(ResultCode.BadPad, $"Invalid {nameof(SystemGpio)} '{gpioNumber}'");
         }

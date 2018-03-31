@@ -8,6 +8,8 @@
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class BscTransfer
     {
+        #region Fields
+
         private uint m_Control;
 
         private int m_ReceiveCount;
@@ -19,6 +21,8 @@
 
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 512)]
         private byte[] m_SendBuffer;
+
+        #endregion
 
         /// <summary>
         /// Write

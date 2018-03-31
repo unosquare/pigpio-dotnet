@@ -206,7 +206,7 @@
         /// will be a latency.
         ///
         /// The tick value is the time stamp of the sample in microseconds, see
-        /// <see cref="GpioTick"/> for more details.
+        /// <see cref="Utilities.GpioTick"/> for more details.
         ///
         /// </summary>
         /// <example>
@@ -247,7 +247,7 @@
         /// <param name="callback">the callback function</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetAlertFunc")]
-        public static extern ResultCode GpioSetAlertFunc(UserGpio userGpio, PiGpioAlertDelegate callback);
+        public static extern ResultCode GpioSetAlertFunc(UserGpio userGpio, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioAlertDelegate callback);
 
         /// <summary>
         /// Registers a function to be called (a callback) when the specified
@@ -283,7 +283,7 @@
         /// <param name="userData">pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetAlertFuncEx")]
-        public static extern ResultCode GpioSetAlertFuncEx(UserGpio userGpio, PiGpioAlertExDelegate callback, UIntPtr userData);
+        public static extern ResultCode GpioSetAlertFuncEx(UserGpio userGpio, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioAlertExDelegate callback, UIntPtr userData);
 
         /// <summary>
         /// Sets a watchdog for a GPIO.
@@ -381,7 +381,7 @@
         /// <param name="callback">the callback function</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_BAD_EDGE, or PI_BAD_ISR_INIT.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetISRFunc")]
-        public static extern ResultCode GpioSetIsrFunc(SystemGpio gpio, EdgeDetection edge, int timeout, PiGpioISRDelegate callback);
+        public static extern ResultCode GpioSetIsrFunc(SystemGpio gpio, EdgeDetection edge, int timeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioISRDelegate callback);
 
         /// <summary>
         /// Registers a function to be called (a callback) whenever the specified
@@ -417,7 +417,7 @@
         /// <param name="userData">pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_BAD_EDGE, or PI_BAD_ISR_INIT.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetISRFuncEx")]
-        public static extern ResultCode GpioSetIsrFuncEx(SystemGpio gpio, EdgeDetection edge, int timeout, PiGpioISRExDelegate callback, UIntPtr userData);
+        public static extern ResultCode GpioSetIsrFuncEx(SystemGpio gpio, EdgeDetection edge, int timeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioISRExDelegate callback, UIntPtr userData);
 
         /// <summary>
         /// Registers a function to be called (a callback) when a signal occurs.
@@ -435,7 +435,7 @@
         /// <param name="f">the callback function</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_signalNumber.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetSignalFunc")]
-        public static extern ResultCode GpioSetSignalFunc(uint signalNumber, PiGpioSignalDelegate f);
+        public static extern ResultCode GpioSetSignalFunc(uint signalNumber, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioSignalDelegate f);
 
         /// <summary>
         /// Registers a function to be called (a callback) when a signal occurs.
@@ -452,7 +452,7 @@
         /// <param name="userData">a pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_signalNumber.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetSignalFuncEx")]
-        public static extern ResultCode GpioSetSignalFuncEx(uint signalNumber, PiGpioSignalExDelegate callback, UIntPtr userData);
+        public static extern ResultCode GpioSetSignalFuncEx(uint signalNumber, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioSignalExDelegate callback, UIntPtr userData);
 
         /// <summary>
         /// Registers a function to be called (a callback) every millisecond
@@ -476,7 +476,7 @@
         /// <param name="bits">the GPIO of interest</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetGetSamplesFunc")]
-        public static extern ResultCode GpioSetGetSamplesFunc(PiGpioGetSamplesDelegate callback, uint bits);
+        public static extern ResultCode GpioSetGetSamplesFunc([In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioGetSamplesDelegate callback, uint bits);
 
         /// <summary>
         /// Registers a function to be called (a callback) every millisecond
@@ -495,7 +495,7 @@
         /// <param name="userData">a pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetGetSamplesFuncEx")]
-        public static extern ResultCode GpioSetGetSamplesFuncEx(PiGpioGetSamplesExDelegate callback, uint bits, UIntPtr userData);
+        public static extern ResultCode GpioSetGetSamplesFuncEx([In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioGetSamplesExDelegate callback, uint bits, UIntPtr userData);
 
         #endregion
 
@@ -505,8 +505,8 @@
         /// Sets a glitch filter on a GPIO.
         ///
         /// Level changes on the GPIO are not reported unless the level
-        /// has been stable for at least <see cref="steady"/> microseconds.  The
-        /// level is then reported.  Level changes of less than <see cref="steady"/>
+        /// has been stable for at least <paramref name="steadyMicroseconds"/> microseconds.  The
+        /// level is then reported.  Level changes of less than <paramref name="steadyMicroseconds"/>
         /// microseconds are ignored.
         ///
         /// This filter affects the GPIO samples returned to callbacks set up
@@ -515,9 +515,9 @@
         ///
         /// It does not affect interrupts set up with <see cref="GpioSetIsrFunc"/>,
         /// <see cref="GpioSetIsrFuncEx"/>, or levels read by <see cref="GpioRead"/>,
-        /// <see cref="GpioRead_Bits_0_31"/>, or <see cref="GpioRead_Bits_32_53"/>.
+        /// <see cref="GpioReadBits00To31"/>, or <see cref="GpioReadBits32To53"/>.
         ///
-        /// Each (stable) edge will be timestamped <see cref="steady"/> microseconds
+        /// Each (stable) edge will be timestamped <paramref name="steadyMicroseconds"/> microseconds
         /// after it was first detected.
         /// </summary>
         /// <param name="userGpio">0-31</param>
@@ -530,8 +530,8 @@
         /// Sets a noise filter on a GPIO.
         ///
         /// Level changes on the GPIO are ignored until a level which has
-        /// been stable for <see cref="steadyMicroseconds"/> microseconds is detected.  Level changes
-        /// on the GPIO are then reported for <see cref="activeMicroseconds"/> microseconds after
+        /// been stable for <paramref name="steadyMicroseconds"/> microseconds is detected.  Level changes
+        /// on the GPIO are then reported for <paramref name="activeMicroseconds"/> microseconds after
         /// which the process repeats.
         ///
         /// This filter affects the GPIO samples returned to callbacks set up
@@ -540,7 +540,7 @@
         ///
         /// It does not affect interrupts set up with <see cref="GpioSetIsrFunc"/>,
         /// <see cref="GpioSetIsrFuncEx"/>, or levels read by <see cref="GpioRead"/>,
-        /// <see cref="GpioRead_Bits_0_31"/>, or <see cref="GpioRead_Bits_32_53"/>.
+        /// <see cref="GpioReadBits00To31"/>, or <see cref="GpioReadBits32To53"/>.
         ///
         /// Level changes before and after the active period may
         /// be reported.  Your software must be designed to cope with
@@ -573,7 +573,7 @@
         /// </example>
         /// <param name="pad">0-2, the pad to get</param>
         /// <returns>Returns the pad drive strength if OK, otherwise PI_BAD_PAD.</returns>
-        public static GpioPadStrength GpioGetPad(GpioPad pad)
+        public static GpioPadStrength GpioGetPad(GpioPadId pad)
         {
             var result = PiGpioException.ValidateResult(GpioGetPadUnmanaged(pad));
             return (GpioPadStrength)result;
@@ -597,7 +597,7 @@
         /// <param name="padStrength">1-16 mA</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_PAD, or PI_BAD_STRENGTH.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetPad")]
-        public static extern ResultCode GpioSetPad(GpioPad pad, GpioPadStrength padStrength);
+        public static extern ResultCode GpioSetPad(GpioPadId pad, GpioPadStrength padStrength);
 
         #endregion
 
@@ -620,7 +620,7 @@
         /// <param name="pad">0-2, the pad to get</param>
         /// <returns>Returns the pad drive strength if OK, otherwise PI_BAD_PAD.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioGetPad")]
-        private static extern int GpioGetPadUnmanaged(GpioPad pad);
+        private static extern int GpioGetPadUnmanaged(GpioPadId pad);
 
         /// <summary>
         /// Gets the GPIO mode.

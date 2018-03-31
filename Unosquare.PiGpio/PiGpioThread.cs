@@ -1,20 +1,28 @@
 ﻿namespace Unosquare.PiGpio
 {
+    using NativeEnums;
+    using NativeMethods;
     using System;
     using System.Threading;
-    using NativeMethods;
 
     /// <summary>
     /// Represents a background worker created by the pigpio library.
+    /// This class also contain timing and delay mechanisms.
     /// </summary>
     /// <seealso cref="IDisposable" />
     public sealed class PiGpioThread : IDisposable
     {
+        #region Private Fields
+
         private readonly object SyncLock = new object();
         private UIntPtr ThreadHandle = UIntPtr.Zero;
         private ThreadStart WorkerCallback = null;
-        private ManualResetEvent HasFinished = new ManualResetEvent(false);
+        private ManualResetEvent HasFinished = null;
         private bool IsDisposed = false;
+
+        #endregion
+
+        #region Constructors
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PiGpioThread"/> class.
@@ -26,10 +34,89 @@
             WorkerCallback = threadStart ?? throw new ArgumentNullException(nameof(threadStart));
         }
 
+        #endregion
+
+        #region Properties
+
         /// <summary>
-        /// Gets a value indicating whether this instance is running.
+        /// Gets a value indicating whether the thread is running.
         /// </summary>
-        public bool IsRunning => ThreadHandle != UIntPtr.Zero;
+        public bool IsRunning
+        {
+            get
+            {
+                lock (SyncLock)
+                {
+                    return ThreadHandle != UIntPtr.Zero;
+                }
+            }
+        }
+
+        #endregion
+
+        #region Static Methods
+
+        /// <summary>
+        /// Sleeps for the given amount of microseconds.
+        /// Waits of 100 microseconds or less use busy waits.
+        /// Returns the real elapsed microseconds.
+        /// </summary>
+        /// <param name="microsecs">The micro seconds.</param>
+        /// <returns>Returns the real elapsed microseconds.</returns>
+        public static long SleepMicros(long microsecs)
+        {
+            if (microsecs <= 0)
+                return 0L;
+
+            if (microsecs <= uint.MaxValue)
+                return Threads.GpioDelay(Convert.ToUInt32(microsecs));
+
+            var componentSeconds = microsecs / 1000000d;
+            var componentMicrosecs = microsecs % 1000000d;
+
+            if (componentSeconds <= int.MaxValue && componentMicrosecs <= int.MaxValue)
+            {
+                PiGpioException.ValidateResult(
+                    Threads.GpioSleep(
+                        TimeType.Relative,
+                        Convert.ToInt32(componentSeconds),
+                        Convert.ToInt32(componentMicrosecs)));
+
+                return microsecs;
+            }
+
+            Threads.TimeSleep(componentSeconds);
+            return microsecs;
+        }
+
+        /// <summary>
+        /// Sleeps for the specified milliseconds.
+        /// </summary>
+        /// <param name="millisecs">The milliseconds to sleep for.</param>
+        public static void Sleep(double millisecs)
+        {
+            if (millisecs <= 0d)
+                return;
+
+            var microsecs = Convert.ToInt64(millisecs * 1000d);
+            SleepMicros(microsecs);
+        }
+
+        /// <summary>
+        /// Sleeps for the specified time span.
+        /// </summary>
+        /// <param name="timeSpan">The time span to sleep for.</param>
+        public static void Sleep(TimeSpan timeSpan)
+        {
+            if (timeSpan.TotalSeconds <= 0d)
+                return;
+
+            Threads.TimeSleep(timeSpan.TotalSeconds);
+        }
+
+        #endregion
+
+        #region Instance Methods
 
         /// <summary>
         /// Starts the thread.
@@ -39,9 +126,10 @@
         {
             lock (SyncLock)
             {
-                if (ThreadHandle != UIntPtr.Zero)
+                if (HasFinished != null || ThreadHandle != UIntPtr.Zero)
                     throw new InvalidOperationException($"Thread with handle '{ThreadHandle:X}' was already started.");
 
+                HasFinished = new ManualResetEvent(false);
                 ThreadHandle = Threads.GpioStartThread(DoWork, UIntPtr.Zero);
             }
         }
@@ -53,13 +141,13 @@
         {
             lock (SyncLock)
             {
-                if (ThreadHandle == UIntPtr.Zero)
+                if (HasFinished == null || ThreadHandle == UIntPtr.Zero)
                     return;
 
                 try
                 {
                     Threads.GpioStopThread(ThreadHandle);
-                    HasFinished.WaitOne(1000);
+                    HasFinished?.WaitOne(1000);
                 }
                 catch
                 {
@@ -118,8 +206,11 @@
             }
             finally
             {
-                HasFinished.Set();
+                ThreadHandle = UIntPtr.Zero;
+                HasFinished?.Set();
             }
         }
+
+        #endregion
     }
 }

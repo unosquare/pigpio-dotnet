@@ -14,8 +14,8 @@
         /// It returns a single integer value.
         ///
         /// </summary>
-        /// <param name="arg1">&gt;=0</param>
-        /// <param name="arg2">&gt;=0</param>
+        /// <param name="arg1">Argument 1: &gt;=0</param>
+        /// <param name="arg2">Argument 2: &gt;=0</param>
         /// <param name="argx">extra (byte) arguments</param>
         /// <param name="argc">number of extra arguments</param>
         /// <returns>Returns &gt;= 0 if OK, less than 0 indicates a user defined error.</returns>

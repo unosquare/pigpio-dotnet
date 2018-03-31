@@ -5,6 +5,9 @@
     using System;
     using System.Runtime.InteropServices;
 
+    /// <summary>
+    /// Provides Methods for both, hardware based I2C and Bit-bang (Software) I2C bus communication
+    /// </summary>
     public static class I2cBus
     {
         /// <summary>
@@ -328,7 +331,7 @@
         ///
         /// The following command codes are supported:
         ///
-        /// Name    @ Cmd & Data @ Meaning
+        /// Name    @ Cmd &amp; Data @ Meaning
         /// End     @ 0          @ No more commands
         /// Escape  @ 1          @ Next P is two bytes
         /// On      @ 2          @ Switch combined flag on
@@ -389,8 +392,8 @@
         /// The GPIO used for SDA and SCL must have pull-ups to 3V3 connected.  As
         /// a guide the hardware pull-ups on pins 3 and 5 are 1k8 in value.
         /// </summary>
-        /// <param name="sdaPin">0-31</param>
-        /// <param name="sclPin">0-31</param>
+        /// <param name="sdaPin">SDA 0-31</param>
+        /// <param name="sclPin">SCL 0-31</param>
         /// <param name="baudRate">50-500000</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_I2C_BAUD, or PI_GPIO_IN_USE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbI2COpen")]
@@ -398,10 +401,10 @@
 
         /// <summary>
         /// This function stops bit banging I2C on a pair of GPIO previously
-        /// opened with <see cref="bbI2COpen"/>.
+        /// opened with <see cref="BbI2COpen"/>.
         ///
         /// </summary>
-        /// <param name="sdaPin">0-31, the SDA GPIO used in a prior call to <see cref="bbI2COpen"/></param>
+        /// <param name="sdaPin">0-31, the SDA GPIO used in a prior call to <see cref="BbI2COpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_NOT_I2C_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbI2CClose")]
         public static extern ResultCode BbI2CClose(UserGpio sdaPin);
@@ -458,7 +461,7 @@
         /// 0x00
         /// </code>
         /// </example>
-        /// <param name="sdaPin">0-31 (as used in a prior call to <see cref="bbI2COpen"/>)</param>
+        /// <param name="sdaPin">0-31 (as used in a prior call to <see cref="BbI2COpen"/>)</param>
         /// <param name="inputBuffer">pointer to the concatenated I2C commands, see below</param>
         /// <param name="inputLength">size of command buffer</param>
         /// <param name="outputBuffer">pointer to buffer to hold returned data</param>

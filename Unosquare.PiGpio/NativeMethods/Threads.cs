@@ -26,7 +26,7 @@
         /// <param name="userData">a pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMER, PI_BAD_MS, or PI_TIMER_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetTimerFuncEx")]
-        public static extern ResultCode GpioSetTimerFuncEx(TimerId timer, uint millisecondsTimeout, PiGpioTimerExDelegate callback, UIntPtr userData);
+        public static extern ResultCode GpioSetTimerFuncEx(TimerId timer, uint millisecondsTimeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioTimerExDelegate callback, UIntPtr userData);
 
         /// <summary>
         /// Registers a function to be called (a callback) every millis milliseconds.
@@ -54,10 +54,10 @@
         /// <param name="callback">the function to call</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMER, PI_BAD_MS, or PI_TIMER_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetTimerFunc")]
-        public static extern ResultCode GpioSetTimerFunc(TimerId timer, uint periodMilliseconds, PiGpioTimerDelegate callback);
+        public static extern ResultCode GpioSetTimerFunc(TimerId timer, uint periodMilliseconds, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioTimerDelegate callback);
 
         /// <summary>
-        /// Starts a new thread of execution with f as the main routine.
+        /// Starts a new thread of execution with <paramref name="callback"/> as the main routine.
         ///
         /// The function is passed the single argument arg.
         ///
@@ -105,7 +105,7 @@
         /// <param name="userData">a pointer to arbitrary user data</param>
         /// <returns>Returns a pointer to pthread_t if OK, otherwise NULL.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioStartThread")]
-        public static extern UIntPtr GpioStartThread(PiGpioThreadDelegate callback, UIntPtr userData);
+        public static extern UIntPtr GpioStartThread([In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioThreadDelegate callback, UIntPtr userData);
 
         /// <summary>
         /// Cancels the thread pointed at by threadHandle.
@@ -152,11 +152,11 @@
         /// </code>
         /// </example>
         /// <param name="timeType">0 (relative), 1 (absolute)</param>
-        /// <param name="seconds">seconds to sleep</param>
-        /// <param name="microseconds">microseconds to sleep</param>
+        /// <param name="secs">seconds to sleep</param>
+        /// <param name="microSecs">microseconds to sleep</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMETYPE, PI_BAD_SECONDS, or PI_BAD_MICROS.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSleep")]
-        public static extern ResultCode GpioSleep(TimeType timeType, int seconds, int microseconds);
+        public static extern ResultCode GpioSleep(TimeType timeType, int secs, int microSecs);
 
         /// <summary>
         /// Delay execution for a given number of seconds

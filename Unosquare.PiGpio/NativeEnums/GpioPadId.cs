@@ -6,7 +6,7 @@
     /// 1   @ 28-45
     /// 2   @ 46-53
     /// </summary>
-    public enum GpioPad
+    public enum GpioPadId
     {
         /// <summary>
         /// The pad of GPIO 0 to 27
