@@ -50,7 +50,9 @@
     <Compile Include="ManagedModel\GpioPinInterruptService.cs" />
     <Compile Include="ManagedModel\GpioPinServiceBase.cs" />
     <Compile Include="ManagedModel\GpioPinServoService.cs" />
-    <Compile Include="ManagedModel\TimingService.cs" />
+    <Compile Include="ManagedModel\GpioTimer.cs" />
+    <Compile Include="ManagedModel\GpioTimerCollection.cs" />
+    <Compile Include="ManagedModel\GpioTimingService.cs" />
     <Compile Include="NativeEnums\AllocationMode.cs" />
     <Compile Include="NativeEnums\CpuPeripheral.cs" />
     <Compile Include="NativeEnums\DmaChannel.cs" />
@@ -92,7 +94,7 @@
     <Compile Include="Board.cs" />
     <Compile Include="PiGpioException.cs" />
     <Compile Include="ManagedModel\GpioPin.cs" />
-    <Compile Include="PiGpioThread.cs" />
+    <Compile Include="ManagedModel\GpioThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NativeTypes\RawCBS.cs" />
     <Compile Include="NativeTypes\RawSpiData.cs" />

@@ -25,7 +25,7 @@
             Pads = new GpioPadCollection();
             BankA = new GpioBank(1);
             BankB = new GpioBank(2);
-            Timing = new TimingService();
+            Timing = new GpioTimingService();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@
         /// <summary>
         /// Provides timing and date functions
         /// </summary>
-        public static TimingService Timing { get; }
+        public static GpioTimingService Timing { get; }
 
         /// <summary>
         /// Defines a static destructor with the sole purpose
@@ -71,6 +71,13 @@
             /// </summary>
             ~Destructor()
             {
+                // Stop all timers.
+                foreach (var timer in Timing.Timers)
+                {
+                    try { timer.Value.Stop(); }
+                    catch { /* swallow */ }
+                }
+
                 Setup.GpioTerminate();
             }
         }

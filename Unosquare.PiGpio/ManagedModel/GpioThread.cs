@@ -1,4 +1,4 @@
-﻿namespace Unosquare.PiGpio
+﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
     using NativeMethods;
@@ -7,10 +7,10 @@
 
     /// <summary>
     /// Represents a background worker created by the pigpio library.
-    /// This class also contain timing and delay mechanisms.
+    /// This class also contains timing and delay mechanisms.
     /// </summary>
     /// <seealso cref="IDisposable" />
-    public sealed class PiGpioThread : IDisposable
+    public sealed class GpioThread : IDisposable
     {
         #region Private Fields
 
@@ -25,11 +25,11 @@
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PiGpioThread"/> class.
+        /// Initializes a new instance of the <see cref="GpioThread"/> class.
         /// </summary>
         /// <param name="threadStart">The thread start.</param>
         /// <exception cref="ArgumentNullException">threadStart</exception>
-        public PiGpioThread(ThreadStart threadStart)
+        public GpioThread(ThreadStart threadStart)
         {
             WorkerCallback = threadStart ?? throw new ArgumentNullException(nameof(threadStart));
         }
