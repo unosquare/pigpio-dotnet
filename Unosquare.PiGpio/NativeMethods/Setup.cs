@@ -266,7 +266,7 @@
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgGetInternals")]
-        public static extern uint GpioCfgGetInternals();
+        public static extern ConfigFlags GpioCfgGetInternals();
 
         /// <summary>
         /// This function sets the current library internal configuration
@@ -276,7 +276,7 @@
         /// <param name="configFlags">see source code</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioCfgSetInternals")]
-        public static extern ResultCode GpioCfgSetInternals(uint configFlags);
+        public static extern ResultCode GpioCfgSetInternals(ConfigFlags configFlags);
 
         #region Unmanaged Methods
 

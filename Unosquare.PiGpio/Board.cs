@@ -3,6 +3,7 @@
     using ManagedModel;
     using NativeEnums;
     using NativeMethods;
+    using System;
 
     /// <summary>
     /// Represents the Raspberry Pi Board and provides
@@ -10,7 +11,6 @@
     /// </summary>
     public static class Board
     {
-        private static readonly Destructor StaticDestructor = new Destructor();
         private static readonly object SyncLock = new object();
 
         /// <summary>
@@ -18,20 +18,54 @@
         /// </summary>
         static Board()
         {
-            try { IsAvailable = Setup.GpioInitialise() == ResultCode.Ok; }
+            try
+            {
+                var config = Setup.GpioCfgGetInternals();
+                Setup.GpioCfgSetInternals(config | ConfigFlags.NoSignalHandler);
+                IsAvailable = Setup.GpioInitialise() == ResultCode.Ok;
+            }
             catch { IsAvailable = false; }
 
+            // Populate basic information
+            HardwareRevision = Utilities.GpioHardwareRevision();
+            LibraryVersion = Utilities.GpioVersion();
+            BoardType = Constants.GetBoardType(HardwareRevision);
+
+            // Instantiate collections and services.
             Pins = new GpioPinCollection();
             Pads = new GpioPadCollection();
             BankA = new GpioBank(1);
             BankB = new GpioBank(2);
             Timing = new GpioTimingService();
+
+            AppDomain.CurrentDomain.ProcessExit += (s, e) =>
+            {
+                if (IsAvailable == false)
+                    return;
+
+                Setup.GpioTerminate();
+            };
         }
 
         /// <summary>
         /// Gets a value indicating whether the board has been initialized
         /// </summary>
         public static bool IsAvailable { get; }
+
+        /// <summary>
+        /// Gets the hardware revision number.
+        /// </summary>
+        public static long HardwareRevision { get; }
+
+        /// <summary>
+        /// Gets the library version number.
+        /// </summary>
+        public static long LibraryVersion { get; }
+
+        /// <summary>
+        /// Gets the type of the board. See the <see cref="NativeEnums.BoardType"/> enumeration.
+        /// </summary>
+        public static BoardType BoardType { get; }
 
         /// <summary>
         /// Provides access to the pin collection.
@@ -59,27 +93,5 @@
         /// Provides timing and date functions
         /// </summary>
         public static GpioTimingService Timing { get; }
-
-        /// <summary>
-        /// Defines a static destructor with the sole purpose
-        /// of calling a finalizer when the process ends.
-        /// </summary>
-        private sealed class Destructor
-        {
-            /// <summary>
-            /// Finalizes an instance of the <see cref="Destructor"/> class.
-            /// </summary>
-            ~Destructor()
-            {
-                // Stop all timers.
-                foreach (var timer in Timing.Timers)
-                {
-                    try { timer.Value.Stop(); }
-                    catch { /* swallow */ }
-                }
-
-                Setup.GpioTerminate();
-            }
-        }
     }
 }

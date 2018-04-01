@@ -50,10 +50,10 @@
     <Compile Include="ManagedModel\GpioPinInterruptService.cs" />
     <Compile Include="ManagedModel\GpioPinServiceBase.cs" />
     <Compile Include="ManagedModel\GpioPinServoService.cs" />
-    <Compile Include="ManagedModel\GpioTimer.cs" />
-    <Compile Include="ManagedModel\GpioTimerCollection.cs" />
     <Compile Include="ManagedModel\GpioTimingService.cs" />
     <Compile Include="NativeEnums\AllocationMode.cs" />
+    <Compile Include="NativeEnums\BoardType.cs" />
+    <Compile Include="NativeEnums\ConfigFlags.cs" />
     <Compile Include="NativeEnums\CpuPeripheral.cs" />
     <Compile Include="NativeEnums\DmaChannel.cs" />
     <Compile Include="NativeEnums\BitMask.cs" />

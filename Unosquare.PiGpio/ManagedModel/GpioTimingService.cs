@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
+    using NativeEnums;
     using NativeMethods;
-    using NativeTypes;
     using System;
     using System.Threading;
 
@@ -17,14 +17,7 @@
         internal GpioTimingService()
         {
             Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-            Timers = new GpioTimerCollection();
         }
-
-        /// <summary>
-        /// Provides access to the registiered timers.
-        /// Timers execute a block of code every elapsed period of milliseconds.
-        /// </summary>
-        public GpioTimerCollection Timers { get; }
 
         /// <summary>
         /// Gets the Linux epoch (Jan 1, 1970) in UTC.
@@ -34,12 +27,24 @@
         /// <summary>
         /// Gets the number of seconds elapsed since Jan 1, 1970.
         /// </summary>
-        public double SecondsSinceEpoch => Utilities.TimeTime();
+        public double TimestampSeconds => Utilities.TimeTime();
+
+        /// <summary>
+        /// Gets a timestamp since Jan 1, 1970 in microceconds.
+        /// </summary>
+        public long TimestampMicroseconds
+        {
+            get
+            {
+                Utilities.GpioTime(TimeType.Absolute, out var seconds, out var microseconds);
+                return (seconds * 1000000L) + microseconds;
+            }
+        }
 
         /// <summary>
         /// Gets the elapsed time since Jan 1, 1970.
         /// </summary>
-        public TimeSpan ElapsedSinceEpoch => TimeSpan.FromSeconds(SecondsSinceEpoch);
+        public TimeSpan Timestamp => TimeSpan.FromSeconds(TimestampSeconds);
 
         /// <summary>
         /// Sleeps for the given amount of microseconds.
@@ -63,61 +68,51 @@
         public void Sleep(TimeSpan timeSpan) => GpioThread.Sleep(timeSpan);
 
         /// <summary>
-        /// Gets a timestamp since boot time in microceconds.
-        /// Use the <see cref="EndBenchmark"/> to get the number of elapsed microseconds.
-        /// The ticks wrap around every ~72 minutes.
-        /// </summary>
-        /// <returns>A timestamp in microseconds sin boot time.</returns>
-        public long StartBenchmark() => Utilities.GpioTick();
-
-        /// <summary>
-        /// Gets the difference between a timestamp obtained in <see cref="StartBenchmark"/>
-        /// and the current timestamp. Useful to benchmark operations.
-        /// </summary>
-        /// <param name="startBenchmark">The start benchmark.</param>
-        /// <returns>The elapsed time between the start timestamp and the current timestamp.</returns>
-        public long EndBenchmark(long startBenchmark)
-        {
-            var currentTicks = Convert.ToInt64(Utilities.GpioTick());
-            if (currentTicks < startBenchmark)
-                return uint.MaxValue - startBenchmark + currentTicks;
-
-            return currentTicks - startBenchmark;
-        }
-
-        /// <summary>
-        /// Shortcut method to start a POSIX thread.
-        /// Starts the thread automatically
+        /// Shortcut method to start a thread.
+        /// It runs the thread automatically
         /// </summary>
         /// <param name="doWork">The do work.</param>
-        /// <returns>A reference to the POSIX thread.</returns>
-        public GpioThread StartThread(ThreadStart doWork)
+        /// <param name="threadName">Name of the thread.</param>
+        /// <returns>
+        /// A reference to the thread object.
+        /// </returns>
+        public Thread StartThread(Action doWork, string threadName)
         {
-            var thread = new GpioThread(doWork);
+            var thread = new Thread(() => { doWork?.Invoke(); })
+            {
+                IsBackground = true
+            };
+
+            if (string.IsNullOrWhiteSpace(threadName) == false)
+                thread.Name = threadName;
+
             thread.Start();
             return thread;
         }
 
         /// <summary>
-        /// Starts the next available timer with the given period and callback.
+        /// Shortcut method to start a thread.
+        /// It runs the thread automatically
         /// </summary>
-        /// <param name="periodMilliseconds">The period milliseconds. From 10 to 60000</param>
+        /// <param name="doWork">The do work.</param>
+        /// <returns>
+        /// A reference to the thread object.
+        /// </returns>
+        public Thread StartThread(Action doWork)
+        {
+            return StartThread(doWork, null);
+        }
+
+        /// <summary>
+        /// Starts a timer that executes a block of code with the given period.
+        /// </summary>
+        /// <param name="periodMilliseconds">The period in milliseconds.</param>
         /// <param name="callback">The callback.</param>
         /// <returns>A reference to a timer.</returns>
-        /// <exception cref="InvalidOperationException">No more timers are available. Please stop at least one of them and retry this operation.</exception>
-        public GpioTimer StartTimer(int periodMilliseconds, PiGpioTimerDelegate callback)
+        public Timer StartTimer(int periodMilliseconds, Action callback)
         {
-            foreach (var t in Timers)
-            {
-                if (t.Value.IsRunning == false)
-                {
-                    t.Value.Start(periodMilliseconds, callback);
-                    return t.Value;
-                }
-            }
-
-            throw new InvalidOperationException(
-                "No more timers are available. Please stop at least one of them and retry this operation.");
+            var timer = new Timer((s) => { callback?.Invoke(); }, this, 0, periodMilliseconds);
+            return timer;
         }
     }
 }

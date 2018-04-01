@@ -8,6 +8,7 @@
     /// <summary>
     /// Represents a background worker created by the pigpio library.
     /// This class also contains timing and delay mechanisms.
+    /// Please use the standard <see cref="Thread"/> class instead.
     /// </summary>
     /// <seealso cref="IDisposable" />
     public sealed class GpioThread : IDisposable
