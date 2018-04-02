@@ -6,7 +6,8 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// Raw waveform generation methods
+    /// Raw waveform generation methods. These are advanced methods to send pulses on the pins
+    /// with precise timing. It is recommended that the <see cref="Waves"/> methods are used instead.
     /// </summary>
     public static class RawWaves
     {

@@ -20,7 +20,7 @@
         {
             SystemGpio = gpio;
             PinNumber = (int)gpio;
-            IsUserGpio = PinNumber < 32;
+            IsUserGpio = gpio.GetIsUserGpio(Board.BoardType);
             PadId = Constants.GetPad(SystemGpio);
             m_PullMode = Constants.GetDefaultPullMode(SystemGpio);
             Alerts = new GpioPinAlertService(this);

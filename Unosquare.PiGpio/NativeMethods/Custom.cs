@@ -5,6 +5,7 @@
     /// <summary>
     /// Defines method calls for cutom functions.
     /// These calls are reserved but still provided for reference purposes.
+    /// They are unused in the managed model of this library.
     /// </summary>
     public static class Custom
     {

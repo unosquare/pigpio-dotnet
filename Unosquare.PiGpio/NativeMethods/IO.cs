@@ -6,7 +6,8 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// Defines basic IO methods for the GPIO
+    /// Defines fundamental IO methods for the GPIO Pins.
+    /// The bulk of the managed pin functionality is supplied by these methods.
     /// </summary>
     public static partial class IO
     {
@@ -17,7 +18,8 @@
         ///
         /// Arduino style: pinMode.
         ///
-        /// See [[http://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf]] page 102 for an overview of the modes.
+        /// See [[http://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf]]
+        /// page 102 for an overview of the modes.
         /// </summary>
         /// <example>
         /// <code>

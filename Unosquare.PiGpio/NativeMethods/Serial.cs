@@ -5,7 +5,8 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// Exposes methods to read from a serial transmission using bit-banging (software reads).
+    /// Exposes methods to read from a serial transmission using bit-banging (software-based UART).
+    /// Writing requires the use of the <see cref="Waves.GpioWaveAddSerial"/> method.
     /// </summary>
     public static class Serial
     {

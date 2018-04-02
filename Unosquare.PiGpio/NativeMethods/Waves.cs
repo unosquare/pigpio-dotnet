@@ -5,7 +5,8 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// Provides Waveform methods for the pigpio library.
+    /// Provides Waveform methods for the pigpio library. These are methods to send pulses on the pins
+    /// with precise timing.
     /// </summary>
     public static class Waves
     {

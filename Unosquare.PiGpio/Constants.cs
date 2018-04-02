@@ -57,6 +57,45 @@
             throw new BoardException(ResultCode.BadPud, $"Invalid {nameof(GpioPullMode)} '{gpioNumber}'");
         }
 
+        internal static bool GetIsUserGpio(this SystemGpio gpio, BoardType boardType)
+        {
+            var pinNumber = (int)gpio;
+            if (pinNumber < 0 || pinNumber >= 32) return false;
+
+            switch (boardType)
+            {
+                case BoardType.Type1:
+                    {
+                        return pinNumber.IsBetween(0, 1) ||
+                            pinNumber == 4 ||
+                            pinNumber.IsBetween(7, 11) ||
+                            pinNumber.IsBetween(14, 15) ||
+                            pinNumber.IsBetween(17, 18) ||
+                            pinNumber.IsBetween(21, 25);
+                    }
+
+                case BoardType.Type2:
+                    {
+                        return pinNumber.IsBetween(2, 4) ||
+                            pinNumber.IsBetween(7, 11) ||
+                            pinNumber.IsBetween(14, 15) ||
+                            pinNumber.IsBetween(17, 18) ||
+                            pinNumber.IsBetween(22, 25) ||
+                            pinNumber.IsBetween(27, 31);
+                    }
+
+                case BoardType.Type3:
+                    {
+                        return pinNumber.IsBetween(2, 27);
+                    }
+
+                default:
+                    {
+                        return true;
+                    }
+            }
+        }
+
         internal static bool IsBetween(this int number, int min, int max)
         {
             return number >= min && number <= max;

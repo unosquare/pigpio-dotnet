@@ -4,7 +4,8 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// Provides methods for software and hardware based PWM
+    /// Provides methods for software and hardware based PWM services for the GPIO pins.
+    /// All User GPIO pins support PWM.
     /// </summary>
     public static class Pwm
     {
