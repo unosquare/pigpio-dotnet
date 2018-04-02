@@ -159,8 +159,10 @@
 
             lock (SyncLock)
             {
+                // TODO: For some reason passing NULL to cancel the alert makes everything hang!
+                // This looks like a bug in the pigpio library.
                 BoardException.ValidateResult(
-                    IO.GpioSetAlertFunc((UserGpio)Pin.PinNumber, null));
+                    IO.GpioSetAlertFunc((UserGpio)Pin.PinNumber, (g, l, t) => { }));
                 Callback = null;
             }
         }

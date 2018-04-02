@@ -25,6 +25,12 @@
         public DateTime Epoch { get; }
 
         /// <summary>
+        /// Gets the timestamp tick.
+        /// Useful to calculate offsets in Alerts or ISR callbacks
+        /// </summary>
+        public uint TimestampTick => Utilities.GpioTick();
+
+        /// <summary>
         /// Gets the number of seconds elapsed since Jan 1, 1970.
         /// </summary>
         public double TimestampSeconds => Utilities.TimeTime();
