@@ -15,7 +15,7 @@
         protected override void Setup()
         {
             Pin = Board.Pins[4];
-            NativeMethods.IO.GpioSetMode((SystemGpio)Pin.PinNumber, PortMode.Input);
+            Pin.Direction = PinDirection.Input;
             Pin.PullMode = GpioPullMode.Off;
             Pin.Interrupts.EdgeDetection = NativeEnums.EdgeDetection.EitherEdge;
             Pin.Interrupts.TimeoutMilliseconds = 1000;

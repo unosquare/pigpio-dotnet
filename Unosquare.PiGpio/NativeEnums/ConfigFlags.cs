@@ -11,7 +11,7 @@
         /// <summary>
         /// The debug level0
         /// </summary>
-        DebugLevel0 = 0,
+        DebugLevel0 = 1 << 0,
 
         /// <summary>
         /// The debug level1

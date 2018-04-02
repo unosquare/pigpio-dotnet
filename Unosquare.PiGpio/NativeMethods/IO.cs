@@ -32,17 +32,17 @@
         /// <param name="mode">0-7</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_MODE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetMode")]
-        public static extern ResultCode GpioSetMode(SystemGpio gpio, PortMode mode);
+        public static extern ResultCode GpioSetMode(SystemGpio gpio, PinMode mode);
 
         /// <summary>
         /// Gest the current mode for the given GPIO
         /// </summary>
         /// <param name="gpio">The gpio.</param>
         /// <returns>The port mode</returns>
-        public static PortMode GpioGetMode(SystemGpio gpio)
+        public static PinMode GpioGetMode(SystemGpio gpio)
         {
             var result = BoardException.ValidateResult(GpioGetModeUnmanaged(gpio));
-            return (PortMode)result;
+            return (PinMode)result;
         }
 
         /// <summary>

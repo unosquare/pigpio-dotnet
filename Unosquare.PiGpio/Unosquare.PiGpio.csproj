@@ -62,6 +62,7 @@
     <Compile Include="NativeEnums\GpioPadStrength.cs" />
     <Compile Include="NativeEnums\InterfaceFlags.cs" />
     <Compile Include="NativeEnums\LevelChange.cs" />
+    <Compile Include="NativeEnums\PinDirection.cs" />
     <Compile Include="NativeEnums\SeekMode.cs" />
     <Compile Include="NativeEnums\TimeType.cs" />
     <Compile Include="NativeMethods\IO.cs" />
@@ -74,7 +75,7 @@
     <Compile Include="NativeTypes\Delegates.cs" />
     <Compile Include="NativeEnums\EdgeDetection.cs" />
     <Compile Include="NativeEnums\UserGpio.cs" />
-    <Compile Include="NativeEnums\PortMode.cs" />
+    <Compile Include="NativeEnums\PinMode.cs" />
     <Compile Include="NativeEnums\GpioPullMode.cs" />
     <Compile Include="NativeTypes\GpioPulse.cs" />
     <Compile Include="NativeTypes\GpioSample.cs" />

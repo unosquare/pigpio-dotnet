@@ -62,7 +62,7 @@
                 // Board.Timing.SleepMicros(30);
 
                 // ime to read. The alrets should fire ok now.
-                IO.GpioSetMode((SystemGpio)Pin.PinNumber, PortMode.Input);
+                Pin.Direction = PinDirection.Input;
 
                 // Reading the data
                 LastTick = Board.Timing.TimestampTick;

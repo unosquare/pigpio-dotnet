@@ -62,6 +62,33 @@
         }
 
         /// <summary>
+        /// Gets or sets the direction of the pin.
+        /// </summary>
+        /// <value>
+        /// The direction.
+        /// </value>
+        /// <exception cref="InvalidOperationException">Unable to set the pin mode to an alternative function.</exception>
+        public PinDirection Direction
+        {
+            get
+            {
+                var result = IO.GpioGetMode((SystemGpio)PinNumber);
+                if (result == PinMode.Input || result == PinMode.Output)
+                    return (PinDirection)result;
+
+                return PinDirection.Alternative;
+            }
+            set
+            {
+                if (value != PinDirection.Input && value != PinDirection.Output)
+                    throw new InvalidOperationException("Unable to set the pin mode to an alternative function.");
+
+                BoardException.ValidateResult(
+                    IO.GpioSetMode((SystemGpio)PinNumber, (PinMode)value));
+            }
+        }
+
+        /// <summary>
         /// Gets or sets the digital value of the pin.
         /// This call actively reads or writes the pin.
         /// </summary>
