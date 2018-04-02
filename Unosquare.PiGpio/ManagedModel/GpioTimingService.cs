@@ -59,19 +59,56 @@
         /// </summary>
         /// <param name="microsecs">The micro seconds.</param>
         /// <returns>Returns the real elapsed microseconds.</returns>
-        public long SleepMicros(long microsecs) => GpioThread.SleepMicros(microsecs);
+        public long SleepMicros(long microsecs)
+        {
+            if (microsecs <= 0)
+                return 0L;
+
+            if (microsecs <= uint.MaxValue)
+                return Threads.GpioDelay(Convert.ToUInt32(microsecs));
+
+            var componentSeconds = microsecs / 1000000d;
+            var componentMicrosecs = microsecs % 1000000d;
+
+            if (componentSeconds <= int.MaxValue && componentMicrosecs <= int.MaxValue)
+            {
+                BoardException.ValidateResult(
+                    Threads.GpioSleep(
+                        TimeType.Relative,
+                        Convert.ToInt32(componentSeconds),
+                        Convert.ToInt32(componentMicrosecs)));
+
+                return microsecs;
+            }
+
+            Threads.TimeSleep(componentSeconds);
+            return microsecs;
+        }
 
         /// <summary>
         /// Sleeps for the specified milliseconds.
         /// </summary>
         /// <param name="millisecs">The milliseconds to sleep for.</param>
-        public void Sleep(double millisecs) => GpioThread.Sleep(millisecs);
+        public void Sleep(double millisecs)
+        {
+            if (millisecs <= 0d)
+                return;
+
+            var microsecs = Convert.ToInt64(millisecs * 1000d);
+            SleepMicros(microsecs);
+        }
 
         /// <summary>
         /// Sleeps for the specified time span.
         /// </summary>
         /// <param name="timeSpan">The time span to sleep for.</param>
-        public void Sleep(TimeSpan timeSpan) => GpioThread.Sleep(timeSpan);
+        public void Sleep(TimeSpan timeSpan)
+        {
+            if (timeSpan.TotalSeconds <= 0d)
+                return;
+
+            Threads.TimeSleep(timeSpan.TotalSeconds);
+        }
 
         /// <summary>
         /// Shortcut method to start a thread.

@@ -95,7 +95,6 @@
     <Compile Include="Board.cs" />
     <Compile Include="BoardException.cs" />
     <Compile Include="ManagedModel\GpioPin.cs" />
-    <Compile Include="ManagedModel\GpioThread.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NativeTypes\RawCBS.cs" />
     <Compile Include="NativeTypes\RawSpiData.cs" />
