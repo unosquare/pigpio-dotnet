@@ -103,5 +103,26 @@
             BoardException.ValidateResult(
                 IO.GpioTrigger((UserGpio)PinNumber, Convert.ToUInt32(microSecs), value));
         }
+
+        /// <summary>
+        /// The fastest way to read from the pin.
+        /// No error checking is performed.
+        /// </summary>
+        /// <returns>Returns a 0 or a 1 for success. A negative number for error.</returns>
+        public int Read()
+        {
+            return IO.GpioReadUnmanaged((SystemGpio)PinNumber);
+        }
+
+        /// <summary>
+        /// The fastest way to write to the pin.
+        /// Anything non-zero is a high. No error checking is performed.
+        /// </summary>
+        /// <param name="value">The value.</param>
+        /// <returns>The result code. 0 (OK) for success.</returns>
+        public ResultCode Write(int value)
+        {
+            return IO.GpioWriteUnmanaged((SystemGpio)PinNumber, (DigitalValue)(value == 0 ? 0 : 1));
+        }
     }
 }

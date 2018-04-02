@@ -33,7 +33,7 @@
 
             // Instantiate collections and services.
             Pins = new GpioPinCollection();
-            Pads = new GpioPadCollection();
+            GpioPads = new GpioPadCollection();
             BankA = new GpioBank(1);
             BankB = new GpioBank(2);
             Timing = new GpioTimingService();
@@ -75,7 +75,7 @@
         /// <summary>
         /// Provides access to the electrical pads.
         /// </summary>
-        public static GpioPadCollection Pads { get; }
+        public static GpioPadCollection GpioPads { get; }
 
         /// <summary>
         /// Provides access to GPIO bank 1 (or A)
