@@ -29,6 +29,11 @@
                 else
                 {
                     $"Pin: {pin} | Level: {level} | Tick: {tick} | Elapsed: {((tick - PreviousTick) / 1000d):0.000} ms.".Info(Name);
+
+                    if (level == LevelChange.LowToHigh)
+                    {
+                        Board.Pins[17].Write(1);
+                    }
                 }
                 
                 PreviousTick = tick;
