@@ -66,22 +66,22 @@
             {
                 case BoardType.Type1:
                     {
-                        return pinNumber.IsBetween(0, 1) ||
-                            pinNumber == 4 ||
-                            pinNumber.IsBetween(7, 11) ||
-                            pinNumber.IsBetween(14, 15) ||
-                            pinNumber.IsBetween(17, 18) ||
-                            pinNumber.IsBetween(21, 25);
+                        return pinNumber.IsBetween(0, 1)
+                            || pinNumber == 4
+                            || pinNumber.IsBetween(7, 11)
+                            || pinNumber.IsBetween(14, 15)
+                            || pinNumber.IsBetween(17, 18)
+                            || pinNumber.IsBetween(21, 25);
                     }
 
                 case BoardType.Type2:
                     {
-                        return pinNumber.IsBetween(2, 4) ||
-                            pinNumber.IsBetween(7, 11) ||
-                            pinNumber.IsBetween(14, 15) ||
-                            pinNumber.IsBetween(17, 18) ||
-                            pinNumber.IsBetween(22, 25) ||
-                            pinNumber.IsBetween(27, 31);
+                        return pinNumber.IsBetween(2, 4)
+                            || pinNumber.IsBetween(7, 11)
+                            || pinNumber.IsBetween(14, 15)
+                            || pinNumber.IsBetween(17, 18)
+                            || pinNumber.IsBetween(22, 25)
+                            || pinNumber.IsBetween(27, 31);
                     }
 
                 case BoardType.Type3:

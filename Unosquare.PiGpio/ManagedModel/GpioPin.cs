@@ -9,7 +9,6 @@
     /// </summary>
     public sealed class GpioPin
     {
-        private SystemGpio SystemGpio = default(SystemGpio);
         private GpioPullMode m_PullMode = GpioPullMode.Off;
 
         /// <summary>
@@ -18,11 +17,11 @@
         /// <param name="gpio">The gpio.</param>
         internal GpioPin(SystemGpio gpio)
         {
-            SystemGpio = gpio;
+            PinGpio = gpio;
             PinNumber = (int)gpio;
             IsUserGpio = gpio.GetIsUserGpio(Board.BoardType);
-            PadId = Constants.GetPad(SystemGpio);
-            m_PullMode = Constants.GetDefaultPullMode(SystemGpio);
+            PadId = Constants.GetPad(PinGpio);
+            m_PullMode = Constants.GetDefaultPullMode(PinGpio);
             Alerts = new GpioPinAlertService(this);
             Interrupts = new GpioPinInterruptService(this);
             Servo = new GpioPinServoService(this);
@@ -32,6 +31,11 @@
         /// Gets the BCM pin identifier.
         /// </summary>
         public int PinNumber { get; }
+
+        /// <summary>
+        /// Gets the pin number as a system GPIO Identifier.
+        /// </summary>
+        public SystemGpio PinGpio { get; }
 
         /// <summary>
         /// Gets a value indicating whether this pin is a user gpio (0 to 31).
@@ -56,7 +60,7 @@
             }
             set
             {
-                BoardException.ValidateResult(IO.GpioSetPullUpDown(SystemGpio, value));
+                BoardException.ValidateResult(IO.GpioSetPullUpDown(PinGpio, value));
                 m_PullMode = value;
             }
         }
@@ -72,7 +76,7 @@
         {
             get
             {
-                var result = IO.GpioGetMode((SystemGpio)PinNumber);
+                var result = IO.GpioGetMode(PinGpio);
                 if (result == PinMode.Input || result == PinMode.Output)
                     return (PinDirection)result;
 
@@ -84,8 +88,16 @@
                     throw new InvalidOperationException("Unable to set the pin mode to an alternative function.");
 
                 BoardException.ValidateResult(
-                    IO.GpioSetMode((SystemGpio)PinNumber, (PinMode)value));
+                    IO.GpioSetMode(PinGpio, (PinMode)value));
             }
+        }
+
+        /// <summary>
+        /// Gets the current pin mode.
+        /// </summary>
+        public PinMode Mode
+        {
+            get => IO.GpioGetMode(PinGpio);
         }
 
         /// <summary>
@@ -94,8 +106,8 @@
         /// </summary>
         public bool Value
         {
-            get => IO.GpioRead(SystemGpio);
-            set => BoardException.ValidateResult(IO.GpioWrite(SystemGpio, value));
+            get => IO.GpioRead(PinGpio);
+            set => BoardException.ValidateResult(IO.GpioWrite(PinGpio, value));
         }
 
         /// <summary>
@@ -138,7 +150,7 @@
         /// <returns>Returns a 0 or a 1 for success. A negative number for error.</returns>
         public int Read()
         {
-            return IO.GpioReadUnmanaged((SystemGpio)PinNumber);
+            return IO.GpioReadUnmanaged(PinGpio);
         }
 
         /// <summary>
@@ -149,7 +161,7 @@
         /// <returns>The result code. 0 (OK) for success.</returns>
         public ResultCode Write(int value)
         {
-            return IO.GpioWriteUnmanaged((SystemGpio)PinNumber, (DigitalValue)(value == 0 ? 0 : 1));
+            return IO.GpioWriteUnmanaged(PinGpio, (DigitalValue)(value == 0 ? 0 : 1));
         }
     }
 }

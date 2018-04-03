@@ -94,7 +94,7 @@
                     throw new ArgumentException("A callback is already registered. Clear the current callback before registering a new one.", nameof(callback));
 
                 BoardException.ValidateResult(
-                    IO.GpioSetIsrFunc((SystemGpio)Pin.PinNumber, edgeDetection, timeoutMilliseconds, callback));
+                    IO.GpioSetIsrFunc(Pin.PinGpio, edgeDetection, timeoutMilliseconds, callback));
 
                 m_EdgeDetection = edgeDetection;
                 m_TimeoutMilliseconds = timeoutMilliseconds;
@@ -124,7 +124,7 @@
             lock (SyncLock)
             {
                 BoardException.ValidateResult(
-                    IO.GpioSetIsrFunc((SystemGpio)Pin.PinNumber, EdgeDetection, 0, null));
+                    IO.GpioSetIsrFunc(Pin.PinGpio, EdgeDetection, 0, null));
                 Callback = null;
             }
         }
