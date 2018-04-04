@@ -8,7 +8,7 @@
     /// <summary>
     /// Provides methods for SPI bus management.
     /// </summary>
-    public static class SpiBus
+    public static class Spi
     {
         /// <summary>
         /// This function returns a handle for the SPI device on the channel.
