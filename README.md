@@ -5,7 +5,7 @@ The premise is simple: using the powerful features of C# to control the ARM peri
 
 As a programmer, the choice is yours. You can call the netive methods either directly or via the comprhensive API of PiGpio.net.
 
-## Example of blinking an LED with native calls
+## Example of blinking an LED with direct native calls
 
 ```csharp
 Setup.GpioInitialise();
@@ -21,10 +21,10 @@ while (true)
 }
 ```
 
-## Example of blinking an LED with the PiGpio.net
+## Example of blinking an LED with the PiGpio.net Managed API
 
 ```csharp
-var pin = PiGpioController.Pins[18];
+var pin = Board.Pins[18];
 
 while (true)
 {
