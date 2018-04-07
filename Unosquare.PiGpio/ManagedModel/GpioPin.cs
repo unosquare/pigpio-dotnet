@@ -22,9 +22,14 @@
             IsUserGpio = gpio.GetIsUserGpio(Board.BoardType);
             PadId = Constants.GetPad(PinGpio);
             m_PullMode = Constants.GetDefaultPullMode(PinGpio);
+
+            // Instantiate the pin services
             Alerts = new GpioPinAlertService(this);
             Interrupts = new GpioPinInterruptService(this);
             Servo = new GpioPinServoService(this);
+            SoftPwm = new GpioPinSoftPwmService(this);
+            Clock = new GpioPinClockService(this);
+            Pwm = new GpioPinPwmService(this);
         }
 
         /// <summary>
@@ -130,6 +135,26 @@
         /// Use the PWM service instead if you wish further flexibility.
         /// </summary>
         public GpioPinServoService Servo { get; }
+
+        /// <summary>
+        /// Provides a sfotware based PWM pulse generator.
+        /// This and the servo functionality use the DMA and PWM or PCM peripherals
+        /// to control and schedule the pulse lengths and dutycycles. Using hardware based
+        /// PWM is preferred.
+        /// </summary>
+        public GpioPinSoftPwmService SoftPwm { get; }
+
+        /// <summary>
+        /// Gets a hardware-based clock service. A clock channel spans multiple
+        /// pins and therefore, clock frequency is not necessarily a per-pin setting.
+        /// </summary>
+        public GpioPinClockService Clock { get; }
+
+        /// <summary>
+        /// Gets the hardware-based PWM services associated to the pin.
+        /// Hardware PWM groups several pins by their PWM channel.
+        /// </summary>
+        public GpioPinPwmService Pwm { get; }
 
         /// <summary>
         /// Pulsates the pin for the specified micro seconds.

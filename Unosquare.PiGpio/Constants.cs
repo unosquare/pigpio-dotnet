@@ -1,6 +1,8 @@
 ﻿namespace Unosquare.PiGpio
 {
     using NativeEnums;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the constants used by the libpigpio library
@@ -8,6 +10,177 @@
     public static class Constants
     {
         internal const string PiGpioLibrary = "libpigpio.so";
+
+        internal static readonly int[] HardwareClockPins0 = new int[] { 4, 20, 32, 34 };
+
+        internal static readonly int[] HardwareClockPins2 = new int[] { 6, 43 };
+
+        internal static readonly Dictionary<ResultCode, string> ResultCodeMessages = new Dictionary<ResultCode, string>
+        {
+            { ResultCode.Ok, "OK result code" },
+            { ResultCode.InitFailed, "gpioInitialise failed" },
+            { ResultCode.BadUserGpio, "GPIO not 0-31" },
+            { ResultCode.BadGpio, "GPIO not 0-53" },
+            { ResultCode.BadMode, "mode not 0-7" },
+            { ResultCode.BadLevel, "level not 0-1" },
+            { ResultCode.BadPud, "pud not 0-2" },
+            { ResultCode.BadPulsewidth, "pulsewidth not 0 or 500-2500" },
+            { ResultCode.BadDutycycle, "dutycycle outside set range" },
+            { ResultCode.BadTimer, "timer not 0-9" },
+            { ResultCode.BadMs, "ms not 10-60000" },
+            { ResultCode.BadTimetype, "timetype not 0-1" },
+            { ResultCode.BadSeconds, "seconds &lt; 0" },
+            { ResultCode.BadMicros, "micros not 0-999999" },
+            { ResultCode.TimerFailed, "gpioSetTimerFunc failed" },
+            { ResultCode.BadWdogTimeout, "timeout not 0-60000" },
+            { ResultCode.NoAlertFunc, "DEPRECATED" },
+            { ResultCode.BadClkPeriph, "clock peripheral not 0-1" },
+            { ResultCode.BadClkSource, "DEPRECATED" },
+            { ResultCode.BadClkMicros, "clock micros not 1, 2, 4, 5, 8, or 10" },
+            { ResultCode.BadBufMillis, "buf millis not 100-10000" },
+            { ResultCode.BadDutyrange, "dutycycle range not 25-40000" },
+            { ResultCode.BadDutyRange, "DEPRECATED (use PI_BAD_DUTYRANGE)" },
+            { ResultCode.BadSignum, "signum not 0-63" },
+            { ResultCode.BadPathname, "can't open pathname" },
+            { ResultCode.NoHandle, "no handle available" },
+            { ResultCode.BadHandle, "unknown handle" },
+            { ResultCode.BadIfFlags, "ifFlags &gt; 4" },
+            { ResultCode.BadChannel, "DMA channel not 0-14" },
+            { ResultCode.BadPrimChannel, "DMA primary channel not 0-14" },
+            { ResultCode.BadSocketPort, "socket port not 1024-32000" },
+            { ResultCode.BadFifoCommand, "unrecognized fifo command" },
+            { ResultCode.BadSecoChannel, "DMA secondary channel not 0-6" },
+            { ResultCode.NotInitialised, "function called before gpioInitialise" },
+            { ResultCode.Initialised, "function called after gpioInitialise" },
+            { ResultCode.BadWaveMode, "waveform mode not 0-3" },
+            { ResultCode.BadCfgInternal, "bad parameter in gpioCfgInternals call" },
+            { ResultCode.BadWaveBaud, "baud rate not 50-250K(RX)/50-1M(TX)" },
+            { ResultCode.TooManyPulses, "waveform has too many pulses" },
+            { ResultCode.TooManyChars, "waveform has too many chars" },
+            { ResultCode.NotSerialGpio, "no bit bang serial read on GPIO" },
+            { ResultCode.BadSerialStruc, "bad (null) serial structure parameter" },
+            { ResultCode.BadSerialBuf, "bad (null) serial buf parameter" },
+            { ResultCode.NotPermitted, "GPIO operation not permitted" },
+            { ResultCode.SomePermitted, "one or more GPIO not permitted" },
+            { ResultCode.BadWvscCommnd, "bad WVSC subcommand" },
+            { ResultCode.BadWvsmCommnd, "bad WVSM subcommand" },
+            { ResultCode.BadWvspCommnd, "bad WVSP subcommand" },
+            { ResultCode.BadPulselen, "trigger pulse length not 1-100" },
+            { ResultCode.BadScript, "invalid script" },
+            { ResultCode.BadScriptId, "unknown script id" },
+            { ResultCode.BadSerOffset, "add serial data offset &gt; 30 minutes" },
+            { ResultCode.GpioInUse, "GPIO already in use" },
+            { ResultCode.BadSerialCount, "must read at least a byte at a time" },
+            { ResultCode.BadParamNum, "script parameter id not 0-9" },
+            { ResultCode.DupTag, "script has duplicate tag" },
+            { ResultCode.TooManyTags, "script has too many tags" },
+            { ResultCode.BadScriptCmd, "illegal script command" },
+            { ResultCode.BadVarNum, "script variable id not 0-149" },
+            { ResultCode.NoScriptRoom, "no more room for scripts" },
+            { ResultCode.NoMemory, "can't allocate temporary memory" },
+            { ResultCode.SockReadFailed, "socket read failed" },
+            { ResultCode.SockWritFailed, "socket write failed" },
+            { ResultCode.TooManyParam, "too many script parameters (&gt; 10)" },
+            { ResultCode.NotHalted, "DEPRECATED" },
+            { ResultCode.ScriptNotReady, "script initialising" },
+            { ResultCode.BadTag, "script has unresolved tag" },
+            { ResultCode.BadMicsDelay, "bad MICS delay (too large)" },
+            { ResultCode.BadMilsDelay, "bad MILS delay (too large)" },
+            { ResultCode.BadWaveId, "non existent wave id" },
+            { ResultCode.TooManyCbs, "No more CBs for waveform" },
+            { ResultCode.TooManyOol, "No more OOL for waveform" },
+            { ResultCode.EmptyWaveform, "attempt to create an empty waveform" },
+            { ResultCode.NoWaveformId, "no more waveforms" },
+            { ResultCode.I2cOpenFailed, "can't open I2C device" },
+            { ResultCode.SerOpenFailed, "can't open serial device" },
+            { ResultCode.SpiOpenFailed, "can't open SPI device" },
+            { ResultCode.BadI2cBus, "bad I2C bus" },
+            { ResultCode.BadI2cAddr, "bad I2C address" },
+            { ResultCode.BadSpiChannel, "bad SPI channel" },
+            { ResultCode.BadFlags, "bad i2c/spi/ser open flags" },
+            { ResultCode.BadSpiSpeed, "bad SPI speed" },
+            { ResultCode.BadSerDevice, "bad serial device name" },
+            { ResultCode.BadSerSpeed, "bad serial baud rate" },
+            { ResultCode.BadParam, "bad i2c/spi/ser parameter" },
+            { ResultCode.I2cWriteFailed, "i2c write failed" },
+            { ResultCode.I2cReadFailed, "i2c read failed" },
+            { ResultCode.BadSpiCount, "bad SPI count" },
+            { ResultCode.SerWriteFailed, "ser write failed" },
+            { ResultCode.SerReadFailed, "ser read failed" },
+            { ResultCode.SerReadNoData, "ser read no data available" },
+            { ResultCode.UnknownCommand, "unknown command" },
+            { ResultCode.SpiXferFailed, "spi xfer/read/write failed" },
+            { ResultCode.BadPointer, "bad (NULL) pointer" },
+            { ResultCode.NoAuxSpi, "no auxiliary SPI on Pi A or B" },
+            { ResultCode.NotPwmGpio, "GPIO is not in use for PWM" },
+            { ResultCode.NotServoGpio, "GPIO is not in use for servo pulses" },
+            { ResultCode.NotHclkGpio, "GPIO has no hardware clock" },
+            { ResultCode.NotHpwmGpio, "GPIO has no hardware PWM" },
+            { ResultCode.BadHpwmFreq, "hardware PWM frequency not 1-125M" },
+            { ResultCode.BadHpwmDuty, "hardware PWM dutycycle not 0-1M" },
+            { ResultCode.BadHclkFreq, "hardware clock frequency not 4689-250M" },
+            { ResultCode.BadHclkPass, "need password to use hardware clock 1" },
+            { ResultCode.HpwmIllegal, "illegal, PWM in use for main clock" },
+            { ResultCode.BadDatabits, "serial data bits not 1-32" },
+            { ResultCode.BadStopbits, "serial (half) stop bits not 2-8" },
+            { ResultCode.MsgToobig, "socket/pipe message too big" },
+            { ResultCode.BadMallocMode, "bad memory allocation mode" },
+            { ResultCode.TooManySegs, "too many I2C transaction segments" },
+            { ResultCode.BadI2cSeg, "an I2C transaction segment failed" },
+            { ResultCode.BadSmbusCmd, "SMBus command not supported by driver" },
+            { ResultCode.NotI2cGpio, "no bit bang I2C in progress on GPIO" },
+            { ResultCode.BadI2cWlen, "bad I2C write length" },
+            { ResultCode.BadI2cRlen, "bad I2C read length" },
+            { ResultCode.BadI2cCmd, "bad I2C command" },
+            { ResultCode.BadI2cBaud, "bad I2C baud rate, not 50-500k" },
+            { ResultCode.ChainLoopCnt, "bad chain loop count" },
+            { ResultCode.BadChainLoop, "empty chain loop" },
+            { ResultCode.ChainCounter, "too many chain counters" },
+            { ResultCode.BadChainCmd, "bad chain command" },
+            { ResultCode.BadChainDelay, "bad chain delay micros" },
+            { ResultCode.ChainNesting, "chain counters nested too deeply" },
+            { ResultCode.ChainTooBig, "chain is too long" },
+            { ResultCode.Deprecated, "deprecated function removed" },
+            { ResultCode.BadSerInvert, "bit bang serial invert not 0 or 1" },
+            { ResultCode.BadEdge, "bad ISR edge value, not 0-2" },
+            { ResultCode.BadIsrInit, "bad ISR initialisation" },
+            { ResultCode.BadForever, "loop forever must be last command" },
+            { ResultCode.BadFilter, "bad filter parameter" },
+            { ResultCode.BadPad, "bad pad number" },
+            { ResultCode.BadStrength, "bad pad drive strength" },
+            { ResultCode.FilOpenFailed, "file open failed" },
+            { ResultCode.BadFileMode, "bad file mode" },
+            { ResultCode.BadFileFlag, "bad file flag" },
+            { ResultCode.BadFileRead, "bad file read" },
+            { ResultCode.BadFileWrite, "bad file write" },
+            { ResultCode.FileNotRopen, "file not open for read" },
+            { ResultCode.FileNotWopen, "file not open for write" },
+            { ResultCode.BadFileSeek, "bad file seek" },
+            { ResultCode.NoFileMatch, "no files match pattern" },
+            { ResultCode.NoFileAccess, "no permission to access file" },
+            { ResultCode.FileIsADir, "file is a directory" },
+            { ResultCode.BadShellStatus, "bad shell return status" },
+            { ResultCode.BadScriptName, "bad script name" },
+            { ResultCode.BadSpiBaud, "bad SPI baud rate, not 50-500k" },
+            { ResultCode.NotSpiGpio, "no bit bang SPI in progress on GPIO" },
+            { ResultCode.BadEventId, "bad event id" },
+            { ResultCode.CmdInterrupted, "Used by Python" },
+            { ResultCode.PigifErr0, "Documentation not available" },
+            { ResultCode.PigifErr99, "Documentation not available" },
+            { ResultCode.CustomErr0, "Documentation not available" },
+            { ResultCode.CustomErr999, "Documentation not available" },
+        };
+
+        internal static string GetResultCodeMessage(int resultCode)
+        {
+            if (resultCode >= 0) return ResultCodeMessages[ResultCode.Ok];
+            if (ResultCodeMessages.ContainsKey((ResultCode)resultCode))
+            {
+                return ResultCodeMessages[(ResultCode)resultCode];
+            }
+
+            return "(Unknown error code)";
+        }
 
         internal static BoardType GetBoardType(long hardwareRevision)
         {
@@ -31,7 +204,7 @@
             else if (gpioNumber.IsBetween(46, 53))
                 return GpioPadId.Pad46To53;
 
-            throw new BoardException(ResultCode.BadPad, $"Invalid {nameof(SystemGpio)} '{gpioNumber}'");
+            throw new ArgumentException($"Unable to get Pad identifier. Argument '{nameof(gpio)}' is invalid.");
         }
 
         internal static GpioPullMode GetDefaultPullMode(SystemGpio gpio)
@@ -54,7 +227,7 @@
             if (gpioNumber.IsBetween(46, 53))
                 return GpioPullMode.Up;
 
-            throw new BoardException(ResultCode.BadPud, $"Invalid {nameof(GpioPullMode)} '{gpioNumber}'");
+            throw new ArgumentException($"Unable to get pull mode for {nameof(gpio)}. Invalid {nameof(GpioPullMode)} for GPIO '{gpioNumber}'");
         }
 
         internal static bool GetIsUserGpio(this SystemGpio gpio, BoardType boardType)

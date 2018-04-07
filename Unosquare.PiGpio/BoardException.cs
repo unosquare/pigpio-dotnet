@@ -13,20 +13,8 @@
         /// Initializes a new instance of the <see cref="BoardException"/> class.
         /// </summary>
         /// <param name="resultCode">The result code.</param>
-        /// <param name="message">The message.</param>
-        public BoardException(ResultCode resultCode, string message)
-            : base(message)
-        {
-            ResultCode = resultCode;
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BoardException"/> class.
-        /// </summary>
-        /// <param name="resultCode">The result code.</param>
-        /// <param name="message">The message.</param>
-        public BoardException(int resultCode, string message)
-            : base(message)
+        private BoardException(int resultCode)
+            : base(GetStarndardMessage(resultCode))
         {
             ResultCode = (ResultCode)resultCode;
         }
@@ -37,7 +25,7 @@
         public ResultCode ResultCode { get; }
 
         /// <summary>
-        /// Validates the result.
+        /// Validates the result. This call is typically used for Setter methods
         /// </summary>
         /// <param name="resultCode">The result code.</param>
         /// <returns>The Result Code</returns>
@@ -47,28 +35,27 @@
         }
 
         /// <summary>
-        /// Validates the result.
+        /// Validates the result. This call is typically used for Getter methods.
         /// </summary>
         /// <param name="resultCode">The result code.</param>
         /// <returns>The integer result</returns>
         internal static int ValidateResult(int resultCode)
         {
-            return ValidateResult(resultCode, $"GPIO Exception Encountered. Error Code {resultCode}: {(ResultCode)resultCode}.");
+            if (resultCode < 0)
+                throw new BoardException(resultCode);
+
+            return resultCode;
         }
 
         /// <summary>
-        /// Validates the result.
+        /// Gets the starndard message.
         /// </summary>
         /// <param name="resultCode">The result code.</param>
-        /// <param name="message">The message.</param>
-        /// <returns>The integer result</returns>
-        /// <exception cref="BoardException">When the result is negative</exception>
-        internal static int ValidateResult(int resultCode, string message)
+        /// <returns>The standard corresponding error message based on the result code.</returns>
+        private static string GetStarndardMessage(int resultCode)
         {
-            if (resultCode < 0)
-                throw new BoardException(resultCode, message);
-
-            return resultCode;
+            return $"Hardware Exception Encountered. Error Code {resultCode}: {(ResultCode)resultCode}: " +
+                $"{Constants.GetResultCodeMessage(resultCode)}";
         }
     }
 }
