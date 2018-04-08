@@ -10,6 +10,8 @@
     /// </summary>
     public static class Spi
     {
+        #region Hardware SPI
+
         /// <summary>
         /// This function returns a handle for the SPI device on the channel.
         /// Data will be transferred at baud bits per second.  The flags may
@@ -78,12 +80,15 @@
         ///  2    1   0
         ///  3    1   1
         /// </remarks>
-        /// <param name="spiChan">0-1 (0-2 for the auxiliary SPI device)</param>
-        /// <param name="baud">32K-125M (values above 30M are unlikely to work)</param>
+        /// <param name="spiChannel">0-1 (0-2 for the auxiliary SPI device)</param>
+        /// <param name="baudRate">32K-125M (values above 30M are unlikely to work)</param>
         /// <param name="spiFlags">see below</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_BAD_SPI_CHANNEL, PI_BAD_SPI_SPEED, PI_BAD_FLAGS, PI_NO_AUX_SPI, or PI_SPI_OPEN_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiOpen")]
-        public static extern int SpiOpen(uint spiChan, uint baud, uint spiFlags);
+        public static UIntPtr SpiOpen(SpiChannelId spiChannel, int baudRate, SpiFlags spiFlags)
+        {
+            var result = BoardException.ValidateResult(SpiOpenUnmanaged(spiChannel, Convert.ToUInt32(baudRate), spiFlags));
+            return new UIntPtr(Convert.ToUInt32(result));
+        }
 
         /// <summary>
         /// This functions closes the SPI device identified by the handle.
@@ -101,11 +106,19 @@
         /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
         /// </summary>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
-        /// <param name="buf">an array to receive the read data bytes</param>
-        /// <param name="count">the number of bytes to read</param>
+        /// <param name="count">The max number of bytes to read</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiRead")]
-        public static extern int SpiRead(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buf, uint count);
+        public static byte[] SpiRead(UIntPtr handle, int count)
+        {
+            var buffer = new byte[count];
+            var result = BoardException.ValidateResult(SpiReadUnmanaged(handle, buffer, Convert.ToUInt32(count)));
+            if (result == buffer.Length)
+                return buffer;
+
+            var output = new byte[result];
+            Buffer.BlockCopy(buffer, 0, output, 0, result);
+            return output;
+        }
 
         /// <summary>
         /// This function writes count bytes of data from buf to the SPI
@@ -115,25 +128,36 @@
         /// </summary>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
         /// <param name="buffer">the data bytes to write</param>
-        /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiWrite")]
-        public static extern int SpiWrite(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
+        public static int SpiWrite(UIntPtr handle, byte[] buffer)
+        {
+            var reuslt = BoardException.ValidateResult(SpiWriteUnmanaged(handle, buffer, Convert.ToUInt32(buffer.Length)));
+            return reuslt;
+        }
 
         /// <summary>
         /// This function transfers count bytes of data from txBuf to the SPI
-        /// device associated with the handle.  Simultaneously count bytes of
+        /// device associated with the handle. Simultaneously count bytes of
         /// data are read from the device and placed in rxBuf.
         ///
         /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
         /// </summary>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
-        /// <param name="txBuf">the data bytes to write</param>
-        /// <param name="rxBuf">the received data bytes</param>
-        /// <param name="count">the number of bytes to transfer</param>
+        /// <param name="transmitBuffer">the data bytes to write</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiXfer")]
-        public static extern int SpiXfer(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] txBuf, [In, MarshalAs(UnmanagedType.LPArray)] byte[] rxBuf, uint count);
+        public static byte[] SpiXfer(UIntPtr handle, byte[] transmitBuffer)
+        {
+            var receiveBuffer = new byte[transmitBuffer.Length];
+            var result = BoardException.ValidateResult(SpiXferUnmanaged(handle, transmitBuffer, receiveBuffer, Convert.ToUInt32(receiveBuffer.Length)));
+            if (result == receiveBuffer.Length)
+                return receiveBuffer;
+
+            var output = new byte[result];
+            Buffer.BlockCopy(receiveBuffer, 0, output, 0, result);
+            return output;
+        }
+
+        #endregion
 
         /// <summary>
         /// This function selects a set of GPIO for bit banging SPI with
@@ -389,6 +413,126 @@
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bscXfer")]
         public static extern int BscXfer(BscTransfer bscTransfer);
+
+        #endregion
+
+        #region Unmanaged Methods
+
+        /// <summary>
+        /// This function returns a handle for the SPI device on the channel.
+        /// Data will be transferred at baud bits per second.  The flags may
+        /// be used to modify the default behaviour of 4-wire operation, mode 0,
+        /// active low chip select.
+        ///
+        /// An auxiliary SPI device is available on all models but the
+        /// A and B and may be selected by setting the A bit in the flags.
+        /// The auxiliary device has 3 chip selects and a selectable word
+        /// size in bits.
+        ///
+        /// spiFlags consists of the least significant 22 bits.
+        ///
+        /// mm defines the SPI mode.
+        ///
+        /// Warning: modes 1 and 3 do not appear to work on the auxiliary device.
+        ///
+        /// px is 0 if CEx is active low (default) and 1 for active high.
+        ///
+        /// ux is 0 if the CEx GPIO is reserved for SPI (default) and 1 otherwise.
+        ///
+        /// A is 0 for the standard SPI device, 1 for the auxiliary SPI.
+        ///
+        /// W is 0 if the device is not 3-wire, 1 if the device is 3-wire.  Standard
+        /// SPI device only.
+        ///
+        /// nnnn defines the number of bytes (0-15) to write before switching
+        /// the MOSI line to MISO to read data.  This field is ignored
+        /// if W is not set.  Standard SPI device only.
+        ///
+        /// T is 1 if the least significant bit is transmitted on MOSI first, the
+        /// default (0) shifts the most significant bit out first.  Auxiliary SPI
+        /// device only.
+        ///
+        /// R is 1 if the least significant bit is received on MISO first, the
+        /// default (0) receives the most significant bit first.  Auxiliary SPI
+        /// device only.
+        ///
+        /// bbbbbb defines the word size in bits (0-32).  The default (0)
+        /// sets 8 bits per word.  Auxiliary SPI device only.
+        ///
+        /// The <see cref="SpiRead"/>, <see cref="SpiWrite"/>, and <see cref="SpiXfer"/> functions
+        /// transfer data packed into 1, 2, or 4 bytes according to
+        /// the word size in bits.
+        ///
+        /// For bits 1-8 there will be one byte per word.
+        /// For bits 9-16 there will be two bytes per word.
+        /// For bits 17-32 there will be four bytes per word.
+        ///
+        /// Multi-byte transfers are made in least significant byte first order.
+        ///
+        /// E.g. to transfer 32 11-bit words buf should contain 64 bytes
+        /// and count should be 64.
+        ///
+        /// E.g. to transfer the 14 bit value 0x1ABC send the bytes 0xBC followed
+        /// by 0x1A.
+        ///
+        /// The other bits in flags should be set to zero.
+        /// </summary>
+        /// <remarks>
+        /// 21 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
+        ///  b  b  b  b  b  b  R  T  n  n  n  n  W  A u2 u1 u0 p2 p1 p0  m  m
+        /// Mode POL PHA
+        ///  0    0   0
+        ///  1    0   1
+        ///  2    1   0
+        ///  3    1   1
+        /// </remarks>
+        /// <param name="spiChannel">0-1 (0-2 for the auxiliary SPI device)</param>
+        /// <param name="baudRate">32K-125M (values above 30M are unlikely to work)</param>
+        /// <param name="spiFlags">see below</param>
+        /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_BAD_SPI_CHANNEL, PI_BAD_SPI_SPEED, PI_BAD_FLAGS, PI_NO_AUX_SPI, or PI_SPI_OPEN_FAILED.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiOpen")]
+        private static extern int SpiOpenUnmanaged(SpiChannelId spiChannel, uint baudRate, SpiFlags spiFlags);
+
+        /// <summary>
+        /// This function reads count bytes of data from the SPI
+        /// device associated with the handle.
+        ///
+        /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
+        /// </summary>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
+        /// <param name="buffer">an array to receive the read data bytes</param>
+        /// <param name="count">the number of bytes to read</param>
+        /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiRead")]
+        private static extern int SpiReadUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
+
+        /// <summary>
+        /// This function writes count bytes of data from buf to the SPI
+        /// device associated with the handle.
+        ///
+        /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
+        /// </summary>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
+        /// <param name="buffer">the data bytes to write</param>
+        /// <param name="count">the number of bytes to write</param>
+        /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiWrite")]
+        private static extern int SpiWriteUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
+
+        /// <summary>
+        /// This function transfers count bytes of data from txBuf to the SPI
+        /// device associated with the handle.  Simultaneously count bytes of
+        /// data are read from the device and placed in rxBuf.
+        ///
+        /// PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.
+        /// </summary>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
+        /// <param name="transmitBuffer">the data bytes to write</param>
+        /// <param name="receiveBuffer">the received data bytes</param>
+        /// <param name="count">the number of bytes to transfer</param>
+        /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiXfer")]
+        private static extern int SpiXferUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] transmitBuffer, [In, MarshalAs(UnmanagedType.LPArray)] byte[] receiveBuffer, uint count);
 
         #endregion
     }
