@@ -106,7 +106,7 @@
         /// <returns>The Result Code.</returns>
         public static ResultCode FileWrite(UIntPtr handle, byte[] buffer)
         {
-            return BoardException.ValidateResult(FileWriteUnmanaged(handle, buffer, (uint)buffer.Length));
+            return FileWriteUnmanaged(handle, buffer, (uint)buffer.Length);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@
         /// <returns>The Result Code</returns>
         public static ResultCode FileWrite(UIntPtr handle, byte[] buffer, int length)
         {
-            return BoardException.ValidateResult(FileWriteUnmanaged(handle, buffer, (uint)length));
+            return FileWriteUnmanaged(handle, buffer, (uint)length);
         }
 
         /// <summary>

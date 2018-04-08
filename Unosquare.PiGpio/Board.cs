@@ -37,7 +37,7 @@
             BankA = new GpioBank(1);
             BankB = new GpioBank(2);
             Timing = new GpioTimingService();
-            Peripherals = new GpioPeripheralsService();
+            Peripherals = new PeripheralsService();
 
             AppDomain.CurrentDomain.ProcessExit += (s, e) =>
             {
@@ -98,6 +98,6 @@
         /// <summary>
         /// Provides peripheral communication buses available to the board
         /// </summary>
-        public static GpioPeripheralsService Peripherals { get; }
+        public static PeripheralsService Peripherals { get; }
     }
 }

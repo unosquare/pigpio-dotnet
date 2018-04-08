@@ -64,9 +64,9 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
         /// <param name="bit">0-1, the value to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
-        public static ResultCode I2cWriteQuick(UIntPtr handle, bool bit)
+        public static ResultCode I2cWriteQuick(UIntPtr handle, I2cQuickMode bit)
         {
-            return I2cWriteQuickUnmanaged(handle, bit ? 1u : 0u);
+            return I2cWriteQuickUnmanaged(handle, (uint)bit);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteByteData(UIntPtr handle, byte register, byte value)
         {
-            return BoardException.ValidateResult(I2cWriteByteDataUnmanaged(handle, register, value));
+            return I2cWriteByteDataUnmanaged(handle, register, value);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteWordData(UIntPtr handle, byte register, ushort word)
         {
-            return BoardException.ValidateResult(I2cWriteWordDataUnmanaged(handle, register, word));
+            return I2cWriteWordDataUnmanaged(handle, register, word);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteBlockData(UIntPtr handle, byte register, byte[] buffer)
         {
-            return BoardException.ValidateResult(I2cWriteBlockDataUnmanaged(handle, register, buffer, Convert.ToUInt32(buffer.Length)));
+            return I2cWriteBlockDataUnmanaged(handle, register, buffer, Convert.ToUInt32(buffer.Length));
         }
 
         /// <summary>
@@ -230,8 +230,11 @@
         public static byte[] I2cReadBlockData(UIntPtr handle, byte register)
         {
             var buffer = new byte[32];
-            var result = BoardException.ValidateResult(I2cReadBlockDataUnmanaged(handle, register, buffer));
-            var output = new byte[result];
+            var count = BoardException.ValidateResult(I2cReadBlockDataUnmanaged(handle, register, buffer));
+            if (count == buffer.Length)
+                return buffer;
+
+            var output = new byte[count];
             Buffer.BlockCopy(buffer, 0, output, 0, output.Length);
             return output;
         }
@@ -294,12 +297,18 @@
         /// </remarks>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
         /// <param name="register">0-255, the register to read</param>
-        /// <param name="buffer">an array to receive the read data</param>
+        /// <param name="count">The amount of bytes to read from 1 to 32</param>
         /// <returns>Returns the number of bytes read (&gt;0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        public static int I2cReadI2cBlockData(UIntPtr handle, byte register, byte[] buffer)
+        public static byte[] I2cReadI2cBlockData(UIntPtr handle, byte register, int count)
         {
+            var buffer = new byte[count];
             var result = BoardException.ValidateResult(I2cReadI2cBlockDataUnmanaged(handle, register, buffer, Convert.ToUInt32(buffer.Length)));
-            return result;
+            if (result == buffer.Length)
+                return buffer;
+
+            var output = new byte[result];
+            Buffer.BlockCopy(buffer, 0, output, 0, result);
+            return output;
         }
 
         /// <summary>
@@ -313,10 +322,11 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
         /// <param name="register">0-255, the register to write</param>
         /// <param name="buffer">the data to write</param>
+        /// <param name="count">The amount of bytes to write (from 1 to 32)</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
-        public static ResultCode I2cWriteI2cBlockData(UIntPtr handle, byte register, byte[] buffer)
+        public static ResultCode I2cWriteI2cBlockData(UIntPtr handle, byte register, byte[] buffer, int count)
         {
-            return BoardException.ValidateResult(I2cWriteI2cBlockDataUnmanaged(handle, register, buffer, Convert.ToUInt32(buffer.Length)));
+            return I2cWriteI2cBlockDataUnmanaged(handle, register, buffer, Convert.ToUInt32(count));
         }
 
         /// <summary>
@@ -348,6 +358,9 @@
         {
             var buffer = new byte[count];
             var result = BoardException.ValidateResult(I2cReadDeviceUnmanaged(handle, buffer, Convert.ToUInt32(buffer.Length)));
+            if (result == buffer.Length)
+                return buffer;
+
             var output = new byte[result];
             Buffer.BlockCopy(buffer, 0, output, 0, result);
             return output;
@@ -365,7 +378,7 @@
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteDevice(UIntPtr handle, byte[] buffer)
         {
-            return BoardException.ValidateResult(I2cWriteDeviceUnmanaged(handle, buffer, Convert.ToUInt32(buffer.Length)));
+            return I2cWriteDeviceUnmanaged(handle, buffer, Convert.ToUInt32(buffer.Length));
         }
 
         /// <summary>

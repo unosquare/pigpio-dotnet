@@ -42,10 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="I2cPeripheral.cs" />
+    <Compile Include="ManagedModel\I2cDevice.cs" />
     <Compile Include="ManagedModel\GpioBank.cs" />
     <Compile Include="ManagedModel\GpioPadCollection.cs" />
-    <Compile Include="ManagedModel\GpioPeripheralsService.cs" />
+    <Compile Include="ManagedModel\PeripheralsService.cs" />
     <Compile Include="ManagedModel\GpioPinAlertService.cs" />
     <Compile Include="ManagedModel\GpioPinClockService.cs" />
     <Compile Include="ManagedModel\GpioPinCollection.cs" />
@@ -67,6 +67,7 @@
     <Compile Include="NativeEnums\GpioPadId.cs" />
     <Compile Include="NativeEnums\GpioPadStrength.cs" />
     <Compile Include="NativeEnums\I2cBusId.cs" />
+    <Compile Include="NativeEnums\I2cQuickMode.cs" />
     <Compile Include="NativeEnums\InterfaceFlags.cs" />
     <Compile Include="NativeEnums\LevelChange.cs" />
     <Compile Include="NativeEnums\PinDirection.cs" />

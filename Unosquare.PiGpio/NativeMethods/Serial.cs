@@ -66,6 +66,10 @@
         {
             var buffer = new byte[readLength];
             var result = BoardException.ValidateResult(GpioSerialReadUnmanaged(userGpio, buffer, (uint)readLength));
+
+            if (result == buffer.Length)
+                return buffer;
+
             var outputBuffer = new byte[result];
             Buffer.BlockCopy(buffer, 0, outputBuffer, 0, result);
             return outputBuffer;

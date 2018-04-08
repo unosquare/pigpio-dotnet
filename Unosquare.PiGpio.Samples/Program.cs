@@ -20,7 +20,7 @@
                 new ButtonInterrupts(true),
                 new DhtSensor(false)
             };
-
+            
             $"Enabled Workbench Items: {workbenchItems.Count(wbi => wbi.IsEnabled)}".Info(nameof(Program));
             foreach (var wbi in workbenchItems)
                 wbi.Start();
