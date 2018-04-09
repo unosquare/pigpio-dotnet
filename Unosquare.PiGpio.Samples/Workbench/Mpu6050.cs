@@ -1,13 +1,11 @@
 ﻿namespace Unosquare.PiGpio.Samples.Workbench
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Swan;
     using ManagedModel;
+    using NativeMethods;
+    using Swan;
+    using System;
+    using System.Linq;
+    using System.Threading;
 
     internal class Mpu6050 : WorkbenchItemBase
     {
@@ -50,8 +48,8 @@
 
             while (ct.IsCancellationRequested == false)
             {
+                Thread.Sleep(500);
                 $"Temperature: {Temperature,6:0.000}".Info(Name);
-                Board.Timing.Sleep(1000);
             }
         }
 
@@ -59,19 +57,13 @@
         {
             get
             {
-                var powerConfig = (int)Device.ReadByte(PowerManagementRegister);
-                var sleepEnabledFlag = 1 << 6;
-                return (powerConfig & sleepEnabledFlag) != 0;
+                var powerConfig = Device.ReadByte(PowerManagementRegister);
+                return powerConfig.GetBit(6);
             }
             set
             {
-                var powerConfig = (int)Device.ReadByte(PowerManagementRegister);
-                if (value)
-                    powerConfig |= (1 << 6);
-                else
-                    powerConfig &= ~(1 << 6);
-
-                Device.Write(PowerManagementRegister, (byte)powerConfig);
+                var powerConfig = Device.ReadByte(PowerManagementRegister);
+                Device.Write(PowerManagementRegister, powerConfig.SetBit(6, value));
             }
         }
 

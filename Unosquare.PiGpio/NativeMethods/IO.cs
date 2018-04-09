@@ -422,41 +422,6 @@
         public static extern ResultCode GpioSetIsrFuncEx(SystemGpio gpio, EdgeDetection edge, int timeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioIsrExDelegate callback, UIntPtr userData);
 
         /// <summary>
-        /// Registers a function to be called (a callback) when a signal occurs.
-        ///
-        /// The function is passed the signal number.
-        ///
-        /// One function may be registered per signal.
-        ///
-        /// The callback may be cancelled by passing NULL.
-        ///
-        /// By default all signals are treated as fatal and cause the library
-        /// to call gpioTerminate and then exit.
-        /// </summary>
-        /// <param name="signalNumber">0-63</param>
-        /// <param name="f">the callback function</param>
-        /// <returns>Returns 0 if OK, otherwise PI_BAD_signalNumber.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetSignalFunc")]
-        public static extern ResultCode GpioSetSignalFunc(uint signalNumber, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioSignalDelegate f);
-
-        /// <summary>
-        /// Registers a function to be called (a callback) when a signal occurs.
-        ///
-        /// The function is passed the signal number and the userData pointer.
-        ///
-        /// Only one of gpioSetSignalFunc or gpioSetSignalFuncEx can be
-        /// registered per signal.
-        ///
-        /// See gpioSetSignalFunc for further details.
-        /// </summary>
-        /// <param name="signalNumber">0-63</param>
-        /// <param name="callback">the callback function</param>
-        /// <param name="userData">a pointer to arbitrary user data</param>
-        /// <returns>Returns 0 if OK, otherwise PI_BAD_signalNumber.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetSignalFuncEx")]
-        public static extern ResultCode GpioSetSignalFuncEx(uint signalNumber, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioSignalExDelegate callback, UIntPtr userData);
-
-        /// <summary>
         /// Registers a function to be called (a callback) every millisecond
         /// with the latest GPIO samples.
         ///

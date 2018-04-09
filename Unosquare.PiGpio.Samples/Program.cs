@@ -3,6 +3,7 @@
     using Swan;
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using Workbench;
 
@@ -32,7 +33,8 @@
                 wbi.Stop();
 
             $"Program Finished".Info(nameof(Program));
-            Swan.Terminal.Flush(TimeSpan.FromSeconds(2));
+            Terminal.Flush(TimeSpan.FromSeconds(2));
+            Board.Release();
         }
     }
 }

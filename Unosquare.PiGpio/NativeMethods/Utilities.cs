@@ -1,6 +1,9 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods
 {
     using NativeEnums;
+    using NativeTypes;
+    using System;
+    using System.Collections;
     using System.Runtime.InteropServices;
 
     /// <summary>
@@ -169,5 +172,155 @@
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "shell")]
         public static extern ResultCode Shell(string scriptName, string scriptString);
+
+        /// <summary>
+        /// Registers a function to be called (a callback) when a signal occurs.
+        ///
+        /// The function is passed the signal number.
+        ///
+        /// One function may be registered per signal.
+        ///
+        /// The callback may be cancelled by passing NULL.
+        ///
+        /// By default all signals are treated as fatal and cause the library
+        /// to call gpioTerminate and then exit.
+        /// </summary>
+        /// <param name="signalNumber">0-63</param>
+        /// <param name="f">the callback function</param>
+        /// <returns>Returns 0 if OK, otherwise PI_BAD_signalNumber.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetSignalFunc")]
+        public static extern ResultCode GpioSetSignalFunc(uint signalNumber, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioSignalDelegate f);
+
+        /// <summary>
+        /// Registers a function to be called (a callback) when a signal occurs.
+        ///
+        /// The function is passed the signal number and the userData pointer.
+        ///
+        /// Only one of gpioSetSignalFunc or gpioSetSignalFuncEx can be
+        /// registered per signal.
+        ///
+        /// See gpioSetSignalFunc for further details.
+        /// </summary>
+        /// <param name="signalNumber">0-63</param>
+        /// <param name="callback">the callback function</param>
+        /// <param name="userData">a pointer to arbitrary user data</param>
+        /// <returns>Returns 0 if OK, otherwise PI_BAD_signalNumber.</returns>
+        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetSignalFuncEx")]
+        public static extern ResultCode GpioSetSignalFuncEx(uint signalNumber, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioSignalExDelegate callback, UIntPtr userData);
+
+        /// <summary>
+        /// Raises the given signal numner.
+        /// </summary>
+        /// <param name="signalNumber">The signal number.</param>
+        /// <returns>0 for success</returns>
+        [DllImport("libc.so.6", EntryPoint = "raise")]
+        public static extern int RaiseSignal(int signalNumber);
+
+        /// <summary>
+        /// Applies bit values according to the indexes.
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="value">True to set the 1 bits. False to clear the 1 bits</param>
+        /// <param name="indexes">The indexes.</param>
+        /// <returns>The applied bitmask</returns>
+        public static int ApplyBits(this int flags, bool value, params int[] indexes)
+        {
+            var array = new BitArray(32);
+            foreach (var index in indexes)
+                array[index] = true;
+
+            var bytes = new byte[4];
+            array.CopyTo(bytes, 0);
+            var mask = BitConverter.ToInt32(bytes, 0);
+            if (value)
+                return flags | mask;
+            else
+                return flags & ~mask;
+        }
+
+        /// <summary>
+        /// Sets a bit at the given positon index from right to left
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="index">The index.</param>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        /// <returns>The flags with the bit set at the given position</returns>
+        public static int SetBit(this int flags, int index, bool value) => value ? flags | (1 << index) : flags & ~(1 << index);
+
+        /// <summary>
+        /// Sets a bit at the given positon index from right to left
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="index">The index.</param>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        /// <returns>The flags with the bit set at the given position</returns>
+        public static uint SetBit(this uint flags, int index, bool value) => unchecked((uint)SetBit(unchecked((int)flags), index, value));
+
+        /// <summary>
+        /// Sets a bit at the given positon index from right to left
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="index">The index.</param>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        /// <returns>The flags with the bit set at the given position</returns>
+        public static short SetBit(this short flags, int index, bool value) => unchecked((short)SetBit(unchecked((int)flags), index, value));
+
+        /// <summary>
+        /// Sets a bit at the given positon index from right to left
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="index">The index.</param>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        /// <returns>The flags with the bit set at the given position</returns>
+        public static ushort SetBit(this ushort flags, int index, bool value) => unchecked((ushort)SetBit(unchecked((int)flags), index, value));
+
+        /// <summary>
+        /// Sets a bit at the given positon index from right to left
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="index">The index.</param>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        /// <returns>The flags with the bit set at the given position</returns>
+        public static byte SetBit(this byte flags, int index, bool value) => unchecked((byte)SetBit(unchecked((int)flags), index, value));
+
+        /// <summary>
+        /// Gets a bit at the given positon index from right to left
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="index">The index.</param>
+        /// <returns>The value of the bit at the given position index</returns>
+        public static bool GetBit(this int flags, int index) => (flags & (1 << index)) != 0;
+
+        /// <summary>
+        /// Gets a bit at the given positon index from right to left
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="index">The index.</param>
+        /// <returns>The value of the bit at the given position index</returns>
+        public static bool GetBit(this uint flags, int index) => GetBit(unchecked((int)flags), index);
+
+        /// <summary>
+        /// Gets a bit at the given positon index from right to left
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="index">The index.</param>
+        /// <returns>The value of the bit at the given position index</returns>
+        public static bool GetBit(this short flags, int index) => GetBit(unchecked((int)flags), index);
+
+        /// <summary>
+        /// Gets a bit at the given positon index from right to left
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="index">The index.</param>
+        /// <returns>The value of the bit at the given position index</returns>
+        public static bool GetBit(this ushort flags, int index) => GetBit(unchecked((int)flags), index);
+
+        /// <summary>
+        /// Gets a bit at the given positon index from right to left
+        /// </summary>
+        /// <param name="flags">The flags.</param>
+        /// <param name="index">The index.</param>
+        /// <returns>The value of the bit at the given position index</returns>
+        public static bool GetBit(this byte flags, int index) => GetBit(unchecked((int)flags), index);
     }
 }

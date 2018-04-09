@@ -3,6 +3,9 @@
     using ManagedModel;
     using NativeEnums;
     using NativeMethods;
+    using System;
+    using System.Threading;
+    using Unosquare.PiGpio.NativeTypes;
 
     /// <summary>
     /// Represents the Raspberry Pi Board and provides
@@ -19,12 +22,18 @@
         {
             try
             {
-                var config = Setup.GpioCfgGetInternals();
+                var config = (int)Setup.GpioCfgGetInternals();
+                config = config.ApplyBits(false, 3, 2, 1, 0); // Clear debug flags
 
-                // config &= ~(ConfigFlags.DebugLevel0 | ConfigFlags.DebugLevel1 | ConfigFlags.DebugLevel2 | ConfigFlags.DebugLevel3);
+                Setup.GpioCfgSetInternals((ConfigFlags)config);
+
                 // Setup.GpioCfgSetInternals(config | ConfigFlags.NoSignalHandler);
                 var initResultCode = Setup.GpioInitialise();
                 IsAvailable = initResultCode == ResultCode.Ok;
+
+                var signalDelegate = new PiGpioSignalDelegate((signalNumber) => { /* Ignore */ });
+                for (uint i = 32; i < 64; i++)
+                    Utilities.GpioSetSignalFunc(i, signalDelegate);
             }
             catch { IsAvailable = false; }
 
@@ -40,19 +49,12 @@
             BankB = new GpioBank(2);
             Timing = new GpioTimingService();
             Peripherals = new PeripheralsService();
-
-            // AppDomain.CurrentDomain.ProcessExit += (s, e) =>
-            // {
-            //    if (IsAvailable == false)
-            //        return;
-            //    Setup.GpioTerminate();
-            // };
         }
 
         /// <summary>
         /// Gets a value indicating whether the board has been initialized
         /// </summary>
-        public static bool IsAvailable { get; }
+        public static bool IsAvailable { get; private set; }
 
         /// <summary>
         /// Gets the hardware revision number.
@@ -100,5 +102,18 @@
         /// Provides peripheral communication buses available to the board
         /// </summary>
         public static PeripheralsService Peripherals { get; }
+
+        /// <summary>
+        /// Releases board resources
+        /// </summary>
+        public static void Release()
+        {
+            IsAvailable = false;
+            ThreadPool.QueueUserWorkItem((s) =>
+            {
+                Console.CursorVisible = true;
+                Utilities.RaiseSignal(15);
+            });
+        }
     }
 }
