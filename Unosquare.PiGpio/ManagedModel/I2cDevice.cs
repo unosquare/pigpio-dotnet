@@ -212,17 +212,20 @@
             {
                 try
                 {
-                    var device = new I2cDevice(bus, address);
-                    if ((address >= 0x30 && address <= 0x37) ||
-                        (address >= 0x50 && address <= 0x5f))
+                    using (var device = new I2cDevice(bus, address))
                     {
-                        // Quick Mode detection
-                        device.SetMode(I2cQuickMode.Write);
-                    }
-                    else
-                    {
-                        // read byte detection
-                        device.ReadByte();
+                        if ((address >= 0x30 && address <= 0x37) ||
+                            (address >= 0x50 && address <= 0x5f))
+                        {
+                            // Quick Mode detection
+                            // device.ReadByte();
+                            device.SetMode(I2cQuickMode.Write);
+                        }
+                        else
+                        {
+                            // read byte detection
+                            device.ReadByte();
+                        }
                     }
 
                     result.Add(address);

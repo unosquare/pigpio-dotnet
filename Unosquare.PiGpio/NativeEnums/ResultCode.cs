@@ -72,9 +72,6 @@
         /// <summary>dutycycle range not 25-40000</summary>
         BadDutyrange = -21,
 
-        /// <summary>DEPRECATED (use PI_BAD_DUTYRANGE)</summary>
-        BadDutyRange = -21,
-
         /// <summary>signum not 0-63</summary>
         BadSignum = -22,
 
@@ -92,9 +89,6 @@
 
         /// <summary>DMA channel not 0-14</summary>
         BadChannel = -27,
-
-        /// <summary>DMA primary channel not 0-14</summary>
-        BadPrimChannel = -27,
 
         /// <summary>socket port not 1024-32000</summary>
         BadSocketPort = -28,
@@ -197,9 +191,6 @@
 
         /// <summary>too many script parameters (&gt; 10)</summary>
         TooManyParam = -61,
-
-        /// <summary>DEPRECATED</summary>
-        NotHalted = -62,
 
         /// <summary>script initialising</summary>
         ScriptNotReady = -62,

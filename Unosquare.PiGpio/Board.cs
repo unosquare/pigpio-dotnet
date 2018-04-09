@@ -3,7 +3,6 @@
     using ManagedModel;
     using NativeEnums;
     using NativeMethods;
-    using System;
 
     /// <summary>
     /// Represents the Raspberry Pi Board and provides
@@ -21,8 +20,11 @@
             try
             {
                 var config = Setup.GpioCfgGetInternals();
-                Setup.GpioCfgSetInternals(config | ConfigFlags.NoSignalHandler);
-                IsAvailable = Setup.GpioInitialise() == ResultCode.Ok;
+
+                // config &= ~(ConfigFlags.DebugLevel0 | ConfigFlags.DebugLevel1 | ConfigFlags.DebugLevel2 | ConfigFlags.DebugLevel3);
+                // Setup.GpioCfgSetInternals(config | ConfigFlags.NoSignalHandler);
+                var initResultCode = Setup.GpioInitialise();
+                IsAvailable = initResultCode == ResultCode.Ok;
             }
             catch { IsAvailable = false; }
 
@@ -39,13 +41,12 @@
             Timing = new GpioTimingService();
             Peripherals = new PeripheralsService();
 
-            AppDomain.CurrentDomain.ProcessExit += (s, e) =>
-            {
-                if (IsAvailable == false)
-                    return;
-
-                Setup.GpioTerminate();
-            };
+            // AppDomain.CurrentDomain.ProcessExit += (s, e) =>
+            // {
+            //    if (IsAvailable == false)
+            //        return;
+            //    Setup.GpioTerminate();
+            // };
         }
 
         /// <summary>

@@ -15,7 +15,7 @@
 
         internal static readonly int[] HardwareClockPins2 = new int[] { 6, 43 };
 
-        internal static readonly Dictionary<ResultCode, string> ResultCodeMessages = new Dictionary<ResultCode, string>
+        internal static readonly Dictionary<ResultCode, string> ResultCodeMessages = new Dictionary<ResultCode, string>()
         {
             { ResultCode.Ok, "OK result code" },
             { ResultCode.InitFailed, "gpioInitialise failed" },
@@ -39,14 +39,12 @@
             { ResultCode.BadClkMicros, "clock micros not 1, 2, 4, 5, 8, or 10" },
             { ResultCode.BadBufMillis, "buf millis not 100-10000" },
             { ResultCode.BadDutyrange, "dutycycle range not 25-40000" },
-            { ResultCode.BadDutyRange, "DEPRECATED (use PI_BAD_DUTYRANGE)" },
             { ResultCode.BadSignum, "signum not 0-63" },
             { ResultCode.BadPathname, "can't open pathname" },
             { ResultCode.NoHandle, "no handle available" },
             { ResultCode.BadHandle, "unknown handle" },
             { ResultCode.BadIfFlags, "ifFlags &gt; 4" },
             { ResultCode.BadChannel, "DMA channel not 0-14" },
-            { ResultCode.BadPrimChannel, "DMA primary channel not 0-14" },
             { ResultCode.BadSocketPort, "socket port not 1024-32000" },
             { ResultCode.BadFifoCommand, "unrecognized fifo command" },
             { ResultCode.BadSecoChannel, "DMA secondary channel not 0-6" },
@@ -81,7 +79,6 @@
             { ResultCode.SockReadFailed, "socket read failed" },
             { ResultCode.SockWritFailed, "socket write failed" },
             { ResultCode.TooManyParam, "too many script parameters (&gt; 10)" },
-            { ResultCode.NotHalted, "DEPRECATED" },
             { ResultCode.ScriptNotReady, "script initialising" },
             { ResultCode.BadTag, "script has unresolved tag" },
             { ResultCode.BadMicsDelay, "bad MICS delay (too large)" },

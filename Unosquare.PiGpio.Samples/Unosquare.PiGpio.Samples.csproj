@@ -56,6 +56,7 @@
     <Compile Include="Workbench\ButtonInterrupts.cs" />
     <Compile Include="Workbench\DhtSensor.cs" />
     <Compile Include="Workbench\LedBlinking.cs" />
+    <Compile Include="Workbench\Mpu6050.cs" />
     <Compile Include="Workbench\Servo.cs" />
     <Compile Include="Workbench\Timers.cs" />
     <Compile Include="Workbench\WorkbenchItemBase.cs" />

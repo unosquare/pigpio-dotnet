@@ -59,7 +59,7 @@
         Stats = 1 << 9,
 
         /// <summary>
-        /// The no signal h andler
+        /// The no signal handler
         /// </summary>
         NoSignalHandler = 1 << 10,
     }

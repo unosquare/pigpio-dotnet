@@ -70,6 +70,15 @@
         }
 
         /// <summary>
+        /// Scans the default I2C bus for devices.
+        /// </summary>
+        /// <returns>The found device addresses</returns>
+        public byte[] ScanI2cBus()
+        {
+            return I2cDevice.ScanBus(I2cDevice.DefaultBus);
+        }
+
+        /// <summary>
         /// Opens an I2C device on the given bus.
         /// </summary>
         /// <param name="bus">The bus.</param>

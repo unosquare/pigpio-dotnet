@@ -48,7 +48,7 @@
                 }
                 catch (Exception ex)
                 {
-                    $"{ex.GetType()}: {ex.Message}".Error(Name);
+                    $"{ex.GetType()}: {ex.Message}\r\n{ex.StackTrace}".Error(Name);
                 }
                 finally
                 {
