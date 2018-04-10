@@ -57,20 +57,23 @@
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public void Dispose() => Dispose(true);
+        public void Dispose() =>
+            Dispose(true);
 
         /// <summary>
         /// This sends a single bit (in the Rd/Wr bit) to the device associated
         /// with handle.
         /// </summary>
         /// <param name="mode">The mode (write is 0, read is 1)</param>
-        public void SetMode(I2cQuickMode mode) => BoardException.ValidateResult(I2c.I2cWriteQuick(Handle, mode));
+        public void SetMode(I2cQuickMode mode) =>
+            BoardException.ValidateResult(I2c.I2cWriteQuick(Handle, mode));
 
         /// <summary>
         /// This sends a single byte to the device associated with handle.
         /// </summary>
         /// <param name="value">The value.</param>
-        public void Write(byte value) => BoardException.ValidateResult(I2c.I2cWriteByte(Handle, value));
+        public void Write(byte value) =>
+            BoardException.ValidateResult(I2c.I2cWriteByte(Handle, value));
 
         /// <summary>
         /// This writes a single byte to the specified register of the device
@@ -78,7 +81,8 @@
         /// </summary>
         /// <param name="register">The register.</param>
         /// <param name="value">The value.</param>
-        public void Write(byte register, byte value) => BoardException.ValidateResult(I2c.I2cWriteByteData(Handle, register, value));
+        public void Write(byte register, byte value) =>
+            BoardException.ValidateResult(I2c.I2cWriteByteData(Handle, register, value));
 
         /// <summary>
         /// This writes a single 16 bit word to the specified register of the device
@@ -86,7 +90,8 @@
         /// </summary>
         /// <param name="register">The register.</param>
         /// <param name="value">The value.</param>
-        public void Write(byte register, ushort value) => BoardException.ValidateResult(I2c.I2cWriteWordData(Handle, register, value));
+        public void Write(byte register, ushort value) =>
+            BoardException.ValidateResult(I2c.I2cWriteWordData(Handle, register, value));
 
         /// <summary>
         /// This writes a single 16 bit word to the specified register of the device
@@ -94,7 +99,8 @@
         /// </summary>
         /// <param name="register">The register.</param>
         /// <param name="value">The value.</param>
-        public void Write(byte register, short value) => BoardException.ValidateResult(I2c.I2cWriteWordData(Handle, register, unchecked((ushort)value)));
+        public void Write(byte register, short value) =>
+            BoardException.ValidateResult(I2c.I2cWriteWordData(Handle, register, unchecked((ushort)value)));
 
         /// <summary>
         /// This writes up to 32 bytes to the specified register of the device
@@ -102,7 +108,8 @@
         /// </summary>
         /// <param name="register">The register.</param>
         /// <param name="buffer">The buffer.</param>
-        public void Write(byte register, byte[] buffer) => BoardException.ValidateResult(I2c.I2cWriteBlockData(Handle, register, buffer));
+        public void Write(byte register, byte[] buffer) =>
+            BoardException.ValidateResult(I2c.I2cWriteBlockData(Handle, register, buffer));
 
         /// <summary>
         /// This writes 1 to 32 bytes to the specified register of the device
@@ -111,19 +118,22 @@
         /// <param name="register">The register.</param>
         /// <param name="buffer">The buffer.</param>
         /// <param name="count">The count.</param>
-        public void Write(byte register, byte[] buffer, int count) => BoardException.ValidateResult(I2c.I2cWriteI2cBlockData(Handle, register, buffer, count));
+        public void Write(byte register, byte[] buffer, int count) =>
+            BoardException.ValidateResult(I2c.I2cWriteI2cBlockData(Handle, register, buffer, count));
 
         /// <summary>
         /// This writes count bytes from buf to the raw device.
         /// </summary>
         /// <param name="buffer">The buffer.</param>
-        public void WriteRaw(byte[] buffer) => BoardException.ValidateResult(I2c.I2cWriteDevice(Handle, buffer));
+        public void WriteRaw(byte[] buffer) =>
+            BoardException.ValidateResult(I2c.I2cWriteDevice(Handle, buffer));
 
         /// <summary>
         /// This reads a single byte from the device associated with handle.
         /// </summary>
         /// <returns>The value read</returns>
-        public byte ReadByte() => I2c.I2cReadByte(Handle);
+        public byte ReadByte() =>
+            I2c.I2cReadByte(Handle);
 
         /// <summary>
         /// This reads a single byte from the specified register of the device
@@ -131,7 +141,8 @@
         /// </summary>
         /// <param name="register">The register.</param>
         /// <returns>The read value</returns>
-        public byte ReadByte(byte register) => I2c.I2cReadByteData(Handle, register);
+        public byte ReadByte(byte register) =>
+            I2c.I2cReadByteData(Handle, register);
 
         /// <summary>
         /// This reads a single 16 bit word from the specified register of the device
@@ -139,7 +150,8 @@
         /// </summary>
         /// <param name="register">The register.</param>
         /// <returns>The word data</returns>
-        public ushort ReadWord(byte register) => I2c.I2cReadWordData(Handle, register);
+        public ushort ReadWord(byte register) =>
+            I2c.I2cReadWordData(Handle, register);
 
         /// <summary>
         /// This reads a block of up to 32 bytes from the specified register of
@@ -148,7 +160,8 @@
         /// </summary>
         /// <param name="register">The register.</param>
         /// <returns>The data read from the device</returns>
-        public byte[] ReadBlock(byte register) => I2c.I2cReadBlockData(Handle, register);
+        public byte[] ReadBlock(byte register) =>
+            I2c.I2cReadBlockData(Handle, register);
 
         /// <summary>
         /// This reads count bytes from the specified register of the device
@@ -157,14 +170,16 @@
         /// <param name="register">The register.</param>
         /// <param name="count">The count.</param>
         /// <returns>The data read from the device</returns>
-        public byte[] ReadBlock(byte register, int count) => I2c.I2cReadI2cBlockData(Handle, register, count);
+        public byte[] ReadBlock(byte register, int count) =>
+            I2c.I2cReadI2cBlockData(Handle, register, count);
 
         /// <summary>
         /// This reads count bytes from the raw device into buf.
         /// </summary>
         /// <param name="count">The count.</param>
         /// <returns>The raw byte data</returns>
-        public byte[] ReadRaw(int count) => I2c.I2cReadDevice(Handle, count);
+        public byte[] ReadRaw(int count) =>
+            I2c.I2cReadDevice(Handle, count);
 
         /// <summary>
         /// This writes data bytes to the specified register of the device

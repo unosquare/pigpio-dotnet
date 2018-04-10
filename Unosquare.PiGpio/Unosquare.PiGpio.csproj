@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ManagedModel\GpioPinWaveService.cs" />
     <Compile Include="ManagedModel\I2cDevice.cs" />
     <Compile Include="ManagedModel\GpioBank.cs" />
     <Compile Include="ManagedModel\GpioPadCollection.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="NativeEnums\SpiChannelId.cs" />
     <Compile Include="NativeEnums\SpiFlags.cs" />
     <Compile Include="NativeEnums\TimeType.cs" />
+    <Compile Include="NativeEnums\WaveMode.cs" />
     <Compile Include="NativeMethods\IO.cs" />
     <Compile Include="NativeMethods\Events.cs" />
     <Compile Include="NativeMethods\Pwm.cs" />

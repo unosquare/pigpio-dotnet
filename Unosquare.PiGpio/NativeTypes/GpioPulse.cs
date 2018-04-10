@@ -1,5 +1,6 @@
 ﻿namespace Unosquare.PiGpio.NativeTypes
 {
+    using NativeEnums;
     using System.Runtime.InteropServices;
 
     /// <summary>
@@ -9,19 +10,19 @@
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class GpioPulse
     {
-        private uint m_GpioOn;
-        private uint m_GpioOff;
+        private BitMask m_GpioOn;
+        private BitMask m_GpioOff;
         private uint m_DelayMicroseconds;
 
         /// <summary>
-        /// The gpio on
+        /// The GPIO pins to turn on
         /// </summary>
-        public uint GpioOn { get => m_GpioOn; set => m_GpioOn = value; }
+        public BitMask GpioOn { get => m_GpioOn; set => m_GpioOn = value; }
 
         /// <summary>
-        /// The gpio off
+        /// The gpio pins to turn off
         /// </summary>
-        public uint GpioOff { get => m_GpioOff; set => m_GpioOff = value; }
+        public BitMask GpioOff { get => m_GpioOff; set => m_GpioOff = value; }
 
         /// <summary>
         /// The delay microseconds

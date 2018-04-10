@@ -220,7 +220,7 @@
         public static extern ResultCode GpioWaveDelete(uint waveId);
 
         /// <summary>
-        /// This function transmits the waveform with id wave_id.  The mode
+        /// This function transmits the waveform with id <paramref name="waveId"/>.  The mode
         /// determines whether the waveform is sent once or cycles endlessly.
         /// The SYNC variants wait for the current waveform to reach the
         /// end of a cycle or finish before starting the new waveform.
@@ -235,11 +235,11 @@
         /// <remarks>
         ///            PI_WAVE_MODE_ONE_SHOT_SYNC, PI_WAVE_MODE_REPEAT_SYNC
         /// </remarks>
-        /// <param name="wave_id">&gt;=0, as returned by <see cref="GpioWaveCreate"/></param>
-        /// <param name="wave_mode">PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT,</param>
+        /// <param name="waveId">&gt;=0, as returned by <see cref="GpioWaveCreate"/></param>
+        /// <param name="waveMode">PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT,</param>
         /// <returns>Returns the number of DMA control blocks in the waveform if OK, otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveTxSend")]
-        public static extern int GpioWaveTxSend(uint wave_id, uint wave_mode);
+        public static extern int GpioWaveTxSend(uint waveId, WaveMode waveMode);
 
         /// <summary>
         /// This function transmits a chain of waveforms.
