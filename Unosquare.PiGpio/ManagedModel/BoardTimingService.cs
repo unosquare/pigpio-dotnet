@@ -9,12 +9,12 @@
     /// Provides timing, date and delay functions.
     /// Also provides access to registered timers.
     /// </summary>
-    public class GpioTimingService
+    public class BoardTimingService
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GpioTimingService"/> class.
+        /// Initializes a new instance of the <see cref="BoardTimingService"/> class.
         /// </summary>
-        internal GpioTimingService()
+        internal BoardTimingService()
         {
             Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
         }

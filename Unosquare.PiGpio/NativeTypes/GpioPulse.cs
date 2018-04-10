@@ -25,8 +25,8 @@
         public BitMask GpioOff { get => m_GpioOff; set => m_GpioOff = value; }
 
         /// <summary>
-        /// The delay microseconds
+        /// The duration in microseconds
         /// </summary>
-        public uint DelayMicroseconds { get => m_DelayMicroseconds; set => m_DelayMicroseconds = value; }
+        public uint DurationMicroSecs { get => m_DelayMicroseconds; set => m_DelayMicroseconds = value; }
     }
 }

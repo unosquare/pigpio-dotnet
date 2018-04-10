@@ -6,14 +6,14 @@
     /// Provides methods to open communication links on the available
     /// buses such as SPI, I2C, and UART
     /// </summary>
-    public sealed class PeripheralsService
+    public sealed class BoardPeripheralsService
     {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="PeripheralsService"/> class.
+        /// Initializes a new instance of the <see cref="BoardPeripheralsService"/> class.
         /// </summary>
-        internal PeripheralsService()
+        internal BoardPeripheralsService()
         {
             // placeholder
         }

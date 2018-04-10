@@ -200,7 +200,7 @@
         public static extern int GpioWaveCreate();
 
         /// <summary>
-        /// This function deletes the waveform with id wave_id.
+        /// This function deletes the waveform with id <paramref name="waveId"/>.
         ///
         /// The wave is flagged for deletion.  The resources used by the wave
         /// will only be reused when either of the following apply.
@@ -236,7 +236,7 @@
         ///            PI_WAVE_MODE_ONE_SHOT_SYNC, PI_WAVE_MODE_REPEAT_SYNC
         /// </remarks>
         /// <param name="waveId">&gt;=0, as returned by <see cref="GpioWaveCreate"/></param>
-        /// <param name="waveMode">PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT,</param>
+        /// <param name="waveMode">PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT, or one of their SYNC variants</param>
         /// <returns>Returns the number of DMA control blocks in the waveform if OK, otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveTxSend")]
         public static extern int GpioWaveTxSend(uint waveId, WaveMode waveMode);

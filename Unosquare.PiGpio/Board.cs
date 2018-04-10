@@ -47,8 +47,9 @@
             GpioPads = new GpioPadCollection();
             BankA = new GpioBank(1);
             BankB = new GpioBank(2);
-            Timing = new GpioTimingService();
-            Peripherals = new PeripheralsService();
+            Timing = new BoardTimingService();
+            Peripherals = new BoardPeripheralsService();
+            Waves = new BoardWaveService();
         }
 
         /// <summary>
@@ -96,12 +97,18 @@
         /// <summary>
         /// Provides timing and date functions
         /// </summary>
-        public static GpioTimingService Timing { get; }
+        public static BoardTimingService Timing { get; }
 
         /// <summary>
         /// Provides peripheral communication buses available to the board
         /// </summary>
-        public static PeripheralsService Peripherals { get; }
+        public static BoardPeripheralsService Peripherals { get; }
+
+        /// <summary>
+        /// Provides a service to build and send waveforms
+        /// with precisions of a few microseconds ~5us per pulse.
+        /// </summary>
+        public static BoardWaveService Waves { get; }
 
         /// <summary>
         /// Releases board resources

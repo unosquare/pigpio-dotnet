@@ -42,11 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManagedModel\GpioPinWaveService.cs" />
+    <Compile Include="ManagedModel\BoardWaveBuilder.cs" />
+    <Compile Include="ManagedModel\BoardWaveService.cs" />
     <Compile Include="ManagedModel\I2cDevice.cs" />
     <Compile Include="ManagedModel\GpioBank.cs" />
     <Compile Include="ManagedModel\GpioPadCollection.cs" />
-    <Compile Include="ManagedModel\PeripheralsService.cs" />
+    <Compile Include="ManagedModel\BoardPeripheralsService.cs" />
     <Compile Include="ManagedModel\GpioPinAlertService.cs" />
     <Compile Include="ManagedModel\GpioPinClockService.cs" />
     <Compile Include="ManagedModel\GpioPinCollection.cs" />
@@ -56,7 +57,7 @@
     <Compile Include="ManagedModel\GpioPinServiceBase.cs" />
     <Compile Include="ManagedModel\GpioPinServoService.cs" />
     <Compile Include="ManagedModel\GpioPinSoftPwmService.cs" />
-    <Compile Include="ManagedModel\GpioTimingService.cs" />
+    <Compile Include="ManagedModel\BoardTimingService.cs" />
     <Compile Include="ManagedModel\SpiChannel.cs" />
     <Compile Include="NativeEnums\AllocationMode.cs" />
     <Compile Include="NativeEnums\BoardType.cs" />
