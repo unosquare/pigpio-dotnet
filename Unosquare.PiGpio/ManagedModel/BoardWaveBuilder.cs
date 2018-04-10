@@ -13,6 +13,7 @@
     public sealed class BoardWaveBuilder : IDisposable
     {
         private const string WaveAlreadyPreparedErrorMessage = "Wave was already prepared and cannot be modified.";
+        private const string DisposedErrorMessage = "Wave was already disposed.";
         private static readonly object SyncLock = new object();
         private readonly List<GpioPulse> m_Pulses;
         private bool IsDisposed = false;
@@ -96,6 +97,42 @@
         }
 
         /// <summary>
+        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses)
+        /// </summary>
+        /// <param name="frequency">The frequency.</param>
+        /// <param name="durationMicroSecs">The duration micro secs.</param>
+        /// <param name="pins">The pins.</param>
+        public void AddCarrierPulses(double frequency, double durationMicroSecs, params UserGpio[] pins)
+        {
+            AddCarrierPulses(frequency, durationMicroSecs, 0.5, pins);
+        }
+
+        /// <summary>
+        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses)
+        /// </summary>
+        /// <param name="frequency">The frequency.</param>
+        /// <param name="durationMicroSecs">The duration micro secs.</param>
+        /// <param name="dutyCycle">The duty cycle.</param>
+        /// <param name="pins">The pins.</param>
+        public void AddCarrierPulses(double frequency, double durationMicroSecs, double dutyCycle, params UserGpio[] pins)
+        {
+            var oneCycleTime = 1000000.0 / frequency; // 1000000 microseconds in a second
+            var onDuration = (int)Math.Round(oneCycleTime * dutyCycle);
+            var offDuration = (int)Math.Round(oneCycleTime * (1.0 - dutyCycle));
+
+            var totalCycles = (int)Math.Round(durationMicroSecs / oneCycleTime);
+            var totalPulses = totalCycles * 2;
+
+            for (var i = 0; i < totalPulses; i++)
+            {
+                if (i % 2 == 0)
+                    AddPulse(true, onDuration, pins); // High pulse
+                else
+                    AddPulse(false, offDuration, pins); // Low pulse
+            }
+        }
+
+        /// <summary>
         /// Clears all previously added pulses.
         /// </summary>
         /// <exception cref="InvalidOperationException">When the wave has been prepared</exception>
@@ -116,7 +153,7 @@
             lock (SyncLock)
             {
                 if (IsPrepared) return;
-                if (IsDisposed) throw new ObjectDisposedException();
+                if (IsDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
 
                 Waves.GpioWaveClear();
                 BoardException.ValidateResult(
@@ -127,11 +164,13 @@
         }
 
         /// <summary>
-        /// Begins rendering the waveform pulses
+        /// Begins rendering the waveform pulses.
+        /// Do not forget to set the pin direction/mode as an output pin.
         /// </summary>
         /// <param name="mode">The mode.</param>
         public void Send(WaveMode mode)
         {
+            if (IsDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
             if (IsPrepared == false)
                 Prepare();
 
