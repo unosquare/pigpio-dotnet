@@ -29,10 +29,8 @@
         /// <param name="baudRate">The baud rate.</param>
         /// <param name="flags">The flags.</param>
         /// <returns>The peripheral service</returns>
-        public SpiChannel OpenSpiChannel(SpiChannelId channel, int baudRate, SpiFlags flags)
-        {
-            return new SpiChannel(channel, baudRate, flags);
-        }
+        public SpiChannel OpenSpiChannel(SpiChannelId channel, int baudRate, SpiFlags flags) =>
+            new SpiChannel(channel, baudRate, flags);
 
         /// <summary>
         /// Opens the given SPI channel using the default flags.
@@ -40,20 +38,16 @@
         /// <param name="channel">The channel.</param>
         /// <param name="baudRate">The baud rate.</param>
         /// <returns>The peripheral service</returns>
-        public SpiChannel OpenSpiChannel(SpiChannelId channel, int baudRate)
-        {
-            return new SpiChannel(channel, baudRate, SpiFlags.Default);
-        }
+        public SpiChannel OpenSpiChannel(SpiChannelId channel, int baudRate) =>
+            new SpiChannel(channel, baudRate, SpiFlags.Default);
 
         /// <summary>
         /// Opens the given SPI channel using the default flags and a baud rate of 512k bits per second.
         /// </summary>
         /// <param name="channel">The channel.</param>
         /// <returns>The peripheral service</returns>
-        public SpiChannel OpenSpiChannel(SpiChannelId channel)
-        {
-            return new SpiChannel(channel, 512000, SpiFlags.Default);
-        }
+        public SpiChannel OpenSpiChannel(SpiChannelId channel) =>
+            new SpiChannel(channel, 512000, SpiFlags.Default);
 
         #endregion
 
@@ -64,19 +58,15 @@
         /// </summary>
         /// <param name="bus">The bus.</param>
         /// <returns>A list of device addresses.</returns>
-        public byte[] ScanI2cBus(I2cBusId bus)
-        {
-            return I2cDevice.ScanBus(bus);
-        }
+        public byte[] ScanI2cBus(I2cBusId bus) =>
+            I2cDevice.ScanBus(bus);
 
         /// <summary>
         /// Scans the default I2C bus for devices.
         /// </summary>
         /// <returns>The found device addresses</returns>
-        public byte[] ScanI2cBus()
-        {
-            return I2cDevice.ScanBus(I2cDevice.DefaultBus);
-        }
+        public byte[] ScanI2cBus() =>
+            I2cDevice.ScanBus(I2cDevice.DefaultBus);
 
         /// <summary>
         /// Opens an I2C device on the given bus.
@@ -84,20 +74,36 @@
         /// <param name="bus">The bus.</param>
         /// <param name="address">The address.</param>
         /// <returns>The I2C device</returns>
-        public I2cDevice OpenI2cDevice(I2cBusId bus, byte address)
-        {
-            return new I2cDevice(bus, address);
-        }
+        public I2cDevice OpenI2cDevice(I2cBusId bus, byte address) =>
+            new I2cDevice(bus, address);
 
         /// <summary>
         /// Opens an I2C device on Bus 1 (the default I2C Bus).
         /// </summary>
         /// <param name="address">The address.</param>
         /// <returns>The I2C device</returns>
-        public I2cDevice OpenI2cDevice(byte address)
-        {
-            return new I2cDevice(I2cDevice.DefaultBus, address);
-        }
+        public I2cDevice OpenI2cDevice(byte address) =>
+            new I2cDevice(I2cDevice.DefaultBus, address);
+
+        #endregion
+
+        #region UART
+
+        /// <summary>
+        /// Opens the specified UART port.
+        /// </summary>
+        /// <param name="portName">Name of the port.</param>
+        /// <param name="baudRate">The baud rate.</param>
+        /// <returns>The UART port object</returns>
+        public UartPort OpenUartPort(string portName, UartRate baudRate) =>
+            new UartPort(portName, baudRate);
+
+        /// <summary>
+        /// Lists the UART port names.
+        /// </summary>
+        /// <returns>The port names</returns>
+        public string[] ListUartPortNames() =>
+            UartPort.ListPortNames();
 
         #endregion
     }

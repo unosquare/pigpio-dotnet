@@ -166,6 +166,7 @@
         /// <summary>
         /// Begins rendering the waveform pulses.
         /// Do not forget to set the pin direction/mode as an output pin.
+        /// The wave is automatically prepared if it has not been prepared before.
         /// </summary>
         /// <param name="mode">The mode.</param>
         public void Send(WaveMode mode)

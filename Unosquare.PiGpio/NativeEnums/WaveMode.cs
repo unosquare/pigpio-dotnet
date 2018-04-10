@@ -6,22 +6,22 @@
     public enum WaveMode
     {
         /// <summary>
-        /// The one shot
+        /// The one shot wave mode
         /// </summary>
         OneShot = 0,
 
         /// <summary>
-        /// The repeat
+        /// The repeat wave mode
         /// </summary>
         Repeat = 1,
 
         /// <summary>
-        /// The one shot synchronize
+        /// The one shot synchronize wave mode
         /// </summary>
         OneShotSync = 2,
 
         /// <summary>
-        /// The repeat synchronize
+        /// The repeat synchronize wave mode
         /// </summary>
         RepeatSync = 3,
     }

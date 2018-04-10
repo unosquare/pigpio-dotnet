@@ -119,7 +119,7 @@
             ThreadPool.QueueUserWorkItem((s) =>
             {
                 Console.CursorVisible = true;
-                Utilities.RaiseSignal(15);
+                Utilities.RaiseSignal(15); // this call the GPIO terminate
             });
         }
     }

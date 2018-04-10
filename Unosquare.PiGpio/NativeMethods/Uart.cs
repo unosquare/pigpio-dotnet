@@ -22,11 +22,10 @@
         /// </summary>
         /// <param name="sertty">the serial device to open</param>
         /// <param name="baud">the baud rate in bits per second, see below</param>
-        /// <param name="serFlags">0</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_NO_HANDLE, or PI_SER_OPEN_FAILED.</returns>
-        public static UIntPtr SerOpen(string sertty, uint baud, uint serFlags)
+        public static UIntPtr SerOpen(string sertty, UartRate baud)
         {
-            var result = BoardException.ValidateResult(SerOpenUnmanaged(sertty, baud, serFlags));
+            var result = BoardException.ValidateResult(SerOpenUnmanaged(sertty, (uint)baud, 0));
             return new UIntPtr((uint)result);
         }
 

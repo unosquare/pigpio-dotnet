@@ -59,6 +59,7 @@
     <Compile Include="ManagedModel\GpioPinSoftPwmService.cs" />
     <Compile Include="ManagedModel\BoardTimingService.cs" />
     <Compile Include="ManagedModel\SpiChannel.cs" />
+    <Compile Include="ManagedModel\UartPort.cs" />
     <Compile Include="NativeEnums\AllocationMode.cs" />
     <Compile Include="NativeEnums\BoardType.cs" />
     <Compile Include="NativeEnums\ConfigFlags.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="NativeEnums\SpiChannelId.cs" />
     <Compile Include="NativeEnums\SpiFlags.cs" />
     <Compile Include="NativeEnums\TimeType.cs" />
+    <Compile Include="NativeEnums\UartRate.cs" />
     <Compile Include="NativeEnums\WaveMode.cs" />
     <Compile Include="NativeMethods\IO.cs" />
     <Compile Include="NativeMethods\Events.cs" />

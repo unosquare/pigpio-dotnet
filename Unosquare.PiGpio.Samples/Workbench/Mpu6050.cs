@@ -22,7 +22,7 @@
         {
             $"Scanning I2C bus . . .".Info(Name);
             var deviceAddresses = Board.Peripherals.ScanI2cBus();
-            $"Found {deviceAddresses.Length} I2C devices.".Info(Name);
+            $"Found {deviceAddresses.Length} I2C device(s)".Info(Name);
             foreach (var address in deviceAddresses)
                 $"    Device on address 0x{address:X2}".Info(Name);
 
