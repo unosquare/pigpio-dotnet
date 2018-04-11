@@ -6,6 +6,7 @@
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
 
     /// <summary>
     /// Provides methods to build waveforms.
@@ -61,7 +62,7 @@
         /// <param name="onPins">The on pins.</param>
         /// <param name="offPins">The off pins.</param>
         /// <exception cref="InvalidOperationException">When the wave has been prepared</exception>
-        public void AddPulse(int durationMicroSecs, UserGpio[] onPins, UserGpio[] offPins)
+        public void AddPulse(int durationMicroSecs, IEnumerable<UserGpio> onPins, IEnumerable<UserGpio> offPins)
         {
             if (IsPrepared)
                 throw new InvalidOperationException(WaveAlreadyPreparedErrorMessage);
@@ -82,6 +83,15 @@
         /// <summary>
         /// Adds a pulse.
         /// </summary>
+        /// <param name="durationMicroSecs">The duration micro secs.</param>
+        /// <param name="onPins">The on pins.</param>
+        /// <param name="offPins">The off pins.</param>
+        public void AddPulse(int durationMicroSecs, IEnumerable<GpioPin> onPins, IEnumerable<GpioPin> offPins)
+            => AddPulse(durationMicroSecs, GpioPinsToUserGpios(onPins), GpioPinsToUserGpios(offPins));
+
+        /// <summary>
+        /// Adds a pulse.
+        /// </summary>
         /// <param name="value">if set to <c>true</c> [value].</param>
         /// <param name="durationMicroSecs">The duration micro secs.</param>
         /// <param name="pins">The pins.</param>
@@ -97,15 +107,31 @@
         }
 
         /// <summary>
+        /// Adds a pulse.
+        /// </summary>
+        /// <param name="value">if set to <c>true</c> [value].</param>
+        /// <param name="durationMicroSecs">The duration micro secs.</param>
+        /// <param name="pins">The pins.</param>
+        public void AddPulse(bool value, int durationMicroSecs, params GpioPin[] pins) =>
+            AddPulse(value, durationMicroSecs, GpioPinsToUserGpios(pins).ToArray());
+
+        /// <summary>
         /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses)
         /// </summary>
         /// <param name="frequency">The frequency.</param>
         /// <param name="durationMicroSecs">The duration micro secs.</param>
         /// <param name="pins">The pins.</param>
-        public void AddCarrierPulses(double frequency, double durationMicroSecs, params UserGpio[] pins)
-        {
+        public void AddCarrierPulses(double frequency, double durationMicroSecs, params UserGpio[] pins) =>
             AddCarrierPulses(frequency, durationMicroSecs, 0.5, pins);
-        }
+
+        /// <summary>
+        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses)
+        /// </summary>
+        /// <param name="frequency">The frequency.</param>
+        /// <param name="durationMicroSecs">The duration micro secs.</param>
+        /// <param name="pins">The pins.</param>
+        public void AddCarrierPulses(double frequency, double durationMicroSecs, params GpioPin[] pins) =>
+            AddCarrierPulses(frequency, durationMicroSecs, GpioPinsToUserGpios(pins).ToArray());
 
         /// <summary>
         /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses)
@@ -131,6 +157,16 @@
                     AddPulse(false, offDuration, pins); // Low pulse
             }
         }
+
+        /// <summary>
+        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses)
+        /// </summary>
+        /// <param name="frequency">The frequency.</param>
+        /// <param name="durationMicroSecs">The duration micro secs.</param>
+        /// <param name="dutyCycle">The duty cycle.</param>
+        /// <param name="pins">The pins.</param>
+        public void AddCarrierPulses(double frequency, double durationMicroSecs, double dutyCycle, params GpioPin[] pins) =>
+            AddCarrierPulses(frequency, durationMicroSecs, dutyCycle, GpioPinsToUserGpios(pins).ToArray());
 
         /// <summary>
         /// Clears all previously added pulses.
@@ -189,7 +225,7 @@
         /// </summary>
         /// <param name="pins">The pins.</param>
         /// <returns>A bitmask with each pin as a position</returns>
-        private static BitMask PinsToBitMask(UserGpio[] pins)
+        private static BitMask PinsToBitMask(IEnumerable<UserGpio> pins)
         {
             var bitMask = 0;
             if (pins != null)
@@ -200,6 +236,14 @@
 
             return (BitMask)bitMask;
         }
+
+        /// <summary>
+        /// Converts GPIO pins to their corresponding GpioEnumeration
+        /// </summary>
+        /// <param name="pins">The pins.</param>
+        /// <returns>An array of UserGpio pins</returns>
+        private static IEnumerable<UserGpio> GpioPinsToUserGpios(IEnumerable<GpioPin> pins) =>
+            pins.Where(p => p.IsUserGpio).Select(p => (UserGpio)p.PinNumber).ToArray();
 
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources.

@@ -240,28 +240,6 @@
         }
 
         /// <summary>
-        /// This reads a block of up to 32 bytes from the specified register of
-        /// the device associated with handle.
-        ///
-        /// The amount of returned data is set by the device.
-        ///
-        /// Block read. SMBus 2.0 5.5.7
-        /// </summary>
-        /// <remarks>
-        /// S Addr Wr [A] i2cReg [A]
-        ///    S Addr Rd [A] [Count] A [buf0] A [buf1] A ... A [bufn] NA P
-        /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to read</param>
-        /// <param name="buffer">an array to receive the read data</param>
-        /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        public static int I2cReadBlockData(UIntPtr handle, byte register, byte[] buffer)
-        {
-            var result = BoardException.ValidateResult(I2cReadBlockDataUnmanaged(handle, register, buffer));
-            return result;
-        }
-
-        /// <summary>
         /// This writes data bytes to the specified register of the device
         /// associated with handle and reads a device specified number
         /// of bytes of data in return.
@@ -447,13 +425,13 @@
         /// </code>
         /// </example>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="inBuf">pointer to the concatenated I2C commands, see below</param>
-        /// <param name="inLen">size of command buffer</param>
-        /// <param name="outBuf">pointer to buffer to hold returned data</param>
-        /// <param name="outLen">size of output buffer</param>
+        /// <param name="inputBuffer">pointer to the concatenated I2C commands, see below</param>
+        /// <param name="inputLength">size of command buffer</param>
+        /// <param name="outputBuffer">pointer to buffer to hold returned data</param>
+        /// <param name="outLength">size of output buffer</param>
         /// <returns>Returns &gt;= 0 if OK (the number of bytes read), otherwise PI_BAD_HANDLE, PI_BAD_POINTER, PI_BAD_I2C_CMD, PI_BAD_I2C_RLEN. PI_BAD_I2C_WLEN, or PI_BAD_I2C_SEG.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cZip")]
-        public static extern int I2cZip(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] inBuf, uint inLen, [In, MarshalAs(UnmanagedType.LPArray)] byte[] outBuf, uint outLen);
+        public static extern int I2cZip(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] inputBuffer, uint inputLength, [In, MarshalAs(UnmanagedType.LPArray)] byte[] outputBuffer, uint outLength);
 
         /// <summary>
         /// This function selects a pair of GPIO for bit banging I2C at a

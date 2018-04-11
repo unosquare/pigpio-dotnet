@@ -204,7 +204,7 @@
         /// <param name="spiFlags">see below</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_SPI_BAUD, or PI_GPIO_IN_USE.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbSPIOpen")]
-        public static extern ResultCode BbSPIOpen(UserGpio csPin, UserGpio misoPin, UserGpio mosiPin, UserGpio clockPin, uint baudRate, uint spiFlags);
+        public static extern ResultCode BbSPIOpen(UserGpio csPin, UserGpio misoPin, UserGpio mosiPin, UserGpio clockPin, uint baudRate, SoftSpiFlags spiFlags);
 
         /// <summary>
         /// This function stops bit banging SPI on a set of GPIO

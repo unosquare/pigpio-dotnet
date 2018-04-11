@@ -51,6 +51,46 @@
 
         #endregion
 
+        #region Soft SPI
+
+        /// <summary>
+        /// Opens a software based (bit-banged) SPI channel
+        /// </summary>
+        /// <param name="csPin">The cs pin.</param>
+        /// <param name="misoPin">The miso pin.</param>
+        /// <param name="mosiPin">The mosi pin.</param>
+        /// <param name="clockPin">The clock pin.</param>
+        /// <param name="baudRate">The baud rate.</param>
+        /// <param name="flags">The flags.</param>
+        /// <returns>The SPI channel</returns>
+        public SoftSpiChannel OpenSoftSpiChannel(GpioPin csPin, GpioPin misoPin, GpioPin mosiPin, GpioPin clockPin, int baudRate, SoftSpiFlags flags)
+            => new SoftSpiChannel(csPin, misoPin, mosiPin, clockPin, baudRate, flags);
+
+        /// <summary>
+        /// Opens a software based (bit-banged) SPI channel
+        /// </summary>
+        /// <param name="csPin">The cs pin.</param>
+        /// <param name="misoPin">The miso pin.</param>
+        /// <param name="mosiPin">The mosi pin.</param>
+        /// <param name="clockPin">The clock pin.</param>
+        /// <param name="baudRate">The baud rate.</param>
+        /// <returns>The SPI channel</returns>
+        public SoftSpiChannel OpenSoftSpiChannel(GpioPin csPin, GpioPin misoPin, GpioPin mosiPin, GpioPin clockPin, int baudRate)
+            => new SoftSpiChannel(csPin, misoPin, mosiPin, clockPin, baudRate, SoftSpiFlags.Default);
+
+        /// <summary>
+        /// Opens a software based (bit-banged) SPI channel
+        /// </summary>
+        /// <param name="csPin">The cs pin.</param>
+        /// <param name="misoPin">The miso pin.</param>
+        /// <param name="mosiPin">The mosi pin.</param>
+        /// <param name="clockPin">The clock pin.</param>
+        /// <returns>The SPI channel</returns>
+        public SoftSpiChannel OpenSoftSpiChannel(GpioPin csPin, GpioPin misoPin, GpioPin mosiPin, GpioPin clockPin)
+            => new SoftSpiChannel(csPin, misoPin, mosiPin, clockPin, 500000, SoftSpiFlags.Default);
+
+        #endregion
+
         #region I2C
 
         /// <summary>
