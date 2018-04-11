@@ -169,5 +169,31 @@
             UartPort.ListPortNames();
 
         #endregion
+
+        #region Soft Serial
+
+        /// <summary>
+        /// Opens a software (bit-banged) serial port.
+        /// </summary>
+        /// <param name="receivePin">The receive pin.</param>
+        /// <param name="transmitPin">The transmit pin.</param>
+        /// <param name="baudRate">The baud rate.</param>
+        /// <param name="dataBits">The data bits.</param>
+        /// <param name="invert">if set to <c>true</c> [invert].</param>
+        /// <returns>The software serial port</returns>
+        public SoftSerialPort OpenSoftSerialPort(GpioPin receivePin, GpioPin transmitPin, UartRate baudRate, int dataBits, bool invert) =>
+            new SoftSerialPort(receivePin, transmitPin, baudRate, dataBits, invert);
+
+        /// <summary>
+        /// Opens a software (bit-banged) serial port.
+        /// </summary>
+        /// <param name="receivePin">The receive pin.</param>
+        /// <param name="transmitPin">The transmit pin.</param>
+        /// <param name="baudRate">The baud rate.</param>
+        /// <returns>The software serial port</returns>
+        public SoftSerialPort OpenSoftSerialPort(GpioPin receivePin, GpioPin transmitPin, UartRate baudRate) =>
+            new SoftSerialPort(receivePin, transmitPin, baudRate, 8, false);
+
+        #endregion
     }
 }

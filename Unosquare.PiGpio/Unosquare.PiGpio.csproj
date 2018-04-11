@@ -59,6 +59,7 @@
     <Compile Include="ManagedModel\GpioPinSoftPwmService.cs" />
     <Compile Include="ManagedModel\BoardTimingService.cs" />
     <Compile Include="ManagedModel\SoftI2cBus.cs" />
+    <Compile Include="ManagedModel\SoftSerialPort.cs" />
     <Compile Include="ManagedModel\SoftSpiChannel.cs" />
     <Compile Include="ManagedModel\SpiChannel.cs" />
     <Compile Include="ManagedModel\UartPort.cs" />
