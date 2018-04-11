@@ -127,6 +127,29 @@
 
         #endregion
 
+        #region Soft I2C
+
+        /// <summary>
+        /// Opens a software based I2C bus.
+        /// </summary>
+        /// <param name="dataPin">The data pin.</param>
+        /// <param name="clockPin">The clock pin.</param>
+        /// <param name="baudRate">The baud rate from 50 t 500,000 bits per second.</param>
+        /// <returns>I2C Bus Accessor</returns>
+        public SoftI2cBus OpenSoftI2cBus(GpioPin dataPin, GpioPin clockPin, int baudRate) =>
+            new SoftI2cBus(dataPin, clockPin, baudRate);
+
+        /// <summary>
+        /// Opens a software based I2C bus.
+        /// </summary>
+        /// <param name="dataPin">The data pin.</param>
+        /// <param name="clockPin">The clock pin.</param>
+        /// <returns>I2C Bus Accessor</returns>
+        public SoftI2cBus OpenSoftI2cBus(GpioPin dataPin, GpioPin clockPin) =>
+            new SoftI2cBus(dataPin, clockPin, SoftI2cBus.DefaultBaudRate);
+
+        #endregion
+
         #region UART
 
         /// <summary>
