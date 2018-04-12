@@ -1,4 +1,4 @@
-# PiGpio (for .net)
+# Raspbery Pi - libpigpio for .net
 Provides complete managed access to the popular pigpio C library
 
 The premise is simple: using the powerful features of C# to control the ARM peripherals of the Raspberry Pi. This library provides a comprehensive way to access the hardware of the Pi. It uses the fantastic C library [pigpio](https://github.com/joan2937/pigpio/). The [documentation of the library can be found here](http://abyz.me.uk/rpi/pigpio/).
