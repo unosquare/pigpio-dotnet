@@ -31,12 +31,30 @@
         {
             BoardException.ValidateResult(I2c.BbI2COpen((UserGpio)dataPin.PinNumber, (UserGpio)clockPin.PinNumber, Convert.ToUInt32(baudRate)));
             Handle = (UserGpio)dataPin.PinNumber;
+            DataPin = dataPin;
+            ClockPin = clockPin;
+            BaudRate = baudRate;
         }
 
         /// <summary>
         /// Gets or the I2C bus handle. This points to the SDA (data) pin of the I2C bus
         /// </summary>
         public UserGpio Handle { get; private set; }
+
+        /// <summary>
+        /// Gets the data pin.
+        /// </summary>
+        public GpioPin DataPin { get; }
+
+        /// <summary>
+        /// Gets the clock pin.
+        /// </summary>
+        public GpioPin ClockPin { get; }
+
+        /// <summary>
+        /// Gets the baud rate.
+        /// </summary>
+        public int BaudRate { get; }
 
         /// <summary>
         /// Writes data to the specified address.

@@ -36,6 +36,11 @@
         public SpiChannelId Channel { get; }
 
         /// <summary>
+        /// Gets the SPI flags this channel was opened with.
+        /// </summary>
+        public SpiFlags Flags { get; }
+
+        /// <summary>
         /// Gets the SPI channel handle.
         /// </summary>
         public UIntPtr Handle { get; private set; }

@@ -32,12 +32,48 @@
                 flags));
 
             Handle = (UserGpio)csPin.PinNumber;
+            ChipSelectPin = csPin;
+            MosiPin = mosiPin;
+            MisoPin = misoPin;
+            ClockPin = clockPin;
+            BaudRate = baudRate;
+            Flags = flags;
         }
 
         /// <summary>
         /// Gets the handle.
         /// </summary>
         public UserGpio Handle { get; private set; }
+
+        /// <summary>
+        /// Gets the chip select pin.
+        /// </summary>
+        public GpioPin ChipSelectPin { get; }
+
+        /// <summary>
+        /// Gets the MOSI pin.
+        /// </summary>
+        public GpioPin MosiPin { get; }
+
+        /// <summary>
+        /// Gets the MISO pin.
+        /// </summary>
+        public GpioPin MisoPin { get; }
+
+        /// <summary>
+        /// Gets the clock pin.
+        /// </summary>
+        public GpioPin ClockPin { get; }
+
+        /// <summary>
+        /// Gets the baud rate.
+        /// </summary>
+        public int BaudRate { get; }
+
+        /// <summary>
+        /// Gets the flags.
+        /// </summary>
+        public SoftSpiFlags Flags { get; }
 
         /// <summary>
         /// Transfers the specified transmit buffer and returns the read bytes in a new buffer.

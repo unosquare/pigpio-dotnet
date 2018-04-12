@@ -24,6 +24,11 @@
         public GpioPadId PadId { get; }
 
         /// <summary>
+        /// Gets electrical pad object.
+        /// </summary>
+        public GpioPad Pad => Board.GpioPads[PadId];
+
+        /// <summary>
         /// Gets or sets the electrical pad strength.
         /// </summary>
         public GpioPadStrength PadStrength

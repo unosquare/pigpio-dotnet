@@ -115,7 +115,7 @@
         /// <param name="serFlags">0</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_NO_HANDLE, or PI_SER_OPEN_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, EntryPoint = "serOpen")]
-        public static extern int SerOpenUnmanaged(string sertty, uint baud, uint serFlags);
+        private static extern int SerOpenUnmanaged(string sertty, uint baud, uint serFlags);
 
         #endregion
     }

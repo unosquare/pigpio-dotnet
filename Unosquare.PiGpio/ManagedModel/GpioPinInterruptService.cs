@@ -124,7 +124,7 @@
             lock (SyncLock)
             {
                 BoardException.ValidateResult(
-                    IO.GpioSetIsrFunc(Pin.PinGpio, EdgeDetection, 0, null));
+                    IO.GpioSetIsrFunc(Pin.PinGpio, 0, 0, null));
                 Callback = null;
             }
         }

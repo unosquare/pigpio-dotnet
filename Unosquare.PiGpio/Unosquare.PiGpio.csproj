@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManagedModel\BoardWaveBuilder.cs" />
+    <Compile Include="ManagedModel\WaveBuilder.cs" />
     <Compile Include="ManagedModel\BoardWaveService.cs" />
     <Compile Include="ManagedModel\I2cDevice.cs" />
     <Compile Include="ManagedModel\GpioBank.cs" />

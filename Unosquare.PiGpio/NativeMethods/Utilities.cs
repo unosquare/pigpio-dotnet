@@ -209,9 +209,9 @@
         public static extern ResultCode GpioSetSignalFuncEx(uint signalNumber, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioSignalExDelegate callback, UIntPtr userData);
 
         /// <summary>
-        /// Raises the given signal numner.
+        /// Raises the given UNIX signal numner (0 to 63).
         /// </summary>
-        /// <param name="signalNumber">The signal number.</param>
+        /// <param name="signalNumber">The UNIX signal number from 0 to 63.</param>
         /// <returns>0 for success</returns>
         [DllImport("libc.so.6", EntryPoint = "raise")]
         public static extern int RaiseSignal(int signalNumber);

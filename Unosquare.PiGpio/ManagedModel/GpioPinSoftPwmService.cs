@@ -17,8 +17,7 @@
         internal GpioPinSoftPwmService(GpioPin pin)
             : base(pin)
         {
-            // placeholder;
-            // TODO: HardwarePwm and HardwareClock
+            // placeholder
         }
 
         /// <summary>

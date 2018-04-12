@@ -43,7 +43,8 @@
         public SystemGpio PinGpio { get; }
 
         /// <summary>
-        /// Gets a value indicating whether this pin is a user gpio (0 to 31).
+        /// Gets a value indicating whether this pin is a user gpio (0 to 31)
+        /// and also available on the current board type.
         /// </summary>
         public bool IsUserGpio { get; }
 

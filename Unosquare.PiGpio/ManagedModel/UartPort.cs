@@ -21,12 +21,24 @@
         internal UartPort(string portName, UartRate baudRate)
         {
             Handle = Uart.SerOpen(portName, baudRate);
+            BaudRate = (int)baudRate;
+            PortName = portName;
         }
 
         /// <summary>
         /// Gets the serial port handle.
         /// </summary>
         public UIntPtr Handle { get; private set; }
+
+        /// <summary>
+        /// Gets the baud rate.
+        /// </summary>
+        public int BaudRate { get; }
+
+        /// <summary>
+        /// Gets the name of the port.
+        /// </summary>
+        public string PortName { get; }
 
         /// <summary>
         /// Gets the number of available bytes to read in the hardware buffer.

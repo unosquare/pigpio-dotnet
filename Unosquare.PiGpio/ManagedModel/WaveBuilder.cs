@@ -9,9 +9,9 @@
     using System.Linq;
 
     /// <summary>
-    /// Provides methods to build waveforms.
+    /// Provides methods to build and render waveforms.
     /// </summary>
-    public sealed class BoardWaveBuilder : IDisposable
+    public sealed class WaveBuilder : IDisposable
     {
         private const string WaveAlreadyPreparedErrorMessage = "Wave was already prepared and cannot be modified.";
         private const string DisposedErrorMessage = "Wave was already disposed.";
@@ -20,9 +20,9 @@
         private bool IsDisposed = false;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BoardWaveBuilder"/> class.
+        /// Initializes a new instance of the <see cref="WaveBuilder"/> class.
         /// </summary>
-        internal BoardWaveBuilder()
+        internal WaveBuilder()
         {
             m_Pulses = new List<GpioPulse>(Board.Waves.MaxPulses);
         }

@@ -64,6 +64,6 @@
         /// Creates the wave.
         /// </summary>
         /// <returns>A wave builder object to create and transmit PWM waves</returns>
-        public BoardWaveBuilder CreateWave() => new BoardWaveBuilder();
+        public WaveBuilder CreateWave() => new WaveBuilder();
     }
 }

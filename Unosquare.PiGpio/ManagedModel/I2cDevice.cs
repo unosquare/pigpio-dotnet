@@ -38,10 +38,7 @@
         /// </summary>
         public static bool UseCombinedTransactions
         {
-            set
-            {
-                I2c.I2cSwitchCombined(value ? 1 : 0);
-            }
+            set => I2c.I2cSwitchCombined(value ? 1 : 0);
         }
 
         /// <summary>
