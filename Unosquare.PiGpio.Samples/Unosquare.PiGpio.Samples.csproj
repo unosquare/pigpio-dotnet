@@ -67,9 +67,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Unosquare.PiGpio.Peripherals.cs\Unosquare.PiGpio.Peripherals.cs.csproj">
+    <ProjectReference Include="..\Unosquare.PiGpio.Peripherals\Unosquare.PiGpio.Peripherals.csproj">
       <Project>{43f9be1d-2230-43d5-9bc2-ab01d0eb6fe9}</Project>
-      <Name>Unosquare.PiGpio.Peripherals.cs</Name>
+      <Name>Unosquare.PiGpio.Peripherals</Name>
     </ProjectReference>
     <ProjectReference Include="..\Unosquare.PiGpio\Unosquare.PiGpio.csproj">
       <Project>{05ac800c-3ed7-4c6e-83eb-32472d88b3e3}</Project>

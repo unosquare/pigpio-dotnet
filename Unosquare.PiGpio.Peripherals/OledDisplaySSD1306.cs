@@ -1,4 +1,4 @@
-﻿namespace Unosquare.PiGpio.Peripherals.cs
+﻿namespace Unosquare.PiGpio.Peripherals
 {
     using ManagedModel;
     using NativeEnums;
@@ -37,6 +37,7 @@
 
         private byte m_Contrast = 0;
         private readonly BitArray BitBuffer;
+        private readonly byte[] ByteBuffer;
         private int BufferPageCount;
         private int BitsPerPage;
 
@@ -76,6 +77,7 @@
             VccState = vccState;
             BufferPageCount = Height / 8;
             BitBuffer = new BitArray(Width * Height);
+            ByteBuffer = new byte[BitBuffer.Length / 8];
             BitsPerPage = 8 * Width;
             Initialize();
         }
@@ -106,7 +108,7 @@
         public bool this[int x, int y]
         {
             get => BitBuffer[GetBitIndex(x, y)];
-            set =>  BitBuffer[GetBitIndex(x, y)] = value;
+            set => BitBuffer[GetBitIndex(x, y)] = value;
         }
 
         public static I2cDevice GetDefaultDevice() =>
@@ -117,7 +119,7 @@
             SendCommand(Command.TurnOff);
             SendCommand(Command.SetClockDivider, DisplayClockDivider[Model]);
             SendCommand(Command.SetMultiplexer, MultiplexSetting[Model]);
-            SendCommand(Command.SetDisplayOffset);
+            SendCommand(Command.SetDisplayOffset, 0x00);
             SendCommand(Command.SetStartLine, 0x00);
             SendCommand(Command.SetChargePumpMode, (byte)(VccState == VccStateMode.ExternalPower ? 0x10 : 0x14));
             SendCommand(Command.SetMemoryMode, 0x00);
@@ -135,6 +137,9 @@
             SendCommand(Command.SetVoltageOutput, 0x40);
             SendCommand(Command.Resume);
             SendCommand(Command.DisplayModeNormal);
+            SendCommand(Command.TurnOn);
+            SendCommand(Command.SetColumnAddressRange, 0, (byte)(Width - 1));
+            SendCommand(Command.SetPageAddressRange, 0, (byte)(BufferPageCount - 1));
         }
 
         private int GetBitIndex(int x, int y) =>
@@ -161,19 +166,13 @@
         public void SendCommand(Command command) =>
             SendCommand((byte)command);
 
-        public void SendData(byte data) =>
-            Device.Write(0x40, data);
-
         public void Render()
         {
-            SendCommand(Command.SetColumnAddressRange, 0, (byte)(Width - 1));
-            SendCommand(Command.SetPageAddressRange, 0, (byte)(BufferPageCount - 1));
-            var byteBuffer = new byte[16];
-
-            for (var i = 0; i < BitBuffer.Length; i+= byteBuffer.Length * 8)
+            BitBuffer.CopyTo(ByteBuffer, 0);
+            for (var i = 0; i < ByteBuffer.Length; i += 2)
             {
-                BitBuffer.CopyTo(byteBuffer, i);
-                Device.Write(0x40, byteBuffer);
+                // Device.Write(0x40, new byte[] { ByteBuffer[i], ByteBuffer[i + 1] });
+                Device.Write(0x40, (short)(ByteBuffer[i + 1] << 8 | ByteBuffer[i]));
             }
         }
 

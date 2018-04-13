@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{9877
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unosquare.PiGpio.Samples", "Unosquare.PiGpio.Samples\Unosquare.PiGpio.Samples.csproj", "{6D5F7C14-B6F6-48DF-A819-AC380F3C21A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unosquare.PiGpio.Peripherals.cs", "Unosquare.PiGpio.Peripherals.cs\Unosquare.PiGpio.Peripherals.cs.csproj", "{43F9BE1D-2230-43D5-9BC2-AB01D0EB6FE9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unosquare.PiGpio.Peripherals", "Unosquare.PiGpio.Peripherals\Unosquare.PiGpio.Peripherals.csproj", "{43F9BE1D-2230-43D5-9BC2-AB01D0EB6FE9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

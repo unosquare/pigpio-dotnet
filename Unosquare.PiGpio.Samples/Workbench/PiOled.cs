@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Unosquare.PiGpio.Peripherals.cs;
+using Unosquare.PiGpio.Peripherals;
+using Unosquare.Swan;
 
 namespace Unosquare.PiGpio.Samples.Workbench
 {
@@ -38,6 +39,7 @@ namespace Unosquare.PiGpio.Samples.Workbench
                 {
                     currentX = 0;
                     currentY += 1;
+                    $"Contrast: {Display.Contrast}. X: {currentX} Y: {currentY}".Info(Name);
                 }
 
                 if (currentY >= Display.Height)
@@ -46,7 +48,7 @@ namespace Unosquare.PiGpio.Samples.Workbench
                     currentVal = !currentVal;
                 }
 
-                Thread.Sleep(250);
+                // Thread.Sleep(15);
             }
         }
 

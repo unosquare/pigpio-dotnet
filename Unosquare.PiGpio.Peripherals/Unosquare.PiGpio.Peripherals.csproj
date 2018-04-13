@@ -7,8 +7,8 @@
     <ProjectGuid>{43F9BE1D-2230-43D5-9BC2-AB01D0EB6FE9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Unosquare.PiGpio.Peripherals.cs</RootNamespace>
-    <AssemblyName>Unosquare.PiGpio.Peripherals.cs</AssemblyName>
+    <RootNamespace>Unosquare.PiGpio.Peripherals</RootNamespace>
+    <AssemblyName>Unosquare.PiGpio.Peripherals</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
