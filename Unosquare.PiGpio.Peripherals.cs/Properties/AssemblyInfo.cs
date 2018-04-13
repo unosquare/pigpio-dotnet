@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Unosquare.PiGpio")]
-[assembly: AssemblyDescription("Provides a managed and unmanaged API for the pigpio C library")]
+[assembly: AssemblyTitle("Unosquare.PiGpio.Peripherals.cs")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Unosquare")]
-[assembly: AssemblyProduct("Unosquare.PiGpio")]
-[assembly: AssemblyCopyright("Copyright © 2018 Mario Di Vece, Unosquare")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Unosquare.PiGpio.Peripherals.cs")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("05ac800c-3ed7-4c6e-83eb-32472d88b3e3")]
+[assembly: Guid("43f9be1d-2230-43d5-9bc2-ab01d0eb6fe9")]
 
 // Version information for an assembly consists of the following four values:
 //

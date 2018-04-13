@@ -20,7 +20,7 @@
                 new Timers(false),
                 new ButtonInterrupts(false),
                 new DhtSensor(false),
-                new Mpu6050(true),
+                new Mpu6050(false),
             };
             
             $"Enabled Workbench Items: {workbenchItems.Count(wbi => wbi.IsEnabled)}".Info(nameof(Program));
