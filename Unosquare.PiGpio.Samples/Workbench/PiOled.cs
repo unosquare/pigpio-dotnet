@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -28,6 +29,10 @@ namespace Unosquare.PiGpio.Samples.Workbench
             var currentX = 0;
             var currentY = 0;
             var currentVal = true;
+            var sw = new Stopwatch();
+            var frameCount = 0d;
+
+            sw.Start();
             while (!ct.IsCancellationRequested)
             {
 
@@ -35,11 +40,17 @@ namespace Unosquare.PiGpio.Samples.Workbench
                 Display.Render();
 
                 currentX++;
+                frameCount += 1;
+
                 if (currentX >= Display.Width)
                 {
+                    var elapsedSeconds = sw.Elapsed.TotalSeconds;
+                    var framesPerSecond = frameCount / elapsedSeconds;
+                    $"Contrast: {Display.Contrast}. X: {currentX} Y: {currentY} Frames: {frameCount:0} Elapsed {elapsedSeconds:0.000} FPS: {framesPerSecond:0.000}".Info(Name);
+                    sw.Restart();
+                    frameCount = 0;
                     currentX = 0;
                     currentY += 1;
-                    $"Contrast: {Display.Contrast}. X: {currentX} Y: {currentY}".Info(Name);
                 }
 
                 if (currentY >= Display.Height)
@@ -54,7 +65,8 @@ namespace Unosquare.PiGpio.Samples.Workbench
 
         protected override void Cleanup()
         {
-            base.Cleanup();
+            Display.IsActive = false;
+            // Display.Contrast = 0;
         }
     }
 }

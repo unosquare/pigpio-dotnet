@@ -36,6 +36,7 @@
         }
 
         private byte m_Contrast = 0;
+        private bool m_IsActive = false;
         private readonly BitArray BitBuffer;
         private readonly byte[] ByteBuffer;
         private int BufferPageCount;
@@ -80,6 +81,7 @@
             ByteBuffer = new byte[BitBuffer.Length / 8];
             BitsPerPage = 8 * Width;
             Initialize();
+            IsActive = true;
         }
 
         public I2cDevice Device { get; }
@@ -102,6 +104,16 @@
             {
                 SendCommand(Command.SetContrast, value);
                 m_Contrast = value;
+            }
+        }
+
+        public bool IsActive
+        {
+            get { return m_IsActive; }
+            set
+            {
+                SendCommand(value ? Command.TurnOn : Command.TurnOff);
+                m_IsActive = value;
             }
         }
 
@@ -137,9 +149,6 @@
             SendCommand(Command.SetVoltageOutput, 0x40);
             SendCommand(Command.Resume);
             SendCommand(Command.DisplayModeNormal);
-            SendCommand(Command.TurnOn);
-            SendCommand(Command.SetColumnAddressRange, 0, (byte)(Width - 1));
-            SendCommand(Command.SetPageAddressRange, 0, (byte)(BufferPageCount - 1));
         }
 
         private int GetBitIndex(int x, int y) =>
@@ -168,11 +177,19 @@
 
         public void Render()
         {
+            var chunkDataLength = BitsPerPage / 8 * 2; // 16;
+            SendCommand(Command.SetColumnAddressRange, 0, (byte)(Width - 1));
+            SendCommand(Command.SetPageAddressRange, 0, (byte)(BufferPageCount - 1));
+
             BitBuffer.CopyTo(ByteBuffer, 0);
-            for (var i = 0; i < ByteBuffer.Length; i += 2)
+
+            var chunkData = new byte[1 + chunkDataLength];
+            for (var i = 0; i < ByteBuffer.Length; i += chunkDataLength)
             {
-                // Device.Write(0x40, new byte[] { ByteBuffer[i], ByteBuffer[i + 1] });
-                Device.Write(0x40, (short)(ByteBuffer[i + 1] << 8 | ByteBuffer[i]));
+                // Device.Write(0x40, (short)(ByteBuffer[i + 1] << 8 | ByteBuffer[i]));
+                Buffer.BlockCopy(ByteBuffer, i, chunkData, 1, chunkDataLength);
+                chunkData[0] = 0x40;
+                Device.WriteRaw(chunkData);
             }
         }
 
