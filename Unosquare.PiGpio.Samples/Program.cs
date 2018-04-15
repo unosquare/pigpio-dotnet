@@ -28,8 +28,8 @@
             foreach (var wbi in workbenchItems)
                 wbi.Start();
 
-            Console.ReadKey(true);
-            // Terminal.ReadKey(intercept: true, disableLocking: true);
+            // Console.ReadKey(true);
+            Terminal.ReadKey(intercept: true, disableLocking: true);
 
             foreach (var wbi in workbenchItems)
                 wbi.Stop();

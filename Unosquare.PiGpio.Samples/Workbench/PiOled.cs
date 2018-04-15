@@ -1,5 +1,6 @@
 ﻿namespace Unosquare.PiGpio.Samples.Workbench
 {
+    using System;
     using System.Diagnostics;
     using System.Drawing;
     using System.Drawing.Drawing2D;
@@ -7,6 +8,7 @@
     using System.Threading;
     using Unosquare.PiGpio.Peripherals;
     using Unosquare.Swan;
+    using Unosquare.Swan.Components;
 
     internal class PiOled : WorkbenchItemBase
     {
@@ -31,18 +33,19 @@
             var cycleSw = new Stopwatch();
             var frameCount = 0d;
             var cycleCount = 0;
+            var currentThreshold = 0.5d;
 
             var bitmap = new Bitmap(Display.Width, Display.Height, PixelFormat.Format32bppArgb);
-            var rect = new Rectangle(0, 0, bitmap.Width, bitmap.Height);
-            var font = new Font(FontFamily.GenericMonospace, 7);
-            $"Selected font is: {font.Name}".Info(Name);
-
-            var fontBrush = Brushes.White;
             var graphicPen = Pens.White;
             var graphics = Graphics.FromImage(bitmap);
-            graphics.CompositingQuality = CompositingQuality.HighSpeed;
-            graphics.InterpolationMode = InterpolationMode.Low;
-            graphics.SmoothingMode = SmoothingMode.None;
+            {
+                graphics.CompositingQuality = CompositingQuality.HighSpeed;
+                graphics.InterpolationMode = InterpolationMode.Default;
+                graphics.SmoothingMode = SmoothingMode.Default;
+            }
+
+            var ipAddress = ProcessRunner.GetProcessOutputAsync("hostname", "-I")
+                .GetAwaiter().GetResult().RemoveControlChars().Trim().Truncate(15);
 
             sw.Start();
             cycleSw.Start();
@@ -50,13 +53,17 @@
             {
                 cycleSw.Restart();
                 graphics.Clear(Color.Black);
-                graphics.DrawString($"X: {currentX,3}  Y: {currentY,3}", font, fontBrush, 2, 2);
-                graphics.DrawString($"Cycles: {cycleCount,6}", font, fontBrush, 2, 13);
-                graphics.DrawEllipse(graphicPen, currentX, 24, 6, 6);
-                graphics.Flush();
+                Display.DrawText(bitmap, 
+                    graphics,
+                    $"X: {currentX,3}  Y: {currentY,3}",
+                    $"Cycles: {cycleCount,6} T {currentThreshold:p}",
+                    $"{DateTime.Now}",
+                    $"IP: {ipAddress}");
 
-                Display.LoadBitmap(bitmap, 0, 0);
-                Display[currentX, currentY] = true; // currentVal;
+                // graphics.DrawEllipse(graphicPen, currentX, 24, 6, 6);
+                graphics.Flush();
+                Display.LoadBitmap(bitmap, currentThreshold, 0, 0);
+                // Display[currentX, currentY] = true; // currentVal;
                 Display.Render();
 
                 currentX++;
@@ -83,7 +90,7 @@
                 if (cycleSw.ElapsedMilliseconds > 40)
                     continue;
 
-                Board.Timing.Sleep(40 - cycleSw.ElapsedMilliseconds);
+                // Board.Timing.Sleep(40 - cycleSw.ElapsedMilliseconds);
             }
 
             graphics.Dispose();

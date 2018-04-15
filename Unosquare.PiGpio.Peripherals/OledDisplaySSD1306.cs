@@ -6,8 +6,11 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.Drawing;
+    using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
+    using System.Linq;
     using System.Runtime.CompilerServices;
+    using System.Text;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -18,26 +21,30 @@
     {
         #region Private Fields
 
-        static private readonly Dictionary<DisplayModel, byte> DisplayClockDivider = new Dictionary<DisplayModel, byte>
+        private static readonly Dictionary<DisplayModel, byte> DisplayClockDivider = new Dictionary<DisplayModel, byte>
         {
             { DisplayModel.Display128x64, 0x80 },
             { DisplayModel.Display128x32, 0x80 },
             { DisplayModel.Display96x16, 0x60 },
         };
 
-        static private readonly Dictionary<DisplayModel, byte> MultiplexSetting = new Dictionary<DisplayModel, byte>
+        private static readonly Dictionary<DisplayModel, byte> MultiplexSetting = new Dictionary<DisplayModel, byte>
         {
             { DisplayModel.Display128x64, 0x3F },
             { DisplayModel.Display128x32, 0x1F },
             { DisplayModel.Display96x16, 0x0F },
         };
 
-        static private readonly Dictionary<DisplayModel, byte> ComPins = new Dictionary<DisplayModel, byte>
+        private static readonly Dictionary<DisplayModel, byte> ComPins = new Dictionary<DisplayModel, byte>
         {
             { DisplayModel.Display128x64, 0x12 },
             { DisplayModel.Display128x32, 0x02 },
             { DisplayModel.Display96x16, 0x02 },
         };
+
+        private static readonly Bitmap FontBitmap;
+        private static int FontBitmapCharWidth;
+        private static int FontBitmapCharHeight;
 
         private byte m_Contrast = 0;
         private bool m_IsActive = false;
@@ -50,6 +57,18 @@
         #endregion
 
         #region Constructors
+
+        static OledDisplaySSD1306()
+        {
+            var resourceNames = typeof(OledDisplaySSD1306).Assembly.GetManifestResourceNames();
+            var fontResource = resourceNames.First(r => r.Contains("AsciiFontPng"));
+            using (var stream = typeof(OledDisplaySSD1306).Assembly.GetManifestResourceStream(fontResource))
+            {
+                FontBitmap = new Bitmap(stream);
+                FontBitmapCharWidth = FontBitmap.Width / 257;
+                FontBitmapCharHeight = FontBitmap.Height;
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="OledDisplaySSD1306"/> class.
@@ -197,6 +216,78 @@
         public void SetPixel(int x, int y, bool value) => this[x, y] = value;
 
         /// <summary>
+        /// Gets the text bitmap using the default bitmap font.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>A bitmap containing the text using the bitmap font</returns>
+        public Bitmap GetTextBitmap(string text)
+        {
+            var chars = Encoding.ASCII.GetBytes(text);
+            var bitmap = new Bitmap(chars.Length * FontBitmapCharWidth, FontBitmapCharHeight);
+            var offsetX = 0;
+
+            using (var g = Graphics.FromImage(bitmap))
+            {
+                g.CompositingQuality = CompositingQuality.HighSpeed;
+                g.SmoothingMode = SmoothingMode.None;
+                g.InterpolationMode = InterpolationMode.Low;
+                g.Clear(Color.Black);
+
+                foreach (var c in chars)
+                {
+                    var glyphRect = new Rectangle(c * FontBitmapCharWidth, 0, FontBitmapCharWidth, FontBitmapCharHeight);
+                    g.DrawImage(FontBitmap, offsetX, 0, glyphRect, GraphicsUnit.Pixel);
+                    offsetX += FontBitmapCharWidth;
+                }
+
+                g.Flush();
+            }
+
+            return bitmap;
+        }
+
+        /// <summary>
+        /// Draws the text lines on an existing bitmap and loads it to the bitmap buffer.
+        /// </summary>
+        /// <param name="bitmap">The bitmap.</param>
+        /// <param name="lines">The lines.</param>
+        public void DrawText(Bitmap bitmap, params string[] lines) =>
+            DrawText(bitmap, null, lines);
+
+        /// <summary>
+        /// Draws the text lines on an existing bitmap and loads it to the bitmap buffer.
+        /// </summary>
+        /// <param name="bitmap">The bitmap.</param>
+        /// <param name="g">The existing graphics context.</param>
+        /// <param name="lines">The lines.</param>
+        public void DrawText(Bitmap bitmap, Graphics g, params string[] lines)
+        {
+            var disposeGraphics = false;
+            if (g == null)
+            {
+                g = Graphics.FromImage(bitmap);
+                g.CompositingQuality = CompositingQuality.HighSpeed;
+                g.SmoothingMode = SmoothingMode.None;
+                g.InterpolationMode = InterpolationMode.Low;
+                disposeGraphics = true;
+            }
+
+            for (var lineIndex = 0; lineIndex < lines.Length; lineIndex++)
+            {
+                var text = lines[lineIndex];
+                var offsetY = lineIndex * FontBitmapCharHeight;
+                var textBitmap = GetTextBitmap(text);
+                g.DrawImageUnscaled(textBitmap, 0, offsetY);
+            }
+
+            if (disposeGraphics)
+            {
+                g.Flush();
+                g.Dispose();
+            }
+        }
+
+        /// <summary>
         /// Clears all the back-buffer pixels.
         /// </summary>
         public void ClearPixels() => BitBuffer.SetAll(false);
@@ -205,9 +296,11 @@
         /// Loads a bitmap into the bit buffer
         /// </summary>
         /// <param name="bitmap">The bitmap.</param>
+        /// <param name="brightnessThreshold">The brightness threshold 0 to 1.</param>
         /// <param name="offsetX">The offset x.</param>
         /// <param name="offsetY">The offset y.</param>
-        public void LoadBitmap(Bitmap bitmap, int offsetX, int offsetY)
+        /// <exception cref="ArgumentNullException">bitmap</exception>
+        public void LoadBitmap(Bitmap bitmap, double brightnessThreshold, int offsetX, int offsetY)
         {
             if (bitmap == null) throw new ArgumentNullException(nameof(bitmap));
             ClearPixels();
@@ -219,7 +312,7 @@
                 {
                     currentPixel = bitmap.GetPixel(bitmapX, bitmapY);
                     if (currentPixel == Color.Black) continue;
-                    if (currentPixel.GetBrightness() > 0.5f)
+                    if ((Math.Max(Math.Max(currentPixel.R, currentPixel.G), currentPixel.B) / 255d) >= brightnessThreshold)
                         BitBuffer[GetBitIndex(bitmapX - offsetX, bitmapY - offsetY)] = true;
                 }
             });
