@@ -21,12 +21,13 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="I2cDevice" /> class.
         /// </summary>
-        /// <param name="bus">The bus.</param>
+        /// <param name="busId">The bus.</param>
         /// <param name="address">The address.</param>
-        internal I2cDevice(I2cBusId bus, byte address)
+        internal I2cDevice(I2cBusId busId, byte address)
         {
-            Handle = I2c.I2cOpen(Convert.ToUInt32(bus), address);
+            Handle = I2c.I2cOpen(Convert.ToUInt32(busId), address);
             Address = address;
+            BusId = busId;
         }
 
         /// <summary>
@@ -40,6 +41,11 @@
         {
             set => I2c.I2cSwitchCombined(value ? 1 : 0);
         }
+
+        /// <summary>
+        /// Gets the bus identifier.
+        /// </summary>
+        public I2cBusId BusId { get; }
 
         /// <summary>
         /// Gets the devide address on the bus.
@@ -119,10 +125,11 @@
             BoardException.ValidateResult(I2c.I2cWriteI2cBlockData(Handle, register, buffer, count));
 
         /// <summary>
-        /// This writes count bytes from buf to the raw device.
+        /// This writes a sequence of bytes without control bits between blocks.
+        /// This operation sends the bytes in its raw form consecutively.
         /// </summary>
         /// <param name="buffer">The buffer.</param>
-        public void WriteRaw(byte[] buffer) =>
+        public void Write(byte[] buffer) =>
             BoardException.ValidateResult(I2c.I2cWriteDevice(Handle, buffer));
 
         /// <summary>

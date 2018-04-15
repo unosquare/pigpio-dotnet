@@ -35,7 +35,7 @@
         /// </summary>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "serClose")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serClose")]
         public static extern ResultCode SerClose(UIntPtr handle);
 
         /// <summary>
@@ -45,7 +45,7 @@
         /// </summary>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/></param>
         /// <returns>Returns the read byte (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_SER_READ_NO_DATA, or PI_SER_READ_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "serReadByte")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serReadByte")]
         public static extern int SerReadByte(UIntPtr handle);
 
         /// <summary>
@@ -57,7 +57,7 @@
         /// <returns>
         /// Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_WRITE_FAILED.
         /// </returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "serWriteByte")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serWriteByte")]
         public static extern ResultCode SerWriteByte(UIntPtr handle, uint byteValue);
 
         /// <summary>
@@ -70,7 +70,7 @@
         /// <param name="buffer">an array to receive the read data</param>
         /// <param name="count">the maximum number of bytes to read</param>
         /// <returns>Returns the number of bytes read (&gt;0=) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_READ_NO_DATA.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "serRead")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serRead")]
         public static extern int SerRead(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -83,7 +83,7 @@
         /// <param name="buffer">the array of bytes to write</param>
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_WRITE_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "serWrite")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serWrite")]
         public static extern ResultCode SerWrite(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -94,7 +94,7 @@
         /// </summary>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/></param>
         /// <returns>Returns the number of bytes of data available (&gt;=0) if OK, otherwise PI_BAD_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "serDataAvailable")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serDataAvailable")]
         public static extern int SerDataAvailable(UIntPtr handle);
 
         #region Unmanaged Methods
@@ -114,7 +114,7 @@
         /// <param name="baud">the baud rate in bits per second, see below</param>
         /// <param name="serFlags">0</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_NO_HANDLE, or PI_SER_OPEN_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "serOpen")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serOpen")]
         private static extern int SerOpenUnmanaged(string sertty, uint baud, uint serFlags);
 
         #endregion

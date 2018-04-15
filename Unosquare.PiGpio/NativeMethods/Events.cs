@@ -130,7 +130,7 @@
         /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
         /// <param name="bitMask">a bit mask indicating the GPIO of interest</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyBegin")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioNotifyBegin")]
         public static extern ResultCode GpioNotifyBegin(UIntPtr handle, BitMask bitMask);
 
         /// <summary>
@@ -147,7 +147,7 @@
         /// </example>
         /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyPause")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioNotifyPause")]
         public static extern ResultCode GpioNotifyPause(UIntPtr handle);
 
         /// <summary>
@@ -162,7 +162,7 @@
         /// </example>
         /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyClose")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioNotifyClose")]
         public static extern ResultCode GpioNotifyClose(UIntPtr handle);
 
         /// <summary>
@@ -188,7 +188,7 @@
         /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
         /// <param name="bitMask">a bit mask indicating the events of interest</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventMonitor")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "eventMonitor")]
         public static extern ResultCode EventMonitor(UIntPtr handle, BitMask bitMask);
 
         /// <summary>
@@ -204,7 +204,7 @@
         /// <param name="eventId">0-31</param>
         /// <param name="callback">the callback function</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventSetFunc")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "eventSetFunc")]
         public static extern ResultCode EventSetFunc(uint eventId, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioEventDelegate callback);
 
         /// <summary>
@@ -224,7 +224,7 @@
         /// <param name="callback">the callback function</param>
         /// <param name="userData">pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventSetFuncEx")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "eventSetFuncEx")]
         public static extern ResultCode EventSetFuncEx(uint eventId, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioEventExDelegate callback, UIntPtr userData);
 
         /// <summary>
@@ -245,7 +245,7 @@
         /// </summary>
         /// <param name="eventId">0-31, the event</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "eventTrigger")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "eventTrigger")]
         public static extern ResultCode EventTrigger(uint eventId);
 
         #region Unmanaged Methods
@@ -291,7 +291,7 @@
         /// </code>
         /// </example>
         /// <returns>Returns a handle greater than or equal to zero if OK, otherwise PI_NO_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyOpen")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioNotifyOpen")]
         private static extern int GpioNotifyOpenUnmanaged();
 
         /// <summary>
@@ -304,7 +304,7 @@
         /// <returns>
         /// The result code. 0 for success. See the <see cref="ResultCode" /> enumeration.
         /// </returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioNotifyOpenWithSize")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioNotifyOpenWithSize")]
         private static extern int GpioNotifyOpenWithSizeUnmanaged(int bufferSize);
 
         #endregion

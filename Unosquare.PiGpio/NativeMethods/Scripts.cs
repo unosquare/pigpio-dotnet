@@ -20,7 +20,7 @@
         /// </summary>
         /// <param name="script">the text of the script</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioStoreScript")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioStoreScript")]
         public static extern int GpioStoreScript(string script);
 
         /// <summary>
@@ -36,7 +36,7 @@
         /// <param name="numPar">0-10, the number of parameters</param>
         /// <param name="param">an array of parameters</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioRunScript")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioRunScript")]
         public static extern int GpioRunScript(uint script_id, uint numPar, [In, MarshalAs(UnmanagedType.LPArray)] uint[] param);
 
         /// <summary>
@@ -54,7 +54,7 @@
         /// <param name="numPar">0-10, the number of parameters</param>
         /// <param name="param">an array of parameters</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioUpdateScript")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioUpdateScript")]
         public static extern int GpioUpdateScript(uint script_id, uint numPar, [In, MarshalAs(UnmanagedType.LPArray)] uint[] param);
 
         /// <summary>
@@ -78,7 +78,7 @@
         /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <param name="param">an array to hold the returned 10 parameters</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioScriptStatus")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioScriptStatus")]
         public static extern int GpioScriptStatus(uint script_id, [In, MarshalAs(UnmanagedType.LPArray)] uint[] param);
 
         /// <summary>
@@ -88,7 +88,7 @@
         /// </summary>
         /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioStopScript")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioStopScript")]
         public static extern int GpioStopScript(uint script_id);
 
         /// <summary>
@@ -98,7 +98,7 @@
         /// </summary>
         /// <param name="script_id">&gt;=0, as returned by <see cref="GpioStoreScript"/></param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioDeleteScript")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioDeleteScript")]
         public static extern int GpioDeleteScript(uint script_id);
 
         /// <summary>
@@ -107,7 +107,7 @@
         /// Not intended for general use.
         /// </summary>
         /// <param name="scriptId">&gt;=0, a script_id returned by <see cref="GpioStoreScript"/></param>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawDumpScript")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawDumpScript")]
         public static extern void RawDumpScript(uint scriptId);
     }
 }

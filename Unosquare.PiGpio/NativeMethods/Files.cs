@@ -60,7 +60,7 @@
         /// </example>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="FileOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileClose")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fileClose")]
         public static extern ResultCode FileClose(UIntPtr handle);
 
         /// <summary>
@@ -80,7 +80,7 @@
         /// <param name="buffer">an array to receive the read data</param>
         /// <param name="count">the maximum number of bytes to read</param>
         /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_ROPEN, or PI_BAD_FILE_WRITE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileRead")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fileRead")]
         public static extern int FileRead(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -266,7 +266,7 @@
         /// <param name="file">the file to open</param>
         /// <param name="mode">the file open mode</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_NO_HANDLE, PI_NO_FILE_ACCESS, PI_BAD_FILE_MODE, PI_FILE_OPEN_FAILED, or PI_FILE_IS_A_DIR.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileOpen")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fileOpen")]
         private static extern int FileOpenUnmanaged(string file, uint mode);
 
         /// <summary>
@@ -291,7 +291,7 @@
         /// <param name="seekOffset">the number of bytes to move.  Positive offsets</param>
         /// <param name="seekFrom">one of PI_FROM_START (0), PI_FROM_CURRENT (1),</param>
         /// <returns>Returns the new byte position within the file (&gt;=0) if OK, otherwise PI_BAD_HANDLE, or PI_BAD_FILE_SEEK.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileSeek")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fileSeek")]
         private static extern int FileSeekUnmanaged(UIntPtr handle, int seekOffset, SeekMode seekFrom);
 
         /// <summary>
@@ -340,7 +340,7 @@
         /// <param name="buffer">an array to receive the matching file names</param>
         /// <param name="count">the maximum number of bytes to read</param>
         /// <returns>Returns the number of returned bytes if OK, otherwise PI_NO_FILE_ACCESS, or PI_NO_FILE_MATCH.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileList")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fileList")]
         private static extern int FileListUnmanaged(string pathPattern, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -365,7 +365,7 @@
         /// <param name="buffer">the array of bytes to write</param>
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, PI_FILE_NOT_WOPEN, or PI_BAD_FILE_WRITE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "fileWrite")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "fileWrite")]
         private static extern ResultCode FileWriteUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         #endregion

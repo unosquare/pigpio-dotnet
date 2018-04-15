@@ -49,7 +49,7 @@
         /// </summary>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cClose")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cClose")]
         public static extern ResultCode I2cClose(UIntPtr handle);
 
         /// <summary>
@@ -367,7 +367,7 @@
         /// slave address will use a repeated start (rather than a stop/start).
         /// </summary>
         /// <param name="setting">0 to set the parameter off, non-zero to set it on</param>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cSwitchCombined")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cSwitchCombined")]
         public static extern void I2cSwitchCombined(int setting);
 
         /// <summary>
@@ -379,7 +379,7 @@
         /// <param name="segments">an array of I2C segments</param>
         /// <param name="numSegs">&gt;0, the number of I2C segments</param>
         /// <returns>Returns the number of segments if OK, otherwise PI_BAD_I2C_SEG.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cSegments")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cSegments")]
         public static extern int I2cSegments(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] I2CMessageSegment[] segments, uint numSegs);
 
         /// <summary>
@@ -430,7 +430,7 @@
         /// <param name="outputBuffer">pointer to buffer to hold returned data</param>
         /// <param name="outLength">size of output buffer</param>
         /// <returns>Returns &gt;= 0 if OK (the number of bytes read), otherwise PI_BAD_HANDLE, PI_BAD_POINTER, PI_BAD_I2C_CMD, PI_BAD_I2C_RLEN. PI_BAD_I2C_WLEN, or PI_BAD_I2C_SEG.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cZip")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cZip")]
         public static extern int I2cZip(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] inputBuffer, uint inputLength, [In, MarshalAs(UnmanagedType.LPArray)] byte[] outputBuffer, uint outLength);
 
         /// <summary>
@@ -454,7 +454,7 @@
         /// <param name="sclPin">SCL 0-31</param>
         /// <param name="baudRate">50-500000</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_I2C_BAUD, or PI_GPIO_IN_USE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbI2COpen")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbI2COpen")]
         public static extern ResultCode BbI2COpen(UserGpio sdaPin, UserGpio sclPin, uint baudRate);
 
         /// <summary>
@@ -464,7 +464,7 @@
         /// </summary>
         /// <param name="sdaPin">0-31, the SDA GPIO used in a prior call to <see cref="BbI2COpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_NOT_I2C_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbI2CClose")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbI2CClose")]
         public static extern ResultCode BbI2CClose(UserGpio sdaPin);
 
         /// <summary>
@@ -525,7 +525,7 @@
         /// <param name="outputBuffer">pointer to buffer to hold returned data</param>
         /// <param name="outputLength">size of output buffer</param>
         /// <returns>Returns &gt;= 0 if OK (the number of bytes read), otherwise PI_BAD_USER_GPIO, PI_NOT_I2C_GPIO, PI_BAD_POINTER, PI_BAD_I2C_CMD, PI_BAD_I2C_RLEN, PI_BAD_I2C_WLEN, PI_I2C_READ_FAILED, or PI_I2C_WRITE_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbI2CZip")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbI2CZip")]
         public static extern int BbI2CZip(UserGpio sdaPin, [In, MarshalAs(UnmanagedType.LPArray)] byte[] inputBuffer, uint inputLength, [In, MarshalAs(UnmanagedType.LPArray)] byte[] outputBuffer, uint outputLength);
 
         #region Unmanaged Methods
@@ -558,7 +558,7 @@
         /// <param name="i2cAddr">0-0x7F</param>
         /// <param name="i2cFlags">0</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_BAD_I2C_BUS, PI_BAD_I2C_ADDR, PI_BAD_FLAGS, PI_NO_HANDLE, or PI_I2C_OPEN_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cOpen")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cOpen")]
         private static extern int I2cOpenUnmanaged(uint i2cBus, uint i2cAddr, uint i2cFlags);
 
         /// <summary>
@@ -573,7 +573,7 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
         /// <param name="bit">0-1, the value to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cWriteQuick")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteQuick")]
         private static extern ResultCode I2cWriteQuickUnmanaged(UIntPtr handle, uint bit);
 
         /// <summary>
@@ -587,7 +587,7 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
         /// <param name="bVal">0-0xFF, the value to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cWriteByte")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteByte")]
         private static extern ResultCode I2cWriteByteUnmanaged(UIntPtr handle, uint bVal);
 
         /// <summary>
@@ -600,7 +600,7 @@
         /// </remarks>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
         /// <returns>Returns the byte read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, or PI_I2C_READ_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cReadByte")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadByte")]
         private static extern int I2cReadByteUnmanaged(UIntPtr handle);
 
         /// <summary>
@@ -616,7 +616,7 @@
         /// <param name="i2cReg">0-255, the register to write</param>
         /// <param name="bVal">0-0xFF, the value to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cWriteByteData")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteByteData")]
         private static extern ResultCode I2cWriteByteDataUnmanaged(UIntPtr handle, uint i2cReg, uint bVal);
 
         /// <summary>
@@ -632,7 +632,7 @@
         /// <param name="register">0-255, the register to write</param>
         /// <param name="word">0-0xFFFF, the value to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cWriteWordData")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteWordData")]
         private static extern ResultCode I2cWriteWordDataUnmanaged(UIntPtr handle, uint register, uint word);
 
         /// <summary>
@@ -647,7 +647,7 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
         /// <param name="register">0-255, the register to read</param>
         /// <returns>Returns the byte read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cReadByteData")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadByteData")]
         private static extern int I2cReadByteDataUnmanaged(UIntPtr handle, uint register);
 
         /// <summary>
@@ -662,7 +662,7 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
         /// <param name="register">0-255, the register to read</param>
         /// <returns>Returns the word read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cReadWordData")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadWordData")]
         private static extern int I2cReadWordDataUnmanaged(UIntPtr handle, uint register);
 
         /// <summary>
@@ -679,7 +679,7 @@
         /// <param name="register">0-255, the register to write/read</param>
         /// <param name="word">0-0xFFFF, the value to write</param>
         /// <returns>Returns the word read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cProcessCall")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cProcessCall")]
         private static extern int I2cProcessCallUnmanaged(UIntPtr handle, uint register, uint word);
 
         /// <summary>
@@ -697,7 +697,7 @@
         /// <param name="buffer">an array with the data to send</param>
         /// <param name="count">1-32, the number of bytes to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cWriteBlockData")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteBlockData")]
         private static extern ResultCode I2cWriteBlockDataUnmanaged(UIntPtr handle, uint register, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -716,7 +716,7 @@
         /// <param name="register">0-255, the register to read</param>
         /// <param name="buffer">an array to receive the read data</param>
         /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cReadBlockData")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadBlockData")]
         private static extern int I2cReadBlockDataUnmanaged(UIntPtr handle, uint register, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer);
 
         /// <summary>
@@ -739,7 +739,7 @@
         /// <param name="buffer">an array with the data to send and to receive the read data</param>
         /// <param name="count">1-32, the number of bytes to write</param>
         /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cBlockProcessCall")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cBlockProcessCall")]
         private static extern int I2cBlockProcessCallUnmanaged(UIntPtr handle, uint register, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -756,7 +756,7 @@
         /// <param name="buffer">an array to receive the read data</param>
         /// <param name="count">1-32, the number of bytes to read</param>
         /// <returns>Returns the number of bytes read (&gt;0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cReadI2CBlockData")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadI2CBlockData")]
         private static extern int I2cReadI2cBlockDataUnmanaged(UIntPtr handle, uint register, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -772,7 +772,7 @@
         /// <param name="buffer">the data to write</param>
         /// <param name="count">1-32, the number of bytes to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cWriteI2CBlockData")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteI2CBlockData")]
         private static extern ResultCode I2cWriteI2cBlockDataUnmanaged(UIntPtr handle, uint register, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -786,7 +786,7 @@
         /// <param name="buffer">an array to receive the read data bytes</param>
         /// <param name="count">&gt;0, the number of bytes to read</param>
         /// <returns>Returns count (&gt;0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cReadDevice")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadDevice")]
         private static extern int I2cReadDeviceUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -800,7 +800,7 @@
         /// <param name="buffer">an array containing the data bytes to write</param>
         /// <param name="count">&gt;0, the number of bytes to write</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "i2cWriteDevice")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteDevice")]
         private static extern ResultCode I2cWriteDeviceUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         #endregion

@@ -32,6 +32,7 @@ For more information, please refer to <http://unlicense.org/>
 #include <pthread.h>
 
 #define PIGPIO_VERSION 67
+#define EMBEDDED_IN_VM
 
 /*TEXT
 
@@ -93,20 +94,20 @@ For examples of usage see the C programs within the pigpio archive file.
 
 All the functions which return an int return < 0 on error.
 
-[*gpioInitialise"/> must be called before all other library functions
+[*gpioInitialise*] must be called before all other library functions
 with the following exceptions:
 
 . .
-[*gpioCfg*"/>
-[*gpioVersion"/>
-[*gpioHardwareRevision"/>
+[*gpioCfg**]
+[*gpioVersion*]
+[*gpioHardwareRevision*]
 . .
 
-If the library is not initialised all but the <see cref="GpioCfg*"/>,
-[*gpioVersion"/>, and <see cref="GpioHardwareRevision"/> functions will
+If the library is not initialised all but the [*gpioCfg**],
+[*gpioVersion*], and [*gpioHardwareRevision*] functions will
 return error PI_NOT_INITIALISED.
 
-If the library is initialised the <see cref="GpioCfg*"/> functions will return
+If the library is initialised the [*gpioCfg**] functions will return
 error PI_INITIALISED.
 
 TEXT*/
@@ -924,9 +925,9 @@ gpioInitialise must be called before using the other library functions
 with the following exceptions:
 
 . .
-[*gpioCfg*"/>
-[*gpioVersion"/>
-[*gpioHardwareRevision"/>
+[*gpioCfg**]
+[*gpioVersion*]
+[*gpioHardwareRevision*]
 . .
 
 ...
@@ -1087,7 +1088,7 @@ Arduino style: analogWrite
 This and the servo functionality use the DMA and PWM or PCM peripherals
 to control and schedule the pulse lengths and dutycycles.
 
-The <see cref="GpioSetPWMrange"/> function may be used to change the default
+The [*gpioSetPWMrange*] function may be used to change the default
 range of 255.
 
 ...
@@ -1113,7 +1114,7 @@ Returns between 0 (off) and range (fully on) if OK, otherwise
 PI_BAD_USER_GPIO or PI_NOT_PWM_GPIO.
 
 For normal PWM the dutycycle will be out of the defined range
-for the GPIO (see <see cref="GpioGetPWMrange"/>).
+for the GPIO (see [*gpioGetPWMrange*]).
 
 If a hardware clock is active on the GPIO the reported dutycycle
 will be 500000 (500k) out of 1000000 (1M).
@@ -1150,7 +1151,7 @@ on for each frequency, is given in the following table.
  800, 1000, 1250, 2000, 2500, 4000, 5000, 10000, 20000
 . .
 
-The real value set by <see cref="GpioPWM"/> is (dutycycle * real range) / range.
+The real value set by [*gpioPWM*] is (dutycycle * real range) / range.
 
 ...
 gpioSetPWMrange(24, 2000); // Now 2000 is fully on
@@ -1269,13 +1270,13 @@ user_gpio: 0-31
 . .
 
 For normal PWM the frequency will be that defined for the GPIO by
-[*gpioSetPWMfrequency"/>.
+[*gpioSetPWMfrequency*].
 
 If a hardware clock is active on the GPIO the reported frequency
-will be that set by <see cref="GpioHardwareClock"/>.
+will be that set by [*gpioHardwareClock*].
 
 If hardware PWM is active on the GPIO the reported frequency
-will be that set by <see cref="GpioHardwarePWM"/>.
+will be that set by [*gpioHardwarePWM*].
 
 ...
 f = gpioGetPWMfrequency(23); // Get frequency used for GPIO23.
@@ -1323,9 +1324,9 @@ PWM Hz    50   100  200  400  500
 1E6/Hz 20000 10000 5000 2500 2000
 . .
 
-Firstly set the desired PWM frequency using <see cref="GpioSetPWMfrequency"/>.
+Firstly set the desired PWM frequency using [*gpioSetPWMfrequency*].
 
-Then set the PWM range using <see cref="GpioSetPWMrange"/> to 1E6/frequency.
+Then set the PWM range using [*gpioSetPWMrange*] to 1E6/frequency.
 Doing this allows you to use units of microseconds when setting
 the servo pulsewidth.
 
@@ -1416,7 +1417,7 @@ i.e. The active alert functions will get all level changes but there
 will be a latency.
 
 The tick value is the time stamp of the sample in microseconds, see
-[*gpioTick"/> for more details.
+[*gpioTick*] for more details.
 
 ...
 void aFunction(int gpio, int level, uint32_t tick)
@@ -1467,9 +1468,9 @@ tick        32 bit   The number of microseconds since boot
 userdata    pointer  Pointer to an arbitrary object
 . .
 
-See <see cref="GpioSetAlertFunc"/> for further details.
+See [*gpioSetAlertFunc*] for further details.
 
-Only one of <see cref="GpioSetAlertFunc"/> or <see cref="GpioSetAlertFuncEx"/> can be
+Only one of [*gpioSetAlertFunc*] or [*gpioSetAlertFuncEx*] can be
 registered per GPIO.
 D*/
 
@@ -1580,10 +1581,10 @@ tick        32 bit   The number of microseconds since boot
 userdata    pointer  Pointer to an arbitrary object
 . .
 
-Only one of <see cref="GpioSetISRFunc"/> or <see cref="GpioSetISRFuncEx"/> can be
+Only one of [*gpioSetISRFunc*] or [*gpioSetISRFuncEx*] can be
 registered per GPIO.
 
-See <see cref="GpioSetISRFunc"/> for further details.
+See [*gpioSetISRFunc*] for further details.
 D*/
 
 
@@ -1637,10 +1638,10 @@ int gpioNotifyOpenWithSize(int bufSize);
 /*D
 This function requests a free notification handle.
 
-It differs from <see cref="GpioNotifyOpen"/> in that the pipe size may be
-specified, whereas <see cref="GpioNotifyOpen"/> uses the default pipe size.
+It differs from [*gpioNotifyOpen*] in that the pipe size may be
+specified, whereas [*gpioNotifyOpen*] uses the default pipe size.
 
-See <see cref="GpioNotifyOpen"/> for further details.
+See [*gpioNotifyOpen*] for further details.
 D*/
 
 
@@ -1650,7 +1651,7 @@ int gpioNotifyBegin(unsigned handle, uint32_t bits);
 This function starts notifications on a previously opened handle.
 
 . .
-handle: >=0, as returned by <see cref="GpioNotifyOpen"/>
+handle: >=0, as returned by [*gpioNotifyOpen*]
   bits: a bit mask indicating the GPIO of interest
 . .
 
@@ -1712,12 +1713,12 @@ int gpioNotifyPause(unsigned handle);
 This function pauses notifications on a previously opened handle.
 
 . .
-handle: >=0, as returned by <see cref="GpioNotifyOpen"/>
+handle: >=0, as returned by [*gpioNotifyOpen*]
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE.
 
-Notifications for the handle are suspended until <see cref="GpioNotifyBegin"/>
+Notifications for the handle are suspended until [*gpioNotifyBegin*]
 is called again.
 
 ...
@@ -1733,7 +1734,7 @@ This function stops notifications on a previously opened handle
 and releases the handle for reuse.
 
 . .
-handle: >=0, as returned by <see cref="GpioNotifyOpen"/>
+handle: >=0, as returned by [*gpioNotifyOpen*]
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE.
@@ -1748,7 +1749,7 @@ D*/
 int gpioWaveClear(void);
 /*D
 This function clears all waveforms and any data added by calls to the
-[*gpioWaveAdd*"/> functions.
+[*gpioWaveAdd**] functions.
 
 Returns 0 if OK.
 
@@ -1764,7 +1765,7 @@ int gpioWaveAddNew(void);
 This function starts a new empty waveform.
 
 You wouldn't normally need to call this function as it is automatically
-called after a waveform is created with the <see cref="GpioWaveCreate"/> function.
+called after a waveform is created with the [*gpioWaveCreate*] function.
 
 Returns 0 if OK.
 
@@ -1901,30 +1902,30 @@ D*/
 int gpioWaveCreate(void);
 /*D
 This function creates a waveform from the data provided by the prior
-calls to the GpioWaveAdd* functions.  Upon success a wave id
+calls to the [*gpioWaveAdd**] functions.  Upon success a wave id
 greater than or equal to 0 is returned, otherwise PI_EMPTY_WAVEFORM,
 PI_TOO_MANY_CBS, PI_TOO_MANY_OOL, or PI_NO_WAVEFORM_ID.
 
-The data provided by the GpioWaveAdd* functions is consumed by this
+The data provided by the [*gpioWaveAdd**] functions is consumed by this
 function.
 
 As many waveforms may be created as there is space available.  The
-wave id is passed to <see cref="GpioWaveTxSend"/> to specify the waveform to transmit.
+wave id is passed to [*gpioWaveTxSend*] to specify the waveform to transmit.
 
 Normal usage would be
 
-Step 1. <see cref="GpioWaveClear"/> to clear all waveforms and added data.
+Step 1. [*gpioWaveClear*] to clear all waveforms and added data.
 
-Step 2. GpioWaveAdd* calls to supply the waveform data.
+Step 2. [*gpioWaveAdd**] calls to supply the waveform data.
 
-Step 3. <see cref="GpioWaveCreate"/> to create the waveform and get a unique id
+Step 3. [*gpioWaveCreate*] to create the waveform and get a unique id
 
 Repeat steps 2 and 3 as needed.
 
-Step 4. <see cref="GpioWaveTxSend"/> with the id of the waveform to transmit.
+Step 4. [*gpioWaveTxSend*] with the id of the waveform to transmit.
 
 A waveform comprises one of more pulses.  Each pulse consists of a
-[*gpioPulse_t"/> structure.
+[*gpioPulse_t*] structure.
 
 . .
 typedef struct
@@ -1967,7 +1968,7 @@ been flagged for deletion.
 the current wave (see the C source for gpioWaveCreate for details).
 
 . .
-wave_id: >=0, as returned by <see cref="GpioWaveCreate"/>
+wave_id: >=0, as returned by [*gpioWaveCreate*]
 . .
 
 Wave ids are allocated in order, 0, 1, 2, etc.
@@ -1987,10 +1988,10 @@ end of a cycle or finish before starting the new waveform.
 WARNING: bad things may happen if you delete the previous
 waveform before it has been synced to the new waveform.
 
-NOTE: Any hardware PWM started by <see cref="GpioHardwarePWM"/> will be cancelled.
+NOTE: Any hardware PWM started by [*gpioHardwarePWM*] will be cancelled.
 
 . .
-  wave_id: >=0, as returned by <see cref="GpioWaveCreate"/>
+  wave_id: >=0, as returned by [*gpioWaveCreate*]
 wave_mode: PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT,
            PI_WAVE_MODE_ONE_SHOT_SYNC, PI_WAVE_MODE_REPEAT_SYNC
 . .
@@ -2005,10 +2006,10 @@ int gpioWaveChain(char *buf, unsigned bufSize);
 /*D
 This function transmits a chain of waveforms.
 
-NOTE: Any hardware PWM started by <see cref="GpioHardwarePWM"/> will be cancelled.
+NOTE: Any hardware PWM started by [*gpioHardwarePWM*] will be cancelled.
 
 The waves to be transmitted are specified by the contents of buf
-which contains an ordered list of <see cref="wave_id"/>s and optional command
+which contains an ordered list of [*wave_id*]s and optional command
 codes and related data.
 
 . .
@@ -2144,7 +2145,7 @@ D*/
 int gpioWaveGetHighMicros(void);
 /*D
 This function returns the length in microseconds of the longest waveform
-created since <see cref="GpioInitialise"/> was called.
+created since [*gpioInitialise*] was called.
 D*/
 
 
@@ -2167,7 +2168,7 @@ D*/
 int gpioWaveGetHighPulses(void);
 /*D
 This function returns the length in pulses of the longest waveform
-created since <see cref="GpioInitialise"/> was called.
+created since [*gpioInitialise*] was called.
 D*/
 
 
@@ -2190,7 +2191,7 @@ D*/
 int gpioWaveGetHighCbs(void);
 /*D
 This function returns the length in DMA control blocks of the longest
-waveform created since <see cref="GpioInitialise"/> was called.
+waveform created since [*gpioInitialise*] was called.
 D*/
 
 
@@ -2217,7 +2218,7 @@ Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_WAVE_BAUD,
 PI_BAD_DATABITS, or PI_GPIO_IN_USE.
 
 The serial data is returned in a cyclic buffer and is read using
-[*gpioSerialRead"/>.
+[*gpioSerialRead*].
 
 It is the caller's responsibility to read data from the cyclic buffer
 in a timely fashion.
@@ -2240,7 +2241,7 @@ Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_GPIO_IN_USE,
 PI_NOT_SERIAL_GPIO, or PI_BAD_SER_INVERT.
 
 The GPIO must be opened for bit bang reading of serial data using
-[*gpioSerialReadOpen"/> prior to calling this function.
+[*gpioSerialReadOpen*] prior to calling this function.
 D*/
 
 
@@ -2251,7 +2252,7 @@ This function copies up to bufSize bytes of data read from the
 bit bang serial cyclic buffer to the buffer starting at buf.
 
 . .
-user_gpio: 0-31, previously opened with <see cref="GpioSerialReadOpen"/>
+user_gpio: 0-31, previously opened with [*gpioSerialReadOpen*]
       buf: an array to receive the read bytes
   bufSize: >=0
 . .
@@ -2260,11 +2261,11 @@ Returns the number of bytes copied if OK, otherwise PI_BAD_USER_GPIO
 or PI_NOT_SERIAL_GPIO.
 
 The bytes returned for each character depend upon the number of
-data bits data bits specified in the <see cref="GpioSerialReadOpen"/> command.
+data bits [*data_bits*] specified in the [*gpioSerialReadOpen*] command.
 
-For data bits 1-8 there will be one byte per character. 
-For data bits 9-16 there will be two bytes per character. 
-For data bits 17-32 there will be four bytes per character.
+For [*data_bits*] 1-8 there will be one byte per character. 
+For [*data_bits*] 9-16 there will be two bytes per character. 
+For [*data_bits*] 17-32 there will be four bytes per character.
 D*/
 
 
@@ -2274,7 +2275,7 @@ int gpioSerialReadClose(unsigned user_gpio);
 This function closes a GPIO for bit bang reading of serial data.
 
 . .
-user_gpio: 0-31, previously opened with <see cref="GpioSerialReadOpen"/>
+user_gpio: 0-31, previously opened with [*gpioSerialReadOpen*]
 . .
 
 Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_NOT_SERIAL_GPIO.
@@ -2323,7 +2324,7 @@ int i2cClose(unsigned handle);
 This closes the I2C device associated with the handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE.
@@ -2337,7 +2338,7 @@ This sends a single bit (in the Rd/Wr bit) to the device associated
 with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
    bit: 0-1, the value to write
 . .
 
@@ -2357,7 +2358,7 @@ int i2cWriteByte(unsigned handle, unsigned bVal);
 This sends a single byte to the device associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
   bVal: 0-0xFF, the value to write
 . .
 
@@ -2377,7 +2378,7 @@ int i2cReadByte(unsigned handle);
 This reads a single byte from the device associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 . .
 
 Returns the byte read (>=0) if OK, otherwise PI_BAD_HANDLE,
@@ -2397,7 +2398,7 @@ This writes a single byte to the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 i2cReg: 0-255, the register to write
   bVal: 0-0xFF, the value to write
 . .
@@ -2419,7 +2420,7 @@ This writes a single 16 bit word to the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 i2cReg: 0-255, the register to write
   wVal: 0-0xFFFF, the value to write
 . .
@@ -2441,7 +2442,7 @@ This reads a single byte from the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 i2cReg: 0-255, the register to read
 . .
 
@@ -2462,7 +2463,7 @@ This reads a single 16 bit word from the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 i2cReg: 0-255, the register to read
 . .
 
@@ -2483,7 +2484,7 @@ This writes 16 bits of data to the specified register of the device
 associated with handle and reads 16 bits of data in return.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 i2cReg: 0-255, the register to write/read
   wVal: 0-0xFFFF, the value to write
 . .
@@ -2507,7 +2508,7 @@ This writes up to 32 bytes to the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 i2cReg: 0-255, the register to write
    buf: an array with the data to send
  count: 1-32, the number of bytes to write
@@ -2531,7 +2532,7 @@ This reads a block of up to 32 bytes from the specified register of
 the device associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 i2cReg: 0-255, the register to read
    buf: an array to receive the read data
 . .
@@ -2558,7 +2559,7 @@ associated with handle and reads a device specified number
 of bytes of data in return.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 i2cReg: 0-255, the register to write/read
    buf: an array with the data to send and to receive the read data
  count: 1-32, the number of bytes to write
@@ -2587,7 +2588,7 @@ This reads count bytes from the specified register of the device
 associated with handle .  The count may be 1-32.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 i2cReg: 0-255, the register to read
    buf: an array to receive the read data
  count: 1-32, the number of bytes to read
@@ -2611,7 +2612,7 @@ This writes 1 to 32 bytes to the specified register of the device
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
 i2cReg: 0-255, the register to write
    buf: the data to write
  count: 1-32, the number of bytes to write
@@ -2631,7 +2632,7 @@ int i2cReadDevice(unsigned handle, char *buf, unsigned count);
 This reads count bytes from the raw device into buf.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
    buf: an array to receive the read data bytes
  count: >0, the number of bytes to read
 . .
@@ -2651,7 +2652,7 @@ int i2cWriteDevice(unsigned handle, char *buf, unsigned count);
 This writes count bytes from buf to the raw device.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
    buf: an array containing the data bytes to write
  count: >0, the number of bytes to write
 . .
@@ -2686,7 +2687,7 @@ This function executes multiple I2C segments in one transaction by
 calling the I2C_RDWR ioctl.
 
 . .
- handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+ handle: >=0, as returned by a call to [*i2cOpen*]
    segs: an array of I2C segments
 numSegs: >0, the number of I2C segments
 . .
@@ -2707,7 +2708,7 @@ operations to be performed are specified by the contents of inBuf
 which contains the concatenated command codes and associated data.
 
 . .
-handle: >=0, as returned by a call to <see cref="I2cOpen"/>
+handle: >=0, as returned by a call to [*i2cOpen*]
  inBuf: pointer to the concatenated I2C commands, see below
  inLen: size of command buffer
 outBuf: pointer to buffer to hold returned data
@@ -2787,10 +2788,10 @@ D*/
 int bbI2CClose(unsigned SDA);
 /*D
 This function stops bit banging I2C on a pair of GPIO previously
-opened with <see cref="bbI2COpen"/>.
+opened with [*bbI2COpen*].
 
 . .
-SDA: 0-31, the SDA GPIO used in a prior call to <see cref="bbI2COpen"/>
+SDA: 0-31, the SDA GPIO used in a prior call to [*bbI2COpen*]
 . .
 
 Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_NOT_I2C_GPIO.
@@ -2809,7 +2810,7 @@ operations to be performed are specified by the contents of inBuf
 which contains the concatenated command codes and associated data.
 
 . .
-   SDA: 0-31 (as used in a prior call to <see cref="bbI2COpen"/>)
+   SDA: 0-31 (as used in a prior call to [*bbI2COpen*])
  inBuf: pointer to the concatenated I2C commands, see below
  inLen: size of command buffer
 outBuf: pointer to buffer to hold returned data
@@ -3048,10 +3049,10 @@ D*/
 int bbSPIClose(unsigned CS);
 /*D
 This function stops bit banging SPI on a set of GPIO
-opened with <see cref="bbSPIOpen"/>.
+opened with [*bbSPIOpen*].
 
 . .
-CS: 0-31, the CS GPIO used in a prior call to <see cref="bbSPIOpen"/>
+CS: 0-31, the CS GPIO used in a prior call to [*bbSPIOpen*]
 . .
 
 Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_NOT_SPI_GPIO.
@@ -3067,7 +3068,7 @@ int bbSPIXfer(
 This function executes a bit banged SPI transfer.
 
 . .
-    CS: 0-31 (as used in a prior call to <see cref="bbSPIOpen"/>)
+    CS: 0-31 (as used in a prior call to [*bbSPIOpen*])
  inBuf: pointer to buffer to hold data to be sent
 outBuf: pointer to buffer to hold returned data
  count: size of data transfer
@@ -3208,7 +3209,7 @@ device only.
 bbbbbb defines the word size in bits (0-32).  The default (0)
 sets 8 bits per word.  Auxiliary SPI device only.
 
-The <see cref="spiRead"/>, <see cref="spiWrite"/>, and <see cref="spiXfer"/> functions
+The [*spiRead*], [*spiWrite*], and [*spiXfer*] functions
 transfer data packed into 1, 2, or 4 bytes according to
 the word size in bits.
 
@@ -3233,7 +3234,7 @@ int spiClose(unsigned handle);
 This functions closes the SPI device identified by the handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="SpiOpen"/>
+handle: >=0, as returned by a call to [*spiOpen*]
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE.
@@ -3247,7 +3248,7 @@ This function reads count bytes of data from the SPI
 device associated with the handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="SpiOpen"/>
+handle: >=0, as returned by a call to [*spiOpen*]
    buf: an array to receive the read data bytes
  count: the number of bytes to read
 . .
@@ -3264,7 +3265,7 @@ This function writes count bytes of data from buf to the SPI
 device associated with the handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="SpiOpen"/>
+handle: >=0, as returned by a call to [*spiOpen*]
    buf: the data bytes to write
  count: the number of bytes to write
 . .
@@ -3281,7 +3282,7 @@ device associated with the handle.  Simultaneously count bytes of
 data are read from the device and placed in rxBuf.
 
 . .
-handle: >=0, as returned by a call to <see cref="SpiOpen"/>
+handle: >=0, as returned by a call to [*spiOpen*]
  txBuf: the data bytes to write
  rxBuf: the received data bytes
  count: the number of bytes to transfer
@@ -3322,7 +3323,7 @@ int serClose(unsigned handle);
 This function closes the serial device associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="SerOpen"/>
+handle: >=0, as returned by a call to [*serOpen*]
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE.
@@ -3334,7 +3335,7 @@ int serWriteByte(unsigned handle, unsigned bVal);
 This function writes bVal to the serial port associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="SerOpen"/>
+handle: >=0, as returned by a call to [*serOpen*]
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or
@@ -3347,7 +3348,7 @@ int serReadByte(unsigned handle);
 This function reads a byte from the serial port associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="SerOpen"/>
+handle: >=0, as returned by a call to [*serOpen*]
 . .
 
 Returns the read byte (>=0) if OK, otherwise PI_BAD_HANDLE,
@@ -3363,7 +3364,7 @@ This function writes count bytes from buf to the the serial port
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="SerOpen"/>
+handle: >=0, as returned by a call to [*serOpen*]
    buf: the array of bytes to write
  count: the number of bytes to write
 . .
@@ -3380,7 +3381,7 @@ This function reads up count bytes from the the serial port
 associated with handle and writes them to buf.
 
 . .
-handle: >=0, as returned by a call to <see cref="SerOpen"/>
+handle: >=0, as returned by a call to [*serOpen*]
    buf: an array to receive the read data
  count: the maximum number of bytes to read
 . .
@@ -3399,7 +3400,7 @@ This function returns the number of bytes available
 to be read from the device associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="SerOpen"/>
+handle: >=0, as returned by a call to [*serOpen*]
 . .
 
 Returns the number of bytes of data available (>=0) if OK,
@@ -3474,8 +3475,8 @@ int gpioNoiseFilter(unsigned user_gpio, unsigned steady, unsigned active);
 Sets a noise filter on a GPIO.
 
 Level changes on the GPIO are ignored until a level which has
-been stable for <see cref="steady"/> microseconds is detected.  Level changes
-on the GPIO are then reported for <see cref="active"/> microseconds after
+been stable for [*steady*] microseconds is detected.  Level changes
+on the GPIO are then reported for [*active*] microseconds after
 which the process repeats.
 
 . .
@@ -3487,12 +3488,12 @@ user_gpio: 0-31
 Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_BAD_FILTER.
 
 This filter affects the GPIO samples returned to callbacks set up
-with <see cref="GpioSetAlertFunc"/>, <see cref="GpioSetAlertFuncEx"/>, <see cref="GpioSetGetSamplesFunc"/>,
-and <see cref="GpioSetGetSamplesFuncEx"/>.
+with [*gpioSetAlertFunc*], [*gpioSetAlertFuncEx*], [*gpioSetGetSamplesFunc*],
+and [*gpioSetGetSamplesFuncEx*].
 
-It does not affect interrupts set up with <see cref="GpioSetISRFunc"/>,
-[*gpioSetISRFuncEx"/>, or levels read by <see cref="GpioRead"/>,
-[*gpioRead_Bits_0_31"/>, or <see cref="GpioRead_Bits_32_53"/>.
+It does not affect interrupts set up with [*gpioSetISRFunc*],
+[*gpioSetISRFuncEx*], or levels read by [*gpioRead*],
+[*gpioRead_Bits_0_31*], or [*gpioRead_Bits_32_53*].
 
 Level changes before and after the active period may
 be reported.  Your software must be designed to cope with
@@ -3506,8 +3507,8 @@ int gpioGlitchFilter(unsigned user_gpio, unsigned steady);
 Sets a glitch filter on a GPIO.
 
 Level changes on the GPIO are not reported unless the level
-has been stable for at least <see cref="steady"/> microseconds.  The
-level is then reported.  Level changes of less than <see cref="steady"/>
+has been stable for at least [*steady*] microseconds.  The
+level is then reported.  Level changes of less than [*steady*]
 microseconds are ignored.
 
 . .
@@ -3518,14 +3519,14 @@ user_gpio: 0-31
 Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_BAD_FILTER.
 
 This filter affects the GPIO samples returned to callbacks set up
-with <see cref="GpioSetAlertFunc"/>, <see cref="GpioSetAlertFuncEx"/>, <see cref="GpioSetGetSamplesFunc"/>,
-and <see cref="GpioSetGetSamplesFuncEx"/>.
+with [*gpioSetAlertFunc*], [*gpioSetAlertFuncEx*], [*gpioSetGetSamplesFunc*],
+and [*gpioSetGetSamplesFuncEx*].
 
-It does not affect interrupts set up with <see cref="GpioSetISRFunc"/>,
-[*gpioSetISRFuncEx"/>, or levels read by <see cref="GpioRead"/>,
-[*gpioRead_Bits_0_31"/>, or <see cref="GpioRead_Bits_32_53"/>.
+It does not affect interrupts set up with [*gpioSetISRFunc*],
+[*gpioSetISRFuncEx*], or levels read by [*gpioRead*],
+[*gpioRead_Bits_0_31*], or [*gpioRead_Bits_32_53*].
 
-Each (stable) edge will be timestamped <see cref="steady"/> microseconds
+Each (stable) edge will be timestamped [*steady*] microseconds
 after it was first detected.
 D*/
 
@@ -3544,7 +3545,7 @@ bits: the GPIO of interest
 Returns 0 if OK.
 
 The function is passed a pointer to the samples (an array of
-[*gpioSample_t"/>),  and the number of samples.
+[*gpioSample_t*]),  and the number of samples.
 
 Only one function can be registered.
 
@@ -3575,12 +3576,12 @@ userdata: a pointer to arbitrary user data
 Returns 0 if OK.
 
 The function is passed a pointer to the samples (an array of
-[*gpioSample_t"/>), the number of samples, and the userdata pointer.
+[*gpioSample_t*]), the number of samples, and the userdata pointer.
 
-Only one of <see cref="GpioGetSamplesFunc"/> or <see cref="GpioGetSamplesFuncEx"/> can be
+Only one of [*gpioGetSamplesFunc*] or [*gpioGetSamplesFuncEx*] can be
 registered.
 
-See <see cref="GpioSetGetSamplesFunc"/> for further details.
+See [*gpioSetGetSamplesFunc*] for further details.
 D*/
 
 
@@ -3632,10 +3633,10 @@ Returns 0 if OK, otherwise PI_BAD_TIMER, PI_BAD_MS, or PI_TIMER_FAILED.
 
 The function is passed the userdata pointer.
 
-Only one of <see cref="GpioSetTimerFunc"/> or <see cref="GpioSetTimerFuncEx"/> can be
+Only one of [*gpioSetTimerFunc*] or [*gpioSetTimerFuncEx*] can be
 registered per timer.
 
-See <see cref="GpioSetTimerFunc"/> for further details.
+See [*gpioSetTimerFunc*] for further details.
 D*/
 
 
@@ -3654,7 +3655,7 @@ Returns a pointer to pthread_t if OK, otherwise NULL.
 The function is passed the single argument arg.
 
 The thread can be cancelled by passing the pointer to pthread_t to
-[*gpioStopThread"/>.
+[*gpioStopThread*].
 
 ...
 #include <stdio.h>
@@ -3699,12 +3700,12 @@ void gpioStopThread(pthread_t *pth);
 Cancels the thread pointed at by pth.
 
 . .
-pth: a thread pointer returned by <see cref="GpioStartThread"/>
+pth: a thread pointer returned by [*gpioStartThread*]
 . .
 
 No value is returned.
 
-The thread to be stopped should have been started with <see cref="GpioStartThread"/>.
+The thread to be stopped should have been started with [*gpioStartThread*].
 D*/
 
 
@@ -3730,7 +3731,7 @@ int gpioRunScript(unsigned script_id, unsigned numPar, uint32_t *param);
 This function runs a stored script.
 
 . .
-script_id: >=0, as returned by <see cref="GpioStoreScript"/>
+script_id: >=0, as returned by [*gpioStoreScript*]
    numPar: 0-10, the number of parameters
     param: an array of parameters
 . .
@@ -3748,7 +3749,7 @@ int gpioRunScript(unsigned script_id, unsigned numPar, uint32_t *param);
 This function runs a stored script.
 
 . .
-script_id: >=0, as returned by <see cref="GpioStoreScript"/>
+script_id: >=0, as returned by [*gpioStoreScript*]
    numPar: 0-10, the number of parameters
     param: an array of parameters
 . .
@@ -3770,7 +3771,7 @@ may not be running.  The first numPar parameters of the script are
 overwritten with the new values.
 
 . .
-script_id: >=0, as returned by <see cref="GpioStoreScript"/>
+script_id: >=0, as returned by [*gpioStoreScript*]
    numPar: 0-10, the number of parameters
     param: an array of parameters
 . .
@@ -3790,7 +3791,7 @@ This function returns the run status of a stored script as well as
 the current values of parameters 0 to 9.
 
 . .
-script_id: >=0, as returned by <see cref="GpioStoreScript"/>
+script_id: >=0, as returned by [*gpioStoreScript*]
     param: an array to hold the returned 10 parameters
 . .
 
@@ -3817,7 +3818,7 @@ int gpioStopScript(unsigned script_id);
 This function stops a running script.
 
 . .
-script_id: >=0, as returned by <see cref="GpioStoreScript"/>
+script_id: >=0, as returned by [*gpioStoreScript*]
 . .
 
 The function returns 0 if OK, otherwise PI_BAD_SCRIPT_ID.
@@ -3830,7 +3831,7 @@ int gpioDeleteScript(unsigned script_id);
 This function deletes a stored script.
 
 . .
-script_id: >=0, as returned by <see cref="GpioStoreScript"/>
+script_id: >=0, as returned by [*gpioStoreScript*]
 . .
 
 The function returns 0 if OK, otherwise PI_BAD_SCRIPT_ID.
@@ -4002,12 +4003,12 @@ int gpioHardwarePWM(unsigned gpio, unsigned PWMfreq, unsigned PWMduty);
 Starts hardware PWM on a GPIO at the specified frequency and dutycycle.
 Frequencies above 30MHz are unlikely to work.
 
-NOTE: Any waveform started by <see cref="GpioWaveTxSend"/>, or
-[*gpioWaveChain"/> will be cancelled.
+NOTE: Any waveform started by [*gpioWaveTxSend*], or
+[*gpioWaveChain*] will be cancelled.
 
 This function is only valid if the pigpio main clock is PCM.  The
 main clock defaults to PCM but may be overridden by a call to
-[*gpioCfgClock"/>.
+[*gpioCfgClock*].
 
 . .
    gpio: see description
@@ -4100,7 +4101,7 @@ If timetype is PI_TIME_RELATIVE the sleep is for the specified number
 of seconds and microseconds.  System clock changes do not effect the
 sleep length.
 
-For short delays (say, 50 microseonds or less) use <see cref="GpioDelay"/>.
+For short delays (say, 50 microseonds or less) use [*gpioDelay*].
 
 ...
 gpioSleep(PI_TIME_RELATIVE, 2, 500000); // sleep for 2.5 seconds
@@ -4170,7 +4171,7 @@ The hardware revision is the last few characters on the Revision line of
 /proc/cpuinfo.
 
 The revision number can be used to determine the assignment of GPIO
-to pins (see <see cref="Gpio"/>).
+to pins (see [*gpio*]).
 
 There are at least three types of board.
 
@@ -4244,7 +4245,7 @@ This function selects the events to be reported on a previously
 opened handle.
 
 . .
-handle: >=0, as returned by <see cref="GpioNotifyOpen"/>
+handle: >=0, as returned by [*gpioNotifyOpen*]
   bits: a bit mask indicating the events of interest
 . .
 
@@ -4253,7 +4254,7 @@ Returns 0 if OK, otherwise PI_BAD_HANDLE.
 A report is sent each time an event is triggered providing the
 corresponding bit in bits is set.
 
-See <see cref="GpioNotifyBegin"/> for the notification format.
+See [*gpioNotifyBegin*] for the notification format.
 
 ...
 // Start reporting events 3, 6, and 7.
@@ -4306,7 +4307,7 @@ The function is passed the event, the tick, and the ueserdata pointer.
 
 The callback may be cancelled by passing NULL as the function.
 
-Only one of <see cref="eventSetFunc"/> or <see cref="eventSetFuncEx"/> can be
+Only one of [*eventSetFunc*] or [*eventSetFuncEx*] can be
 registered per event.
 D*/
 
@@ -4323,7 +4324,7 @@ Returns 0 if OK, otherwise PI_BAD_EVENT_ID.
 
 An event is a signal used to inform one or more consumers
 to start an action.  Each consumer which has registered an interest
-in the event (e.g. by calling <see cref="eventSetFunc"/>) will be informed by
+in the event (e.g. by calling [*eventSetFunc*]) will be informed by
 a callback.
 
 One event, PI_EVENT_BSC (31) is predefined.  This event is
@@ -4496,7 +4497,7 @@ int fileClose(unsigned handle);
 This function closes the file associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="fileOpen"/>
+handle: >=0, as returned by a call to [*fileOpen*]
 . .
 
 Returns 0 if OK, otherwise PI_BAD_HANDLE.
@@ -4514,7 +4515,7 @@ This function writes count bytes from buf to the the file
 associated with handle.
 
 . .
-handle: >=0, as returned by a call to <see cref="fileOpen"/>
+handle: >=0, as returned by a call to [*fileOpen*]
    buf: the array of bytes to write
  count: the number of bytes to write
 . .
@@ -4543,7 +4544,7 @@ This function reads up to count bytes from the the file
 associated with handle and writes them to buf.
 
 . .
-handle: >=0, as returned by a call to <see cref="fileOpen"/>
+handle: >=0, as returned by a call to [*fileOpen*]
    buf: an array to receive the read data
  count: the maximum number of bytes to read
 . .
@@ -4566,7 +4567,7 @@ This function seeks to a position within the file associated
 with handle.
 
 . .
-    handle: >=0, as returned by a call to <see cref="fileOpen"/>
+    handle: >=0, as returned by a call to [*fileOpen*]
 seekOffset: the number of bytes to move.  Positive offsets
             move forward, negative offsets backwards.
   seekFrom: one of PI_FROM_START (0), PI_FROM_CURRENT (1),
@@ -4604,7 +4605,7 @@ Returns the number of returned bytes if OK, otherwise PI_NO_FILE_ACCESS,
 or PI_NO_FILE_MATCH.
 
 The pattern must match an entry in /opt/pigpio/access.  The pattern
-may contain wildcards.  See <see cref="fileOpen"/>.
+may contain wildcards.  See [*fileOpen*].
 
 NOTE
 
@@ -4648,7 +4649,7 @@ int gpioCfgBufferSize(unsigned cfgMillis);
 /*D
 Configures pigpio to buffer cfgMillis milliseconds of GPIO samples.
 
-This function is only effective if called before <see cref="GpioInitialise"/>.
+This function is only effective if called before [*gpioInitialise*].
 
 . .
 cfgMillis: 100-10000
@@ -4685,7 +4686,7 @@ int gpioCfgClock(
 Configures pigpio to use a particular sample rate timed by a specified
 peripheral.
 
-This function is only effective if called before <see cref="GpioInitialise"/>.
+This function is only effective if called before [*gpioInitialise*].
 
 . .
     cfgMicros: 1, 2, 4, 5, 8, 10
@@ -4720,7 +4721,7 @@ int gpioCfgDMAchannel(unsigned DMAchannel); /* DEPRECATED */
 /*D
 Configures pigpio to use the specified DMA channel.
 
-This function is only effective if called before <see cref="GpioInitialise"/>.
+This function is only effective if called before [*gpioInitialise*].
 
 . .
 DMAchannel: 0-14
@@ -4736,7 +4737,7 @@ int gpioCfgDMAchannels(
 /*D
 Configures pigpio to use the specified DMA channels.
 
-This function is only effective if called before <see cref="GpioInitialise"/>.
+This function is only effective if called before [*gpioInitialise*].
 
 . .
   primaryChannel: 0-14
@@ -4768,7 +4769,7 @@ calling the pigpio library (i.e. linked with -lpigpio are not
 affected).  A GPIO update is a write to a GPIO or a GPIO mode
 change or any function which would force such an action.
 
-This function is only effective if called before <see cref="GpioInitialise"/>.
+This function is only effective if called before [*gpioInitialise*].
 
 . .
 updateMask: bit (1<<n) is set for each GPIO n which may be updated
@@ -4791,7 +4792,7 @@ int gpioCfgSocketPort(unsigned port);
 /*D
 Configures pigpio to use the specified socket port.
 
-This function is only effective if called before <see cref="GpioInitialise"/>.
+This function is only effective if called before [*gpioInitialise*].
 
 . .
 port: 1024-32000
@@ -4806,7 +4807,7 @@ int gpioCfgInterfaces(unsigned ifFlags);
 /*D
 Configures pigpio support of the fifo and socket interfaces.
 
-This function is only effective if called before <see cref="GpioInitialise"/>.
+This function is only effective if called before [*gpioInitialise*].
 
 . .
 ifFlags: 0-7
@@ -4829,7 +4830,7 @@ int gpioCfgMemAlloc(unsigned memAllocMode);
 /*D
 Selects the method of DMA memory allocation.
 
-This function is only effective if called before <see cref="GpioInitialise"/>.
+This function is only effective if called before [*gpioInitialise*].
 
 . .
 memAllocMode: 0-2
@@ -4840,7 +4841,7 @@ uses the /proc/self/pagemap file to allocate bus memory.  The new
 method uses the mailbox property interface to allocate bus memory.
 
 Auto will use the mailbox method unless a larger than default buffer
-size is requested with <see cref="GpioCfgBufferSize"/>.
+size is requested with [*gpioCfgBufferSize*].
 D*/
 
 
@@ -4850,7 +4851,7 @@ int gpioCfgNetAddr(int numSockAddr, uint32_t *sockAddr);
 Sets the network addresses which are allowed to talk over the
 socket interface.
 
-This function is only effective if called before <see cref="GpioInitialise"/>.
+This function is only effective if called before [*gpioInitialise*].
 
 . .
 numSockAddr: 0-256 (0 means all addresses allowed)
@@ -5169,7 +5170,7 @@ void rawDumpScript(unsigned script_id);
 Used to print a readable version of a script to stderr.
 
 . .
-script_id: >=0, a script_id returned by <see cref="GpioStoreScript"/>
+script_id: >=0, a script_id returned by [*gpioStoreScript*]
 . .
 
 Not intended for general use.
@@ -5185,7 +5186,7 @@ D*/
 active :: 0-1000000
 
 The number of microseconds level changes are reported for once
-a noise filter has been triggered (by <see cref="steady"/> microseconds of
+a noise filter has been triggered (by [*steady*] microseconds of
 a stable level).
 
 arg1::
@@ -5225,7 +5226,7 @@ A convenient way to set bit n is to or in (1<<n).
 e.g. to select bits 5, 9, 23 you could use (1<<5) | (1<<9) | (1<<23).
 
 *bsc_xfer::
-A pointer to a <see cref="bsc_xfer_t"/> object used to control a BSC transfer.
+A pointer to a [*bsc_xfer_t*] object used to control a BSC transfer.
 
 bsc_xfer_t::
 
@@ -5278,7 +5279,7 @@ Deprecated.
 
 cfgVal::
 
-A number specifying the value of a configuration item.  See <see cref="cfgWhat"/>.
+A number specifying the value of a configuration item.  See [*cfgWhat*].
 
 cfgWhat::
 
@@ -5335,8 +5336,8 @@ The number may vary between 0 and range (default 255) where
 0 is off and range is fully on.
 
 edge::0-2
-The type of GPIO edge to generate an interrupt.  See <see cref="GpioSetISRFunc"/>
-and <see cref="GpioSetISRFuncEx"/>.
+The type of GPIO edge to generate an interrupt.  See [*gpioSetISRFunc*]
+and [*gpioSetISRFuncEx*].
 
 . .
 RISING_EDGE 0
@@ -5392,7 +5393,7 @@ All the GPIO which are safe for the user to read and write are in
 bank 1.  Not all GPIO in bank 1 are safe though.  Type 1 boards
 have 17  safe GPIO.  Type 2 boards have 21.  Type 3 boards have 26.
 
-See <see cref="GpioHardwareRevision"/>.
+See [*gpioHardwareRevision*].
 
 The user GPIO are marked with an X in the following table.
 
@@ -5421,16 +5422,16 @@ typedef void (*eventFuncEx_t)
 
 gpioCfg*::
 
-These functions are only effective if called before <see cref="GpioInitialise"/>.
+These functions are only effective if called before [*gpioInitialise*].
 
-[*gpioCfgBufferSize"/> 
-[*gpioCfgClock"/> 
-[*gpioCfgDMAchannel"/> 
-[*gpioCfgDMAchannels"/> 
-[*gpioCfgPermissions"/> 
-[*gpioCfgInterfaces"/> 
-[*gpioCfgSocketPort"/> 
-[*gpioCfgMemAlloc"/>
+[*gpioCfgBufferSize*] 
+[*gpioCfgClock*] 
+[*gpioCfgDMAchannel*] 
+[*gpioCfgDMAchannels*] 
+[*gpioCfgPermissions*] 
+[*gpioCfgInterfaces*] 
+[*gpioCfgSocketPort*] 
+[*gpioCfgMemAlloc*]
 
 gpioGetSamplesFunc_t::
 . .
@@ -5504,19 +5505,19 @@ gpioWaveAdd*::
 
 One of
 
-[*gpioWaveAddNew"/> 
-[*gpioWaveAddGeneric"/> 
-[*gpioWaveAddSerial"/>
+[*gpioWaveAddNew*] 
+[*gpioWaveAddGeneric*] 
+[*gpioWaveAddSerial*]
 
 handle::>=0
 
 A number referencing an object opened by one of
 
-[*fileOpen"/> 
-[*gpioNotifyOpen"/> 
-[*i2cOpen"/> 
-[*serOpen"/> 
-[*spiOpen"/>
+[*fileOpen*] 
+[*gpioNotifyOpen*] 
+[*i2cOpen*] 
+[*serOpen*] 
+[*spiOpen*]
 
 i2cAddr:: 0-0x7F
 The address of a device on the I2C bus.
@@ -5569,7 +5570,7 @@ PI_HIGH 1
 . .
 
 There is one exception.  If a watchdog expires on a GPIO the level will be
-reported as PI_TIMEOUT.  See <see cref="GpioSetWatchdog"/>.
+reported as PI_TIMEOUT.  See [*gpioSetWatchdog*].
 
 . .
 PI_TIMEOUT 2
@@ -5710,7 +5711,7 @@ PWM pulses.
 
 *pth::
 
-A thread identifier, returned by <see cref="GpioStartThread"/>.
+A thread identifier, returned by [*gpioStartThread*].
 
 pthread_t::
 
@@ -5840,14 +5841,14 @@ The GPIO used for the SCLK signal when bit banging SPI.
 A pointer to the text of a script.
 
 script_id::
-An id of a stored script as returned by <see cref="GpioStoreScript"/>.
+An id of a stored script as returned by [*gpioStoreScript*].
 
 *scriptName::
-The name of a <see cref="shell"/> script to be executed.  The script must be present in
+The name of a [*shell*] script to be executed.  The script must be present in
 /opt/pigpio/cgi and must have execute permission.
 
 *scriptString::
-The string to be passed to a <see cref="shell"/> script to be executed.
+The string to be passed to a [*shell*] script to be executed.
 
 SDA::
 The user GPIO to use for data when bit banging I2C.
@@ -5905,7 +5906,7 @@ as 32 bit numbers.
 E.g. address 192.168.1.66 would be encoded as 0x4201a8c0.
 
 *spi::
-A pointer to a <see cref="rawSPI_t"/> structure.
+A pointer to a [*rawSPI_t*] structure.
 
 spiBitFirst::
 GPIO reads are made from spiBitFirst to spiBitLast.
@@ -5921,7 +5922,7 @@ spiChan::
 A SPI channel, 0-2.
 
 spiFlags::
-See <see cref="SpiOpen"/> and <see cref="bbSPIOpen"/>.
+See [*spiOpen*] and [*bbSPIOpen*].
 
 spiSS::
 The SPI slave select GPIO in a raw SPI transaction.
@@ -5932,8 +5933,8 @@ The number of bits to transfer dring a raw SPI transaction
 steady :: 0-300000
 
 The number of microseconds level changes must be stable for
-before reporting the level changed ([*gpioGlitchFilter"/>) or triggering
-the active part of a noise filter ([*gpioNoiseFilter"/>).
+before reporting the level changed ([*gpioGlitchFilter*]) or triggering
+the active part of a noise filter ([*gpioNoiseFilter*]).
 
 stop_bits::2-8
 The number of (half) stop bits to be used when adding serial data
@@ -5950,13 +5951,13 @@ An array of characters.
 timeout::
 A GPIO level change timeout in milliseconds.
 
-[*gpioSetWatchdog"/>
+[*gpioSetWatchdog*]
 . .
 PI_MIN_WDOG_TIMEOUT 0
 PI_MAX_WDOG_TIMEOUT 60000
 . .
 
-[*gpioSetISRFunc"/> and <see cref="GpioSetISRFuncEx"/>
+[*gpioSetISRFunc*] and [*gpioSetISRFuncEx*]
 . .
 <=0 cancel timeout
 >0 timeout after specified milliseconds
@@ -6000,7 +6001,7 @@ user_gpio::
 
 0-31, a Broadcom numbered GPIO.
 
-See <see cref="Gpio"/>.
+See [*gpio*].
 
 *userdata::
 A pointer to arbitrary user data.  This may be used to identify the instance.
@@ -6034,7 +6035,7 @@ Denoting no parameter is required
 
 wave_id::
 
-A number identifying a waveform created by <see cref="GpioWaveCreate"/>.
+A number identifying a waveform created by [*gpioWaveCreate*].
 
 wave_mode::
 

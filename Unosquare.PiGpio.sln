@@ -8,7 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{98778E74-B179-472B-B74D-AB306274437F}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		Support\libpigpio.so = Support\libpigpio.so
 		LICENSE = LICENSE
+		Support\pigpio.c = Support\pigpio.c
 		Support\pigpio.h = Support\pigpio.h
 		README.md = README.md
 		StyleCop.Analyzers.ruleset = StyleCop.Analyzers.ruleset

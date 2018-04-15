@@ -4,8 +4,6 @@
     using NativeEnums;
     using NativeMethods;
     using System;
-    using System.Threading;
-    using Unosquare.PiGpio.NativeTypes;
 
     /// <summary>
     /// Represents the Raspberry Pi Board and provides
@@ -22,18 +20,20 @@
         {
             try
             {
+                // Retrieve internal configuration
                 var config = (int)Setup.GpioCfgGetInternals();
-                config = config.ApplyBits(false, 3, 2, 1, 0); // Clear debug flags
 
+                // config = config.ApplyBits(false, 3, 2, 1, 0); // Clear debug flags
+                // config = config | (int)ConfigFlags.NoSignalHandler;
                 Setup.GpioCfgSetInternals((ConfigFlags)config);
 
-                // Setup.GpioCfgSetInternals(config | ConfigFlags.NoSignalHandler);
                 var initResultCode = Setup.GpioInitialise();
                 IsAvailable = initResultCode == ResultCode.Ok;
 
-                var signalDelegate = new PiGpioSignalDelegate((signalNumber) => { /* Ignore */ });
-                for (uint i = 32; i < 64; i++)
-                    Utilities.GpioSetSignalFunc(i, signalDelegate);
+                // You will need to compile libgpio.h adding
+                // #define EMBEDDED_IN_VM
+                // Also, remove the atexit( ... call in pigpio.c
+                // So there is no output or signal handling
             }
             catch { IsAvailable = false; }
 
@@ -116,11 +116,8 @@
         public static void Release()
         {
             IsAvailable = false;
-            ThreadPool.QueueUserWorkItem((s) =>
-            {
-                Console.CursorVisible = true;
-                Utilities.RaiseSignal(15); // this call the GPIO terminate
-            });
+            Setup.GpioTerminate();
+            Console.CursorVisible = true;
         }
     }
 }

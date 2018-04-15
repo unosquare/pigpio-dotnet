@@ -21,7 +21,7 @@
         /// </code>
         /// </example>
         /// <returns>Returns 0 if OK.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveClear")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveClear")]
         public static extern int GpioWaveClear();
 
         /// <summary>
@@ -37,7 +37,7 @@
         /// </code>
         /// </example>
         /// <returns>Returns 0 if OK.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveAddNew")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveAddNew")]
         public static extern int GpioWaveAddNew();
 
         /// <summary>
@@ -92,7 +92,7 @@
         /// <param name="numPulses">the number of pulses</param>
         /// <param name="pulses">an array of pulses</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_TOO_MANY_PULSES.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveAddGeneric")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveAddGeneric")]
         public static extern int GpioWaveAddGeneric(uint numPulses, [In, MarshalAs(UnmanagedType.LPArray)] GpioPulse[] pulses);
 
         /// <summary>
@@ -143,7 +143,7 @@
         /// <param name="numBytes">&gt;=1</param>
         /// <param name="str">an array of chars (which may contain nulls)</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_WAVE_BAUD, PI_BAD_DATABITS, PI_BAD_STOPBITS, PI_TOO_MANY_CHARS, PI_BAD_SER_OFFSET, or PI_TOO_MANY_PULSES.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveAddSerial")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveAddSerial")]
         public static extern int GpioWaveAddSerial(UserGpio userGpio, uint baudRate, uint dataBits, uint stopBits, uint offset, uint numBytes, [In, MarshalAs(UnmanagedType.LPArray)] byte[] str);
 
         /// <summary>
@@ -196,7 +196,7 @@
         /// } gpioPulse_t;
         /// </remarks>
         /// <returns>Returns the new waveform id if OK, otherwise PI_EMPTY_WAVEFORM, PI_NO_WAVEFORM_ID, PI_TOO_MANY_CBS, or PI_TOO_MANY_OOL.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveCreate")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveCreate")]
         public static extern int GpioWaveCreate();
 
         /// <summary>
@@ -216,7 +216,7 @@
         /// </summary>
         /// <param name="waveId">&gt;=0, as returned by <see cref="GpioWaveCreate"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_WAVE_ID.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveDelete")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveDelete")]
         public static extern ResultCode GpioWaveDelete(uint waveId);
 
         /// <summary>
@@ -238,7 +238,7 @@
         /// <param name="waveId">&gt;=0, as returned by <see cref="GpioWaveCreate"/></param>
         /// <param name="waveMode">PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT, or one of their SYNC variants</param>
         /// <returns>Returns the number of DMA control blocks in the waveform if OK, otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveTxSend")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveTxSend")]
         public static extern int GpioWaveTxSend(uint waveId, WaveMode waveMode);
 
         /// <summary>
@@ -332,7 +332,7 @@
         /// <param name="buffer">pointer to the wave_ids and optional command codes</param>
         /// <param name="bufferSize">the number of bytes in buf</param>
         /// <returns>Returns 0 if OK, otherwise PI_CHAIN_NESTING, PI_CHAIN_LOOP_CNT, PI_BAD_CHAIN_LOOP, PI_BAD_CHAIN_CMD, PI_CHAIN_COUNTER, PI_BAD_CHAIN_DELAY, PI_CHAIN_TOO_BIG, or PI_BAD_WAVE_ID.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveChain")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveChain")]
         public static extern ResultCode GpioWaveChain([In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint bufferSize);
 
         /// <summary>
@@ -343,7 +343,7 @@
         /// PI_NO_TX_WAVE (9999) - no wave being transmitted.
         /// </summary>
         /// <returns>Returns the waveform id or one of the following special values:</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveTxAt")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveTxAt")]
         public static extern int GpioWaveTxAt();
 
         /// <summary>
@@ -352,7 +352,7 @@
         ///
         /// </summary>
         /// <returns>Returns 1 if a waveform is currently being transmitted, otherwise 0.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveTxBusy")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveTxBusy")]
         public static extern int GpioWaveTxBusy();
 
         /// <summary>
@@ -361,7 +361,7 @@
         /// This function is intended to stop a waveform started in repeat mode.
         /// </summary>
         /// <returns>Returns 0 if OK.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveTxStop")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveTxStop")]
         public static extern int GpioWaveTxStop();
 
         /// <summary>
@@ -369,7 +369,7 @@
         /// waveform.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetMicros")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveGetMicros")]
         public static extern int GpioWaveGetMicros();
 
         /// <summary>
@@ -377,7 +377,7 @@
         /// created since <see cref="Setup.GpioInitialise"/> was called.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighMicros")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveGetHighMicros")]
         public static extern int GpioWaveGetHighMicros();
 
         /// <summary>
@@ -385,14 +385,14 @@
         /// microseconds.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetMaxMicros")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveGetMaxMicros")]
         public static extern int GpioWaveGetMaxMicros();
 
         /// <summary>
         /// This function returns the length in pulses of the current waveform.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetPulses")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveGetPulses")]
         public static extern int GpioWaveGetPulses();
 
         /// <summary>
@@ -400,14 +400,14 @@
         /// created since <see cref="Setup.GpioInitialise"/> was called.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighPulses")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveGetHighPulses")]
         public static extern int GpioWaveGetHighPulses();
 
         /// <summary>
         /// This function returns the maximum possible size of a waveform in pulses.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetMaxPulses")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveGetMaxPulses")]
         public static extern int GpioWaveGetMaxPulses();
 
         /// <summary>
@@ -415,7 +415,7 @@
         /// waveform.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetCbs")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveGetCbs")]
         public static extern int GpioWaveGetCbs();
 
         /// <summary>
@@ -423,7 +423,7 @@
         /// waveform created since <see cref="Setup.GpioInitialise"/> was called.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetHighCbs")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveGetHighCbs")]
         public static extern int GpioWaveGetHighCbs();
 
         /// <summary>
@@ -431,7 +431,7 @@
         /// control blocks.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioWaveGetMaxCbs")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveGetMaxCbs")]
         public static extern int GpioWaveGetMaxCbs();
     }
 }

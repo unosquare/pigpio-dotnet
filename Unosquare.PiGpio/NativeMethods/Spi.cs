@@ -96,7 +96,7 @@
         /// </summary>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiClose")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spiClose")]
         public static extern ResultCode SpiClose(UIntPtr handle);
 
         /// <summary>
@@ -203,7 +203,7 @@
         /// <param name="baudRate">50-250000</param>
         /// <param name="spiFlags">see below</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_SPI_BAUD, or PI_GPIO_IN_USE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbSPIOpen")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbSPIOpen")]
         public static extern ResultCode BbSPIOpen(UserGpio csPin, UserGpio misoPin, UserGpio mosiPin, UserGpio clockPin, uint baudRate, SoftSpiFlags spiFlags);
 
         /// <summary>
@@ -213,7 +213,7 @@
         /// </summary>
         /// <param name="csPin">0-31, the CS GPIO used in a prior call to <see cref="BbSPIOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_NOT_SPI_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbSPIClose")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbSPIClose")]
         public static extern ResultCode BbSPIClose(UserGpio csPin);
 
         /// <summary>
@@ -292,7 +292,7 @@
         /// <param name="outputBuffer">pointer to buffer to hold returned data</param>
         /// <param name="count">size of data transfer, which is the same as the data received.</param>
         /// <returns>Returns &gt;= 0 if OK (the number of bytes read), otherwise PI_BAD_USER_GPIO, PI_NOT_SPI_GPIO or PI_BAD_POINTER.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "bbSPIXfer")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbSPIXfer")]
         public static extern int BbSPIXfer(UserGpio csPin, [In, MarshalAs(UnmanagedType.LPArray)] byte[] inputBuffer, [In, MarshalAs(UnmanagedType.LPArray)] byte[] outputBuffer, uint count);
 
         #region Methods: I2C/SPI Slave
@@ -411,7 +411,7 @@
         /// </remarks>
         /// <param name="bscTransfer">= a structure defining the transfer</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "bscXfer")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bscXfer")]
         public static extern int BscXfer(BscTransfer bscTransfer);
 
         #endregion
@@ -490,7 +490,7 @@
         /// <param name="baudRate">32K-125M (values above 30M are unlikely to work)</param>
         /// <param name="spiFlags">see below</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_BAD_SPI_CHANNEL, PI_BAD_SPI_SPEED, PI_BAD_FLAGS, PI_NO_AUX_SPI, or PI_SPI_OPEN_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiOpen")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spiOpen")]
         private static extern int SpiOpenUnmanaged(SpiChannelId spiChannel, uint baudRate, SpiFlags spiFlags);
 
         /// <summary>
@@ -503,7 +503,7 @@
         /// <param name="buffer">an array to receive the read data bytes</param>
         /// <param name="count">the number of bytes to read</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiRead")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spiRead")]
         private static extern int SpiReadUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -516,7 +516,7 @@
         /// <param name="buffer">the data bytes to write</param>
         /// <param name="count">the number of bytes to write</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiWrite")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spiWrite")]
         private static extern int SpiWriteUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
 
         /// <summary>
@@ -531,7 +531,7 @@
         /// <param name="receiveBuffer">the received data bytes</param>
         /// <param name="count">the number of bytes to transfer</param>
         /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "spiXfer")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "spiXfer")]
         private static extern int SpiXferUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] transmitBuffer, [In, MarshalAs(UnmanagedType.LPArray)] byte[] receiveBuffer, uint count);
 
         #endregion

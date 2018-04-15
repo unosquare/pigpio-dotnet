@@ -35,14 +35,14 @@
         /// for "Revision       : 000g" the function returns 0.
         /// </summary>
         /// <returns>Returns the hardware revision.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioHardwareRevision")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioHardwareRevision")]
         public static extern uint GpioHardwareRevision();
 
         /// <summary>
         /// Returns the pigpio version number.
         /// </summary>
         /// <returns>Returns the pigpio version.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioVersion")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioVersion")]
         public static extern uint GpioVersion();
 
         /// <summary>
@@ -73,7 +73,7 @@
         /// </code>
         /// </example>
         /// <returns>Returns the current system tick.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioTick")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioTick")]
         public static extern uint GpioTick();
 
         /// <summary>
@@ -99,14 +99,14 @@
         /// <param name="seconds">a pointer to an int to hold seconds</param>
         /// <param name="microseconds">a pointer to an int to hold microseconds</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMETYPE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioTime")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioTime")]
         public static extern int GpioTime(TimeType timeType, out int seconds, out int microseconds);
 
         /// <summary>
         /// Return the current time in seconds since the Epoch.
         /// </summary>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "time_time")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "time_time")]
         public static extern double TimeTime();
 
         /// <summary>
@@ -116,7 +116,7 @@
         /// <param name="buf">array of bits</param>
         /// <param name="numBits">number of valid bits in buf</param>
         /// <returns>Returns the value of the bit bitPos bits from the start of buf.  Returns 0 if bitPos is greater than or equal to numBits.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "getBitInBytes")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "getBitInBytes")]
         public static extern int GetBitInBytes(int bitPos, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buf, int numBits);
 
         /// <summary>
@@ -126,7 +126,7 @@
         /// <param name="bitPos">bit index from the start of buf</param>
         /// <param name="buf">array of bits</param>
         /// <param name="bit">0-1, value to set</param>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "putBitInBytes")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "putBitInBytes")]
         public static extern void PutBitInBytes(int bitPos, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buf, int bit);
 
         /// <summary>
@@ -170,7 +170,7 @@
         /// <param name="scriptName">the name of the script, only alphanumeric characters,</param>
         /// <param name="scriptString">the string to pass to the script</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "shell")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "shell")]
         public static extern ResultCode Shell(string scriptName, string scriptString);
 
         /// <summary>
@@ -188,7 +188,7 @@
         /// <param name="signalNumber">0-63</param>
         /// <param name="f">the callback function</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_signalNumber.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetSignalFunc")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetSignalFunc")]
         public static extern ResultCode GpioSetSignalFunc(uint signalNumber, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioSignalDelegate f);
 
         /// <summary>
@@ -205,7 +205,7 @@
         /// <param name="callback">the callback function</param>
         /// <param name="userData">a pointer to arbitrary user data</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_signalNumber.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSetSignalFuncEx")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetSignalFuncEx")]
         public static extern ResultCode GpioSetSignalFuncEx(uint signalNumber, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioSignalExDelegate callback, UIntPtr userData);
 
         /// <summary>

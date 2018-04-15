@@ -26,7 +26,7 @@
         /// <param name="spiBitLast">the last bit to read</param>
         /// <param name="spiBits">the number of bits to transfer</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_SER_OFFSET, or PI_TOO_MANY_PULSES.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveAddSPI")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveAddSPI")]
         public static extern int RawWaveAddSPI(RawSpiData spi, uint offset, uint spiSS, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint spiTxBits, uint spiBitFirst, uint spiBitLast, uint spiBits);
 
         /// <summary>
@@ -49,14 +49,14 @@
         /// <param name="numPulses">the number of pulses</param>
         /// <param name="pulses">the array containing the pulses</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_TOO_MANY_PULSES.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveAddGeneric")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveAddGeneric")]
         public static extern int RawWaveAddGeneric(uint numPulses, [In, MarshalAs(UnmanagedType.LPArray)] RawWave[] pulses);
 
         /// <summary>
         /// Not intended for general use.
         /// </summary>
         /// <returns>Returns the number of the cb being currently output.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveCB")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveCB")]
         public static extern uint RawWaveCB();
 
         /// <summary>
@@ -66,7 +66,7 @@
         /// </summary>
         /// <param name="controlBlockNumber">the cb of interest</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveCBAdr")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveCBAdr")]
         public static extern RawCBS RawWaveCBAdr(int controlBlockNumber);
 
         /// <summary>
@@ -76,7 +76,7 @@
         /// </summary>
         /// <param name="position">the position of interest.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveGetOOL")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveGetOOL")]
         public static extern uint RawWaveGetOOL(int position);
 
         /// <summary>
@@ -86,7 +86,7 @@
         /// </summary>
         /// <param name="position">the position of interest</param>
         /// <param name="value">the value to write</param>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveSetOOL")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveSetOOL")]
         public static extern void RawWaveSetOOL(int position, uint value);
 
         /// <summary>
@@ -98,7 +98,7 @@
         /// </summary>
         /// <param name="position">the position of interest.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveGetOut")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveGetOut")]
         [Obsolete("use rawWaveGetOOL instead.")]
         public static extern uint RawWaveGetOut(int position);
 
@@ -111,7 +111,7 @@
         /// </summary>
         /// <param name="position">the position of interest</param>
         /// <param name="value">the value to write</param>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveSetOut")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveSetOut")]
         [Obsolete("use rawWaveSetOOL instead")]
         public static extern void RawWaveSetOut(int position, uint value);
 
@@ -124,7 +124,7 @@
         /// </summary>
         /// <param name="position">the position of interest</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveGetIn")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveGetIn")]
         [Obsolete("use rawWaveGetOOL instead")]
         public static extern uint RawWaveGetIn(int position);
 
@@ -137,7 +137,7 @@
         /// </summary>
         /// <param name="position">the position of interest</param>
         /// <param name="value">the value to write</param>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveSetIn")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveSetIn")]
         [Obsolete("use rawWaveSetOOL instead")]
         public static extern void RawWaveSetIn(int position, uint value);
 
@@ -148,7 +148,7 @@
         /// </summary>
         /// <param name="waveId">the wave of interest</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawWaveInfo")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveInfo")]
         [return: MarshalAs(UnmanagedType.Struct)]
         public static extern RawWaveInformation RawWaveInfo(int waveId);
 
@@ -157,7 +157,7 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "rawDumpWave")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawDumpWave")]
         public static extern void RawDumpWave();
     }
 }

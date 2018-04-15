@@ -23,7 +23,7 @@
         /// <param name="baudRate">50-250000</param>
         /// <param name="dataBits">1-32</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_WAVE_BAUD, PI_BAD_DATABITS, or PI_GPIO_IN_USE.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialReadOpen")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSerialReadOpen")]
         public static extern ResultCode GpioSerialReadOpen(UserGpio userGpio, uint baudRate, uint dataBits);
 
         /// <summary>
@@ -81,7 +81,7 @@
         /// </summary>
         /// <param name="userGpio">0-31, previously opened with <see cref="GpioSerialReadOpen"/></param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_NOT_SERIAL_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialReadClose")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSerialReadClose")]
         public static extern ResultCode GpioSerialReadClose(UserGpio userGpio);
 
         #region Unmanaged Methods
@@ -101,7 +101,7 @@
         /// <param name="buffer">an array to receive the read bytes</param>
         /// <param name="bufferSize">&gt;=0</param>
         /// <returns>Returns the number of bytes copied if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERIAL_GPIO.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialRead")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSerialRead")]
         private static extern int GpioSerialReadUnmanaged(UserGpio userGpio, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint bufferSize);
 
         /// <summary>
@@ -116,7 +116,7 @@
         /// <param name="userGpio">0-31</param>
         /// <param name="invert">0-1</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_GPIO_IN_USE, PI_NOT_SERIAL_GPIO, or PI_BAD_SER_INVERT.</returns>
-        [DllImport(Constants.PiGpioLibrary, EntryPoint = "gpioSerialReadInvert")]
+        [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSerialReadInvert")]
         private static extern ResultCode GpioSerialReadInvertUnmanaged(UserGpio userGpio, DigitalValue invert);
 
         #endregion
