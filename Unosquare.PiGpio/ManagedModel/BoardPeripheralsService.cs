@@ -161,13 +161,6 @@
         public UartPort OpenUartPort(string portName, UartRate baudRate) =>
             new UartPort(portName, baudRate);
 
-        /// <summary>
-        /// Lists the UART port names.
-        /// </summary>
-        /// <returns>The port names</returns>
-        public string[] ListUartPortNames() =>
-            UartPort.ListPortNames();
-
         #endregion
 
         #region Soft Serial

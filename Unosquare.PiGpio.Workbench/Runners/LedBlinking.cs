@@ -1,13 +1,14 @@
-﻿namespace Unosquare.PiGpio.Samples.Workbench
+﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
     using System.Threading;
     using ManagedModel;
 
-    internal class LedBlinking : WorkbenchItemBase
+    internal class LedBlinking : RunnerBase
     {
         private GpioPin Pin = null;
 
-        public LedBlinking(bool isEnabled) : base(isEnabled) { }
+        public LedBlinking(bool isEnabled)
+            : base(isEnabled) { }
 
         protected override void Setup()
         {

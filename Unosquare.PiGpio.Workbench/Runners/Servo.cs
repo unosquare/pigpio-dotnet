@@ -1,17 +1,18 @@
-﻿namespace Unosquare.PiGpio.Samples.Workbench
+﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
     using ManagedModel;
     using Swan;
     using System.Threading;
 
-    internal class Servo : WorkbenchItemBase
+    internal class Servo : RunnerBase
     {
         private GpioPin Pin = null;
         private int MinPulseWidth = GpioPinServoService.PulseWidthMin + 50;
         private int MaxPulseWidth = GpioPinServoService.PulseWidthMax;
         private int InitialPulseWidth = GpioPinServoService.PulseWidthMin + 500;
 
-        public Servo(bool isEnabled) : base(isEnabled) { }
+        public Servo(bool isEnabled)
+            : base(isEnabled) { }
 
         protected override void Setup()
         {

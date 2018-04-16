@@ -1,17 +1,17 @@
-﻿namespace Unosquare.PiGpio.Samples.Workbench
+﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using Unosquare.Swan;
 
-    internal abstract class WorkbenchItemBase
+    internal abstract class RunnerBase
     {
         private Thread Worker = null;
         private CancellationTokenSource CancelTokenSource = null;
         private ManualResetEvent WorkFinished;
 
-        protected WorkbenchItemBase(bool isEnabled)
+        protected RunnerBase(bool isEnabled)
         {
             Name = GetType().Name;
             IsEnabled = isEnabled;

@@ -7,7 +7,6 @@
     using System.Collections.Generic;
     using System.Drawing;
     using System.Drawing.Drawing2D;
-    using System.Drawing.Imaging;
     using System.Linq;
     using System.Runtime.CompilerServices;
     using System.Text;
@@ -46,13 +45,13 @@
         private static int FontBitmapCharWidth;
         private static int FontBitmapCharHeight;
 
-        private byte m_Contrast = 0;
-        private bool m_IsActive = false;
         private readonly BitArray BitBuffer;
         private readonly byte[] ByteBuffer;
         private int BufferPageCount;
         private int BitsPerPage;
         private bool IsDisposed = false;
+        private byte m_Contrast = 0;
+        private bool m_IsActive = false;
 
         #endregion
 
@@ -133,6 +132,78 @@
 
         #endregion
 
+        #region Enumerations
+
+        /// <summary>
+        /// ENumerates the different OLED display models
+        /// </summary>
+        public enum DisplayModel
+        {
+            /// <summary>
+            /// The display 128x64
+            /// </summary>
+            Display128x64 = 0,
+
+            /// <summary>
+            /// The display 128x32 (pioled)
+            /// </summary>
+            Display128x32 = 1,
+
+            /// <summary>
+            /// The display 96x16
+            /// </summary>
+            Display96x16 = 2,
+        }
+
+        /// <summary>
+        /// Enumerates the different Power Source modes
+        /// </summary>
+        public enum VccSourceMode
+        {
+            /// <summary>
+            /// External power supply
+            /// </summary>
+            External = 0x1,
+
+            /// <summary>
+            /// Integrated switching capacitor power supply
+            /// </summary>
+            Switching = 0x2,
+        }
+
+        /// <summary>
+        /// Enumerates the different commands
+        /// </summary>
+        private enum Command
+        {
+            SetContrast = 0x81,
+            Resume = 0xA4,
+            EntireDisplayOn = 0xA5,
+            DisplayModeNormal = 0xA6,
+            DisplayModeInvert = 0xA7,
+            TurnOff = 0xAE,
+            TurnOn = 0xAF,
+            SetDisplayOffset = 0xD3,
+            SetComPins = 0xDA,
+            SetVoltageOutput = 0xDB,
+            SetClockDivider = 0xD5,
+            SetPrechargeMode = 0xD9,
+            SetMultiplexer = 0xA8,
+            SetLowColumn = 0x00,
+            SetHighColumn = 0x10,
+            SetStartLine = 0x40,
+            SetMemoryMode = 0x20,
+            SetColumnAddressRange = 0x21,
+            SetPageAddressRange = 0x22,
+            ScanDirectionModeIncrement = 0xC0,
+            ScanDirectionModeDecrement = 0xC8,
+            SegmentRemapModeOff = 0xA0,
+            SegmentRemapModeOn = 0xA1,
+            SetChargePumpMode = 0x8D,
+        }
+
+        #endregion
+
         /// <summary>
         /// Gets the device.
         /// </summary>
@@ -179,7 +250,10 @@
         /// </summary>
         public bool IsActive
         {
-            get { return m_IsActive; }
+            get
+            {
+                return m_IsActive;
+            }
             set
             {
                 SendCommand(value ? Command.TurnOn : Command.TurnOff);
@@ -204,7 +278,7 @@
         /// </summary>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
-        /// <returns></returns>
+        /// <returns>If the bit is set or not</returns>
         public bool GetPixel(int x, int y) => this[x, y];
 
         /// <summary>
@@ -304,6 +378,7 @@
         {
             if (bitmap == null) throw new ArgumentNullException(nameof(bitmap));
             ClearPixels();
+
             // for (var bitmapY = offsetY; bitmapY < offsetY + Height; bitmapY++)
             Parallel.For(offsetY, offsetY + Height - 1, (bitmapY) =>
             {
@@ -339,7 +414,7 @@
         /// <summary>
         /// Gets the default I2C device.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The default I2C device</returns>
         private static I2cDevice GetDefaultDevice() =>
             Board.Peripherals.OpenI2cDevice(I2cBusId.Bus1, 0x3c);
 
@@ -376,7 +451,7 @@
         /// </summary>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
-        /// <returns></returns>
+        /// <returns>The bit index for the given coordinates</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private int GetBitIndex(int x, int y) =>
             ((y / 8) * BitsPerPage) + (x * 8) + (y % 8);
@@ -435,78 +510,6 @@
                 IsActive = false;
                 Device?.Dispose();
             }
-        }
-
-        #endregion
-
-        #region Enumerations
-
-        /// <summary>
-        /// ENumerates the different OLED display models
-        /// </summary>
-        public enum DisplayModel
-        {
-            /// <summary>
-            /// The display 128x64
-            /// </summary>
-            Display128x64 = 0,
-
-            /// <summary>
-            /// The display 128x32 (pioled)
-            /// </summary>
-            Display128x32 = 1,
-
-            /// <summary>
-            /// The display 96x16
-            /// </summary>
-            Display96x16 = 2,
-        }
-
-        /// <summary>
-        /// Enumerates the different Power Source modes
-        /// </summary>
-        public enum VccSourceMode
-        {
-            /// <summary>
-            /// External power supply
-            /// </summary>
-            External = 0x1,
-
-            /// <summary>
-            /// Integrated switching capacitor power supply
-            /// </summary>
-            Switching = 0x2,
-        }
-
-        /// <summary>
-        /// Enumerates the different commands
-        /// </summary>
-        private enum Command
-        {
-            SetContrast = 0x81,
-            Resume = 0xA4,
-            EntireDisplayOn = 0xA5,
-            DisplayModeNormal = 0xA6,
-            DisplayModeInvert = 0xA7,
-            TurnOff = 0xAE,
-            TurnOn = 0xAF,
-            SetDisplayOffset = 0xD3,
-            SetComPins = 0xDA,
-            SetVoltageOutput = 0xDB,
-            SetClockDivider = 0xD5,
-            SetPrechargeMode = 0xD9,
-            SetMultiplexer = 0xA8,
-            SetLowColumn = 0x00,
-            SetHighColumn = 0x10,
-            SetStartLine = 0x40,
-            SetMemoryMode = 0x20,
-            SetColumnAddressRange = 0x21,
-            SetPageAddressRange = 0x22,
-            ScanDirectionModeIncrement = 0xC0,
-            ScanDirectionModeDecrement = 0xC8,
-            SegmentRemapModeOff = 0xA0,
-            SegmentRemapModeOn = 0xA1,
-            SetChargePumpMode = 0x8D,
         }
 
         #endregion

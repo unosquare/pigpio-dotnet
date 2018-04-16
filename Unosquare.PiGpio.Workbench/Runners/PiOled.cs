@@ -1,4 +1,4 @@
-﻿namespace Unosquare.PiGpio.Samples.Workbench
+﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
     using System;
     using System.Diagnostics;
@@ -8,13 +8,13 @@
     using System.Threading;
     using Unosquare.PiGpio.Peripherals;
     using Unosquare.Swan;
-    using Unosquare.Swan.Components;
 
-    internal class PiOled : WorkbenchItemBase
+    internal class PiOled : RunnerBase
     {
         private OledDisplaySSD1306 Display;
 
-        internal PiOled(bool isEnabled) : base(isEnabled)
+        internal PiOled(bool isEnabled)
+            : base(isEnabled)
         {
             // placeholder
         }
@@ -44,8 +44,8 @@
                 graphics.SmoothingMode = SmoothingMode.Default;
             }
 
-            var ipAddress = ProcessRunner.GetProcessOutputAsync("hostname", "-I")
-                .GetAwaiter().GetResult().RemoveControlChars().Trim().Truncate(15);
+            // ProcessRunner.GetProcessOutputAsync("hostname", "-I").GetAwaiter().GetResult().RemoveControlChars().Trim().Truncate(15);
+            var address = "W.X.Y.Z";
 
             sw.Start();
             cycleSw.Start();
@@ -53,16 +53,17 @@
             {
                 cycleSw.Restart();
                 graphics.Clear(Color.Black);
-                Display.DrawText(bitmap, 
+                Display.DrawText(bitmap,
                     graphics,
                     $"X: {currentX,3}  Y: {currentY,3}",
                     $"Cycles: {cycleCount,6} T {currentThreshold:p}",
                     $"{DateTime.Now}",
-                    $"IP: {ipAddress}");
+                    $"IP: {address}");
 
                 // graphics.DrawEllipse(graphicPen, currentX, 24, 6, 6);
                 graphics.Flush();
                 Display.LoadBitmap(bitmap, currentThreshold, 0, 0);
+
                 // Display[currentX, currentY] = true; // currentVal;
                 Display.Render();
 

@@ -149,7 +149,6 @@
         /// <param name="waveId">the wave of interest</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveInfo")]
-        [return: MarshalAs(UnmanagedType.Struct)]
         public static extern RawWaveInformation RawWaveInfo(int waveId);
 
         /// <summary>

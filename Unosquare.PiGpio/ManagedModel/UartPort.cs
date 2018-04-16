@@ -3,7 +3,6 @@
     using NativeEnums;
     using NativeMethods;
     using System;
-    using System.IO.Ports;
 
     /// <summary>
     /// Provides libpigpio implementation of a UART port.
@@ -55,7 +54,7 @@
             if (result >= 0)
                 return (byte)result;
 
-            return default(byte?);
+            return default;
         }
 
         /// <summary>
@@ -109,12 +108,6 @@
         /// </summary>
         public void Dispose() =>
             Dispose(true);
-
-        /// <summary>
-        /// Lists the port names.
-        /// </summary>
-        /// <returns>An array of serial port names</returns>
-        internal static string[] ListPortNames() => SerialPort.GetPortNames();
 
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources.

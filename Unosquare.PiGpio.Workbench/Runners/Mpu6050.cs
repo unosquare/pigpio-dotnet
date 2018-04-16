@@ -1,4 +1,4 @@
-﻿namespace Unosquare.PiGpio.Samples.Workbench
+﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
     using ManagedModel;
     using NativeMethods;
@@ -7,15 +7,44 @@
     using System.Linq;
     using System.Threading;
 
-    internal class Mpu6050 : WorkbenchItemBase
+    internal class Mpu6050 : RunnerBase
     {
         private const byte PowerManagementRegister = 0x6B;
         private I2cDevice Device;
 
-        public Mpu6050(bool isEnabled) 
+        public Mpu6050(bool isEnabled)
             : base(isEnabled)
         {
             // placeholder
+        }
+
+        private bool Sleep
+        {
+            get
+            {
+                var powerConfig = Device.ReadByte(PowerManagementRegister);
+                return powerConfig.GetBit(6);
+            }
+            set
+            {
+                var powerConfig = Device.ReadByte(PowerManagementRegister);
+                Device.Write(PowerManagementRegister, powerConfig.SetBit(6, value));
+            }
+        }
+
+        private double Temperature
+        {
+            get
+            {
+                if (Device == null) return double.NaN;
+
+                // recieves the high byte (MSB) first and then the low byte (LSB) as an int 16
+                var tempBytes = BitConverter.GetBytes(Device.ReadWord(0x41));
+
+                // Since we are in little endian, we need to reverse so that we parse LSB and MSB
+                var rawReading = BitConverter.ToInt16(new byte[] { tempBytes[1], tempBytes[0] }, 0);
+                return (rawReading / 340d) + 36.53d;
+            }
         }
 
         protected override void Setup()
@@ -50,35 +79,6 @@
             {
                 Thread.Sleep(500);
                 $"Temperature: {Temperature,6:0.000}".Info(Name);
-            }
-        }
-
-        private bool Sleep
-        {
-            get
-            {
-                var powerConfig = Device.ReadByte(PowerManagementRegister);
-                return powerConfig.GetBit(6);
-            }
-            set
-            {
-                var powerConfig = Device.ReadByte(PowerManagementRegister);
-                Device.Write(PowerManagementRegister, powerConfig.SetBit(6, value));
-            }
-        }
-
-        private double Temperature
-        {
-            get
-            {
-                if (Device == null) return double.NaN;
-
-                // recieves the high byte (MSB) first and then the low byte (LSB) as an int 16
-                var tempBytes = BitConverter.GetBytes(Device.ReadWord(0x41));
-
-                // Since we are in little endian, we need to reverse so that we parse LSB and MSB
-                var rawReading = BitConverter.ToInt16(new byte[] { tempBytes[1], tempBytes[0] }, 0);
-                return rawReading / 340d + 36.53d;
             }
         }
 

@@ -1,11 +1,12 @@
-﻿namespace Unosquare.PiGpio.Samples.Workbench
+﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
     using System.Threading;
     using Unosquare.Swan;
 
-    internal class BoardInfo : WorkbenchItemBase
+    internal class BoardInfo : RunnerBase
     {
-        public BoardInfo(bool isEnabled) : base(isEnabled) { }
+        public BoardInfo(bool isEnabled)
+            : base(isEnabled) { }
 
         protected override void DoBackgroundWork(CancellationToken ct)
         {

@@ -1,18 +1,17 @@
-﻿namespace Unosquare.PiGpio.Samples
+﻿namespace Unosquare.PiGpio.Workbench
 {
+    using Runners;
     using Swan;
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
-    using Workbench;
 
-    class Program
+    internal static class Program
     {
         public static void Main(string[] args)
         {
             Terminal.Settings.DisplayLoggingMessageType = (LogMessageType)int.MaxValue;
-            var workbenchItems = new List<WorkbenchItemBase>
+            var workbenchItems = new List<RunnerBase>
             {
                 new BoardInfo(true),
                 new LedBlinking(false),
@@ -23,7 +22,7 @@
                 new Mpu6050(false),
                 new PiOled(true)
             };
-            
+
             $"Enabled Workbench Items: {workbenchItems.Count(wbi => wbi.IsEnabled)}".Info(nameof(Program));
             foreach (var wbi in workbenchItems)
                 wbi.Start();

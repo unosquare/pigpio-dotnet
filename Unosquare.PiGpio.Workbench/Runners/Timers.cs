@@ -1,26 +1,22 @@
-﻿namespace Unosquare.PiGpio.Samples.Workbench
+﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Swan;
+    using System.Threading;
 
-    internal class Timers : WorkbenchItemBase
+    internal class Timers : RunnerBase
     {
         private Timer CurrentTimer = null;
         private ManualResetEvent TimerTicked;
         private int RemainingTicks = 30;
 
-        public Timers(bool isEnabled) : base(isEnabled) { }
+        public Timers(bool isEnabled)
+            : base(isEnabled) { }
 
         protected override void Setup()
         {
             RemainingTicks = 30;
             TimerTicked = new ManualResetEvent(false);
-            CurrentTimer = Board.Timing.StartTimer(500, () => 
+            CurrentTimer = Board.Timing.StartTimer(500, () =>
             {
                 RemainingTicks--;
                 TimerTicked.Set();
