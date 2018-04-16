@@ -1,3 +1,4 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/n5xt8b07j65a65tb/branch/master?svg=true)](https://ci.appveyor.com/project/geoperez/pigpio-dotnet/branch/master)
 # Raspbery Pi - libpigpio for .net
 Provides complete managed access to the popular pigpio C library
 
