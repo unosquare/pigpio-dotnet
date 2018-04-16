@@ -1,0 +1,1545 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class IO
+   | Unosquare Raspbery Pi - libpigpio for .net </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class IO
+   | Unosquare Raspbery Pi - libpigpio for .net ">
+    <meta name="generator" content="docfx 2.34.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.NativeMethods.IO">
+  
+  
+  <h1 id="Unosquare_PiGpio_NativeMethods_IO" data-uid="Unosquare.PiGpio.NativeMethods.IO" class="text-break">Class IO
+  </h1>
+  <div class="markdown level0 summary"><p>Defines fundamental IO methods for the GPIO Pins.
+The bulk of the managed pin functionality is supplied by these methods.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">IO</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.NativeMethods.html">Unosquare.PiGpio.NativeMethods</a></h6>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class IO</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioGetMode_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioGetMode*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioGetMode_Unosquare_PiGpio_NativeEnums_SystemGpio_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioGetMode(Unosquare.PiGpio.NativeEnums.SystemGpio)">GpioGetMode(SystemGpio)</h4>
+  <div class="markdown level1 summary"><p>Gest the current mode for the given GPIO</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static PinMode GpioGetMode(SystemGpio gpio)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SystemGpio.html">SystemGpio</a></td>
+        <td><span class="parametername">gpio</span></td>
+        <td><p>The gpio.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.PinMode.html">PinMode</a></td>
+        <td><p>The port mode</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioGetPad_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioGetPad*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioGetPad_Unosquare_PiGpio_NativeEnums_GpioPadId_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioGetPad(Unosquare.PiGpio.NativeEnums.GpioPadId)">GpioGetPad(GpioPadId)</h4>
+  <div class="markdown level1 summary"><p>This function returns the pad drive strength in mA.</p>
+<p>Pad @ GPIO
+0   @ 0-27
+1   @ 28-45
+2   @ 46-53</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static GpioPadStrength GpioGetPad(GpioPadId pad)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.GpioPadId.html">GpioPadId</a></td>
+        <td><span class="parametername">pad</span></td>
+        <td><p>0-2, the pad to get</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.GpioPadStrength.html">GpioPadStrength</a></td>
+        <td><p>Returns the pad drive strength if OK, otherwise PI_BAD_PAD.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioGetPad_Unosquare_PiGpio_NativeEnums_GpioPadId__examples">Examples</h5>
+  <pre><code>strength = gpioGetPad(1); // get pad 1 strength</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioGlitchFilter_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioGlitchFilter*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioGlitchFilter_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioGlitchFilter(Unosquare.PiGpio.NativeEnums.UserGpio,System.UInt32)">GpioGlitchFilter(UserGpio, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Sets a glitch filter on a GPIO.</p>
+<p>Level changes on the GPIO are not reported unless the level
+has been stable for at least <code data-dev-comment-type="paramref" class="paramref">steadyMicroseconds</code> microseconds.  The
+level is then reported.  Level changes of less than <code data-dev-comment-type="paramref" class="paramref">steadyMicroseconds</code>
+microseconds are ignored.</p>
+<p>This filter affects the GPIO samples returned to callbacks set up
+with <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFunc_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertDelegate_">GpioSetAlertFunc(UserGpio, PiGpioAlertDelegate)</a>, <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFuncEx_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertExDelegate_System_UIntPtr_">GpioSetAlertFuncEx(UserGpio, PiGpioAlertExDelegate, UIntPtr)</a>, <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFunc_Unosquare_PiGpio_NativeTypes_PiGpioGetSamplesDelegate_Unosquare_PiGpio_NativeEnums_BitMask_">GpioSetGetSamplesFunc(PiGpioGetSamplesDelegate, BitMask)</a>,
+and <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFuncEx_Unosquare_PiGpio_NativeTypes_PiGpioGetSamplesExDelegate_Unosquare_PiGpio_NativeEnums_BitMask_System_UIntPtr_">GpioSetGetSamplesFuncEx(PiGpioGetSamplesExDelegate, BitMask, UIntPtr)</a>.</p>
+<p>It does not affect interrupts set up with <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFunc_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrDelegate_">GpioSetIsrFunc(SystemGpio, EdgeDetection, Int32, PiGpioIsrDelegate)</a>,
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFuncEx_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrExDelegate_System_UIntPtr_">GpioSetIsrFuncEx(SystemGpio, EdgeDetection, Int32, PiGpioIsrExDelegate, UIntPtr)</a>, or levels read by <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioRead_Unosquare_PiGpio_NativeEnums_SystemGpio_">GpioRead(SystemGpio)</a>,
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioReadBits00To31">GpioReadBits00To31()</a>, or <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioReadBits32To53">GpioReadBits32To53()</a>.</p>
+<p>Each (stable) edge will be timestamped <code data-dev-comment-type="paramref" class="paramref">steadyMicroseconds</code> microseconds
+after it was first detected.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioGlitchFilter(UserGpio userGpio, uint steadyMicroseconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">steadyMicroseconds</span></td>
+        <td><p>0-300000</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_BAD_FILTER.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioNoiseFilter_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioNoiseFilter*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioNoiseFilter_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioNoiseFilter(Unosquare.PiGpio.NativeEnums.UserGpio,System.UInt32,System.UInt32)">GpioNoiseFilter(UserGpio, UInt32, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Sets a noise filter on a GPIO.</p>
+<p>Level changes on the GPIO are ignored until a level which has
+been stable for <code data-dev-comment-type="paramref" class="paramref">steadyMicroseconds</code> microseconds is detected.  Level changes
+on the GPIO are then reported for <code data-dev-comment-type="paramref" class="paramref">activeMicroseconds</code> microseconds after
+which the process repeats.</p>
+<p>This filter affects the GPIO samples returned to callbacks set up
+with <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFunc_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertDelegate_">GpioSetAlertFunc(UserGpio, PiGpioAlertDelegate)</a>, <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFuncEx_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertExDelegate_System_UIntPtr_">GpioSetAlertFuncEx(UserGpio, PiGpioAlertExDelegate, UIntPtr)</a>, <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFunc_Unosquare_PiGpio_NativeTypes_PiGpioGetSamplesDelegate_Unosquare_PiGpio_NativeEnums_BitMask_">GpioSetGetSamplesFunc(PiGpioGetSamplesDelegate, BitMask)</a>,
+and <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFuncEx_Unosquare_PiGpio_NativeTypes_PiGpioGetSamplesExDelegate_Unosquare_PiGpio_NativeEnums_BitMask_System_UIntPtr_">GpioSetGetSamplesFuncEx(PiGpioGetSamplesExDelegate, BitMask, UIntPtr)</a>.</p>
+<p>It does not affect interrupts set up with <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFunc_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrDelegate_">GpioSetIsrFunc(SystemGpio, EdgeDetection, Int32, PiGpioIsrDelegate)</a>,
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFuncEx_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrExDelegate_System_UIntPtr_">GpioSetIsrFuncEx(SystemGpio, EdgeDetection, Int32, PiGpioIsrExDelegate, UIntPtr)</a>, or levels read by <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioRead_Unosquare_PiGpio_NativeEnums_SystemGpio_">GpioRead(SystemGpio)</a>,
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioReadBits00To31">GpioReadBits00To31()</a>, or <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioReadBits32To53">GpioReadBits32To53()</a>.</p>
+<p>Level changes before and after the active period may
+be reported.  Your software must be designed to cope with
+such reports.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioNoiseFilter(UserGpio userGpio, uint steadyMicroseconds, uint activeMicroseconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">steadyMicroseconds</span></td>
+        <td><p>0-300000</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">activeMicroseconds</span></td>
+        <td><p>0-1000000</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_BAD_FILTER.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioRead_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioRead*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioRead_Unosquare_PiGpio_NativeEnums_SystemGpio_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioRead(Unosquare.PiGpio.NativeEnums.SystemGpio)">GpioRead(SystemGpio)</h4>
+  <div class="markdown level1 summary"><p>Reads the value of the GPIO</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool GpioRead(SystemGpio gpio)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SystemGpio.html">SystemGpio</a></td>
+        <td><span class="parametername">gpio</span></td>
+        <td><p>The gpio.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>The digital value</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioReadBits00To31_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioReadBits00To31*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioReadBits00To31" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioReadBits00To31">GpioReadBits00To31()</h4>
+  <div class="markdown level1 summary"><p>Returns the current level of GPIO 0-31.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static uint GpioReadBits00To31()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The current level of GPIO 0-31.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioReadBits32To53_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioReadBits32To53*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioReadBits32To53" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioReadBits32To53">GpioReadBits32To53()</h4>
+  <div class="markdown level1 summary"><p>Returns the current level of GPIO 32-53.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static uint GpioReadBits32To53()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The current level of GPIO 32-53.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFunc_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetAlertFunc*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFunc_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertDelegate_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetAlertFunc(Unosquare.PiGpio.NativeEnums.UserGpio,Unosquare.PiGpio.NativeTypes.PiGpioAlertDelegate)">GpioSetAlertFunc(UserGpio, PiGpioAlertDelegate)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) when the specified
+GPIO changes state.</p>
+<p>One callback may be registered per GPIO.</p>
+<p>The callback is passed the GPIO, the new level, and the tick.</p>
+<p>The alert may be cancelled by passing NULL as the function.</p>
+<p>The GPIO are sampled at a rate set when the library is started.</p>
+<p>If a value isn&apos;t specifically set the default of 5 us is used.</p>
+<p>The number of samples per second is given in the following table.</p>
+<p>Level changes shorter than the sample rate may be missed.</p>
+<p>The thread which calls the alert functions is triggered nominally
+1000 times per second.  The active alert functions will be called
+once per level change since the last time the thread was activated.
+i.e. The active alert functions will get all level changes but there
+will be a latency.</p>
+<p>The tick value is the time stamp of the sample in microseconds, see
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.Utilities.html#Unosquare_PiGpio_NativeMethods_Utilities_GpioTick">GpioTick()</a> for more details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetAlertFunc(UserGpio userGpio, PiGpioAlertDelegate callback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioAlertDelegate.html">PiGpioAlertDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the callback function</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_USER_GPIO.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFunc_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertDelegate__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Parameter   Value    Meaning</p>
+<p>GPIO        0-31     The GPIO which has changed state</p>
+<p>level       0-2      0 = change to low (a falling edge)
+                1 = change to high (a rising edge)
+                2 = no level change (a watchdog timeout)</p>
+<p>tick        32 bit   The number of microseconds since boot
+                WARNING: this wraps around from
+                4294967295 to 0 roughly every 72 minutes
+         samples
+         per sec</p>
+<pre><code>1  1,000,000
+2    500,000
+</code></pre><p>sample   4    250,000
+rate     5    200,000
+(us)     8    125,000
+   10    100,000</p>
+</div>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFunc_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertDelegate__examples">Examples</h5>
+  <pre><code>void aFunction(int gpio, int level, uint tick)
+{
+   printf(&quot;GPIO %d became %d at %d&quot;, gpio, level, tick);
+}
+
+// call aFunction whenever GPIO 4 changes state
+
+gpioSetAlertFunc(4, aFunction);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFuncEx_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetAlertFuncEx*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFuncEx_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertExDelegate_System_UIntPtr_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetAlertFuncEx(Unosquare.PiGpio.NativeEnums.UserGpio,Unosquare.PiGpio.NativeTypes.PiGpioAlertExDelegate,System.UIntPtr)">GpioSetAlertFuncEx(UserGpio, PiGpioAlertExDelegate, UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) when the specified
+GPIO changes state.</p>
+<p>One callback may be registered per GPIO.</p>
+<p>The callback is passed the GPIO, the new level, the tick, and
+the userData pointer.</p>
+<p>See <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFunc_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertDelegate_">GpioSetAlertFunc(UserGpio, PiGpioAlertDelegate)</a> for further details.</p>
+<p>Only one of <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFunc_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertDelegate_">GpioSetAlertFunc(UserGpio, PiGpioAlertDelegate)</a> or <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFuncEx_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertExDelegate_System_UIntPtr_">GpioSetAlertFuncEx(UserGpio, PiGpioAlertExDelegate, UIntPtr)</a> can be
+registered per GPIO.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetAlertFuncEx(UserGpio userGpio, PiGpioAlertExDelegate callback, UIntPtr userData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioAlertExDelegate.html">PiGpioAlertExDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the callback function</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">userData</span></td>
+        <td><p>pointer to arbitrary user data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_USER_GPIO.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetAlertFuncEx_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeTypes_PiGpioAlertExDelegate_System_UIntPtr__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Parameter   Value    Meaning</p>
+<p>GPIO        0-31     The GPIO which has changed state</p>
+<p>level       0-2      0 = change to low (a falling edge)
+                1 = change to high (a rising edge)
+                2 = no level change (a watchdog timeout)</p>
+<p>tick        32 bit   The number of microseconds since boot
+                WARNING: this wraps around from
+                4294967295 to 0 roughly every 72 minutes</p>
+<p>userData    pointer  Pointer to an arbitrary object</p>
+</div>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFunc_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetGetSamplesFunc*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFunc_Unosquare_PiGpio_NativeTypes_PiGpioGetSamplesDelegate_Unosquare_PiGpio_NativeEnums_BitMask_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetGetSamplesFunc(Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesDelegate,Unosquare.PiGpio.NativeEnums.BitMask)">GpioSetGetSamplesFunc(PiGpioGetSamplesDelegate, BitMask)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) every millisecond
+with the latest GPIO samples.</p>
+<p>The function is passed a pointer to the samples (an array of
+<a class="xref" href="Unosquare.PiGpio.NativeTypes.GpioSample.html">GpioSample</a>),  and the number of samples.</p>
+<p>Only one function can be registered.</p>
+<p>The callback may be cancelled by passing NULL as the function.</p>
+<p>The samples returned will be the union of bits, plus any active alerts,
+plus any active notifications.</p>
+<p>e.g.  if there are alerts for GPIO 7, 8, and 9, notifications for GPIO
+8, 10, 23, 24, and bits is (1&lt;&lt;23)|(1&lt;&lt;17) then samples for GPIO
+7, 8, 9, 10, 17, 23, and 24 will be reported.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetGetSamplesFunc(PiGpioGetSamplesDelegate callback, BitMask bits)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesDelegate.html">PiGpioGetSamplesDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the function to call</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.BitMask.html">BitMask</a></td>
+        <td><span class="parametername">bits</span></td>
+        <td><p>the GPIO of interest</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFuncEx_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetGetSamplesFuncEx*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFuncEx_Unosquare_PiGpio_NativeTypes_PiGpioGetSamplesExDelegate_Unosquare_PiGpio_NativeEnums_BitMask_System_UIntPtr_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetGetSamplesFuncEx(Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesExDelegate,Unosquare.PiGpio.NativeEnums.BitMask,System.UIntPtr)">GpioSetGetSamplesFuncEx(PiGpioGetSamplesExDelegate, BitMask, UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) every millisecond
+with the latest GPIO samples.</p>
+<p>The function is passed a pointer to the samples (an array of
+<a class="xref" href="Unosquare.PiGpio.NativeTypes.GpioSample.html">GpioSample</a>), the number of samples, and the userData pointer.</p>
+<p>Only one of <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFunc_Unosquare_PiGpio_NativeTypes_PiGpioGetSamplesDelegate_Unosquare_PiGpio_NativeEnums_BitMask_">GpioSetGetSamplesFunc(PiGpioGetSamplesDelegate, BitMask)</a> or <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFuncEx_Unosquare_PiGpio_NativeTypes_PiGpioGetSamplesExDelegate_Unosquare_PiGpio_NativeEnums_BitMask_System_UIntPtr_">GpioSetGetSamplesFuncEx(PiGpioGetSamplesExDelegate, BitMask, UIntPtr)</a> can be
+registered.</p>
+<p>See <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetGetSamplesFunc_Unosquare_PiGpio_NativeTypes_PiGpioGetSamplesDelegate_Unosquare_PiGpio_NativeEnums_BitMask_">GpioSetGetSamplesFunc(PiGpioGetSamplesDelegate, BitMask)</a> for further details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetGetSamplesFuncEx(PiGpioGetSamplesExDelegate callback, BitMask bits, UIntPtr userData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesExDelegate.html">PiGpioGetSamplesExDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the function to call</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.BitMask.html">BitMask</a></td>
+        <td><span class="parametername">bits</span></td>
+        <td><p>the GPIO of interest</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">userData</span></td>
+        <td><p>a pointer to arbitrary user data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFunc_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetIsrFunc*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFunc_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrDelegate_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetIsrFunc(Unosquare.PiGpio.NativeEnums.SystemGpio,Unosquare.PiGpio.NativeEnums.EdgeDetection,System.Int32,Unosquare.PiGpio.NativeTypes.PiGpioIsrDelegate)">GpioSetIsrFunc(SystemGpio, EdgeDetection, Int32, PiGpioIsrDelegate)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) whenever the specified
+GPIO interrupt occurs.</p>
+<p>One function may be registered per GPIO.</p>
+<p>The function is passed the GPIO, the current level, and the
+current tick.  The level will be PI_TIMEOUT if the optional
+interrupt timeout expires.</p>
+<p>The underlying Linux sysfs GPIO interface is used to provide
+the interrupt services.</p>
+<p>The first time the function is called, with a non-NULL f, the
+GPIO is exported, set to be an input, and set to interrupt
+on the given edge and timeout.</p>
+<p>Subsequent calls, with a non-NULL f, can vary one or more of the
+edge, timeout, or function.</p>
+<p>The ISR may be cancelled by passing a NULL f, in which case the
+GPIO is unexported.</p>
+<p>The tick is that read at the time the process was informed of
+the interrupt.  This will be a variable number of microseconds
+after the interrupt occurred.  Typically the latency will be of
+the order of 50 microseconds.  The latency is not guaranteed
+and will vary with system load.</p>
+<p>The level is that read at the time the process was informed of
+the interrupt, or PI_TIMEOUT if the optional interrupt timeout
+expired.  It may not be the same as the expected edge as
+interrupts happening in rapid succession may be missed by the
+kernel (i.e. this mechanism can not be used to capture several
+interrupts only a few microseconds apart).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetIsrFunc(SystemGpio gpio, EdgeDetection edge, int timeout, PiGpioIsrDelegate callback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SystemGpio.html">SystemGpio</a></td>
+        <td><span class="parametername">gpio</span></td>
+        <td><p>0-53</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.EdgeDetection.html">EdgeDetection</a></td>
+        <td><span class="parametername">edge</span></td>
+        <td><p>RISING_EDGE, FALLING_EDGE, or EITHER_EDGE</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">timeout</span></td>
+        <td><p>interrupt timeout in milliseconds (&lt;=0 to cancel)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioIsrDelegate.html">PiGpioIsrDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the callback function</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_BAD_EDGE, or PI_BAD_ISR_INIT.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFunc_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrDelegate__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Parameter   Value    Meaning</p>
+<p>GPIO        0-53     The GPIO which has changed state</p>
+<p>level       0-2      0 = change to low (a falling edge)
+                1 = change to high (a rising edge)
+                2 = no level change (interrupt timeout)</p>
+<p>tick        32 bit   The number of microseconds since boot
+                WARNING: this wraps around from
+                4294967295 to 0 roughly every 72 minutes</p>
+</div>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFuncEx_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetIsrFuncEx*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFuncEx_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrExDelegate_System_UIntPtr_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetIsrFuncEx(Unosquare.PiGpio.NativeEnums.SystemGpio,Unosquare.PiGpio.NativeEnums.EdgeDetection,System.Int32,Unosquare.PiGpio.NativeTypes.PiGpioIsrExDelegate,System.UIntPtr)">GpioSetIsrFuncEx(SystemGpio, EdgeDetection, Int32, PiGpioIsrExDelegate, UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) whenever the specified
+GPIO interrupt occurs.</p>
+<p>The function is passed the GPIO, the current level, the
+current tick, and the userData pointer.</p>
+<p>Only one of <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFunc_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrDelegate_">GpioSetIsrFunc(SystemGpio, EdgeDetection, Int32, PiGpioIsrDelegate)</a> or <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFuncEx_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrExDelegate_System_UIntPtr_">GpioSetIsrFuncEx(SystemGpio, EdgeDetection, Int32, PiGpioIsrExDelegate, UIntPtr)</a> can be
+registered per GPIO.</p>
+<p>See <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html#Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFunc_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrDelegate_">GpioSetIsrFunc(SystemGpio, EdgeDetection, Int32, PiGpioIsrDelegate)</a> for further details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetIsrFuncEx(SystemGpio gpio, EdgeDetection edge, int timeout, PiGpioIsrExDelegate callback, UIntPtr userData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SystemGpio.html">SystemGpio</a></td>
+        <td><span class="parametername">gpio</span></td>
+        <td><p>0-53</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.EdgeDetection.html">EdgeDetection</a></td>
+        <td><span class="parametername">edge</span></td>
+        <td><p>RISING_EDGE, FALLING_EDGE, or EITHER_EDGE</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">timeout</span></td>
+        <td><p>interrupt timeout in milliseconds (&lt;=0 to cancel)</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioIsrExDelegate.html">PiGpioIsrExDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the callback function</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">userData</span></td>
+        <td><p>pointer to arbitrary user data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_BAD_EDGE, or PI_BAD_ISR_INIT.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetIsrFuncEx_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_EdgeDetection_System_Int32_Unosquare_PiGpio_NativeTypes_PiGpioIsrExDelegate_System_UIntPtr__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>Parameter   Value    Meaning</p>
+<p>GPIO        0-53     The GPIO which has changed state</p>
+<p>level       0-2      0 = change to low (a falling edge)
+                1 = change to high (a rising edge)
+                2 = no level change (interrupt timeout)</p>
+<p>tick        32 bit   The number of microseconds since boot
+                WARNING: this wraps around from
+                4294967295 to 0 roughly every 72 minutes</p>
+<p>userData    pointer  Pointer to an arbitrary object</p>
+</div>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioSetMode_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetMode*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetMode_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_PinMode_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetMode(Unosquare.PiGpio.NativeEnums.SystemGpio,Unosquare.PiGpio.NativeEnums.PinMode)">GpioSetMode(SystemGpio, PinMode)</h4>
+  <div class="markdown level1 summary"><p>Sets the GPIO mode, typically input or output.</p>
+<p>Arduino style: pinMode.</p>
+<p>See [[<a href="http://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf">http://www.raspberrypi.org/documentation/hardware/raspberrypi/bcm2835/BCM2835-ARM-Peripherals.pdf</a>]]
+page 102 for an overview of the modes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetMode(SystemGpio gpio, PinMode mode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SystemGpio.html">SystemGpio</a></td>
+        <td><span class="parametername">gpio</span></td>
+        <td><p>0-53</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.PinMode.html">PinMode</a></td>
+        <td><span class="parametername">mode</span></td>
+        <td><p>0-7</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_MODE.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetMode_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_PinMode__examples">Examples</h5>
+  <pre><code>gpioSetMode(17, PI_INPUT);  // Set GPIO17 as input.
+
+gpioSetMode(18, PI_OUTPUT); // Set GPIO18 as output.
+
+gpioSetMode(22,PI_ALT0);    // Set GPIO22 to alternative mode 0.</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioSetPad_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetPad*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetPad_Unosquare_PiGpio_NativeEnums_GpioPadId_Unosquare_PiGpio_NativeEnums_GpioPadStrength_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetPad(Unosquare.PiGpio.NativeEnums.GpioPadId,Unosquare.PiGpio.NativeEnums.GpioPadStrength)">GpioSetPad(GpioPadId, GpioPadStrength)</h4>
+  <div class="markdown level1 summary"><p>This function sets the pad drive strength in mA.</p>
+<p>Pad @ GPIO
+0   @ 0-27
+1   @ 28-45
+2   @ 46-53</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetPad(GpioPadId pad, GpioPadStrength padStrength)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.GpioPadId.html">GpioPadId</a></td>
+        <td><span class="parametername">pad</span></td>
+        <td><p>0-2, the pad to set</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.GpioPadStrength.html">GpioPadStrength</a></td>
+        <td><span class="parametername">padStrength</span></td>
+        <td><p>1-16 mA</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_PAD, or PI_BAD_STRENGTH.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetPad_Unosquare_PiGpio_NativeEnums_GpioPadId_Unosquare_PiGpio_NativeEnums_GpioPadStrength__examples">Examples</h5>
+  <pre><code>gpioSetPad(0, 16); // set pad 0 strength to 16 mA</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioSetPullUpDown_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetPullUpDown*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetPullUpDown_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_GpioPullMode_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetPullUpDown(Unosquare.PiGpio.NativeEnums.SystemGpio,Unosquare.PiGpio.NativeEnums.GpioPullMode)">GpioSetPullUpDown(SystemGpio, GpioPullMode)</h4>
+  <div class="markdown level1 summary"><p>Sets or clears resistor pull ups or downs on the GPIO.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetPullUpDown(SystemGpio gpio, GpioPullMode pullMode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SystemGpio.html">SystemGpio</a></td>
+        <td><span class="parametername">gpio</span></td>
+        <td><p>0-53</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.GpioPullMode.html">GpioPullMode</a></td>
+        <td><span class="parametername">pullMode</span></td>
+        <td><p>0-2</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_PUD.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetPullUpDown_Unosquare_PiGpio_NativeEnums_SystemGpio_Unosquare_PiGpio_NativeEnums_GpioPullMode__examples">Examples</h5>
+  <pre><code>gpioSetPullUpDown(17, PI_PUD_UP);   // Sets a pull-up.
+
+gpioSetPullUpDown(18, PI_PUD_DOWN); // Sets a pull-down.
+
+gpioSetPullUpDown(23, PI_PUD_OFF);  // Clear any pull-ups/downs.</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioSetWatchdog_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetWatchdog*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetWatchdog_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioSetWatchdog(Unosquare.PiGpio.NativeEnums.UserGpio,System.UInt32)">GpioSetWatchdog(UserGpio, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Sets a watchdog for a GPIO.</p>
+<p>The watchdog is nominally in milliseconds.</p>
+<p>One watchdog may be registered per GPIO.</p>
+<p>The watchdog may be cancelled by setting timeout to 0.</p>
+<p>Until cancelled a timeout will be reported every timeout milliseconds
+after the last GPIO activity.</p>
+<p>In particular:</p>
+<p>1) any registered alert function for the GPIO will be called with
+the level set to PI_TIMEOUT.</p>
+<p>2) any notification for the GPIO will have a report written to the
+fifo with the flags set to indicate a watchdog timeout.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetWatchdog(UserGpio userGpio, uint timeoutMilliseconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">timeoutMilliseconds</span></td>
+        <td><p>0-60000</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_WDOG_TIMEOUT.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioSetWatchdog_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32__examples">Examples</h5>
+  <pre><code>void aFunction(int gpio, int level, uint tick)
+{
+   printf(&quot;GPIO %d became %d at %d&quot;, gpio, level, tick);
+}
+
+// call aFunction whenever GPIO 4 changes state
+gpioSetAlertFunc(4, aFunction);
+
+//  or approximately every 5 millis
+gpioSetWatchdog(4, 5);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioTrigger_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioTrigger*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioTrigger_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_System_Boolean_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioTrigger(Unosquare.PiGpio.NativeEnums.UserGpio,System.UInt32,System.Boolean)">GpioTrigger(UserGpio, UInt32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>This function sends a trigger pulse to a GPIO.  The GPIO is set to
+level for pulseLen microseconds and then reset to not level.</p>
+<p>or PI_BAD_PULSELEN.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioTrigger(UserGpio userGpio, uint pulseLength, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">pulseLength</span></td>
+        <td><p>1-100</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>0,1</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_LEVEL, or PI_BAD_PULSELEN.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioWrite_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioWrite*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioWrite_Unosquare_PiGpio_NativeEnums_SystemGpio_System_Boolean_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioWrite(Unosquare.PiGpio.NativeEnums.SystemGpio,System.Boolean)">GpioWrite(SystemGpio, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sets the GPIO level, on or off.</p>
+<p>If PWM or servo pulses are active on the GPIO they are switched off.</p>
+<p>Arduino style: digitalWrite</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioWrite(SystemGpio gpio, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SystemGpio.html">SystemGpio</a></td>
+        <td><span class="parametername">gpio</span></td>
+        <td><p>0-53</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>0-1</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_LEVEL.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioWrite_Unosquare_PiGpio_NativeEnums_SystemGpio_System_Boolean__examples">Examples</h5>
+  <pre><code>gpioWrite(24, 1); // Set GPIO24 high.</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioWriteBits00To31Clear_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioWriteBits00To31Clear*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioWriteBits00To31Clear_Unosquare_PiGpio_NativeEnums_BitMask_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioWriteBits00To31Clear(Unosquare.PiGpio.NativeEnums.BitMask)">GpioWriteBits00To31Clear(BitMask)</h4>
+  <div class="markdown level1 summary"><p>Clears GPIO 0-31 if the corresponding bit in bits is set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioWriteBits00To31Clear(BitMask bits)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.BitMask.html">BitMask</a></td>
+        <td><span class="parametername">bits</span></td>
+        <td><p>a bit mask of GPIO to clear</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioWriteBits00To31Clear_Unosquare_PiGpio_NativeEnums_BitMask__examples">Examples</h5>
+  <pre><code>// To clear (set to 0) GPIO 4, 7, and 15
+gpioWrite_Bits_0_31_Clear( (1&lt;&lt;4) | (1&lt;&lt;7) | (1&lt;&lt;15) );</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioWriteBits00To31Set_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioWriteBits00To31Set*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioWriteBits00To31Set_Unosquare_PiGpio_NativeEnums_BitMask_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioWriteBits00To31Set(Unosquare.PiGpio.NativeEnums.BitMask)">GpioWriteBits00To31Set(BitMask)</h4>
+  <div class="markdown level1 summary"><p>Sets GPIO 0-31 if the corresponding bit in bits is set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioWriteBits00To31Set(BitMask bits)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.BitMask.html">BitMask</a></td>
+        <td><span class="parametername">bits</span></td>
+        <td><p>a bit mask of GPIO to set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioWriteBits32To53Clear_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioWriteBits32To53Clear*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioWriteBits32To53Clear_Unosquare_PiGpio_NativeEnums_BitMask_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioWriteBits32To53Clear(Unosquare.PiGpio.NativeEnums.BitMask)">GpioWriteBits32To53Clear(BitMask)</h4>
+  <div class="markdown level1 summary"><p>Clears GPIO 32-53 if the corresponding bit (0-31) in bits is set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioWriteBits32To53Clear(BitMask bits)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.BitMask.html">BitMask</a></td>
+        <td><span class="parametername">bits</span></td>
+        <td><p>a bit mask of GPIO to clear</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_IO_GpioWriteBits32To53Set_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioWriteBits32To53Set*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_IO_GpioWriteBits32To53Set_Unosquare_PiGpio_NativeEnums_BitMask_" data-uid="Unosquare.PiGpio.NativeMethods.IO.GpioWriteBits32To53Set(Unosquare.PiGpio.NativeEnums.BitMask)">GpioWriteBits32To53Set(BitMask)</h4>
+  <div class="markdown level1 summary"><p>Sets GPIO 32-53 if the corresponding bit (0-21) in bits is set.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioWriteBits32To53Set(BitMask bits)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.BitMask.html">BitMask</a></td>
+        <td><span class="parametername">bits</span></td>
+        <td><p>a bit mask of GPIO to set</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_IO_GpioWriteBits32To53Set_Unosquare_PiGpio_NativeEnums_BitMask__examples">Examples</h5>
+  <pre><code>// To set (set to 1) GPIO 32, 40, and 53
+gpioWrite_Bits_32_53_Set((1&lt;&lt;(32-32)) | (1&lt;&lt;(40-32)) | (1&lt;&lt;(53-32)));</code></pre>
+
+<div id="disqus_thread"></div>
+<script>
+
+<h3>Comments</h3>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://unolabs.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="doc" align="center">
+              <span class="small mobile-hide">
+                <img id="logo" class="doc-logo" src="../Support/pigpio-dotnet-256.png" alt="">
+              </span>
+            </div>
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2017-2018 <a href="https://www.unosquare.com">Unosquare</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,870 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Setup
+   | Unosquare Raspbery Pi - libpigpio for .net </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Setup
+   | Unosquare Raspbery Pi - libpigpio for .net ">
+    <meta name="generator" content="docfx 2.34.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.NativeMethods.Setup">
+  
+  
+  <h1 id="Unosquare_PiGpio_NativeMethods_Setup" data-uid="Unosquare.PiGpio.NativeMethods.Setup" class="text-break">Class Setup
+  </h1>
+  <div class="markdown level0 summary"><p>Library setup and configuration methods.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Setup</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.NativeMethods.html">Unosquare.PiGpio.NativeMethods</a></h6>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Setup_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Setup</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgBufferSize_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgBufferSize*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgBufferSize_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgBufferSize(System.UInt32)">GpioCfgBufferSize(UInt32)</h4>
+  <div class="markdown level1 summary"><p>Configures pigpio to buffer cfgMillis milliseconds of GPIO samples.</p>
+<p>This function is only effective if called before <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a>.</p>
+<p>The default setting is 120 milliseconds.</p>
+<p>The intention is to allow for bursts of data and protection against
+other processes hogging cpu time.</p>
+<p>I haven&apos;t seen a process locked out for more than 100 milliseconds.</p>
+<p>Making the buffer bigger uses a LOT of memory at the more frequent
+sampling rates as shown in the following table in MBs.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioCfgBufferSize(uint milliSecs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">milliSecs</span></td>
+        <td><p>100-10000</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgBufferSize_System_UInt32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><pre><code>            buffer milliseconds
+      120 250 500 1sec 2sec 4sec 8sec
+
+1      16  31  55  107  ---  ---  ---
+2      10  18  31   55  107  ---  ---
+</code></pre><p>sample   4       8  12  18   31   55  107  ---
+rate    5       8  10  14   24   45   87  ---
+(us)    8       6   8  12   18   31   55  107
+   10       6   8  10   14   24   45   87</p>
+</div>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgClock_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgClock*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgClock_System_UInt32_Unosquare_PiGpio_NativeEnums_CpuPeripheral_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgClock(System.UInt32,Unosquare.PiGpio.NativeEnums.CpuPeripheral)">GpioCfgClock(UInt32, CpuPeripheral)</h4>
+  <div class="markdown level1 summary"><p>Configures pigpio to use a particular sample rate timed by a specified
+peripheral.</p>
+<p>This function is only effective if called before <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a>.</p>
+<p>The timings are provided by the specified peripheral (PWM or PCM).</p>
+<p>The default setting is 5 microseconds using the PCM peripheral.</p>
+<p>The approximate CPU percentage used for each sample rate is:</p>
+<p>A sample rate of 5 microseconds seeems to be the sweet spot.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioCfgClock(uint microSecs, CpuPeripheral peripheral)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">microSecs</span></td>
+        <td><p>1, 2, 4, 5, 8, 10</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.CpuPeripheral.html">CpuPeripheral</a></td>
+        <td><span class="parametername">peripheral</span></td>
+        <td><p>0 (PWM), 1 (PCM)</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgClock_System_UInt32_Unosquare_PiGpio_NativeEnums_CpuPeripheral__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>sample  cpu
+rate    %</p>
+<p>1     25
+2     16
+4     11
+5     10
+8     15
+10     14</p>
+</div>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgDmaChannel_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgDmaChannel*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgDmaChannel_Unosquare_PiGpio_NativeEnums_DmaChannel_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgDmaChannel(Unosquare.PiGpio.NativeEnums.DmaChannel)">GpioCfgDmaChannel(DmaChannel)</h4>
+  <div class="markdown level1 summary"><p>Configures pigpio to use the specified DMA channel.
+This function is only effective if called before <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a>.
+The default setting is to use channel 14.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete]
+public static ResultCode GpioCfgDmaChannel(DmaChannel dmaChannel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.DmaChannel.html">DmaChannel</a></td>
+        <td><span class="parametername">dmaChannel</span></td>
+        <td><p>The DMA channel.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgDmaChannel_Unosquare_PiGpio_NativeEnums_DmaChannel__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>DMAchannel: 0-14</p>
+</div>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgDmaChannels_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgDmaChannels*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgDmaChannels_Unosquare_PiGpio_NativeEnums_DmaChannel_Unosquare_PiGpio_NativeEnums_DmaChannel_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgDmaChannels(Unosquare.PiGpio.NativeEnums.DmaChannel,Unosquare.PiGpio.NativeEnums.DmaChannel)">GpioCfgDmaChannels(DmaChannel, DmaChannel)</h4>
+  <div class="markdown level1 summary"><p>Configures pigpio to use the specified DMA channels.</p>
+<p>This function is only effective if called before <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a>.</p>
+<p>The default setting is to use channel 14 for the primary channel and
+channel 6 for the secondary channel.</p>
+<p>The secondary channel is only used for the transmission of waves.</p>
+<p>If possible use one of channels 0 to 6 for the secondary channel
+(a full channel).</p>
+<p>A full channel only requires one DMA control block regardless of the
+length of a pulse delay.  Channels 7 to 14 (lite channels) require
+one DMA control block for each 16383 microseconds of delay.  I.e.
+a 10 second pulse delay requires one control block on a full channel
+and 611 control blocks on a lite channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioCfgDmaChannels(DmaChannel primaryChannel, DmaChannel secondaryChannel)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.DmaChannel.html">DmaChannel</a></td>
+        <td><span class="parametername">primaryChannel</span></td>
+        <td><p>Channel 1: 0-14</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.DmaChannel.html">DmaChannel</a></td>
+        <td><span class="parametername">secondaryChannel</span></td>
+        <td><p>Channel 2: 0-14</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgGetInternals_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgGetInternals*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgGetInternals" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgGetInternals">GpioCfgGetInternals()</h4>
+  <div class="markdown level1 summary"><p>This function returns the current library internal configuration
+settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ConfigFlags GpioCfgGetInternals()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ConfigFlags.html">ConfigFlags</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgInterfaces_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgInterfaces*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgInterfaces_Unosquare_PiGpio_NativeEnums_InterfaceFlags_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgInterfaces(Unosquare.PiGpio.NativeEnums.InterfaceFlags)">GpioCfgInterfaces(InterfaceFlags)</h4>
+  <div class="markdown level1 summary"><p>Configures pigpio support of the fifo and socket interfaces.</p>
+<p>This function is only effective if called before <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a>.</p>
+<p>The default setting (0) is that both interfaces are enabled.</p>
+<p>Or in PI_DISABLE_FIFO_IF to disable the pipe interface.</p>
+<p>Or in PI_DISABLE_SOCK_IF to disable the socket interface.</p>
+<p>Or in PI_LOCALHOST_SOCK_IF to disable remote socket
+access (this means that the socket interface is only
+usable from the local Pi).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioCfgInterfaces(InterfaceFlags interfaceFlags)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.InterfaceFlags.html">InterfaceFlags</a></td>
+        <td><span class="parametername">interfaceFlags</span></td>
+        <td><p>0-7</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgInternals_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgInternals*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgInternals_System_UInt32_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgInternals(System.UInt32,System.UInt32)">GpioCfgInternals(UInt32, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Used to tune internal settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Obsolete]
+public static ResultCode GpioCfgInternals(uint key, uint value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">key</span></td>
+        <td><p>Key: see source code</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>Value: see source code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgMemAlloc_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgMemAlloc*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgMemAlloc_Unosquare_PiGpio_NativeEnums_AllocationMode_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgMemAlloc(Unosquare.PiGpio.NativeEnums.AllocationMode)">GpioCfgMemAlloc(AllocationMode)</h4>
+  <div class="markdown level1 summary"><p>Selects the method of DMA memory allocation.</p>
+<p>This function is only effective if called before <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a>.</p>
+<p>There are two methods of DMA memory allocation.  The original method
+uses the /proc/self/pagemap file to allocate bus memory.  The new
+method uses the mailbox property interface to allocate bus memory.</p>
+<p>Auto will use the mailbox method unless a larger than default buffer
+size is requested with <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioCfgBufferSize_System_UInt32_">GpioCfgBufferSize(UInt32)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioCfgMemAlloc(AllocationMode allocationMode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.AllocationMode.html">AllocationMode</a></td>
+        <td><span class="parametername">allocationMode</span></td>
+        <td><p>0-2</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgNetAddr_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgNetAddr*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgNetAddr_System_UInt32___" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgNetAddr(System.UInt32[])">GpioCfgNetAddr(UInt32[])</h4>
+  <div class="markdown level1 summary"><p>Sets the network addresses which are allowed to talk over the
+socket interface.</p>
+<p>This function is only effective if called before <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioCfgNetAddr(uint[] socketAddresses)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span>[]</td>
+        <td><span class="parametername">socketAddresses</span></td>
+        <td><p>an array of permitted network addresses. An empty array means ALL</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgPermissions_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgPermissions*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgPermissions_System_UInt64_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgPermissions(System.UInt64)">GpioCfgPermissions(UInt64)</h4>
+  <div class="markdown level1 summary"><p>Configures pigpio to restrict GPIO updates via the socket or pipe
+interfaces to the GPIO specified by the mask.  Programs directly
+calling the pigpio library (i.e. linked with -lpigpio are not
+affected).  A GPIO update is a write to a GPIO or a GPIO mode
+change or any function which would force such an action.</p>
+<p>This function is only effective if called before <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a>.</p>
+<p>The default setting depends upon the Pi model. The user GPIO are
+added to the mask.</p>
+<p>If the board revision is not recognised then GPIO 2-27 are allowed.</p>
+<p>Unknown board @ PI_DEFAULT_UPDATE_MASK_UNKNOWN @ 0x0FFFFFFC
+Type 1 board  @ PI_DEFAULT_UPDATE_MASK_B1 @ 0x03E6CF93
+Type 2 board  @ PI_DEFAULT_UPDATE_MASK_A_B2 @ 0xFBC6CF9C
+Type 3 board  @ PI_DEFAULT_UPDATE_MASK_R3 @ 0x0FFFFFFC</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioCfgPermissions(ulong updateMask)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt64</span></td>
+        <td><span class="parametername">updateMask</span></td>
+        <td><p>bit (1&lt;&lt;n) is set for each GPIO n which may be updated</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgSetInternals_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgSetInternals*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgSetInternals_Unosquare_PiGpio_NativeEnums_ConfigFlags_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgSetInternals(Unosquare.PiGpio.NativeEnums.ConfigFlags)">GpioCfgSetInternals(ConfigFlags)</h4>
+  <div class="markdown level1 summary"><p>This function sets the current library internal configuration
+settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioCfgSetInternals(ConfigFlags configFlags)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ConfigFlags.html">ConfigFlags</a></td>
+        <td><span class="parametername">configFlags</span></td>
+        <td><p>see source code</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgSocketPort_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgSocketPort*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgSocketPort_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioCfgSocketPort(System.UInt32)">GpioCfgSocketPort(UInt32)</h4>
+  <div class="markdown level1 summary"><p>Configures pigpio to use the specified socket port.</p>
+<p>This function is only effective if called before <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a>.</p>
+<p>The default setting is to use port 8888.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioCfgSocketPort(uint port)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">port</span></td>
+        <td><p>1024-32000</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioInitialise*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioInitialise">GpioInitialise()</h4>
+  <div class="markdown level1 summary"><p>Initialises the library.</p>
+<p>gpioInitialise must be called before using the other library functions
+with the following exceptions:</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioInitialise()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns the pigpio version number if OK, otherwise PI_INIT_FAILED.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>GpioCfg methods.
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.Utilities.html#Unosquare_PiGpio_NativeMethods_Utilities_GpioVersion">GpioVersion()</a>
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.Utilities.html#Unosquare_PiGpio_NativeMethods_Utilities_GpioHardwareRevision">GpioHardwareRevision()</a></p>
+</div>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise_examples">Examples</h5>
+  <pre><code>if (gpioInitialise() &lt; 0)
+{
+   // pigpio initialisation failed.
+}
+else
+{
+   // pigpio initialised okay.
+}</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Setup_GpioTerminate_" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioTerminate*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioTerminate" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioTerminate">GpioTerminate()</h4>
+  <div class="markdown level1 summary"><p>Terminates the library.</p>
+<p>Returns nothing.</p>
+<p>Call before program exit.</p>
+<p>This function resets the used DMA channels, releases memory, and
+terminates any running threads.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void GpioTerminate()</code></pre>
+  </div>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Setup_GpioTerminate_examples">Examples</h5>
+  <pre><code>gpioTerminate();</code></pre>
+
+<div id="disqus_thread"></div>
+<script>
+
+<h3>Comments</h3>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://unolabs.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="doc" align="center">
+              <span class="small mobile-hide">
+                <img id="logo" class="doc-logo" src="../Support/pigpio-dotnet-256.png" alt="">
+              </span>
+            </div>
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2017-2018 <a href="https://www.unosquare.com">Unosquare</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

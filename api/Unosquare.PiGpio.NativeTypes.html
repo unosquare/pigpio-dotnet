@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Namespace Unosquare.PiGpio.NativeTypes
+   | Unosquare Raspbery Pi - libpigpio for .net </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Namespace Unosquare.PiGpio.NativeTypes
+   | Unosquare Raspbery Pi - libpigpio for .net ">
+    <meta name="generator" content="docfx 2.34.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.NativeTypes">
+  
+  <h1 id="Unosquare_PiGpio_NativeTypes" data-uid="Unosquare.PiGpio.NativeTypes" class="text-break">Namespace Unosquare.PiGpio.NativeTypes
+  </h1>
+  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="markdown level0 remarks"></div>
+    <h3 id="classes">Classes
+  </h3>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.BscTransfer.html">BscTransfer</a></h4>
+      <section><p>A data structure representing a BSC transfer.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.GpioPulse.html">GpioPulse</a></h4>
+      <section><p>A pulse representing microseconds in the high position,
+microseconds in the low position, and a delay measure.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.GpioSample.html">GpioSample</a></h4>
+      <section><p>Represents sGPIO ample data</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.I2CMessageSegment.html">I2CMessageSegment</a></h4>
+      <section><p>An I2C Message Segment</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.RawCBS.html">RawCBS</a></h4>
+      <section><p>The Raw CBS (Linux Control Block)</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.RawSpiData.html">RawSpiData</a></h4>
+      <section><p>Represents Raw SPI channel data</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.RawWave.html">RawWave</a></h4>
+      <section><p>Represents raw waveform data</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.RawWaveInformation.html">RawWaveInformation</a></h4>
+      <section><p>Represents raw waveform information</p>
+</section>
+    <h3 id="delegates">Delegates
+  </h3>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioAlertDelegate.html">PiGpioAlertDelegate</a></h4>
+      <section><p>Defines a signature for alert callbacks. Conatins the pin number, a level change and a microseconds
+timestamp. The timestamp wraps around every ~72 minutes.
+Unlike Interrupts, alerts are generated by continuously sampling the value of the pin.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioAlertExDelegate.html">PiGpioAlertExDelegate</a></h4>
+      <section><p>Defines a signature for alert callbacks. Conatins the pin number, a level change and a microseconds
+timestamp. The timestamp wraps around every ~72 minutes.
+Unlike Interrupts, alerts are generated by continuously sampling the value of the pin.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioEventDelegate.html">PiGpioEventDelegate</a></h4>
+      <section><p>Callback for when an pigpio library event firing. This represents an event model internal
+to the pigpio library. Use the buil-in <span class="xref">System.EventHandler</span> CLR constructs instead.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioEventExDelegate.html">PiGpioEventExDelegate</a></h4>
+      <section><p>Callback for when an pigpio library event firing. This represents an event model internal
+to the pigpio library. Use the buil-in <span class="xref">System.EventHandler</span> CLR constructs instead.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesDelegate.html">PiGpioGetSamplesDelegate</a></h4>
+      <section><p>Bulk pin sampling delegate. Not used in the managed model of this library.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesExDelegate.html">PiGpioGetSamplesExDelegate</a></h4>
+      <section><p>Bulk pin sampling delegate. Not used in the managed model of this library.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioIsrDelegate.html">PiGpioIsrDelegate</a></h4>
+      <section><p>Defines a signature for ISR callbacks. Conatins the pin number, a level change and a microseconds
+timestamp. The timestamp wraps around every ~72 minutes.
+Unlike alerts, interrupts are generated with level changes. Make sure you hookup pull-down/pull-up resitors
+for interrupts to work as they depend on current flowing through the pin in order to fire consistently.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioIsrExDelegate.html">PiGpioIsrExDelegate</a></h4>
+      <section><p>Defines a signature for ISR callbacks. Conatins the pin number, a level change and a microseconds
+timestamp. The timestamp wraps around every ~72 minutes.
+Unlike alerts, interrupts are generated with level changes. Make sure you hookup pull-down/pull-up resitors
+for interrupts to work as they depend on current flowing through the pin in order to fire consistently.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioSignalDelegate.html">PiGpioSignalDelegate</a></h4>
+      <section><p>Defines a callback to be executed when the OS sends a signal</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioSignalExDelegate.html">PiGpioSignalExDelegate</a></h4>
+      <section><p>Defines a callback to be executed when the OS sends a signal</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioThreadDelegate.html">PiGpioThreadDelegate</a></h4>
+      <section><p>Defines a signature for a pthread worker.
+Use built-in CLR <span class="xref">System.Threading.Thread</span> instead.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioTimerDelegate.html">PiGpioTimerDelegate</a></h4>
+      <section><p>Defines a callback for a pigpio library timer
+Use built-in CLR <span class="xref">System.Threading.Timer</span> instead.</p>
+</section>
+      <h4><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioTimerExDelegate.html">PiGpioTimerExDelegate</a></h4>
+      <section><p>Defines a callback for a pigpio library timer
+Use built-in CLR <span class="xref">System.Threading.Timer</span> instead.</p>
+</section>
+<div id="disqus_thread"></div>
+<script>
+
+<h3>Comments</h3>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://unolabs.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="doc" align="center">
+              <span class="small mobile-hide">
+                <img id="logo" class="doc-logo" src="../Support/pigpio-dotnet-256.png" alt="">
+              </span>
+            </div>
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2017-2018 <a href="https://www.unosquare.com">Unosquare</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

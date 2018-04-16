@@ -1,0 +1,587 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Threads
+   | Unosquare Raspbery Pi - libpigpio for .net </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Threads
+   | Unosquare Raspbery Pi - libpigpio for .net ">
+    <meta name="generator" content="docfx 2.34.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.NativeMethods.Threads">
+  
+  
+  <h1 id="Unosquare_PiGpio_NativeMethods_Threads" data-uid="Unosquare.PiGpio.NativeMethods.Threads" class="text-break">Class Threads
+  </h1>
+  <div class="markdown level0 summary"><p>PRovides threading and delay operations.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Threads</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.NativeMethods.html">Unosquare.PiGpio.NativeMethods</a></h6>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Threads_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Threads</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Threads_GpioDelay_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioDelay*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Threads_GpioDelay_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioDelay(System.UInt32)">GpioDelay(UInt32)</h4>
+  <div class="markdown level1 summary"><p>Delays for at least the number of microseconds specified by micros.
+Delays of 100 microseconds or less use busy waits.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static uint GpioDelay(uint microSecs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">microSecs</span></td>
+        <td><p>the number of microseconds to sleep</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>Returns the actual length of the delay in microseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Threads_GpioSetTimerFunc_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioSetTimerFunc*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Threads_GpioSetTimerFunc_Unosquare_PiGpio_NativeEnums_TimerId_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioTimerDelegate_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioSetTimerFunc(Unosquare.PiGpio.NativeEnums.TimerId,System.UInt32,Unosquare.PiGpio.NativeTypes.PiGpioTimerDelegate)">GpioSetTimerFunc(TimerId, UInt32, PiGpioTimerDelegate)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) every millis milliseconds.</p>
+<p>10 timers are supported numbered 0 to 9.</p>
+<p>One function may be registered per timer.</p>
+<p>The timer may be cancelled by passing NULL as the function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetTimerFunc(TimerId timer, uint periodMilliseconds, PiGpioTimerDelegate callback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.TimerId.html">TimerId</a></td>
+        <td><span class="parametername">timer</span></td>
+        <td><p>0-9</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">periodMilliseconds</span></td>
+        <td><p>10-60000</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioTimerDelegate.html">PiGpioTimerDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the function to call</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_TIMER, PI_BAD_MS, or PI_TIMER_FAILED.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Threads_GpioSetTimerFunc_Unosquare_PiGpio_NativeEnums_TimerId_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioTimerDelegate__examples">Examples</h5>
+  <pre><code>void bFunction(void)
+{
+   printf(&quot;two seconds have elapsed&quot;);
+}
+
+// call bFunction every 2000 milliseconds
+gpioSetTimerFunc(0, 2000, bFunction);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Threads_GpioSetTimerFuncEx_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioSetTimerFuncEx*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Threads_GpioSetTimerFuncEx_Unosquare_PiGpio_NativeEnums_TimerId_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioTimerExDelegate_System_UIntPtr_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioSetTimerFuncEx(Unosquare.PiGpio.NativeEnums.TimerId,System.UInt32,Unosquare.PiGpio.NativeTypes.PiGpioTimerExDelegate,System.UIntPtr)">GpioSetTimerFuncEx(TimerId, UInt32, PiGpioTimerExDelegate, UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) every millis milliseconds.</p>
+<p>The function is passed the userData pointer.</p>
+<p>Only one of <a class="xref" href="Unosquare.PiGpio.NativeMethods.Threads.html#Unosquare_PiGpio_NativeMethods_Threads_GpioSetTimerFunc_Unosquare_PiGpio_NativeEnums_TimerId_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioTimerDelegate_">GpioSetTimerFunc(TimerId, UInt32, PiGpioTimerDelegate)</a> or <a class="xref" href="Unosquare.PiGpio.NativeMethods.Threads.html#Unosquare_PiGpio_NativeMethods_Threads_GpioSetTimerFuncEx_Unosquare_PiGpio_NativeEnums_TimerId_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioTimerExDelegate_System_UIntPtr_">GpioSetTimerFuncEx(TimerId, UInt32, PiGpioTimerExDelegate, UIntPtr)</a> can be
+registered per timer.</p>
+<p>See <a class="xref" href="Unosquare.PiGpio.NativeMethods.Threads.html#Unosquare_PiGpio_NativeMethods_Threads_GpioSetTimerFunc_Unosquare_PiGpio_NativeEnums_TimerId_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioTimerDelegate_">GpioSetTimerFunc(TimerId, UInt32, PiGpioTimerDelegate)</a> for further details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetTimerFuncEx(TimerId timer, uint millisecondsTimeout, PiGpioTimerExDelegate callback, UIntPtr userData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.TimerId.html">TimerId</a></td>
+        <td><span class="parametername">timer</span></td>
+        <td><p>0-9.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">millisecondsTimeout</span></td>
+        <td><p>10-60000</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioTimerExDelegate.html">PiGpioTimerExDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the function to call</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">userData</span></td>
+        <td><p>a pointer to arbitrary user data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_TIMER, PI_BAD_MS, or PI_TIMER_FAILED.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Threads_GpioSleep_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioSleep*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Threads_GpioSleep_Unosquare_PiGpio_NativeEnums_TimeType_System_Int32_System_Int32_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioSleep(Unosquare.PiGpio.NativeEnums.TimeType,System.Int32,System.Int32)">GpioSleep(TimeType, Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Sleeps for the number of seconds and microseconds specified by seconds
+and micros.</p>
+<p>If timetype is PI_TIME_ABSOLUTE the sleep ends when the number of seconds
+and microseconds since the epoch (1st January 1970) has elapsed.  System
+clock changes are taken into account.</p>
+<p>If timetype is PI_TIME_RELATIVE the sleep is for the specified number
+of seconds and microseconds.  System clock changes do not effect the
+sleep length.</p>
+<p>For short delays (say, 50 microseonds or less) use <a class="xref" href="Unosquare.PiGpio.NativeMethods.Threads.html#Unosquare_PiGpio_NativeMethods_Threads_GpioDelay_System_UInt32_">GpioDelay(UInt32)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSleep(TimeType timeType, int secs, int microSecs)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.TimeType.html">TimeType</a></td>
+        <td><span class="parametername">timeType</span></td>
+        <td><p>0 (relative), 1 (absolute)</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">secs</span></td>
+        <td><p>seconds to sleep</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">microSecs</span></td>
+        <td><p>microseconds to sleep</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_TIMETYPE, PI_BAD_SECONDS, or PI_BAD_MICROS.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Threads_GpioSleep_Unosquare_PiGpio_NativeEnums_TimeType_System_Int32_System_Int32__examples">Examples</h5>
+  <pre><code>gpioSleep(PI_TIME_RELATIVE, 2, 500000); // sleep for 2.5 seconds
+
+gpioSleep(PI_TIME_RELATIVE, 0, 100000); // sleep for 0.1 seconds
+
+gpioSleep(PI_TIME_RELATIVE, 60, 0);     // sleep for one minute</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Threads_GpioStartThread_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioStartThread*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Threads_GpioStartThread_Unosquare_PiGpio_NativeTypes_PiGpioThreadDelegate_System_UIntPtr_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioStartThread(Unosquare.PiGpio.NativeTypes.PiGpioThreadDelegate,System.UIntPtr)">GpioStartThread(PiGpioThreadDelegate, UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>Starts a new thread of execution with <code data-dev-comment-type="paramref" class="paramref">callback</code> as the main routine.</p>
+<p>The function is passed the single argument arg.</p>
+<p>The thread can be cancelled by passing the pointer to pthread_t to
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.Threads.html#Unosquare_PiGpio_NativeMethods_Threads_GpioStopThread_System_UIntPtr_">GpioStopThread(UIntPtr)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UIntPtr GpioStartThread(PiGpioThreadDelegate callback, UIntPtr userData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioThreadDelegate.html">PiGpioThreadDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the main function for the new thread</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">userData</span></td>
+        <td><p>a pointer to arbitrary user data</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><p>Returns a pointer to pthread_t if OK, otherwise NULL.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Threads_GpioStartThread_Unosquare_PiGpio_NativeTypes_PiGpioThreadDelegate_System_UIntPtr__examples">Examples</h5>
+  <pre><code>#include &lt;stdio.h>
+#include &lt;pigpio.h>
+
+void *myfunc(void *arg)
+{
+   while (1)
+   {
+      printf(&quot;%s&quot;, arg);
+      sleep(1);
+   }
+}
+
+int main(int argc, char *argv[])
+{
+   pthread_t *p1, *p2, *p3;
+
+   if (gpioInitialise() &lt; 0) return 1;
+
+   p1 = gpioStartThread(myfunc, &quot;thread 1&quot;); sleep(3);
+
+   p2 = gpioStartThread(myfunc, &quot;thread 2&quot;); sleep(3);
+
+   p3 = gpioStartThread(myfunc, &quot;thread 3&quot;); sleep(3);
+
+   gpioStopThread(p3); sleep(3);
+
+   gpioStopThread(p2); sleep(3);
+
+   gpioStopThread(p1); sleep(3);
+
+   gpioTerminate();
+}</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Threads_GpioStopThread_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioStopThread*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Threads_GpioStopThread_System_UIntPtr_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.GpioStopThread(System.UIntPtr)">GpioStopThread(UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>Cancels the thread pointed at by threadHandle.</p>
+<p>No value is returned.</p>
+<p>The thread to be stopped should have been started with <a class="xref" href="Unosquare.PiGpio.NativeMethods.Threads.html#Unosquare_PiGpio_NativeMethods_Threads_GpioStartThread_Unosquare_PiGpio_NativeTypes_PiGpioThreadDelegate_System_UIntPtr_">GpioStartThread(PiGpioThreadDelegate, UIntPtr)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void GpioStopThread(UIntPtr handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td><p>a thread pointer returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Threads.html#Unosquare_PiGpio_NativeMethods_Threads_GpioStartThread_Unosquare_PiGpio_NativeTypes_PiGpioThreadDelegate_System_UIntPtr_">GpioStartThread(PiGpioThreadDelegate, UIntPtr)</a></p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Threads_TimeSleep_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.TimeSleep*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Threads_TimeSleep_System_Double_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.TimeSleep(System.Double)">TimeSleep(Double)</h4>
+  <div class="markdown level1 summary"><p>Delay execution for a given number of seconds</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void TimeSleep(double seconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><span class="parametername">seconds</span></td>
+        <td><p>the number of seconds to sleep</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+<div id="disqus_thread"></div>
+<script>
+
+<h3>Comments</h3>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://unolabs.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="doc" align="center">
+              <span class="small mobile-hide">
+                <img id="logo" class="doc-logo" src="../Support/pigpio-dotnet-256.png" alt="">
+              </span>
+            </div>
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2017-2018 <a href="https://www.unosquare.com">Unosquare</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

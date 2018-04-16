@@ -1,0 +1,693 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class GpioPin
+   | Unosquare Raspbery Pi - libpigpio for .net </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class GpioPin
+   | Unosquare Raspbery Pi - libpigpio for .net ">
+    <meta name="generator" content="docfx 2.34.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin">
+  
+  
+  <h1 id="Unosquare_PiGpio_ManagedModel_GpioPin" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin" class="text-break">Class GpioPin
+  </h1>
+  <div class="markdown level0 summary"><p>A class representing a GPIO port (pin)</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">GpioPin</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.ManagedModel.html">Unosquare.PiGpio.ManagedModel</a></h6>
+  <h5 id="Unosquare_PiGpio_ManagedModel_GpioPin_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class GpioPin</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Alerts_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Alerts*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Alerts" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Alerts">Alerts</h4>
+  <div class="markdown level1 summary"><p>Provides GPIO change alert services.
+This provides more sophisticated notification settings
+but it is based on sampling.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPinAlertService Alerts { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.ManagedModel.GpioPinAlertService.html">GpioPinAlertService</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Clock_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Clock*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Clock" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Clock">Clock</h4>
+  <div class="markdown level1 summary"><p>Gets a hardware-based clock service. A clock channel spans multiple
+pins and therefore, clock frequency is not necessarily a per-pin setting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPinClockService Clock { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.ManagedModel.GpioPinClockService.html">GpioPinClockService</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Direction_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Direction*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Direction" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Direction">Direction</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the direction of the pin.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PinDirection Direction { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.PinDirection.html">PinDirection</a></td>
+        <td><p>The direction.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>Unable to set the pin mode to an alternative function.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Interrupts_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Interrupts*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Interrupts" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Interrupts">Interrupts</h4>
+  <div class="markdown level1 summary"><p>Provides GPIO Interrupt Service Routine services.
+This is hardware-based input-only notifications.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPinInterruptService Interrupts { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.ManagedModel.GpioPinInterruptService.html">GpioPinInterruptService</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_IsUserGpio_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.IsUserGpio*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_IsUserGpio" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.IsUserGpio">IsUserGpio</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether this pin is a user gpio (0 to 31)
+and also available on the current board type.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsUserGpio { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Mode_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Mode*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Mode" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Mode">Mode</h4>
+  <div class="markdown level1 summary"><p>Gets the current pin mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PinMode Mode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.PinMode.html">PinMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_PadId_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.PadId*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_PadId" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.PadId">PadId</h4>
+  <div class="markdown level1 summary"><p>Gets the electrical pad this pin belongs to.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPadId PadId { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.GpioPadId.html">GpioPadId</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_PinGpio_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.PinGpio*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_PinGpio" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.PinGpio">PinGpio</h4>
+  <div class="markdown level1 summary"><p>Gets the pin number as a system GPIO Identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public SystemGpio PinGpio { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SystemGpio.html">SystemGpio</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_PinNumber_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.PinNumber*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_PinNumber" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.PinNumber">PinNumber</h4>
+  <div class="markdown level1 summary"><p>Gets the BCM pin identifier.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PinNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_PullMode_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.PullMode*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_PullMode" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.PullMode">PullMode</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the resistor pull mode in input mode.
+You typically will need to set this to pull-up mode
+for most sensors to perform reliable reads.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPullMode PullMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.GpioPullMode.html">GpioPullMode</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Pwm_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Pwm*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Pwm" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Pwm">Pwm</h4>
+  <div class="markdown level1 summary"><p>Gets the hardware-based PWM services associated to the pin.
+Hardware PWM groups several pins by their PWM channel.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPinPwmService Pwm { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.ManagedModel.GpioPinPwmService.html">GpioPinPwmService</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Servo_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Servo*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Servo" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Servo">Servo</h4>
+  <div class="markdown level1 summary"><p>Gets the servo pin service.
+This is a standard 50Hz PWM servo that operates
+in pulse widths between 500 and 2500 microseconds.
+Use the PWM service instead if you wish further flexibility.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPinServoService Servo { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.ManagedModel.GpioPinServoService.html">GpioPinServoService</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_SoftPwm_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.SoftPwm*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_SoftPwm" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.SoftPwm">SoftPwm</h4>
+  <div class="markdown level1 summary"><p>Provides a sfotware based PWM pulse generator.
+This and the servo functionality use the DMA and PWM or PCM peripherals
+to control and schedule the pulse lengths and dutycycles. Using hardware based
+PWM is preferred.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPinSoftPwmService SoftPwm { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.ManagedModel.GpioPinSoftPwmService.html">GpioPinSoftPwmService</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Value_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Value*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Value" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Value">Value</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the digital value of the pin.
+This call actively reads or writes the pin.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Value { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Pulsate_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Pulsate*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Pulsate_System_Int32_System_Boolean_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Pulsate(System.Int32,System.Boolean)">Pulsate(Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Pulsates the pin for the specified micro seconds.
+The value is the start value of the pulse.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Pulsate(int microSecs, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">microSecs</span></td>
+        <td><p>The micro secs.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>if set to <code>true</code> [value].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Read_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Read*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Read" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Read">Read()</h4>
+  <div class="markdown level1 summary"><p>The fastest way to read from the pin.
+No error checking is performed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int Read()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns a 0 or a 1 for success. A negative number for error.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_ManagedModel_GpioPin_Write_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Write*"></a>
+  <h4 id="Unosquare_PiGpio_ManagedModel_GpioPin_Write_System_Int32_" data-uid="Unosquare.PiGpio.ManagedModel.GpioPin.Write(System.Int32)">Write(Int32)</h4>
+  <div class="markdown level1 summary"><p>The fastest way to write to the pin.
+Anything non-zero is a high. No error checking is performed.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ResultCode Write(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 (OK) for success.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+<div id="disqus_thread"></div>
+<script>
+
+<h3>Comments</h3>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://unolabs.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="doc" align="center">
+              <span class="small mobile-hide">
+                <img id="logo" class="doc-logo" src="../Support/pigpio-dotnet-256.png" alt="">
+              </span>
+            </div>
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2017-2018 <a href="https://www.unosquare.com">Unosquare</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
