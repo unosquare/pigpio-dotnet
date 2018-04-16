@@ -1,5 +1,6 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/n5xt8b07j65a65tb/branch/master?svg=true)](https://ci.appveyor.com/project/geoperez/pigpio-dotnet/branch/master)
-# Raspbery Pi - libpigpio for .net
+
+# ![alt text](https://raw.githubusercontent.com/unosquare/pigpio-dotnet/master/Support/pigpio-dotnet.png "pgipio-dotnet") Raspbery Pi - libpigpio for .net
 Provides complete managed access to the popular pigpio C library
 
 The premise is simple: using the powerful features of C# to control the ARM peripherals of the Raspberry Pi. This library provides a comprehensive way to access the hardware of the Pi. It uses the fantastic C library [pigpio](https://github.com/joan2937/pigpio/). The [documentation of the library can be found here](http://abyz.me.uk/rpi/pigpio/).
