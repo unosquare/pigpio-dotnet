@@ -8598,6 +8598,15 @@ references:
   commentId: M:Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.Render
   fullName: Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.Render()
   nameWithType: OledDisplaySSD1306.Render()
+- uid: Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.Render(System.String[])
+  name: Render(String[])
+  href: api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.html#Unosquare_PiGpio_Peripherals_OledDisplaySSD1306_Render_System_String___
+  commentId: M:Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.Render(System.String[])
+  name.vb: Render(String())
+  fullName: Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.Render(System.String[])
+  fullName.vb: Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.Render(System.String())
+  nameWithType: OledDisplaySSD1306.Render(String[])
+  nameWithType.vb: OledDisplaySSD1306.Render(String())
 - uid: Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.Render*
   name: Render
   href: api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.html#Unosquare_PiGpio_Peripherals_OledDisplaySSD1306_Render_
