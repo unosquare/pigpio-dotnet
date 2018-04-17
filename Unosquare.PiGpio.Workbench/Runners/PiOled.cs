@@ -52,19 +52,24 @@
             while (!ct.IsCancellationRequested)
             {
                 cycleSw.Restart();
+
+                // Display.Render(
+                //    $"X: {currentX,3}  Y: {currentY,3}",
+                //    $"Cycles: {cycleCount,6} T {currentThreshold:p}",
+                //    $"{DateTime.Now}",
+                //    $"IP: {address} THIS IS SOME VERY LONG LINE",
+                //    $"THIS SHOULD NOT BE SHOWN");
                 graphics.Clear(Color.Black);
                 Display.DrawText(bitmap,
-                    graphics,
-                    $"X: {currentX,3}  Y: {currentY,3}",
-                    $"Cycles: {cycleCount,6} T {currentThreshold:p}",
-                    $"{DateTime.Now}",
-                    $"IP: {address}");
-
-                // graphics.DrawEllipse(graphicPen, currentX, 24, 6, 6);
+                   graphics,
+                   $"X: {currentX,3}  Y: {currentY,3}",
+                   $"Cycles: {cycleCount,6} T {currentThreshold:p}",
+                   $"{DateTime.Now}",
+                   $"IP: {address}");
+                graphics.DrawEllipse(graphicPen, currentX, 24, 6, 6);
                 graphics.Flush();
                 Display.LoadBitmap(bitmap, currentThreshold, 0, 0);
-
-                // Display[currentX, currentY] = true; // currentVal;
+                Display[currentX, currentY] = true; // currentVal;
                 Display.Render();
 
                 currentX++;

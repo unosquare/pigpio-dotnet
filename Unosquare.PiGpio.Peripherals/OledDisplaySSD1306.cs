@@ -42,6 +42,7 @@
         };
 
         private static readonly Bitmap FontBitmap;
+        private static readonly byte[] FontBytemap;
         private static int FontBitmapCharWidth;
         private static int FontBitmapCharHeight;
 
@@ -66,6 +67,22 @@
                 FontBitmap = new Bitmap(stream);
                 FontBitmapCharWidth = FontBitmap.Width / 257;
                 FontBitmapCharHeight = FontBitmap.Height;
+
+                FontBytemap = new byte[FontBitmap.Width];
+
+                // Parallel.For(0, FontBitmap.Width, (offsetX) =>
+                for (var offsetX = 0; offsetX < FontBitmap.Width; offsetX++)
+                {
+                    var verticalByte = 0;
+                    for (var bitIndex = 7; bitIndex >= 0; bitIndex--)
+                    {
+                        verticalByte = verticalByte << 1;
+                        if (FontBitmap.GetPixel(offsetX, bitIndex).GetBrightness() > 0.5)
+                            verticalByte |= 0x01;
+                    }
+
+                    FontBytemap[offsetX] = (byte)verticalByte;
+                }
             }
         }
 
@@ -380,7 +397,7 @@
             ClearPixels();
 
             // for (var bitmapY = offsetY; bitmapY < offsetY + Height; bitmapY++)
-            Parallel.For(offsetY, offsetY + Height - 1, (bitmapY) =>
+            Parallel.For(offsetY, offsetY + Height, (bitmapY) =>
             {
                 Color currentPixel;
                 for (var bitmapX = offsetX; bitmapX < offsetX + Width; bitmapX++)
@@ -402,6 +419,44 @@
             SendCommand(Command.SetPageAddressRange, 0, (byte)(BufferPageCount - 1));
             BitBuffer.CopyTo(ByteBuffer, 1);
             Device.Write(ByteBuffer);
+        }
+
+        /// <summary>
+        /// Renders the specified text lines.
+        /// This is the fastest way to render console text
+        /// but it does not allow image composition.
+        /// </summary>
+        /// <param name="lines">The text lines.</param>
+        public void Render(params string[] lines)
+        {
+            var outputBytes = new byte[1 + (BufferPageCount * Width)];
+            outputBytes[0] = 0x40; // The first byte signals data
+
+            Parallel.For(0, lines.Length, (lineIndex) =>
+            {
+                if (lineIndex >= BufferPageCount)
+                    return;
+
+                var chars = Encoding.ASCII.GetBytes(lines[lineIndex]);
+                var currentChar = chars[0];
+                var sourceX = 0;
+                var targetB = 0;
+
+                for (var charIndex = 0; charIndex < chars.Length; charIndex++)
+                {
+                    if ((charIndex + 1) * FontBitmapCharWidth > Width)
+                        break;
+
+                    currentChar = chars[charIndex];
+                    sourceX = currentChar * FontBitmapCharWidth;
+                    targetB = 1 + (lineIndex * Width) + (charIndex * FontBitmapCharWidth);
+                    Buffer.BlockCopy(FontBytemap, sourceX, outputBytes, targetB, FontBitmapCharWidth);
+                }
+            });
+
+            SendCommand(Command.SetColumnAddressRange, 0, (byte)(Width - 1));
+            SendCommand(Command.SetPageAddressRange, 0, (byte)(BufferPageCount - 1));
+            Device.Write(outputBytes);
         }
 
         /// <summary>
