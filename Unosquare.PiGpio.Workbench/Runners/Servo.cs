@@ -6,7 +6,7 @@
 
     internal class Servo : RunnerBase
     {
-        private GpioPin Pin = null;
+        private GpioPin _pin;
         private int MinPulseWidth = GpioPinServoService.PulseWidthMin + 50;
         private int MaxPulseWidth = GpioPinServoService.PulseWidthMax;
         private int InitialPulseWidth = GpioPinServoService.PulseWidthMin + 500;
@@ -16,7 +16,7 @@
 
         protected override void Setup()
         {
-            Pin = Board.Pins[18];
+            _pin = Board.Pins[18];
         }
 
         protected override void DoBackgroundWork(CancellationToken ct)
@@ -38,11 +38,11 @@
                     flipDelta = true;
                 }
 
-                Pin.Servo.PulseWidth = pulseWidth;
+                _pin.Servo.PulseWidth = pulseWidth;
 
                 if (flipDelta)
                 {
-                    $"Pulse Witdh is now {Pin.Servo.PulseWidth}, {Pin.Servo.PositionPercent:p}".Info(Name);
+                    $"Pulse Witdh is now {_pin.Servo.PulseWidth}, {_pin.Servo.PositionPercent:p}".Info(Name);
                     pulseDelta *= -1;
                     Board.Timing.Sleep(500);
                 }
@@ -54,7 +54,7 @@
 
         protected override void Cleanup()
         {
-            Pin.Servo.PulseWidth = InitialPulseWidth;
+            _pin.Servo.PulseWidth = InitialPulseWidth;
             Board.Timing.Sleep(500); // give it some time to let the servo move to the requested position
         }
     }

@@ -17,7 +17,7 @@
         private const string DisposedErrorMessage = "Wave was already disposed.";
         private static readonly object SyncLock = new object();
         private readonly List<GpioPulse> m_Pulses;
-        private bool IsDisposed = false;
+        private bool _isDisposed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WaveBuilder"/> class.
@@ -189,7 +189,7 @@
             lock (SyncLock)
             {
                 if (IsPrepared) return;
-                if (IsDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
+                if (_isDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
 
                 Waves.GpioWaveClear();
                 BoardException.ValidateResult(
@@ -207,7 +207,7 @@
         /// <param name="mode">The mode.</param>
         public void Send(WaveMode mode)
         {
-            if (IsDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
+            if (_isDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
             if (IsPrepared == false)
                 Prepare();
 
@@ -215,9 +215,7 @@
                 BoardException.ValidateResult(Waves.GpioWaveTxSend(Convert.ToUInt32(WaveId), mode));
         }
 
-        /// <summary>
-        /// Stops and deletes the waveform if it is being tranferred. Releases the resources.
-        /// </summary>
+        /// <inheritdoc />
         public void Dispose() => Dispose(true);
 
         /// <summary>
@@ -253,8 +251,8 @@
         {
             lock (SyncLock)
             {
-                if (IsDisposed) return;
-                IsDisposed = true;
+                if (_isDisposed) return;
+                _isDisposed = true;
 
                 if (alsoManaged)
                 {

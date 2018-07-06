@@ -3,33 +3,33 @@
     using ManagedModel;
     using NativeEnums;
     using System.Threading;
-    using Unosquare.Swan;
+    using Swan;
 
     internal class ButtonInterrupts : RunnerBase
     {
-        private GpioPin Pin = null;
-        private uint PreviousTick = 0;
+        private GpioPin _pin;
+        private uint _previousTick;
 
         public ButtonInterrupts(bool isEnabled)
             : base(isEnabled) { }
 
         protected override void Setup()
         {
-            Pin = Board.Pins[4];
-            Pin.Direction = PinDirection.Input;
-            Pin.PullMode = GpioPullMode.Off;
-            Pin.Interrupts.EdgeDetection = EdgeDetection.EitherEdge;
-            Pin.Interrupts.TimeoutMilliseconds = 1000;
-            PreviousTick = Board.Timing.TimestampTick;
-            Pin.Interrupts.Start((pin, level, tick) =>
+            _pin = Board.Pins[4];
+            _pin.Direction = PinDirection.Input;
+            _pin.PullMode = GpioPullMode.Off;
+            _pin.Interrupts.EdgeDetection = EdgeDetection.EitherEdge;
+            _pin.Interrupts.TimeoutMilliseconds = 1000;
+            _previousTick = Board.Timing.TimestampTick;
+            _pin.Interrupts.Start((pin, level, tick) =>
             {
                 if (level == LevelChange.NoChange)
                 {
-                    $"Pin: {pin} | Level: {Pin.Value} | Tick: {tick} | Elapsed: {(tick - PreviousTick) / 1000d:0.000} ms.".Info(Name);
+                    $"Pin: {pin} | Level: {_pin.Value} | Tick: {tick} | Elapsed: {(tick - _previousTick) / 1000d:0.000} ms.".Info(Name);
                 }
                 else
                 {
-                    $"Pin: {pin} | Level: {level} | Tick: {tick} | Elapsed: {(tick - PreviousTick) / 1000d:0.000} ms.".Info(Name);
+                    $"Pin: {pin} | Level: {level} | Tick: {tick} | Elapsed: {(tick - _previousTick) / 1000d:0.000} ms.".Info(Name);
 
                     if (level == LevelChange.LowToHigh)
                     {
@@ -37,7 +37,7 @@
                     }
                 }
 
-                PreviousTick = tick;
+                _previousTick = tick;
             });
         }
 
@@ -51,7 +51,7 @@
 
         protected override void Cleanup()
         {
-            Pin.Interrupts.Stop();
+            _pin.Interrupts.Stop();
         }
     }
 }

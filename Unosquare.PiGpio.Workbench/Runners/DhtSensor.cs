@@ -7,12 +7,12 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Threading;
-    using Unosquare.Swan;
+    using Swan;
 
     internal class DhtSensor : RunnerBase
     {
-        private uint LastTick = 0;
-        private GpioPin Pin = null;
+        private uint LastTick;
+        private GpioPin Pin;
         private List<Tuple<bool, uint>> Pulses = new List<Tuple<bool, uint>>(1024);
 
         public DhtSensor(bool isEnabled)
@@ -35,7 +35,7 @@
                     return;
 
                 var elapsed = tick - LastTick;
-                var value = level == LevelChange.LowToHigh ? false : true; // THE DHT signal is active-low
+                var value = level != LevelChange.LowToHigh; // THE DHT signal is active-low
                 var pulse = new Tuple<bool, uint>(value, elapsed);
                 Pulses.Add(pulse);
                 LastTick = tick;
@@ -93,8 +93,8 @@
                 {
                     if (ct.IsCancellationRequested)
                         break;
-                    else
-                        Board.Timing.Sleep(50);
+                    
+                    Board.Timing.Sleep(50);
                 }
             }
         }
@@ -120,7 +120,7 @@
             {
                 var p0 = pulses[pulseIndex + 0];
                 var p1 = pulses[pulseIndex + 1];
-                dataBits.Add(p1.Item2 > 50 ? true : false);
+                dataBits.Add(p1.Item2 > 50);
                 if (dataBits.Count >= 40)
                     break;
             }
@@ -140,7 +140,7 @@
                     builder.AppendLine("|");
             }
 
-            $"Pulses Received: {pulses.Count}\r\n{builder.ToString()}".Debug(Name);
+            $"Pulses Received: {pulses.Count}\r\n{builder}".Debug(Name);
         }
 
         private void DebugBits(List<bool> bits)
@@ -154,7 +154,7 @@
                     builder.Append(" ");
             }
 
-            $"Bits: {bits.Count}\r\n{builder.ToString()}".Debug(Name);
+            $"Bits: {bits.Count}\r\n{builder}".Debug(Name);
         }
     }
 }

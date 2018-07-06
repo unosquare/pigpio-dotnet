@@ -9,7 +9,7 @@
     /// </summary>
     public sealed class SoftSerialPort : IDisposable
     {
-        private bool IsDisposed = false;
+        private bool _isDisposed;
         private GpioPin TransmitPin;
 
         /// <summary>
@@ -61,7 +61,7 @@
         /// <summary>
         /// Gets the handle.
         /// </summary>
-        public UserGpio Handle { get; private set; }
+        public UserGpio Handle { get; }
 
         /// <summary>
         /// Reads up to count bytes.
@@ -99,9 +99,7 @@
             Waves.GpioWaveDelete(Convert.ToUInt32(waveId));
         }
 
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
+        /// <inheritdoc />
         public void Dispose() => Dispose(true);
 
         /// <summary>
@@ -110,8 +108,8 @@
         /// <param name="alsoManaged"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         private void Dispose(bool alsoManaged)
         {
-            if (IsDisposed) return;
-            IsDisposed = true;
+            if (_isDisposed) return;
+            _isDisposed = true;
 
             if (alsoManaged)
             {

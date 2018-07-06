@@ -19,7 +19,7 @@
         /// <summary>
         /// To detect redundant calls
         /// </summary>
-        private bool IsDisposed = false; // To detect redundant calls
+        private bool _isDisposed; // To detect redundant calls
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SoftI2cBus"/> class.
@@ -39,7 +39,7 @@
         /// <summary>
         /// Gets or the I2C bus handle. This points to the SDA (data) pin of the I2C bus
         /// </summary>
-        public UserGpio Handle { get; private set; }
+        public UserGpio Handle { get; }
 
         /// <summary>
         /// Gets the data pin.
@@ -109,9 +109,7 @@
             return result;
         }
 
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
+        /// <inheritdoc />
         public void Dispose() => Dispose(true);
 
         /// <summary>
@@ -120,8 +118,8 @@
         /// <param name="alsoManaged"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         private void Dispose(bool alsoManaged)
         {
-            if (IsDisposed) return;
-            IsDisposed = true;
+            if (_isDisposed) return;
+            _isDisposed = true;
 
             if (alsoManaged)
             {

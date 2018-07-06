@@ -60,10 +60,7 @@
         /// </summary>
         public GpioPullMode PullMode
         {
-            get
-            {
-                return m_PullMode;
-            }
+            get => m_PullMode;
             set
             {
                 BoardException.ValidateResult(IO.GpioSetPullUpDown(PinGpio, value));
@@ -101,10 +98,7 @@
         /// <summary>
         /// Gets the current pin mode.
         /// </summary>
-        public PinMode Mode
-        {
-            get => IO.GpioGetMode(PinGpio);
-        }
+        public PinMode Mode => IO.GpioGetMode(PinGpio);
 
         /// <summary>
         /// Gets or sets the digital value of the pin.
@@ -174,10 +168,7 @@
         /// No error checking is performed.
         /// </summary>
         /// <returns>Returns a 0 or a 1 for success. A negative number for error.</returns>
-        public int Read()
-        {
-            return IO.GpioReadUnmanaged(PinGpio);
-        }
+        public int Read() => IO.GpioReadUnmanaged(PinGpio);
 
         /// <summary>
         /// The fastest way to write to the pin.
@@ -185,9 +176,6 @@
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result code. 0 (OK) for success.</returns>
-        public ResultCode Write(int value)
-        {
-            return IO.GpioWriteUnmanaged(PinGpio, (DigitalValue)(value == 0 ? 0 : 1));
-        }
+        public ResultCode Write(int value) => IO.GpioWriteUnmanaged(PinGpio, (DigitalValue)(value == 0 ? 0 : 1));
     }
 }

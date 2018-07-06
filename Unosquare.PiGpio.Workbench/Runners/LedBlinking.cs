@@ -5,28 +5,28 @@
 
     internal class LedBlinking : RunnerBase
     {
-        private GpioPin Pin = null;
+        private GpioPin _pin;
 
         public LedBlinking(bool isEnabled)
             : base(isEnabled) { }
 
         protected override void Setup()
         {
-            Pin = Board.Pins[17];
+            _pin = Board.Pins[17];
         }
 
         protected override void DoBackgroundWork(CancellationToken ct)
         {
             while (ct.IsCancellationRequested == false)
             {
-                Pin.Value = !Pin.Value;
+                _pin.Value = !_pin.Value;
                 Board.Timing.Sleep(500);
             }
         }
 
         protected override void Cleanup()
         {
-            Pin.Value = false;
+            _pin.Value = false;
             Board.Timing.Sleep(200);
         }
     }

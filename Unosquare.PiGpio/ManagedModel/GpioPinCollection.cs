@@ -28,10 +28,7 @@
         /// </value>
         /// <param name="gpio">The gpio.</param>
         /// <returns>The pin object</returns>
-        public GpioPin this[SystemGpio gpio]
-        {
-            get => this[(int)gpio];
-        }
+        public GpioPin this[SystemGpio gpio] => this[(int)gpio];
 
         /// <summary>
         /// Gets the <see cref="GpioPin"/> with the specified gpio.
@@ -41,10 +38,7 @@
         /// </value>
         /// <param name="gpio">The gpio.</param>
         /// <returns>The pin object</returns>
-        public GpioPin this[UserGpio gpio]
-        {
-            get => this[(int)gpio];
-        }
+        public GpioPin this[UserGpio gpio] => this[(int)gpio];
 
         /// <summary>
         /// Creates the internal collection.

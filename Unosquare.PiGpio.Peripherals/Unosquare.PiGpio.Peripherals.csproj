@@ -39,7 +39,7 @@
   
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
-    <PackageReference Include="System.Drawing.Common" Version="4.5.0-preview2-26406-04" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.0" />
   </ItemGroup>
   
   <ItemGroup>

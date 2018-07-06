@@ -10,7 +10,7 @@
     /// <seealso cref="IDisposable" />
     public sealed class SoftSpiChannel : IDisposable
     {
-        private bool IsDisposed = false;
+        private bool _isDisposed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SoftSpiChannel"/> class.
@@ -43,7 +43,7 @@
         /// <summary>
         /// Gets the handle.
         /// </summary>
-        public UserGpio Handle { get; private set; }
+        public UserGpio Handle { get; }
 
         /// <summary>
         /// Gets the chip select pin.
@@ -82,7 +82,7 @@
         /// <returns>The received bytes as a result of writing to the ring buffer</returns>
         public byte[] Transfer(byte[] transmitBuffer)
         {
-            if (IsDisposed)
+            if (_isDisposed)
                 throw new ObjectDisposedException(nameof(SoftSpiChannel));
 
             var receiveBuffer = new byte[transmitBuffer.Length];
@@ -95,11 +95,8 @@
             return output;
         }
 
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
-        public void Dispose() =>
-            Dispose(true);
+        /// <inheritdoc />
+        public void Dispose() => Dispose(true);
 
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources.
@@ -107,9 +104,9 @@
         /// <param name="alsoManaged"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         private void Dispose(bool alsoManaged)
         {
-            if (IsDisposed) return;
+            if (_isDisposed) return;
 
-            IsDisposed = true;
+            _isDisposed = true;
             if (alsoManaged)
             {
                 Spi.BbSPIClose(Handle);

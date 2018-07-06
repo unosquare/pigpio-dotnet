@@ -6,8 +6,8 @@
     using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
     using System.Threading;
-    using Unosquare.PiGpio.Peripherals;
-    using Unosquare.Swan;
+    using Peripherals;
+    using Swan;
 
     internal class PiOled : RunnerBase
     {
@@ -33,7 +33,7 @@
             var cycleSw = new Stopwatch();
             var frameCount = 0d;
             var cycleCount = 0;
-            var currentThreshold = 0.5d;
+            const double currentThreshold = 0.5d;
 
             var bitmap = new Bitmap(Display.Width, Display.Height, PixelFormat.Format32bppArgb);
             var graphicPen = Pens.White;
@@ -45,7 +45,7 @@
             }
 
             // ProcessRunner.GetProcessOutputAsync("hostname", "-I").GetAwaiter().GetResult().RemoveControlChars().Trim().Truncate(15);
-            var address = "W.X.Y.Z";
+            const string address = "W.X.Y.Z";
 
             sw.Start();
             cycleSw.Start();

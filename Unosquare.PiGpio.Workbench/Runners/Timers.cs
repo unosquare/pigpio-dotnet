@@ -5,21 +5,21 @@
 
     internal class Timers : RunnerBase
     {
-        private Timer CurrentTimer = null;
-        private ManualResetEvent TimerTicked;
-        private int RemainingTicks = 30;
+        private Timer _currentTimer;
+        private ManualResetEvent _timerTicked;
+        private int _remainingTicks = 30;
 
         public Timers(bool isEnabled)
             : base(isEnabled) { }
 
         protected override void Setup()
         {
-            RemainingTicks = 30;
-            TimerTicked = new ManualResetEvent(false);
-            CurrentTimer = Board.Timing.StartTimer(500, () =>
+            _remainingTicks = 30;
+            _timerTicked = new ManualResetEvent(false);
+            _currentTimer = Board.Timing.StartTimer(500, () =>
             {
-                RemainingTicks--;
-                TimerTicked.Set();
+                _remainingTicks--;
+                _timerTicked.Set();
             });
         }
 
@@ -27,21 +27,21 @@
         {
             while (ct.IsCancellationRequested == false)
             {
-                if (TimerTicked.WaitOne(50))
+                if (_timerTicked.WaitOne(50))
                 {
-                    $"Timer Ticked. Remaining Ticks: {RemainingTicks}".Info(Name);
-                    TimerTicked.Reset();
+                    $"Timer Ticked. Remaining Ticks: {_remainingTicks}".Info(Name);
+                    _timerTicked.Reset();
                 }
 
-                if (RemainingTicks <= 0)
+                if (_remainingTicks <= 0)
                     break;
             }
         }
 
         protected override void Cleanup()
         {
-            CurrentTimer.Dispose();
-            TimerTicked.Dispose();
+            _currentTimer.Dispose();
+            _timerTicked.Dispose();
         }
     }
 }

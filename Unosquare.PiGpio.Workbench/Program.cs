@@ -33,7 +33,7 @@
             foreach (var wbi in workbenchItems)
                 wbi.Stop();
 
-            $"Program Finished".Info(nameof(Program));
+            "Program Finished".Info(nameof(Program));
             Terminal.Flush(TimeSpan.FromSeconds(2));
             Board.Release();
         }

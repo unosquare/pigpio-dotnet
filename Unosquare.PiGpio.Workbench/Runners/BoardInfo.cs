@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
     using System.Threading;
-    using Unosquare.Swan;
+    using Swan;
 
     internal class BoardInfo : RunnerBase
     {

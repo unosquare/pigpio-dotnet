@@ -10,7 +10,7 @@
     /// <seealso cref="IDisposable" />
     public sealed class SpiChannel : IDisposable
     {
-        private bool IsDisposed = false;
+        private bool _isDisposed;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SpiChannel"/> class.
@@ -49,20 +49,14 @@
         /// Reads up to one tenth of the byte rate
         /// </summary>
         /// <returns>The bytes that were read</returns>
-        public byte[] Read()
-        {
-            return Read(BaudRate / 8 / 10);
-        }
+        public byte[] Read() => Read(BaudRate / 8 / 10);
 
         /// <summary>
         /// Reads up to the specified number of bytes.
         /// </summary>
         /// <param name="count">The count.</param>
         /// <returns>The bytes read</returns>
-        public byte[] Read(int count)
-        {
-            return Spi.SpiRead(Handle, count);
-        }
+        public byte[] Read(int count) => Spi.SpiRead(Handle, count);
 
         /// <summary>
         /// Reads int the specified buffer.
@@ -83,10 +77,7 @@
         /// </summary>
         /// <param name="buffer">The buffer.</param>
         /// <returns>The number of bytes written</returns>
-        public int Write(byte[] buffer)
-        {
-            return Spi.SpiWrite(Handle, buffer);
-        }
+        public int Write(byte[] buffer) => Spi.SpiWrite(Handle, buffer);
 
         /// <summary>
         /// Writes the specified buffer.
@@ -107,14 +98,9 @@
         /// </summary>
         /// <param name="buffer">The buffer.</param>
         /// <returns>The bytes that were read</returns>
-        public byte[] Transfer(byte[] buffer)
-        {
-            return Spi.SpiXfer(Handle, buffer);
-        }
+        public byte[] Transfer(byte[] buffer) => Spi.SpiXfer(Handle, buffer);
 
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
+        /// <inheritdoc />
         public void Dispose() => Dispose(true);
 
         /// <summary>
@@ -123,7 +109,7 @@
         /// <param name="alsoManaged"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         private void Dispose(bool alsoManaged)
         {
-            if (IsDisposed) return;
+            if (_isDisposed) return;
 
             if (alsoManaged)
             {
@@ -131,7 +117,7 @@
                 Handle = UIntPtr.Zero;
             }
 
-            IsDisposed = true;
+            _isDisposed = true;
         }
     }
 }

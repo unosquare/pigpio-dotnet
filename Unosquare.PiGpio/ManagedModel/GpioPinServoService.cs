@@ -39,16 +39,10 @@
         /// </summary>
         public int PulseWidth
         {
-            get
-            {
-                return BoardException.ValidateResult(
-                    Pwm.GpioGetServoPulseWidth((UserGpio)Pin.PinNumber));
-            }
-            set
-            {
-                BoardException.ValidateResult(
-                    Pwm.GpioServo((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
-            }
+            get => BoardException.ValidateResult(
+                Pwm.GpioGetServoPulseWidth((UserGpio)Pin.PinNumber));
+            set => BoardException.ValidateResult(
+                Pwm.GpioServo((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>
@@ -78,12 +72,7 @@
             }
         }
 
-        /// <summary>
-        /// Resolves the availability of this service for the associated pin.
-        /// </summary>
-        /// <returns>
-        /// True when the service is deemed as available.
-        /// </returns>
+        /// <inheritdoc />
         protected override bool ResolveAvailable() => Pin.IsUserGpio;
     }
 }

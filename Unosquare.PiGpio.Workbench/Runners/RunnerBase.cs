@@ -3,13 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Threading;
-    using Unosquare.Swan;
+    using Swan;
 
     internal abstract class RunnerBase
     {
-        private Thread Worker = null;
-        private CancellationTokenSource CancelTokenSource = null;
-        private ManualResetEvent WorkFinished;
+        private Thread _worker;
+        private CancellationTokenSource _cancelTokenSource;
+        private ManualResetEvent _workFinished;
 
         protected RunnerBase(bool isEnabled)
         {
@@ -31,16 +31,16 @@
                 return;
 
             $"Start Requested".Debug(Name);
-            CancelTokenSource = new CancellationTokenSource();
-            WorkFinished = new ManualResetEvent(false);
-            Worker = new Thread(() =>
+            _cancelTokenSource = new CancellationTokenSource();
+            _workFinished = new ManualResetEvent(false);
+            _worker = new Thread(() =>
             {
-                WorkFinished.Reset();
+                _workFinished.Reset();
                 IsRunning = true;
                 try
                 {
                     Setup();
-                    DoBackgroundWork(CancelTokenSource.Token);
+                    DoBackgroundWork(_cancelTokenSource.Token);
                 }
                 catch (ThreadAbortException)
                 {
@@ -53,9 +53,9 @@
                 finally
                 {
                     Cleanup();
-                    WorkFinished?.Set();
+                    _workFinished?.Set();
                     IsRunning = false;
-                    $"Stopped Completely".Debug(Name);
+                    "Stopped Completely".Debug(Name);
                 }
             })
             {
@@ -63,7 +63,7 @@
                 Name = $"{Name}Thread",
             };
 
-            Worker.Start();
+            _worker.Start();
         }
 
         public virtual void Stop()
@@ -75,11 +75,11 @@
                 return;
 
             $"Stop Requested".Debug(Name);
-            CancelTokenSource.Cancel();
+            _cancelTokenSource.Cancel();
             var waitRetries = 5;
             while (waitRetries >= 1)
             {
-                if (WorkFinished.WaitOne(250))
+                if (_workFinished.WaitOne(250))
                 {
                     waitRetries = -1;
                     break;
@@ -90,21 +90,21 @@
 
             if (waitRetries < 0)
             {
-                $"Workbench stopped gracefully".Debug(Name);
+                "Workbench stopped gracefully".Debug(Name);
             }
             else
             {
-                $"Did not respond to stop request. Aborting thread and waiting . . .".Warn(Name);
-                Worker.Abort();
+                "Did not respond to stop request. Aborting thread and waiting . . .".Warn(Name);
+                _worker.Abort();
 
-                if (WorkFinished.WaitOne(5000) == false)
-                    $"Waited and no response. Worker might have been left in an inconsistent state.".Error(Name);
+                if (_workFinished.WaitOne(5000) == false)
+                    "Waited and no response. Worker might have been left in an inconsistent state.".Error(Name);
                 else
-                    $"Waited for worker and it finally responded (OK).".Debug(Name);
+                    "Waited for worker and it finally responded (OK).".Debug(Name);
             }
 
-            WorkFinished.Dispose();
-            WorkFinished = null;
+            _workFinished.Dispose();
+            _workFinished = null;
         }
 
         protected virtual void Setup()

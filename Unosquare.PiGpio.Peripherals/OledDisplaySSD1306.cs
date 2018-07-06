@@ -50,9 +50,9 @@
         private readonly byte[] ByteBuffer;
         private int BufferPageCount;
         private int BitsPerPage;
-        private bool IsDisposed = false;
-        private byte m_Contrast = 0;
-        private bool m_IsActive = false;
+        private bool IsDisposed;
+        private byte m_Contrast;
+        private bool m_IsActive;
 
         #endregion
 
@@ -251,10 +251,7 @@
         /// </summary>
         public byte Contrast
         {
-            get
-            {
-                return m_Contrast;
-            }
+            get => m_Contrast;
             set
             {
                 SendCommand(Command.SetContrast, value);
@@ -267,10 +264,7 @@
         /// </summary>
         public bool IsActive
         {
-            get
-            {
-                return m_IsActive;
-            }
+            get => m_IsActive;
             set
             {
                 SendCommand(value ? Command.TurnOn : Command.TurnOff);
@@ -459,9 +453,7 @@
             Device.Write(outputBytes);
         }
 
-        /// <summary>
-        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-        /// </summary>
+        /// <inheritdoc />
         public void Dispose() => Dispose(true);
 
         #region Private Methods

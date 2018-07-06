@@ -21,18 +21,12 @@
         /// <summary>
         /// Gets the range of the duty cycle.
         /// </summary>
-        public int Range
-        {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmRealRange((UserGpio)Pin.PinNumber));
-        }
+        public int Range => BoardException.ValidateResult(Pwm.GpioGetPwmRealRange((UserGpio)Pin.PinNumber));
 
         /// <summary>
         /// Gets the frequency.
         /// </summary>
-        public int Frequency
-        {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmFrequency((UserGpio)Pin.PinNumber));
-        }
+        public int Frequency => BoardException.ValidateResult(Pwm.GpioGetPwmFrequency((UserGpio)Pin.PinNumber));
 
         /// <summary>
         /// Gets the PWM channel, 0 or 1. A negative number mans there is no associated PWM channel.
@@ -84,7 +78,8 @@
                 Channel = 0;
                 return true;
             }
-            else if ((new int[] { 13, 19, 41, 45, 53 }).Contains(Pin.PinNumber))
+
+            if ((new int[] { 13, 19, 41, 45, 53 }).Contains(Pin.PinNumber))
             {
                 Channel = 1;
                 return true;
