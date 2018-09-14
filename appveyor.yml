@@ -23,7 +23,6 @@ before_build:
             git checkout $env:APPVEYOR_REPO_BRANCH -q
             cinst docfx -y
         }
-        
 after_build:
 - ps: |
         if(-Not $env:APPVEYOR_PULL_REQUEST_TITLE)
