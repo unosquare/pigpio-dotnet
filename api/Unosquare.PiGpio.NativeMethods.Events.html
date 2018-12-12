@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Events
    | Unosquare Raspbery Pi - libpigpio for .net ">
-    <meta name="generator" content="docfx 2.39.2.0">
+    <meta name="generator" content="docfx 2.40.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -36,9 +36,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -151,14 +150,14 @@ corresponding bit in bits is set.</p>
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">handle</span></td>
-        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a></p>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a>.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.BitMask.html">BitMask</a></td>
         <td><span class="parametername">bitMask</span></td>
-        <td><p>a bit mask indicating the events of interest</p>
+        <td><p>a bit mask indicating the events of interest.</p>
 </td>
       </tr>
     </tbody>
@@ -215,13 +214,13 @@ event occurs.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">eventId</span></td>
-        <td><p>0-31</p>
+        <td><p>0-31.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioEventDelegate.html">PiGpioEventDelegate</a></td>
         <td><span class="parametername">callback</span></td>
-        <td><p>the callback function</p>
+        <td><p>the callback function.</p>
 </td>
       </tr>
     </tbody>
@@ -272,19 +271,19 @@ registered per event.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">eventId</span></td>
-        <td><p>0-31</p>
+        <td><p>0-31.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioEventExDelegate.html">PiGpioEventExDelegate</a></td>
         <td><span class="parametername">callback</span></td>
-        <td><p>the callback function</p>
+        <td><p>the callback function.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">userData</span></td>
-        <td><p>pointer to arbitrary user data</p>
+        <td><p>pointer to arbitrary user data.</p>
 </td>
       </tr>
     </tbody>
@@ -338,7 +337,7 @@ with an event.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">eventId</span></td>
-        <td><p>0-31, the event</p>
+        <td><p>0-31, the event.</p>
 </td>
       </tr>
     </tbody>
@@ -402,14 +401,14 @@ GPIO x is high.</p>
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">handle</span></td>
-        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a></p>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a>.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.BitMask.html">BitMask</a></td>
         <td><span class="parametername">bitMask</span></td>
-        <td><p>a bit mask indicating the GPIO of interest</p>
+        <td><p>a bit mask indicating the GPIO of interest.</p>
 </td>
       </tr>
     </tbody>
@@ -437,7 +436,7 @@ uint16_t seqno;
 uint16_t flags;
 uint tick;
 uint level;
-} gpioReport_t;</p>
+} gpioReport_t;.</p>
 </div>
   <h5 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyBegin_System_UIntPtr_Unosquare_PiGpio_NativeEnums_BitMask__examples">Examples</h5>
   <pre><code>// Start notifications for GPIO 1, 4, 6, 7, 10.
@@ -473,7 +472,7 @@ and releases the handle for reuse.</p>
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">handle</span></td>
-        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a></p>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a>.</p>
 </blockquote>
 </td>
       </tr>
@@ -583,7 +582,7 @@ specified, whereas <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.h
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">bufferSize</span></td>
-        <td><p>The pipe size of the the buffer</p>
+        <td><p>The pipe size of the the buffer.</p>
 </td>
       </tr>
     </tbody>
@@ -630,7 +629,7 @@ is called again.</p>
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">handle</span></td>
-        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a></p>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a>.</p>
 </blockquote>
 </td>
       </tr>

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Spi
    | Unosquare Raspbery Pi - libpigpio for .net ">
-    <meta name="generator" content="docfx 2.39.2.0">
+    <meta name="generator" content="docfx 2.40.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -36,9 +36,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -146,7 +145,7 @@ opened with <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosqu
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
         <td><span class="parametername">csPin</span></td>
-        <td><p>0-31, the CS GPIO used in a prior call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_BbSPIOpen_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_Unosquare_PiGpio_NativeEnums_SoftSpiFlags_">BbSPIOpen(UserGpio, UserGpio, UserGpio, UserGpio, UInt32, SoftSpiFlags)</a></p>
+        <td><p>0-31, the CS GPIO used in a prior call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_BbSPIOpen_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_Unosquare_PiGpio_NativeEnums_SoftSpiFlags_">BbSPIOpen(UserGpio, UserGpio, UserGpio, UserGpio, UInt32, SoftSpiFlags)</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -202,37 +201,37 @@ SCLK, MOSI, and MISO) each must have its own CS.</p>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
         <td><span class="parametername">csPin</span></td>
-        <td><p>0-31</p>
+        <td><p>0-31.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
         <td><span class="parametername">misoPin</span></td>
-        <td><p>MISO 0-31</p>
+        <td><p>MISO 0-31.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
         <td><span class="parametername">mosiPin</span></td>
-        <td><p>MOSI 0-31</p>
+        <td><p>MOSI 0-31.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
         <td><span class="parametername">clockPin</span></td>
-        <td><p>CLOCK 0-31</p>
+        <td><p>CLOCK 0-31.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">baudRate</span></td>
-        <td><p>50-250000</p>
+        <td><p>50-250000.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SoftSpiFlags.html">SoftSpiFlags</a></td>
         <td><span class="parametername">spiFlags</span></td>
-        <td><p>see below</p>
+        <td><p>see below.</p>
 </td>
       </tr>
     </tbody>
@@ -260,7 +259,7 @@ Mode CPOL CPHA
 0    0    0
 1    0    1
 2    1    0
-3    1    1</p>
+3    1    1.</p>
 </div>
   <h5 id="Unosquare_PiGpio_NativeMethods_Spi_BbSPIOpen_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_Unosquare_PiGpio_NativeEnums_SoftSpiFlags__examples">Examples</h5>
   <pre><code>bbSPIOpen(10, MISO, MOSI, SCLK, 10000, 0); // device 1
@@ -290,19 +289,19 @@ bbSPIOpen(11, MISO, MOSI, SCLK, 20000, 3); // device 2</code></pre>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
         <td><span class="parametername">csPin</span></td>
-        <td><p>0-31 (as used in a prior call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_BbSPIOpen_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_Unosquare_PiGpio_NativeEnums_SoftSpiFlags_">BbSPIOpen(UserGpio, UserGpio, UserGpio, UserGpio, UInt32, SoftSpiFlags)</a>)</p>
+        <td><p>0-31 (as used in a prior call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_BbSPIOpen_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_Unosquare_PiGpio_NativeEnums_SoftSpiFlags_">BbSPIOpen(UserGpio, UserGpio, UserGpio, UserGpio, UInt32, SoftSpiFlags)</a>).</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Byte</span>[]</td>
         <td><span class="parametername">inputBuffer</span></td>
-        <td><p>pointer to buffer to hold data to be sent</p>
+        <td><p>pointer to buffer to hold data to be sent.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Byte</span>[]</td>
         <td><span class="parametername">outputBuffer</span></td>
-        <td><p>pointer to buffer to hold returned data</p>
+        <td><p>pointer to buffer to hold returned data.</p>
 </td>
       </tr>
       <tr>
@@ -477,7 +476,7 @@ an I2C slave with address 0x13 and send four bytes.</p>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.BscTransfer.html">BscTransfer</a></td>
         <td><span class="parametername">bscTransfer</span></td>
-        <td><p>= a structure defining the transfer</p>
+        <td><p>= a structure defining the transfer.</p>
 </td>
       </tr>
     </tbody>
@@ -510,7 +509,7 @@ char txBuf[BSC_FIFO_SIZE]; // Write
 22 21 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
 a  a  a  a  a  a  a  -  - IT HC TF IR RE TE BK EC ES PL PH I2 SP EN
 20 19 18 17 16 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
-S  S  S  S  S  R  R  R  R  R  T  T  T  T  T RB TE RF TF RE TB</p>
+S  S  S  S  S  R  R  R  R  R  T  T  T  T  T RB TE RF TF RE TB.</p>
 </div>
   <h5 id="Unosquare_PiGpio_NativeMethods_Spi_BscXfer_Unosquare_PiGpio_NativeTypes_BscTransfer__examples">Examples</h5>
   <pre><code>bsc_xfer_t xfer;
@@ -551,7 +550,7 @@ if (status >= 0)
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">handle</span></td>
-        <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a></p>
+        <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a>.</p>
 </blockquote>
 </td>
       </tr>
@@ -635,19 +634,19 @@ by 0x1A.</p>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SpiChannelId.html">SpiChannelId</a></td>
         <td><span class="parametername">spiChannel</span></td>
-        <td><p>0-1 (0-2 for the auxiliary SPI device)</p>
+        <td><p>0-1 (0-2 for the auxiliary SPI device).</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">baudRate</span></td>
-        <td><p>32K-125M (values above 30M are unlikely to work)</p>
+        <td><p>32K-125M (values above 30M are unlikely to work).</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SpiFlags.html">SpiFlags</a></td>
         <td><span class="parametername">spiFlags</span></td>
-        <td><p>see below</p>
+        <td><p>see below.</p>
 </td>
       </tr>
     </tbody>
@@ -675,7 +674,7 @@ Mode POL PHA
 0    0   0
 1    0   1
 2    1   0
-3    1   1</p>
+3    1   1.</p>
 </div>
   
   
@@ -703,14 +702,14 @@ device associated with the handle.</p>
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">handle</span></td>
-        <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a></p>
+        <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a>.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">count</span></td>
-        <td><p>The max number of bytes to read</p>
+        <td><p>The max number of bytes to read.</p>
 </td>
       </tr>
     </tbody>
@@ -757,14 +756,14 @@ device associated with the handle.</p>
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">handle</span></td>
-        <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a></p>
+        <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a>.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Byte</span>[]</td>
         <td><span class="parametername">buffer</span></td>
-        <td><p>the data bytes to write</p>
+        <td><p>the data bytes to write.</p>
 </td>
       </tr>
     </tbody>
@@ -812,14 +811,14 @@ data are read from the device and placed in rxBuf.</p>
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">handle</span></td>
-        <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a></p>
+        <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a>.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Byte</span>[]</td>
         <td><span class="parametername">transmitBuffer</span></td>
-        <td><p>the data bytes to write</p>
+        <td><p>the data bytes to write.</p>
 </td>
       </tr>
     </tbody>

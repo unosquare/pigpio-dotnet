@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class RawWaves
    | Unosquare Raspbery Pi - libpigpio for .net ">
-    <meta name="generator" content="docfx 2.39.2.0">
+    <meta name="generator" content="docfx 2.40.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -36,9 +36,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -167,13 +166,13 @@ waveform then the first pulse should consist of a delay.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">numPulses</span></td>
-        <td><p>the number of pulses</p>
+        <td><p>the number of pulses.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.RawWave.html">RawWave</a>[]</td>
         <td><span class="parametername">pulses</span></td>
-        <td><p>the array containing the pulses</p>
+        <td><p>the array containing the pulses.</p>
 </td>
       </tr>
     </tbody>
@@ -220,49 +219,49 @@ existing waveform (if any).</p>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.RawSpiData.html">RawSpiData</a></td>
         <td><span class="parametername">spi</span></td>
-        <td><p>a pointer to a spi object</p>
+        <td><p>a pointer to a spi object.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">offset</span></td>
-        <td><p>microseconds from the start of the waveform</p>
+        <td><p>microseconds from the start of the waveform.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">spiSS</span></td>
-        <td><p>the slave select GPIO</p>
+        <td><p>the slave select GPIO.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Byte</span>[]</td>
         <td><span class="parametername">buffer</span></td>
-        <td><p>the bits to transmit, most significant bit first</p>
+        <td><p>the bits to transmit, most significant bit first.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">spiTxBits</span></td>
-        <td><p>the number of bits to write</p>
+        <td><p>the number of bits to write.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">spiBitFirst</span></td>
-        <td><p>the first bit to read</p>
+        <td><p>the first bit to read.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">spiBitLast</span></td>
-        <td><p>the last bit to read</p>
+        <td><p>the last bit to read.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">spiBits</span></td>
-        <td><p>the number of bits to transfer</p>
+        <td><p>the number of bits to transfer.</p>
 </td>
       </tr>
     </tbody>
@@ -335,7 +334,7 @@ existing waveform (if any).</p>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">controlBlockNumber</span></td>
-        <td><p>the cb of interest</p>
+        <td><p>the cb of interest.</p>
 </td>
       </tr>
     </tbody>
@@ -383,7 +382,7 @@ public static uint RawWaveGetIn(int position)</code></pre>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">position</span></td>
-        <td><p>the position of interest</p>
+        <td><p>the position of interest.</p>
 </td>
       </tr>
     </tbody>
@@ -523,7 +522,7 @@ public static uint RawWaveGetOut(int position)</code></pre>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">waveId</span></td>
-        <td><p>the wave of interest</p>
+        <td><p>the wave of interest.</p>
 </td>
       </tr>
     </tbody>
@@ -571,13 +570,13 @@ public static void RawWaveSetIn(int position, uint value)</code></pre>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">position</span></td>
-        <td><p>the position of interest</p>
+        <td><p>the position of interest.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">value</span></td>
-        <td><p>the value to write</p>
+        <td><p>the value to write.</p>
 </td>
       </tr>
     </tbody>
@@ -607,13 +606,13 @@ public static void RawWaveSetIn(int position, uint value)</code></pre>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">position</span></td>
-        <td><p>the position of interest</p>
+        <td><p>the position of interest.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">value</span></td>
-        <td><p>the value to write</p>
+        <td><p>the value to write.</p>
 </td>
       </tr>
     </tbody>
@@ -645,13 +644,13 @@ public static void RawWaveSetOut(int position, uint value)</code></pre>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">position</span></td>
-        <td><p>the position of interest</p>
+        <td><p>the position of interest.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">value</span></td>
-        <td><p>the value to write</p>
+        <td><p>the value to write.</p>
 </td>
       </tr>
     </tbody>

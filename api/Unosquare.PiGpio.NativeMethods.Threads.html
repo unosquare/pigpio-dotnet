@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Threads
    | Unosquare Raspbery Pi - libpigpio for .net ">
-    <meta name="generator" content="docfx 2.39.2.0">
+    <meta name="generator" content="docfx 2.40.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -36,9 +36,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -146,7 +145,7 @@ Delays of 100 microseconds or less use busy waits.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">microSecs</span></td>
-        <td><p>the number of microseconds to sleep</p>
+        <td><p>the number of microseconds to sleep.</p>
 </td>
       </tr>
     </tbody>
@@ -194,19 +193,19 @@ Delays of 100 microseconds or less use busy waits.</p>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.TimerId.html">TimerId</a></td>
         <td><span class="parametername">timer</span></td>
-        <td><p>0-9</p>
+        <td><p>0-9.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">periodMilliseconds</span></td>
-        <td><p>10-60000</p>
+        <td><p>10-60000.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioTimerDelegate.html">PiGpioTimerDelegate</a></td>
         <td><span class="parametername">callback</span></td>
-        <td><p>the function to call</p>
+        <td><p>the function to call.</p>
 </td>
       </tr>
     </tbody>
@@ -270,19 +269,19 @@ registered per timer.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">millisecondsTimeout</span></td>
-        <td><p>10-60000</p>
+        <td><p>10-60000.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioTimerExDelegate.html">PiGpioTimerExDelegate</a></td>
         <td><span class="parametername">callback</span></td>
-        <td><p>the function to call</p>
+        <td><p>the function to call.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">userData</span></td>
-        <td><p>a pointer to arbitrary user data</p>
+        <td><p>a pointer to arbitrary user data.</p>
 </td>
       </tr>
     </tbody>
@@ -335,19 +334,19 @@ sleep length.</p>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.TimeType.html">TimeType</a></td>
         <td><span class="parametername">timeType</span></td>
-        <td><p>0 (relative), 1 (absolute)</p>
+        <td><p>0 (relative), 1 (absolute).</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">secs</span></td>
-        <td><p>seconds to sleep</p>
+        <td><p>seconds to sleep.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Int32</span></td>
         <td><span class="parametername">microSecs</span></td>
-        <td><p>microseconds to sleep</p>
+        <td><p>microseconds to sleep.</p>
 </td>
       </tr>
     </tbody>
@@ -402,13 +401,13 @@ gpioSleep(PI_TIME_RELATIVE, 60, 0);     // sleep for one minute</code></pre>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioThreadDelegate.html">PiGpioThreadDelegate</a></td>
         <td><span class="parametername">callback</span></td>
-        <td><p>the main function for the new thread</p>
+        <td><p>the main function for the new thread.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">userData</span></td>
-        <td><p>a pointer to arbitrary user data</p>
+        <td><p>a pointer to arbitrary user data.</p>
 </td>
       </tr>
     </tbody>
@@ -489,7 +488,7 @@ int main(int argc, char *argv[])
       <tr>
         <td><span class="xref">System.UIntPtr</span></td>
         <td><span class="parametername">handle</span></td>
-        <td><p>a thread pointer returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Threads.html#Unosquare_PiGpio_NativeMethods_Threads_GpioStartThread_Unosquare_PiGpio_NativeTypes_PiGpioThreadDelegate_System_UIntPtr_">GpioStartThread(PiGpioThreadDelegate, UIntPtr)</a></p>
+        <td><p>a thread pointer returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Threads.html#Unosquare_PiGpio_NativeMethods_Threads_GpioStartThread_Unosquare_PiGpio_NativeTypes_PiGpioThreadDelegate_System_UIntPtr_">GpioStartThread(PiGpioThreadDelegate, UIntPtr)</a>.</p>
 </td>
       </tr>
     </tbody>
@@ -498,7 +497,7 @@ int main(int argc, char *argv[])
   
   <a id="Unosquare_PiGpio_NativeMethods_Threads_TimeSleep_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.TimeSleep*"></a>
   <h4 id="Unosquare_PiGpio_NativeMethods_Threads_TimeSleep_System_Double_" data-uid="Unosquare.PiGpio.NativeMethods.Threads.TimeSleep(System.Double)">TimeSleep(Double)</h4>
-  <div class="markdown level1 summary"><p>Delay execution for a given number of seconds</p>
+  <div class="markdown level1 summary"><p>Delay execution for a given number of seconds.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -518,7 +517,7 @@ int main(int argc, char *argv[])
       <tr>
         <td><span class="xref">System.Double</span></td>
         <td><span class="parametername">seconds</span></td>
-        <td><p>the number of seconds to sleep</p>
+        <td><p>the number of seconds to sleep.</p>
 </td>
       </tr>
     </tbody>

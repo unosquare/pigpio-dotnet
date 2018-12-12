@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Setup
    | Unosquare Raspbery Pi - libpigpio for .net ">
-    <meta name="generator" content="docfx 2.39.2.0">
+    <meta name="generator" content="docfx 2.40.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -36,9 +36,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -152,7 +151,7 @@ sampling rates as shown in the following table in MBs.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">milliSecs</span></td>
-        <td><p>100-10000</p>
+        <td><p>100-10000.</p>
 </td>
       </tr>
     </tbody>
@@ -182,7 +181,7 @@ sampling rates as shown in the following table in MBs.</p>
 </code></pre><p>sample   4       8  12  18   31   55  107  ---
 rate    5       8  10  14   24   45   87  ---
 (us)    8       6   8  12   18   31   55  107
-   10       6   8  10   14   24   45   87</p>
+   10       6   8  10   14   24   45   87.</p>
 </div>
   
   
@@ -214,13 +213,13 @@ peripheral.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">microSecs</span></td>
-        <td><p>1, 2, 4, 5, 8, 10</p>
+        <td><p>1, 2, 4, 5, 8, 10.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.CpuPeripheral.html">CpuPeripheral</a></td>
         <td><span class="parametername">peripheral</span></td>
-        <td><p>0 (PWM), 1 (PCM)</p>
+        <td><p>0 (PWM), 1 (PCM).</p>
 </td>
       </tr>
     </tbody>
@@ -249,7 +248,7 @@ rate    %</p>
 4     11
 5     10
 8     15
-10     14</p>
+10     14.</p>
 </div>
   
   
@@ -300,7 +299,7 @@ public static ResultCode GpioCfgDmaChannel(DmaChannel dmaChannel)</code></pre>
     </tbody>
   </table>
   <h5 id="Unosquare_PiGpio_NativeMethods_Setup_GpioCfgDmaChannel_Unosquare_PiGpio_NativeEnums_DmaChannel__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>DMAchannel: 0-14</p>
+  <div class="markdown level1 remarks"><p>DMAchannel: 0-14.</p>
 </div>
   
   
@@ -337,13 +336,13 @@ and 611 control blocks on a lite channel.</p>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.DmaChannel.html">DmaChannel</a></td>
         <td><span class="parametername">primaryChannel</span></td>
-        <td><p>Channel 1: 0-14</p>
+        <td><p>Channel 1: 0-14.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.DmaChannel.html">DmaChannel</a></td>
         <td><span class="parametername">secondaryChannel</span></td>
-        <td><p>Channel 2: 0-14</p>
+        <td><p>Channel 2: 0-14.</p>
 </td>
       </tr>
     </tbody>
@@ -423,7 +422,7 @@ usable from the local Pi).</p>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.InterfaceFlags.html">InterfaceFlags</a></td>
         <td><span class="parametername">interfaceFlags</span></td>
-        <td><p>0-7</p>
+        <td><p>0-7.</p>
 </td>
       </tr>
     </tbody>
@@ -469,13 +468,13 @@ public static ResultCode GpioCfgInternals(uint key, uint value)</code></pre>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">key</span></td>
-        <td><p>Key: see source code</p>
+        <td><p>Key: see source code.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">value</span></td>
-        <td><p>Value: see source code</p>
+        <td><p>Value: see source code.</p>
 </td>
       </tr>
     </tbody>
@@ -526,7 +525,7 @@ size is requested with <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setu
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.AllocationMode.html">AllocationMode</a></td>
         <td><span class="parametername">allocationMode</span></td>
-        <td><p>0-2</p>
+        <td><p>0-2.</p>
 </td>
       </tr>
     </tbody>
@@ -573,7 +572,7 @@ socket interface.</p>
       <tr>
         <td><span class="xref">System.UInt32</span>[]</td>
         <td><span class="parametername">socketAddresses</span></td>
-        <td><p>an array of permitted network addresses. An empty array means ALL</p>
+        <td><p>an array of permitted network addresses. An empty array means ALL.</p>
 </td>
       </tr>
     </tbody>
@@ -610,7 +609,7 @@ added to the mask.</p>
 <p>Unknown board @ PI_DEFAULT_UPDATE_MASK_UNKNOWN @ 0x0FFFFFFC
 Type 1 board  @ PI_DEFAULT_UPDATE_MASK_B1 @ 0x03E6CF93
 Type 2 board  @ PI_DEFAULT_UPDATE_MASK_A_B2 @ 0xFBC6CF9C
-Type 3 board  @ PI_DEFAULT_UPDATE_MASK_R3 @ 0x0FFFFFFC</p>
+Type 3 board  @ PI_DEFAULT_UPDATE_MASK_R3 @ 0x0FFFFFFC.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -630,7 +629,7 @@ Type 3 board  @ PI_DEFAULT_UPDATE_MASK_R3 @ 0x0FFFFFFC</p>
       <tr>
         <td><span class="xref">System.UInt64</span></td>
         <td><span class="parametername">updateMask</span></td>
-        <td><p>bit (1&lt;&lt;n) is set for each GPIO n which may be updated</p>
+        <td><p>bit (1&lt;&lt;n) is set for each GPIO n which may be updated.</p>
 </td>
       </tr>
     </tbody>
@@ -676,7 +675,7 @@ settings.</p>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ConfigFlags.html">ConfigFlags</a></td>
         <td><span class="parametername">configFlags</span></td>
-        <td><p>see source code</p>
+        <td><p>see source code.</p>
 </td>
       </tr>
     </tbody>
@@ -723,7 +722,7 @@ settings.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">port</span></td>
-        <td><p>1024-32000</p>
+        <td><p>1024-32000.</p>
 </td>
       </tr>
     </tbody>
@@ -750,7 +749,7 @@ settings.</p>
   <h4 id="Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise" data-uid="Unosquare.PiGpio.NativeMethods.Setup.GpioInitialise">GpioInitialise()</h4>
   <div class="markdown level1 summary"><p>Initialises the library.</p>
 <p>gpioInitialise must be called before using the other library functions
-with the following exceptions:</p>
+with the following exceptions:.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -776,7 +775,7 @@ with the following exceptions:</p>
   <h5 id="Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise_remarks">Remarks</h5>
   <div class="markdown level1 remarks"><p>GpioCfg methods.
 <a class="xref" href="Unosquare.PiGpio.NativeMethods.Utilities.html#Unosquare_PiGpio_NativeMethods_Utilities_GpioVersion">GpioVersion()</a>
-<a class="xref" href="Unosquare.PiGpio.NativeMethods.Utilities.html#Unosquare_PiGpio_NativeMethods_Utilities_GpioHardwareRevision">GpioHardwareRevision()</a></p>
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.Utilities.html#Unosquare_PiGpio_NativeMethods_Utilities_GpioHardwareRevision">GpioHardwareRevision()</a>.</p>
 </div>
   <h5 id="Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise_examples">Examples</h5>
   <pre><code>if (gpioInitialise() &lt; 0)

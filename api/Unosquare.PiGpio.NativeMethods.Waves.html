@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Waves
    | Unosquare Raspbery Pi - libpigpio for .net ">
-    <meta name="generator" content="docfx 2.39.2.0">
+    <meta name="generator" content="docfx 2.40.4.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -36,9 +36,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="logo" src="../best-practices/resources/images/logo.png" alt="">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -152,13 +151,13 @@ waveform then the first pulse should consist of a delay.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">numPulses</span></td>
-        <td><p>the number of pulses</p>
+        <td><p>the number of pulses.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.GpioPulse.html">GpioPulse</a>[]</td>
         <td><span class="parametername">pulses</span></td>
-        <td><p>an array of pulses</p>
+        <td><p>an array of pulses.</p>
 </td>
       </tr>
     </tbody>
@@ -281,45 +280,45 @@ For data_bits 17-32 there will be four bytes per character.</p>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
         <td><span class="parametername">userGpio</span></td>
-        <td><p>0-31</p>
+        <td><p>0-31.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">baudRate</span></td>
-        <td><p>50-1000000</p>
+        <td><p>50-1000000.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">dataBits</span></td>
-        <td><p>1-32</p>
+        <td><p>1-32.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">stopBits</span></td>
-        <td><p>2-8</p>
+        <td><p>2-8.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">offset</span></td>
-        <td><blockquote><p>=0</p>
+        <td><blockquote><p>=0.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">numBytes</span></td>
-        <td><blockquote><p>=1</p>
+        <td><blockquote><p>=1.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.Byte</span>[]</td>
         <td><span class="parametername">str</span></td>
-        <td><p>an array of chars (which may contain nulls)</p>
+        <td><p>an array of chars (which may contain nulls).</p>
 </td>
       </tr>
     </tbody>
@@ -399,13 +398,13 @@ Loop Forever @ 255 3      @ loop forever</p>
       <tr>
         <td><span class="xref">System.Byte</span>[]</td>
         <td><span class="parametername">buffer</span></td>
-        <td><p>pointer to the wave_ids and optional command codes</p>
+        <td><p>pointer to the wave_ids and optional command codes.</p>
 </td>
       </tr>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">bufferSize</span></td>
-        <td><p>the number of bytes in buf</p>
+        <td><p>the number of bytes in buf.</p>
 </td>
       </tr>
     </tbody>
@@ -568,7 +567,7 @@ specified delay between the pulse and the next.</p>
 uint gpioOn;
 uint gpioOff;
 uint usDelay;
-} gpioPulse_t;</p>
+} gpioPulse_t;.</p>
 </div>
   
   
@@ -605,7 +604,7 @@ the current wave (see the C source for gpioWaveCreate for details).</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">waveId</span></td>
-        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate">GpioWaveCreate()</a></p>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate">GpioWaveCreate()</a>.</p>
 </blockquote>
 </td>
       </tr>
@@ -902,7 +901,7 @@ PI_NO_TX_WAVE (9999) - no wave being transmitted.</p>
     <tbody>
       <tr>
         <td><span class="xref">System.Int32</span></td>
-        <td><p>Returns the waveform id or one of the following special values:</p>
+        <td><p>Returns the waveform id or one of the following special values:.</p>
 </td>
       </tr>
     </tbody>
@@ -966,14 +965,14 @@ waveform before it has been synced to the new waveform.</p>
       <tr>
         <td><span class="xref">System.UInt32</span></td>
         <td><span class="parametername">waveId</span></td>
-        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate">GpioWaveCreate()</a></p>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate">GpioWaveCreate()</a>.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.WaveMode.html">WaveMode</a></td>
         <td><span class="parametername">waveMode</span></td>
-        <td><p>PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT, or one of their SYNC variants</p>
+        <td><p>PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT, or one of their SYNC variants.</p>
 </td>
       </tr>
     </tbody>
@@ -995,7 +994,7 @@ waveform before it has been synced to the new waveform.</p>
     </tbody>
   </table>
   <h5 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxSend_System_UInt32_Unosquare_PiGpio_NativeEnums_WaveMode__remarks">Remarks</h5>
-  <div class="markdown level1 remarks"><p>PI_WAVE_MODE_ONE_SHOT_SYNC, PI_WAVE_MODE_REPEAT_SYNC</p>
+  <div class="markdown level1 remarks"><p>PI_WAVE_MODE_ONE_SHOT_SYNC, PI_WAVE_MODE_REPEAT_SYNC.</p>
 </div>
   
   
