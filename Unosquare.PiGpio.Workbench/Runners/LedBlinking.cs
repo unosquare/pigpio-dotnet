@@ -1,7 +1,8 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
-    using System.Threading;
     using ManagedModel;
+    using Swan.Abstractions;
+    using System.Threading;
 
     internal class LedBlinking : RunnerBase
     {

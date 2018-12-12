@@ -7,12 +7,10 @@
 
     /// <summary>
     /// Represents the Raspberry Pi Board and provides
-    /// access to all GPIO initialization and functionality
+    /// access to all GPIO initialization and functionality.
     /// </summary>
     public static class Board
     {
-        private static readonly object SyncLock = new object();
-
         /// <summary>
         /// Initializes static members of the <see cref="Board"/> class.
         /// </summary>
@@ -53,7 +51,7 @@
         }
 
         /// <summary>
-        /// Gets a value indicating whether the board has been initialized
+        /// Gets a value indicating whether the board has been initialized.
         /// </summary>
         public static bool IsAvailable { get; private set; }
 
@@ -95,12 +93,12 @@
         public static GpioBank BankB { get; }
 
         /// <summary>
-        /// Provides timing and date functions
+        /// Provides timing and date functions.
         /// </summary>
         public static BoardTimingService Timing { get; }
 
         /// <summary>
-        /// Provides peripheral communication buses available to the board
+        /// Provides peripheral communication buses available to the board.
         /// </summary>
         public static BoardPeripheralsService Peripherals { get; }
 
@@ -111,7 +109,7 @@
         public static BoardWaveService Waves { get; }
 
         /// <summary>
-        /// Releases board resources
+        /// Releases board resources.
         /// </summary>
         public static void Release()
         {

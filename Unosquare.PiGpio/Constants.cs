@@ -5,7 +5,7 @@
     using System.Collections.Generic;
 
     /// <summary>
-    /// Defines the constants used by the libpigpio library
+    /// Defines the constants used by the libpigpio library.
     /// </summary>
     internal static class Constants
     {
@@ -181,10 +181,10 @@
 
         /// <summary>
         /// Gets the type of the board.
-        /// see: https://www.raspberrypi.org/documentation/hardware/raspberrypi/revision-codes/README.md
+        /// see: https://www.raspberrypi.org/documentation/hardware/raspberrypi/revision-codes/README.md.
         /// </summary>
         /// <param name="hardwareRevision">The hardware revision.</param>
-        /// <returns>The board type</returns>
+        /// <returns>The board type.</returns>
         internal static BoardType GetBoardType(long hardwareRevision)
         {
             if (hardwareRevision.IsBetween(2, 3))

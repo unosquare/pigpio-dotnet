@@ -2,6 +2,7 @@
 {
     using Runners;
     using Swan;
+    using Swan.Abstractions;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -20,7 +21,7 @@
                 new ButtonInterrupts(false),
                 new DhtSensor(false),
                 new Mpu6050(false),
-                new PiOled(true)
+                new PiOled(true),
             };
 
             $"Enabled Workbench Items: {workbenchItems.Count(wbi => wbi.IsEnabled)}".Info(nameof(Program));

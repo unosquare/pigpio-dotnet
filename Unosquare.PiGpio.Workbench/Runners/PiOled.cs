@@ -1,17 +1,18 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
+    using Peripherals;
+    using Swan;
+    using Swan.Abstractions;
     using System;
     using System.Diagnostics;
     using System.Drawing;
     using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
     using System.Threading;
-    using Peripherals;
-    using Swan;
 
     internal class PiOled : RunnerBase
     {
-        private OledDisplaySSD1306 Display;
+        private OledDisplaySSD1306 _display;
 
         internal PiOled(bool isEnabled)
             : base(isEnabled)
@@ -21,7 +22,7 @@
 
         protected override void Setup()
         {
-            Display = new OledDisplaySSD1306(OledDisplaySSD1306.DisplayModel.Display128x32);
+            _display = new OledDisplaySSD1306(OledDisplaySSD1306.DisplayModel.Display128x32);
         }
 
         protected override void DoBackgroundWork(CancellationToken ct)
@@ -35,7 +36,7 @@
             var cycleCount = 0;
             const double currentThreshold = 0.5d;
 
-            var bitmap = new Bitmap(Display.Width, Display.Height, PixelFormat.Format32bppArgb);
+            var bitmap = new Bitmap(_display.Width, _display.Height, PixelFormat.Format32bppArgb);
             var graphicPen = Pens.White;
             var graphics = Graphics.FromImage(bitmap);
             {
@@ -60,7 +61,7 @@
                 //    $"IP: {address} THIS IS SOME VERY LONG LINE",
                 //    $"THIS SHOULD NOT BE SHOWN");
                 graphics.Clear(Color.Black);
-                Display.DrawText(bitmap,
+                _display.DrawText(bitmap,
                    graphics,
                    $"X: {currentX,3}  Y: {currentY,3}",
                    $"Cycles: {cycleCount,6} T {currentThreshold:p}",
@@ -68,26 +69,26 @@
                    $"IP: {address}");
                 graphics.DrawEllipse(graphicPen, currentX, 24, 6, 6);
                 graphics.Flush();
-                Display.LoadBitmap(bitmap, currentThreshold, 0, 0);
-                Display[currentX, currentY] = true; // currentVal;
-                Display.Render();
+                _display.LoadBitmap(bitmap, currentThreshold, 0, 0);
+                _display[currentX, currentY] = true; // currentVal;
+                _display.Render();
 
                 currentX++;
                 frameCount += 1;
                 cycleCount += 1;
 
-                if (currentX >= Display.Width)
+                if (currentX >= _display.Width)
                 {
                     var elapsedSeconds = sw.Elapsed.TotalSeconds;
                     var framesPerSecond = frameCount / elapsedSeconds;
-                    $"Contrast: {Display.Contrast}. X: {currentX} Y: {currentY} Frames: {cycleCount:0} Elapsed {elapsedSeconds:0.000} FPS: {framesPerSecond:0.000}".Info(Name);
+                    $"Contrast: {_display.Contrast}. X: {currentX} Y: {currentY} Frames: {cycleCount:0} Elapsed {elapsedSeconds:0.000} FPS: {framesPerSecond:0.000}".Info(Name);
                     sw.Restart();
                     frameCount = 0;
                     currentX = 0;
                     currentY += 1;
                 }
 
-                if (currentY >= Display.Height)
+                if (currentY >= _display.Height)
                 {
                     currentY = 0;
                     currentVal = !currentVal;
@@ -105,7 +106,7 @@
 
         protected override void Cleanup()
         {
-            Display.Dispose();
+            _display.Dispose();
         }
     }
 }

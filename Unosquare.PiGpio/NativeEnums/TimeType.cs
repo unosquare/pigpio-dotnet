@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Time Type enumeration
+    /// Time Type enumeration.
     /// </summary>
     public enum TimeType
     {

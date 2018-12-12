@@ -3,7 +3,7 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// Represents raw waveform information
+    /// Represents raw waveform information.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class RawWaveInformation
@@ -22,22 +22,22 @@
         #endregion
 
         /// <summary>
-        /// first CB used by wave
+        /// first CB used by wave.
         /// </summary>
         public ushort BottomCB { get => m_BottomCB; set => m_BottomCB = value; }
 
         /// <summary>
-        /// last CB used by wave
+        /// last CB used by wave.
         /// </summary>
         public ushort TopCB { get => m_TopCB; set => m_TopCB = value; }
 
         /// <summary>
-        /// last OOL used by wave
+        /// last OOL used by wave.
         /// </summary>
         public ushort BottomOOL { get => m_BottomOOL; set => m_BottomOOL = value; }
 
         /// <summary>
-        /// first OOL used by wave
+        /// first OOL used by wave.
         /// </summary>
         public ushort TopOOL { get => m_TopOOL; set => m_TopOOL = value; }
 

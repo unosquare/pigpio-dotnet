@@ -17,14 +17,14 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="spi">a pointer to a spi object</param>
-        /// <param name="offset">microseconds from the start of the waveform</param>
-        /// <param name="spiSS">the slave select GPIO</param>
-        /// <param name="buffer">the bits to transmit, most significant bit first</param>
-        /// <param name="spiTxBits">the number of bits to write</param>
-        /// <param name="spiBitFirst">the first bit to read</param>
-        /// <param name="spiBitLast">the last bit to read</param>
-        /// <param name="spiBits">the number of bits to transfer</param>
+        /// <param name="spi">a pointer to a spi object.</param>
+        /// <param name="offset">microseconds from the start of the waveform.</param>
+        /// <param name="spiSS">the slave select GPIO.</param>
+        /// <param name="buffer">the bits to transmit, most significant bit first.</param>
+        /// <param name="spiTxBits">the number of bits to write.</param>
+        /// <param name="spiBitFirst">the first bit to read.</param>
+        /// <param name="spiBitLast">the last bit to read.</param>
+        /// <param name="spiBits">the number of bits to transfer.</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_SER_OFFSET, or PI_TOO_MANY_PULSES.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveAddSPI")]
         public static extern int RawWaveAddSPI(RawSpiData spi, uint offset, uint spiSS, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint spiTxBits, uint spiBitFirst, uint spiBitLast, uint spiBits);
@@ -46,8 +46,8 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="numPulses">the number of pulses</param>
-        /// <param name="pulses">the array containing the pulses</param>
+        /// <param name="numPulses">the number of pulses.</param>
+        /// <param name="pulses">the array containing the pulses.</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_TOO_MANY_PULSES.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveAddGeneric")]
         public static extern int RawWaveAddGeneric(uint numPulses, [In, MarshalAs(UnmanagedType.LPArray)] RawWave[] pulses);
@@ -64,7 +64,7 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="controlBlockNumber">the cb of interest</param>
+        /// <param name="controlBlockNumber">the cb of interest.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveCBAdr")]
         public static extern RawCBS RawWaveCBAdr(int controlBlockNumber);
@@ -84,8 +84,8 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="position">the position of interest</param>
-        /// <param name="value">the value to write</param>
+        /// <param name="position">the position of interest.</param>
+        /// <param name="value">the value to write.</param>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveSetOOL")]
         public static extern void RawWaveSetOOL(int position, uint value);
 
@@ -109,8 +109,8 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="position">the position of interest</param>
-        /// <param name="value">the value to write</param>
+        /// <param name="position">the position of interest.</param>
+        /// <param name="value">the value to write.</param>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveSetOut")]
         [Obsolete("use rawWaveSetOOL instead")]
         public static extern void RawWaveSetOut(int position, uint value);
@@ -122,7 +122,7 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="position">the position of interest</param>
+        /// <param name="position">the position of interest.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveGetIn")]
         [Obsolete("use rawWaveGetOOL instead")]
@@ -135,8 +135,8 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="position">the position of interest</param>
-        /// <param name="value">the value to write</param>
+        /// <param name="position">the position of interest.</param>
+        /// <param name="value">the value to write.</param>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveSetIn")]
         [Obsolete("use rawWaveSetOOL instead")]
         public static extern void RawWaveSetIn(int position, uint value);
@@ -146,7 +146,7 @@
         ///
         /// Not intended for general use.
         /// </summary>
-        /// <param name="waveId">the wave of interest</param>
+        /// <param name="waveId">the wave of interest.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "rawWaveInfo")]
         public static extern RawWaveInformation RawWaveInfo(int waveId);

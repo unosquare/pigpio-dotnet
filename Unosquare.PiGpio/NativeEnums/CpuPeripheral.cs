@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Defines the 2 different CPU peripherals for DMA
+    /// Defines the 2 different CPU peripherals for DMA.
     /// </summary>
     public enum CpuPeripheral
     {

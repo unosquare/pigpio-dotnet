@@ -89,8 +89,8 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="numPulses">the number of pulses</param>
-        /// <param name="pulses">an array of pulses</param>
+        /// <param name="numPulses">the number of pulses.</param>
+        /// <param name="pulses">an array of pulses.</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_TOO_MANY_PULSES.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveAddGeneric")]
         public static extern int GpioWaveAddGeneric(uint numPulses, [In, MarshalAs(UnmanagedType.LPArray)] GpioPulse[] pulses);
@@ -135,13 +135,13 @@
         /// gpioWaveAddSerial(4, 9600, 8, 2, 1000000, MSG_LEN, data);
         /// </code>
         /// </example>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="baudRate">50-1000000</param>
-        /// <param name="dataBits">1-32</param>
-        /// <param name="stopBits">2-8</param>
-        /// <param name="offset">&gt;=0</param>
-        /// <param name="numBytes">&gt;=1</param>
-        /// <param name="str">an array of chars (which may contain nulls)</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="baudRate">50-1000000.</param>
+        /// <param name="dataBits">1-32.</param>
+        /// <param name="stopBits">2-8.</param>
+        /// <param name="offset">&gt;=0.</param>
+        /// <param name="numBytes">&gt;=1.</param>
+        /// <param name="str">an array of chars (which may contain nulls).</param>
         /// <returns>Returns the new total number of pulses in the current waveform if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_WAVE_BAUD, PI_BAD_DATABITS, PI_BAD_STOPBITS, PI_TOO_MANY_CHARS, PI_BAD_SER_OFFSET, or PI_TOO_MANY_PULSES.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveAddSerial")]
         public static extern int GpioWaveAddSerial(UserGpio userGpio, uint baudRate, uint dataBits, uint stopBits, uint offset, uint numBytes, [In, MarshalAs(UnmanagedType.LPArray)] byte[] str);
@@ -193,7 +193,7 @@
         ///    uint gpioOn;
         ///    uint gpioOff;
         ///    uint usDelay;
-        /// } gpioPulse_t;
+        /// } gpioPulse_t;.
         /// </remarks>
         /// <returns>Returns the new waveform id if OK, otherwise PI_EMPTY_WAVEFORM, PI_NO_WAVEFORM_ID, PI_TOO_MANY_CBS, or PI_TOO_MANY_OOL.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveCreate")]
@@ -214,7 +214,7 @@
         /// Wave ids are allocated in order, 0, 1, 2, etc.
         ///
         /// </summary>
-        /// <param name="waveId">&gt;=0, as returned by <see cref="GpioWaveCreate"/></param>
+        /// <param name="waveId">&gt;=0, as returned by <see cref="GpioWaveCreate"/>.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_WAVE_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveDelete")]
         public static extern ResultCode GpioWaveDelete(uint waveId);
@@ -233,10 +233,10 @@
         /// otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.
         /// </summary>
         /// <remarks>
-        ///            PI_WAVE_MODE_ONE_SHOT_SYNC, PI_WAVE_MODE_REPEAT_SYNC
+        ///            PI_WAVE_MODE_ONE_SHOT_SYNC, PI_WAVE_MODE_REPEAT_SYNC.
         /// </remarks>
-        /// <param name="waveId">&gt;=0, as returned by <see cref="GpioWaveCreate"/></param>
-        /// <param name="waveMode">PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT, or one of their SYNC variants</param>
+        /// <param name="waveId">&gt;=0, as returned by <see cref="GpioWaveCreate"/>.</param>
+        /// <param name="waveMode">PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT, or one of their SYNC variants.</param>
         /// <returns>Returns the number of DMA control blocks in the waveform if OK, otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveTxSend")]
         public static extern int GpioWaveTxSend(uint waveId, WaveMode waveMode);
@@ -329,8 +329,8 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="buffer">pointer to the wave_ids and optional command codes</param>
-        /// <param name="bufferSize">the number of bytes in buf</param>
+        /// <param name="buffer">pointer to the wave_ids and optional command codes.</param>
+        /// <param name="bufferSize">the number of bytes in buf.</param>
         /// <returns>Returns 0 if OK, otherwise PI_CHAIN_NESTING, PI_CHAIN_LOOP_CNT, PI_BAD_CHAIN_LOOP, PI_BAD_CHAIN_CMD, PI_CHAIN_COUNTER, PI_BAD_CHAIN_DELAY, PI_CHAIN_TOO_BIG, or PI_BAD_WAVE_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveChain")]
         public static extern ResultCode GpioWaveChain([In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint bufferSize);
@@ -342,7 +342,7 @@
         /// PI_WAVE_NOT_FOUND (9998) - transmitted wave not found.
         /// PI_NO_TX_WAVE (9999) - no wave being transmitted.
         /// </summary>
-        /// <returns>Returns the waveform id or one of the following special values:</returns>
+        /// <returns>Returns the waveform id or one of the following special values:.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWaveTxAt")]
         public static extern int GpioWaveTxAt();
 

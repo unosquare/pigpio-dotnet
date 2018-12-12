@@ -67,7 +67,7 @@
         /// This sends a single bit (in the Rd/Wr bit) to the device associated
         /// with handle.
         /// </summary>
-        /// <param name="mode">The mode (write is 0, read is 1)</param>
+        /// <param name="mode">The mode (write is 0, read is 1).</param>
         public void SetMode(I2cQuickMode mode) =>
             BoardException.ValidateResult(I2c.I2cWriteQuick(Handle, mode));
 
@@ -135,7 +135,7 @@
         /// <summary>
         /// This reads a single byte from the device associated with handle.
         /// </summary>
-        /// <returns>The value read</returns>
+        /// <returns>The value read.</returns>
         public byte ReadByte() =>
             I2c.I2cReadByte(Handle);
 
@@ -144,7 +144,7 @@
         /// associated with handle.
         /// </summary>
         /// <param name="register">The register.</param>
-        /// <returns>The read value</returns>
+        /// <returns>The read value.</returns>
         public byte ReadByte(byte register) =>
             I2c.I2cReadByteData(Handle, register);
 
@@ -153,7 +153,7 @@
         /// associated with handle.
         /// </summary>
         /// <param name="register">The register.</param>
-        /// <returns>The word data</returns>
+        /// <returns>The word data.</returns>
         public ushort ReadWord(byte register) =>
             I2c.I2cReadWordData(Handle, register);
 
@@ -163,7 +163,7 @@
         /// The amount of returned data is set by the device.
         /// </summary>
         /// <param name="register">The register.</param>
-        /// <returns>The data read from the device</returns>
+        /// <returns>The data read from the device.</returns>
         public byte[] ReadBlock(byte register) =>
             I2c.I2cReadBlockData(Handle, register);
 
@@ -173,7 +173,7 @@
         /// </summary>
         /// <param name="register">The register.</param>
         /// <param name="count">The count.</param>
-        /// <returns>The data read from the device</returns>
+        /// <returns>The data read from the device.</returns>
         public byte[] ReadBlock(byte register, int count) =>
             I2c.I2cReadI2cBlockData(Handle, register, count);
 
@@ -181,7 +181,7 @@
         /// This reads count bytes from the raw device into buf.
         /// </summary>
         /// <param name="count">The count.</param>
-        /// <returns>The raw byte data</returns>
+        /// <returns>The raw byte data.</returns>
         public byte[] ReadRaw(int count) =>
             I2c.I2cReadDevice(Handle, count);
 
@@ -196,7 +196,7 @@
         /// </summary>
         /// <param name="register">The register.</param>
         /// <param name="buffer">The buffer.</param>
-        /// <returns>The bytes that were read</returns>
+        /// <returns>The bytes that were read.</returns>
         public byte[] Transfer(byte register, byte[] buffer)
         {
             if (buffer.Length == 2)
@@ -220,7 +220,7 @@
         /// Scans the bus for available devices.
         /// </summary>
         /// <param name="bus">The bus.</param>
-        /// <returns>The devices that were found on the given bus</returns>
+        /// <returns>The devices that were found on the given bus.</returns>
         internal static byte[] ScanBus(I2cBusId bus)
         {
             const byte startAddress = 0;

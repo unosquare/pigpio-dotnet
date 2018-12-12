@@ -25,27 +25,27 @@
         #endregion
 
         /// <summary>
-        /// Write
+        /// Write.
         /// </summary>
         public uint Control { get => m_Control; set => m_Control = value; }
 
         /// <summary>
-        /// The rx count
+        /// The rx count.
         /// </summary>
         public int ReceiveCount { get => m_ReceiveCount; set => m_ReceiveCount = value; }
 
         /// <summary>
-        /// Read only
+        /// Read only.
         /// </summary>
         public byte[] ReceiveBuffer { get => m_ReceiveBuffer; set => m_ReceiveBuffer = value; }
 
         /// <summary>
-        /// Write
+        /// Write.
         /// </summary>
         public int SendCount { get => m_SendCount; set => m_SendCount = value; }
 
         /// <summary>
-        /// Write
+        /// Write.
         /// </summary>
         public byte[] SendBuffer { get => m_SendBuffer; set => m_SendBuffer = value; }
     }

@@ -79,7 +79,7 @@
         /// Transfers the specified transmit buffer and returns the read bytes in a new buffer.
         /// </summary>
         /// <param name="transmitBuffer">The transmit buffer.</param>
-        /// <returns>The received bytes as a result of writing to the ring buffer</returns>
+        /// <returns>The received bytes as a result of writing to the ring buffer.</returns>
         public byte[] Transfer(byte[] transmitBuffer)
         {
             if (_isDisposed)

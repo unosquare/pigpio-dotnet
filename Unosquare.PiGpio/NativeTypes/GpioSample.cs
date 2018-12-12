@@ -3,7 +3,7 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// Represents sGPIO ample data
+    /// Represents sGPIO ample data.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class GpioSample
@@ -17,7 +17,7 @@
         public uint Tick { get => m_Tick; set => m_Tick = value; }
 
         /// <summary>
-        /// The level (0 or 1)
+        /// The level (0 or 1).
         /// </summary>
         public uint Level { get => m_Level; set => m_Level = value; }
     }

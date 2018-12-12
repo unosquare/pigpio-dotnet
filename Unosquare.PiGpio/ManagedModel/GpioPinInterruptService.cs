@@ -80,7 +80,7 @@
         /// <param name="edgeDetection">The edge detection.</param>
         /// <param name="timeoutMilliseconds">The timeout milliseconds.</param>
         /// <exception cref="ArgumentNullException">callback - Use Stop first.</exception>
-        /// <exception cref="ArgumentException">A callback is already registered. Clear the current callback before registering a new one. - callback</exception>
+        /// <exception cref="ArgumentException">A callback is already registered. Clear the current callback before registering a new one. - callback.</exception>
         public void Start(PiGpioIsrDelegate callback, EdgeDetection edgeDetection, int timeoutMilliseconds)
         {
             ValidateAvailable();
@@ -106,9 +106,9 @@
         /// Starts the hardware ISR callbacks.
         /// </summary>
         /// <param name="callback">The callback.</param>
-        /// <exception cref="NotSupportedException">IsUserGpio is false</exception>
-        /// <exception cref="ArgumentNullException">callback - ClearAlertCallback</exception>
-        /// <exception cref="ArgumentException">A callback is already registered. Clear the current callback before registering a new one. - callback</exception>
+        /// <exception cref="NotSupportedException">IsUserGpio is false.</exception>
+        /// <exception cref="ArgumentNullException">callback - ClearAlertCallback.</exception>
+        /// <exception cref="ArgumentException">A callback is already registered. Clear the current callback before registering a new one. - callback.</exception>
         public void Start(PiGpioIsrDelegate callback)
         {
             Start(callback, EdgeDetection, TimeoutMilliseconds);

@@ -67,7 +67,7 @@
         ///
         /// See <see cref="GpioNotifyOpen"/> for further details.
         /// </summary>
-        /// <param name="bufferSize">The pipe size of the the buffer</param>
+        /// <param name="bufferSize">The pipe size of the the buffer.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         public static UIntPtr GpioNotifyOpenWithSize(int bufferSize)
         {
@@ -125,10 +125,10 @@
         ///    uint16_t flags;
         ///    uint tick;
         ///    uint level;
-        /// } gpioReport_t;
+        /// } gpioReport_t;.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
-        /// <param name="bitMask">a bit mask indicating the GPIO of interest</param>
+        /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/>.</param>
+        /// <param name="bitMask">a bit mask indicating the GPIO of interest.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioNotifyBegin")]
         public static extern ResultCode GpioNotifyBegin(UIntPtr handle, BitMask bitMask);
@@ -145,7 +145,7 @@
         /// gpioNotifyPause(h);
         /// </code>
         /// </example>
-        /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/>.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioNotifyPause")]
         public static extern ResultCode GpioNotifyPause(UIntPtr handle);
@@ -160,7 +160,7 @@
         /// gpioNotifyClose(h);
         /// </code>
         /// </example>
-        /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/>.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioNotifyClose")]
         public static extern ResultCode GpioNotifyClose(UIntPtr handle);
@@ -185,8 +185,8 @@
         /// eventMonitor(h, 0xC8);
         /// </code>
         /// </example>
-        /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/></param>
-        /// <param name="bitMask">a bit mask indicating the events of interest</param>
+        /// <param name="handle">&gt;=0, as returned by <see cref="GpioNotifyOpen"/>.</param>
+        /// <param name="bitMask">a bit mask indicating the events of interest.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "eventMonitor")]
         public static extern ResultCode EventMonitor(UIntPtr handle, BitMask bitMask);
@@ -201,8 +201,8 @@
         ///
         /// The callback may be cancelled by passing NULL as the function.
         /// </summary>
-        /// <param name="eventId">0-31</param>
-        /// <param name="callback">the callback function</param>
+        /// <param name="eventId">0-31.</param>
+        /// <param name="callback">the callback function.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "eventSetFunc")]
         public static extern ResultCode EventSetFunc(uint eventId, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioEventDelegate callback);
@@ -220,9 +220,9 @@
         /// Only one of <see cref="EventSetFunc"/> <see cref="EventSetFuncEx"/> can be
         /// registered per event.
         /// </summary>
-        /// <param name="eventId">0-31</param>
-        /// <param name="callback">the callback function</param>
-        /// <param name="userData">pointer to arbitrary user data</param>
+        /// <param name="eventId">0-31.</param>
+        /// <param name="callback">the callback function.</param>
+        /// <param name="userData">pointer to arbitrary user data.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "eventSetFuncEx")]
         public static extern ResultCode EventSetFuncEx(uint eventId, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioEventExDelegate callback, UIntPtr userData);
@@ -243,7 +243,7 @@
         /// Note that other than its id and its tick there is no data associated
         /// with an event.
         /// </summary>
-        /// <param name="eventId">0-31, the event</param>
+        /// <param name="eventId">0-31, the event.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "eventTrigger")]
         public static extern ResultCode EventTrigger(uint eventId);

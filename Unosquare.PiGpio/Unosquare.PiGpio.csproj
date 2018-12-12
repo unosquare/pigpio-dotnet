@@ -7,6 +7,7 @@
     <Authors>Mario Di Vece and Contributors to the pigpio-dotnet project</Authors>
     <Company>Unosquare SA de CV</Company>
     <Product>Unosquare.PiGpio</Product>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>Contains native and managed APIs to accress the libpigpio library</Description>
     <Copyright>Unosquare SA de CV, Mario Di Vece, and Contributors, (C) 2017-2018</Copyright>
     <PackageProjectUrl>https://github.com/unosquare/pigpio-dotnet</PackageProjectUrl>
@@ -16,25 +17,19 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Raspberry Pi, GPIO, ISR, DMA, Clock, I2C, SPI, UART</PackageTags>
     <AssemblyName>pigpio-dotnet</AssemblyName>
-    <Platforms>AnyCPU</Platforms>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <AssemblyVersion>1.67.0.1</AssemblyVersion>
     <FileVersion>1.67.0.1</FileVersion>
-    <LangVersion>latest</LangVersion>
-	<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-	<PackageId>Unosquare.PiGpio</PackageId>
+    <LangVersion>7.2</LangVersion>
   </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-    <NoWarn />
-  </PropertyGroup>
-  
+
   <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.0.2" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.1-beta.61">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
-  
+
 </Project>

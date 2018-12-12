@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Defines the edge detection strategies
+    /// Defines the edge detection strategies.
     /// </summary>
     public enum EdgeDetection : int
     {

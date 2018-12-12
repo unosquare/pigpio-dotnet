@@ -5,11 +5,11 @@
     using System;
 
     /// <summary>
-    /// A class representing a GPIO port (pin)
+    /// A class representing a GPIO port (pin).
     /// </summary>
     public sealed class GpioPin
     {
-        private GpioPullMode m_PullMode = GpioPullMode.Off;
+        private GpioPullMode m_PullMode;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GpioPin"/> class.

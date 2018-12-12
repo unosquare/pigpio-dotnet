@@ -3,7 +3,7 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// An I2C Message Segment
+    /// An I2C Message Segment.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public class I2CMessageSegment
@@ -22,22 +22,22 @@
         #endregion
 
         /// <summary>
-        /// Slave address
+        /// Slave address.
         /// </summary>
         public ushort Address { get => m_Address; set => m_Address = value; }
 
         /// <summary>
-        /// The flags
+        /// The flags.
         /// </summary>
         public ushort Flags { get => m_Flags; set => m_Flags = value; }
 
         /// <summary>
-        /// msg length
+        /// msg length.
         /// </summary>
         public ushort Length { get => m_Length; set => m_Length = value; }
 
         /// <summary>
-        /// pointer to msg data
+        /// pointer to msg data.
         /// </summary>
         public byte[] Buffer { get => m_Buffer; set => m_Buffer = value; }
     }

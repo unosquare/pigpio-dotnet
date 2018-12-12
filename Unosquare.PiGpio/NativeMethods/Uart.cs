@@ -20,8 +20,8 @@
         ///
         /// No flags are currently defined.  This parameter should be set to zero.
         /// </summary>
-        /// <param name="sertty">the serial device to open</param>
-        /// <param name="baud">the baud rate in bits per second, see below</param>
+        /// <param name="sertty">the serial device to open.</param>
+        /// <param name="baud">the baud rate in bits per second, see below.</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_NO_HANDLE, or PI_SER_OPEN_FAILED.</returns>
         public static UIntPtr SerOpen(string sertty, UartRate baud)
         {
@@ -33,7 +33,7 @@
         /// This function closes the serial device associated with handle.
         ///
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/>.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serClose")]
         public static extern ResultCode SerClose(UIntPtr handle);
@@ -43,7 +43,7 @@
         ///
         /// If no data is ready PI_SER_READ_NO_DATA is returned.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/>.</param>
         /// <returns>Returns the read byte (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_SER_READ_NO_DATA, or PI_SER_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serReadByte")]
         public static extern int SerReadByte(UIntPtr handle);
@@ -52,7 +52,7 @@
         /// This function writes bVal to the serial port associated with handle.
         /// PI_SER_WRITE_FAILED.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen" /></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen" />.</param>
         /// <param name="byteValue">The byte value.</param>
         /// <returns>
         /// Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_WRITE_FAILED.
@@ -66,9 +66,9 @@
         ///
         /// If no data is ready zero is returned.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/></param>
-        /// <param name="buffer">an array to receive the read data</param>
-        /// <param name="count">the maximum number of bytes to read</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/>.</param>
+        /// <param name="buffer">an array to receive the read data.</param>
+        /// <param name="count">the maximum number of bytes to read.</param>
         /// <returns>Returns the number of bytes read (&gt;0=) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_READ_NO_DATA.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serRead")]
         public static extern int SerRead(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
@@ -79,9 +79,9 @@
         ///
         /// PI_SER_WRITE_FAILED.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/></param>
-        /// <param name="buffer">the array of bytes to write</param>
-        /// <param name="count">the number of bytes to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/>.</param>
+        /// <param name="buffer">the array of bytes to write.</param>
+        /// <param name="count">the number of bytes to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_SER_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serWrite")]
         public static extern ResultCode SerWrite(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
@@ -92,7 +92,7 @@
         ///
         /// otherwise PI_BAD_HANDLE.
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="SerOpen"/>.</param>
         /// <returns>Returns the number of bytes of data available (&gt;=0) if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serDataAvailable")]
         public static extern int SerDataAvailable(UIntPtr handle);
@@ -110,9 +110,9 @@
         ///
         /// No flags are currently defined.  This parameter should be set to zero.
         /// </summary>
-        /// <param name="sertty">the serial device to open</param>
-        /// <param name="baud">the baud rate in bits per second, see below</param>
-        /// <param name="serFlags">0</param>
+        /// <param name="sertty">the serial device to open.</param>
+        /// <param name="baud">the baud rate in bits per second, see below.</param>
+        /// <param name="serFlags">0.</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_NO_HANDLE, or PI_SER_OPEN_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "serOpen")]
         private static extern int SerOpenUnmanaged(string sertty, uint baud, uint serFlags);

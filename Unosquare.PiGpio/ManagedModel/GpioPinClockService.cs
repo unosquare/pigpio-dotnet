@@ -38,7 +38,7 @@
         /// All pins sharing the clock channel and running in clock mode will get theis new frequency.
         /// The frequency must be 0 (off) or 4689-250,000,000 (250M) Hz.
         /// </summary>
-        /// <param name="frequency">The frequency. 0 (off) or 4689-250000000 (250M)</param>
+        /// <param name="frequency">The frequency. 0 (off) or 4689-250000000 (250M).</param>
         public void Start(int frequency)
         {
             if (ClockChannel < 0) return;
@@ -46,7 +46,7 @@
         }
 
         /// <summary>
-        /// Stops the hardware clock on this pin
+        /// Stops the hardware clock on this pin.
         /// </summary>
         public void Stop()
         {

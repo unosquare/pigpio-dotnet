@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// Provides a base implementation of a GPIO Pin Service
+    /// Provides a base implementation of a GPIO Pin Service.
     /// </summary>
     public abstract class GpioPinServiceBase
     {

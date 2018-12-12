@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Enumerates the different wave modes
+    /// Enumerates the different wave modes.
     /// </summary>
     public enum WaveMode
     {

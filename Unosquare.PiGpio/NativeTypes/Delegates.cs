@@ -86,13 +86,13 @@
     public delegate void PiGpioEventExDelegate(int eventId, uint tick, UIntPtr userData);
 
     /// <summary>
-    /// Defines a callback to be executed when the OS sends a signal
+    /// Defines a callback to be executed when the OS sends a signal.
     /// </summary>
     /// <param name="signalNumber">The OS signal number.</param>
     public delegate void PiGpioSignalDelegate(int signalNumber);
 
     /// <summary>
-    /// Defines a callback to be executed when the OS sends a signal
+    /// Defines a callback to be executed when the OS sends a signal.
     /// </summary>
     /// <param name="signalNumber">The OS signal number.</param>
     /// <param name="userData">The user data.</param>

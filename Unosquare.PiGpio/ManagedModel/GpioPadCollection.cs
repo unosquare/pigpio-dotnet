@@ -6,7 +6,7 @@
     using System.Collections.ObjectModel;
 
     /// <summary>
-    /// A collection of GPIO electrical pads
+    /// A collection of GPIO electrical pads.
     /// </summary>
     public sealed class GpioPadCollection
         : ReadOnlyDictionary<GpioPadId, GpioPad>
@@ -23,7 +23,7 @@
         /// <summary>
         /// Creates the internal collection.
         /// </summary>
-        /// <returns>The items in the collection</returns>
+        /// <returns>The items in the collection.</returns>
         private static Dictionary<GpioPadId, GpioPad> CreateInternalCollection()
         {
             var enumValues = Enum.GetValues(typeof(GpioPadId));

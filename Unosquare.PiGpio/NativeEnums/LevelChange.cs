@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Enumerates the different change states for edge detection
+    /// Enumerates the different change states for edge detection.
     /// </summary>
     public enum LevelChange
     {

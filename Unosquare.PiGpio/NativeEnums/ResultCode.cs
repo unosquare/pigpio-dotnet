@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// Defines the different operation result codes from calling pigpio API.
-    /// 0 is OK. Anything negative is an error
+    /// 0 is OK. Anything negative is an error.
     /// </summary>
     public enum ResultCode : int
     {

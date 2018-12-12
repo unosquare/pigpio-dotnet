@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// SPI Open Flags
+    /// SPI Open Flags.
     /// </summary>
     [Flags]
     public enum SpiFlags

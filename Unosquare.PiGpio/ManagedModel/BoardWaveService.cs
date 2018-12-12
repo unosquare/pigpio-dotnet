@@ -3,7 +3,7 @@
     using NativeMethods;
 
     /// <summary>
-    /// Provides a a pin service to generate pulses with microsecond precision
+    /// Provides a a pin service to generate pulses with microsecond precision.
     /// </summary>
     /// <seealso cref="GpioPinServiceBase" />
     public sealed class BoardWaveService
@@ -38,7 +38,7 @@
         public int MaxDurationMicroSecs { get; }
 
         /// <summary>
-        /// Gets a value indicating whether a waveform is being transmitted
+        /// Gets a value indicating whether a waveform is being transmitted.
         /// </summary>
         public bool IsBusy => Waves.GpioWaveTxBusy() > 0;
 
@@ -63,7 +63,7 @@
         /// <summary>
         /// Creates the wave.
         /// </summary>
-        /// <returns>A wave builder object to create and transmit PWM waves</returns>
+        /// <returns>A wave builder object to create and transmit PWM waves.</returns>
         public WaveBuilder CreateWave() => new WaveBuilder();
     }
 }

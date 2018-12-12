@@ -2,8 +2,9 @@
 {
     using ManagedModel;
     using NativeEnums;
-    using System.Threading;
     using Swan;
+    using Swan.Abstractions;
+    using System.Threading;
 
     internal class ButtonInterrupts : RunnerBase
     {

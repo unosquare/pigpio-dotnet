@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Enumerates the different SPI Channels
+    /// Enumerates the different SPI Channels.
     /// </summary>
     public enum SpiChannelId
     {

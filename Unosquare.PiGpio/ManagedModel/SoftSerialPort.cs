@@ -5,12 +5,12 @@
     using System;
 
     /// <summary>
-    /// Provides a software based (bit-banged Serial Port)
+    /// Provides a software based (bit-banged Serial Port).
     /// </summary>
     public sealed class SoftSerialPort : IDisposable
     {
+        private readonly GpioPin _transmitPin;
         private bool _isDisposed;
-        private GpioPin TransmitPin;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="SoftSerialPort"/> class.
@@ -35,11 +35,11 @@
                 Invert = true;
             }
 
-            TransmitPin = transmitPin;
+            _transmitPin = transmitPin;
         }
 
         /// <summary>
-        /// Gets or sets the stop bits. Defaults to 2 stop bits
+        /// Gets or sets the stop bits. Defaults to 2 stop bits.
         /// </summary>
         public int StopBits { get; set; } = 2;
 
@@ -67,7 +67,7 @@
         /// Reads up to count bytes.
         /// </summary>
         /// <param name="count">The count.</param>
-        /// <returns>The bytes that were read</returns>
+        /// <returns>The bytes that were read.</returns>
         public byte[] Read(int count) =>
             Serial.GpioSerialRead(Handle, count);
 
@@ -80,7 +80,7 @@
             Waves.GpioWaveClear();
             BoardException.ValidateResult(
                 Waves.GpioWaveAddSerial(
-                    (UserGpio)TransmitPin.PinNumber,
+                    (UserGpio)_transmitPin.PinNumber,
                     Convert.ToUInt32(BaudRate),
                     Convert.ToUInt32(DataBits),
                     Convert.ToUInt32(StopBits),

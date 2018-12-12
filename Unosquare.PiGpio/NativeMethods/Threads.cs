@@ -21,9 +21,9 @@
         /// See <see cref="GpioSetTimerFunc"/> for further details.
         /// </summary>
         /// <param name="timer">0-9.</param>
-        /// <param name="millisecondsTimeout">10-60000</param>
-        /// <param name="callback">the function to call</param>
-        /// <param name="userData">a pointer to arbitrary user data</param>
+        /// <param name="millisecondsTimeout">10-60000.</param>
+        /// <param name="callback">the function to call.</param>
+        /// <param name="userData">a pointer to arbitrary user data.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMER, PI_BAD_MS, or PI_TIMER_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetTimerFuncEx")]
         public static extern ResultCode GpioSetTimerFuncEx(TimerId timer, uint millisecondsTimeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioTimerExDelegate callback, UIntPtr userData);
@@ -49,9 +49,9 @@
         /// gpioSetTimerFunc(0, 2000, bFunction);
         /// </code>
         /// </example>
-        /// <param name="timer">0-9</param>
-        /// <param name="periodMilliseconds">10-60000</param>
-        /// <param name="callback">the function to call</param>
+        /// <param name="timer">0-9.</param>
+        /// <param name="periodMilliseconds">10-60000.</param>
+        /// <param name="callback">the function to call.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMER, PI_BAD_MS, or PI_TIMER_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetTimerFunc")]
         public static extern ResultCode GpioSetTimerFunc(TimerId timer, uint periodMilliseconds, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioTimerDelegate callback);
@@ -101,8 +101,8 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="callback">the main function for the new thread</param>
-        /// <param name="userData">a pointer to arbitrary user data</param>
+        /// <param name="callback">the main function for the new thread.</param>
+        /// <param name="userData">a pointer to arbitrary user data.</param>
         /// <returns>Returns a pointer to pthread_t if OK, otherwise NULL.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioStartThread")]
         public static extern UIntPtr GpioStartThread([In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioThreadDelegate callback, UIntPtr userData);
@@ -114,7 +114,7 @@
         ///
         /// The thread to be stopped should have been started with <see cref="GpioStartThread"/>.
         /// </summary>
-        /// <param name="handle">a thread pointer returned by <see cref="GpioStartThread"/></param>
+        /// <param name="handle">a thread pointer returned by <see cref="GpioStartThread"/>.</param>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioStopThread")]
         public static extern void GpioStopThread(UIntPtr handle);
 
@@ -122,7 +122,7 @@
         /// Delays for at least the number of microseconds specified by micros.
         /// Delays of 100 microseconds or less use busy waits.
         /// </summary>
-        /// <param name="microSecs">the number of microseconds to sleep</param>
+        /// <param name="microSecs">the number of microseconds to sleep.</param>
         /// <returns>Returns the actual length of the delay in microseconds.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioDelay")]
         public static extern uint GpioDelay(uint microSecs);
@@ -151,18 +151,18 @@
         /// gpioSleep(PI_TIME_RELATIVE, 60, 0);     // sleep for one minute
         /// </code>
         /// </example>
-        /// <param name="timeType">0 (relative), 1 (absolute)</param>
-        /// <param name="secs">seconds to sleep</param>
-        /// <param name="microSecs">microseconds to sleep</param>
+        /// <param name="timeType">0 (relative), 1 (absolute).</param>
+        /// <param name="secs">seconds to sleep.</param>
+        /// <param name="microSecs">microseconds to sleep.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMETYPE, PI_BAD_SECONDS, or PI_BAD_MICROS.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSleep")]
         public static extern ResultCode GpioSleep(TimeType timeType, int secs, int microSecs);
 
         /// <summary>
-        /// Delay execution for a given number of seconds
+        /// Delay execution for a given number of seconds.
         ///
         /// </summary>
-        /// <param name="seconds">the number of seconds to sleep</param>
+        /// <param name="seconds">the number of seconds to sleep.</param>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "time_sleep")]
         public static extern void TimeSleep(double seconds);
     }

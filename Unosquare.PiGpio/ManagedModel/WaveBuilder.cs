@@ -46,7 +46,7 @@
         /// Adds a pulse.
         /// </summary>
         /// <param name="pulse">The pulse.</param>
-        /// <exception cref="InvalidOperationException">When the wave has been prepared</exception>
+        /// <exception cref="InvalidOperationException">When the wave has been prepared.</exception>
         public void AddPulse(GpioPulse pulse)
         {
             if (IsPrepared)
@@ -61,7 +61,7 @@
         /// <param name="durationMicroSecs">The duration micro secs.</param>
         /// <param name="onPins">The on pins.</param>
         /// <param name="offPins">The off pins.</param>
-        /// <exception cref="InvalidOperationException">When the wave has been prepared</exception>
+        /// <exception cref="InvalidOperationException">When the wave has been prepared.</exception>
         public void AddPulse(int durationMicroSecs, IEnumerable<UserGpio> onPins, IEnumerable<UserGpio> offPins)
         {
             if (IsPrepared)
@@ -74,7 +74,7 @@
             {
                 DurationMicroSecs = Convert.ToUInt32(durationMicroSecs),
                 GpioOn = onPinFlags,
-                GpioOff = offPinFlags
+                GpioOff = offPinFlags,
             };
 
             m_Pulses.Add(pulse);
@@ -95,7 +95,7 @@
         /// <param name="value">if set to <c>true</c> [value].</param>
         /// <param name="durationMicroSecs">The duration micro secs.</param>
         /// <param name="pins">The pins.</param>
-        /// <exception cref="InvalidOperationException">When the wave has been prepared</exception>
+        /// <exception cref="InvalidOperationException">When the wave has been prepared.</exception>
         public void AddPulse(bool value, int durationMicroSecs, params UserGpio[] pins)
         {
             if (IsPrepared)
@@ -116,7 +116,7 @@
             AddPulse(value, durationMicroSecs, GpioPinsToUserGpios(pins).ToArray());
 
         /// <summary>
-        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses)
+        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses).
         /// </summary>
         /// <param name="frequency">The frequency.</param>
         /// <param name="durationMicroSecs">The duration micro secs.</param>
@@ -125,7 +125,7 @@
             AddCarrierPulses(frequency, durationMicroSecs, 0.5, pins);
 
         /// <summary>
-        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses)
+        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses).
         /// </summary>
         /// <param name="frequency">The frequency.</param>
         /// <param name="durationMicroSecs">The duration micro secs.</param>
@@ -134,7 +134,7 @@
             AddCarrierPulses(frequency, durationMicroSecs, GpioPinsToUserGpios(pins).ToArray());
 
         /// <summary>
-        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses)
+        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses).
         /// </summary>
         /// <param name="frequency">The frequency.</param>
         /// <param name="durationMicroSecs">The duration micro secs.</param>
@@ -159,7 +159,7 @@
         }
 
         /// <summary>
-        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses)
+        /// Adds carrier pulses to the wave (useful for stuff like Infrared pulses).
         /// </summary>
         /// <param name="frequency">The frequency.</param>
         /// <param name="durationMicroSecs">The duration micro secs.</param>
@@ -171,7 +171,7 @@
         /// <summary>
         /// Clears all previously added pulses.
         /// </summary>
-        /// <exception cref="InvalidOperationException">When the wave has been prepared</exception>
+        /// <exception cref="InvalidOperationException">When the wave has been prepared.</exception>
         public void ClearPulses()
         {
             if (IsPrepared)
@@ -181,7 +181,7 @@
         }
 
         /// <summary>
-        /// Prepares the waveform to be rendered by DMA
+        /// Prepares the waveform to be rendered by DMA.
         /// </summary>
         /// <exception cref="ObjectDisposedException">When the wave has been disposed.</exception>
         public void Prepare()
@@ -207,7 +207,11 @@
         /// <param name="mode">The mode.</param>
         public void Send(WaveMode mode)
         {
-            if (_isDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
+            lock (SyncLock)
+            {
+                if (_isDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
+            }
+
             if (IsPrepared == false)
                 Prepare();
 
@@ -222,10 +226,11 @@
         /// Converts a collection of User GPIO pins to a bitmask.
         /// </summary>
         /// <param name="pins">The pins.</param>
-        /// <returns>A bitmask with each pin as a position</returns>
+        /// <returns>A bitmask with each pin as a position.</returns>
         private static BitMask PinsToBitMask(IEnumerable<UserGpio> pins)
         {
-            var bitMask = 0;
+            const int bitMask = 0;
+            
             if (pins != null)
             {
                 foreach (var pin in pins)
@@ -236,10 +241,10 @@
         }
 
         /// <summary>
-        /// Converts GPIO pins to their corresponding GpioEnumeration
+        /// Converts GPIO pins to their corresponding GpioEnumeration.
         /// </summary>
         /// <param name="pins">The pins.</param>
-        /// <returns>An array of UserGpio pins</returns>
+        /// <returns>An array of UserGpio pins.</returns>
         private static IEnumerable<UserGpio> GpioPinsToUserGpios(IEnumerable<GpioPin> pins) =>
             pins.Where(p => p.IsUserGpio).Select(p => (UserGpio)p.PinNumber).ToArray();
 
@@ -254,28 +259,25 @@
                 if (_isDisposed) return;
                 _isDisposed = true;
 
-                if (alsoManaged)
+                if (!alsoManaged || WaveId < 0) return;
+
+                // Wait for the wave to finish a cycle
+                while (true)
                 {
-                    if (WaveId < 0) return;
-
-                    // Wait for the wave to finish a cycle
-                    while (true)
+                    var currentWaveId = Board.Waves.CurrentWaveId;
+                    if (currentWaveId >= 0 && currentWaveId == WaveId)
                     {
-                        var currentWaveId = Board.Waves.CurrentWaveId;
-                        if (currentWaveId >= 0 && currentWaveId == WaveId)
-                        {
-                            Board.Waves.StopCurrent();
-                            Board.Timing.Sleep(15);
-                        }
-                        else
-                        {
-                            break;
-                        }
+                        Board.Waves.StopCurrent();
+                        Board.Timing.Sleep(15);
                     }
-
-                    Waves.GpioWaveDelete(Convert.ToUInt32(WaveId));
-                    WaveId = -1;
+                    else
+                    {
+                        break;
+                    }
                 }
+
+                Waves.GpioWaveDelete(Convert.ToUInt32(WaveId));
+                WaveId = -1;
             }
         }
     }

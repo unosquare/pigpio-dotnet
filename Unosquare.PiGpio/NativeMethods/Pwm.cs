@@ -31,8 +31,8 @@
         /// gpioPWM(23, 0);   // Sets GPIO23 full off.
         /// </code>
         /// </example>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="dutyCycle">0-range</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="dutyCycle">0-range.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_DUTYCYCLE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioPWM")]
         public static extern ResultCode GpioPwm(UserGpio userGpio, uint dutyCycle);
@@ -41,7 +41,7 @@
         /// Gets the PWM duty cycle.
         /// </summary>
         /// <param name="userGpio">The user gpio.</param>
-        /// <returns>The PWM duty cycle</returns>
+        /// <returns>The PWM duty cycle.</returns>
         public static int GpioGetPwmDutyCycle(UserGpio userGpio)
         {
             return BoardException.ValidateResult(GpioGetPwmDutyCycleUnmanaged(userGpio));
@@ -90,19 +90,19 @@
         /// 1E6/Hz 20000 10000 5000 2500 2000
         /// gpioSetPWMfrequency(25, 400);
         ///
-        /// gpioSetPWMrange(25, 2500);
+        /// gpioSetPWMrange(25, 2500);.
         /// </remarks>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="pulseWidth">0, 500-2500</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="pulseWidth">0, 500-2500.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_PULSEWIDTH.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioServo")]
         public static extern ResultCode GpioServo(UserGpio userGpio, uint pulseWidth);
 
         /// <summary>
-        /// Returns 0 (off), 500 (most anti-clockwise) to 2500 (most clockwise)
+        /// Returns 0 (off), 500 (most anti-clockwise) to 2500 (most clockwise).
         /// </summary>
         /// <param name="userGpio">The user gpio.</param>
-        /// <returns>The Servo pulse width</returns>
+        /// <returns>The Servo pulse width.</returns>
         public static int GpioGetServoPulseWidth(UserGpio userGpio)
         {
             return BoardException.ValidateResult(GpioGetServoPulseWidthUnmanaged(userGpio));
@@ -130,10 +130,10 @@
         /// </example>
         /// <remarks>
         ///   25,   50,  100,  125,  200,  250,  400,   500,   625,
-        ///  800, 1000, 1250, 2000, 2500, 4000, 5000, 10000, 20000
+        ///  800, 1000, 1250, 2000, 2500, 4000, 5000, 10000, 20000.
         /// </remarks>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="range">25-40000</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="range">25-40000.</param>
         /// <returns>Returns the real range for the given GPIO's frequency if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_DUTYRANGE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetPWMrange")]
         public static extern ResultCode GpioSetPwmRange(UserGpio userGpio, uint range);
@@ -149,7 +149,7 @@
         /// r = gpioGetPWMrange(23);
         /// </code>
         /// </example>
-        /// <param name="userGpio">0-31</param>
+        /// <param name="userGpio">0-31.</param>
         /// <returns>Returns the dutycycle range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioGetPWMrange")]
         public static extern int GpioGetPwmRange(UserGpio userGpio);
@@ -167,7 +167,7 @@
         /// rr = gpioGetPWMrealRange(17);
         /// </code>
         /// </example>
-        /// <param name="userGpio">0-31</param>
+        /// <param name="userGpio">0-31.</param>
         /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         public static int GpioGetPwmRealRange(UserGpio userGpio)
         {
@@ -186,7 +186,7 @@
         /// The selectable frequencies depend upon the sample rate which
         /// may be 1, 2, 4, 5, 8, or 10 microseconds (default 5).
         ///
-        /// The frequencies for each sample rate are:
+        /// The frequencies for each sample rate are:.
         ///
         /// </summary>
         /// <example>
@@ -218,10 +218,10 @@
         ///             156   125   100   63   50   31   25   13    6
         ///
         ///       10:  4000  2000  1000  800  500  400  250  200  160
-        ///             125   100    80   50   40   25   20   10    5
+        ///             125   100    80   50   40   25   20   10    5.
         /// </remarks>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="frequency">&gt;=0</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="frequency">&gt;=0.</param>
         /// <returns>Returns the numerically closest frequency if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetPWMfrequency")]
         public static extern ResultCode GpioSetPwmFrequency(UserGpio userGpio, uint frequency);
@@ -243,7 +243,7 @@
         /// f = gpioGetPWMfrequency(23); // Get frequency used for GPIO23.
         /// </code>
         /// </example>
-        /// <param name="userGpio">0-31</param>
+        /// <param name="userGpio">0-31.</param>
         /// <returns>Returns the frequency (in hertz) used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioGetPWMfrequency")]
         public static extern int GpioGetPwmFrequency(UserGpio userGpio);
@@ -272,10 +272,10 @@
         /// 34  clock 0  Compute module only
         /// 42  clock 1  Compute module only (reserved for system use)
         /// 43  clock 2  Compute module only
-        /// 44  clock 1  Compute module only (reserved for system use)
+        /// 44  clock 1  Compute module only (reserved for system use).
         /// </remarks>
-        /// <param name="gpio">see description</param>
-        /// <param name="clockFrequency">0 (off) or 4689-250000000 (250M)</param>
+        /// <param name="gpio">see description.</param>
+        /// <param name="clockFrequency">0 (off) or 4689-250000000 (250M).</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_NOT_HCLK_GPIO, PI_BAD_HCLK_FREQ,or PI_BAD_HCLK_PASS.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioHardwareClock")]
         public static extern ResultCode GpioHardwareClock(SystemGpio gpio, uint clockFrequency);
@@ -317,11 +317,11 @@
         /// 41  PWM channel 1  Compute module only
         /// 45  PWM channel 1  Compute module only
         /// 52  PWM channel 0  Compute module only
-        /// 53  PWM channel 1  Compute module only
+        /// 53  PWM channel 1  Compute module only.
         /// </remarks>
-        /// <param name="gpio">see description</param>
-        /// <param name="pwmFrequency">0 (off) or 1-125000000 (125M)</param>
-        /// <param name="pwmDytuCycle">0 (off) to 1000000 (1M)(fully on)</param>
+        /// <param name="gpio">see description.</param>
+        /// <param name="pwmFrequency">0 (off) or 1-125000000 (125M).</param>
+        /// <param name="pwmDytuCycle">0 (off) to 1000000 (1M)(fully on).</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_NOT_HPWM_GPIO, PI_BAD_HPWM_DUTY, PI_BAD_HPWM_FREQ, or PI_HPWM_ILLEGAL.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioHardwarePWM")]
         public static extern ResultCode GpioHardwarePwm(SystemGpio gpio, uint pwmFrequency, uint pwmDytuCycle);
@@ -331,7 +331,7 @@
         /// <summary>
         /// if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.
         /// </summary>
-        /// <param name="userGpio">0-31</param>
+        /// <param name="userGpio">0-31.</param>
         /// <returns>Returns 0 (off), 500 (most anti-clockwise) to 2500 (most clockwise) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_SERVO_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioGetServoPulsewidth")]
         private static extern int GpioGetServoPulseWidthUnmanaged(UserGpio userGpio);
@@ -349,7 +349,7 @@
         ///
         /// Normal PWM range defaults to 255.
         /// </summary>
-        /// <param name="userGpio">0-31</param>
+        /// <param name="userGpio">0-31.</param>
         /// <returns>Returns between 0 (off) and range (fully on) if OK, otherwise PI_BAD_USER_GPIO or PI_NOT_PWM_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioGetPWMdutycycle")]
         private static extern int GpioGetPwmDutyCycleUnmanaged(UserGpio userGpio);
@@ -367,7 +367,7 @@
         /// rr = gpioGetPWMrealRange(17);
         /// </code>
         /// </example>
-        /// <param name="userGpio">0-31</param>
+        /// <param name="userGpio">0-31.</param>
         /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioGetPWMrealRange")]
         private static extern int GpioGetPwmRealRangeUnmanaged(UserGpio userGpio);

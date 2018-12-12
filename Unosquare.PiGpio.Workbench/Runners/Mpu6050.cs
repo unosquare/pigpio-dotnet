@@ -3,6 +3,7 @@
     using ManagedModel;
     using NativeMethods;
     using Swan;
+    using Swan.Abstractions;
     using System;
     using System.Threading;
 
@@ -41,7 +42,7 @@
                 var tempBytes = BitConverter.GetBytes(_device.ReadWord(0x41));
 
                 // Since we are in little endian, we need to reverse so that we parse LSB and MSB
-                var rawReading = BitConverter.ToInt16(new byte[] { tempBytes[1], tempBytes[0] }, 0);
+                var rawReading = BitConverter.ToInt16(new[] { tempBytes[1], tempBytes[0] }, 0);
                 return (rawReading / 340d) + 36.53d;
             }
         }

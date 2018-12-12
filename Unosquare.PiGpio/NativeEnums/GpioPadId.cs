@@ -4,7 +4,7 @@
     /// Enumerates the GPIO (electrical) Pads
     /// 0   @ 0-27
     /// 1   @ 28-45
-    /// 2   @ 46-53
+    /// 2   @ 46-53.
     /// </summary>
     public enum GpioPadId
     {

@@ -1,6 +1,7 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
     using Swan;
+    using Swan.Abstractions;
     using System.Threading;
 
     internal class Timers : RunnerBase

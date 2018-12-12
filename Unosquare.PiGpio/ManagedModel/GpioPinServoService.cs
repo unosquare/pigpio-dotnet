@@ -12,17 +12,17 @@
     public sealed class GpioPinServoService : GpioPinServiceBase
     {
         /// <summary>
-        /// The pulse width minimum in microseconds
+        /// The pulse width minimum in microseconds.
         /// </summary>
         public const int PulseWidthMin = 500;
 
         /// <summary>
-        /// The pulse width maximum in microseconds
+        /// The pulse width maximum in microseconds.
         /// </summary>
         public const int PulseWidthMax = 2500;
 
         /// <summary>
-        /// The pulse range difference in microseconds
+        /// The pulse range difference in microseconds.
         /// </summary>
         public const int PulseWidthRange = PulseWidthMax - PulseWidthMin;
 

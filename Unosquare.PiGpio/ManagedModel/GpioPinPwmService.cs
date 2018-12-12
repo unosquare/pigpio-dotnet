@@ -6,7 +6,7 @@
     using System.Linq;
 
     /// <summary>
-    /// Provides hardware-based PWM services on the pin
+    /// Provides hardware-based PWM services on the pin.
     /// </summary>
     /// <seealso cref="GpioPinServiceBase" />
     public sealed class GpioPinPwmService : GpioPinServiceBase
@@ -37,8 +37,8 @@
         /// Starts PWM hardware pulses.
         /// Frequencies above 30MHz are unlikely to work.
         /// </summary>
-        /// <param name="frequency">The frequency. 0 (off) or 1-125000000 (125M)</param>
-        /// <param name="dutyCycle">0 (off) to 1000000 (1M)(fully on)</param>
+        /// <param name="frequency">The frequency. 0 (off) or 1-125000000 (125M).</param>
+        /// <param name="dutyCycle">0 (off) to 1000000 (1M)(fully on).</param>
         public void Start(int frequency, int dutyCycle)
         {
             BoardException.ValidateResult(
@@ -48,17 +48,9 @@
         /// <summary>
         /// Stops PWM hardware pulses.
         /// </summary>
-        public void Stop()
-        {
-            Start(0, 0);
-        }
+        public void Stop() => Start(0, 0);
 
-        /// <summary>
-        /// Resolves the availability of this service for the associated pin.
-        /// </summary>
-        /// <returns>
-        /// True when the service is deemed as available.
-        /// </returns>
+        /// <inheritdoc />
         protected override bool ResolveAvailable()
         {
             if (Board.BoardType == BoardType.Type1 || Board.BoardType == BoardType.Type2)

@@ -6,7 +6,7 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// Provides Methods for both, hardware based I2C and Bit-bang (Software) I2C bus communication
+    /// Provides Methods for both, hardware based I2C and Bit-bang (Software) I2C bus communication.
     /// </summary>
     public static class I2c
     {
@@ -34,8 +34,8 @@
         ///
         /// [..]: Data sent by the device.
         /// </remarks>
-        /// <param name="i2cBus">&gt;=0</param>
-        /// <param name="i2cAddress">0-0x7F</param>
+        /// <param name="i2cBus">&gt;=0.</param>
+        /// <param name="i2cAddress">0-0x7F.</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_BAD_I2C_BUS, PI_BAD_I2C_ADDR, PI_BAD_FLAGS, PI_NO_HANDLE, or PI_I2C_OPEN_FAILED.</returns>
         public static UIntPtr I2cOpen(uint i2cBus, uint i2cAddress)
         {
@@ -47,7 +47,7 @@
         /// This closes the I2C device associated with the handle.
         ///
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cClose")]
         public static extern ResultCode I2cClose(UIntPtr handle);
@@ -56,13 +56,13 @@
         /// This sends a single bit (in the Rd/Wr bit) to the device associated
         /// with handle.
         ///
-        /// Quick command. SMBus 2.0 5.5.1
+        /// Quick command. SMBus 2.0 5.5.1.
         /// </summary>
         /// <remarks>
-        /// S Addr bit [A] P
+        /// S Addr bit [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="bit">0-1, the value to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="bit">0-1, the value to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteQuick(UIntPtr handle, I2cQuickMode bit)
         {
@@ -72,13 +72,13 @@
         /// <summary>
         /// This sends a single byte to the device associated with handle.
         ///
-        /// Send byte. SMBus 2.0 5.5.2
+        /// Send byte. SMBus 2.0 5.5.2.
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] bVal [A] P
+        /// S Addr Wr [A] bVal [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="value">0-0xFF, the value to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="value">0-0xFF, the value to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteByte(UIntPtr handle, byte value)
         {
@@ -88,12 +88,12 @@
         /// <summary>
         /// This reads a single byte from the device associated with handle.
         ///
-        /// Receive byte. SMBus 2.0 5.5.3
+        /// Receive byte. SMBus 2.0 5.5.3.
         /// </summary>
         /// <remarks>
-        /// S Addr Rd [A] [Data] NA P
+        /// S Addr Rd [A] [Data] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
         /// <returns>Returns the byte read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, or PI_I2C_READ_FAILED.</returns>
         public static byte I2cReadByte(UIntPtr handle)
         {
@@ -105,14 +105,14 @@
         /// This writes a single byte to the specified register of the device
         /// associated with handle.
         ///
-        /// Write byte. SMBus 2.0 5.5.4
+        /// Write byte. SMBus 2.0 5.5.4.
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] i2cReg [A] bVal [A] P
+        /// S Addr Wr [A] i2cReg [A] bVal [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write</param>
-        /// <param name="value">0-0xFF, the value to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write.</param>
+        /// <param name="value">0-0xFF, the value to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteByteData(UIntPtr handle, byte register, byte value)
         {
@@ -123,14 +123,14 @@
         /// This writes a single 16 bit word to the specified register of the device
         /// associated with handle.
         ///
-        /// Write word. SMBus 2.0 5.5.4
+        /// Write word. SMBus 2.0 5.5.4.
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] i2cReg [A] wValLow [A] wValHigh [A] P
+        /// S Addr Wr [A] i2cReg [A] wValLow [A] wValHigh [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write</param>
-        /// <param name="word">0-0xFFFF, the value to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write.</param>
+        /// <param name="word">0-0xFFFF, the value to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteWordData(UIntPtr handle, byte register, ushort word)
         {
@@ -141,13 +141,13 @@
         /// This reads a single byte from the specified register of the device
         /// associated with handle.
         ///
-        /// Read byte. SMBus 2.0 5.5.5
+        /// Read byte. SMBus 2.0 5.5.5.
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] i2cReg [A] S Addr Rd [A] [Data] NA P
+        /// S Addr Wr [A] i2cReg [A] S Addr Rd [A] [Data] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to read</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to read.</param>
         /// <returns>Returns the byte read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         public static byte I2cReadByteData(UIntPtr handle, byte register)
         {
@@ -159,13 +159,13 @@
         /// This reads a single 16 bit word from the specified register of the device
         /// associated with handle.
         ///
-        /// Read word. SMBus 2.0 5.5.5
+        /// Read word. SMBus 2.0 5.5.5.
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] i2cReg [A] S Addr Rd [A] [DataLow] A [DataHigh] NA P
+        /// S Addr Wr [A] i2cReg [A] S Addr Rd [A] [DataLow] A [DataHigh] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to read</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to read.</param>
         /// <returns>Returns the word read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         public static ushort I2cReadWordData(UIntPtr handle, byte register)
         {
@@ -177,15 +177,15 @@
         /// This writes 16 bits of data to the specified register of the device
         /// associated with handle and reads 16 bits of data in return.
         ///
-        /// Process call. SMBus 2.0 5.5.6
+        /// Process call. SMBus 2.0 5.5.6.
         /// </summary>
         /// <remarks>
         /// S Addr Wr [A] i2cReg [A] wValLow [A] wValHigh [A]
-        ///    S Addr Rd [A] [DataLow] A [DataHigh] NA P
+        ///    S Addr Rd [A] [DataLow] A [DataHigh] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write/read</param>
-        /// <param name="word">0-0xFFFF, the value to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write/read.</param>
+        /// <param name="word">0-0xFFFF, the value to write.</param>
         /// <returns>Returns the word read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         public static ushort I2cProcessCall(UIntPtr handle, byte register, ushort word)
         {
@@ -197,15 +197,15 @@
         /// This writes up to 32 bytes to the specified register of the device
         /// associated with handle.
         ///
-        /// Block write. SMBus 2.0 5.5.7
+        /// Block write. SMBus 2.0 5.5.7.
         /// </summary>
         /// <remarks>
         /// S Addr Wr [A] i2cReg [A] count [A]
-        ///    buf0 [A] buf1 [A] ... [A] bufn [A] P
+        ///    buf0 [A] buf1 [A] ... [A] bufn [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write</param>
-        /// <param name="buffer">an array with the data to send</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write.</param>
+        /// <param name="buffer">an array with the data to send.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteBlockData(UIntPtr handle, byte register, byte[] buffer)
         {
@@ -218,14 +218,14 @@
         ///
         /// The amount of returned data is set by the device.
         ///
-        /// Block read. SMBus 2.0 5.5.7
+        /// Block read. SMBus 2.0 5.5.7.
         /// </summary>
         /// <remarks>
         /// S Addr Wr [A] i2cReg [A]
-        ///    S Addr Rd [A] [Count] A [buf0] A [buf1] A ... A [bufn] NA P
+        ///    S Addr Rd [A] [Count] A [buf0] A [buf1] A ... A [bufn] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to read</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to read.</param>
         /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         public static byte[] I2cReadBlockData(UIntPtr handle, byte register)
         {
@@ -248,15 +248,15 @@
         /// sent and a minimum of 1 byte may be received.  The total number of
         /// bytes sent/received must be 32 or less.
         ///
-        /// Block write-block read. SMBus 2.0 5.5.8
+        /// Block write-block read. SMBus 2.0 5.5.8.
         /// </summary>
         /// <remarks>
         /// S Addr Wr [A] i2cReg [A] count [A] buf0 [A] ... bufn [A]
-        ///    S Addr Rd [A] [Count] A [buf0] A ... [bufn] A P
+        ///    S Addr Rd [A] [Count] A [buf0] A ... [bufn] A P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write/read</param>
-        /// <param name="buffer">an array with the data to send and to receive the read data</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write/read.</param>
+        /// <param name="buffer">an array with the data to send and to receive the read data.</param>
         /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         public static int I2cBlockProcessCall(UIntPtr handle, byte register, byte[] buffer)
         {
@@ -271,11 +271,11 @@
         /// </summary>
         /// <remarks>
         /// S Addr Wr [A] i2cReg [A]
-        ///    S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P
+        ///    S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to read</param>
-        /// <param name="count">The amount of bytes to read from 1 to 32</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to read.</param>
+        /// <param name="count">The amount of bytes to read from 1 to 32.</param>
         /// <returns>Returns the number of bytes read (&gt;0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         public static byte[] I2cReadI2cBlockData(UIntPtr handle, byte register, int count)
         {
@@ -295,12 +295,12 @@
         ///
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] i2cReg [A] buf0 [A] buf1 [A] ... [A] bufn [A] P
+        /// S Addr Wr [A] i2cReg [A] buf0 [A] buf1 [A] ... [A] bufn [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write</param>
-        /// <param name="buffer">the data to write</param>
-        /// <param name="count">The amount of bytes to write (from 1 to 32)</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write.</param>
+        /// <param name="buffer">the data to write.</param>
+        /// <param name="count">The amount of bytes to write (from 1 to 32).</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteI2cBlockData(UIntPtr handle, byte register, byte[] buffer, int count)
         {
@@ -312,10 +312,10 @@
         ///
         /// </summary>
         /// <remarks>
-        /// S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P
+        /// S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="buffer">an array to receive the read data bytes</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="buffer">an array to receive the read data bytes.</param>
         /// <returns>Returns count (&gt;0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         public static int I2cReadDevice(UIntPtr handle, byte[] buffer)
         {
@@ -327,10 +327,10 @@
         ///
         /// </summary>
         /// <remarks>
-        /// S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P
+        /// S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="count">Read upt to this many bytes</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="count">Read upt to this many bytes.</param>
         /// <returns>Returns count (&gt;0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         public static byte[] I2cReadDevice(UIntPtr handle, int count)
         {
@@ -349,10 +349,10 @@
         ///
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] buf0 [A] buf1 [A] ... [A] bufn [A] P
+        /// S Addr Wr [A] buf0 [A] buf1 [A] ... [A] bufn [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="buffer">an array containing the data bytes to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="buffer">an array containing the data bytes to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         public static ResultCode I2cWriteDevice(UIntPtr handle, byte[] buffer)
         {
@@ -366,7 +366,7 @@
         /// NOTE: when the flag is on a write followed by a read to the same
         /// slave address will use a repeated start (rather than a stop/start).
         /// </summary>
-        /// <param name="setting">0 to set the parameter off, non-zero to set it on</param>
+        /// <param name="setting">0 to set the parameter off, non-zero to set it on.</param>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cSwitchCombined")]
         public static extern void I2cSwitchCombined(int setting);
 
@@ -375,9 +375,9 @@
         /// calling the I2C_RDWR ioctl.
         ///
         /// </summary>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="segments">an array of I2C segments</param>
-        /// <param name="numSegs">&gt;0, the number of I2C segments</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="segments">an array of I2C segments.</param>
+        /// <param name="numSegs">&gt;0, the number of I2C segments.</param>
         /// <returns>Returns the number of segments if OK, otherwise PI_BAD_I2C_SEG.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cSegments")]
         public static extern int I2cSegments(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] I2CMessageSegment[] segments, uint numSegs);
@@ -424,11 +424,11 @@
         /// 0x00
         /// </code>
         /// </example>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="inputBuffer">pointer to the concatenated I2C commands, see below</param>
-        /// <param name="inputLength">size of command buffer</param>
-        /// <param name="outputBuffer">pointer to buffer to hold returned data</param>
-        /// <param name="outLength">size of output buffer</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="inputBuffer">pointer to the concatenated I2C commands, see below.</param>
+        /// <param name="inputLength">size of command buffer.</param>
+        /// <param name="outputBuffer">pointer to buffer to hold returned data.</param>
+        /// <param name="outLength">size of output buffer.</param>
         /// <returns>Returns &gt;= 0 if OK (the number of bytes read), otherwise PI_BAD_HANDLE, PI_BAD_POINTER, PI_BAD_I2C_CMD, PI_BAD_I2C_RLEN. PI_BAD_I2C_WLEN, or PI_BAD_I2C_SEG.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cZip")]
         public static extern int I2cZip(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] inputBuffer, uint inputLength, [In, MarshalAs(UnmanagedType.LPArray)] byte[] outputBuffer, uint outLength);
@@ -450,9 +450,9 @@
         /// The GPIO used for SDA and SCL must have pull-ups to 3V3 connected.  As
         /// a guide the hardware pull-ups on pins 3 and 5 are 1k8 in value.
         /// </summary>
-        /// <param name="sdaPin">SDA 0-31</param>
-        /// <param name="sclPin">SCL 0-31</param>
-        /// <param name="baudRate">50-500000</param>
+        /// <param name="sdaPin">SDA 0-31.</param>
+        /// <param name="sclPin">SCL 0-31.</param>
+        /// <param name="baudRate">50-500000.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_I2C_BAUD, or PI_GPIO_IN_USE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbI2COpen")]
         public static extern ResultCode BbI2COpen(UserGpio sdaPin, UserGpio sclPin, uint baudRate);
@@ -462,7 +462,7 @@
         /// opened with <see cref="BbI2COpen"/>.
         ///
         /// </summary>
-        /// <param name="sdaPin">0-31, the SDA GPIO used in a prior call to <see cref="BbI2COpen"/></param>
+        /// <param name="sdaPin">0-31, the SDA GPIO used in a prior call to <see cref="BbI2COpen"/>.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_NOT_I2C_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbI2CClose")]
         public static extern ResultCode BbI2CClose(UserGpio sdaPin);
@@ -519,11 +519,11 @@
         /// 0x00
         /// </code>
         /// </example>
-        /// <param name="sdaPin">0-31 (as used in a prior call to <see cref="BbI2COpen"/>)</param>
-        /// <param name="inputBuffer">pointer to the concatenated I2C commands, see below</param>
-        /// <param name="inputLength">size of command buffer</param>
-        /// <param name="outputBuffer">pointer to buffer to hold returned data</param>
-        /// <param name="outputLength">size of output buffer</param>
+        /// <param name="sdaPin">0-31 (as used in a prior call to <see cref="BbI2COpen"/>).</param>
+        /// <param name="inputBuffer">pointer to the concatenated I2C commands, see below.</param>
+        /// <param name="inputLength">size of command buffer.</param>
+        /// <param name="outputBuffer">pointer to buffer to hold returned data.</param>
+        /// <param name="outputLength">size of output buffer.</param>
         /// <returns>Returns &gt;= 0 if OK (the number of bytes read), otherwise PI_BAD_USER_GPIO, PI_NOT_I2C_GPIO, PI_BAD_POINTER, PI_BAD_I2C_CMD, PI_BAD_I2C_RLEN, PI_BAD_I2C_WLEN, PI_I2C_READ_FAILED, or PI_I2C_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "bbI2CZip")]
         public static extern int BbI2CZip(UserGpio sdaPin, [In, MarshalAs(UnmanagedType.LPArray)] byte[] inputBuffer, uint inputLength, [In, MarshalAs(UnmanagedType.LPArray)] byte[] outputBuffer, uint outputLength);
@@ -554,9 +554,9 @@
         ///
         /// [..]: Data sent by the device.
         /// </remarks>
-        /// <param name="i2cBus">&gt;=0</param>
-        /// <param name="i2cAddr">0-0x7F</param>
-        /// <param name="i2cFlags">0</param>
+        /// <param name="i2cBus">&gt;=0.</param>
+        /// <param name="i2cAddr">0-0x7F.</param>
+        /// <param name="i2cFlags">0.</param>
         /// <returns>Returns a handle (&gt;=0) if OK, otherwise PI_BAD_I2C_BUS, PI_BAD_I2C_ADDR, PI_BAD_FLAGS, PI_NO_HANDLE, or PI_I2C_OPEN_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cOpen")]
         private static extern int I2cOpenUnmanaged(uint i2cBus, uint i2cAddr, uint i2cFlags);
@@ -565,13 +565,13 @@
         /// This sends a single bit (in the Rd/Wr bit) to the device associated
         /// with handle.
         ///
-        /// Quick command. SMBus 2.0 5.5.1
+        /// Quick command. SMBus 2.0 5.5.1.
         /// </summary>
         /// <remarks>
-        /// S Addr bit [A] P
+        /// S Addr bit [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="bit">0-1, the value to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="bit">0-1, the value to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteQuick")]
         private static extern ResultCode I2cWriteQuickUnmanaged(UIntPtr handle, uint bit);
@@ -579,13 +579,13 @@
         /// <summary>
         /// This sends a single byte to the device associated with handle.
         ///
-        /// Send byte. SMBus 2.0 5.5.2
+        /// Send byte. SMBus 2.0 5.5.2.
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] bVal [A] P
+        /// S Addr Wr [A] bVal [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="bVal">0-0xFF, the value to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="bVal">0-0xFF, the value to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteByte")]
         private static extern ResultCode I2cWriteByteUnmanaged(UIntPtr handle, uint bVal);
@@ -593,12 +593,12 @@
         /// <summary>
         /// This reads a single byte from the device associated with handle.
         ///
-        /// Receive byte. SMBus 2.0 5.5.3
+        /// Receive byte. SMBus 2.0 5.5.3.
         /// </summary>
         /// <remarks>
-        /// S Addr Rd [A] [Data] NA P
+        /// S Addr Rd [A] [Data] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
         /// <returns>Returns the byte read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, or PI_I2C_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadByte")]
         private static extern int I2cReadByteUnmanaged(UIntPtr handle);
@@ -607,14 +607,14 @@
         /// This writes a single byte to the specified register of the device
         /// associated with handle.
         ///
-        /// Write byte. SMBus 2.0 5.5.4
+        /// Write byte. SMBus 2.0 5.5.4.
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] i2cReg [A] bVal [A] P
+        /// S Addr Wr [A] i2cReg [A] bVal [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="i2cReg">0-255, the register to write</param>
-        /// <param name="bVal">0-0xFF, the value to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="i2cReg">0-255, the register to write.</param>
+        /// <param name="bVal">0-0xFF, the value to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteByteData")]
         private static extern ResultCode I2cWriteByteDataUnmanaged(UIntPtr handle, uint i2cReg, uint bVal);
@@ -623,14 +623,14 @@
         /// This writes a single 16 bit word to the specified register of the device
         /// associated with handle.
         ///
-        /// Write word. SMBus 2.0 5.5.4
+        /// Write word. SMBus 2.0 5.5.4.
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] i2cReg [A] wValLow [A] wValHigh [A] P
+        /// S Addr Wr [A] i2cReg [A] wValLow [A] wValHigh [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write</param>
-        /// <param name="word">0-0xFFFF, the value to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write.</param>
+        /// <param name="word">0-0xFFFF, the value to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteWordData")]
         private static extern ResultCode I2cWriteWordDataUnmanaged(UIntPtr handle, uint register, uint word);
@@ -639,13 +639,13 @@
         /// This reads a single byte from the specified register of the device
         /// associated with handle.
         ///
-        /// Read byte. SMBus 2.0 5.5.5
+        /// Read byte. SMBus 2.0 5.5.5.
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] i2cReg [A] S Addr Rd [A] [Data] NA P
+        /// S Addr Wr [A] i2cReg [A] S Addr Rd [A] [Data] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to read</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to read.</param>
         /// <returns>Returns the byte read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadByteData")]
         private static extern int I2cReadByteDataUnmanaged(UIntPtr handle, uint register);
@@ -654,13 +654,13 @@
         /// This reads a single 16 bit word from the specified register of the device
         /// associated with handle.
         ///
-        /// Read word. SMBus 2.0 5.5.5
+        /// Read word. SMBus 2.0 5.5.5.
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] i2cReg [A] S Addr Rd [A] [DataLow] A [DataHigh] NA P
+        /// S Addr Wr [A] i2cReg [A] S Addr Rd [A] [DataLow] A [DataHigh] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to read</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to read.</param>
         /// <returns>Returns the word read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadWordData")]
         private static extern int I2cReadWordDataUnmanaged(UIntPtr handle, uint register);
@@ -669,15 +669,15 @@
         /// This writes 16 bits of data to the specified register of the device
         /// associated with handle and reads 16 bits of data in return.
         ///
-        /// Process call. SMBus 2.0 5.5.6
+        /// Process call. SMBus 2.0 5.5.6.
         /// </summary>
         /// <remarks>
         /// S Addr Wr [A] i2cReg [A] wValLow [A] wValHigh [A]
-        ///    S Addr Rd [A] [DataLow] A [DataHigh] NA P
+        ///    S Addr Rd [A] [DataLow] A [DataHigh] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write/read</param>
-        /// <param name="word">0-0xFFFF, the value to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write/read.</param>
+        /// <param name="word">0-0xFFFF, the value to write.</param>
         /// <returns>Returns the word read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cProcessCall")]
         private static extern int I2cProcessCallUnmanaged(UIntPtr handle, uint register, uint word);
@@ -686,16 +686,16 @@
         /// This writes up to 32 bytes to the specified register of the device
         /// associated with handle.
         ///
-        /// Block write. SMBus 2.0 5.5.7
+        /// Block write. SMBus 2.0 5.5.7.
         /// </summary>
         /// <remarks>
         /// S Addr Wr [A] i2cReg [A] count [A]
-        ///    buf0 [A] buf1 [A] ... [A] bufn [A] P
+        ///    buf0 [A] buf1 [A] ... [A] bufn [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write</param>
-        /// <param name="buffer">an array with the data to send</param>
-        /// <param name="count">1-32, the number of bytes to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write.</param>
+        /// <param name="buffer">an array with the data to send.</param>
+        /// <param name="count">1-32, the number of bytes to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteBlockData")]
         private static extern ResultCode I2cWriteBlockDataUnmanaged(UIntPtr handle, uint register, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
@@ -706,15 +706,15 @@
         ///
         /// The amount of returned data is set by the device.
         ///
-        /// Block read. SMBus 2.0 5.5.7
+        /// Block read. SMBus 2.0 5.5.7.
         /// </summary>
         /// <remarks>
         /// S Addr Wr [A] i2cReg [A]
-        ///    S Addr Rd [A] [Count] A [buf0] A [buf1] A ... A [bufn] NA P
+        ///    S Addr Rd [A] [Count] A [buf0] A [buf1] A ... A [bufn] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to read</param>
-        /// <param name="buffer">an array to receive the read data</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to read.</param>
+        /// <param name="buffer">an array to receive the read data.</param>
         /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadBlockData")]
         private static extern int I2cReadBlockDataUnmanaged(UIntPtr handle, uint register, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer);
@@ -728,16 +728,16 @@
         /// sent and a minimum of 1 byte may be received.  The total number of
         /// bytes sent/received must be 32 or less.
         ///
-        /// Block write-block read. SMBus 2.0 5.5.8
+        /// Block write-block read. SMBus 2.0 5.5.8.
         /// </summary>
         /// <remarks>
         /// S Addr Wr [A] i2cReg [A] count [A] buf0 [A] ... bufn [A]
-        ///    S Addr Rd [A] [Count] A [buf0] A ... [bufn] A P
+        ///    S Addr Rd [A] [Count] A [buf0] A ... [bufn] A P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write/read</param>
-        /// <param name="buffer">an array with the data to send and to receive the read data</param>
-        /// <param name="count">1-32, the number of bytes to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write/read.</param>
+        /// <param name="buffer">an array with the data to send and to receive the read data.</param>
+        /// <param name="count">1-32, the number of bytes to write.</param>
         /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cBlockProcessCall")]
         private static extern int I2cBlockProcessCallUnmanaged(UIntPtr handle, uint register, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
@@ -749,12 +749,12 @@
         /// </summary>
         /// <remarks>
         /// S Addr Wr [A] i2cReg [A]
-        ///    S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P
+        ///    S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to read</param>
-        /// <param name="buffer">an array to receive the read data</param>
-        /// <param name="count">1-32, the number of bytes to read</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to read.</param>
+        /// <param name="buffer">an array to receive the read data.</param>
+        /// <param name="count">1-32, the number of bytes to read.</param>
         /// <returns>Returns the number of bytes read (&gt;0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadI2CBlockData")]
         private static extern int I2cReadI2cBlockDataUnmanaged(UIntPtr handle, uint register, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
@@ -765,12 +765,12 @@
         ///
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] i2cReg [A] buf0 [A] buf1 [A] ... [A] bufn [A] P
+        /// S Addr Wr [A] i2cReg [A] buf0 [A] buf1 [A] ... [A] bufn [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="register">0-255, the register to write</param>
-        /// <param name="buffer">the data to write</param>
-        /// <param name="count">1-32, the number of bytes to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="register">0-255, the register to write.</param>
+        /// <param name="buffer">the data to write.</param>
+        /// <param name="count">1-32, the number of bytes to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteI2CBlockData")]
         private static extern ResultCode I2cWriteI2cBlockDataUnmanaged(UIntPtr handle, uint register, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
@@ -780,11 +780,11 @@
         ///
         /// </summary>
         /// <remarks>
-        /// S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P
+        /// S Addr Rd [A] [buf0] A [buf1] A ... A [bufn] NA P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="buffer">an array to receive the read data bytes</param>
-        /// <param name="count">&gt;0, the number of bytes to read</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="buffer">an array to receive the read data bytes.</param>
+        /// <param name="count">&gt;0, the number of bytes to read.</param>
         /// <returns>Returns count (&gt;0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cReadDevice")]
         private static extern int I2cReadDeviceUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);
@@ -794,11 +794,11 @@
         ///
         /// </summary>
         /// <remarks>
-        /// S Addr Wr [A] buf0 [A] buf1 [A] ... [A] bufn [A] P
+        /// S Addr Wr [A] buf0 [A] buf1 [A] ... [A] bufn [A] P.
         /// </remarks>
-        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/></param>
-        /// <param name="buffer">an array containing the data bytes to write</param>
-        /// <param name="count">&gt;0, the number of bytes to write</param>
+        /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
+        /// <param name="buffer">an array containing the data bytes to write.</param>
+        /// <param name="count">&gt;0, the number of bytes to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "i2cWriteDevice")]
         private static extern ResultCode I2cWriteDeviceUnmanaged(UIntPtr handle, [In, MarshalAs(UnmanagedType.LPArray)] byte[] buffer, uint count);

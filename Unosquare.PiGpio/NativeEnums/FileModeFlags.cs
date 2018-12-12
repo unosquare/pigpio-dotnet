@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// Enumerates the different file acces modes
+    /// Enumerates the different file acces modes.
     /// </summary>
     [Flags]
     public enum FileModeFlags : int
@@ -31,6 +31,6 @@
         /// <summary>
         /// The truncate mode flag
         /// </summary>
-        Truncate = 16
+        Truncate = 16,
     }
 }

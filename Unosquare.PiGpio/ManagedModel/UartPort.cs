@@ -47,7 +47,7 @@
         /// <summary>
         /// Reads the byte.
         /// </summary>
-        /// <returns>The byte value. Null if no bytes were read</returns>
+        /// <returns>The byte value. Null if no bytes were read.</returns>
         public byte? ReadByte()
         {
             var result = Uart.SerReadByte(Handle);
@@ -60,14 +60,14 @@
         /// <summary>
         /// Reads this instance.
         /// </summary>
-        /// <returns>A buffer containing the bytes</returns>
+        /// <returns>A buffer containing the bytes.</returns>
         public byte[] Read() => Read(Available);
 
         /// <summary>
         /// Reads the specified number of bytes.
         /// </summary>
         /// <param name="count">The count.</param>
-        /// <returns>A byte array of read bytes</returns>
+        /// <returns>A byte array of read bytes.</returns>
         public byte[] Read(int count)
         {
             var buffer = new byte[count];

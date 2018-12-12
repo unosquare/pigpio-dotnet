@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// Provides an enumeration of a 32-bit mask
+    /// Provides an enumeration of a 32-bit mask.
     /// </summary>
     [Flags]
     public enum BitMask : uint

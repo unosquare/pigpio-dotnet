@@ -5,7 +5,7 @@
     using System;
 
     /// <summary>
-    /// Provides access to the Hardware SPI channels
+    /// Provides access to the Hardware SPI channels.
     /// </summary>
     /// <seealso cref="IDisposable" />
     public sealed class SpiChannel : IDisposable
@@ -46,16 +46,16 @@
         public UIntPtr Handle { get; private set; }
 
         /// <summary>
-        /// Reads up to one tenth of the byte rate
+        /// Reads up to one tenth of the byte rate.
         /// </summary>
-        /// <returns>The bytes that were read</returns>
+        /// <returns>The bytes that were read.</returns>
         public byte[] Read() => Read(BaudRate / 8 / 10);
 
         /// <summary>
         /// Reads up to the specified number of bytes.
         /// </summary>
         /// <param name="count">The count.</param>
-        /// <returns>The bytes read</returns>
+        /// <returns>The bytes read.</returns>
         public byte[] Read(int count) => Spi.SpiRead(Handle, count);
 
         /// <summary>
@@ -64,7 +64,7 @@
         /// <param name="buffer">The buffer.</param>
         /// <param name="offset">The offset.</param>
         /// <param name="count">The count.</param>
-        /// <returns>The number of bytes read into the buffer</returns>
+        /// <returns>The number of bytes read into the buffer.</returns>
         public int Read(byte[] buffer, int offset, int count)
         {
             var data = Spi.SpiRead(Handle, count);
@@ -76,7 +76,7 @@
         /// Writes the specified buffer.
         /// </summary>
         /// <param name="buffer">The buffer.</param>
-        /// <returns>The number of bytes written</returns>
+        /// <returns>The number of bytes written.</returns>
         public int Write(byte[] buffer) => Spi.SpiWrite(Handle, buffer);
 
         /// <summary>
@@ -85,7 +85,7 @@
         /// <param name="buffer">The buffer.</param>
         /// <param name="offset">The offset.</param>
         /// <param name="count">The count.</param>
-        /// <returns>The number of bytes written</returns>
+        /// <returns>The number of bytes written.</returns>
         public int Write(byte[] buffer, int offset, int count)
         {
             var data = new byte[count];
@@ -97,7 +97,7 @@
         /// Transfers the specified buffer and simultaneously reads the same amount of buyes in that send buffer.
         /// </summary>
         /// <param name="buffer">The buffer.</param>
-        /// <returns>The bytes that were read</returns>
+        /// <returns>The bytes that were read.</returns>
         public byte[] Transfer(byte[] buffer) => Spi.SpiXfer(Handle, buffer);
 
         /// <inheritdoc />

@@ -2,14 +2,15 @@
 {
     using ManagedModel;
     using Swan;
+    using Swan.Abstractions;
     using System.Threading;
 
     internal class Servo : RunnerBase
     {
+        private const int MinPulseWidth = GpioPinServoService.PulseWidthMin + 50;
+        private const int MaxPulseWidth = GpioPinServoService.PulseWidthMax;
+        private const int InitialPulseWidth = GpioPinServoService.PulseWidthMin + 500;
         private GpioPin _pin;
-        private int MinPulseWidth = GpioPinServoService.PulseWidthMin + 50;
-        private int MaxPulseWidth = GpioPinServoService.PulseWidthMax;
-        private int InitialPulseWidth = GpioPinServoService.PulseWidthMin + 500;
 
         public Servo(bool isEnabled)
             : base(isEnabled) { }
@@ -42,7 +43,7 @@
 
                 if (flipDelta)
                 {
-                    $"Pulse Witdh is now {_pin.Servo.PulseWidth}, {_pin.Servo.PositionPercent:p}".Info(Name);
+                    $"Pulse Width is now {_pin.Servo.PulseWidth}, {_pin.Servo.PositionPercent:p}".Info(Name);
                     pulseDelta *= -1;
                     Board.Timing.Sleep(500);
                 }

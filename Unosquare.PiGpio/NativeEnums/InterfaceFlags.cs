@@ -4,7 +4,7 @@
 
     /// <summary>
     /// Defines flags to enable or disable network
-    /// interfaces
+    /// interfaces.
     /// </summary>
     [Flags]
     public enum InterfaceFlags

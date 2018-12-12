@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Enumerates the digital values. Equivalent to True and False
+    /// Enumerates the digital values. Equivalent to True and False.
     /// </summary>
     public enum DigitalValue : int
     {

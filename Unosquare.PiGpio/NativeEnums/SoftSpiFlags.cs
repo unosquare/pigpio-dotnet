@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// Defines the Software-based SPI flags
+    /// Defines the Software-based SPI flags.
     /// </summary>
     [Flags]
     public enum SoftSpiFlags

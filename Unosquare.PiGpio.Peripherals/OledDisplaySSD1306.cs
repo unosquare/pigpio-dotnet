@@ -14,7 +14,7 @@
 
     /// <summary>
     /// Provides an I2C interface to OLED displays
-    /// using the SSD1306 driver
+    /// using the SSD1306 driver.
     /// </summary>
     public sealed class OledDisplaySSD1306 : IDisposable
     {
@@ -102,8 +102,8 @@
         /// <param name="device">The device.</param>
         /// <param name="model">The model.</param>
         /// <param name="vccSource">State of the VCC.</param>
-        /// <exception cref="ArgumentException">Invalid display model - model</exception>
-        /// <exception cref="ArgumentNullException">device</exception>
+        /// <exception cref="ArgumentException">Invalid display model - model.</exception>
+        /// <exception cref="ArgumentNullException">device.</exception>
         public OledDisplaySSD1306(I2cDevice device, DisplayModel model, VccSourceMode vccSource)
         {
             switch (model)
@@ -152,7 +152,7 @@
         #region Enumerations
 
         /// <summary>
-        /// ENumerates the different OLED display models
+        /// ENumerates the different OLED display models.
         /// </summary>
         public enum DisplayModel
         {
@@ -173,7 +173,7 @@
         }
 
         /// <summary>
-        /// Enumerates the different Power Source modes
+        /// Enumerates the different Power Source modes.
         /// </summary>
         public enum VccSourceMode
         {
@@ -189,7 +189,7 @@
         }
 
         /// <summary>
-        /// Enumerates the different commands
+        /// Enumerates the different commands.
         /// </summary>
         private enum Command
         {
@@ -260,7 +260,7 @@
         }
 
         /// <summary>
-        /// Gets or sets if the diplay is turned on
+        /// Gets or sets if the display is turned on.
         /// </summary>
         public bool IsActive
         {
@@ -273,11 +273,11 @@
         }
 
         /// <summary>
-        /// Gets or sets the value of the specified pixel coordinate
+        /// Gets or sets the value of the specified pixel coordinate.
         /// </summary>
         /// <param name="x">The x coordinate.</param>
         /// <param name="y">The y coordinate.</param>
-        /// <returns>The value (true or false)</returns>
+        /// <returns>The value (true or false).</returns>
         public bool this[int x, int y]
         {
             get => BitBuffer[GetBitIndex(x, y)];
@@ -285,15 +285,15 @@
         }
 
         /// <summary>
-        /// Gets the pixel buffer value at the given coordinates
+        /// Gets the pixel buffer value at the given coordinates.
         /// </summary>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
-        /// <returns>If the bit is set or not</returns>
+        /// <returns>If the bit is set or not.</returns>
         public bool GetPixel(int x, int y) => this[x, y];
 
         /// <summary>
-        /// Sets the pixel buffer value at the given coordinates
+        /// Sets the pixel buffer value at the given coordinates.
         /// </summary>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
@@ -304,7 +304,7 @@
         /// Gets the text bitmap using the default bitmap font.
         /// </summary>
         /// <param name="text">The text.</param>
-        /// <returns>A bitmap containing the text using the bitmap font</returns>
+        /// <returns>A bitmap containing the text using the bitmap font.</returns>
         public Bitmap GetTextBitmap(string text)
         {
             var chars = Encoding.ASCII.GetBytes(text);
@@ -378,13 +378,13 @@
         public void ClearPixels() => BitBuffer.SetAll(false);
 
         /// <summary>
-        /// Loads a bitmap into the bit buffer
+        /// Loads a bitmap into the bit buffer.
         /// </summary>
         /// <param name="bitmap">The bitmap.</param>
         /// <param name="brightnessThreshold">The brightness threshold 0 to 1.</param>
         /// <param name="offsetX">The offset x.</param>
         /// <param name="offsetY">The offset y.</param>
-        /// <exception cref="ArgumentNullException">bitmap</exception>
+        /// <exception cref="ArgumentNullException">bitmap.</exception>
         public void LoadBitmap(Bitmap bitmap, double brightnessThreshold, int offsetX, int offsetY)
         {
             if (bitmap == null) throw new ArgumentNullException(nameof(bitmap));
@@ -405,7 +405,7 @@
         }
 
         /// <summary>
-        /// Renders tthe contents of the buffer
+        /// Renders tthe contents of the buffer.
         /// </summary>
         public void Render()
         {
@@ -461,7 +461,7 @@
         /// <summary>
         /// Gets the default I2C device.
         /// </summary>
-        /// <returns>The default I2C device</returns>
+        /// <returns>The default I2C device.</returns>
         private static I2cDevice GetDefaultDevice() =>
             Board.Peripherals.OpenI2cDevice(I2cBusId.Bus1, 0x3c);
 
@@ -498,7 +498,7 @@
         /// </summary>
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
-        /// <returns>The bit index for the given coordinates</returns>
+        /// <returns>The bit index for the given coordinates.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private int GetBitIndex(int x, int y) =>
             ((y / 8) * BitsPerPage) + (x * 8) + (y % 8);

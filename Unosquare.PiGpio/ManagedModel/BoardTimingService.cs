@@ -26,7 +26,7 @@
 
         /// <summary>
         /// Gets the timestamp tick.
-        /// Useful to calculate offsets in Alerts or ISR callbacks
+        /// Useful to calculate offsets in Alerts or ISR callbacks.
         /// </summary>
         public uint TimestampTick => Utilities.GpioTick();
 
@@ -36,7 +36,7 @@
         public double TimestampSeconds => Utilities.TimeTime();
 
         /// <summary>
-        /// Gets a timestamp since Jan 1, 1970 in microceconds.
+        /// Gets a timestamp since Jan 1, 1970 in microseconds.
         /// </summary>
         public long TimestampMicroseconds
         {
@@ -112,7 +112,7 @@
 
         /// <summary>
         /// Shortcut method to start a thread.
-        /// It runs the thread automatically
+        /// It runs the thread automatically.
         /// </summary>
         /// <param name="doWork">The do work.</param>
         /// <param name="threadName">Name of the thread.</param>
@@ -123,7 +123,7 @@
         {
             var thread = new Thread(() => { doWork?.Invoke(); })
             {
-                IsBackground = true
+                IsBackground = true,
             };
 
             if (string.IsNullOrWhiteSpace(threadName) == false)
@@ -135,16 +135,13 @@
 
         /// <summary>
         /// Shortcut method to start a thread.
-        /// It runs the thread automatically
+        /// It runs the thread automatically.
         /// </summary>
         /// <param name="doWork">The do work.</param>
         /// <returns>
         /// A reference to the thread object.
         /// </returns>
-        public Thread StartThread(Action doWork)
-        {
-            return StartThread(doWork, null);
-        }
+        public Thread StartThread(Action doWork) => StartThread(doWork, null);
 
         /// <summary>
         /// Starts a timer that executes a block of code with the given period.

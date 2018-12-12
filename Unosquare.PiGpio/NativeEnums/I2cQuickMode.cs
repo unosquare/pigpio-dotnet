@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Enumerates the quick modes
+    /// Enumerates the quick modes.
     /// </summary>
     public enum I2cQuickMode
     {

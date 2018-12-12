@@ -3,7 +3,7 @@
     using System;
 
     /// <summary>
-    /// Enumerates the different configuration flags
+    /// Enumerates the different configuration flags.
     /// </summary>
     [Flags]
     public enum ConfigFlags : uint

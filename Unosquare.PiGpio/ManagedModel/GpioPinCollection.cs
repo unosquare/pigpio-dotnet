@@ -6,7 +6,7 @@
     using System.Collections.ObjectModel;
 
     /// <summary>
-    /// Represents a dictionary of all GPIO Pins
+    /// Represents a dictionary of all GPIO Pins.
     /// </summary>
     public sealed class GpioPinCollection
         : ReadOnlyDictionary<int, GpioPin>
@@ -27,7 +27,7 @@
         /// The <see cref="GpioPin"/>.
         /// </value>
         /// <param name="gpio">The gpio.</param>
-        /// <returns>The pin object</returns>
+        /// <returns>The pin object.</returns>
         public GpioPin this[SystemGpio gpio] => this[(int)gpio];
 
         /// <summary>
@@ -37,13 +37,13 @@
         /// The <see cref="GpioPin"/>.
         /// </value>
         /// <param name="gpio">The gpio.</param>
-        /// <returns>The pin object</returns>
+        /// <returns>The pin object.</returns>
         public GpioPin this[UserGpio gpio] => this[(int)gpio];
 
         /// <summary>
         /// Creates the internal collection.
         /// </summary>
-        /// <returns>The items in the collection</returns>
+        /// <returns>The items in the collection.</returns>
         private static Dictionary<int, GpioPin> CreateInternalCollection()
         {
             var enumValues = Enum.GetValues(typeof(SystemGpio));

@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Enumerates the different Raspberry Pi board types
+    /// Enumerates the different Raspberry Pi board types.
     /// </summary>
     public enum BoardType : int
     {
@@ -23,6 +23,6 @@
         /// <summary>
         /// Type 3 - Model A+, B+, Pi Zero, Pi2B, Pi3B
         /// </summary>
-        Type3 = 3
+        Type3 = 3,
     }
 }

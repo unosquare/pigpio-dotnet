@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Enumerates the different DMA channels
+    /// Enumerates the different DMA channels.
     /// </summary>
     public enum DmaChannel
     {

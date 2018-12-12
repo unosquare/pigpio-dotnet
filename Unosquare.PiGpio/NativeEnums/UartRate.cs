@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeEnums
 {
     /// <summary>
-    /// Defines the valid UART rates
+    /// Defines the valid UART rates.
     /// </summary>
     public enum UartRate
     {

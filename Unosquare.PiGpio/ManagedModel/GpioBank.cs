@@ -8,17 +8,13 @@
     using System.Text;
 
     /// <summary>
-    /// Provides access to bulk GPIO read and write operations
+    /// Provides access to bulk GPIO read and write operations.
     /// </summary>
     public sealed class GpioBank
     {
-        #region Fields
-
-        private readonly SetClearBitsDelegate SetBitsCallback;
-        private readonly SetClearBitsDelegate ClearBitsCallback;
-        private readonly ReadBitsDelegate ReadBitsCallback;
-
-        #endregion
+        private readonly SetClearBitsDelegate _setBitsCallback;
+        private readonly SetClearBitsDelegate _clearBitsCallback;
+        private readonly ReadBitsDelegate _readBitsCallback;
 
         #region Constructors
 
@@ -26,7 +22,7 @@
         /// Initializes a new instance of the <see cref="GpioBank"/> class.
         /// </summary>
         /// <param name="bankNumber">The bank number. Must be 1 or 2.</param>
-        /// <exception cref="ArgumentException">Bank number can only be either 1 or 2 - bankNumber</exception>
+        /// <exception cref="ArgumentException">Bank number can only be either 1 or 2 - bankNumber.</exception>
         internal GpioBank(int bankNumber)
         {
             if (bankNumber != 1 && bankNumber != 2)
@@ -34,16 +30,16 @@
 
             BankNumber = bankNumber;
 
-            SetBitsCallback = bankNumber == 1 ?
-                new SetClearBitsDelegate(IO.GpioWriteBits00To31Set) :
+            _setBitsCallback = bankNumber == 1 ?
+                IO.GpioWriteBits00To31Set :
                 new SetClearBitsDelegate(IO.GpioWriteBits32To53Set);
 
-            ClearBitsCallback = bankNumber == 1 ?
-                new SetClearBitsDelegate(IO.GpioWriteBits00To31Clear) :
+            _clearBitsCallback = bankNumber == 1 ?
+                IO.GpioWriteBits00To31Clear :
                 new SetClearBitsDelegate(IO.GpioWriteBits32To53Clear);
 
-            ReadBitsCallback = bankNumber == 1 ?
-                new ReadBitsDelegate(IO.GpioReadBits00To31) :
+            _readBitsCallback = bankNumber == 1 ?
+                IO.GpioReadBits00To31 :
                 new ReadBitsDelegate(IO.GpioReadBits32To53);
 
             if (bankNumber == 1)
@@ -100,10 +96,11 @@
         /// Please note the output of the Bit Array is reversed.
         /// </summary>
         /// <param name="bits">The bits.</param>
-        /// <returns>A string containing 0s and 1s</returns>
+        /// <returns>A string containing 0s and 1s.</returns>
         public static string ToBinLiteral(BitArray bits)
         {
             var builder = new StringBuilder(32);
+
             for (var i = bits.Length - 1; i >= 0; i--)
             {
                 builder.Append(bits[i] ? '1' : '0');
@@ -117,7 +114,7 @@
         /// Please note the output of the byte array is reversed.
         /// </summary>
         /// <param name="bytes">The bytes.</param>
-        /// <returns>A string containing the hexadecimal chars</returns>
+        /// <returns>A string containing the hexadecimal chars.</returns>
         public static string ToHexLiteral(byte[] bytes)
         {
             var output = bytes.Reverse().ToArray();
@@ -137,7 +134,7 @@
         /// <param name="bitMask">The bit mask.</param>
         public void ClearBits(BitMask bitMask)
         {
-            BoardException.ValidateResult(ClearBitsCallback(bitMask));
+            BoardException.ValidateResult(_clearBitsCallback(bitMask));
         }
 
         /// <summary>
@@ -149,58 +146,43 @@
         /// <param name="bitMask">The bit mask.</param>
         public void SetBits(BitMask bitMask)
         {
-            BoardException.ValidateResult(SetBitsCallback(bitMask));
+            BoardException.ValidateResult(_setBitsCallback(bitMask));
         }
 
         /// <summary>
         /// Reads the value of all the GPIO pins at once as an unsigned, 32-bit integer.
         /// </summary>
-        /// <returns>The current value of all pins</returns>
-        public uint ReadValue()
-        {
-            return ReadBitsCallback();
-        }
+        /// <returns>The current value of all pins.</returns>
+        public uint ReadValue() => _readBitsCallback();
 
         /// <summary>
         /// Reads the value of all the GPIO pins at once as an array of 4 bytes.
         /// The 0th index of the result is the Least Significant Byte (low index pins pins).
-        /// The 3rd index of the result is the Most Significant Byte (high index pins)
+        /// The 3rd index of the result is the Most Significant Byte (high index pins).
         /// </summary>
-        /// <returns>The bytes that were read</returns>
-        public byte[] ReadBytes()
-        {
-            return BitConverter.GetBytes(ReadValue());
-        }
+        /// <returns>The bytes that were read.</returns>
+        public byte[] ReadBytes() => BitConverter.GetBytes(ReadValue());
 
         /// <summary>
         /// Reads the value of all the GPIO pins at once, where the 0th index of the array
-        /// is the lowest pin index (LSB) and the 31st index of the array is the highes pin index (MSB)
+        /// is the lowest pin index (LSB) and the 31st index of the array is the highes pin index (MSB).
         /// </summary>
-        /// <returns>The bits read</returns>
-        public BitArray ReadBits()
-        {
-            return new BitArray(ReadBytes());
-        }
+        /// <returns>The bits read.</returns>
+        public BitArray ReadBits() => new BitArray(ReadBytes());
 
         /// <summary>
         /// Reads from the bank and returns a series of 0s and 1s from MSB to LSB.
         /// Please note the output of the Bit Array is reversed so that the MSB is the first character.
         /// </summary>
-        /// <returns>A string containing 0s and 1s</returns>
-        public string ReadBinLiteral()
-        {
-            return ToBinLiteral(ReadBits());
-        }
+        /// <returns>A string containing 0s and 1s.</returns>
+        public string ReadBinLiteral() => ToBinLiteral(ReadBits());
 
         /// <summary>
         /// Reads from the bank and returns a series of hexadecimal chars from MSB to LSB.
         /// Please note the output of the byte array is reversed so that the left-most characters are the MSB.
         /// </summary>
-        /// <returns>A string containing the hexadecimal chars</returns>
-        public string ReadHexLiteral()
-        {
-            return ToHexLiteral(ReadBytes());
-        }
+        /// <returns>A string containing the hexadecimal chars.</returns>
+        public string ReadHexLiteral() => ToHexLiteral(ReadBytes());
 
         #endregion
     }

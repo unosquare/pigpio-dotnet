@@ -5,7 +5,7 @@
     using System;
 
     /// <summary>
-    /// Provides a software based (bit-banged) I2C bus on 2 pins
+    /// Provides a software based (bit-banged) I2C bus on 2 pins.
     /// </summary>
     /// <seealso cref="IDisposable" />
     public sealed class SoftI2cBus : IDisposable
@@ -17,7 +17,7 @@
         public const int DefaultBaudRate = 100000; // 100kbits per second
 
         /// <summary>
-        /// To detect redundant calls
+        /// To detect redundant calls.
         /// </summary>
         private bool _isDisposed; // To detect redundant calls
 
@@ -37,7 +37,7 @@
         }
 
         /// <summary>
-        /// Gets or the I2C bus handle. This points to the SDA (data) pin of the I2C bus
+        /// Gets or the I2C bus handle. This points to the SDA (data) pin of the I2C bus.
         /// </summary>
         public UserGpio Handle { get; }
 
@@ -84,7 +84,7 @@
         /// Reads data from the specified address.
         /// </summary>
         /// <param name="address">The address.</param>
-        /// <param name="count">The count. Recommended 32 as maximum</param>
+        /// <param name="count">The count. Recommended 32 as maximum.</param>
         /// <returns>The byte array that was read.</returns>
         public byte[] Read(byte address, int count)
         {

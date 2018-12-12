@@ -13,7 +13,7 @@
         /// Initialises the library.
         ///
         /// gpioInitialise must be called before using the other library functions
-        /// with the following exceptions:
+        /// with the following exceptions:.
         ///
         /// </summary>
         /// <example>
@@ -31,7 +31,7 @@
         /// <remarks>
         /// GpioCfg methods.
         /// <see cref="Utilities.GpioVersion"/>
-        /// <see cref="Utilities.GpioHardwareRevision"/>
+        /// <see cref="Utilities.GpioHardwareRevision"/>.
         /// </remarks>
         /// <returns>Returns the pigpio version number if OK, otherwise PI_INIT_FAILED.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioInitialise")]
@@ -81,9 +81,9 @@
         /// sample   4       8  12  18   31   55  107  ---
         ///  rate    5       8  10  14   24   45   87  ---
         ///  (us)    8       6   8  12   18   31   55  107
-        ///         10       6   8  10   14   24   45   87
+        ///         10       6   8  10   14   24   45   87.
         /// </remarks>
-        /// <param name="milliSecs">100-10000</param>
+        /// <param name="milliSecs">100-10000.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgBufferSize")]
         public static extern ResultCode GpioCfgBufferSize(uint milliSecs);
@@ -111,10 +111,10 @@
         ///   4     11
         ///   5     10
         ///   8     15
-        ///  10     14
+        ///  10     14.
         /// </remarks>
-        /// <param name="microSecs">1, 2, 4, 5, 8, 10</param>
-        /// <param name="peripheral">0 (PWM), 1 (PCM)</param>
+        /// <param name="microSecs">1, 2, 4, 5, 8, 10.</param>
+        /// <param name="peripheral">0 (PWM), 1 (PCM).</param>
         /// <returns>The result code.</returns>
         public static ResultCode GpioCfgClock(uint microSecs, CpuPeripheral peripheral)
         {
@@ -131,7 +131,7 @@
         /// The result code. 0 for success. See the <see cref="ResultCode" /> enumeration.
         /// </returns>
         /// <remarks>
-        /// DMAchannel: 0-14
+        /// DMAchannel: 0-14.
         /// </remarks>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgDMAchannel")]
         [Obsolete]
@@ -156,8 +156,8 @@
         /// a 10 second pulse delay requires one control block on a full channel
         /// and 611 control blocks on a lite channel.
         /// </summary>
-        /// <param name="primaryChannel">Channel 1: 0-14</param>
-        /// <param name="secondaryChannel">Channel 2: 0-14</param>
+        /// <param name="primaryChannel">Channel 1: 0-14.</param>
+        /// <param name="secondaryChannel">Channel 2: 0-14.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgDMAchannels")]
         public static extern ResultCode GpioCfgDmaChannels(DmaChannel primaryChannel, DmaChannel secondaryChannel);
@@ -179,9 +179,9 @@
         /// Unknown board @ PI_DEFAULT_UPDATE_MASK_UNKNOWN @ 0x0FFFFFFC
         /// Type 1 board  @ PI_DEFAULT_UPDATE_MASK_B1 @ 0x03E6CF93
         /// Type 2 board  @ PI_DEFAULT_UPDATE_MASK_A_B2 @ 0xFBC6CF9C
-        /// Type 3 board  @ PI_DEFAULT_UPDATE_MASK_R3 @ 0x0FFFFFFC
+        /// Type 3 board  @ PI_DEFAULT_UPDATE_MASK_R3 @ 0x0FFFFFFC.
         /// </summary>
-        /// <param name="updateMask">bit (1&lt;&lt;n) is set for each GPIO n which may be updated</param>
+        /// <param name="updateMask">bit (1&lt;&lt;n) is set for each GPIO n which may be updated.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgPermissions")]
         public static extern ResultCode GpioCfgPermissions(ulong updateMask);
@@ -193,7 +193,7 @@
         ///
         /// The default setting is to use port 8888.
         /// </summary>
-        /// <param name="port">1024-32000</param>
+        /// <param name="port">1024-32000.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgSocketPort")]
         public static extern ResultCode GpioCfgSocketPort(uint port);
@@ -213,7 +213,7 @@
         /// access (this means that the socket interface is only
         /// usable from the local Pi).
         /// </summary>
-        /// <param name="interfaceFlags">0-7</param>
+        /// <param name="interfaceFlags">0-7.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgInterfaces")]
         public static extern ResultCode GpioCfgInterfaces(InterfaceFlags interfaceFlags);
@@ -230,7 +230,7 @@
         /// Auto will use the mailbox method unless a larger than default buffer
         /// size is requested with <see cref="GpioCfgBufferSize"/>.
         /// </summary>
-        /// <param name="allocationMode">0-2</param>
+        /// <param name="allocationMode">0-2.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgMemAlloc")]
         public static extern ResultCode GpioCfgMemAlloc(AllocationMode allocationMode);
@@ -242,7 +242,7 @@
         /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// </summary>
-        /// <param name="socketAddresses">an array of permitted network addresses. An empty array means ALL</param>
+        /// <param name="socketAddresses">an array of permitted network addresses. An empty array means ALL.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         public static ResultCode GpioCfgNetAddr(uint[] socketAddresses)
         {
@@ -253,8 +253,8 @@
         /// Used to tune internal settings.
         ///
         /// </summary>
-        /// <param name="key">Key: see source code</param>
-        /// <param name="value">Value: see source code</param>
+        /// <param name="key">Key: see source code.</param>
+        /// <param name="value">Value: see source code.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgInternals")]
         [Obsolete]
@@ -273,7 +273,7 @@
         /// settings.
         ///
         /// </summary>
-        /// <param name="configFlags">see source code</param>
+        /// <param name="configFlags">see source code.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgSetInternals")]
         public static extern ResultCode GpioCfgSetInternals(ConfigFlags configFlags);
@@ -303,11 +303,11 @@
         ///   4     11
         ///   5     10
         ///   8     15
-        ///  10     14
+        ///  10     14.
         /// </remarks>
-        /// <param name="microSecs">1, 2, 4, 5, 8, 10</param>
-        /// <param name="peripheral">0 (PWM), 1 (PCM)</param>
-        /// <param name="configSource">deprecated, value is ignored</param>
+        /// <param name="microSecs">1, 2, 4, 5, 8, 10.</param>
+        /// <param name="peripheral">0 (PWM), 1 (PCM).</param>
+        /// <param name="configSource">deprecated, value is ignored.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgClock")]
         private static extern ResultCode GpioCfgClockUnmanaged(uint microSecs, CpuPeripheral peripheral, uint configSource);
@@ -319,7 +319,7 @@
         /// This function is only effective if called before <see cref="GpioInitialise"/>.
         ///
         /// </summary>
-        /// <param name="numSockAddr">0-256 (0 means all addresses allowed)</param>
+        /// <param name="numSockAddr">0-256 (0 means all addresses allowed).</param>
         /// <param name="sockAddr">an array of permitted network addresses.</param>
         /// <returns>The result code. 0 for success. See the <see cref="ResultCode"/> enumeration.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioCfgNetAddr")]

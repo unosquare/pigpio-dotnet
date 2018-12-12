@@ -30,17 +30,17 @@
         /// gpioSetMode(22,PI_ALT0);    // Set GPIO22 to alternative mode 0.
         /// </code>
         /// </example>
-        /// <param name="gpio">0-53</param>
-        /// <param name="mode">0-7</param>
+        /// <param name="gpio">0-53.</param>
+        /// <param name="mode">0-7.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_MODE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetMode")]
         public static extern ResultCode GpioSetMode(SystemGpio gpio, PinMode mode);
 
         /// <summary>
-        /// Gest the current mode for the given GPIO
+        /// Gest the current mode for the given GPIO.
         /// </summary>
         /// <param name="gpio">The gpio.</param>
-        /// <returns>The port mode</returns>
+        /// <returns>The port mode.</returns>
         public static PinMode GpioGetMode(SystemGpio gpio)
         {
             var result = BoardException.ValidateResult(GpioGetModeUnmanaged(gpio));
@@ -60,17 +60,17 @@
         /// gpioSetPullUpDown(23, PI_PUD_OFF);  // Clear any pull-ups/downs.
         /// </code>
         /// </example>
-        /// <param name="gpio">0-53</param>
-        /// <param name="pullMode">0-2</param>
+        /// <param name="gpio">0-53.</param>
+        /// <param name="pullMode">0-2.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_PUD.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetPullUpDown")]
         public static extern ResultCode GpioSetPullUpDown(SystemGpio gpio, GpioPullMode pullMode);
 
         /// <summary>
-        /// Reads the value of the GPIO
+        /// Reads the value of the GPIO.
         /// </summary>
         /// <param name="gpio">The gpio.</param>
-        /// <returns>The digital value</returns>
+        /// <returns>The digital value.</returns>
         public static bool GpioRead(SystemGpio gpio)
         {
             var result = BoardException.ValidateResult(GpioReadUnmanaged(gpio));
@@ -82,7 +82,7 @@
         ///
         /// If PWM or servo pulses are active on the GPIO they are switched off.
         ///
-        /// Arduino style: digitalWrite
+        /// Arduino style: digitalWrite.
         ///
         /// </summary>
         /// <example>
@@ -90,8 +90,8 @@
         /// gpioWrite(24, 1); // Set GPIO24 high.
         /// </code>
         /// </example>
-        /// <param name="gpio">0-53</param>
-        /// <param name="value">0-1</param>
+        /// <param name="gpio">0-53.</param>
+        /// <param name="value">0-1.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_LEVEL.</returns>
         public static ResultCode GpioWrite(SystemGpio gpio, bool value)
         {
@@ -104,9 +104,9 @@
         ///
         /// or PI_BAD_PULSELEN.
         /// </summary>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="pulseLength">1-100</param>
-        /// <param name="value">0,1</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="pulseLength">1-100.</param>
+        /// <param name="value">0,1.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_LEVEL, or PI_BAD_PULSELEN.</returns>
         public static ResultCode GpioTrigger(UserGpio userGpio, uint pulseLength, bool value)
         {
@@ -141,7 +141,7 @@
         /// gpioWrite_Bits_0_31_Clear( (1&lt;&lt;4) | (1&lt;&lt;7) | (1&lt;&lt;15) );
         /// </code>
         /// </example>
-        /// <param name="bits">a bit mask of GPIO to clear</param>
+        /// <param name="bits">a bit mask of GPIO to clear.</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWrite_Bits_0_31_Clear")]
         public static extern ResultCode GpioWriteBits00To31Clear(BitMask bits);
@@ -150,7 +150,7 @@
         /// Clears GPIO 32-53 if the corresponding bit (0-31) in bits is set.
         ///
         /// </summary>
-        /// <param name="bits">a bit mask of GPIO to clear</param>
+        /// <param name="bits">a bit mask of GPIO to clear.</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWrite_Bits_32_53_Clear")]
         public static extern ResultCode GpioWriteBits32To53Clear(BitMask bits);
@@ -159,7 +159,7 @@
         /// Sets GPIO 0-31 if the corresponding bit in bits is set.
         ///
         /// </summary>
-        /// <param name="bits">a bit mask of GPIO to set</param>
+        /// <param name="bits">a bit mask of GPIO to set.</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWrite_Bits_0_31_Set")]
         public static extern ResultCode GpioWriteBits00To31Set(BitMask bits);
@@ -174,7 +174,7 @@
         /// gpioWrite_Bits_32_53_Set((1&lt;&lt;(32-32)) | (1&lt;&lt;(40-32)) | (1&lt;&lt;(53-32)));
         /// </code>
         /// </example>
-        /// <param name="bits">a bit mask of GPIO to set</param>
+        /// <param name="bits">a bit mask of GPIO to set.</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWrite_Bits_32_53_Set")]
         public static extern ResultCode GpioWriteBits32To53Set(BitMask bits);
@@ -243,10 +243,10 @@
         /// sample   4    250,000
         /// rate     5    200,000
         /// (us)     8    125,000
-        ///         10    100,000
+        ///         10    100,000.
         /// </remarks>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="callback">the callback function</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="callback">the callback function.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetAlertFunc")]
         public static extern ResultCode GpioSetAlertFunc(UserGpio userGpio, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioAlertDelegate callback);
@@ -278,11 +278,11 @@
         ///                      WARNING: this wraps around from
         ///                      4294967295 to 0 roughly every 72 minutes
         ///
-        /// userData    pointer  Pointer to an arbitrary object
+        /// userData    pointer  Pointer to an arbitrary object.
         /// </remarks>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="callback">the callback function</param>
-        /// <param name="userData">pointer to arbitrary user data</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="callback">the callback function.</param>
+        /// <param name="userData">pointer to arbitrary user data.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetAlertFuncEx")]
         public static extern ResultCode GpioSetAlertFuncEx(UserGpio userGpio, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioAlertExDelegate callback, UIntPtr userData);
@@ -322,8 +322,8 @@
         /// gpioSetWatchdog(4, 5);
         /// </code>
         /// </example>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="timeoutMilliseconds">0-60000</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="timeoutMilliseconds">0-60000.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_WDOG_TIMEOUT.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetWatchdog")]
         public static extern ResultCode GpioSetWatchdog(UserGpio userGpio, uint timeoutMilliseconds);
@@ -375,12 +375,12 @@
         ///
         /// tick        32 bit   The number of microseconds since boot
         ///                      WARNING: this wraps around from
-        ///                      4294967295 to 0 roughly every 72 minutes
+        ///                      4294967295 to 0 roughly every 72 minutes.
         /// </remarks>
-        /// <param name="gpio">0-53</param>
-        /// <param name="edge">RISING_EDGE, FALLING_EDGE, or EITHER_EDGE</param>
-        /// <param name="timeout">interrupt timeout in milliseconds (&lt;=0 to cancel)</param>
-        /// <param name="callback">the callback function</param>
+        /// <param name="gpio">0-53.</param>
+        /// <param name="edge">RISING_EDGE, FALLING_EDGE, or EITHER_EDGE.</param>
+        /// <param name="timeout">interrupt timeout in milliseconds (&lt;=0 to cancel).</param>
+        /// <param name="callback">the callback function.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_BAD_EDGE, or PI_BAD_ISR_INIT.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetISRFunc")]
         public static extern ResultCode GpioSetIsrFunc(SystemGpio gpio, EdgeDetection edge, int timeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioIsrDelegate callback);
@@ -410,13 +410,13 @@
         ///                      WARNING: this wraps around from
         ///                      4294967295 to 0 roughly every 72 minutes
         ///
-        /// userData    pointer  Pointer to an arbitrary object
+        /// userData    pointer  Pointer to an arbitrary object.
         /// </remarks>
-        /// <param name="gpio">0-53</param>
-        /// <param name="edge">RISING_EDGE, FALLING_EDGE, or EITHER_EDGE</param>
-        /// <param name="timeout">interrupt timeout in milliseconds (&lt;=0 to cancel)</param>
-        /// <param name="callback">the callback function</param>
-        /// <param name="userData">pointer to arbitrary user data</param>
+        /// <param name="gpio">0-53.</param>
+        /// <param name="edge">RISING_EDGE, FALLING_EDGE, or EITHER_EDGE.</param>
+        /// <param name="timeout">interrupt timeout in milliseconds (&lt;=0 to cancel).</param>
+        /// <param name="callback">the callback function.</param>
+        /// <param name="userData">pointer to arbitrary user data.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_BAD_EDGE, or PI_BAD_ISR_INIT.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetISRFuncEx")]
         public static extern ResultCode GpioSetIsrFuncEx(SystemGpio gpio, EdgeDetection edge, int timeout, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioIsrExDelegate callback, UIntPtr userData);
@@ -439,8 +439,8 @@
         /// 8, 10, 23, 24, and bits is (1&lt;&lt;23)|(1&lt;&lt;17) then samples for GPIO
         /// 7, 8, 9, 10, 17, 23, and 24 will be reported.
         /// </summary>
-        /// <param name="callback">the function to call</param>
-        /// <param name="bits">the GPIO of interest</param>
+        /// <param name="callback">the function to call.</param>
+        /// <param name="bits">the GPIO of interest.</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetGetSamplesFunc")]
         public static extern ResultCode GpioSetGetSamplesFunc([In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioGetSamplesDelegate callback, BitMask bits);
@@ -457,9 +457,9 @@
         ///
         /// See <see cref="GpioSetGetSamplesFunc"/> for further details.
         /// </summary>
-        /// <param name="callback">the function to call</param>
-        /// <param name="bits">the GPIO of interest</param>
-        /// <param name="userData">a pointer to arbitrary user data</param>
+        /// <param name="callback">the function to call.</param>
+        /// <param name="bits">the GPIO of interest.</param>
+        /// <param name="userData">a pointer to arbitrary user data.</param>
         /// <returns>Returns 0 if OK.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetGetSamplesFuncEx")]
         public static extern ResultCode GpioSetGetSamplesFuncEx([In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioGetSamplesExDelegate callback, BitMask bits, UIntPtr userData);
@@ -487,8 +487,8 @@
         /// Each (stable) edge will be timestamped <paramref name="steadyMicroseconds"/> microseconds
         /// after it was first detected.
         /// </summary>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="steadyMicroseconds">0-300000</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="steadyMicroseconds">0-300000.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_BAD_FILTER.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioGlitchFilter")]
         public static extern ResultCode GpioGlitchFilter(UserGpio userGpio, uint steadyMicroseconds);
@@ -513,9 +513,9 @@
         /// be reported.  Your software must be designed to cope with
         /// such reports.
         /// </summary>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="steadyMicroseconds">0-300000</param>
-        /// <param name="activeMicroseconds">0-1000000</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="steadyMicroseconds">0-300000.</param>
+        /// <param name="activeMicroseconds">0-1000000.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, or PI_BAD_FILTER.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioNoiseFilter")]
         public static extern ResultCode GpioNoiseFilter(UserGpio userGpio, uint steadyMicroseconds, uint activeMicroseconds);
@@ -530,7 +530,7 @@
         /// Pad @ GPIO
         /// 0   @ 0-27
         /// 1   @ 28-45
-        /// 2   @ 46-53
+        /// 2   @ 46-53.
         ///
         /// </summary>
         /// <example>
@@ -538,7 +538,7 @@
         /// strength = gpioGetPad(1); // get pad 1 strength
         /// </code>
         /// </example>
-        /// <param name="pad">0-2, the pad to get</param>
+        /// <param name="pad">0-2, the pad to get.</param>
         /// <returns>Returns the pad drive strength if OK, otherwise PI_BAD_PAD.</returns>
         public static GpioPadStrength GpioGetPad(GpioPadId pad)
         {
@@ -552,7 +552,7 @@
         /// Pad @ GPIO
         /// 0   @ 0-27
         /// 1   @ 28-45
-        /// 2   @ 46-53
+        /// 2   @ 46-53.
         ///
         /// </summary>
         /// <example>
@@ -560,8 +560,8 @@
         /// gpioSetPad(0, 16); // set pad 0 strength to 16 mA
         /// </code>
         /// </example>
-        /// <param name="pad">0-2, the pad to set</param>
-        /// <param name="padStrength">1-16 mA</param>
+        /// <param name="pad">0-2, the pad to set.</param>
+        /// <param name="padStrength">1-16 mA.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_PAD, or PI_BAD_STRENGTH.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetPad")]
         public static extern ResultCode GpioSetPad(GpioPadId pad, GpioPadStrength padStrength);
@@ -581,7 +581,7 @@
         /// printf("GPIO24 is level %d", gpioRead(24));
         /// </code>
         /// </example>
-        /// <param name="gpio">0-53</param>
+        /// <param name="gpio">0-53.</param>
         /// <returns>Returns the GPIO level if OK, otherwise PI_BAD_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioRead")]
         internal static extern int GpioReadUnmanaged(SystemGpio gpio);
@@ -591,7 +591,7 @@
         ///
         /// If PWM or servo pulses are active on the GPIO they are switched off.
         ///
-        /// Arduino style: digitalWrite
+        /// Arduino style: digitalWrite.
         ///
         /// </summary>
         /// <example>
@@ -599,8 +599,8 @@
         /// gpioWrite(24, 1); // Set GPIO24 high.
         /// </code>
         /// </example>
-        /// <param name="gpio">0-53</param>
-        /// <param name="value">0-1</param>
+        /// <param name="gpio">0-53.</param>
+        /// <param name="value">0-1.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_LEVEL.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioWrite")]
         internal static extern ResultCode GpioWriteUnmanaged(SystemGpio gpio, DigitalValue value);
@@ -611,7 +611,7 @@
         /// Pad @ GPIO
         /// 0   @ 0-27
         /// 1   @ 28-45
-        /// 2   @ 46-53
+        /// 2   @ 46-53.
         ///
         /// </summary>
         /// <example>
@@ -619,7 +619,7 @@
         /// strength = gpioGetPad(1); // get pad 1 strength
         /// </code>
         /// </example>
-        /// <param name="pad">0-2, the pad to get</param>
+        /// <param name="pad">0-2, the pad to get.</param>
         /// <returns>Returns the pad drive strength if OK, otherwise PI_BAD_PAD.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioGetPad")]
         private static extern int GpioGetPadUnmanaged(GpioPadId pad);
@@ -636,7 +636,7 @@
         /// }
         /// </code>
         /// </example>
-        /// <param name="gpio">0-53</param>
+        /// <param name="gpio">0-53.</param>
         /// <returns>Returns the GPIO mode if OK, otherwise PI_BAD_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioGetMode")]
         private static extern int GpioGetModeUnmanaged(SystemGpio gpio);
@@ -647,9 +647,9 @@
         ///
         /// or PI_BAD_PULSELEN.
         /// </summary>
-        /// <param name="userGpio">0-31</param>
-        /// <param name="pulseLength">1-100</param>
-        /// <param name="value">0,1</param>
+        /// <param name="userGpio">0-31.</param>
+        /// <param name="pulseLength">1-100.</param>
+        /// <param name="value">0,1.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_LEVEL, or PI_BAD_PULSELEN.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioTrigger")]
         private static extern ResultCode GpioTriggerUnmanaged(UserGpio userGpio, uint pulseLength, DigitalValue value);

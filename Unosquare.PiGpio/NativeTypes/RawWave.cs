@@ -3,7 +3,7 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// Represents raw waveform data
+    /// Represents raw waveform data.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public sealed class RawWave
@@ -14,7 +14,7 @@
         private uint m_Flags;
 
         /// <summary>
-        /// The gpio on
+        /// The gpio on.
         /// </summary>
         public uint GpioOn
         {
@@ -23,7 +23,7 @@
         }
 
         /// <summary>
-        /// The gpio off
+        /// The gpio off.
         /// </summary>
         public uint GpioOff
         {
@@ -32,7 +32,7 @@
         }
 
         /// <summary>
-        /// The delay microseconds
+        /// The delay microseconds.
         /// </summary>
         public uint DelayMicroseconds
         {
@@ -41,7 +41,7 @@
         }
 
         /// <summary>
-        /// The flags
+        /// The flags.
         /// </summary>
         public uint Flags
         {

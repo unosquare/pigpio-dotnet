@@ -128,9 +128,9 @@
         /// Start the alert callbacks.
         /// </summary>
         /// <param name="callback">The callback.</param>
-        /// <exception cref="NotSupportedException">IsUserGpio is false</exception>
-        /// <exception cref="ArgumentNullException">callback - ClearAlertCallback</exception>
-        /// <exception cref="ArgumentException">A callback is already registered. Clear the current callback before registering a new one. - callback</exception>
+        /// <exception cref="NotSupportedException">IsUserGpio is false.</exception>
+        /// <exception cref="ArgumentNullException">callback - ClearAlertCallback.</exception>
+        /// <exception cref="ArgumentException">A callback is already registered. Clear the current callback before registering a new one. - callback.</exception>
         public void Start(PiGpioAlertDelegate callback)
         {
             ValidateAvailable();
@@ -152,7 +152,7 @@
         /// <summary>
         /// Clears the alert callback and stops reporting changes.
         /// </summary>
-        /// <exception cref="NotSupportedException">IsUserGpio is false</exception>
+        /// <exception cref="NotSupportedException">IsUserGpio is false.</exception>
         public void Stop()
         {
             ValidateAvailable();
