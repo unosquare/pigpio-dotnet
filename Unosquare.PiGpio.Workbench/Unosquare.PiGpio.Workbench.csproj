@@ -43,7 +43,6 @@
   </ItemGroup>
   
   <ItemGroup>
-    <ProjectReference Include="..\Unosquare.PiGpio.Peripherals\Unosquare.PiGpio.Peripherals.csproj" />
     <ProjectReference Include="..\Unosquare.PiGpio\Unosquare.PiGpio.csproj" />
   </ItemGroup>
   

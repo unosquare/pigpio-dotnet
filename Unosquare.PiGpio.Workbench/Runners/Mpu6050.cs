@@ -38,7 +38,7 @@
             {
                 if (_device == null) return double.NaN;
 
-                // recieves the high byte (MSB) first and then the low byte (LSB) as an int 16
+                // receives the high byte (MSB) first and then the low byte (LSB) as an int 16
                 var tempBytes = BitConverter.GetBytes(_device.ReadWord(0x41));
 
                 // Since we are in little endian, we need to reverse so that we parse LSB and MSB
