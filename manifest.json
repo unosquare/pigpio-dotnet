@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "z2ArJjasECHbBTyq/IB3rA=="
+          "hash": "xZ69SNVuaUkZJFnQYBRHjA=="
         }
       },
       "is_incremental": false,
@@ -98,30 +98,6 @@
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.BoardException.html",
           "hash": "riOyuGLAY81rAHL/Vq3AcQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.GpioController.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unosquare.PiGpio.GpioController.html",
-          "hash": "+m1p+5jTbDDS5QHcP2Otxw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.I2CBus.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unosquare.PiGpio.I2CBus.html",
-          "hash": "1T8+KKwDa/DZMIuOWa+Uog=="
         }
       },
       "is_incremental": false,
@@ -1269,59 +1245,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.SpiBus.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unosquare.PiGpio.SpiBus.html",
-          "hash": "gfSUiv4LPQOHQtyPsNNVdg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.SystemInfo.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unosquare.PiGpio.SystemInfo.html",
-          "hash": "LiqWzbf4UgVEnVyZ6rBlzQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.Threading.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unosquare.PiGpio.Threading.html",
-          "hash": "baWBQ/rrUuB3RVmyyBqOpg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.Timing.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unosquare.PiGpio.Timing.html",
-          "hash": "eA9kioa/gFOYw8u+hFfobQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/api/Unosquare.PiGpio.yml",
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.html",
-          "hash": "lUHk6cZ7NvYWiY48tjTAKA=="
+          "hash": "PaYWrdo98rXi6DlV2LqeLw=="
         }
       },
       "is_incremental": false,
@@ -1333,7 +1261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "kLcEBhvBpDbIQcNLUZZ0Xw=="
+          "hash": "IwmHLCgGE5x6Vc52ENJFWw=="
         }
       },
       "is_incremental": false,
