@@ -1,0 +1,1326 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Utilities
+   | Unosquare Raspbery Pi - libpigpio for .net </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Utilities
+   | Unosquare Raspbery Pi - libpigpio for .net ">
+    <meta name="generator" content="docfx 2.40.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.NativeMethods.Utilities">
+  
+  
+  <h1 id="Unosquare_PiGpio_NativeMethods_Utilities" data-uid="Unosquare.PiGpio.NativeMethods.Utilities" class="text-break">Class Utilities
+  </h1>
+  <div class="markdown level0 summary"><p>Provides various utility methods to retrieve hardware and software versions,
+time, shell commands, and bitwise maskling.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Utilities</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.NativeMethods.html">Unosquare.PiGpio.NativeMethods</a></h6>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Utilities_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Utilities</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_ApplyBits_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.ApplyBits*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_ApplyBits_System_Int32_System_Boolean_System_Int32___" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.ApplyBits(System.Int32,System.Boolean,System.Int32[])">ApplyBits(Int32, Boolean, Int32[])</h4>
+  <div class="markdown level1 summary"><p>Applies bit values according to the indexes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int ApplyBits(this int flags, bool value, params int[] indexes)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>True to set the 1 bits. False to clear the 1 bits.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span>[]</td>
+        <td><span class="parametername">indexes</span></td>
+        <td><p>The indexes.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The applied bitmask.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GetBit_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBit*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GetBit_System_Byte_System_Int32_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBit(System.Byte,System.Int32)">GetBit(Byte, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a bit at the given positon index from right to left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool GetBit(this byte flags, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>The value of the bit at the given position index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GetBit_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBit*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GetBit_System_Int16_System_Int32_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBit(System.Int16,System.Int32)">GetBit(Int16, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a bit at the given positon index from right to left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool GetBit(this short flags, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>The value of the bit at the given position index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GetBit_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBit*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GetBit_System_Int32_System_Int32_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBit(System.Int32,System.Int32)">GetBit(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a bit at the given positon index from right to left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool GetBit(this int flags, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>The value of the bit at the given position index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GetBit_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBit*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GetBit_System_UInt16_System_Int32_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBit(System.UInt16,System.Int32)">GetBit(UInt16, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a bit at the given positon index from right to left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool GetBit(this ushort flags, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>The value of the bit at the given position index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GetBit_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBit*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GetBit_System_UInt32_System_Int32_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBit(System.UInt32,System.Int32)">GetBit(UInt32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets a bit at the given positon index from right to left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static bool GetBit(this uint flags, int index)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>The value of the bit at the given position index.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GetBitInBytes_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBitInBytes*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GetBitInBytes_System_Int32_System_Byte___System_Int32_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GetBitInBytes(System.Int32,System.Byte[],System.Int32)">GetBitInBytes(Int32, Byte[], Int32)</h4>
+  <div class="markdown level1 summary"><p>Gets the bit value at the bit position.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GetBitInBytes(int bitPos, byte[] buf, int numBits)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bitPos</span></td>
+        <td><p>bit index from the start of buf.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>array of bits.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">numBits</span></td>
+        <td><p>number of valid bits in buf.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the value of the bit bitPos bits from the start of buf.  Returns 0 if bitPos is greater than or equal to numBits.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GpioHardwareRevision_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioHardwareRevision*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GpioHardwareRevision" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioHardwareRevision">GpioHardwareRevision()</h4>
+  <div class="markdown level1 summary"><p>If the hardware revision can not be found or is not a valid hexadecimal
+number the function returns 0.</p>
+<p>The hardware revision is the last few characters on the Revision line of
+/proc/cpuinfo.</p>
+<p>The revision number can be used to determine the assignment of GPIO
+to pins (see <a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html">IO</a>).</p>
+<p>There are at least three types of board.</p>
+<p>Type 1 boards have hardware revision numbers of 2 and 3.</p>
+<p>Type 2 boards have hardware revision numbers of 4, 5, 6, and 15.</p>
+<p>Type 3 boards have hardware revision numbers of 16 or greater.</p>
+<p>for &quot;Revision       : 0002&quot; the function returns 2.
+for &quot;Revision       : 000f&quot; the function returns 15.
+for &quot;Revision       : 000g&quot; the function returns 0.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static uint GpioHardwareRevision()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>Returns the hardware revision.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GpioSetSignalFunc_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioSetSignalFunc*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GpioSetSignalFunc_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioSignalDelegate_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioSetSignalFunc(System.UInt32,Unosquare.PiGpio.NativeTypes.PiGpioSignalDelegate)">GpioSetSignalFunc(UInt32, PiGpioSignalDelegate)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) when a signal occurs.</p>
+<p>The function is passed the signal number.</p>
+<p>One function may be registered per signal.</p>
+<p>The callback may be cancelled by passing NULL.</p>
+<p>By default all signals are treated as fatal and cause the library
+to call gpioTerminate and then exit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetSignalFunc(uint signalNumber, PiGpioSignalDelegate f)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">signalNumber</span></td>
+        <td><p>0-63.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioSignalDelegate.html">PiGpioSignalDelegate</a></td>
+        <td><span class="parametername">f</span></td>
+        <td><p>the callback function.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_signalNumber.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GpioSetSignalFuncEx_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioSetSignalFuncEx*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GpioSetSignalFuncEx_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioSignalExDelegate_System_UIntPtr_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioSetSignalFuncEx(System.UInt32,Unosquare.PiGpio.NativeTypes.PiGpioSignalExDelegate,System.UIntPtr)">GpioSetSignalFuncEx(UInt32, PiGpioSignalExDelegate, UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) when a signal occurs.</p>
+<p>The function is passed the signal number and the userData pointer.</p>
+<p>Only one of gpioSetSignalFunc or gpioSetSignalFuncEx can be
+registered per signal.</p>
+<p>See gpioSetSignalFunc for further details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetSignalFuncEx(uint signalNumber, PiGpioSignalExDelegate callback, UIntPtr userData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">signalNumber</span></td>
+        <td><p>0-63.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioSignalExDelegate.html">PiGpioSignalExDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the callback function.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">userData</span></td>
+        <td><p>a pointer to arbitrary user data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_signalNumber.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GpioTick_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioTick*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GpioTick" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioTick">GpioTick()</h4>
+  <div class="markdown level1 summary"><p>Tick is the number of microseconds since system boot.</p>
+<p>As tick is an unsigned 32 bit quantity it wraps around after
+2^32 microseconds, which is approximately 1 hour 12 minutes.</p>
+<p>You don&apos;t need to worry about the wrap around as long as you
+take a tick (uint) from another tick, i.e. the following
+code will always provide the correct difference.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static uint GpioTick()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>Returns the current system tick.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Utilities_GpioTick_examples">Examples</h5>
+  <pre><code>uint startTick, endTick;
+int diffTick;
+
+startTick = gpioTick();
+
+// do some processing
+
+endTick = gpioTick();
+
+diffTick = endTick - startTick;
+
+printf(&quot;some processing took %d microseconds&quot;, diffTick);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GpioTime_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioTime*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GpioTime_Unosquare_PiGpio_NativeEnums_TimeType_System_Int32__System_Int32__" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioTime(Unosquare.PiGpio.NativeEnums.TimeType,System.Int32@,System.Int32@)">GpioTime(TimeType, out Int32, out Int32)</h4>
+  <div class="markdown level1 summary"><p>Retrieves the seconds and micros variables with the current time.</p>
+<p>If timetype is PI_TIME_ABSOLUTE updates seconds and micros with the
+number of seconds and microseconds since the epoch (1st January 1970).</p>
+<p>If timetype is PI_TIME_RELATIVE updates seconds and micros with the
+number of seconds and microseconds since the library was initialised.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioTime(TimeType timeType, out int seconds, out int microseconds)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.TimeType.html">TimeType</a></td>
+        <td><span class="parametername">timeType</span></td>
+        <td><p>0 (relative), 1 (absolute).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">seconds</span></td>
+        <td><p>a pointer to an int to hold seconds.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">microseconds</span></td>
+        <td><p>a pointer to an int to hold microseconds.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_TIMETYPE.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Utilities_GpioTime_Unosquare_PiGpio_NativeEnums_TimeType_System_Int32__System_Int32___examples">Examples</h5>
+  <pre><code>int secs, mics;
+
+// print the number of seconds since the library was started
+gpioTime(PI_TIME_RELATIVE, &amp;secs, &amp;mics);
+printf(&quot;library started %d.%03d seconds ago&quot;, secs, mics/1000);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_GpioVersion_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioVersion*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_GpioVersion" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.GpioVersion">GpioVersion()</h4>
+  <div class="markdown level1 summary"><p>Returns the pigpio version number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static uint GpioVersion()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>Returns the pigpio version.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_PutBitInBytes_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.PutBitInBytes*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_PutBitInBytes_System_Int32_System_Byte___System_Int32_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.PutBitInBytes(System.Int32,System.Byte[],System.Int32)">PutBitInBytes(Int32, Byte[], Int32)</h4>
+  <div class="markdown level1 summary"><p>Sets the bit bitPos bits from the start of buf to bit.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static void PutBitInBytes(int bitPos, byte[] buf, int bit)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bitPos</span></td>
+        <td><p>bit index from the start of buf.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">buf</span></td>
+        <td><p>array of bits.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bit</span></td>
+        <td><p>0-1, value to set.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_RaiseSignal_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.RaiseSignal*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_RaiseSignal_System_Int32_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.RaiseSignal(System.Int32)">RaiseSignal(Int32)</h4>
+  <div class="markdown level1 summary"><p>Raises the given UNIX signal numner (0 to 63).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int RaiseSignal(int signalNumber)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">signalNumber</span></td>
+        <td><p>The UNIX signal number from 0 to 63.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 for success.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_SetBit_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.SetBit*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_SetBit_System_Byte_System_Int32_System_Boolean_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.SetBit(System.Byte,System.Int32,System.Boolean)">SetBit(Byte, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sets a bit at the given positon index from right to left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static byte SetBit(this byte flags, int index, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>if set to <code>true</code> [value].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span></td>
+        <td><p>The flags with the bit set at the given position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_SetBit_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.SetBit*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_SetBit_System_Int16_System_Int32_System_Boolean_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.SetBit(System.Int16,System.Int32,System.Boolean)">SetBit(Int16, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sets a bit at the given positon index from right to left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static short SetBit(this short flags, int index, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>if set to <code>true</code> [value].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int16</span></td>
+        <td><p>The flags with the bit set at the given position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_SetBit_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.SetBit*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_SetBit_System_Int32_System_Int32_System_Boolean_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.SetBit(System.Int32,System.Int32,System.Boolean)">SetBit(Int32, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sets a bit at the given positon index from right to left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int SetBit(this int flags, int index, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>if set to <code>true</code> [value].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The flags with the bit set at the given position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_SetBit_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.SetBit*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_SetBit_System_UInt16_System_Int32_System_Boolean_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.SetBit(System.UInt16,System.Int32,System.Boolean)">SetBit(UInt16, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sets a bit at the given positon index from right to left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ushort SetBit(this ushort flags, int index, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>if set to <code>true</code> [value].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt16</span></td>
+        <td><p>The flags with the bit set at the given position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_SetBit_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.SetBit*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_SetBit_System_UInt32_System_Int32_System_Boolean_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.SetBit(System.UInt32,System.Int32,System.Boolean)">SetBit(UInt32, Int32, Boolean)</h4>
+  <div class="markdown level1 summary"><p>Sets a bit at the given positon index from right to left.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static uint SetBit(this uint flags, int index, bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">flags</span></td>
+        <td><p>The flags.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">index</span></td>
+        <td><p>The index.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>if set to <code>true</code> [value].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The flags with the bit set at the given position.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_Shell_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.Shell*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_Shell_System_String_System_String_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.Shell(System.String,System.String)">Shell(String, String)</h4>
+  <div class="markdown level1 summary"><p>This function uses the system call to execute a shell script
+with the given string as its parameter.</p>
+<p>The exit status of the system call is returned if OK, otherwise
+PI_BAD_SHELL_STATUS.</p>
+<p>scriptName must exist in /opt/pigpio/cgi and must be executable.</p>
+<p>The returned exit status is normally 256 times that set by the
+shell script exit function.  If the script can&apos;t be found 32512 will
+be returned.</p>
+<p>The following table gives some example returned statuses.</p>
+<p>Script exit status @ Returned system call status
+1                  @ 256
+5                  @ 1280
+10                 @ 2560
+200                @ 51200
+script not found   @ 32512.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode Shell(string scriptName, string scriptString)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">scriptName</span></td>
+        <td><p>the name of the script, only alphanumeric characters,.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">scriptString</span></td>
+        <td><p>the string to pass to the script.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Utilities_Shell_System_String_System_String__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>&apos;-&apos; and &apos;_&apos; are allowed in the name.</p>
+</div>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Utilities_Shell_System_String_System_String__examples">Examples</h5>
+  <pre><code>// pass two parameters, hello and world
+status = shell(&quot;scr1&quot;, &quot;hello world&quot;);
+
+// pass three parameters, hello, string with spaces, and world
+status = shell(&quot;scr1&quot;, &quot;hello &apos;string with spaces&apos; world&quot;);
+
+// pass one parameter, hello string with spaces world
+status = shell(&quot;scr1&quot;, &quot;\&quot;hello string with spaces world\&quot;&quot;);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Utilities_TimeTime_" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.TimeTime*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Utilities_TimeTime" data-uid="Unosquare.PiGpio.NativeMethods.Utilities.TimeTime">TimeTime()</h4>
+  <div class="markdown level1 summary"><p>Return the current time in seconds since the Epoch.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static double TimeTime()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Double</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+<h3 id="disqus_thread">Comments</h3>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://unolabs.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="doc" align="center">
+              <span class="small mobile-hide">
+                <img id="logo" class="doc-logo" src="../Support/pigpio-dotnet-256.png" alt="">
+              </span>
+            </div>
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2017-2018 <a href="https://www.unosquare.com">Unosquare</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

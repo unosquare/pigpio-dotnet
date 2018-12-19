@@ -1,0 +1,877 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Pwm
+   | Unosquare Raspbery Pi - libpigpio for .net </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Pwm
+   | Unosquare Raspbery Pi - libpigpio for .net ">
+    <meta name="generator" content="docfx 2.40.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.NativeMethods.Pwm">
+  
+  
+  <h1 id="Unosquare_PiGpio_NativeMethods_Pwm" data-uid="Unosquare.PiGpio.NativeMethods.Pwm" class="text-break">Class Pwm
+  </h1>
+  <div class="markdown level0 summary"><p>Provides methods for software and hardware based PWM services for the GPIO pins.
+All User GPIO pins support PWM.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Pwm</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.NativeMethods.html">Unosquare.PiGpio.NativeMethods</a></h6>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Pwm</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmDutyCycle_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioGetPwmDutyCycle*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmDutyCycle_Unosquare_PiGpio_NativeEnums_UserGpio_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioGetPwmDutyCycle(Unosquare.PiGpio.NativeEnums.UserGpio)">GpioGetPwmDutyCycle(UserGpio)</h4>
+  <div class="markdown level1 summary"><p>Gets the PWM duty cycle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioGetPwmDutyCycle(UserGpio userGpio)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>The user gpio.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The PWM duty cycle.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmFrequency_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioGetPwmFrequency*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmFrequency_Unosquare_PiGpio_NativeEnums_UserGpio_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioGetPwmFrequency(Unosquare.PiGpio.NativeEnums.UserGpio)">GpioGetPwmFrequency(UserGpio)</h4>
+  <div class="markdown level1 summary"><p>For normal PWM the frequency will be that defined for the GPIO by
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.Pwm.html#Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmFrequency_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_">GpioSetPwmFrequency(UserGpio, UInt32)</a>.</p>
+<p>If a hardware clock is active on the GPIO the reported frequency
+will be that set by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Pwm.html#Unosquare_PiGpio_NativeMethods_Pwm_GpioHardwareClock_Unosquare_PiGpio_NativeEnums_SystemGpio_System_UInt32_">GpioHardwareClock(SystemGpio, UInt32)</a>.</p>
+<p>If hardware PWM is active on the GPIO the reported frequency
+will be that set by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Pwm.html#Unosquare_PiGpio_NativeMethods_Pwm_GpioHardwarePwm_Unosquare_PiGpio_NativeEnums_SystemGpio_System_UInt32_System_UInt32_">GpioHardwarePwm(SystemGpio, UInt32, UInt32)</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioGetPwmFrequency(UserGpio userGpio)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the frequency (in hertz) used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmFrequency_Unosquare_PiGpio_NativeEnums_UserGpio__examples">Examples</h5>
+  <pre><code>f = gpioGetPWMfrequency(23); // Get frequency used for GPIO23.</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmRange_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioGetPwmRange*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmRange_Unosquare_PiGpio_NativeEnums_UserGpio_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioGetPwmRange(Unosquare.PiGpio.NativeEnums.UserGpio)">GpioGetPwmRange(UserGpio)</h4>
+  <div class="markdown level1 summary"><p>If a hardware clock or hardware PWM is active on the GPIO
+the reported range will be 1000000 (1M).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioGetPwmRange(UserGpio userGpio)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the dutycycle range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmRange_Unosquare_PiGpio_NativeEnums_UserGpio__examples">Examples</h5>
+  <pre><code>r = gpioGetPWMrange(23);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmRealRange_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioGetPwmRealRange*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmRealRange_Unosquare_PiGpio_NativeEnums_UserGpio_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioGetPwmRealRange(Unosquare.PiGpio.NativeEnums.UserGpio)">GpioGetPwmRealRange(UserGpio)</h4>
+  <div class="markdown level1 summary"><p>If a hardware clock is active on the GPIO the reported real
+range will be 1000000 (1M).</p>
+<p>If hardware PWM is active on the GPIO the reported real range
+will be approximately 250M divided by the set PWM frequency.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioGetPwmRealRange(UserGpio userGpio)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetPwmRealRange_Unosquare_PiGpio_NativeEnums_UserGpio__examples">Examples</h5>
+  <pre><code>rr = gpioGetPWMrealRange(17);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetServoPulseWidth_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioGetServoPulseWidth*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioGetServoPulseWidth_Unosquare_PiGpio_NativeEnums_UserGpio_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioGetServoPulseWidth(Unosquare.PiGpio.NativeEnums.UserGpio)">GpioGetServoPulseWidth(UserGpio)</h4>
+  <div class="markdown level1 summary"><p>Returns 0 (off), 500 (most anti-clockwise) to 2500 (most clockwise).</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioGetServoPulseWidth(UserGpio userGpio)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>The user gpio.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The Servo pulse width.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioHardwareClock_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioHardwareClock*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioHardwareClock_Unosquare_PiGpio_NativeEnums_SystemGpio_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioHardwareClock(Unosquare.PiGpio.NativeEnums.SystemGpio,System.UInt32)">GpioHardwareClock(SystemGpio, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Starts a hardware clock on a GPIO at the specified frequency.
+Frequencies above 30MHz are unlikely to work.</p>
+<p>The same clock is available on multiple GPIO.  The latest
+frequency setting will be used by all GPIO which share a clock.</p>
+<p>The GPIO must be one of the following.</p>
+<p>Access to clock 1 is protected by a password as its use will likely
+crash the Pi.  The password is given by or&apos;ing 0x5A000000 with the
+GPIO number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioHardwareClock(SystemGpio gpio, uint clockFrequency)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SystemGpio.html">SystemGpio</a></td>
+        <td><span class="parametername">gpio</span></td>
+        <td><p>see description.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">clockFrequency</span></td>
+        <td><p>0 (off) or 4689-250000000 (250M).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_NOT_HCLK_GPIO, PI_BAD_HCLK_FREQ,or PI_BAD_HCLK_PASS.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioHardwareClock_Unosquare_PiGpio_NativeEnums_SystemGpio_System_UInt32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>4   clock 0  All models
+5   clock 1  All models but A and B (reserved for system use)
+6   clock 2  All models but A and B
+20  clock 0  All models but A and B
+21  clock 1  All models but A and Rev.2 B (reserved for system use)</p>
+<p>32  clock 0  Compute module only
+34  clock 0  Compute module only
+42  clock 1  Compute module only (reserved for system use)
+43  clock 2  Compute module only
+44  clock 1  Compute module only (reserved for system use).</p>
+</div>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioHardwarePwm_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioHardwarePwm*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioHardwarePwm_Unosquare_PiGpio_NativeEnums_SystemGpio_System_UInt32_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioHardwarePwm(Unosquare.PiGpio.NativeEnums.SystemGpio,System.UInt32,System.UInt32)">GpioHardwarePwm(SystemGpio, UInt32, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Starts hardware PWM on a GPIO at the specified frequency and dutycycle.
+Frequencies above 30MHz are unlikely to work.</p>
+<p>NOTE: Any waveform started by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxSend_System_UInt32_Unosquare_PiGpio_NativeEnums_WaveMode_">GpioWaveTxSend(UInt32, WaveMode)</a>, or
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveChain_System_Byte___System_UInt32_">GpioWaveChain(Byte[], UInt32)</a> will be cancelled.</p>
+<p>This function is only valid if the pigpio main clock is PCM.  The
+main clock defaults to PCM but may be overridden by a call to
+<a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioCfgClock_System_UInt32_Unosquare_PiGpio_NativeEnums_CpuPeripheral_">GpioCfgClock(UInt32, CpuPeripheral)</a>.</p>
+<p>The same PWM channel is available on multiple GPIO.  The latest
+frequency and dutycycle setting will be used by all GPIO which
+share a PWM channel.</p>
+<p>The GPIO must be one of the following.</p>
+<p>The actual number of steps beween off and fully on is the
+integral part of 250 million divided by PWMfreq.</p>
+<p>The actual frequency set is 250 million / steps.</p>
+<p>There will only be a million steps for a PWMfreq of 250.
+Lower frequencies will have more steps and higher
+frequencies will have fewer steps.  PWMduty is
+automatically scaled to take this into account.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioHardwarePwm(SystemGpio gpio, uint pwmFrequency, uint pwmDytuCycle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.SystemGpio.html">SystemGpio</a></td>
+        <td><span class="parametername">gpio</span></td>
+        <td><p>see description.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">pwmFrequency</span></td>
+        <td><p>0 (off) or 1-125000000 (125M).</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">pwmDytuCycle</span></td>
+        <td><p>0 (off) to 1000000 (1M)(fully on).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_GPIO, PI_NOT_HPWM_GPIO, PI_BAD_HPWM_DUTY, PI_BAD_HPWM_FREQ, or PI_HPWM_ILLEGAL.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioHardwarePwm_Unosquare_PiGpio_NativeEnums_SystemGpio_System_UInt32_System_UInt32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>12  PWM channel 0  All models but A and B
+13  PWM channel 1  All models but A and B
+18  PWM channel 0  All models
+19  PWM channel 1  All models but A and B</p>
+<p>40  PWM channel 0  Compute module only
+41  PWM channel 1  Compute module only
+45  PWM channel 1  Compute module only
+52  PWM channel 0  Compute module only
+53  PWM channel 1  Compute module only.</p>
+</div>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioPwm_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioPwm*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioPwm_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioPwm(Unosquare.PiGpio.NativeEnums.UserGpio,System.UInt32)">GpioPwm(UserGpio, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Starts PWM on the GPIO, dutycycle between 0 (off) and range (fully on).
+Range defaults to 255.</p>
+<p>Arduino style: analogWrite</p>
+<p>This and the servo functionality use the DMA and PWM or PCM peripherals
+to control and schedule the pulse lengths and dutycycles.</p>
+<p>The <a class="xref" href="Unosquare.PiGpio.NativeMethods.Pwm.html#Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmRange_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_">GpioSetPwmRange(UserGpio, UInt32)</a> function may be used to change the default
+range of 255.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioPwm(UserGpio userGpio, uint dutyCycle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">dutyCycle</span></td>
+        <td><p>0-range.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_DUTYCYCLE.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioPwm_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32__examples">Examples</h5>
+  <pre><code>gpioPWM(17, 255); // Sets GPIO17 full on.
+
+gpioPWM(18, 128); // Sets GPIO18 half on.
+
+gpioPWM(23, 0);   // Sets GPIO23 full off.</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioServo_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioServo*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioServo_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioServo(Unosquare.PiGpio.NativeEnums.UserGpio,System.UInt32)">GpioServo(UserGpio, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Starts servo pulses on the GPIO, 0 (off), 500 (most anti-clockwise) to
+2500 (most clockwise).</p>
+<p>The range supported by servos varies and should probably be determined
+by experiment.  A value of 1500 should always be safe and represents
+the mid-point of rotation.  You can DAMAGE a servo if you command it
+to move beyond its limits.</p>
+<p>The following causes an on pulse of 1500 microseconds duration to be
+transmitted on GPIO 17 at a rate of 50 times per second. This will
+command a servo connected to GPIO 17 to rotate to its mid-point.</p>
+<p>OTHER UPDATE RATES:</p>
+<p>This function updates servos at 50Hz.  If you wish to use a different
+update frequency you will have to use the PWM functions.</p>
+<p>Firstly set the desired PWM frequency using <a class="xref" href="Unosquare.PiGpio.NativeMethods.Pwm.html#Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmFrequency_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_">GpioSetPwmFrequency(UserGpio, UInt32)</a>.</p>
+<p>Then set the PWM range using <a class="xref" href="Unosquare.PiGpio.NativeMethods.Pwm.html#Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmRange_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_">GpioSetPwmRange(UserGpio, UInt32)</a> to 1E6/frequency.
+Doing this allows you to use units of microseconds when setting
+the servo pulsewidth.</p>
+<p>E.g. If you want to update a servo connected to GPIO25 at 400Hz</p>
+<p>Thereafter use the PWM command to move the servo,
+e.g. gpioPWM(25, 1500) will set a 1500 us pulse.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioServo(UserGpio userGpio, uint pulseWidth)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">pulseWidth</span></td>
+        <td><p>0, 500-2500.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_PULSEWIDTH.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioServo_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>PWM Hz    50   100  200  400  500
+1E6/Hz 20000 10000 5000 2500 2000
+gpioSetPWMfrequency(25, 400);</p>
+<p>gpioSetPWMrange(25, 2500);.</p>
+</div>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioServo_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32__examples">Examples</h5>
+  <pre><code>gpioServo(17, 1000); // Move servo to safe position anti-clockwise.
+
+gpioServo(23, 1500); // Move servo to centre position.
+
+gpioServo(25, 2000); // Move servo to safe position clockwise.</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmFrequency_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioSetPwmFrequency*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmFrequency_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioSetPwmFrequency(Unosquare.PiGpio.NativeEnums.UserGpio,System.UInt32)">GpioSetPwmFrequency(UserGpio, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Sets the frequency in hertz to be used for the GPIO.</p>
+<p>If PWM is currently active on the GPIO it will be
+switched off and then back on at the new frequency.</p>
+<p>Each GPIO can be independently set to one of 18 different PWM
+frequencies.</p>
+<p>The selectable frequencies depend upon the sample rate which
+may be 1, 2, 4, 5, 8, or 10 microseconds (default 5).</p>
+<p>The frequencies for each sample rate are:.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetPwmFrequency(UserGpio userGpio, uint frequency)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">frequency</span></td>
+        <td><blockquote><p>=0.</p>
+</blockquote>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns the numerically closest frequency if OK, otherwise PI_BAD_USER_GPIO.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmFrequency_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><pre><code>              Hertz
+</code></pre><p>  1: 40000 20000 10000 8000 5000 4000 2500 2000 1600
+      1250  1000   800  500  400  250  200  100   50</p>
+<p>  2: 20000 10000  5000 4000 2500 2000 1250 1000  800
+       625   500   400  250  200  125  100   50   25</p>
+<p>  4: 10000  5000  2500 2000 1250 1000  625  500  400
+       313   250   200  125  100   63   50   25   13
+sample
+rate
+(us)  5:  8000  4000  2000 1600 1000  800  500  400  320
+       250   200   160  100   80   50   40   20   10</p>
+<p>  8:  5000  2500  1250 1000  625  500  313  250  200
+       156   125   100   63   50   31   25   13    6</p>
+<p> 10:  4000  2000  1000  800  500  400  250  200  160
+       125   100    80   50   40   25   20   10    5.</p>
+</div>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmFrequency_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32__examples">Examples</h5>
+  <pre><code>gpioSetPWMfrequency(23, 0); // Set GPIO23 to lowest frequency.
+
+gpioSetPWMfrequency(24, 500); // Set GPIO24 to 500Hz.
+
+gpioSetPWMfrequency(25, 100000); // Set GPIO25 to highest frequency.</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmRange_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioSetPwmRange*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmRange_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Pwm.GpioSetPwmRange(Unosquare.PiGpio.NativeEnums.UserGpio,System.UInt32)">GpioSetPwmRange(UserGpio, UInt32)</h4>
+  <div class="markdown level1 summary"><p>Selects the dutycycle range to be used for the GPIO.  Subsequent calls
+to gpioPWM will use a dutycycle between 0 (off) and range (fully on).</p>
+<p>If PWM is currently active on the GPIO its dutycycle will be scaled
+to reflect the new range.</p>
+<p>The real range, the number of steps between fully off and fully
+on for each frequency, is given in the following table.</p>
+<p>The real value set by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Pwm.html#Unosquare_PiGpio_NativeMethods_Pwm_GpioPwm_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_">GpioPwm(UserGpio, UInt32)</a> is (dutycycle * real range) / range.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSetPwmRange(UserGpio userGpio, uint range)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">range</span></td>
+        <td><p>25-40000.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns the real range for the given GPIO&apos;s frequency if OK, otherwise PI_BAD_USER_GPIO or PI_BAD_DUTYRANGE.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmRange_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>25,   50,  100,  125,  200,  250,  400,   500,   625,
+800, 1000, 1250, 2000, 2500, 4000, 5000, 10000, 20000.</p>
+</div>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Pwm_GpioSetPwmRange_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32__examples">Examples</h5>
+  <pre><code>gpioSetPWMrange(24, 2000); // Now 2000 is fully on
+                           //     1000 is half on
+                           //      500 is quarter on, etc.</code></pre>
+
+
+<h3 id="disqus_thread">Comments</h3>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://unolabs.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="doc" align="center">
+              <span class="small mobile-hide">
+                <img id="logo" class="doc-logo" src="../Support/pigpio-dotnet-256.png" alt="">
+              </span>
+            </div>
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2017-2018 <a href="https://www.unosquare.com">Unosquare</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

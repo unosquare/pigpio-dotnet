@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/projects/wiringpi-dotnet",
+  "source_base_path": "C:/projects/pigpio-dotnet",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "SPmPOr+LxrHJiCgXlTiayw=="
+          "hash": "z2ArJjasECHbBTyq/IB3rA=="
         }
       },
       "is_incremental": false,
@@ -81,11 +81,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.GpioController.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.Board.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.GpioController.html",
-          "hash": "lja+ok5KirpDeWhjZpW8Gw=="
+          "relative_path": "api/Unosquare.PiGpio.Board.html",
+          "hash": "V8ZE6OiTRplultXSt05KVA=="
         }
       },
       "is_incremental": false,
@@ -93,11 +93,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.GpioPin.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.BoardException.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.GpioPin.html",
-          "hash": "zsNAUaUeTLlcCcTNqaBdnQ=="
+          "relative_path": "api/Unosquare.PiGpio.BoardException.html",
+          "hash": "riOyuGLAY81rAHL/Vq3AcQ=="
         }
       },
       "is_incremental": false,
@@ -105,11 +105,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.I2CBus.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.BoardPeripheralsService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.I2CBus.html",
-          "hash": "eyNZYK/INlf4zqg5qxwkwg=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.BoardPeripheralsService.html",
+          "hash": "Igzz0xqTitDzFWFb1IYbNg=="
         }
       },
       "is_incremental": false,
@@ -117,11 +117,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.I2CDevice.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.BoardTimingService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.I2CDevice.html",
-          "hash": "4XnG4ylzxRkoUZM77S4A6Q=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.BoardTimingService.html",
+          "hash": "ey3hiD4cKEhmmnBqAA2etA=="
         }
       },
       "is_incremental": false,
@@ -129,11 +129,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.Native.InterruptServiceRoutineCallback.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.BoardWaveService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.Native.InterruptServiceRoutineCallback.html",
-          "hash": "awRLTRI1sc2+o0olyd+DbQ=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.BoardWaveService.html",
+          "hash": "iqYPTNVrg9VehxYZL21vSQ=="
         }
       },
       "is_incremental": false,
@@ -141,11 +141,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.Native.ThreadWorker.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioBank.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.Native.ThreadWorker.html",
-          "hash": "/M5670xuNrJmTiKcRo0y2g=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioBank.html",
+          "hash": "Mp9kqHZTXTs1wU5dm0DFcg=="
         }
       },
       "is_incremental": false,
@@ -153,11 +153,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.Native.WiringPi.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPad.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.Native.WiringPi.html",
-          "hash": "mA3yNqwMoqMNZcTt0JV5qg=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPad.html",
+          "hash": "/Iyn7lyL8wwuOn3g78DY4Q=="
         }
       },
       "is_incremental": false,
@@ -165,11 +165,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.Native.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPadCollection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.Native.html",
-          "hash": "cS5/qfVT5223tI44Lx9asw=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPadCollection.html",
+          "hash": "ui3DjRyeu7zjwfYEEK2j+Q=="
         }
       },
       "is_incremental": false,
@@ -177,11 +177,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.PinCapability.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPin.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.PinCapability.html",
-          "hash": "s6OsgS/fPCep2u/9dy7mEQ=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPin.html",
+          "hash": "aaQDMr8Zx7wlZKswh1fURA=="
         }
       },
       "is_incremental": false,
@@ -189,11 +189,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.PwmMode.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPinAlertService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.PwmMode.html",
-          "hash": "wm7OMbDdFyKFHpnPYy5GuA=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinAlertService.html",
+          "hash": "B7pdPMbxE/m4bJ3XKxmP+g=="
         }
       },
       "is_incremental": false,
@@ -201,11 +201,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.SpiBus.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPinClockService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.SpiBus.html",
-          "hash": "AsV7ijtPtzRIWMoC78K9mw=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinClockService.html",
+          "hash": "J1HBMLUsbo+iTvMYl3dECQ=="
         }
       },
       "is_incremental": false,
@@ -213,11 +213,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.SpiChannel.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPinCollection.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.SpiChannel.html",
-          "hash": "LBt8kiAF0gxKzXP4GaJ0EA=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinCollection.html",
+          "hash": "h/Eb6tSSucCmeJoTxUmQSQ=="
         }
       },
       "is_incremental": false,
@@ -225,11 +225,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.SystemInfo.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPinInterruptService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.SystemInfo.html",
-          "hash": "AXRntuwHF77wg1AQW7Z25w=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinInterruptService.html",
+          "hash": "tSbBhdII8q7OLe/31vDy7A=="
         }
       },
       "is_incremental": false,
@@ -237,11 +237,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.Threading.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPinPwmService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.Threading.html",
-          "hash": "Hc5/ho0yymDZL57YwVcBvQ=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinPwmService.html",
+          "hash": "MfKbjsjtZaoPWcy8mpJYNg=="
         }
       },
       "is_incremental": false,
@@ -249,11 +249,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.Timing.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPinServiceBase.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.Timing.html",
-          "hash": "1lLDe+RzNN2Fx9ZC2ScaEw=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinServiceBase.html",
+          "hash": "bsuulwrmTaFQLSjIZjpuMw=="
         }
       },
       "is_incremental": false,
@@ -261,11 +261,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.WiringPiPin.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPinServoService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.WiringPiPin.html",
-          "hash": "EGCgo3oBXCd7kBu8ay+OAw=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinServoService.html",
+          "hash": "wfPbdJMm4sn8l0Tzu++spA=="
         }
       },
       "is_incremental": false,
@@ -273,11 +273,983 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.WiringPI.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.GpioPinSoftPwmService.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.WiringPI.html",
-          "hash": "XM2PErEbpj13SdMwpKR2Qg=="
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinSoftPwmService.html",
+          "hash": "wE6lvebEaIpuPsS1qRb45A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.I2cDevice.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.I2cDevice.html",
+          "hash": "RWj5glm6fQPx6dT78J6SAQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.SoftI2cBus.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.SoftI2cBus.html",
+          "hash": "rM3mQVxrSvj+RvmJG4JKTw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.SoftSerialPort.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.SoftSerialPort.html",
+          "hash": "KrG7Wfk8HNtObcHcoViH1w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.SoftSpiChannel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.SoftSpiChannel.html",
+          "hash": "PNQ6G+m0CipGyTuE/clW/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.SpiChannel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.SpiChannel.html",
+          "hash": "+/dE4Qxl+5U47TL1abe0xw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.UartPort.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.UartPort.html",
+          "hash": "qhcgkyV8k2XEdXjG+3fCHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.WaveBuilder.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.WaveBuilder.html",
+          "hash": "wdvfeb/1z5UuoMExZS56fg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.ManagedModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.ManagedModel.html",
+          "hash": "frdmyM178BjNdXD4nNWE7g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.AllocationMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.AllocationMode.html",
+          "hash": "HaSaoG2oNzrpvcVgi/bwcQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.BitMask.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.BitMask.html",
+          "hash": "6aQi/+Bf3sA/Pguli1n5MQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.BoardType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.BoardType.html",
+          "hash": "bOPLFeL1DMo4kWaTHOb0Qw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.ConfigFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.ConfigFlags.html",
+          "hash": "Nr3UA00wQ3lwZWDgBiYHpA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.CpuPeripheral.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.CpuPeripheral.html",
+          "hash": "Jzmx6K5s2ioOVYDxxz7u/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.DigitalValue.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.DigitalValue.html",
+          "hash": "6P+KNpjtQJLEB6VBj1Wqaw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.DmaChannel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.DmaChannel.html",
+          "hash": "8EiMKutcTJYBPy/StmQf6w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.EdgeDetection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.EdgeDetection.html",
+          "hash": "k1VqZc2IvMiZRpzMvWQ/Lw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.FileModeFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.FileModeFlags.html",
+          "hash": "ErCnhFkzhmUAreVk56IM/w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.GpioPadId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.GpioPadId.html",
+          "hash": "pkWvcpXSDQ9wi0H2KnXJRQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.GpioPadStrength.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.GpioPadStrength.html",
+          "hash": "pJOfvYkRx0cglaoh1K8/Fg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.GpioPullMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.GpioPullMode.html",
+          "hash": "PWQelZxaZZq46uOhHIZgkQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.I2cBusId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.I2cBusId.html",
+          "hash": "vl9FdkNsXfrIXrDhK57MoQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.I2cQuickMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.I2cQuickMode.html",
+          "hash": "4lB991sXOuxJ16QZ1Qdv0g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.InterfaceFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.InterfaceFlags.html",
+          "hash": "a9Y7Ut2s4I7YymRAhWJYxQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.LevelChange.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.LevelChange.html",
+          "hash": "ySOEAPUaS7YnJ3vhGnGoMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.PinDirection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.PinDirection.html",
+          "hash": "J9UvuCzV2KhUQE2f9xJUMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.PinMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.PinMode.html",
+          "hash": "5Y/tbtgqDBbwPelLyGBZJw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.ResultCode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.ResultCode.html",
+          "hash": "I2aJuH1euuLdPjajfm2RRg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.SeekMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.SeekMode.html",
+          "hash": "zELwzvyeCdKMxpZYXLXjGA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.SoftSpiFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.SoftSpiFlags.html",
+          "hash": "1654UyHQqcGp36c7qKkTrA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.SpiChannelId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.SpiChannelId.html",
+          "hash": "jOCyYDb/cn3B4UFTdA9nlw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.SpiFlags.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.SpiFlags.html",
+          "hash": "VcT/vooUREtiKu38K6oN+g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.SystemGpio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.SystemGpio.html",
+          "hash": "gyXiHZ2yCYjoKvkpF5I31g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.TimeType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.TimeType.html",
+          "hash": "iuNIvX1b7IOjmdUhtLL20A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.TimerId.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.TimerId.html",
+          "hash": "PILBUErE2oa9YfrD5qj2vw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.UartRate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.UartRate.html",
+          "hash": "i6193kcAkYW8ZOyD5cYk6w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.UserGpio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.UserGpio.html",
+          "hash": "rN4vjc4OJIte6AFz+mri/Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.WaveMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.WaveMode.html",
+          "hash": "O7ZPIQNG8QHrh/SDzMq04A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeEnums.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeEnums.html",
+          "hash": "4ULYTBj48W0LCpoJId+Yfg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Custom.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Custom.html",
+          "hash": "G2xhLrNGajXRFC2BZ5i6ig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Events.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Events.html",
+          "hash": "IV9xsfU/MWKBZYGlzVxUmA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Files.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Files.html",
+          "hash": "/ICdIXfpF7X/jlXc72MKoQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.I2c.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.I2c.html",
+          "hash": "xjHQhzo2YFmABo0AsnQvdg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.IO.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.IO.html",
+          "hash": "m2PJ3glRU+X+G6QRKExNCA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Pwm.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Pwm.html",
+          "hash": "VB6h0oGjwJ6uKY8lOatw9Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.RawWaves.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.RawWaves.html",
+          "hash": "oU3nRB3TDQeGRWZnwNJ39Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Scripts.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Scripts.html",
+          "hash": "l+GuGMUeWvoUIKamIo1QSA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Serial.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Serial.html",
+          "hash": "l6HkHte/p9M/adjdcyS0Jg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Setup.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Setup.html",
+          "hash": "7lMUrYzQJbR7AfK68Fd0Ow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Spi.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Spi.html",
+          "hash": "YfZqOjxEPN3dWF0tmXjaMw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Threads.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Threads.html",
+          "hash": "ZrcQUXPKJnm0p6mHF/sOig=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Uart.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Uart.html",
+          "hash": "mFFa9QGyXg9Y5v0osf3wiw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Utilities.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Utilities.html",
+          "hash": "jawjITJI96knU2er6KKMJQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.Waves.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.Waves.html",
+          "hash": "iCxk4mZXVxZVlsbhTs0oHw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeMethods.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeMethods.html",
+          "hash": "BqyYJ9xlE+TMAo8ZnO/LAw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.BscTransfer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.BscTransfer.html",
+          "hash": "ywxiwk+fBAs5oSPkxvO6Aw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.GpioPulse.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.GpioPulse.html",
+          "hash": "5FCrApRq+QkRXqYED/DeHA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.GpioSample.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.GpioSample.html",
+          "hash": "rDARjx0++oEdbKJME5CAtw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.I2CMessageSegment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.I2CMessageSegment.html",
+          "hash": "/MMzgmiDVDxiDnhu65bomw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioAlertDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioAlertDelegate.html",
+          "hash": "kEhA7NALdkXHZr8RRIu2Cw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioAlertExDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioAlertExDelegate.html",
+          "hash": "n+tcxGZqRo9FP8YusdZDuQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioEventDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioEventDelegate.html",
+          "hash": "IDUmKAZwq5cLqho8TOY/0g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioEventExDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioEventExDelegate.html",
+          "hash": "v77+GTvwedsnspbk0Y0gbA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesDelegate.html",
+          "hash": "19kccOK4Zu1wnxjXnz9RaQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesExDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesExDelegate.html",
+          "hash": "RX7j9/gZ3whULImjt4gCcQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioIsrDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioIsrDelegate.html",
+          "hash": "p5bwR6vBwRy/F5DZHhPHrw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioIsrExDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioIsrExDelegate.html",
+          "hash": "u7AkaAKJUwEJ/V95MWmazg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioSignalDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioSignalDelegate.html",
+          "hash": "Um6lWQK6roU/J0O3q7Y/kw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioSignalExDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioSignalExDelegate.html",
+          "hash": "5if2Zyv1vHBhgJTpcHxJjA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioThreadDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioThreadDelegate.html",
+          "hash": "lNYPT2iF760IOr8eV0Z79g=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioTimerDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioTimerDelegate.html",
+          "hash": "jB9oqWSnzM2zzEYzSS4boA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.PiGpioTimerExDelegate.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioTimerExDelegate.html",
+          "hash": "II4ofle3FOhcBGYSu/Ioxw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.RawCBS.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.RawCBS.html",
+          "hash": "m/sGf7aAtbTFdnwtvo5Yyw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.RawSpiData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.RawSpiData.html",
+          "hash": "AwCLnE2lS8e5IFKQzHkfyA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.RawWave.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.RawWave.html",
+          "hash": "B1iIMcUaeBmJawzkd9yZAw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.RawWaveInformation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.RawWaveInformation.html",
+          "hash": "YRF+xD8ARXsGtyLOiQxMcA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.NativeTypes.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.NativeTypes.html",
+          "hash": "sM4wP4halZhYqP3+kFCr3w=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.DisplayModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.DisplayModel.html",
+          "hash": "bAKXIjA5/IL6BXDBb7qZSg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.VccSourceMode.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.VccSourceMode.html",
+          "hash": "6gegx7dOmWZaG4R/2CMzyw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.html",
+          "hash": "smOTfBPcL8Xjbb2/CovFIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.Peripherals.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.Peripherals.html",
+          "hash": "gmKzCbAOlri36npeQcVrIQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Unosquare.PiGpio.html",
+          "hash": "PaYWrdo98rXi6DlV2LqeLw=="
         }
       },
       "is_incremental": false,
@@ -289,7 +1261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "xSNb62baZKHFzoERAPc0SA=="
+          "hash": "IwmHLCgGE5x6Vc52ENJFWw=="
         }
       },
       "is_incremental": false,
@@ -301,7 +1273,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "fMVyY65QSBo4Z/Uf9rxqZA=="
+          "hash": "M9cWKHQTP1/cAgAaJzVeOA=="
         }
       },
       "is_incremental": false,

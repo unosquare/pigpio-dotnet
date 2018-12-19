@@ -1,0 +1,1087 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Waves
+   | Unosquare Raspbery Pi - libpigpio for .net </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Waves
+   | Unosquare Raspbery Pi - libpigpio for .net ">
+    <meta name="generator" content="docfx 2.40.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.NativeMethods.Waves">
+  
+  
+  <h1 id="Unosquare_PiGpio_NativeMethods_Waves" data-uid="Unosquare.PiGpio.NativeMethods.Waves" class="text-break">Class Waves
+  </h1>
+  <div class="markdown level0 summary"><p>Provides Waveform methods for the pigpio library. These are methods to send pulses on the pins
+with precise timing.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Waves</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.NativeMethods.html">Unosquare.PiGpio.NativeMethods</a></h6>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Waves_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Waves</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveAddGeneric_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveAddGeneric*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveAddGeneric_System_UInt32_Unosquare_PiGpio_NativeTypes_GpioPulse___" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveAddGeneric(System.UInt32,Unosquare.PiGpio.NativeTypes.GpioPulse[])">GpioWaveAddGeneric(UInt32, GpioPulse[])</h4>
+  <div class="markdown level1 summary"><p>This function adds a number of pulses to the current waveform.</p>
+<p>The pulses are interleaved in time order within the existing waveform
+(if any).</p>
+<p>Merging allows the waveform to be built in parts, that is the settings
+for GPIO#1 can be added, and then GPIO#2 etc.</p>
+<p>If the added waveform is intended to start after or within the existing
+waveform then the first pulse should consist of a delay.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveAddGeneric(uint numPulses, GpioPulse[] pulses)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">numPulses</span></td>
+        <td><p>the number of pulses.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.GpioPulse.html">GpioPulse</a>[]</td>
+        <td><span class="parametername">pulses</span></td>
+        <td><p>an array of pulses.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the new total number of pulses in the current waveform if OK, otherwise PI_TOO_MANY_PULSES.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveAddGeneric_System_UInt32_Unosquare_PiGpio_NativeTypes_GpioPulse____examples">Examples</h5>
+  <pre><code>// Construct and send a 30 microsecond square wave.
+
+gpioSetMode(gpio, PI_OUTPUT);
+
+pulse[0].gpioOn = (1&lt;&lt;gpio);
+pulse[0].gpioOff = 0;
+pulse[0].usDelay = 15;
+
+pulse[1].gpioOn = 0;
+pulse[1].gpioOff = (1&lt;&lt;gpio);
+pulse[1].usDelay = 15;
+
+gpioWaveAddNew();
+
+gpioWaveAddGeneric(2, pulse);
+
+wave_id = gpioWaveCreate();
+
+if (wave_id >= 0)
+{
+   gpioWaveTxSend(wave_id, PI_WAVE_MODE_REPEAT);
+
+   // Transmit for 30 seconds.
+
+   sleep(30);
+
+   gpioWaveTxStop();
+}
+else
+{
+   // Wave create failed.
+}</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveAddNew_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveAddNew*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveAddNew" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveAddNew">GpioWaveAddNew()</h4>
+  <div class="markdown level1 summary"><p>This function starts a new empty waveform.</p>
+<p>You wouldn&apos;t normally need to call this function as it is automatically
+called after a waveform is created with the <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate">GpioWaveCreate()</a> function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveAddNew()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns 0 if OK.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveAddNew_examples">Examples</h5>
+  <pre><code>gpioWaveAddNew();</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveAddSerial_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveAddSerial*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveAddSerial_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_System_UInt32_System_UInt32_System_UInt32_System_UInt32_System_Byte___" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveAddSerial(Unosquare.PiGpio.NativeEnums.UserGpio,System.UInt32,System.UInt32,System.UInt32,System.UInt32,System.UInt32,System.Byte[])">GpioWaveAddSerial(UserGpio, UInt32, UInt32, UInt32, UInt32, UInt32, Byte[])</h4>
+  <div class="markdown level1 summary"><p>This function adds a waveform representing serial data to the
+existing waveform (if any).  The serial data starts offset
+microseconds from the start of the waveform.</p>
+<p>NOTES:</p>
+<p>The serial data is formatted as one start bit, data_bits data bits, and
+stop_bits/2 stop bits.</p>
+<p>It is legal to add serial data streams with different baud rates to
+the same waveform.</p>
+<p>numBytes is the number of bytes of data in str.</p>
+<p>The bytes required for each character depend upon data_bits.</p>
+<p>For data_bits 1-8 there will be one byte per character.
+For data_bits 9-16 there will be two bytes per character.
+For data_bits 17-32 there will be four bytes per character.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveAddSerial(UserGpio userGpio, uint baudRate, uint dataBits, uint stopBits, uint offset, uint numBytes, byte[] str)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.UserGpio.html">UserGpio</a></td>
+        <td><span class="parametername">userGpio</span></td>
+        <td><p>0-31.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">baudRate</span></td>
+        <td><p>50-1000000.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">dataBits</span></td>
+        <td><p>1-32.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">stopBits</span></td>
+        <td><p>2-8.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">offset</span></td>
+        <td><blockquote><p>=0.</p>
+</blockquote>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">numBytes</span></td>
+        <td><blockquote><p>=1.</p>
+</blockquote>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">str</span></td>
+        <td><p>an array of chars (which may contain nulls).</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the new total number of pulses in the current waveform if OK, otherwise PI_BAD_USER_GPIO, PI_BAD_WAVE_BAUD, PI_BAD_DATABITS, PI_BAD_STOPBITS, PI_TOO_MANY_CHARS, PI_BAD_SER_OFFSET, or PI_TOO_MANY_PULSES.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveAddSerial_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_System_UInt32_System_UInt32_System_UInt32_System_UInt32_System_Byte____examples">Examples</h5>
+  <pre><code>#define MSG_LEN 8
+
+int i;
+char *str;
+char data[MSG_LEN];
+
+str = &quot;Hello world!&quot;;
+
+gpioWaveAddSerial(4, 9600, 8, 2, 0, strlen(str), str);
+
+for (i=0; i&lt;MSG_LEN; i++) data[i] = i;
+
+// Data added is offset 1 second from the waveform start.
+gpioWaveAddSerial(4, 9600, 8, 2, 1000000, MSG_LEN, data);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveChain_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveChain*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveChain_System_Byte___System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveChain(System.Byte[],System.UInt32)">GpioWaveChain(Byte[], UInt32)</h4>
+  <div class="markdown level1 summary"><p>This function transmits a chain of waveforms.</p>
+<p>NOTE: Any hardware PWM started by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Pwm.html#Unosquare_PiGpio_NativeMethods_Pwm_GpioHardwarePwm_Unosquare_PiGpio_NativeEnums_SystemGpio_System_UInt32_System_UInt32_">GpioHardwarePwm(SystemGpio, UInt32, UInt32)</a> will be cancelled.</p>
+<p>The waves to be transmitted are specified by the contents of buf
+which contains an ordered list of wave Ids and optional command
+codes and related data.</p>
+<p>Each wave is transmitted in the order specified.  A wave may
+occur multiple times per chain.</p>
+<p>A blocks of waves may be transmitted multiple times by using
+the loop commands. The block is bracketed by loop start and
+end commands.  Loops may be nested.</p>
+<p>Delays between waves may be added with the delay command.</p>
+<p>The following command codes are supported:</p>
+<p>Name         @ Cmd &amp; Data @ Meaning
+Loop Start   @ 255 0      @ Identify start of a wave block
+Loop Repeat  @ 255 1 x y  @ loop x + y<em>256 times
+Delay        @ 255 2 x y  @ delay x + y</em>256 microseconds
+Loop Forever @ 255 3      @ loop forever</p>
+<p>If present Loop Forever must be the last entry in the chain.</p>
+<p>The code is currently dimensioned to support a chain with roughly
+600 entries and 20 loop counters.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioWaveChain(byte[] buffer, uint bufferSize)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Byte</span>[]</td>
+        <td><span class="parametername">buffer</span></td>
+        <td><p>pointer to the wave_ids and optional command codes.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">bufferSize</span></td>
+        <td><p>the number of bytes in buf.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_CHAIN_NESTING, PI_CHAIN_LOOP_CNT, PI_BAD_CHAIN_LOOP, PI_BAD_CHAIN_CMD, PI_CHAIN_COUNTER, PI_BAD_CHAIN_DELAY, PI_CHAIN_TOO_BIG, or PI_BAD_WAVE_ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveChain_System_Byte___System_UInt32__examples">Examples</h5>
+  <pre><code>#include &lt;stdio.h>
+#include &lt;pigpio.h>
+
+#define WAVES 5
+#define GPIO 4
+
+int main(int argc, char *argv[])
+{
+   int i, wid[WAVES];
+
+   if (gpioInitialise()&lt;0) return -1;
+
+   gpioSetMode(GPIO, PI_OUTPUT);
+
+   printf(&quot;start piscope, press return&quot;); getchar();
+
+   for (i=0; i&lt;WAVES; i++)
+   {
+      gpioWaveAddGeneric(2, (gpioPulse_t[])
+         {{1&lt;&lt;GPIO, 0,        20},
+          {0, 1&lt;&lt;GPIO, (i+1)*200}});
+
+      wid[i] = gpioWaveCreate();
+   }
+
+   gpioWaveChain((char []) {
+      wid[4], wid[3], wid[2],       // transmit waves 4+3+2
+      255, 0,                       // loop start
+         wid[0], wid[0], wid[0],    // transmit waves 0+0+0
+         255, 0,                    // loop start
+            wid[0], wid[1],         // transmit waves 0+1
+            255, 2, 0x88, 0x13,     // delay 5000us
+         255, 1, 30, 0,             // loop end (repeat 30 times)
+         255, 0,                    // loop start
+            wid[2], wid[3], wid[0], // transmit waves 2+3+0
+            wid[3], wid[1], wid[2], // transmit waves 3+1+2
+         255, 1, 10, 0,             // loop end (repeat 10 times)
+      255, 1, 5, 0,                 // loop end (repeat 5 times)
+      wid[4], wid[4], wid[4],       // transmit waves 4+4+4
+      255, 2, 0x20, 0x4E,           // delay 20000us
+      wid[0], wid[0], wid[0],       // transmit waves 0+0+0
+
+      }, 46);
+
+   while (gpioWaveTxBusy()) time_sleep(0.1);
+
+   for (i=0; i&lt;WAVES; i++) gpioWaveDelete(wid[i]);
+
+   printf(&quot;stop piscope, press return&quot;); getchar();
+
+   gpioTerminate();
+}</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveClear_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveClear*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveClear" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveClear">GpioWaveClear()</h4>
+  <div class="markdown level1 summary"><p>This function clears all waveforms and any data added by calls to the
+GpioWaveAdd functions.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveClear()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns 0 if OK.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveClear_examples">Examples</h5>
+  <pre><code>gpioWaveClear();</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveCreate*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveCreate">GpioWaveCreate()</h4>
+  <div class="markdown level1 summary"><p>This function creates a waveform from the data provided by the prior
+calls to the GpioWaveAdd* functions.  Upon success a wave id
+greater than or equal to 0 is returned, otherwise PI_EMPTY_WAVEFORM,
+PI_TOO_MANY_CBS, PI_TOO_MANY_OOL, or PI_NO_WAVEFORM_ID.</p>
+<p>The data provided by the GpioWaveAdd* functions is consumed by this
+function.</p>
+<p>As many waveforms may be created as there is space available.  The
+wave id is passed to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxSend_System_UInt32_Unosquare_PiGpio_NativeEnums_WaveMode_">GpioWaveTxSend(UInt32, WaveMode)</a> to specify the waveform to transmit.</p>
+<p>Normal usage would be</p>
+<p>Step 1. <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveClear">GpioWaveClear()</a> to clear all waveforms and added data.</p>
+<p>Step 2. GpioWaveAdd* calls to supply the waveform data.</p>
+<p>Step 3. <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate">GpioWaveCreate()</a> to create the waveform and get a unique id</p>
+<p>Repeat steps 2 and 3 as needed.</p>
+<p>Step 4. <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxSend_System_UInt32_Unosquare_PiGpio_NativeEnums_WaveMode_">GpioWaveTxSend(UInt32, WaveMode)</a> with the id of the waveform to transmit.</p>
+<p>A waveform comprises one of more pulses.  Each pulse consists of a
+<a class="xref" href="Unosquare.PiGpio.NativeTypes.GpioPulse.html">GpioPulse</a> structure.</p>
+<p>The fields specify</p>
+<p>1) the GPIO to be switched on at the start of the pulse.
+2) the GPIO to be switched off at the start of the pulse.
+3) the delay in microseconds before the next pulse.</p>
+<p>Any or all the fields can be zero.  It doesn&apos;t make any sense to
+set all the fields to zero (the pulse will be ignored).</p>
+<p>When a waveform is started each pulse is executed in order with the
+specified delay between the pulse and the next.</p>
+<p>PI_NO_WAVEFORM_ID, PI_TOO_MANY_CBS, or PI_TOO_MANY_OOL.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveCreate()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the new waveform id if OK, otherwise PI_EMPTY_WAVEFORM, PI_NO_WAVEFORM_ID, PI_TOO_MANY_CBS, or PI_TOO_MANY_OOL.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate_remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>typedef struct
+{
+uint gpioOn;
+uint gpioOff;
+uint usDelay;
+} gpioPulse_t;.</p>
+</div>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveDelete_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveDelete*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveDelete_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveDelete(System.UInt32)">GpioWaveDelete(UInt32)</h4>
+  <div class="markdown level1 summary"><p>This function deletes the waveform with id <code data-dev-comment-type="paramref" class="paramref">waveId</code>.</p>
+<p>The wave is flagged for deletion.  The resources used by the wave
+will only be reused when either of the following apply.</p>
+<ul>
+<li><p>all waves with higher numbered wave ids have been deleted or have
+been flagged for deletion.</p>
+</li>
+<li><p>a new wave is created which uses exactly the same resources as
+the current wave (see the C source for gpioWaveCreate for details).</p>
+</li>
+</ul>
+<p>Wave ids are allocated in order, 0, 1, 2, etc.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioWaveDelete(uint waveId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">waveId</span></td>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate">GpioWaveCreate()</a>.</p>
+</blockquote>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_WAVE_ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetCbs_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetCbs*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetCbs" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetCbs">GpioWaveGetCbs()</h4>
+  <div class="markdown level1 summary"><p>This function returns the length in DMA control blocks of the current
+waveform.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveGetCbs()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetHighCbs_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetHighCbs*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetHighCbs" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetHighCbs">GpioWaveGetHighCbs()</h4>
+  <div class="markdown level1 summary"><p>This function returns the length in DMA control blocks of the longest
+waveform created since <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a> was called.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveGetHighCbs()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetHighMicros_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetHighMicros*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetHighMicros" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetHighMicros">GpioWaveGetHighMicros()</h4>
+  <div class="markdown level1 summary"><p>This function returns the length in microseconds of the longest waveform
+created since <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a> was called.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveGetHighMicros()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetHighPulses_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetHighPulses*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetHighPulses" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetHighPulses">GpioWaveGetHighPulses()</h4>
+  <div class="markdown level1 summary"><p>This function returns the length in pulses of the longest waveform
+created since <a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html#Unosquare_PiGpio_NativeMethods_Setup_GpioInitialise">GpioInitialise()</a> was called.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveGetHighPulses()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetMaxCbs_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetMaxCbs*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetMaxCbs" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetMaxCbs">GpioWaveGetMaxCbs()</h4>
+  <div class="markdown level1 summary"><p>This function returns the maximum possible size of a waveform in DMA
+control blocks.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveGetMaxCbs()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetMaxMicros_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetMaxMicros*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetMaxMicros" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetMaxMicros">GpioWaveGetMaxMicros()</h4>
+  <div class="markdown level1 summary"><p>This function returns the maximum possible size of a waveform in
+microseconds.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveGetMaxMicros()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetMaxPulses_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetMaxPulses*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetMaxPulses" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetMaxPulses">GpioWaveGetMaxPulses()</h4>
+  <div class="markdown level1 summary"><p>This function returns the maximum possible size of a waveform in pulses.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveGetMaxPulses()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetMicros_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetMicros*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetMicros" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetMicros">GpioWaveGetMicros()</h4>
+  <div class="markdown level1 summary"><p>This function returns the length in microseconds of the current
+waveform.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveGetMicros()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetPulses_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetPulses*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveGetPulses" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveGetPulses">GpioWaveGetPulses()</h4>
+  <div class="markdown level1 summary"><p>This function returns the length in pulses of the current waveform.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveGetPulses()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxAt_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveTxAt*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxAt" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveTxAt">GpioWaveTxAt()</h4>
+  <div class="markdown level1 summary"><p>This function returns the id of the waveform currently being
+transmitted.</p>
+<p>PI_WAVE_NOT_FOUND (9998) - transmitted wave not found.
+PI_NO_TX_WAVE (9999) - no wave being transmitted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveTxAt()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the waveform id or one of the following special values:.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxBusy_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveTxBusy*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxBusy" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveTxBusy">GpioWaveTxBusy()</h4>
+  <div class="markdown level1 summary"><p>This function checks to see if a waveform is currently being
+transmitted.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveTxBusy()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns 1 if a waveform is currently being transmitted, otherwise 0.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxSend_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveTxSend*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxSend_System_UInt32_Unosquare_PiGpio_NativeEnums_WaveMode_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveTxSend(System.UInt32,Unosquare.PiGpio.NativeEnums.WaveMode)">GpioWaveTxSend(UInt32, WaveMode)</h4>
+  <div class="markdown level1 summary"><p>This function transmits the waveform with id <code data-dev-comment-type="paramref" class="paramref">waveId</code>.  The mode
+determines whether the waveform is sent once or cycles endlessly.
+The SYNC variants wait for the current waveform to reach the
+end of a cycle or finish before starting the new waveform.</p>
+<p>WARNING: bad things may happen if you delete the previous
+waveform before it has been synced to the new waveform.</p>
+<p>NOTE: Any hardware PWM started by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Pwm.html#Unosquare_PiGpio_NativeMethods_Pwm_GpioHardwarePwm_Unosquare_PiGpio_NativeEnums_SystemGpio_System_UInt32_System_UInt32_">GpioHardwarePwm(SystemGpio, UInt32, UInt32)</a> will be cancelled.</p>
+<p>otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveTxSend(uint waveId, WaveMode waveMode)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">waveId</span></td>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveCreate">GpioWaveCreate()</a>.</p>
+</blockquote>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.WaveMode.html">WaveMode</a></td>
+        <td><span class="parametername">waveMode</span></td>
+        <td><p>PI_WAVE_MODE_ONE_SHOT, PI_WAVE_MODE_REPEAT, or one of their SYNC variants.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns the number of DMA control blocks in the waveform if OK, otherwise PI_BAD_WAVE_ID, or PI_BAD_WAVE_MODE.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxSend_System_UInt32_Unosquare_PiGpio_NativeEnums_WaveMode__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>PI_WAVE_MODE_ONE_SHOT_SYNC, PI_WAVE_MODE_REPEAT_SYNC.</p>
+</div>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxStop_" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveTxStop*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Waves_GpioWaveTxStop" data-uid="Unosquare.PiGpio.NativeMethods.Waves.GpioWaveTxStop">GpioWaveTxStop()</h4>
+  <div class="markdown level1 summary"><p>This function aborts the transmission of the current waveform.</p>
+<p>This function is intended to stop a waveform started in repeat mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static int GpioWaveTxStop()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>Returns 0 if OK.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+<h3 id="disqus_thread">Comments</h3>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://unolabs.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="doc" align="center">
+              <span class="small mobile-hide">
+                <img id="logo" class="doc-logo" src="../Support/pigpio-dotnet-256.png" alt="">
+              </span>
+            </div>
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2017-2018 <a href="https://www.unosquare.com">Unosquare</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

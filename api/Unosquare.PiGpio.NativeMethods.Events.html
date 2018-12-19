@@ -1,0 +1,717 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class Events
+   | Unosquare Raspbery Pi - libpigpio for .net </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class Events
+   | Unosquare Raspbery Pi - libpigpio for .net ">
+    <meta name="generator" content="docfx 2.40.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.NativeMethods.Events">
+  
+  
+  <h1 id="Unosquare_PiGpio_NativeMethods_Events" data-uid="Unosquare.PiGpio.NativeMethods.Events" class="text-break">Class Events
+  </h1>
+  <div class="markdown level0 summary"><p>Provides event notification warapper APIs for the pigpio library.
+These methods represent an internal event system that is unused in the managed model
+of this library.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Events</span></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.NativeMethods.html">Unosquare.PiGpio.NativeMethods</a></h6>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Events_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static class Events</code></pre>
+  </div>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Events_EventMonitor_" data-uid="Unosquare.PiGpio.NativeMethods.Events.EventMonitor*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Events_EventMonitor_System_UIntPtr_Unosquare_PiGpio_NativeEnums_BitMask_" data-uid="Unosquare.PiGpio.NativeMethods.Events.EventMonitor(System.UIntPtr,Unosquare.PiGpio.NativeEnums.BitMask)">EventMonitor(UIntPtr, BitMask)</h4>
+  <div class="markdown level1 summary"><p>This function selects the events to be reported on a previously
+opened handle.</p>
+<p>A report is sent each time an event is triggered providing the
+corresponding bit in bits is set.</p>
+<p>See <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyBegin_System_UIntPtr_Unosquare_PiGpio_NativeEnums_BitMask_">GpioNotifyBegin(UIntPtr, BitMask)</a> for the notification format.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode EventMonitor(UIntPtr handle, BitMask bitMask)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a>.</p>
+</blockquote>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.BitMask.html">BitMask</a></td>
+        <td><span class="parametername">bitMask</span></td>
+        <td><p>a bit mask indicating the events of interest.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_HANDLE.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Events_EventMonitor_System_UIntPtr_Unosquare_PiGpio_NativeEnums_BitMask__examples">Examples</h5>
+  <pre><code>// Start reporting events 3, 6, and 7.
+
+//  bit      76543210
+// (0xC8 = 0b11001000)
+
+eventMonitor(h, 0xC8);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Events_EventSetFunc_" data-uid="Unosquare.PiGpio.NativeMethods.Events.EventSetFunc*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Events_EventSetFunc_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioEventDelegate_" data-uid="Unosquare.PiGpio.NativeMethods.Events.EventSetFunc(System.UInt32,Unosquare.PiGpio.NativeTypes.PiGpioEventDelegate)">EventSetFunc(UInt32, PiGpioEventDelegate)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) when the specified
+event occurs.</p>
+<p>One function may be registered per event.</p>
+<p>The function is passed the event, and the tick.</p>
+<p>The callback may be cancelled by passing NULL as the function.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode EventSetFunc(uint eventId, PiGpioEventDelegate callback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>0-31.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioEventDelegate.html">PiGpioEventDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the callback function.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Events_EventSetFuncEx_" data-uid="Unosquare.PiGpio.NativeMethods.Events.EventSetFuncEx*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Events_EventSetFuncEx_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioEventExDelegate_System_UIntPtr_" data-uid="Unosquare.PiGpio.NativeMethods.Events.EventSetFuncEx(System.UInt32,Unosquare.PiGpio.NativeTypes.PiGpioEventExDelegate,System.UIntPtr)">EventSetFuncEx(UInt32, PiGpioEventExDelegate, UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>Registers a function to be called (a callback) when the specified
+event occurs.</p>
+<p>One function may be registered per event.</p>
+<p>The function is passed the event, the tick, and the ueserdata pointer.</p>
+<p>The callback may be cancelled by passing NULL as the function.</p>
+<p>Only one of <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_EventSetFunc_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioEventDelegate_">EventSetFunc(UInt32, PiGpioEventDelegate)</a> <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_EventSetFuncEx_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioEventExDelegate_System_UIntPtr_">EventSetFuncEx(UInt32, PiGpioEventExDelegate, UIntPtr)</a> can be
+registered per event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode EventSetFuncEx(uint eventId, PiGpioEventExDelegate callback, UIntPtr userData)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>0-31.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeTypes.PiGpioEventExDelegate.html">PiGpioEventExDelegate</a></td>
+        <td><span class="parametername">callback</span></td>
+        <td><p>the callback function.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">userData</span></td>
+        <td><p>pointer to arbitrary user data.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Events_EventTrigger_" data-uid="Unosquare.PiGpio.NativeMethods.Events.EventTrigger*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Events_EventTrigger_System_UInt32_" data-uid="Unosquare.PiGpio.NativeMethods.Events.EventTrigger(System.UInt32)">EventTrigger(UInt32)</h4>
+  <div class="markdown level1 summary"><p>This function signals the occurrence of an event.</p>
+<p>An event is a signal used to inform one or more consumers
+to start an action.  Each consumer which has registered an interest
+in the event (e.g. by calling <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_EventSetFunc_System_UInt32_Unosquare_PiGpio_NativeTypes_PiGpioEventDelegate_">EventSetFunc(UInt32, PiGpioEventDelegate)</a>) will be informed by
+a callback.</p>
+<p>One event, PI_EVENT_BSC (31) is predefined.  This event is
+auto generated on BSC slave activity.</p>
+<p>The meaning of other events is arbitrary.</p>
+<p>Note that other than its id and its tick there is no data associated
+with an event.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode EventTrigger(uint eventId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><span class="parametername">eventId</span></td>
+        <td><p>0-31, the event.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_EVENT_ID.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyBegin_" data-uid="Unosquare.PiGpio.NativeMethods.Events.GpioNotifyBegin*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyBegin_System_UIntPtr_Unosquare_PiGpio_NativeEnums_BitMask_" data-uid="Unosquare.PiGpio.NativeMethods.Events.GpioNotifyBegin(System.UIntPtr,Unosquare.PiGpio.NativeEnums.BitMask)">GpioNotifyBegin(UIntPtr, BitMask)</h4>
+  <div class="markdown level1 summary"><p>This function starts notifications on a previously opened handle.</p>
+<p>The notification sends state changes for each GPIO whose corresponding
+bit in bits is set.</p>
+<p>Each notification occupies 12 bytes in the fifo and has the
+following structure.</p>
+<p>seqno: starts at 0 each time the handle is opened and then increments
+by one for each report.</p>
+<p>flags: three flags are defined, PI_NTFY_FLAGS_WDOG,
+PI_NTFY_FLAGS_ALIVE, and PI_NTFY_FLAGS_EVENT.</p>
+<p>If bit 5 is set (PI_NTFY_FLAGS_WDOG) then bits 0-4 of the flags
+indicate a GPIO which has had a watchdog timeout.</p>
+<p>If bit 6 is set (PI_NTFY_FLAGS_ALIVE) this indicates a keep alive
+signal on the pipe/socket and is sent once a minute in the absence
+of other notification activity.</p>
+<p>If bit 7 is set (PI_NTFY_FLAGS_EVENT) then bits 0-4 of the flags
+indicate an event which has been triggered.</p>
+<p>tick: the number of microseconds since system boot.  It wraps around
+after 1h12m.</p>
+<p>level: indicates the level of each GPIO.  If bit 1&lt;&lt;x is set then
+GPIO x is high.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioNotifyBegin(UIntPtr handle, BitMask bitMask)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a>.</p>
+</blockquote>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.BitMask.html">BitMask</a></td>
+        <td><span class="parametername">bitMask</span></td>
+        <td><p>a bit mask indicating the GPIO of interest.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_HANDLE.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyBegin_System_UIntPtr_Unosquare_PiGpio_NativeEnums_BitMask__remarks">Remarks</h5>
+  <div class="markdown level1 remarks"><p>typedef struct
+{
+uint16_t seqno;
+uint16_t flags;
+uint tick;
+uint level;
+} gpioReport_t;.</p>
+</div>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyBegin_System_UIntPtr_Unosquare_PiGpio_NativeEnums_BitMask__examples">Examples</h5>
+  <pre><code>// Start notifications for GPIO 1, 4, 6, 7, 10.
+
+//                         1
+//                         0  76 4  1
+// (1234 = 0x04D2 = 0b0000010011010010)
+
+gpioNotifyBegin(h, 1234);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyClose_" data-uid="Unosquare.PiGpio.NativeMethods.Events.GpioNotifyClose*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyClose_System_UIntPtr_" data-uid="Unosquare.PiGpio.NativeMethods.Events.GpioNotifyClose(System.UIntPtr)">GpioNotifyClose(UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>This function stops notifications on a previously opened handle
+and releases the handle for reuse.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioNotifyClose(UIntPtr handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a>.</p>
+</blockquote>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_HANDLE.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyClose_System_UIntPtr__examples">Examples</h5>
+  <pre><code>gpioNotifyClose(h);</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen_" data-uid="Unosquare.PiGpio.NativeMethods.Events.GpioNotifyOpen*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen" data-uid="Unosquare.PiGpio.NativeMethods.Events.GpioNotifyOpen">GpioNotifyOpen()</h4>
+  <div class="markdown level1 summary"><p>This function requests a free notification handle.</p>
+<p>A notification is a method for being notified of GPIO state changes
+via a pipe or socket.</p>
+<p>Pipe notifications for handle x will be available at the pipe
+named /dev/pigpiox (where x is the handle number).  E.g. if the
+function returns 15 then the notifications must be read
+from /dev/pigpio15.</p>
+<p>Socket notifications are returned to the socket which requested the
+handle.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UIntPtr GpioNotifyOpen()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><p>Returns a handle greater than or equal to zero if OK, otherwise PI_NO_HANDLE.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen_examples">Examples</h5>
+  <pre><code>h = gpioNotifyOpen();
+
+if (h >= 0)
+{
+   sprintf(str, &quot;/dev/pigpio%d&quot;, h);
+
+   fd = open(str, O_RDONLY);
+
+   if (fd >= 0)
+   {
+      // Okay.
+   }
+   else
+   {
+      // Error.
+   }
+}
+else
+{
+   // Error.
+}</code></pre>
+
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpenWithSize_" data-uid="Unosquare.PiGpio.NativeMethods.Events.GpioNotifyOpenWithSize*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpenWithSize_System_Int32_" data-uid="Unosquare.PiGpio.NativeMethods.Events.GpioNotifyOpenWithSize(System.Int32)">GpioNotifyOpenWithSize(Int32)</h4>
+  <div class="markdown level1 summary"><p>This function requests a free notification handle.</p>
+<p>It differs from <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a> in that the pipe size may be
+specified, whereas <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a> uses the default pipe size.</p>
+<p>See <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a> for further details.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static UIntPtr GpioNotifyOpenWithSize(int bufferSize)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">bufferSize</span></td>
+        <td><p>The pipe size of the the buffer.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyPause_" data-uid="Unosquare.PiGpio.NativeMethods.Events.GpioNotifyPause*"></a>
+  <h4 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyPause_System_UIntPtr_" data-uid="Unosquare.PiGpio.NativeMethods.Events.GpioNotifyPause(System.UIntPtr)">GpioNotifyPause(UIntPtr)</h4>
+  <div class="markdown level1 summary"><p>This function pauses notifications on a previously opened handle.</p>
+<p>Notifications for the handle are suspended until <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyBegin_System_UIntPtr_Unosquare_PiGpio_NativeEnums_BitMask_">GpioNotifyBegin(UIntPtr, BitMask)</a>
+is called again.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioNotifyPause(UIntPtr handle)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UIntPtr</span></td>
+        <td><span class="parametername">handle</span></td>
+        <td><blockquote><p>=0, as returned by <a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html#Unosquare_PiGpio_NativeMethods_Events_GpioNotifyOpen">GpioNotifyOpen()</a>.</p>
+</blockquote>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a></td>
+        <td><p>Returns 0 if OK, otherwise PI_BAD_HANDLE.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 id="Unosquare_PiGpio_NativeMethods_Events_GpioNotifyPause_System_UIntPtr__examples">Examples</h5>
+  <pre><code>gpioNotifyPause(h);</code></pre>
+
+
+<h3 id="disqus_thread">Comments</h3>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://unolabs.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="doc" align="center">
+              <span class="small mobile-hide">
+                <img id="logo" class="doc-logo" src="../Support/pigpio-dotnet-256.png" alt="">
+              </span>
+            </div>
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2017-2018 <a href="https://www.unosquare.com">Unosquare</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
