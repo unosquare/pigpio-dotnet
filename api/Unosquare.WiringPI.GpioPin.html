@@ -1,0 +1,1525 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class GpioPin
+   | Unosquare Raspbery Pi - WiringPi for .net </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Class GpioPin
+   | Unosquare Raspbery Pi - WiringPi for .net ">
+    <meta name="generator" content="docfx 2.40.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/bootstrap.min.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix">
+    <div id="wrapper">
+      <header>
+        
+        <nav class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="logo" src="../best-practices/resources/images/unosquare_logo.svg" alt="Unosquare">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items"></div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="Unosquare.WiringPI.GpioPin">
+  
+  
+  <h1 id="Unosquare_WiringPI_GpioPin" data-uid="Unosquare.WiringPI.GpioPin" class="text-break">Class GpioPin
+  </h1>
+  <div class="markdown level0 summary"><p>Represents a GPIO Pin, its location and its capabilities.
+Full pin reference available here:
+<a href="http://pinout.xyz/pinout/pin31_gpio6">http://pinout.xyz/pinout/pin31_gpio6</a> and  <a href="http://wiringpi.com/pins/">http://wiringpi.com/pins/</a>.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">GpioPin</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.WiringPI.html">Unosquare.WiringPI</a></h6>
+  <h5 id="Unosquare_WiringPI_GpioPin_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class GpioPin : IGpioPin</code></pre>
+  </div>
+  <h3 id="properties">Properties
+  </h3>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_BcmPin_" data-uid="Unosquare.WiringPI.GpioPin.BcmPin*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_BcmPin" data-uid="Unosquare.WiringPI.GpioPin.BcmPin">BcmPin</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public BcmPin BcmPin { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">BcmPin</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_BcmPinNumber_" data-uid="Unosquare.WiringPI.GpioPin.BcmPinNumber*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_BcmPinNumber" data-uid="Unosquare.WiringPI.GpioPin.BcmPinNumber">BcmPinNumber</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int BcmPinNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_Capabilities_" data-uid="Unosquare.WiringPI.GpioPin.Capabilities*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_Capabilities" data-uid="Unosquare.WiringPI.GpioPin.Capabilities">Capabilities</h4>
+  <div class="markdown level1 summary"><p>Gets the hardware mode capabilities of this pin.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PinCapability Capabilities { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.WiringPI.PinCapability.html">PinCapability</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_Header_" data-uid="Unosquare.WiringPI.GpioPin.Header*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_Header" data-uid="Unosquare.WiringPI.GpioPin.Header">Header</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioHeader Header { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GpioHeader</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_InputPullMode_" data-uid="Unosquare.WiringPI.GpioPin.InputPullMode*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_InputPullMode" data-uid="Unosquare.WiringPI.GpioPin.InputPullMode">InputPullMode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPinResistorPullMode InputPullMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GpioPinResistorPullMode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_InterruptCallback_" data-uid="Unosquare.WiringPI.GpioPin.InterruptCallback*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_InterruptCallback" data-uid="Unosquare.WiringPI.GpioPin.InterruptCallback">InterruptCallback</h4>
+  <div class="markdown level1 summary"><p>Gets the interrupt callback. Returns null if no interrupt
+has been registered.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public InterruptServiceRoutineCallback InterruptCallback { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.WiringPI.Native.InterruptServiceRoutineCallback.html">InterruptServiceRoutineCallback</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_InterruptEdgeDetection_" data-uid="Unosquare.WiringPI.GpioPin.InterruptEdgeDetection*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_InterruptEdgeDetection" data-uid="Unosquare.WiringPI.GpioPin.InterruptEdgeDetection">InterruptEdgeDetection</h4>
+  <div class="markdown level1 summary"><p>Gets the interrupt edge detection mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public EdgeDetection InterruptEdgeDetection { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EdgeDetection</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_IsInSoftPwmMode_" data-uid="Unosquare.WiringPI.GpioPin.IsInSoftPwmMode*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_IsInSoftPwmMode" data-uid="Unosquare.WiringPI.GpioPin.IsInSoftPwmMode">IsInSoftPwmMode</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether this pin is in software based PWM mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsInSoftPwmMode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if this instance is in soft PWM mode; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_IsInSoftToneMode_" data-uid="Unosquare.WiringPI.GpioPin.IsInSoftToneMode*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_IsInSoftToneMode" data-uid="Unosquare.WiringPI.GpioPin.IsInSoftToneMode">IsInSoftToneMode</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether this instance is in software based tone generator mode.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsInSoftToneMode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if this instance is in soft tone mode; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_Name_" data-uid="Unosquare.WiringPI.GpioPin.Name*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_Name" data-uid="Unosquare.WiringPI.GpioPin.Name">Name</h4>
+  <div class="markdown level1 summary"><p>Gets the friendly name of the pin.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Name { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_PhysicalPinNumber_" data-uid="Unosquare.WiringPI.GpioPin.PhysicalPinNumber*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_PhysicalPinNumber" data-uid="Unosquare.WiringPI.GpioPin.PhysicalPinNumber">PhysicalPinNumber</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PhysicalPinNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_PinMode_" data-uid="Unosquare.WiringPI.GpioPin.PinMode*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_PinMode" data-uid="Unosquare.WiringPI.GpioPin.PinMode">PinMode</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPinDriveMode PinMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GpioPinDriveMode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotSupportedException</span></td>
+        <td><p>Thrown when a pin does not support the given operation mode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_PwmClockDivisor_" data-uid="Unosquare.WiringPI.GpioPin.PwmClockDivisor*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_PwmClockDivisor" data-uid="Unosquare.WiringPI.GpioPin.PwmClockDivisor">PwmClockDivisor</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the PWM clock divisor.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PwmClockDivisor { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The PWM clock divisor.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>When pin mode is not set to PWM output.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_PwmMode_" data-uid="Unosquare.WiringPI.GpioPin.PwmMode*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_PwmMode" data-uid="Unosquare.WiringPI.GpioPin.PwmMode">PwmMode</h4>
+  <div class="markdown level1 summary"><p>The PWM generator can run in 2 modes – “balanced” and “mark:space”. The mark:space mode is traditional,
+however the default mode in the Pi is “balanced”.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PwmMode PwmMode { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.WiringPI.PwmMode.html">PwmMode</a></td>
+        <td><p>The PWM mode.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>When pin mode is not set a Pwn output.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_PwmRange_" data-uid="Unosquare.WiringPI.GpioPin.PwmRange*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_PwmRange" data-uid="Unosquare.WiringPI.GpioPin.PwmRange">PwmRange</h4>
+  <div class="markdown level1 summary"><p>This sets the range register in the PWM generator. The default is 1024.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public uint PwmRange { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.UInt32</span></td>
+        <td><p>The PWM range.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>When pin mode is not set to PWM output.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_PwmRegister_" data-uid="Unosquare.WiringPI.GpioPin.PwmRegister*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_PwmRegister" data-uid="Unosquare.WiringPI.GpioPin.PwmRegister">PwmRegister</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the PWM register. Values should be between 0 and 1024.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int PwmRegister { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The PWM register.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_SoftPwmRange_" data-uid="Unosquare.WiringPI.GpioPin.SoftPwmRange*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_SoftPwmRange" data-uid="Unosquare.WiringPI.GpioPin.SoftPwmRange">SoftPwmRange</h4>
+  <div class="markdown level1 summary"><p>Gets the software PWM range used upon starting the PWM.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SoftPwmRange { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_SoftPwmValue_" data-uid="Unosquare.WiringPI.GpioPin.SoftPwmValue*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_SoftPwmValue" data-uid="Unosquare.WiringPI.GpioPin.SoftPwmValue">SoftPwmValue</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the software PWM value on the pin.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SoftPwmValue { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The soft PWM value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>StartSoftPwm.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_SoftToneFrequency_" data-uid="Unosquare.WiringPI.GpioPin.SoftToneFrequency*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_SoftToneFrequency" data-uid="Unosquare.WiringPI.GpioPin.SoftToneFrequency">SoftToneFrequency</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the soft tone frequency. 0 to 5000 Hz is typical.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SoftToneFrequency { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The soft tone frequency.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>When soft tones cannot be initialized on the pin.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_Value_" data-uid="Unosquare.WiringPI.GpioPin.Value*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_Value" data-uid="Unosquare.WiringPI.GpioPin.Value">Value</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Value { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_WiringPiPinNumber_" data-uid="Unosquare.WiringPI.GpioPin.WiringPiPinNumber*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_WiringPiPinNumber" data-uid="Unosquare.WiringPI.GpioPin.WiringPiPinNumber">WiringPiPinNumber</h4>
+  <div class="markdown level1 summary"><p>Gets the WiringPi Pin number.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public WiringPiPin WiringPiPinNumber { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.WiringPI.WiringPiPin.html">WiringPiPin</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_HasCapability_" data-uid="Unosquare.WiringPI.GpioPin.HasCapability*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_HasCapability_Unosquare_WiringPI_PinCapability_" data-uid="Unosquare.WiringPI.GpioPin.HasCapability(Unosquare.WiringPI.PinCapability)">HasCapability(PinCapability)</h4>
+  <div class="markdown level1 summary"><p>Determines whether the specified capability has capability.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasCapability(PinCapability capability)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="Unosquare.WiringPI.PinCapability.html">PinCapability</a></td>
+        <td><span class="parametername">capability</span></td>
+        <td><p>The capability.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p><code>true</code> if the specified capability has capability; otherwise, <code>false</code>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_Read_" data-uid="Unosquare.WiringPI.GpioPin.Read*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_Read" data-uid="Unosquare.WiringPI.GpioPin.Read">Read()</h4>
+  <div class="markdown level1 summary"><p>Reads the digital value on the pin as a boolean value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool Read()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>The state of the pin.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_ReadAsync_" data-uid="Unosquare.WiringPI.GpioPin.ReadAsync*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_ReadAsync" data-uid="Unosquare.WiringPI.GpioPin.ReadAsync">ReadAsync()</h4>
+  <div class="markdown level1 summary"><p>Reads the digital value on the pin as a boolean value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;bool&gt; ReadAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Boolean</span>&gt;</td>
+        <td><p>The state of the pin.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_ReadLevel_" data-uid="Unosquare.WiringPI.GpioPin.ReadLevel*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_ReadLevel" data-uid="Unosquare.WiringPI.GpioPin.ReadLevel">ReadLevel()</h4>
+  <div class="markdown level1 summary"><p>Reads the analog value on the pin.
+This returns the value read on the supplied analog input pin. You will need to register
+additional analog modules to enable this function for devices such as the Gertboard,
+quick2Wire analog board, etc.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ReadLevel()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The analog level.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>When the pin mode is not configured as an input.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_ReadLevelAsync_" data-uid="Unosquare.WiringPI.GpioPin.ReadLevelAsync*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_ReadLevelAsync" data-uid="Unosquare.WiringPI.GpioPin.ReadLevelAsync">ReadLevelAsync()</h4>
+  <div class="markdown level1 summary"><p>Reads the analog value on the pin.
+This returns the value read on the supplied analog input pin. You will need to register
+additional analog modules to enable this function for devices such as the Gertboard,
+quick2Wire analog board, etc.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; ReadLevelAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">System.Int32</span>&gt;</td>
+        <td><p>The analog level.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_ReadValue_" data-uid="Unosquare.WiringPI.GpioPin.ReadValue*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_ReadValue" data-uid="Unosquare.WiringPI.GpioPin.ReadValue">ReadValue()</h4>
+  <div class="markdown level1 summary"><p>Reads the digital value on the pin as a High or Low value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GpioPinValue ReadValue()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GpioPinValue</span></td>
+        <td><p>The state of the pin.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_ReadValueAsync_" data-uid="Unosquare.WiringPI.GpioPin.ReadValueAsync*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_ReadValueAsync" data-uid="Unosquare.WiringPI.GpioPin.ReadValueAsync">ReadValueAsync()</h4>
+  <div class="markdown level1 summary"><p>Reads the digital value on the pin as a High or Low value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;GpioPinValue&gt; ReadValueAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span>&lt;<span class="xref">GpioPinValue</span>&gt;</td>
+        <td><p>The state of the pin.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_RegisterInterruptCallback_" data-uid="Unosquare.WiringPI.GpioPin.RegisterInterruptCallback*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_RegisterInterruptCallback_EdgeDetection_System_Action_" data-uid="Unosquare.WiringPI.GpioPin.RegisterInterruptCallback(EdgeDetection,System.Action)">RegisterInterruptCallback(EdgeDetection, Action)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterInterruptCallback(EdgeDetection edgeDetection, Action callback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EdgeDetection</span></td>
+        <td><span class="parametername">edgeDetection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span></td>
+        <td><span class="parametername">callback</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.ArgumentNullException</span></td>
+        <td><p>callback.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_RegisterInterruptCallback_" data-uid="Unosquare.WiringPI.GpioPin.RegisterInterruptCallback*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_RegisterInterruptCallback_EdgeDetection_System_Action_System_Int32_System_Int32_System_UInt32__" data-uid="Unosquare.WiringPI.GpioPin.RegisterInterruptCallback(EdgeDetection,System.Action{System.Int32,System.Int32,System.UInt32})">RegisterInterruptCallback(EdgeDetection, Action&lt;Int32, Int32, UInt32&gt;)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RegisterInterruptCallback(EdgeDetection edgeDetection, Action&lt;int, int, uint&gt; callback)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">EdgeDetection</span></td>
+        <td><span class="parametername">edgeDetection</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Action</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.Int32</span>, <span class="xref">System.UInt32</span>&gt;</td>
+        <td><span class="parametername">callback</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_StartSoftPwm_" data-uid="Unosquare.WiringPI.GpioPin.StartSoftPwm*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_StartSoftPwm_System_Int32_System_Int32_" data-uid="Unosquare.WiringPI.GpioPin.StartSoftPwm(System.Int32,System.Int32)">StartSoftPwm(Int32, Int32)</h4>
+  <div class="markdown level1 summary"><p>Starts the software based PWM on this pin.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void StartSoftPwm(int value, int range)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">range</span></td>
+        <td><p>The range.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="exceptions">Exceptions</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Condition</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.NotSupportedException</span></td>
+        <td><p>When the pin does not suppoert PWM.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.InvalidOperationException</span></td>
+        <td><p>StartSoftPwm
+or.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_WaitForValue_" data-uid="Unosquare.WiringPI.GpioPin.WaitForValue*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_WaitForValue_GpioPinValue_System_Int32_" data-uid="Unosquare.WiringPI.GpioPin.WaitForValue(GpioPinValue,System.Int32)">WaitForValue(GpioPinValue, Int32)</h4>
+  <div class="markdown level1 summary"><p>Wait for specific pin status.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool WaitForValue(GpioPinValue status, int timeOutMillisecond)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GpioPinValue</span></td>
+        <td><span class="parametername">status</span></td>
+        <td><p>status to check.</p>
+</td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">timeOutMillisecond</span></td>
+        <td><p>timeout to reach status.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>true/false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_Write_" data-uid="Unosquare.WiringPI.GpioPin.Write*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_Write_GpioPinValue_" data-uid="Unosquare.WiringPI.GpioPin.Write(GpioPinValue)">Write(GpioPinValue)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(GpioPinValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GpioPinValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_Write_" data-uid="Unosquare.WiringPI.GpioPin.Write*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_Write_System_Boolean_" data-uid="Unosquare.WiringPI.GpioPin.Write(System.Boolean)">Write(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Writes the specified bit value.
+This method performs a digital write.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>if set to <code>true</code> [value].</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_Write_" data-uid="Unosquare.WiringPI.GpioPin.Write*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_Write_System_Int32_" data-uid="Unosquare.WiringPI.GpioPin.Write(System.Int32)">Write(Int32)</h4>
+  <div class="markdown level1 summary"><p>Writes the specified value. 0 for low, any other value for high
+This method performs a digital write.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Write(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_WriteAsync_" data-uid="Unosquare.WiringPI.GpioPin.WriteAsync*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_WriteAsync_GpioPinValue_" data-uid="Unosquare.WiringPI.GpioPin.WriteAsync(GpioPinValue)">WriteAsync(GpioPinValue)</h4>
+  <div class="markdown level1 summary"><p>Writes the value asynchronously.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task WriteAsync(GpioPinValue value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">GpioPinValue</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>The awaitable task.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_WriteAsync_" data-uid="Unosquare.WiringPI.GpioPin.WriteAsync*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_WriteAsync_System_Boolean_" data-uid="Unosquare.WiringPI.GpioPin.WriteAsync(System.Boolean)">WriteAsync(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Writes the specified bit value.
+This method performs a digital write.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task WriteAsync(bool value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>The awaitable task.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_WriteAsync_" data-uid="Unosquare.WiringPI.GpioPin.WriteAsync*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_WriteAsync_System_Int32_" data-uid="Unosquare.WiringPI.GpioPin.WriteAsync(System.Int32)">WriteAsync(Int32)</h4>
+  <div class="markdown level1 summary"><p>Writes the specified value. 0 for low, any other value for high
+This method performs a digital write.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task WriteAsync(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>The awaitable task.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_WriteLevel_" data-uid="Unosquare.WiringPI.GpioPin.WriteLevel*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_WriteLevel_System_Int32_" data-uid="Unosquare.WiringPI.GpioPin.WriteLevel(System.Int32)">WriteLevel(Int32)</h4>
+  <div class="markdown level1 summary"><p>Writes the specified value as an analog level.
+You will need to register additional analog modules to enable this function for devices such as the Gertboard.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteLevel(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_WiringPI_GpioPin_WriteLevelAsync_" data-uid="Unosquare.WiringPI.GpioPin.WriteLevelAsync*"></a>
+  <h4 id="Unosquare_WiringPI_GpioPin_WriteLevelAsync_System_Int32_" data-uid="Unosquare.WiringPI.GpioPin.WriteLevelAsync(System.Int32)">WriteLevelAsync(Int32)</h4>
+  <div class="markdown level1 summary"><p>Writes the specified value as an analog level.
+You will need to register additional analog modules to enable this function for devices such as the Gertboard.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task WriteLevelAsync(int value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><span class="parametername">value</span></td>
+        <td><p>The value.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Threading.Tasks.Task</span></td>
+        <td><p>The awaitable task.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+
+<h3 id="disqus_thread">Comments</h3>
+<script>
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = 'https://unolabs.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="doc" align="center">
+              <span class="small mobile-hide">
+                <img id="logo" class="doc-logo" src="../Support/pigpio-dotnet-256.png" alt="">
+              </span>
+            </div>
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Copyright © 2017-2018 <a href="https://www.unosquare.com">Unosquare</a></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
