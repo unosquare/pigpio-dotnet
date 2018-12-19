@@ -11,9 +11,9 @@
     {
         internal const string PiGpioLibrary = "libpigpio.so";
 
-        internal static readonly int[] HardwareClockPins0 = new int[] { 4, 20, 32, 34 };
+        internal static readonly int[] HardwareClockPins0 = new[] { 4, 20, 32, 34 };
 
-        internal static readonly int[] HardwareClockPins2 = new int[] { 6, 43 };
+        internal static readonly int[] HardwareClockPins2 = new[] { 6, 43 };
 
         internal static readonly Dictionary<ResultCode, string> ResultCodeMessages = new Dictionary<ResultCode, string>()
         {
@@ -171,12 +171,8 @@
         internal static string GetResultCodeMessage(int resultCode)
         {
             if (resultCode >= 0) return ResultCodeMessages[ResultCode.Ok];
-            if (ResultCodeMessages.ContainsKey((ResultCode)resultCode))
-            {
-                return ResultCodeMessages[(ResultCode)resultCode];
-            }
 
-            return "(Unknown error code)";
+            return ResultCodeMessages.ContainsKey((ResultCode)resultCode) ? ResultCodeMessages[(ResultCode)resultCode] : "(Unknown error code)";
         }
 
         /// <summary>
@@ -189,12 +185,10 @@
         {
             if (hardwareRevision.IsBetween(2, 3))
                 return BoardType.Type1;
-            else if (hardwareRevision.IsBetween(4, 6) || hardwareRevision == 15)
+            if (hardwareRevision.IsBetween(4, 6) || hardwareRevision == 15)
                 return BoardType.Type2;
-            else if (hardwareRevision >= 16)
-                return BoardType.Type3;
-
-            return BoardType.Unknown;
+            
+            return hardwareRevision >= 16 ? BoardType.Type3 : BoardType.Unknown;
         }
 
         internal static GpioPadId GetPad(SystemGpio gpio)
@@ -202,9 +196,9 @@
             var gpioNumber = (int)gpio;
             if (gpioNumber.IsBetween(0, 27))
                 return GpioPadId.Pad00To27;
-            else if (gpioNumber.IsBetween(28, 45))
+            if (gpioNumber.IsBetween(28, 45))
                 return GpioPadId.Pad28To45;
-            else if (gpioNumber.IsBetween(46, 53))
+            if (gpioNumber.IsBetween(46, 53))
                 return GpioPadId.Pad46To53;
 
             throw new ArgumentException($"Unable to get Pad identifier. Argument '{nameof(gpio)}' is invalid.");
@@ -215,18 +209,20 @@
             var gpioNumber = (int)gpio;
             if (gpioNumber.IsBetween(0, 8))
                 return GpioPullMode.Up;
-            else if (gpioNumber.IsBetween(9, 27))
+            if (gpioNumber.IsBetween(9, 27))
                 return GpioPullMode.Down;
-            else if (gpioNumber.IsBetween(28, 29))
+            if (gpioNumber.IsBetween(28, 29))
                 return GpioPullMode.Off;
-            else if (gpioNumber.IsBetween(30, 33))
+            if (gpioNumber.IsBetween(30, 33))
                 return GpioPullMode.Down;
+
             if (gpioNumber.IsBetween(34, 36))
                 return GpioPullMode.Up;
-            else if (gpioNumber.IsBetween(37, 43))
+            if (gpioNumber.IsBetween(37, 43))
                 return GpioPullMode.Down;
-            else if (gpioNumber.IsBetween(44, 45))
+            if (gpioNumber.IsBetween(44, 45))
                 return GpioPullMode.Off;
+
             if (gpioNumber.IsBetween(46, 53))
                 return GpioPullMode.Up;
 
@@ -272,14 +268,8 @@
             }
         }
 
-        internal static bool IsBetween(this int number, int min, int max)
-        {
-            return number >= min && number <= max;
-        }
+        internal static bool IsBetween(this int number, int min, int max) => number >= min && number <= max;
 
-        internal static bool IsBetween(this long number, long min, long max)
-        {
-            return number >= min && number <= max;
-        }
+        internal static bool IsBetween(this long number, long min, long max) => number >= min && number <= max;
     }
 }
