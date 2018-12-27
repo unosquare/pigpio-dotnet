@@ -8676,6 +8676,19 @@ references:
   isSpec: "True"
   fullName: Unosquare.PiGpio.Threading.StartThreadEx
   nameWithType: Threading.StartThreadEx
+- uid: Unosquare.PiGpio.Threading.StopThread
+  name: StopThread()
+  href: api/Unosquare.PiGpio.Threading.html#Unosquare_PiGpio_Threading_StopThread
+  commentId: M:Unosquare.PiGpio.Threading.StopThread
+  fullName: Unosquare.PiGpio.Threading.StopThread()
+  nameWithType: Threading.StopThread()
+- uid: Unosquare.PiGpio.Threading.StopThread*
+  name: StopThread
+  href: api/Unosquare.PiGpio.Threading.html#Unosquare_PiGpio_Threading_StopThread_
+  commentId: Overload:Unosquare.PiGpio.Threading.StopThread
+  isSpec: "True"
+  fullName: Unosquare.PiGpio.Threading.StopThread
+  nameWithType: Threading.StopThread
 - uid: Unosquare.PiGpio.Threading.StopThreadEx(System.UIntPtr)
   name: StopThreadEx(UIntPtr)
   href: api/Unosquare.PiGpio.Threading.html#Unosquare_PiGpio_Threading_StopThreadEx_System_UIntPtr_
