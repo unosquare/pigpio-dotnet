@@ -3,6 +3,7 @@
     using NativeEnums;
     using System;
     using System.Collections.Generic;
+    using RaspberryIO.Abstractions;
 
     /// <summary>
     /// Defines the constants used by the libpigpio library.
@@ -187,8 +188,16 @@
                 return BoardType.Type1;
             if (hardwareRevision.IsBetween(4, 6) || hardwareRevision == 15)
                 return BoardType.Type2;
-            
+
             return hardwareRevision >= 16 ? BoardType.Type3 : BoardType.Unknown;
+        }
+
+        internal static BoardRevision GetBoardRevision(long hardwareRevision)
+        {
+            if (hardwareRevision.IsBetween(2, 3))
+                return BoardRevision.Rev1;
+
+            return BoardRevision.Rev2;
         }
 
         internal static GpioPadId GetPad(SystemGpio gpio)
