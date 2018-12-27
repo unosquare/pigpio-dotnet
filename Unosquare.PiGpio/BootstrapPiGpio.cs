@@ -15,8 +15,7 @@
         {
             lock (SyncLock)
             {
-                // TODO: Include extract resource
-                // Resources.EmbeddedResources.ExtractAll();
+                Resources.EmbeddedResources.ExtractAll();
             }
         }
     }

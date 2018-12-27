@@ -24,6 +24,12 @@
     <FileVersion>1.67.0.1</FileVersion>
     <LangVersion>7.2</LangVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Resources\libpigpio.so" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\libpigpio.so" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.1-beta.61">

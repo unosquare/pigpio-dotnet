@@ -48,6 +48,19 @@
         }
 
         /// <summary>
+        /// Validates the result. This call is typically used for execute methods.
+        /// </summary>
+        /// <param name="handle">The handle.</param>
+        /// <returns>The pointer or handle.</returns>
+        internal static UIntPtr ValidateResult(UIntPtr handle)
+        {
+            if (handle == UIntPtr.Zero)
+                throw new BoardException((int)ResultCode.BadHandle);
+
+            return handle;
+        }
+
+        /// <summary>
         /// Gets the starndard message.
         /// </summary>
         /// <param name="resultCode">The result code.</param>
