@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Spi
    | Unosquare Raspbery Pi - libpigpio for .net ">
-    <meta name="generator" content="docfx 2.40.6.0">
+    <meta name="generator" content="docfx 2.40.7.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -86,31 +86,31 @@
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
-    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
     <div class="level1"><span class="xref">Spi</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
     <div>
-      <span class="xref">System.Object.ToString()</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
     </div>
     <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
     </div>
     <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
     </div>
     <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
     </div>
     <div>
-      <span class="xref">System.Object.GetHashCode()</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a>
     </div>
     <div>
-      <span class="xref">System.Object.GetType()</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
     </div>
     <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.NativeMethods.html">Unosquare.PiGpio.NativeMethods</a></h6>
@@ -223,7 +223,7 @@ SCLK, MOSI, and MISO) each must have its own CS.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.UInt32</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
         <td><span class="parametername">baudRate</span></td>
         <td><p>50-250000.</p>
 </td>
@@ -293,19 +293,19 @@ bbSPIOpen(11, MISO, MOSI, SCLK, 20000, 3); // device 2</code></pre>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
         <td><span class="parametername">inputBuffer</span></td>
         <td><p>pointer to buffer to hold data to be sent.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
         <td><span class="parametername">outputBuffer</span></td>
         <td><p>pointer to buffer to hold returned data.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.UInt32</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
         <td><span class="parametername">count</span></td>
         <td><p>size of data transfer, which is the same as the data received.</p>
 </td>
@@ -322,7 +322,7 @@ bbSPIOpen(11, MISO, MOSI, SCLK, 20000, 3); // device 2</code></pre>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><p>Returns &gt;= 0 if OK (the number of bytes read), otherwise PI_BAD_USER_GPIO, PI_NOT_SPI_GPIO or PI_BAD_POINTER.</p>
 </td>
       </tr>
@@ -491,7 +491,7 @@ an I2C slave with address 0x13 and send four bytes.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><p>The result code. 0 for success. See the <a class="xref" href="Unosquare.PiGpio.NativeEnums.ResultCode.html">ResultCode</a> enumeration.</p>
 </td>
       </tr>
@@ -548,7 +548,7 @@ if (status >= 0)
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.UIntPtr</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
         <td><span class="parametername">handle</span></td>
         <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a>.</p>
 </blockquote>
@@ -638,7 +638,7 @@ by 0x1A.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">baudRate</span></td>
         <td><p>32K-125M (values above 30M are unlikely to work).</p>
 </td>
@@ -661,7 +661,7 @@ by 0x1A.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.UIntPtr</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
         <td><p>Returns a handle (&gt;=0) if OK, otherwise PI_BAD_SPI_CHANNEL, PI_BAD_SPI_SPEED, PI_BAD_FLAGS, PI_NO_AUX_SPI, or PI_SPI_OPEN_FAILED.</p>
 </td>
       </tr>
@@ -700,14 +700,14 @@ device associated with the handle.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.UIntPtr</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
         <td><span class="parametername">handle</span></td>
         <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a>.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><span class="parametername">count</span></td>
         <td><p>The max number of bytes to read.</p>
 </td>
@@ -724,7 +724,7 @@ device associated with the handle.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
         <td><p>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</p>
 </td>
       </tr>
@@ -754,14 +754,14 @@ device associated with the handle.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.UIntPtr</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
         <td><span class="parametername">handle</span></td>
         <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a>.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
         <td><span class="parametername">buffer</span></td>
         <td><p>the data bytes to write.</p>
 </td>
@@ -778,7 +778,7 @@ device associated with the handle.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Int32</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
         <td><p>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</p>
 </td>
       </tr>
@@ -809,14 +809,14 @@ data are read from the device and placed in rxBuf.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.UIntPtr</span></td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uintptr">UIntPtr</a></td>
         <td><span class="parametername">handle</span></td>
         <td><blockquote><p>=0, as returned by a call to <a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html#Unosquare_PiGpio_NativeMethods_Spi_SpiOpen_Unosquare_PiGpio_NativeEnums_SpiChannelId_System_Int32_Unosquare_PiGpio_NativeEnums_SpiFlags_">SpiOpen(SpiChannelId, Int32, SpiFlags)</a>.</p>
 </blockquote>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
         <td><span class="parametername">transmitBuffer</span></td>
         <td><p>the data bytes to write.</p>
 </td>
@@ -833,7 +833,7 @@ data are read from the device and placed in rxBuf.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Byte</span>[]</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.byte">Byte</a>[]</td>
         <td><p>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</p>
 </td>
       </tr>
