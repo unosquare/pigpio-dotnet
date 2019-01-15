@@ -12,7 +12,7 @@ As a programmer, the choice is yours. You can call the netive methods either dir
 ```csharp
 Setup.GpioInitialise();
 var pin = SystemGpio.Bcm18;
-IO.GpioSetMode(pin, PortMode.Output);
+IO.GpioSetMode(pin, PinMode.Output);
 
 while (true)
 {
