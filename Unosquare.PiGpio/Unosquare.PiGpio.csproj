@@ -16,7 +16,7 @@
     <RepositoryUrl>https://github.com/unosquare/pigpio-dotnet</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Raspberry Pi, GPIO, ISR, DMA, Clock, I2C, SPI, UART</PackageTags>
-    <AssemblyName>pigpio-dotnet</AssemblyName>
+    <AssemblyName>Unosquare.PiGpio</AssemblyName>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
