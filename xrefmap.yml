@@ -7787,40 +7787,19 @@ references:
 - uid: Unosquare.PiGpio.NativeTypes.GpioPulse.DurationMicroSecs
   name: DurationMicroSecs
   href: api/Unosquare.PiGpio.NativeTypes.GpioPulse.html#Unosquare_PiGpio_NativeTypes_GpioPulse_DurationMicroSecs
-  commentId: P:Unosquare.PiGpio.NativeTypes.GpioPulse.DurationMicroSecs
-  fullName: Unosquare.PiGpio.NativeTypes.GpioPulse.DurationMicroSecs
-  nameWithType: GpioPulse.DurationMicroSecs
-- uid: Unosquare.PiGpio.NativeTypes.GpioPulse.DurationMicroSecs*
-  name: DurationMicroSecs
-  href: api/Unosquare.PiGpio.NativeTypes.GpioPulse.html#Unosquare_PiGpio_NativeTypes_GpioPulse_DurationMicroSecs_
-  commentId: Overload:Unosquare.PiGpio.NativeTypes.GpioPulse.DurationMicroSecs
-  isSpec: "True"
+  commentId: F:Unosquare.PiGpio.NativeTypes.GpioPulse.DurationMicroSecs
   fullName: Unosquare.PiGpio.NativeTypes.GpioPulse.DurationMicroSecs
   nameWithType: GpioPulse.DurationMicroSecs
 - uid: Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOff
   name: GpioOff
   href: api/Unosquare.PiGpio.NativeTypes.GpioPulse.html#Unosquare_PiGpio_NativeTypes_GpioPulse_GpioOff
-  commentId: P:Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOff
-  fullName: Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOff
-  nameWithType: GpioPulse.GpioOff
-- uid: Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOff*
-  name: GpioOff
-  href: api/Unosquare.PiGpio.NativeTypes.GpioPulse.html#Unosquare_PiGpio_NativeTypes_GpioPulse_GpioOff_
-  commentId: Overload:Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOff
-  isSpec: "True"
+  commentId: F:Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOff
   fullName: Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOff
   nameWithType: GpioPulse.GpioOff
 - uid: Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOn
   name: GpioOn
   href: api/Unosquare.PiGpio.NativeTypes.GpioPulse.html#Unosquare_PiGpio_NativeTypes_GpioPulse_GpioOn
-  commentId: P:Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOn
-  fullName: Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOn
-  nameWithType: GpioPulse.GpioOn
-- uid: Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOn*
-  name: GpioOn
-  href: api/Unosquare.PiGpio.NativeTypes.GpioPulse.html#Unosquare_PiGpio_NativeTypes_GpioPulse_GpioOn_
-  commentId: Overload:Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOn
-  isSpec: "True"
+  commentId: F:Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOn
   fullName: Unosquare.PiGpio.NativeTypes.GpioPulse.GpioOn
   nameWithType: GpioPulse.GpioOn
 - uid: Unosquare.PiGpio.NativeTypes.GpioSample
