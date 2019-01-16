@@ -8,25 +8,21 @@
     /// microseconds in the low position, and a delay measure.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
-    public class GpioPulse
+    public struct GpioPulse
     {
-        private BitMask m_GpioOn;
-        private BitMask m_GpioOff;
-        private uint m_DelayMicroseconds;
-
         /// <summary>
         /// The GPIO pins to turn on.
         /// </summary>
-        public BitMask GpioOn { get => m_GpioOn; set => m_GpioOn = value; }
+        public BitMask GpioOn;
 
         /// <summary>
         /// The gpio pins to turn off.
         /// </summary>
-        public BitMask GpioOff { get => m_GpioOff; set => m_GpioOff = value; }
+        public BitMask GpioOff;
 
         /// <summary>
         /// The duration in microseconds.
         /// </summary>
-        public uint DurationMicroSecs { get => m_DelayMicroseconds; set => m_DelayMicroseconds = value; }
+        public uint DurationMicroSecs;
     }
 }
