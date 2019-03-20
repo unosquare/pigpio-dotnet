@@ -4,7 +4,9 @@
     using Swan.Abstractions;
     using System.Threading;
 
+#pragma warning disable CA1001 // Types that own disposable fields should be disposable
     internal class Timers : RunnerBase
+#pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
         private Timer _currentTimer;
         private ManualResetEvent _timerTicked;

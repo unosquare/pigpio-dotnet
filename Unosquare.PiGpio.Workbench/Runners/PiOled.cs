@@ -10,7 +10,9 @@
     using System.Drawing.Imaging;
     using System.Threading;
 
+#pragma warning disable CA1001 // Types that own disposable fields should be disposable
     internal class PiOled : RunnerBase
+#pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
         private OledDisplaySSD1306 _display;
 

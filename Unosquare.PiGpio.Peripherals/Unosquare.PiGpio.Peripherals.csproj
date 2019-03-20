@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net462;netcoreapp2.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Unosquare.PiGpio.Peripherals</RootNamespace>
     <Authors>Mario Di Vece and Contributors to the pigpio-dotnet project</Authors>
     <Company>Unosquare SA de CV</Company>
@@ -15,7 +15,6 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Raspberry Pi, GPIO, ISR, DMA, Clock, I2C, SPI, UART</PackageTags>
     <AssemblyName>pigpio-peripherals</AssemblyName>
-    <Platforms>AnyCPU</Platforms>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -28,6 +27,10 @@
   </ItemGroup>
   
   <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.1-beta.61">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
