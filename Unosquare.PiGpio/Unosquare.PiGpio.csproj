@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net462;netcoreapp2.0</TargetFrameworks>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <RootNamespace>Unosquare.PiGpio</RootNamespace>
-    <Version>0.0.1</Version>
+    <Version>0.3.0</Version>
     <Authors>Mario Di Vece and Contributors to the pigpio-dotnet project</Authors>
     <Company>Unosquare</Company>
     <Product>Unosquare.PiGpio</Product>
@@ -34,7 +34,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Unosquare.Raspberry.Abstractions" Version="0.2.0" />
+    <PackageReference Include="Unosquare.Raspberry.Abstractions" Version="0.3.0" />
   </ItemGroup>
 
 </Project>

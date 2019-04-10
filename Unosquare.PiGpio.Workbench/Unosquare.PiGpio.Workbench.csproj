@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net461;netcoreapp2.0</TargetFrameworks>
+    <TargetFrameworks>net461;netcoreapp2.2</TargetFrameworks>
     <RootNamespace>Unosquare.PiGpio.Workbench</RootNamespace>
     <Version>1.67.0.1</Version>
     <Authors>Mario Di Vece and Contributors to the pigpio-dotnet project</Authors>
@@ -26,12 +26,6 @@
     <LangVersion>latest</LangVersion>
 	<DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
 	<PackageId>Unosquare.PiGpio.Workbench</PackageId>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
-    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-    <WarningsAsErrors />
-    <NoWarn />
   </PropertyGroup>
   
   <ItemGroup>
