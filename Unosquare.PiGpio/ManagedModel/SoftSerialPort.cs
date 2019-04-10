@@ -94,7 +94,7 @@
 
             // Wait for the wave to finish sending
             while (Waves.GpioWaveTxBusy() > 0)
-                Board.Timing.Sleep(0.1);
+                Board.Timing.Sleep(1);
 
             Waves.GpioWaveDelete(Convert.ToUInt32(waveId));
         }

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFramework>netstandard1.5</TargetFramework>
     <RootNamespace>Unosquare.PiGpio</RootNamespace>
     <Version>0.3.0</Version>
     <Authors>Mario Di Vece and Contributors to the pigpio-dotnet project</Authors>
@@ -30,11 +30,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.1-beta.61">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
     <PackageReference Include="Unosquare.Raspberry.Abstractions" Version="0.3.0" />
+    <PackageReference Include="Unosquare.Swan" Version="1.1.4" />
   </ItemGroup>
 
 </Project>

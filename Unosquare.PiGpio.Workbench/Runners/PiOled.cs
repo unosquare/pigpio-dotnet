@@ -1,6 +1,6 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
-    using Peripherals;
+    using RaspberryIO.Peripherals;
     using Swan;
     using Swan.Abstractions;
     using System;
@@ -14,7 +14,7 @@
     internal class PiOled : RunnerBase
 #pragma warning restore CA1001 // Types that own disposable fields should be disposable
     {
-        private OledDisplaySSD1306 _display;
+        private OledDisplaySsd1306 _display;
 
         internal PiOled(bool isEnabled)
             : base(isEnabled)
@@ -24,7 +24,7 @@
 
         protected override void Setup()
         {
-            _display = new OledDisplaySSD1306(OledDisplaySSD1306.DisplayModel.Display128x32);
+            _display = new OledDisplaySsd1306(OledDisplaySsd1306.DisplayModel.Display128X32);
         }
 
         protected override void DoBackgroundWork(CancellationToken ct)

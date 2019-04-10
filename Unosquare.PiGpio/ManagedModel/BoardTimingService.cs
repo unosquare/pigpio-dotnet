@@ -143,8 +143,7 @@
         /// <returns>A reference to a timer.</returns>
         public Timer StartTimer(int periodMilliseconds, Action callback)
         {
-            var timer = new Timer((s) => { callback?.Invoke(); }, this, 0, periodMilliseconds);
-            return timer;
+            return new Timer(s => { callback?.Invoke(); }, this, 0, periodMilliseconds);
         }
 
         /// <inheritdoc />
@@ -158,7 +157,7 @@
         private long EllapsedMicroseconds(TimeType type)
         {
             BoardException.ValidateResult(
-                Utilities.GpioTime(TimeType.Absolute, out var seconds, out var microseconds));
+                Utilities.GpioTime(type, out var seconds, out var microseconds));
 
             return (seconds * SecondsToMicrosFactor) + microseconds;
         }

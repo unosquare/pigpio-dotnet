@@ -8,7 +8,7 @@
 
     /// <summary>
     /// Provides various utility methods to retrieve hardware and software versions,
-    /// time, shell commands, and bitwise maskling.
+    /// time, shell commands, and bitwise masking.
     /// </summary>
     public static class Utilities
     {
@@ -209,7 +209,7 @@
         public static extern ResultCode GpioSetSignalFuncEx(uint signalNumber, [In, MarshalAs(UnmanagedType.FunctionPtr)] PiGpioSignalExDelegate callback, UIntPtr userData);
 
         /// <summary>
-        /// Raises the given UNIX signal numner (0 to 63).
+        /// Raises the given UNIX signal number (0 to 63).
         /// </summary>
         /// <param name="signalNumber">The UNIX signal number from 0 to 63.</param>
         /// <returns>0 for success.</returns>
@@ -230,16 +230,14 @@
                 array[index] = true;
 
             var bytes = new byte[4];
-            array.CopyTo(bytes, 0);
+            // TODO: array.CopyTo(bytes);
             var mask = BitConverter.ToInt32(bytes, 0);
-            if (value)
-                return flags | mask;
-            else
-                return flags & ~mask;
+
+            return value ? flags | mask : flags & ~mask;
         }
 
         /// <summary>
-        /// Sets a bit at the given positon index from right to left.
+        /// Sets a bit at the given position index from right to left.
         /// </summary>
         /// <param name="flags">The flags.</param>
         /// <param name="index">The index.</param>
@@ -248,7 +246,7 @@
         public static int SetBit(this int flags, int index, bool value) => value ? flags | (1 << index) : flags & ~(1 << index);
 
         /// <summary>
-        /// Sets a bit at the given positon index from right to left.
+        /// Sets a bit at the given position index from right to left.
         /// </summary>
         /// <param name="flags">The flags.</param>
         /// <param name="index">The index.</param>
@@ -257,34 +255,34 @@
         public static uint SetBit(this uint flags, int index, bool value) => unchecked((uint)SetBit(unchecked((int)flags), index, value));
 
         /// <summary>
-        /// Sets a bit at the given positon index from right to left.
+        /// Sets a bit at the given position index from right to left.
         /// </summary>
         /// <param name="flags">The flags.</param>
         /// <param name="index">The index.</param>
         /// <param name="value">if set to <c>true</c> [value].</param>
         /// <returns>The flags with the bit set at the given position.</returns>
-        public static short SetBit(this short flags, int index, bool value) => unchecked((short)SetBit(unchecked((int)flags), index, value));
+        public static short SetBit(this short flags, int index, bool value) => unchecked((short)SetBit((int)flags, index, value));
 
         /// <summary>
-        /// Sets a bit at the given positon index from right to left.
+        /// Sets a bit at the given position index from right to left.
         /// </summary>
         /// <param name="flags">The flags.</param>
         /// <param name="index">The index.</param>
         /// <param name="value">if set to <c>true</c> [value].</param>
         /// <returns>The flags with the bit set at the given position.</returns>
-        public static ushort SetBit(this ushort flags, int index, bool value) => unchecked((ushort)SetBit(unchecked((int)flags), index, value));
+        public static ushort SetBit(this ushort flags, int index, bool value) => unchecked((ushort)SetBit((int)flags, index, value));
 
         /// <summary>
-        /// Sets a bit at the given positon index from right to left.
+        /// Sets a bit at the given position index from right to left.
         /// </summary>
         /// <param name="flags">The flags.</param>
         /// <param name="index">The index.</param>
         /// <param name="value">if set to <c>true</c> [value].</param>
         /// <returns>The flags with the bit set at the given position.</returns>
-        public static byte SetBit(this byte flags, int index, bool value) => unchecked((byte)SetBit(unchecked((int)flags), index, value));
+        public static byte SetBit(this byte flags, int index, bool value) => unchecked((byte)SetBit((int)flags, index, value));
 
         /// <summary>
-        /// Gets a bit at the given positon index from right to left.
+        /// Gets a bit at the given position index from right to left.
         /// </summary>
         /// <param name="flags">The flags.</param>
         /// <param name="index">The index.</param>
@@ -292,7 +290,7 @@
         public static bool GetBit(this int flags, int index) => (flags & (1 << index)) != 0;
 
         /// <summary>
-        /// Gets a bit at the given positon index from right to left.
+        /// Gets a bit at the given position index from right to left.
         /// </summary>
         /// <param name="flags">The flags.</param>
         /// <param name="index">The index.</param>
@@ -300,27 +298,27 @@
         public static bool GetBit(this uint flags, int index) => GetBit(unchecked((int)flags), index);
 
         /// <summary>
-        /// Gets a bit at the given positon index from right to left.
+        /// Gets a bit at the given position index from right to left.
         /// </summary>
         /// <param name="flags">The flags.</param>
         /// <param name="index">The index.</param>
         /// <returns>The value of the bit at the given position index.</returns>
-        public static bool GetBit(this short flags, int index) => GetBit(unchecked((int)flags), index);
+        public static bool GetBit(this short flags, int index) => GetBit((int)flags, index);
 
         /// <summary>
-        /// Gets a bit at the given positon index from right to left.
+        /// Gets a bit at the given position index from right to left.
         /// </summary>
         /// <param name="flags">The flags.</param>
         /// <param name="index">The index.</param>
         /// <returns>The value of the bit at the given position index.</returns>
-        public static bool GetBit(this ushort flags, int index) => GetBit(unchecked((int)flags), index);
+        public static bool GetBit(this ushort flags, int index) => GetBit((int)flags, index);
 
         /// <summary>
-        /// Gets a bit at the given positon index from right to left.
+        /// Gets a bit at the given position index from right to left.
         /// </summary>
         /// <param name="flags">The flags.</param>
         /// <param name="index">The index.</param>
         /// <returns>The value of the bit at the given position index.</returns>
-        public static bool GetBit(this byte flags, int index) => GetBit(unchecked((int)flags), index);
+        public static bool GetBit(this byte flags, int index) => GetBit((int)flags, index);
     }
 }

@@ -1,10 +1,11 @@
 ﻿namespace Unosquare.PiGpio.Resources
 {
     using System;
+    using NativeTypes;
     using System.Collections.ObjectModel;
     using System.IO;
+    using System.Reflection;
     using Swan;
-    using Unosquare.RaspberryIO.Abstractions.Native;
 
     /// <summary>
     /// Provides access to embedded assembly files.
@@ -33,8 +34,8 @@
         /// </summary>
         public static void ExtractAll()
         {
-            var basePath = Runtime.EntryAssemblyDirectory;
-            var executablePermissions = Standard.StringToInteger("0777", IntPtr.Zero, 8);
+            var basePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            var executablePermissions = SysCall.StringToInteger("0777", IntPtr.Zero, 8);
 
             foreach (var resourceName in ResourceNames)
             {
@@ -52,7 +53,7 @@
 
                     try
                     {
-                        Standard.Chmod(targetPath, (uint)executablePermissions);
+                        SysCall.Chmod(targetPath, (uint)executablePermissions);
                     }
                     catch
                     {

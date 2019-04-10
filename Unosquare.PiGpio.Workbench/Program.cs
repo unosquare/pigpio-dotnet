@@ -1,5 +1,6 @@
 ﻿namespace Unosquare.PiGpio.Workbench
 {
+    using RaspberryIO;
     using Runners;
     using Swan;
     using Swan.Abstractions;
@@ -12,6 +13,8 @@
         public static void Main()
         {
             Terminal.Settings.DisplayLoggingMessageType = (LogMessageType)int.MaxValue;
+            Pi.Init<BootstrapPiGpio>();
+
             var workbenchItems = new List<RunnerBase>
             {
                 new BoardInfo(true),
@@ -27,7 +30,6 @@
             foreach (var wbi in workbenchItems)
                 wbi.Start();
 
-            // Console.ReadKey(true);
             Terminal.ReadKey(intercept: true, disableLocking: true);
 
             foreach (var wbi in workbenchItems)
