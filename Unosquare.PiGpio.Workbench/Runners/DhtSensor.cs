@@ -131,7 +131,7 @@
             return dataBits;
         }
 
-        private void DebugPulses(List<Tuple<bool, uint>> pulses)
+        private void DebugPulses(IReadOnlyList<Tuple<bool, uint>> pulses)
         {
             var builder = new StringBuilder();
 
@@ -146,7 +146,7 @@
             $"Pulses Received: {pulses.Count}\r\n{builder}".Debug(Name);
         }
 
-        private void DebugBits(List<bool> bits)
+        private void DebugBits(IReadOnlyList<bool> bits)
         {
             var builder = new StringBuilder();
 

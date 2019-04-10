@@ -9,7 +9,7 @@
 
     internal static class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             Terminal.Settings.DisplayLoggingMessageType = (LogMessageType)int.MaxValue;
             var workbenchItems = new List<RunnerBase>
