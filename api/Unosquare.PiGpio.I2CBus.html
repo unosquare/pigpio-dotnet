@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace Unosquare.PiGpio.NativeMethods
+    <title>Class I2CBus
    | Unosquare Raspbery Pi - libpigpio for .net </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace Unosquare.PiGpio.NativeMethods
+    <meta name="title" content="Class I2CBus
    | Unosquare Raspbery Pi - libpigpio for .net ">
     <meta name="generator" content="docfx 2.41.0.0">
     
@@ -76,89 +76,179 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.NativeMethods">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.I2CBus">
   
-  <h1 id="Unosquare_PiGpio_NativeMethods" data-uid="Unosquare.PiGpio.NativeMethods" class="text-break">Namespace Unosquare.PiGpio.NativeMethods
+  
+  <h1 id="Unosquare_PiGpio_I2CBus" data-uid="Unosquare.PiGpio.I2CBus" class="text-break">Class I2CBus
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>A simple wrapper for the I2c bus on the Raspberry Pi.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
+    <div class="level1"><span class="xref">I2CBus</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.html">Unosquare.PiGpio</a></h6>
+  <h5 id="Unosquare_PiGpio_I2CBus_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class I2CBus : II2CBus</code></pre>
+  </div>
+  <h3 id="properties">Properties
   </h3>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Custom.html">Custom</a></h4>
-      <section><p>Defines method calls for cutom functions.
-These calls are reserved but still provided for reference purposes.
-They are unused in the managed model of this library.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Events.html">Events</a></h4>
-      <section><p>Provides event notification warapper APIs for the pigpio library.
-These methods represent an internal event system that is unused in the managed model
-of this library.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Files.html">Files</a></h4>
-      <section><p>A file may only be opened if permission is granted by an entry in
-/opt/pigpio/access.  This is intended to allow remote access to files
-in a more or less controlled manner.</p>
-<p>Each entry in /opt/pigpio/access takes the form of a file path
-which may contain wildcards followed by a single letter permission.
-The permission may be R for read, W for write, U for read/write,
-and N for no access.</p>
-<p>Where more than one entry matches a file the most specific rule
-applies.  If no entry matches a file then access is denied.</p>
-<p>Suppose /opt/pigpio/access contains the following entries</p>
-<p>Files may be written in directory dir_1 with the exception
-of file.txt.</p>
-<p>Files may be read in directory dir_2.</p>
-<p>Files may be read and written in directory dir_3.</p>
-<p>If a directory allows read, write, or read/write access then files may
-be created in that directory.</p>
-<p>In an attempt to prevent risky permissions the following paths are
-ignored in /opt/pigpio/access.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.I2c.html">I2c</a></h4>
-      <section><p>Provides Methods for both, hardware based I2C and Bit-bang (Software) I2C bus communication.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.IO.html">IO</a></h4>
-      <section><p>Defines fundamental IO methods for the GPIO Pins.
-The bulk of the managed pin functionality is supplied by these methods.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Pwm.html">Pwm</a></h4>
-      <section><p>Provides methods for software and hardware based PWM services for the GPIO pins.
-All User GPIO pins support PWM.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.RawWaves.html">RawWaves</a></h4>
-      <section><p>Raw waveform generation methods. These are advanced methods to send pulses on the pins
-with precise timing. It is recommended that the <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html">Waves</a> methods are used instead.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Scripts.html">Scripts</a></h4>
-      <section><p>Provides access to scripting methods of the pigpio library. Scripts are used by the
-pigpio daemon to execute a set of instructions to speedup GPIO instructions.
-Unused in the managed model of this library but provided for reference purposes.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Serial.html">Serial</a></h4>
-      <section><p>Exposes methods to read from a serial transmission using bit-banging (software-based UART).
-Writing requires the use of the <a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html#Unosquare_PiGpio_NativeMethods_Waves_GpioWaveAddSerial_Unosquare_PiGpio_NativeEnums_UserGpio_System_UInt32_System_UInt32_System_UInt32_System_UInt32_System_UInt32_System_Byte___">GpioWaveAddSerial(UserGpio, UInt32, UInt32, UInt32, UInt32, UInt32, Byte[])</a> method.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Setup.html">Setup</a></h4>
-      <section><p>Library setup and configuration methods.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Spi.html">Spi</a></h4>
-      <section><p>Provides methods for SPI bus management.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Threads.html">Threads</a></h4>
-      <section><p>PRovides threading and delay operations.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Uart.html">Uart</a></h4>
-      <section><p>Provides access to hardware based UART (Serial Port).</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Utilities.html">Utilities</a></h4>
-      <section><p>Provides various utility methods to retrieve hardware and software versions,
-time, shell commands, and bitwise masking.</p>
-</section>
-      <h4><a class="xref" href="Unosquare.PiGpio.NativeMethods.Waves.html">Waves</a></h4>
-      <section><p>Provides Waveform methods for the pigpio library. These are methods to send pulses on the pins
-with precise timing.</p>
-</section>
+  
+  
+  <a id="Unosquare_PiGpio_I2CBus_Devices_" data-uid="Unosquare.PiGpio.I2CBus.Devices*"></a>
+  <h4 id="Unosquare_PiGpio_I2CBus_Devices" data-uid="Unosquare.PiGpio.I2CBus.Devices">Devices</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ReadOnlyCollection&lt;II2CDevice&gt; Devices { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.objectmodel.readonlycollection-1">ReadOnlyCollection</a>&lt;<span class="xref">II2CDevice</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_I2CBus_Item_" data-uid="Unosquare.PiGpio.I2CBus.Item*"></a>
+  <h4 id="Unosquare_PiGpio_I2CBus_Item_System_Int32_" data-uid="Unosquare.PiGpio.I2CBus.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public II2CDevice this[int deviceId] { get; }</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">deviceId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">II2CDevice</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  
+  
+  <a id="Unosquare_PiGpio_I2CBus_AddDevice_" data-uid="Unosquare.PiGpio.I2CBus.AddDevice*"></a>
+  <h4 id="Unosquare_PiGpio_I2CBus_AddDevice_System_Int32_" data-uid="Unosquare.PiGpio.I2CBus.AddDevice(System.Int32)">AddDevice(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public II2CDevice AddDevice(int deviceId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">deviceId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">II2CDevice</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="Unosquare_PiGpio_I2CBus_GetDeviceById_" data-uid="Unosquare.PiGpio.I2CBus.GetDeviceById*"></a>
+  <h4 id="Unosquare_PiGpio_I2CBus_GetDeviceById_System_Int32_" data-uid="Unosquare.PiGpio.I2CBus.GetDeviceById(System.Int32)">GetDeviceById(Int32)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public II2CDevice GetDeviceById(int deviceId)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">deviceId</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">II2CDevice</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 <h3 id="disqus_thread">Comments</h3>
 <script>
