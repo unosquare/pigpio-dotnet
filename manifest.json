@@ -18,7 +18,7 @@
       "output": {
         ".html": {
           "relative_path": "README.html",
-          "hash": "ourlwHL9KqfVaAhQhcumew=="
+          "hash": "2fTgMUVb+GEQqLlnuJirTg=="
         }
       },
       "is_incremental": false,
@@ -85,7 +85,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.Board.html",
-          "hash": "yqm+wQwJBcxEn/meuNBAhA=="
+          "hash": "vIn8Vj4K9JbWKqGyBP2jDA=="
         }
       },
       "is_incremental": false,
@@ -97,43 +97,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.BoardException.html",
-          "hash": "0atr0XPm/1hnUHjZft6/OQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.BootstrapPiGpio.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unosquare.PiGpio.BootstrapPiGpio.html",
-          "hash": "2E5jo60AbH4OBB7mJ4VP7Q=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.GpioController.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unosquare.PiGpio.GpioController.html",
-          "hash": "rWU2iPV6We9jMJsyOn4YgQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.I2CBus.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Unosquare.PiGpio.I2CBus.html",
-          "hash": "MCG3wtImI9MR/HRewhLyYA=="
+          "hash": "6DWYBYy8W7UQbTsqqpEKKg=="
         }
       },
       "is_incremental": false,
@@ -145,7 +109,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.BoardPeripheralsService.html",
-          "hash": "DmKi/Mhzx/yaQQxBL8cqPA=="
+          "hash": "pezlAQYcZiixYBic+GE3Bg=="
         }
       },
       "is_incremental": false,
@@ -157,7 +121,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.BoardTimingService.html",
-          "hash": "4rMuhxaVd5NTDPEKlSTNvg=="
+          "hash": "CtDUJYMmiUXQPed4uRv4gA=="
         }
       },
       "is_incremental": false,
@@ -169,7 +133,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.BoardWaveService.html",
-          "hash": "M9JeJbupZvm4UJPj2tbGBA=="
+          "hash": "5ZDHvOotM8Os+uvjqjPLfQ=="
         }
       },
       "is_incremental": false,
@@ -181,7 +145,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioBank.html",
-          "hash": "JeBM8UBCEBibhj+YgI3MIg=="
+          "hash": "1XuP3zRuMm5qq4+02sIt/A=="
         }
       },
       "is_incremental": false,
@@ -193,7 +157,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPad.html",
-          "hash": "4KEudvLR8da9cY5jFKNFPw=="
+          "hash": "VSuF3QsLbSgL3+rCpj6BZg=="
         }
       },
       "is_incremental": false,
@@ -205,7 +169,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPadCollection.html",
-          "hash": "IXbmCnd7Cg6EpnT8WD3dcA=="
+          "hash": "H6NqKzzdZGaOJCiRjv7e/w=="
         }
       },
       "is_incremental": false,
@@ -217,7 +181,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPin.html",
-          "hash": "KIp/sTqTXrSrtjWExe2loQ=="
+          "hash": "jrL7IPmLpn4PPbSDjgTlwQ=="
         }
       },
       "is_incremental": false,
@@ -229,7 +193,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinAlertService.html",
-          "hash": "9NMuh31+aL3uIaIMYqF5FQ=="
+          "hash": "jinmRYZUGbsXJGXq5v0UFQ=="
         }
       },
       "is_incremental": false,
@@ -241,7 +205,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinClockService.html",
-          "hash": "j7PA8E46J21CQyOVuabPoQ=="
+          "hash": "sHx2EdkT8CmKmf4YgfSJGg=="
         }
       },
       "is_incremental": false,
@@ -253,7 +217,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinCollection.html",
-          "hash": "47gdFnpjcSLBVfd1SiUX7Q=="
+          "hash": "Cr8TYdX8RfrV9+lnxXobTA=="
         }
       },
       "is_incremental": false,
@@ -265,7 +229,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinInterruptService.html",
-          "hash": "qNW4vUMeWsckW0F4B26oIw=="
+          "hash": "eueRo+imRSDNUMyivPGJ7A=="
         }
       },
       "is_incremental": false,
@@ -277,7 +241,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinPwmService.html",
-          "hash": "Lhqevs7osglUtqwJhUx1wg=="
+          "hash": "lIDs9g/S+Zd0v31gjFd8aQ=="
         }
       },
       "is_incremental": false,
@@ -289,7 +253,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinServiceBase.html",
-          "hash": "9ustphYQoneM6+Xr9RfGRw=="
+          "hash": "XA9P3idY8fpifZgh3eOAOg=="
         }
       },
       "is_incremental": false,
@@ -301,7 +265,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinServoService.html",
-          "hash": "rm/QCQPT5EVzDNOr4rUsAQ=="
+          "hash": "TDKyt25aem2n4EOURefMcw=="
         }
       },
       "is_incremental": false,
@@ -313,7 +277,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.GpioPinSoftPwmService.html",
-          "hash": "daE8cYEGCHacp4iNpewY2w=="
+          "hash": "RQqrQ0aGFRV2W3tYhtJLjw=="
         }
       },
       "is_incremental": false,
@@ -325,7 +289,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.I2cDevice.html",
-          "hash": "AsyJVhHrJKadxs5Sg5mMaQ=="
+          "hash": "mRBVQkQI7X3eN80DPrFtIw=="
         }
       },
       "is_incremental": false,
@@ -337,7 +301,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.SoftI2cBus.html",
-          "hash": "WATvFJEYesOnuE3QR5lNrg=="
+          "hash": "9XDSJHiGnGQ8ARDMKdCrkQ=="
         }
       },
       "is_incremental": false,
@@ -349,7 +313,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.SoftSerialPort.html",
-          "hash": "o26kzMMp/6c+Th6AIHPLuA=="
+          "hash": "HNhiFckf6Xes6m89Fz9ENA=="
         }
       },
       "is_incremental": false,
@@ -361,7 +325,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.SoftSpiChannel.html",
-          "hash": "4wK6LJkKI4XTqgof2tScMA=="
+          "hash": "CxJFschOUvjFs34EGiS50w=="
         }
       },
       "is_incremental": false,
@@ -373,7 +337,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.SpiChannel.html",
-          "hash": "/U4/WttI7FlNNHfSeEHXaQ=="
+          "hash": "wWdBtMy+hj11+CHViKZ3cw=="
         }
       },
       "is_incremental": false,
@@ -385,7 +349,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.UartPort.html",
-          "hash": "xYXUt6GDFjGrbbkqhW2MIw=="
+          "hash": "jj9oOdOf/9ftdHWrYN9I0g=="
         }
       },
       "is_incremental": false,
@@ -397,7 +361,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.WaveBuilder.html",
-          "hash": "Rp7xXAwJ5nJrUqRk8spf3Q=="
+          "hash": "R0XBX89AkU++ww7kUznZcw=="
         }
       },
       "is_incremental": false,
@@ -409,7 +373,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.ManagedModel.html",
-          "hash": "fj8PdvfPfEfxCtJFsBHUgQ=="
+          "hash": "I7L40S6V3CsJVuLnpEkl3Q=="
         }
       },
       "is_incremental": false,
@@ -421,7 +385,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.AllocationMode.html",
-          "hash": "IrmXsMJPdVeIhCG6Sdjaxg=="
+          "hash": "nw7nV2CZO51RaGfV3Na6fQ=="
         }
       },
       "is_incremental": false,
@@ -433,7 +397,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.BitMask.html",
-          "hash": "EClDYgogsiaEFrRKA+HOPQ=="
+          "hash": "Qo0aYUQ2Nu6daqgxUEuWmg=="
         }
       },
       "is_incremental": false,
@@ -445,7 +409,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.BoardType.html",
-          "hash": "axlXmgH6dbyehDab/ofM9A=="
+          "hash": "/bhbb7nf/YRk1EJfTeDgTg=="
         }
       },
       "is_incremental": false,
@@ -457,7 +421,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.ConfigFlags.html",
-          "hash": "6YBDzqP8Y0yjnb5/H/QjvQ=="
+          "hash": "0abj4lH7c/mCsWA3YOItpw=="
         }
       },
       "is_incremental": false,
@@ -469,7 +433,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.CpuPeripheral.html",
-          "hash": "0zXin6MnjvrrBNEyqYQ2JA=="
+          "hash": "oxJyKtaesPFV64AIxCZOOw=="
         }
       },
       "is_incremental": false,
@@ -481,7 +445,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.DigitalValue.html",
-          "hash": "V5wPi6huZkEzz+QTpGVuLg=="
+          "hash": "95S0xp81QUQSZ3QQ5HT1hg=="
         }
       },
       "is_incremental": false,
@@ -493,7 +457,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.DmaChannel.html",
-          "hash": "pAocHVm8eYkHf4f95jZ37g=="
+          "hash": "BaNDDfhc274Nyln2ZWOYnQ=="
         }
       },
       "is_incremental": false,
@@ -505,7 +469,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.EdgeDetection.html",
-          "hash": "b5FCVimsgDCRCf8v+ayW2A=="
+          "hash": "2cdIhDHm4+Cmoy2TTqhdIQ=="
         }
       },
       "is_incremental": false,
@@ -517,7 +481,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.FileModeFlags.html",
-          "hash": "urGHE7ZwljHq6fkxgWcZmQ=="
+          "hash": "Rp59aKzJrgnEgrzYlOyJEg=="
         }
       },
       "is_incremental": false,
@@ -529,7 +493,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.GpioPadId.html",
-          "hash": "eaKrGkXl1Hv0txgdo+1xaw=="
+          "hash": "NXMHuXxZJNLuhgVjTclM1w=="
         }
       },
       "is_incremental": false,
@@ -541,7 +505,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.GpioPadStrength.html",
-          "hash": "R3jxepQ7jltU0ZYgR2Xuow=="
+          "hash": "gVq9ftDjF2K/TVsxEoMkRA=="
         }
       },
       "is_incremental": false,
@@ -553,7 +517,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.GpioPullMode.html",
-          "hash": "D/IqjwWyooxh3/9dnR8Kjw=="
+          "hash": "ov+FUbjoegkGW1CJkxyeYg=="
         }
       },
       "is_incremental": false,
@@ -565,7 +529,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.I2cBusId.html",
-          "hash": "5gYyL0Iki+TushjJp0whLA=="
+          "hash": "HSlkKi/p/r8I2Gb2b36YDA=="
         }
       },
       "is_incremental": false,
@@ -577,7 +541,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.I2cQuickMode.html",
-          "hash": "TeGc4KWIOQSAgtawraN0nQ=="
+          "hash": "FBooVSPuGq26jKO5goSIMQ=="
         }
       },
       "is_incremental": false,
@@ -589,7 +553,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.InterfaceFlags.html",
-          "hash": "l1xd7kCJ/LIfg0cmC4fpeA=="
+          "hash": "qYTVh/W6iZdAMNP1cd0LmA=="
         }
       },
       "is_incremental": false,
@@ -601,7 +565,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.LevelChange.html",
-          "hash": "2Zzh9B8RFVOrLDp6J2NE4g=="
+          "hash": "cp59ymrmc+UOfffCvphEow=="
         }
       },
       "is_incremental": false,
@@ -613,7 +577,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.PinDirection.html",
-          "hash": "i5jCU4J9zDMqByF48KB63g=="
+          "hash": "nwGsvGC8Tazc59Sm94nzNA=="
         }
       },
       "is_incremental": false,
@@ -625,7 +589,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.PinMode.html",
-          "hash": "TR5HL/T0Qt/S67PijnshQw=="
+          "hash": "aYAgOucLkA6SPbRi7YlZZA=="
         }
       },
       "is_incremental": false,
@@ -637,7 +601,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.ResultCode.html",
-          "hash": "gBePBnZH+e0t8E76IpNndQ=="
+          "hash": "ddwHB8t9WzY9dm51RjIbaQ=="
         }
       },
       "is_incremental": false,
@@ -649,7 +613,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.SeekMode.html",
-          "hash": "kBa/ZBcGLmSFE34gh/yW5Q=="
+          "hash": "O5231u2pmrgMXxUcjGzhBA=="
         }
       },
       "is_incremental": false,
@@ -661,7 +625,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.SoftSpiFlags.html",
-          "hash": "VdrAA6+NSOseKny3Fdemww=="
+          "hash": "4pBKxj9FPK7Yxh0NMQVOoA=="
         }
       },
       "is_incremental": false,
@@ -673,7 +637,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.SpiChannelId.html",
-          "hash": "bxau70DEw1a7NKBriC7TzQ=="
+          "hash": "41Ptr3hFfnR92cUXhimmOw=="
         }
       },
       "is_incremental": false,
@@ -685,7 +649,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.SpiFlags.html",
-          "hash": "VP84zH21ni3JwPMhrcUdAw=="
+          "hash": "kx1/x+rHE8zgct8I+6mH7g=="
         }
       },
       "is_incremental": false,
@@ -697,7 +661,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.SystemGpio.html",
-          "hash": "YgMSqEoXrlb2NZrn0kRO0Q=="
+          "hash": "8sfEoexwEpGK0WvHz+eGHA=="
         }
       },
       "is_incremental": false,
@@ -709,7 +673,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.TimeType.html",
-          "hash": "9QwVM1f4ZwrQQ53Erjo/fw=="
+          "hash": "wE2IgcZ0oD3BLeGOXKPkmA=="
         }
       },
       "is_incremental": false,
@@ -721,7 +685,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.TimerId.html",
-          "hash": "QCdBFh7KU4KxDcbGPfIgPg=="
+          "hash": "NSoUuJn/02OrUsvuWXmJWg=="
         }
       },
       "is_incremental": false,
@@ -733,7 +697,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.UartRate.html",
-          "hash": "TSQgJP0JPp/WX/XE6Zv+Jw=="
+          "hash": "Jut5FGk4H/S2HOxJEHTUfA=="
         }
       },
       "is_incremental": false,
@@ -745,7 +709,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.UserGpio.html",
-          "hash": "fDfaQ6KtdBWzhKQYRiJD8A=="
+          "hash": "cKYKne+Rmrzl/N9Gt9so/A=="
         }
       },
       "is_incremental": false,
@@ -757,7 +721,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.WaveMode.html",
-          "hash": "0+ZZOu+kdED1YsGz5MbuRQ=="
+          "hash": "8soTxYI00DTF6HciifjxDQ=="
         }
       },
       "is_incremental": false,
@@ -769,7 +733,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeEnums.html",
-          "hash": "V2ut/Cw8sjx8DLrRpsgQrA=="
+          "hash": "JH9jG4SXEwZ9LzR+mUQ7/w=="
         }
       },
       "is_incremental": false,
@@ -781,7 +745,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Custom.html",
-          "hash": "O8SCRrahXcKgYmguRbUEcw=="
+          "hash": "e1bUGOHRKiJb3BKIzU6XqQ=="
         }
       },
       "is_incremental": false,
@@ -793,7 +757,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Events.html",
-          "hash": "1YBTs4yWbNbKNFnRalPm1g=="
+          "hash": "7YROCdonNx66nmkirjXUYA=="
         }
       },
       "is_incremental": false,
@@ -805,7 +769,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Files.html",
-          "hash": "zF1YGM3czoPKKT/fCZGSew=="
+          "hash": "/anEqH3J619KKprIeQoFBw=="
         }
       },
       "is_incremental": false,
@@ -817,7 +781,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.I2c.html",
-          "hash": "r81L7WKYZnDZEmuLaUzD2Q=="
+          "hash": "7wYgVeJzFBjnwQUBRN3kug=="
         }
       },
       "is_incremental": false,
@@ -829,7 +793,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.IO.html",
-          "hash": "PvBX+REUfc2TJzdjWMOrqg=="
+          "hash": "26S1fc0RCNIlkb30NFzfNw=="
         }
       },
       "is_incremental": false,
@@ -841,7 +805,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Pwm.html",
-          "hash": "XL4pHyQuU6PL8LDWEL6AHQ=="
+          "hash": "CxcXfeVm3ycPOjTVarZ0rg=="
         }
       },
       "is_incremental": false,
@@ -853,7 +817,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.RawWaves.html",
-          "hash": "EV2a5Y4Mhfy3uu+OUwK83w=="
+          "hash": "wzrfQkrji8TcV/iwXlGZ9g=="
         }
       },
       "is_incremental": false,
@@ -865,7 +829,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Scripts.html",
-          "hash": "NwmYYB+kLwPMGYAcMnR5UQ=="
+          "hash": "1rU6xS4Vn5ZDKdohaCh8Qg=="
         }
       },
       "is_incremental": false,
@@ -877,7 +841,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Serial.html",
-          "hash": "808VniITFeHXZXm+EXjfYQ=="
+          "hash": "Nl9yBL0yZrjXjmuAH8QpeA=="
         }
       },
       "is_incremental": false,
@@ -889,7 +853,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Setup.html",
-          "hash": "ztigaLknCHDITPXWz6X0Sg=="
+          "hash": "B9iPO0VxkBnd/c2/It8R2w=="
         }
       },
       "is_incremental": false,
@@ -901,7 +865,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Spi.html",
-          "hash": "+v7eJP4sfGTNThqWQ0+Wew=="
+          "hash": "EH0l87N+dqEByHpE0Xin5A=="
         }
       },
       "is_incremental": false,
@@ -913,7 +877,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Threads.html",
-          "hash": "VjUMSDHMCwcl/jjvCteIlA=="
+          "hash": "5Ol4LBM7Sx6F9isWfqm+1w=="
         }
       },
       "is_incremental": false,
@@ -925,7 +889,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Uart.html",
-          "hash": "XJavGzQkvbNG3mrbHphIQg=="
+          "hash": "flwNeWRI8wzxaNxm+/M5yg=="
         }
       },
       "is_incremental": false,
@@ -937,7 +901,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Utilities.html",
-          "hash": "Nm53j4Htubw0XP4TZu/Mog=="
+          "hash": "JCBon1Bt1OrJ7WVmka9hDA=="
         }
       },
       "is_incremental": false,
@@ -949,7 +913,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.Waves.html",
-          "hash": "RAeEg36jrWUtS63Y3IZL+A=="
+          "hash": "WapDWim8zOF19reVRyhJzA=="
         }
       },
       "is_incremental": false,
@@ -961,7 +925,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeMethods.html",
-          "hash": "p5lMYM4XhQnpRvO/ahz4jQ=="
+          "hash": "qZXeU1NZx1QhPikGqR8hFg=="
         }
       },
       "is_incremental": false,
@@ -973,7 +937,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.BscTransfer.html",
-          "hash": "6Jfulk87oV2kr6SsODwIcw=="
+          "hash": "dGmsLziPjWWM5NdCzCBt/Q=="
         }
       },
       "is_incremental": false,
@@ -985,7 +949,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.GpioPulse.html",
-          "hash": "p/OMsnYYO1gFT1//0GgblQ=="
+          "hash": "XjEM9z9v3JJyPPESquDq0A=="
         }
       },
       "is_incremental": false,
@@ -997,7 +961,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.GpioSample.html",
-          "hash": "Gzhl9X/JuS5IfikG16ItgQ=="
+          "hash": "xHcU22RsQB+UuYNLpfr1pg=="
         }
       },
       "is_incremental": false,
@@ -1009,7 +973,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.I2CMessageSegment.html",
-          "hash": "71aH42TTUMerKbswMIc2zQ=="
+          "hash": "yYz/zZcnU16qiiw1ahxrrw=="
         }
       },
       "is_incremental": false,
@@ -1021,7 +985,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioAlertDelegate.html",
-          "hash": "1Zk6l/QVUkuKMNxfb1AMOg=="
+          "hash": "zQl3QtpGsICwck0EwxxYyA=="
         }
       },
       "is_incremental": false,
@@ -1033,7 +997,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioAlertExDelegate.html",
-          "hash": "CwvO+09an5mPp3KWAbcOhw=="
+          "hash": "LwjbcT9slkpmncLairWWoA=="
         }
       },
       "is_incremental": false,
@@ -1045,7 +1009,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioEventDelegate.html",
-          "hash": "CJEl85gcF7G4EY66SMTBEQ=="
+          "hash": "ifwk0upj/zSy4zMDrGwzPw=="
         }
       },
       "is_incremental": false,
@@ -1057,7 +1021,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioEventExDelegate.html",
-          "hash": "i+p2R3IQYbxlzzrk2B+ubA=="
+          "hash": "fkqN7TP6pE23TETpxtU+sQ=="
         }
       },
       "is_incremental": false,
@@ -1069,7 +1033,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesDelegate.html",
-          "hash": "nM6Q4TknEo8zSDB9H3toiw=="
+          "hash": "yDl5mE2+hx06YmQd0iKfBg=="
         }
       },
       "is_incremental": false,
@@ -1081,7 +1045,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioGetSamplesExDelegate.html",
-          "hash": "qMAppv+zvvnizDIP3OKPFw=="
+          "hash": "xPdMUKDSmpQvFdmKGE3uOw=="
         }
       },
       "is_incremental": false,
@@ -1093,7 +1057,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioIsrDelegate.html",
-          "hash": "3S66IyUd7Ncsrpzfgo5laQ=="
+          "hash": "pfaStyrINgDreTXhlc2Ggw=="
         }
       },
       "is_incremental": false,
@@ -1105,7 +1069,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioIsrExDelegate.html",
-          "hash": "ui1wg7LOCgtaiMjs48X/rg=="
+          "hash": "BmJE22rCWfENnRAhxHDYEQ=="
         }
       },
       "is_incremental": false,
@@ -1117,7 +1081,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioSignalDelegate.html",
-          "hash": "Dxm4JQmZGIvsEjtJm423KQ=="
+          "hash": "6TlG0TjHVGLGKmu+J1cYsQ=="
         }
       },
       "is_incremental": false,
@@ -1129,7 +1093,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioSignalExDelegate.html",
-          "hash": "CRQ4ntt+BIokS6a0gVUwQg=="
+          "hash": "IdwXieHCm1gsgul3q7mCQw=="
         }
       },
       "is_incremental": false,
@@ -1141,7 +1105,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioThreadDelegate.html",
-          "hash": "taU0YKwoH/OMdU2Hcbhyxw=="
+          "hash": "U6/ohGrfN4s0V6QFBUtdTg=="
         }
       },
       "is_incremental": false,
@@ -1153,7 +1117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioTimerDelegate.html",
-          "hash": "QY+9fhDH+mWwweQFFp+N9Q=="
+          "hash": "2nu5qzMf1Nr1gEwmqdHA+w=="
         }
       },
       "is_incremental": false,
@@ -1165,7 +1129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.PiGpioTimerExDelegate.html",
-          "hash": "pcLBjYdSzekuoZ/XCQvSfg=="
+          "hash": "xU/BhW+eYKDpX5wWyqfpew=="
         }
       },
       "is_incremental": false,
@@ -1177,7 +1141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.RawCBS.html",
-          "hash": "qpiJE9BgcZMNC9ov1D0aBw=="
+          "hash": "Y5aJwwl9YpgTiWxV1PIbLw=="
         }
       },
       "is_incremental": false,
@@ -1189,7 +1153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.RawSpiData.html",
-          "hash": "gmjFDCTWQ4dNddVh4a9ENw=="
+          "hash": "mNLsntyorCdgr2WqjU2JXw=="
         }
       },
       "is_incremental": false,
@@ -1201,7 +1165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.RawWave.html",
-          "hash": "d3gVMb91yqa0EA5zyR0WkQ=="
+          "hash": "FJgZsUQlKwZwbG/yOpywWQ=="
         }
       },
       "is_incremental": false,
@@ -1213,7 +1177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.RawWaveInformation.html",
-          "hash": "lerwo//InWIx2w4rSuotcQ=="
+          "hash": "VJeXFnEjsUUP+dhDxw6V4Q=="
         }
       },
       "is_incremental": false,
@@ -1225,7 +1189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.NativeTypes.html",
-          "hash": "rQoxx1/XoofnKYNhORUntw=="
+          "hash": "se1bRogkWA/Quuc7qk/1ww=="
         }
       },
       "is_incremental": false,
@@ -1233,11 +1197,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.SpiBus.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.DisplayModel.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.PiGpio.SpiBus.html",
-          "hash": "06vgnBCAi0IvDLgwiV7gXQ=="
+          "relative_path": "api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.DisplayModel.html",
+          "hash": "6C4zVXnaLH9EZWjKMEiFhg=="
         }
       },
       "is_incremental": false,
@@ -1245,11 +1209,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.SystemInfo.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.VccSourceMode.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.PiGpio.SystemInfo.html",
-          "hash": "Pzlk6L12huKx4UNAHQclIQ=="
+          "relative_path": "api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.VccSourceMode.html",
+          "hash": "w87yASdBRRbW3pnK/pNRzg=="
         }
       },
       "is_incremental": false,
@@ -1257,11 +1221,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.Threading.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.PiGpio.Threading.html",
-          "hash": "uilrXJBP8Fk1BRosPgPWHA=="
+          "relative_path": "api/Unosquare.PiGpio.Peripherals.OledDisplaySSD1306.html",
+          "hash": "vipafRzpmYkmEqzIgNdhwA=="
         }
       },
       "is_incremental": false,
@@ -1269,11 +1233,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/api/Unosquare.PiGpio.Timing.yml",
+      "source_relative_path": "obj/api/Unosquare.PiGpio.Peripherals.yml",
       "output": {
         ".html": {
-          "relative_path": "api/Unosquare.PiGpio.Timing.html",
-          "hash": "8nUZNhCrhzKlNo05Obl2ww=="
+          "relative_path": "api/Unosquare.PiGpio.Peripherals.html",
+          "hash": "YhjbIVnHrGmqb8oH1lP4IQ=="
         }
       },
       "is_incremental": false,
@@ -1285,7 +1249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Unosquare.PiGpio.html",
-          "hash": "wpnoWQkP4FNew3xNecawWA=="
+          "hash": "BwzT2j9iolUxeq6tFfXLtA=="
         }
       },
       "is_incremental": false,
@@ -1297,7 +1261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "pzkRzVYyugk1Vgv4RZJelQ=="
+          "hash": "IwmHLCgGE5x6Vc52ENJFWw=="
         }
       },
       "is_incremental": false,
@@ -1343,7 +1307,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 101,
+          "total_file_count": 98,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {

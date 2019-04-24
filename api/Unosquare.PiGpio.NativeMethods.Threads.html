@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Threads
    | Unosquare Raspbery Pi - libpigpio for .net ">
-    <meta name="generator" content="docfx 2.41.0.0">
+    <meta name="generator" content="docfx 2.42.1.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -130,7 +130,7 @@ Delays of 100 microseconds or less use busy waits.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static uint GpioDelay(uint micros)</code></pre>
+    <pre><code class="lang-csharp hljs">public static uint GpioDelay(uint microSecs)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -144,7 +144,7 @@ Delays of 100 microseconds or less use busy waits.</p>
     <tbody>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.uint32">UInt32</a></td>
-        <td><span class="parametername">micros</span></td>
+        <td><span class="parametername">microSecs</span></td>
         <td><p>the number of microseconds to sleep.</p>
 </td>
       </tr>
@@ -319,7 +319,7 @@ sleep length.</p>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static ResultCode GpioSleep(TimeType timeType, int seconds, int micros)</code></pre>
+    <pre><code class="lang-csharp hljs">public static ResultCode GpioSleep(TimeType timeType, int secs, int microSecs)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -339,13 +339,13 @@ sleep length.</p>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">seconds</span></td>
+        <td><span class="parametername">secs</span></td>
         <td><p>seconds to sleep.</p>
 </td>
       </tr>
       <tr>
         <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
-        <td><span class="parametername">micros</span></td>
+        <td><span class="parametername">microSecs</span></td>
         <td><p>microseconds to sleep.</p>
 </td>
       </tr>
