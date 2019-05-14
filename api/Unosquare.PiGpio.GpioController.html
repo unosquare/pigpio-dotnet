@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BoardWaveService
+    <title>Class GpioController
    | Unosquare Raspbery Pi - libpigpio for .net </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BoardWaveService
+    <meta name="title" content="Class GpioController
    | Unosquare Raspbery Pi - libpigpio for .net ">
     <meta name="generator" content="docfx 2.42.3.0">
     
@@ -76,60 +76,37 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService">
+            <article class="content wrap" id="_content" data-uid="Unosquare.PiGpio.GpioController">
   
   
-  <h1 id="Unosquare_PiGpio_ManagedModel_BoardWaveService" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService" class="text-break">Class BoardWaveService
+  <h1 id="Unosquare_PiGpio_GpioController" data-uid="Unosquare.PiGpio.GpioController" class="text-break">Class GpioController
   </h1>
-  <div class="markdown level0 summary"><p>Provides a a pin service to generate pulses with microsecond precision.</p>
+  <div class="markdown level0 summary"><p>Represents the Raspberry Pi GPIO controller
+as an IReadOnlyCollection of GpioPins
+Low level operations are accomplished by using the PiGPIO library.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">BoardWaveService</span></div>
+    <div class="level1"><span class="xref">GpioController</span></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
-    </div>
-    <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
-    </div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.ManagedModel.html">Unosquare.PiGpio.ManagedModel</a></h6>
-  <h5 id="Unosquare_PiGpio_ManagedModel_BoardWaveService_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="Unosquare.PiGpio.html">Unosquare.PiGpio</a></h6>
+  <h5 id="Unosquare_PiGpio_GpioController_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public sealed class BoardWaveService</code></pre>
+    <pre><code class="lang-csharp hljs">public class GpioController : IGpioController</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   
   
-  <a id="Unosquare_PiGpio_ManagedModel_BoardWaveService_CurrentWaveId_" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.CurrentWaveId*"></a>
-  <h4 id="Unosquare_PiGpio_ManagedModel_BoardWaveService_CurrentWaveId" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.CurrentWaveId">CurrentWaveId</h4>
-  <div class="markdown level1 summary"><p>Gets the current wave identifier.</p>
-</div>
+  <a id="Unosquare_PiGpio_GpioController_Count_" data-uid="Unosquare.PiGpio.GpioController.Count*"></a>
+  <h4 id="Unosquare_PiGpio_GpioController_Count" data-uid="Unosquare.PiGpio.GpioController.Count">Count</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int CurrentWaveId { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public int Count { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -148,15 +125,31 @@
   </table>
   
   
-  <a id="Unosquare_PiGpio_ManagedModel_BoardWaveService_IsBusy_" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.IsBusy*"></a>
-  <h4 id="Unosquare_PiGpio_ManagedModel_BoardWaveService_IsBusy" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.IsBusy">IsBusy</h4>
-  <div class="markdown level1 summary"><p>Gets a value indicating whether a waveform is being transmitted.</p>
-</div>
+  <a id="Unosquare_PiGpio_GpioController_Item_" data-uid="Unosquare.PiGpio.GpioController.Item*"></a>
+  <h4 id="Unosquare_PiGpio_GpioController_Item_BcmPin_" data-uid="Unosquare.PiGpio.GpioController.Item(BcmPin)">Item[BcmPin]</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public bool IsBusy { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IGpioPin this[BcmPin bcmPin] { get; }</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">BcmPin</span></td>
+        <td><span class="parametername">bcmPin</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -167,22 +160,38 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.boolean">Boolean</a></td>
+        <td><span class="xref">IGpioPin</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="Unosquare_PiGpio_ManagedModel_BoardWaveService_MaxDmaControlBlocks_" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.MaxDmaControlBlocks*"></a>
-  <h4 id="Unosquare_PiGpio_ManagedModel_BoardWaveService_MaxDmaControlBlocks" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.MaxDmaControlBlocks">MaxDmaControlBlocks</h4>
-  <div class="markdown level1 summary"><p>Gets the maximum DMA control blocks per wave.</p>
-</div>
+  <a id="Unosquare_PiGpio_GpioController_Item_" data-uid="Unosquare.PiGpio.GpioController.Item*"></a>
+  <h4 id="Unosquare_PiGpio_GpioController_Item_P1_" data-uid="Unosquare.PiGpio.GpioController.Item(P1)">Item[P1]</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MaxDmaControlBlocks { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IGpioPin this[P1 pinNumber] { get; }</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">P1</span></td>
+        <td><span class="parametername">pinNumber</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -193,22 +202,38 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="xref">IGpioPin</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="Unosquare_PiGpio_ManagedModel_BoardWaveService_MaxDurationMicroSecs_" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.MaxDurationMicroSecs*"></a>
-  <h4 id="Unosquare_PiGpio_ManagedModel_BoardWaveService_MaxDurationMicroSecs" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.MaxDurationMicroSecs">MaxDurationMicroSecs</h4>
-  <div class="markdown level1 summary"><p>Gets the maximum duration of a wave in micro seconds.</p>
-</div>
+  <a id="Unosquare_PiGpio_GpioController_Item_" data-uid="Unosquare.PiGpio.GpioController.Item*"></a>
+  <h4 id="Unosquare_PiGpio_GpioController_Item_P5_" data-uid="Unosquare.PiGpio.GpioController.Item(P5)">Item[P5]</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MaxDurationMicroSecs { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IGpioPin this[P5 pinNumber] { get; }</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">P5</span></td>
+        <td><span class="parametername">pinNumber</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -219,22 +244,38 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="xref">IGpioPin</span></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="Unosquare_PiGpio_ManagedModel_BoardWaveService_MaxPulses_" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.MaxPulses*"></a>
-  <h4 id="Unosquare_PiGpio_ManagedModel_BoardWaveService_MaxPulses" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.MaxPulses">MaxPulses</h4>
-  <div class="markdown level1 summary"><p>Gets the maximum pulses allowable per wave.</p>
-</div>
+  <a id="Unosquare_PiGpio_GpioController_Item_" data-uid="Unosquare.PiGpio.GpioController.Item*"></a>
+  <h4 id="Unosquare_PiGpio_GpioController_Item_System_Int32_" data-uid="Unosquare.PiGpio.GpioController.Item(System.Int32)">Item[Int32]</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public int MaxPulses { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IGpioPin this[int bcmPinNumber] { get; }</code></pre>
   </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="parametername">bcmPinNumber</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -245,7 +286,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.int32">Int32</a></td>
+        <td><span class="xref">IGpioPin</span></td>
         <td></td>
       </tr>
     </tbody>
@@ -254,14 +295,13 @@
   </h3>
   
   
-  <a id="Unosquare_PiGpio_ManagedModel_BoardWaveService_CreateWave_" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.CreateWave*"></a>
-  <h4 id="Unosquare_PiGpio_ManagedModel_BoardWaveService_CreateWave" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.CreateWave">CreateWave()</h4>
-  <div class="markdown level1 summary"><p>Creates the wave.</p>
-</div>
+  <a id="Unosquare_PiGpio_GpioController_GetEnumerator_" data-uid="Unosquare.PiGpio.GpioController.GetEnumerator*"></a>
+  <h4 id="Unosquare_PiGpio_GpioController_GetEnumerator" data-uid="Unosquare.PiGpio.GpioController.GetEnumerator">GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public WaveBuilder CreateWave()</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerator&lt;IGpioPin&gt; GetEnumerator()</code></pre>
   </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -273,28 +313,38 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="Unosquare.PiGpio.ManagedModel.WaveBuilder.html">WaveBuilder</a></td>
-        <td><p>A wave builder object to create and transmit PWM waves.</p>
-</td>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1">IEnumerator</a>&lt;<span class="xref">IGpioPin</span>&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
+  <h3 id="eii">Explicit Interface Implementations
+  </h3>
   
   
-  <a id="Unosquare_PiGpio_ManagedModel_BoardWaveService_StopCurrent_" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.StopCurrent*"></a>
-  <h4 id="Unosquare_PiGpio_ManagedModel_BoardWaveService_StopCurrent" data-uid="Unosquare.PiGpio.ManagedModel.BoardWaveService.StopCurrent">StopCurrent()</h4>
-  <div class="markdown level1 summary"><p>Stops the current wave being transmitted.
-This is intended to stop waves that are generated with a cycling mode.</p>
-</div>
+  <a id="Unosquare_PiGpio_GpioController_System_Collections_IEnumerable_GetEnumerator_" data-uid="Unosquare.PiGpio.GpioController.System#Collections#IEnumerable#GetEnumerator*"></a>
+  <h4 id="Unosquare_PiGpio_GpioController_System_Collections_IEnumerable_GetEnumerator" data-uid="Unosquare.PiGpio.GpioController.System#Collections#IEnumerable#GetEnumerator">IEnumerable.GetEnumerator()</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void StopCurrent()</code></pre>
+    <pre><code class="lang-csharp hljs">IEnumerator IEnumerable.GetEnumerator()</code></pre>
   </div>
-  <h3 id="seealso">See Also</h3>
-  <div class="seealso">
-      <div><a class="xref" href="Unosquare.PiGpio.ManagedModel.GpioPinServiceBase.html">GpioPinServiceBase</a></div>
-  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerator">IEnumerator</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
 
 <h3 id="disqus_thread">Comments</h3>
 <script>
