@@ -1,5 +1,6 @@
 ﻿namespace Unosquare.PiGpio.Workbench
 {
+    using RaspberryIO;
     using Runners;
     using Swan;
     using Swan.Abstractions;
@@ -12,6 +13,8 @@
         public static void Main()
         {
             Terminal.Settings.DisplayLoggingMessageType = (LogMessageType)int.MaxValue;
+            Pi.Init<BootstrapPiGpio>();
+
             var workbenchItems = new List<RunnerBase>
             {
                 new BoardInfo(true),
@@ -21,14 +24,12 @@
                 new ButtonInterrupts(false),
                 new DhtSensor(false),
                 new Mpu6050(false),
-                new PiOled(true),
             };
 
             $"Enabled Workbench Items: {workbenchItems.Count(wbi => wbi.IsEnabled)}".Info(nameof(Program));
             foreach (var wbi in workbenchItems)
                 wbi.Start();
 
-            // Console.ReadKey(true);
             Terminal.ReadKey(intercept: true, disableLocking: true);
 
             foreach (var wbi in workbenchItems)

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net462;netstandard2.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>Unosquare.PiGpio</RootNamespace>
-    <Version>0.1.0</Version>
+    <Version>0.3.1</Version>
     <Authors>Mario Di Vece and Contributors to the pigpio-dotnet project</Authors>
     <Company>Unosquare</Company>
     <Product>Unosquare.PiGpio</Product>
@@ -22,16 +22,22 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Resources\libpigpio.so" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\libpigpio.so" />
+  </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.3">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.2" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.1-beta.61">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
+    <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
+    <PackageReference Include="Unosquare.Raspberry.Abstractions" Version="0.3.1" />
+    <PackageReference Include="Unosquare.Swan" Version="1.2.0" />
   </ItemGroup>
 
 </Project>

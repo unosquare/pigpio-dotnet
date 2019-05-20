@@ -122,10 +122,10 @@
         /// Delays for at least the number of microseconds specified by micros.
         /// Delays of 100 microseconds or less use busy waits.
         /// </summary>
-        /// <param name="microSecs">the number of microseconds to sleep.</param>
+        /// <param name="micros">the number of microseconds to sleep.</param>
         /// <returns>Returns the actual length of the delay in microseconds.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioDelay")]
-        public static extern uint GpioDelay(uint microSecs);
+        public static extern uint GpioDelay(uint micros);
 
         /// <summary>
         /// Sleeps for the number of seconds and microseconds specified by seconds
@@ -152,11 +152,11 @@
         /// </code>
         /// </example>
         /// <param name="timeType">0 (relative), 1 (absolute).</param>
-        /// <param name="secs">seconds to sleep.</param>
-        /// <param name="microSecs">microseconds to sleep.</param>
+        /// <param name="seconds">seconds to sleep.</param>
+        /// <param name="micros">microseconds to sleep.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_TIMETYPE, PI_BAD_SECONDS, or PI_BAD_MICROS.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSleep")]
-        public static extern ResultCode GpioSleep(TimeType timeType, int secs, int microSecs);
+        public static extern ResultCode GpioSleep(TimeType timeType, int seconds, int micros);
 
         /// <summary>
         /// Delay execution for a given number of seconds.

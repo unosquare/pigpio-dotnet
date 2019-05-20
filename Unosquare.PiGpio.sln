@@ -18,8 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Support", "Support", "{9877
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unosquare.PiGpio", "Unosquare.PiGpio\Unosquare.PiGpio.csproj", "{73E89A82-F351-4CAE-8AA4-A038DCD2D733}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unosquare.PiGpio.Peripherals", "Unosquare.PiGpio.Peripherals\Unosquare.PiGpio.Peripherals.csproj", "{14A77406-4665-4739-B8EC-402E3340EDCE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unosquare.PiGpio.Workbench", "Unosquare.PiGpio.Workbench\Unosquare.PiGpio.Workbench.csproj", "{58482F68-38E4-41FE-B234-257E548CDC66}"
 EndProject
 Global
@@ -32,10 +30,6 @@ Global
 		{73E89A82-F351-4CAE-8AA4-A038DCD2D733}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73E89A82-F351-4CAE-8AA4-A038DCD2D733}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73E89A82-F351-4CAE-8AA4-A038DCD2D733}.Release|Any CPU.Build.0 = Release|Any CPU
-		{14A77406-4665-4739-B8EC-402E3340EDCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14A77406-4665-4739-B8EC-402E3340EDCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14A77406-4665-4739-B8EC-402E3340EDCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14A77406-4665-4739-B8EC-402E3340EDCE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{58482F68-38E4-41FE-B234-257E548CDC66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58482F68-38E4-41FE-B234-257E548CDC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58482F68-38E4-41FE-B234-257E548CDC66}.Release|Any CPU.ActiveCfg = Release|Any CPU

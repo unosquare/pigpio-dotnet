@@ -2,8 +2,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net462;netcoreapp2.2</TargetFrameworks>
+    <TargetFrameworks>net461;netcoreapp2.2</TargetFrameworks>
     <RootNamespace>Unosquare.PiGpio.Workbench</RootNamespace>
+    <Version>1.67.0.1</Version>
     <Authors>Mario Di Vece and Contributors to the pigpio-dotnet project</Authors>
     <Company>Unosquare SA de CV</Company>
     <Product>Unosquare.PiGpio.Workbench</Product>
@@ -11,7 +12,7 @@
     <Copyright>Unosquare SA de CV, Mario Di Vece, and Contributors, (C) 2017-2018</Copyright>
     <PackageProjectUrl>https://github.com/unosquare/pigpio-dotnet</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/unosquare/pigpio-dotnet/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageIconUrl>https://github.com/unosquare/pigpio-dotnet/blob/master/Support/pigpio-dotnet.png</PackageIconUrl>
+    <PackageIconUrl>https://github.com/unosquare/ffmediaelement/blob/master/Support/pigpio-dotnet.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/unosquare/pigpio-dotnet</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Raspberry Pi, GPIO, ISR, DMA, Clock, I2C, SPI, UART</PackageTags>
@@ -20,25 +21,23 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <AssemblyVersion>1.67.0.1</AssemblyVersion>
+    <FileVersion>1.67.0.1</FileVersion>
     <LangVersion>latest</LangVersion>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
     <PackageId>Unosquare.PiGpio.Workbench</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.3">
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.2" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.1-beta.61">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Unosquare.Swan.Lite" Version="1.1.1" />
+    <PackageReference Include="System.Drawing.Common" Version="4.5.1" />
+    <PackageReference Include="Unosquare.RaspberryIO.Peripherals" Version="0.2.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Unosquare.PiGpio.Peripherals\Unosquare.PiGpio.Peripherals.csproj" />
     <ProjectReference Include="..\Unosquare.PiGpio\Unosquare.PiGpio.csproj" />
   </ItemGroup>
 

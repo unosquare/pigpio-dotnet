@@ -4,13 +4,17 @@
     using NativeMethods;
     using System;
     using System.Threading;
+    using RaspberryIO.Abstractions;
 
     /// <summary>
     /// Provides timing, date and delay functions.
     /// Also provides access to registered timers.
     /// </summary>
-    public class BoardTimingService
+    public class BoardTimingService : ITiming
     {
+        private const long SecondsToMicrosFactor = 1000000L;
+        private const long MillisToMicrosFactor = 1000L;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BoardTimingService"/> class.
         /// </summary>
@@ -20,7 +24,7 @@
         }
 
         /// <summary>
-        /// Gets the Linux epoch (Jan 1, 1970) in UTC.
+        /// Gets the Linux Epoch (Jan 1, 1970) in UTC.
         /// </summary>
         public DateTime Epoch { get; }
 
@@ -31,26 +35,25 @@
         public uint TimestampTick => Utilities.GpioTick();
 
         /// <summary>
-        /// Gets the number of seconds elapsed since Jan 1, 1970.
+        /// Gets the number of seconds elapsed since the Epoc (Jan 1, 1970).
         /// </summary>
         public double TimestampSeconds => Utilities.TimeTime();
 
         /// <summary>
         /// Gets a timestamp since Jan 1, 1970 in microseconds.
         /// </summary>
-        public long TimestampMicroseconds
-        {
-            get
-            {
-                Utilities.GpioTime(TimeType.Absolute, out var seconds, out var microseconds);
-                return (seconds * 1000000L) + microseconds;
-            }
-        }
+        public long TimestampMicroseconds => EllapsedMicroseconds(TimeType.Absolute);
 
         /// <summary>
-        /// Gets the elapsed time since Jan 1, 1970.
+        /// Gets the elapsed time since the Epoc (Jan 1, 1970).
         /// </summary>
         public TimeSpan Timestamp => TimeSpan.FromSeconds(TimestampSeconds);
+
+        /// <inheritdoc />
+        public uint Milliseconds => Convert.ToUInt32(EllapsedMicroseconds(TimeType.Relative) / MillisToMicrosFactor);
+
+        /// <inheritdoc />
+        public uint Microseconds => Convert.ToUInt32(EllapsedMicroseconds(TimeType.Relative));
 
         /// <summary>
         /// Sleeps for the given amount of microseconds.
@@ -67,8 +70,8 @@
             if (microsecs <= uint.MaxValue)
                 return Threads.GpioDelay(Convert.ToUInt32(microsecs));
 
-            var componentSeconds = microsecs / 1000000d;
-            var componentMicrosecs = microsecs % 1000000d;
+            var componentSeconds = microsecs / SecondsToMicrosFactor;
+            var componentMicrosecs = microsecs % SecondsToMicrosFactor;
 
             if (componentSeconds <= int.MaxValue && componentMicrosecs <= int.MaxValue)
             {
@@ -81,34 +84,23 @@
                 return microsecs;
             }
 
-            Threads.TimeSleep(componentSeconds);
+            Threads.TimeSleep(componentSeconds + (componentMicrosecs / (double)SecondsToMicrosFactor));
             return microsecs;
         }
 
         /// <summary>
         /// Sleeps for the specified milliseconds.
         /// </summary>
-        /// <param name="millisecs">The milliseconds to sleep for.</param>
-        public void Sleep(double millisecs)
-        {
-            if (millisecs <= 0d)
-                return;
-
-            var microsecs = Convert.ToInt64(millisecs * 1000d);
-            SleepMicros(microsecs);
-        }
+        /// <param name="millis">The milliseconds to sleep for.</param>
+        public void Sleep(long millis) =>
+            SleepMicros(millis * MillisToMicrosFactor);
 
         /// <summary>
         /// Sleeps for the specified time span.
         /// </summary>
         /// <param name="timeSpan">The time span to sleep for.</param>
-        public void Sleep(TimeSpan timeSpan)
-        {
-            if (timeSpan.TotalSeconds <= 0d)
-                return;
-
-            Threads.TimeSleep(timeSpan.TotalSeconds);
-        }
+        public void Sleep(TimeSpan timeSpan) =>
+            Sleep(Convert.ToInt64(timeSpan.TotalMilliseconds));
 
         /// <summary>
         /// Shortcut method to start a thread.
@@ -151,8 +143,23 @@
         /// <returns>A reference to a timer.</returns>
         public Timer StartTimer(int periodMilliseconds, Action callback)
         {
-            var timer = new Timer((s) => { callback?.Invoke(); }, this, 0, periodMilliseconds);
-            return timer;
+            return new Timer(s => { callback?.Invoke(); }, this, 0, periodMilliseconds);
+        }
+
+        /// <inheritdoc />
+        public void SleepMilliseconds(uint millis) =>
+            Sleep(millis);
+
+        /// <inheritdoc />
+        public void SleepMicroseconds(uint micros) =>
+            SleepMicros(micros);
+
+        private long EllapsedMicroseconds(TimeType type)
+        {
+            BoardException.ValidateResult(
+                Utilities.GpioTime(type, out var seconds, out var microseconds));
+
+            return (seconds * SecondsToMicrosFactor) + microseconds;
         }
     }
 }
