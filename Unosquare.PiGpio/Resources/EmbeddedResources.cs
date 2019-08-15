@@ -5,7 +5,6 @@
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Reflection;
-    using Swan;
 
     /// <summary>
     /// Provides access to embedded assembly files.
@@ -18,7 +17,7 @@
         static EmbeddedResources()
         {
             ResourceNames =
-                new ReadOnlyCollection<string>(typeof(EmbeddedResources).Assembly().GetManifestResourceNames());
+                new ReadOnlyCollection<string>(typeof(EmbeddedResources).Assembly.GetManifestResourceNames());
         }
 
         /// <summary>
@@ -43,7 +42,7 @@
                 var targetPath = Path.Combine(basePath, filename);
                 if (File.Exists(targetPath)) return;
 
-                using (var stream = typeof(EmbeddedResources).Assembly()
+                using (var stream = typeof(EmbeddedResources).Assembly
                     .GetManifestResourceStream($"{typeof(EmbeddedResources).Namespace}.{filename}"))
                 {
                     using (var outputStream = File.OpenWrite(targetPath))

@@ -1,11 +1,12 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
+    using System;
+    using System.Threading;
     using ManagedModel;
     using NativeMethods;
     using Swan;
-    using Swan.Abstractions;
-    using System;
-    using System.Threading;
+    using Swan.Logging;
+    using Swan.Threading;
 
     internal class Mpu6050 : RunnerBase
     {
@@ -47,7 +48,7 @@
             }
         }
 
-        protected override void Setup()
+        protected override void OnSetup()
         {
             "Scanning I2C bus . . .".Info(Name);
             var deviceAddresses = Board.Peripherals.ScanI2cBus();
@@ -74,7 +75,7 @@
 
             Sleep = false;
 
-            while (ct.IsCancellationRequested == false)
+            while (!ct.IsCancellationRequested)
             {
                 Thread.Sleep(500);
                 $"Temperature: {Temperature,6:0.000}".Info(Name);

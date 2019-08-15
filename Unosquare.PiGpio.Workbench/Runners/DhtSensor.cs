@@ -2,8 +2,8 @@
 {
     using ManagedModel;
     using NativeEnums;
-    using Swan;
-    using Swan.Abstractions;
+    using Swan.Logging;
+    using Swan.Threading;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -19,7 +19,7 @@
         public DhtSensor(bool isEnabled)
             : base(isEnabled) { }
 
-        protected override void Setup()
+        protected override void OnSetup()
         {
             _pin = Board.Pins[27];
             _pin.PullMode = GpioPullMode.Off;
@@ -107,7 +107,7 @@
             Board.Timing.Sleep(500);
         }
 
-        private static List<bool> DecodeBits(List<Tuple<bool, uint>> pulses)
+        private static List<bool> DecodeBits(IReadOnlyList<Tuple<bool, uint>> pulses)
         {
             // For each bit, there are two signals - one preparatory (50 us LOW) and one containing the actual bit value.
             // The bit value is signalled by a HIGH signal, the length of the signal determines whether it is '0' or '1' - a '0'

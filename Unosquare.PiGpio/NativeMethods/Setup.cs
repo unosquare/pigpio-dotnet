@@ -116,10 +116,7 @@
         /// <param name="microSecs">1, 2, 4, 5, 8, 10.</param>
         /// <param name="peripheral">0 (PWM), 1 (PCM).</param>
         /// <returns>The result code.</returns>
-        public static ResultCode GpioCfgClock(uint microSecs, CpuPeripheral peripheral)
-        {
-            return GpioCfgClockUnmanaged(microSecs, peripheral, 0);
-        }
+        public static ResultCode GpioCfgClock(uint microSecs, CpuPeripheral peripheral) => GpioCfgClockUnmanaged(microSecs, peripheral, 0);
 
         /// <summary>
         /// Configures pigpio to use the specified DMA channel.

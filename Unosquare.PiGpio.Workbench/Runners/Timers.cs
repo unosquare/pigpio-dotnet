@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
-    using Swan;
-    using Swan.Abstractions;
+    using Swan.Logging;
+    using Swan.Threading;
     using System.Threading;
 
 #pragma warning disable CA1001 // Types that own disposable fields should be disposable
@@ -15,7 +15,7 @@
         public Timers(bool isEnabled)
             : base(isEnabled) { }
 
-        protected override void Setup()
+        protected override void OnSetup()
         {
             _remainingTicks = 30;
             _timerTicked = new ManualResetEvent(false);

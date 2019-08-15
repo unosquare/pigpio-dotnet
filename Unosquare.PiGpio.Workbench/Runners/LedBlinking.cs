@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
     using ManagedModel;
-    using Swan.Abstractions;
+    using Swan.Threading;
     using System.Threading;
 
     internal class LedBlinking : RunnerBase
@@ -11,14 +11,14 @@
         public LedBlinking(bool isEnabled)
             : base(isEnabled) { }
 
-        protected override void Setup()
+        protected override void OnSetup()
         {
             _pin = Board.Pins[17];
         }
 
         protected override void DoBackgroundWork(CancellationToken ct)
         {
-            while (ct.IsCancellationRequested == false)
+            while (!ct.IsCancellationRequested)
             {
                 _pin.Value = !_pin.Value;
                 Board.Timing.Sleep(500);

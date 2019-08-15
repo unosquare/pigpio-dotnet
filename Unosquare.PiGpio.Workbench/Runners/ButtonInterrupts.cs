@@ -2,8 +2,8 @@
 {
     using ManagedModel;
     using NativeEnums;
-    using Swan;
-    using Swan.Abstractions;
+    using Swan.Logging;
+    using Swan.Threading;
     using System.Threading;
 
     internal class ButtonInterrupts : RunnerBase
@@ -14,7 +14,7 @@
         public ButtonInterrupts(bool isEnabled)
             : base(isEnabled) { }
 
-        protected override void Setup()
+        protected override void OnSetup()
         {
             _pin = Board.Pins[4];
             _pin.Direction = PinDirection.Input;
@@ -44,15 +44,12 @@
 
         protected override void DoBackgroundWork(CancellationToken ct)
         {
-            while (ct.IsCancellationRequested == false)
+            while (!ct.IsCancellationRequested)
             {
                 Board.Timing.Sleep(50);
             }
         }
 
-        protected override void Cleanup()
-        {
-            _pin.Interrupts.Stop();
-        }
+        protected override void Cleanup() => _pin.Interrupts.Stop();
     }
 }

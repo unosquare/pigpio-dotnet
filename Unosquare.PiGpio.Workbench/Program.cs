@@ -1,18 +1,19 @@
 ﻿namespace Unosquare.PiGpio.Workbench
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using RaspberryIO;
     using Runners;
     using Swan;
     using Swan.Abstractions;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+    using Swan.Logging;
+    using Swan.Threading;
 
     internal static class Program
     {
         public static void Main()
         {
-            Terminal.Settings.DisplayLoggingMessageType = (LogMessageType)int.MaxValue;
             Pi.Init<BootstrapPiGpio>();
 
             var workbenchItems = new List<RunnerBase>

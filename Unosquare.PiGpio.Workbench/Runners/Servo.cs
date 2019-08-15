@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
-    using ManagedModel;
-    using Swan;
-    using Swan.Abstractions;
     using System.Threading;
+    using ManagedModel;
+    using Swan.Logging;
+    using Swan.Threading;
 
     internal class Servo : RunnerBase
     {
@@ -15,7 +15,7 @@
         public Servo(bool isEnabled)
             : base(isEnabled) { }
 
-        protected override void Setup()
+        protected override void OnSetup()
         {
             _pin = Board.Pins[18];
         }
