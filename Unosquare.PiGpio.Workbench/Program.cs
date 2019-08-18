@@ -6,7 +6,6 @@
     using RaspberryIO;
     using Runners;
     using Swan;
-    using Swan.Abstractions;
     using Swan.Logging;
     using Swan.Threading;
 
