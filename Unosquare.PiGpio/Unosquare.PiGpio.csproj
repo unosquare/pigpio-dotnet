@@ -20,7 +20,7 @@
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <LangVersion>7.3</LangVersion>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Resources\libpigpio.so" />
@@ -35,7 +35,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="System.Threading.Thread" Version="4.3.0" />
     <PackageReference Include="Unosquare.Raspberry.Abstractions" Version="0.4.0" />
     <PackageReference Include="Unosquare.Swan" Version="2.4.0" />
   </ItemGroup>

@@ -2,7 +2,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net461;netcoreapp2.2</TargetFrameworks>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <RootNamespace>Unosquare.PiGpio.Workbench</RootNamespace>
     <Version>1.67.0.1</Version>
     <Authors>Mario Di Vece and Contributors to the pigpio-dotnet project</Authors>
@@ -17,13 +17,9 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>Raspberry Pi, GPIO, ISR, DMA, Clock, I2C, SPI, UART</PackageTags>
     <AssemblyName>pigpio-workbench</AssemblyName>
-    <Platforms>AnyCPU</Platforms>
-    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <CodeAnalysisRuleSet>..\StyleCop.Analyzers.ruleset</CodeAnalysisRuleSet>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <AssemblyVersion>1.67.0.1</AssemblyVersion>
-    <FileVersion>1.67.0.1</FileVersion>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>8.0</LangVersion>
     <PackageId>Unosquare.PiGpio.Workbench</PackageId>
   </PropertyGroup>
 

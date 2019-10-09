@@ -65,13 +65,13 @@
                 return false;
             }
 
-            if ((new int[] { 12, 18, 40, 52 }).Contains(Pin.PinNumber))
+            if ((new[] { 12, 18, 40, 52 }).Contains(Pin.PinNumber))
             {
                 Channel = 0;
                 return true;
             }
 
-            if ((new int[] { 13, 19, 41, 45, 53 }).Contains(Pin.PinNumber))
+            if ((new[] { 13, 19, 41, 45, 53 }).Contains(Pin.PinNumber))
             {
                 Channel = 1;
                 return true;

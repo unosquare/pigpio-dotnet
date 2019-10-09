@@ -42,22 +42,20 @@
                 var targetPath = Path.Combine(basePath, filename);
                 if (File.Exists(targetPath)) return;
 
-                using (var stream = typeof(EmbeddedResources).Assembly
-                    .GetManifestResourceStream($"{typeof(EmbeddedResources).Namespace}.{filename}"))
+                using var stream = typeof(EmbeddedResources).Assembly
+                    .GetManifestResourceStream($"{typeof(EmbeddedResources).Namespace}.{filename}");
+                using (var outputStream = File.OpenWrite(targetPath))
                 {
-                    using (var outputStream = File.OpenWrite(targetPath))
-                    {
-                        stream?.CopyTo(outputStream);
-                    }
+                    stream?.CopyTo(outputStream);
+                }
 
-                    try
-                    {
-                        SysCall.Chmod(targetPath, (uint)executablePermissions);
-                    }
-                    catch
-                    {
-                        /* Ignore */
-                    }
+                try
+                {
+                    SysCall.Chmod(targetPath, (uint)executablePermissions);
+                }
+                catch
+                {
+                    /* Ignore */
                 }
             }
         }
