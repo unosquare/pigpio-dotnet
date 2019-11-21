@@ -22,11 +22,25 @@
                 var config = (int)Setup.GpioCfgGetInternals();
 
                 // config = config.ApplyBits(false, 3, 2, 1, 0); // Clear debug flags
-                // config = config | (int)ConfigFlags.NoSignalHandler;
+                /*
+                MJA
+                If you use Visual Studio 2019 together with VSMonoDebugger and X11 remote debugging,
+                you need to enable the next line, otherwise Mono will catch the Signals and stop
+                debugging immediately although native started program will work ok
+                */
+                config = config | (int)ConfigFlags.NoSignalHandler;
                 Setup.GpioCfgSetInternals((ConfigFlags)config);
 
                 var initResultCode = Setup.GpioInitialise();
-                IsAvailable = initResultCode == ResultCode.Ok;
+                /*
+                MJA
+                Setup.GpioInitialise() gives back value greater than zero if it has success.
+                More in detail:
+                The given back number is the version of the library version you use on RasPi.
+                Therefore a greater or equal comparison would make potentially more sense.
+                */
+                // IsAvailable = initResultCode == ResultCode.Ok;
+                IsAvailable = initResultCode >= ResultCode.Ok;
 
                 // You will need to compile libgpio.h adding
                 // #define EMBEDDED_IN_VM
