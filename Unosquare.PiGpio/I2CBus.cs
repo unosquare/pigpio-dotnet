@@ -1,6 +1,4 @@
-﻿
-
-namespace Unosquare.PiGpio
+﻿namespace Unosquare.PiGpio
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -14,7 +12,7 @@ namespace Unosquare.PiGpio
     public class I2CBus : II2CBus
     {
         private static readonly object SyncRoot = new object();
-        private readonly BoardPeripheralsService _service = new BoardPeripheralsService();
+        private readonly BoardPeripheralsService _service = Board.Peripherals;
         private readonly Dictionary<int, II2CDevice> _devices = new Dictionary<int, II2CDevice>();
 
         /// <inheritdoc />
@@ -50,6 +48,7 @@ namespace Unosquare.PiGpio
                 {
                     return device;
                 }
+
                 var d = _service.OpenI2cDevice((byte)deviceId);
                 device = new I2CDevice(d);
                 _devices[deviceId] = device;
