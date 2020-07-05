@@ -42,7 +42,7 @@
         /// <summary>
         /// Gets a timestamp since Jan 1, 1970 in microseconds.
         /// </summary>
-        public long TimestampMicroseconds => EllapsedMicroseconds(TimeType.Absolute);
+        public long TimestampMicroseconds => ElapsedMicroseconds(TimeType.Absolute);
 
         /// <summary>
         /// Gets the elapsed time since the Epoc (Jan 1, 1970).
@@ -50,10 +50,10 @@
         public TimeSpan Timestamp => TimeSpan.FromSeconds(TimestampSeconds);
 
         /// <inheritdoc />
-        public uint Milliseconds => Convert.ToUInt32(EllapsedMicroseconds(TimeType.Relative) / MillisToMicrosFactor);
+        public uint Milliseconds => Convert.ToUInt32(ElapsedMicroseconds(TimeType.Relative) / MillisToMicrosFactor);
 
         /// <inheritdoc />
-        public uint Microseconds => Convert.ToUInt32(EllapsedMicroseconds(TimeType.Relative));
+        public uint Microseconds => Convert.ToUInt32(ElapsedMicroseconds(TimeType.Relative));
 
         /// <summary>
         /// Sleeps for the given amount of microseconds.
@@ -154,7 +154,7 @@
         public void SleepMicroseconds(uint micros) =>
             SleepMicros(micros);
 
-        private long EllapsedMicroseconds(TimeType type)
+        private long ElapsedMicroseconds(TimeType type)
         {
             BoardException.ValidateResult(
                 Utilities.GpioTime(type, out var seconds, out var microseconds));
