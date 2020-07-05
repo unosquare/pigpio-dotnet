@@ -383,9 +383,9 @@ namespace Unosquare.PiGpio
         public IGpioPin this[BcmPin bcmPin] => _pins[(int)bcmPin];
 
         /// <inheritdoc />
-        public IGpioPin this[P1 pinNumber] => throw new NotImplementedException();
+        public IGpioPin this[P1 pinNumber] => HeaderP1[(int)pinNumber];
 
         /// <inheritdoc />
-        public IGpioPin this[P5 pinNumber] => throw new NotImplementedException();
+        public IGpioPin this[P5 pinNumber] => HeaderP5[(int)pinNumber];
     }
 }
