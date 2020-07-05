@@ -377,10 +377,10 @@ namespace Unosquare.PiGpio
         private static ControllerMode Mode { get; set; } = ControllerMode.NotInitialized;
 
         /// <inheritdoc />
-        public IGpioPin this[int bcmPinNumber] => throw new NotImplementedException();
+        public IGpioPin this[int bcmPinNumber] => _pins[bcmPinNumber];
 
         /// <inheritdoc />
-        public IGpioPin this[BcmPin bcmPin] => throw new NotImplementedException();
+        public IGpioPin this[BcmPin bcmPin] => _pins[(int)bcmPin];
 
         /// <inheritdoc />
         public IGpioPin this[P1 pinNumber] => throw new NotImplementedException();
