@@ -9,7 +9,7 @@
     /// Defines fundamental IO methods for the GPIO Pins.
     /// The bulk of the managed pin functionality is supplied by these methods.
     /// </summary>
-    public static partial class IO
+    public static partial class PiIO
     {
         #region Single Bit Reads / Writes
 
@@ -34,17 +34,17 @@
         /// <param name="mode">0-7.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_GPIO or PI_BAD_MODE.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioSetMode")]
-        public static extern ResultCode GpioSetMode(SystemGpio gpio, PinMode mode);
+        public static extern ResultCode GpioSetMode(SystemGpio gpio, PigpioPinMode mode);
 
         /// <summary>
         /// Gest the current mode for the given GPIO.
         /// </summary>
         /// <param name="gpio">The gpio.</param>
         /// <returns>The port mode.</returns>
-        public static PinMode GpioGetMode(SystemGpio gpio)
+        public static PigpioPinMode GpioGetMode(SystemGpio gpio)
         {
             var result = BoardException.ValidateResult(GpioGetModeUnmanaged(gpio));
-            return (PinMode)result;
+            return (PigpioPinMode)result;
         }
 
         /// <summary>

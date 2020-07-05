@@ -15,6 +15,11 @@
         {
             Pi.Init<BootstrapPiGpio>();
 
+            if (!Board.IsAvailable)
+            {
+                throw new Exception("Pi Gpio library failed to initialise. Check that it is installed.");
+            }
+
             var workbenchItems = new List<RunnerBase>
             {
                 new BoardInfo(true),

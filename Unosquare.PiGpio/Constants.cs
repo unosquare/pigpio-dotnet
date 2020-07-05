@@ -280,5 +280,18 @@
         internal static bool IsBetween(this int number, int min, int max) => number >= min && number <= max;
 
         internal static bool IsBetween(this long number, long min, long max) => number >= min && number <= max;
+
+        internal static NativeEnums.EdgeDetection GetEdgeDetection(RaspberryIO.Abstractions.EdgeDetection edgeDetection)
+        {
+            switch (edgeDetection)
+            {
+                case RaspberryIO.Abstractions.EdgeDetection.RisingEdge:
+                    return NativeEnums.EdgeDetection.RisingEdge;
+                case RaspberryIO.Abstractions.EdgeDetection.FallingEdge:
+                    return NativeEnums.EdgeDetection.FallingEdge;
+                default:
+                    return NativeEnums.EdgeDetection.EitherEdge;
+            }
+        }
     }
 }

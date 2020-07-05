@@ -40,9 +40,9 @@
         public int PulseWidth
         {
             get => BoardException.ValidateResult(
-                Pwm.GpioGetServoPulseWidth((UserGpio)Pin.PinNumber));
+                Pwm.GpioGetServoPulseWidth((UserGpio)Pin.BcmPinNumber));
             set => BoardException.ValidateResult(
-                Pwm.GpioServo((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
+                Pwm.GpioServo((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>

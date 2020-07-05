@@ -20,7 +20,7 @@
         /// /proc/cpuinfo.
         ///
         /// The revision number can be used to determine the assignment of GPIO
-        /// to pins (see <see cref="IO"/>).
+        /// to pins (see <see cref="PiIO"/>).
         ///
         /// There are at least three types of board.
         ///

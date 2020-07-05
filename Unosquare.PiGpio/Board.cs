@@ -1,4 +1,6 @@
-﻿namespace Unosquare.PiGpio
+﻿using Unosquare.RaspberryIO.Abstractions;
+
+namespace Unosquare.PiGpio
 {
     using ManagedModel;
     using NativeEnums;
@@ -32,6 +34,7 @@
                 Setup.GpioCfgSetInternals((ConfigFlags)config);
 
                 var initResultCode = Setup.GpioInitialise();
+
                 /*
                 MJA
                 Setup.GpioInitialise() gives back value greater than zero if it has success.
@@ -52,6 +55,7 @@
             // Populate basic information
             HardwareRevision = Utilities.GpioHardwareRevision();
             LibraryVersion = Utilities.GpioVersion();
+            BoardRevision = Constants.GetBoardRevision(HardwareRevision);
             BoardType = Constants.GetBoardType(HardwareRevision);
 
             // Instantiate collections and services.
@@ -73,6 +77,11 @@
         /// Gets the hardware revision number.
         /// </summary>
         public static long HardwareRevision { get; }
+
+        /// <summary>
+        /// Gets the hardware revision as the generic type
+        /// </summary>
+        public static BoardRevision BoardRevision { get; }
 
         /// <summary>
         /// Gets the library version number.

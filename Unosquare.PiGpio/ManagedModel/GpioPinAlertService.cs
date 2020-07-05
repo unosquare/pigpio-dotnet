@@ -49,7 +49,7 @@
                 lock (SyncLock)
                 {
                     BoardException.ValidateResult(
-                        IO.GpioSetWatchdog((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
+                        PiIO.GpioSetWatchdog((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
                     m_TimeoutMilliseconds = value;
                 }
             }
@@ -85,7 +85,7 @@
             lock (SyncLock)
             {
                 BoardException.ValidateResult(
-                    IO.GpioGlitchFilter((UserGpio)Pin.PinNumber, Convert.ToUInt32(steadyMicroseconds)));
+                    PiIO.GpioGlitchFilter((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(steadyMicroseconds)));
 
                 m_GlitchFilterSteadyMicros = steadyMicroseconds;
             }
@@ -112,7 +112,7 @@
             lock (SyncLock)
             {
                 BoardException.ValidateResult(
-                    IO.GpioNoiseFilter((UserGpio)Pin.PinNumber, Convert.ToUInt32(steadyMicroseconds), Convert.ToUInt32(activeMicroseconds)));
+                    PiIO.GpioNoiseFilter((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(steadyMicroseconds), Convert.ToUInt32(activeMicroseconds)));
 
                 m_NoiseFilterSteadyMicros = steadyMicroseconds;
                 m_NoiseFilterActiveMicros = activeMicroseconds;
@@ -144,7 +144,7 @@
                     throw new ArgumentException("A callback is already registered. Clear the current callback before registering a new one.", nameof(callback));
 
                 BoardException.ValidateResult(
-                    IO.GpioSetAlertFunc((UserGpio)Pin.PinNumber, callback));
+                    PiIO.GpioSetAlertFunc((UserGpio)Pin.BcmPinNumber, callback));
                 Callback = callback;
             }
         }
@@ -162,7 +162,7 @@
                 // TODO: For some reason passing NULL to cancel the alert makes everything hang!
                 // This looks like a bug in the pigpio library.
                 BoardException.ValidateResult(
-                    IO.GpioSetAlertFunc((UserGpio)Pin.PinNumber, (g, l, t) => { }));
+                    PiIO.GpioSetAlertFunc((UserGpio)Pin.BcmPinNumber, (g, l, t) => { }));
                 Callback = null;
             }
         }

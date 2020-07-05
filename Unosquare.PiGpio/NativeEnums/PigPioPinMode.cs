@@ -2,9 +2,9 @@
 {
     /// <summary>
     /// Pins can operate in different modes.
-    /// This enumeration defines the fdifferent operation modes from 0 to 7.
+    /// This enumeration defines the different operation modes from 0 to 7.
     /// </summary>
-    public enum PinMode : int
+    public enum PigpioPinMode : int
     {
         /// <summary>
         /// The input operating mode

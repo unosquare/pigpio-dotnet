@@ -246,7 +246,7 @@
         /// <param name="pins">The pins.</param>
         /// <returns>An array of UserGpio pins.</returns>
         private static IEnumerable<UserGpio> GpioPinsToUserGpios(IEnumerable<GpioPin> pins) =>
-            pins.Where(p => p.IsUserGpio).Select(p => (UserGpio)p.PinNumber).ToArray();
+            pins.Where(p => p.IsUserGpio).Select(p => (UserGpio)p.BcmPinNumber).ToArray();
 
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources.

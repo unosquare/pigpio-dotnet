@@ -11,6 +11,10 @@
     /// <seealso cref="GpioPinServiceBase" />
     public sealed class GpioPinPwmService : GpioPinServiceBase
     {
+
+        private static readonly int[] PwmChannelZeroPins = { 12, 18, 40, 52 };
+        private static readonly int[] PwmChannelOnePins = { 13, 19, 41, 45, 53 };
+
         internal GpioPinPwmService(GpioPin pin)
            : base(pin)
         {
@@ -21,12 +25,12 @@
         /// <summary>
         /// Gets the range of the duty cycle.
         /// </summary>
-        public int Range => BoardException.ValidateResult(Pwm.GpioGetPwmRealRange((UserGpio)Pin.PinNumber));
+        public int Range => BoardException.ValidateResult(Pwm.GpioGetPwmRealRange((UserGpio)Pin.BcmPinNumber));
 
         /// <summary>
         /// Gets the frequency.
         /// </summary>
-        public int Frequency => BoardException.ValidateResult(Pwm.GpioGetPwmFrequency((UserGpio)Pin.PinNumber));
+        public int Frequency => BoardException.ValidateResult(Pwm.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber));
 
         /// <summary>
         /// Gets the PWM channel, 0 or 1. A negative number mans there is no associated PWM channel.
@@ -55,7 +59,7 @@
         {
             if (Board.BoardType == BoardType.Type1 || Board.BoardType == BoardType.Type2)
             {
-                if (Pin.PinNumber == 18)
+                if (Pin.BcmPinNumber == 18)
                 {
                     Channel = 0;
                     return true;
@@ -65,13 +69,13 @@
                 return false;
             }
 
-            if ((new[] { 12, 18, 40, 52 }).Contains(Pin.PinNumber))
+            if (PwmChannelZeroPins.Contains(Pin.BcmPinNumber))
             {
                 Channel = 0;
                 return true;
             }
 
-            if ((new[] { 13, 19, 41, 45, 53 }).Contains(Pin.PinNumber))
+            if (PwmChannelOnePins.Contains(Pin.BcmPinNumber))
             {
                 Channel = 1;
                 return true;

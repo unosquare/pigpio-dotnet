@@ -8,7 +8,7 @@
     /// Use this class to access threading methods using interop.
     /// </summary>
     /// <seealso cref="IThreading" />
-    public class Threading : IThreading
+    public class PigpioThreading : IThreading
     {
         private readonly object _lock = new object();
         private UIntPtr _currentThread;

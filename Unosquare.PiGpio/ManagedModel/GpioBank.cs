@@ -31,16 +31,16 @@
             BankNumber = bankNumber;
 
             _setBitsCallback = bankNumber == 1 ?
-                IO.GpioWriteBits00To31Set :
-                new SetClearBitsDelegate(IO.GpioWriteBits32To53Set);
+                PiIO.GpioWriteBits00To31Set :
+                new SetClearBitsDelegate(PiIO.GpioWriteBits32To53Set);
 
             _clearBitsCallback = bankNumber == 1 ?
-                IO.GpioWriteBits00To31Clear :
-                new SetClearBitsDelegate(IO.GpioWriteBits32To53Clear);
+                PiIO.GpioWriteBits00To31Clear :
+                new SetClearBitsDelegate(PiIO.GpioWriteBits32To53Clear);
 
             _readBitsCallback = bankNumber == 1 ?
-                IO.GpioReadBits00To31 :
-                new ReadBitsDelegate(IO.GpioReadBits32To53);
+                PiIO.GpioReadBits00To31 :
+                new ReadBitsDelegate(PiIO.GpioReadBits32To53);
 
             if (bankNumber == 1)
             {

@@ -51,7 +51,7 @@
 
             foreach (SystemGpio value in enumValues)
             {
-                result[(int)value] = new GpioPin(value);
+                result[(int) value] = new GpioPin(value);
             }
 
             return result;

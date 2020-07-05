@@ -29,8 +29,8 @@
         /// <param name="baudRate">The baud rate.</param>
         internal SoftI2cBus(GpioPin dataPin, GpioPin clockPin, int baudRate)
         {
-            BoardException.ValidateResult(I2c.BbI2COpen((UserGpio)dataPin.PinNumber, (UserGpio)clockPin.PinNumber, Convert.ToUInt32(baudRate)));
-            Handle = (UserGpio)dataPin.PinNumber;
+            BoardException.ValidateResult(I2c.BbI2COpen((UserGpio)dataPin.BcmPinNumber, (UserGpio)clockPin.BcmPinNumber, Convert.ToUInt32(baudRate)));
+            Handle = (UserGpio)dataPin.BcmPinNumber;
             DataPin = dataPin;
             ClockPin = clockPin;
             BaudRate = baudRate;

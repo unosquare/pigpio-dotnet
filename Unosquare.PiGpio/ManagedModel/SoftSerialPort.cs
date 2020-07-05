@@ -23,9 +23,9 @@
         internal SoftSerialPort(GpioPin receivePin, GpioPin transmitPin, UartRate baudRate, int dataBits, bool invert)
         {
             BoardException.ValidateResult(
-                Serial.GpioSerialReadOpen((UserGpio)receivePin.PinNumber, Convert.ToUInt32(baudRate), Convert.ToUInt32(dataBits)));
+                Serial.GpioSerialReadOpen((UserGpio)receivePin.BcmPinNumber, Convert.ToUInt32(baudRate), Convert.ToUInt32(dataBits)));
 
-            Handle = (UserGpio)receivePin.PinNumber;
+            Handle = (UserGpio)receivePin.BcmPinNumber;
             DataBits = dataBits;
             BaudRate = (int)baudRate;
 
@@ -80,7 +80,7 @@
             Waves.GpioWaveClear();
             BoardException.ValidateResult(
                 Waves.GpioWaveAddSerial(
-                    (UserGpio)_transmitPin.PinNumber,
+                    (UserGpio)_transmitPin.BcmPinNumber,
                     Convert.ToUInt32(BaudRate),
                     Convert.ToUInt32(DataBits),
                     Convert.ToUInt32(StopBits),

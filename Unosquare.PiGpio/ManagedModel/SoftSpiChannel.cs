@@ -24,14 +24,14 @@
         internal SoftSpiChannel(GpioPin csPin, GpioPin misoPin, GpioPin mosiPin, GpioPin clockPin, int baudRate, SoftSpiFlags flags)
         {
             BoardException.ValidateResult(Spi.BbSPIOpen(
-                (UserGpio)csPin.PinNumber,
-                (UserGpio)misoPin.PinNumber,
-                (UserGpio)mosiPin.PinNumber,
-                (UserGpio)clockPin.PinNumber,
+                (UserGpio)csPin.BcmPinNumber,
+                (UserGpio)misoPin.BcmPinNumber,
+                (UserGpio)mosiPin.BcmPinNumber,
+                (UserGpio)clockPin.BcmPinNumber,
                 Convert.ToUInt32(baudRate),
                 flags));
 
-            Handle = (UserGpio)csPin.PinNumber;
+            Handle = (UserGpio)csPin.BcmPinNumber;
             ChipSelectPin = csPin;
             MosiPin = mosiPin;
             MisoPin = misoPin;

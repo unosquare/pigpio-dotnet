@@ -25,8 +25,8 @@
         /// </summary>
         public int Range
         {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmRange((UserGpio)Pin.PinNumber));
-            set => BoardException.ValidateResult(Pwm.GpioSetPwmRange((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
+            get => BoardException.ValidateResult(Pwm.GpioGetPwmRange((UserGpio)Pin.BcmPinNumber));
+            set => BoardException.ValidateResult(Pwm.GpioSetPwmRange((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>
@@ -35,8 +35,8 @@
         /// </summary>
         public int DutyCycle
         {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmDutyCycle((UserGpio)Pin.PinNumber));
-            set => BoardException.ValidateResult(Pwm.GpioPwm((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
+            get => BoardException.ValidateResult(Pwm.GpioGetPwmDutyCycle((UserGpio)Pin.BcmPinNumber));
+            set => BoardException.ValidateResult(Pwm.GpioPwm((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>
@@ -44,8 +44,8 @@
         /// </summary>
         public int Frequency
         {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmFrequency((UserGpio)Pin.PinNumber));
-            set => BoardException.ValidateResult(Pwm.GpioSetPwmFrequency((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
+            get => BoardException.ValidateResult(Pwm.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber));
+            set => BoardException.ValidateResult(Pwm.GpioSetPwmFrequency((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>
