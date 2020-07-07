@@ -1,10 +1,10 @@
-﻿namespace Unosquare.PiGpio.NativeMethods
+﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
-    using NativeEnums;
-    using NativeTypes;
     using System;
     using System.Collections;
     using System.Runtime.InteropServices;
+    using NativeEnums;
+    using NativeTypes;
 
     /// <summary>
     /// Provides various utility methods to retrieve hardware and software versions,

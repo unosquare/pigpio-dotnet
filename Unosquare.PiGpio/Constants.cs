@@ -1,4 +1,6 @@
-﻿namespace Unosquare.PiGpio
+﻿using System.IO.Pipes;
+
+namespace Unosquare.PiGpio
 {
     using NativeEnums;
     using System;
@@ -168,6 +170,10 @@
             { ResultCode.CustomErr0, "Documentation not available" },
             { ResultCode.CustomErr999, "Documentation not available" },
         };
+
+        internal static string CommandPipeName => "/dev/pigpio";
+        internal static string ResultPipeName => "/dev/pigout";
+        internal static string ErrorPipeName => "/dev/pigerr";
 
         internal static string GetResultCodeMessage(int resultCode)
         {

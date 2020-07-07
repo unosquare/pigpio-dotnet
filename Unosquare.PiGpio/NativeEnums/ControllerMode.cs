@@ -3,7 +3,7 @@
     /// <summary>
     /// Defines GPIO controller initialization modes.
     /// </summary>
-    internal enum ControllerMode
+    public enum ControllerMode
     {
         /// <summary>
         /// The not initialized
@@ -13,7 +13,7 @@
         /// <summary>
         /// Connected directly
         /// </summary>
-        Direct,
+        InProcess,
 
         /// <summary>
         /// Connected via pipe 

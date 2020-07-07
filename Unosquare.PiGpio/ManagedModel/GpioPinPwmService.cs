@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
-    using NativeMethods;
     using System;
     using System.Linq;
+    using NativeEnums;
+    using NativeMethods.InProcess.DllImports;
 
     /// <summary>
     /// Provides hardware-based PWM services on the pin.

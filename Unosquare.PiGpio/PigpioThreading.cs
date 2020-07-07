@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio
 {
     using System;
-    using NativeMethods;
     using RaspberryIO.Abstractions;
+    using NativeMethods.InProcess.DllImports;
 
     /// <summary>
     /// Use this class to access threading methods using interop.

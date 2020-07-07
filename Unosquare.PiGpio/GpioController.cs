@@ -1,14 +1,15 @@
-﻿using System.Collections.ObjectModel;
-using Swan;
-using Unosquare.PiGpio.ManagedModel;
-using Unosquare.PiGpio.NativeEnums;
-
-namespace Unosquare.PiGpio
+﻿namespace Unosquare.PiGpio
 {
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using RaspberryIO.Abstractions;
+    using Swan;
+    using Swan.DependencyInjection;
+    using ManagedModel;
+    using NativeEnums;
+    using NativeMethods.Interfaces;
 
     /// <summary>
     /// Represents the Raspberry Pi GPIO controller
@@ -17,9 +18,8 @@ namespace Unosquare.PiGpio
     /// </summary>
     public class GpioController : IGpioController
     {
-        /// <inheritdoc />
-
         private static readonly object SyncRoot = new object();
+        private readonly IIOService _ioService;
         private readonly List<GpioPin> _pins;
 
         /// <summary>
@@ -33,14 +33,15 @@ namespace Unosquare.PiGpio
         /// Initializes a new instance of the <see cref="GpioController"/> class.
         /// </summary>
         /// <exception cref="System.Exception">Unable to initialize the GPIO controller.</exception>
-        internal GpioController(ControllerMode mode)
+        internal GpioController()
         {
+            _ioService = DependencyContainer.Current.Resolve<IIOService>();
             if (_pins != null)
                 return;
 
             if (IsInitialized == false)
             {
-                var initResult = Initialize(mode);
+                var initResult = Initialize();
                 if (initResult == false)
                     throw new Exception("Unable to initialize the GPIO controller.");
             }
@@ -288,7 +289,7 @@ namespace Unosquare.PiGpio
         /// </exception>
         /// <exception cref="InvalidOperationException">Library was already Initialized.</exception>
         /// <exception cref="ArgumentException">The init mode is invalid.</exception>
-        private bool Initialize(ControllerMode mode)
+        private bool Initialize()
         {
             if (SwanRuntime.OS != Swan.OperatingSystem.Unix)
                 throw new PlatformNotSupportedException("This library does not support the platform");
@@ -298,35 +299,7 @@ namespace Unosquare.PiGpio
                 if (IsInitialized)
                     throw new InvalidOperationException($"Cannot call {nameof(Initialize)} more than once.");
 
-                int setupResult;
-
-                switch (mode)
-                {
-                    case ControllerMode.Direct:
-                        {
-                            setupResult = 0;
-                            break;
-                        }
-
-                    case ControllerMode.Pipe:
-                        {
-                            throw new NotImplementedException("Use Direct mode");
-                            break;
-                        }
-
-                    case ControllerMode.Socket:
-                        {
-                            throw new NotImplementedException("Use Direct mode");
-                            break;
-                        }
-
-                    default:
-                        {
-                            throw new ArgumentException($"'{mode}' is not a valid initialization mode.");
-                        }
-                }
-
-                Mode = setupResult == 0 ? mode : ControllerMode.NotInitialized;
+                Mode = _ioService.Mode;
                 return IsInitialized;
             }
         }
@@ -337,7 +310,7 @@ namespace Unosquare.PiGpio
         /// <value>
         /// <c>true</c> if the controller is properly initialized; otherwise, <c>false</c>.
         /// </value>
-        public static bool IsInitialized
+        public bool IsInitialized
         {
             get
             {

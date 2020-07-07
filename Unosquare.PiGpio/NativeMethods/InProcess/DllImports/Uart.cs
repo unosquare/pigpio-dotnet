@@ -1,8 +1,8 @@
-﻿namespace Unosquare.PiGpio.NativeMethods
+﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
-    using NativeEnums;
     using System;
     using System.Runtime.InteropServices;
+    using NativeEnums;
 
     /// <summary>
     /// Provides access to hardware based UART (Serial Port).

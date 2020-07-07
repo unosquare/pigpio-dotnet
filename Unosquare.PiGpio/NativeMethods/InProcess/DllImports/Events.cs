@@ -1,12 +1,12 @@
-﻿namespace Unosquare.PiGpio.NativeMethods
+﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
-    using NativeEnums;
-    using NativeTypes;
     using System;
     using System.Runtime.InteropServices;
+    using NativeEnums;
+    using NativeTypes;
 
     /// <summary>
-    /// Provides event notification warapper APIs for the pigpio library.
+    /// Provides event notification wrapper APIs for the pigpio library.
     /// These methods represent an internal event system that is unused in the managed model
     /// of this library.
     /// </summary>

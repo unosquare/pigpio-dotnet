@@ -1,9 +1,10 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
-    using NativeMethods;
-    using NativeTypes;
     using System;
+    using NativeEnums;
+    using NativeTypes;
+    using Swan.DependencyInjection;
+    using NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides GPIO pin functionality to report on alerts based
@@ -25,7 +26,7 @@
         internal GpioPinAlertService(GpioPin pin)
             : base(pin)
         {
-            // placeholder
+            IOService = DependencyContainer.Current.Resolve<IIOService>();
         }
 
         /// <summary>
@@ -49,7 +50,7 @@
                 lock (SyncLock)
                 {
                     BoardException.ValidateResult(
-                        PiIO.GpioSetWatchdog((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
+                        IOService.GpioSetWatchdog((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
                     m_TimeoutMilliseconds = value;
                 }
             }
@@ -85,7 +86,7 @@
             lock (SyncLock)
             {
                 BoardException.ValidateResult(
-                    PiIO.GpioGlitchFilter((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(steadyMicroseconds)));
+                    IOService.GpioGlitchFilter((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(steadyMicroseconds)));
 
                 m_GlitchFilterSteadyMicros = steadyMicroseconds;
             }
@@ -112,7 +113,7 @@
             lock (SyncLock)
             {
                 BoardException.ValidateResult(
-                    PiIO.GpioNoiseFilter((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(steadyMicroseconds), Convert.ToUInt32(activeMicroseconds)));
+                    IOService.GpioNoiseFilter((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(steadyMicroseconds), Convert.ToUInt32(activeMicroseconds)));
 
                 m_NoiseFilterSteadyMicros = steadyMicroseconds;
                 m_NoiseFilterActiveMicros = activeMicroseconds;
@@ -144,7 +145,7 @@
                     throw new ArgumentException("A callback is already registered. Clear the current callback before registering a new one.", nameof(callback));
 
                 BoardException.ValidateResult(
-                    PiIO.GpioSetAlertFunc((UserGpio)Pin.BcmPinNumber, callback));
+                    IOService.GpioSetAlertFunc((UserGpio)Pin.BcmPinNumber, callback));
                 Callback = callback;
             }
         }
@@ -162,7 +163,7 @@
                 // TODO: For some reason passing NULL to cancel the alert makes everything hang!
                 // This looks like a bug in the pigpio library.
                 BoardException.ValidateResult(
-                    PiIO.GpioSetAlertFunc((UserGpio)Pin.BcmPinNumber, (g, l, t) => { }));
+                    IOService.GpioSetAlertFunc((UserGpio)Pin.BcmPinNumber, (g, l, t) => { }));
                 Callback = null;
             }
         }
@@ -177,5 +178,6 @@
         {
             return Pin.IsUserGpio;
         }
+        private IIOService IOService { get; }
     }
 }

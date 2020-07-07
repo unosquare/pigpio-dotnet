@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Unosquare.PiGpio.NativeEnums
+﻿namespace Unosquare.PiGpio.NativeEnums
 {
+    using System;
+
     /// <summary>
     /// Defines the different pin capabilities.
     /// </summary>

@@ -1,6 +1,6 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeMethods;
+    using NativeMethods.InProcess.DllImports;
 
     /// <summary>
     /// Provides a a pin service to generate pulses with microsecond precision.

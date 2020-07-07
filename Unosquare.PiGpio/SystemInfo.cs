@@ -2,8 +2,8 @@
 {
     using System;
     using NativeEnums;
-    using NativeMethods;
     using RaspberryIO.Abstractions;
+    using NativeMethods.InProcess.DllImports;
 
     /// <summary>
     /// Represents the system info.

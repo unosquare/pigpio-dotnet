@@ -1,7 +1,7 @@
-﻿namespace Unosquare.PiGpio.NativeMethods
+﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
-    using NativeEnums;
     using System.Runtime.InteropServices;
+    using NativeEnums;
 
     /// <summary>
     /// Provides methods for software and hardware based PWM services for the GPIO pins.

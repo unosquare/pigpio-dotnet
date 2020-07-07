@@ -1,9 +1,11 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using NativeEnums;
+    using Swan.DependencyInjection;
+    using NativeMethods.Interfaces;
 
     /// <summary>
     /// Represents a dictionary of all GPIO Pins.
@@ -46,12 +48,13 @@
         /// <returns>The items in the collection.</returns>
         private static Dictionary<int, GpioPin> CreateInternalCollection()
         {
+            var ioService = DependencyContainer.Current.Resolve<IIOService>();
             var enumValues = Enum.GetValues(typeof(SystemGpio));
             var result = new Dictionary<int, GpioPin>(enumValues.Length);
 
             foreach (SystemGpio value in enumValues)
             {
-                result[(int) value] = new GpioPin(value);
+                result[(int) value] = new GpioPin(ioService, value);
             }
 
             return result;

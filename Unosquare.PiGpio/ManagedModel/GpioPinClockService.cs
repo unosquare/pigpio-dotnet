@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
-    using NativeMethods;
     using System;
     using System.Linq;
+    using NativeEnums;
+    using NativeMethods.InProcess.DllImports;
 
     /// <summary>
     /// Provides a hardware clock services on the associated pin.

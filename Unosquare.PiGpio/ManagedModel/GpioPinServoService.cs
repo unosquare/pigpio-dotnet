@@ -2,7 +2,7 @@
 {
     using System;
     using NativeEnums;
-    using NativeMethods;
+    using NativeMethods.InProcess.DllImports;
 
     /// <summary>
     /// Provides a standard servo PWM service running at 50Hz.

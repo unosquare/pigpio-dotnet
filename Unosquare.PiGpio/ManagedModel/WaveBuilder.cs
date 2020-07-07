@@ -1,12 +1,12 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
-    using NativeMethods;
-    using NativeTypes;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using NativeEnums;
+    using NativeTypes;
+    using NativeMethods.InProcess.DllImports;
 
     /// <summary>
     /// Provides methods to build and render waveforms.

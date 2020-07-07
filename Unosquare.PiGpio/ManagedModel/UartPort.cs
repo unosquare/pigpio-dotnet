@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
-    using NativeMethods;
     using System;
+    using NativeEnums;
+    using NativeMethods.InProcess.DllImports;
 
     /// <summary>
     /// Provides libpigpio implementation of a UART port.

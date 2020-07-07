@@ -1,9 +1,8 @@
-﻿using Unosquare.PiGpio.NativeEnums;
-
-namespace Unosquare.PiGpio.ManagedModel
+﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using RaspberryIO.Abstractions;
     using System;
+    using RaspberryIO.Abstractions;
+    using NativeEnums;
 
     public partial class GpioPin
     {

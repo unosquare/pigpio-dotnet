@@ -1,11 +1,12 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
-    using NativeMethods;
     using System;
     using System.Collections;
     using System.Linq;
     using System.Text;
+    using NativeEnums;
+    using Swan.DependencyInjection;
+    using NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides access to bulk GPIO read and write operations.
@@ -28,19 +29,21 @@
             if (bankNumber != 1 && bankNumber != 2)
                 throw new ArgumentException("Bank number can only be either 1 or 2", nameof(bankNumber));
 
+            IOService = DependencyContainer.Current.Resolve<IIOService>();
+
             BankNumber = bankNumber;
 
             _setBitsCallback = bankNumber == 1 ?
-                PiIO.GpioWriteBits00To31Set :
-                new SetClearBitsDelegate(PiIO.GpioWriteBits32To53Set);
+                IOService.GpioWriteBits00To31Set :
+                new SetClearBitsDelegate(IOService.GpioWriteBits32To53Set);
 
             _clearBitsCallback = bankNumber == 1 ?
-                PiIO.GpioWriteBits00To31Clear :
-                new SetClearBitsDelegate(PiIO.GpioWriteBits32To53Clear);
+                IOService.GpioWriteBits00To31Clear :
+                new SetClearBitsDelegate(IOService.GpioWriteBits32To53Clear);
 
             _readBitsCallback = bankNumber == 1 ?
-                PiIO.GpioReadBits00To31 :
-                new ReadBitsDelegate(PiIO.GpioReadBits32To53);
+                IOService.GpioReadBits00To31 :
+                new ReadBitsDelegate(IOService.GpioReadBits32To53);
 
             if (bankNumber == 1)
             {
@@ -66,6 +69,8 @@
         #endregion
 
         #region Properties
+
+        public IIOService IOService { get; }
 
         /// <summary>
         /// Gets the bank number; 1 or 2.

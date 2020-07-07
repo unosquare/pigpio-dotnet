@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
-    using NativeMethods;
     using System;
+    using NativeEnums;
     using RaspberryIO.Abstractions;
+    using NativeMethods.Interfaces;
 
     /// <summary>
     /// A class representing a GPIO port (pin).
@@ -16,13 +16,16 @@
         private GpioPinDriveMode _pinMode;
         private GpioPinResistorPullMode _resistorPullMode;
         private bool _interruptRegistered = false;
+        private IIOService IOService { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GpioPin"/> class.
         /// </summary>
+        /// <param name="ioService">Service providing IO via the chosen strategy.</param>
         /// <param name="gpio">The system gpio.</param>
-        internal GpioPin(SystemGpio gpio)
+        internal GpioPin(IIOService ioService, SystemGpio gpio)
         {
+            IOService = ioService;
             PinGpio = gpio;
             BcmPinNumber = (int)gpio;
             IsUserGpio = gpio.GetIsUserGpio(Board.BoardType);
@@ -99,8 +102,8 @@
         /// </summary>
         public bool Value
         {
-            get => PiIO.GpioRead(PinGpio);
-            set => BoardException.ValidateResult(PiIO.GpioWrite(PinGpio, value));
+            get => IOService.GpioRead(PinGpio);
+            set => BoardException.ValidateResult(IOService.GpioWrite(PinGpio, value));
         }
 
         /// <inheritdoc />
@@ -114,6 +117,8 @@
 
         /// <inheritdoc />
         public GpioHeader Header { get; }
+
+        private IIOService IoService { get; }
 
         /// <summary>
         /// Gets the pin number as a system GPIO Identifier.
@@ -134,7 +139,7 @@
         /// <summary>
         /// Gets the current pin mode.
         /// </summary>
-        public PigpioPinMode Mode => PiIO.GpioGetMode(PinGpio);
+        public PigpioPinMode Mode => IOService.GpioGetMode(PinGpio);
 
         /// <summary>
         /// Gets or sets the resistor pull mode in input mode.
@@ -146,7 +151,7 @@
             get => _pullMode;
             set
             {
-                BoardException.ValidateResult(PiIO.GpioSetPullUpDown(PinGpio, value));
+                BoardException.ValidateResult(IOService.GpioSetPullUpDown(PinGpio, value));
                 _pullMode = value;
             }
         }
@@ -162,7 +167,7 @@
         {
             get
             {
-                var result = PiIO.GpioGetMode(PinGpio);
+                var result = IOService.GpioGetMode(PinGpio);
                 if (result == PigpioPinMode.Input || result == PigpioPinMode.Output)
                     return (PinDirection)result;
 
@@ -174,7 +179,7 @@
                     throw new InvalidOperationException("Unable to set the pin mode to an alternative function.");
 
                 BoardException.ValidateResult(
-                    PiIO.GpioSetMode(PinGpio, (PigpioPinMode)value));
+                    IOService.GpioSetMode(PinGpio, (PigpioPinMode)value));
             }
         }
 
@@ -203,23 +208,23 @@
                     switch (mode)
                     {
                         case GpioPinDriveMode.Input:
-                            PiIO.GpioSetMode(PinGpio, PigpioPinMode.Input);
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Input);
                             break;
                         case GpioPinDriveMode.Output:
                         case GpioPinDriveMode.PwmOutput:
-                            PiIO.GpioSetMode(PinGpio, PigpioPinMode.Output);
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Output);
                             break;
                         case GpioPinDriveMode.Alt0:
-                            PiIO.GpioSetMode(PinGpio, PigpioPinMode.Alt0);
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Alt0);
                             break;
                         case GpioPinDriveMode.Alt1:
-                            PiIO.GpioSetMode(PinGpio, PigpioPinMode.Alt1);
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Alt1);
                             break;
                         case GpioPinDriveMode.Alt2:
-                            PiIO.GpioSetMode(PinGpio, PigpioPinMode.Alt2);
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Alt2);
                             break;
                         case GpioPinDriveMode.Alt3:
-                            PiIO.GpioSetMode(PinGpio, PigpioPinMode.Alt3);
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Alt3);
                             break;
                     }
 
@@ -248,13 +253,13 @@
                     switch (value)
                     {
                         case GpioPinResistorPullMode.Off:
-                            PiIO.GpioSetPullUpDown(PinGpio, GpioPullMode.Off);
+                            IOService.GpioSetPullUpDown(PinGpio, GpioPullMode.Off);
                             break;
                         case GpioPinResistorPullMode.PullDown:
-                            PiIO.GpioSetPullUpDown(PinGpio, GpioPullMode.Down);
+                            IOService.GpioSetPullUpDown(PinGpio, GpioPullMode.Down);
                             break;
                         case GpioPinResistorPullMode.PullUp:
-                            PiIO.GpioSetPullUpDown(PinGpio, GpioPullMode.Up);
+                            IOService.GpioSetPullUpDown(PinGpio, GpioPullMode.Up);
                             break;
                     }
                     
@@ -283,10 +288,10 @@
         #region Pin Read-Write
 
         /// <inheritdoc />
-        public void Write(bool value) => PiIO.GpioWrite(PinGpio, value);
+        public void Write(bool value) => IOService.GpioWrite(PinGpio, value);
 
         /// <inheritdoc />
-        public void Write(GpioPinValue value) => PiIO.GpioWrite(PinGpio, value == GpioPinValue.High);
+        public void Write(GpioPinValue value) => IOService.GpioWrite(PinGpio, value == GpioPinValue.High);
 
         /// <inheritdoc />
         public bool WaitForValue(GpioPinValue status, int timeOutMillisecond)
@@ -300,7 +305,7 @@
             lock (_syncLock)
             {
                 InterruptEdgeDetection = edgeDetection;
-                PiIO.GpioSetIsrFunc(PinGpio, Constants.GetEdgeDetection(edgeDetection), 0, (gpio, level, tick) =>
+                IOService.GpioSetIsrFunc(PinGpio, Constants.GetEdgeDetection(edgeDetection), 0, (gpio, level, tick) =>
                 {
                     if (level != LevelChange.NoChange)
                     {
@@ -317,7 +322,7 @@
             lock (_syncLock)
             {
                 InterruptEdgeDetection = edgeDetection;
-                PiIO.GpioSetIsrFunc(PinGpio, Constants.GetEdgeDetection(edgeDetection), 0, (gpio, level, tick) =>
+                IOService.GpioSetIsrFunc(PinGpio, Constants.GetEdgeDetection(edgeDetection), 0, (gpio, level, tick) =>
                 {
                     if (level != LevelChange.NoChange)
                     {
@@ -380,7 +385,7 @@
         public void Pulsate(int microSecs, bool value)
         {
             BoardException.ValidateResult(
-                PiIO.GpioTrigger((UserGpio)BcmPinNumber, Convert.ToUInt32(microSecs), value));
+                IOService.GpioTrigger((UserGpio)BcmPinNumber, Convert.ToUInt32(microSecs), value));
         }
 
         /// <summary>
@@ -388,7 +393,7 @@
         /// No error checking is performed.
         /// </summary>
         /// <returns>Returns true for success. False for error.</returns>
-        public bool Read() => PiIO.GpioReadUnmanaged(PinGpio) >= 0;
+        public bool Read() => IOService.GpioReadUnmanaged(PinGpio) >= 0;
 
         /// <summary>
         /// The fastest way to write to the pin.
@@ -396,7 +401,7 @@
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result code. 0 (OK) for success.</returns>
-        public ResultCode Write(int value) => PiIO.GpioWriteUnmanaged(PinGpio, (DigitalValue)(value == 0 ? 0 : 1));
+        public ResultCode Write(int value) => IOService.GpioWriteUnmanaged(PinGpio, (DigitalValue)(value == 0 ? 0 : 1));
 
         /// <inheritdoc/>
         public void Dispose()
@@ -409,7 +414,7 @@
         {
             if (_interruptRegistered)
             {
-                PiIO.GpioSetIsrFunc(PinGpio, NativeEnums.EdgeDetection.EitherEdge, 0, null);
+                IOService.GpioSetIsrFunc(PinGpio, NativeEnums.EdgeDetection.EitherEdge, 0, null);
             }
         }
     }

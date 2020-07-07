@@ -1,10 +1,10 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
-    using NativeMethods;
     using System;
     using System.Threading;
+    using NativeEnums;
     using RaspberryIO.Abstractions;
+    using NativeMethods.InProcess.DllImports;
 
     /// <summary>
     /// Provides timing, date and delay functions.

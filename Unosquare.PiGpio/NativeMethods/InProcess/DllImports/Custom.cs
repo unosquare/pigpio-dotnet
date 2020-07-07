@@ -1,4 +1,4 @@
-﻿namespace Unosquare.PiGpio.NativeMethods
+﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
     using System.Runtime.InteropServices;
 

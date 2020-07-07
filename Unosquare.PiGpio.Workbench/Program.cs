@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using CommsStrategies;
     using RaspberryIO;
     using Runners;
     using Swan;
@@ -13,7 +14,7 @@
     {
         public static void Main()
         {
-            Pi.Init<BootstrapPiGpio>();
+            Pi.Init<BootstrapPiGpio<PipeCommsStrategy>>();
 
             if (!Board.IsAvailable)
             {
@@ -22,8 +23,8 @@
 
             var workbenchItems = new List<RunnerBase>
             {
-                new BoardInfo(true),
-                new LedBlinking(false),
+                new BoardInfo(false),
+                new LedBlinking(true),
                 new Servo(false),
                 new Timers(false),
                 new ButtonInterrupts(false),
