@@ -1,4 +1,7 @@
-﻿namespace Unosquare.PiGpio.NativeMethods.Pipe
+﻿using System.Collections.Generic;
+using Swan;
+
+namespace Unosquare.PiGpio.NativeMethods.Pipe
 {
     using System;
     using System.Globalization;
