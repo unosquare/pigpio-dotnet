@@ -4,7 +4,7 @@
     using Unosquare.PiGpio.NativeEnums;
     using Unosquare.PiGpio.NativeTypes;
 
-    public interface IThreadsService
+    internal interface IThreadsService
     {
         /// <summary>
         /// Registers a function to be called (a callback) every millis milliseconds.

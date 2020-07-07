@@ -17,6 +17,7 @@
             var pipe = new PigpioPipe();
             DependencyContainer.Current.Register<IIOService>(new IOServicePipe(pipe));
             DependencyContainer.Current.Register<IThreadsService>(new ThreadsServicePipe(pipe));
+            DependencyContainer.Current.Register<IUtilityService>(new UtilityServicePipe(pipe));
         }
 
         /// <inheritdoc />

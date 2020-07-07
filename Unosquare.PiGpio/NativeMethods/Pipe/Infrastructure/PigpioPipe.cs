@@ -55,7 +55,7 @@
 
                 var result = PipeReader.ReadLine();
                 var code = Convert.ToInt32(result, CultureInfo.InvariantCulture);
-                return (ResultCode) code;
+                return (ResultCode)code;
             }
         }
 

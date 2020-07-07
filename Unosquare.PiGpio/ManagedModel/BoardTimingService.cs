@@ -17,6 +17,7 @@
         private const long SecondsToMicrosFactor = 1000000L;
         private const long MillisToMicrosFactor = 1000L;
         private readonly IThreadsService _threadsService;
+        private readonly IUtilityService _utilitiesService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BoardTimingService"/> class.
@@ -25,6 +26,7 @@
         {
             Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             _threadsService = DependencyContainer.Current.Resolve<IThreadsService>();
+            _utilitiesService = DependencyContainer.Current.Resolve<IUtilityService>();
         }
 
         /// <summary>
@@ -36,12 +38,12 @@
         /// Gets the timestamp tick.
         /// Useful to calculate offsets in Alerts or ISR callbacks.
         /// </summary>
-        public uint TimestampTick => Utilities.GpioTick();
+        public uint TimestampTick => _utilitiesService.GpioTick();
 
         /// <summary>
         /// Gets the number of seconds elapsed since the Epoc (Jan 1, 1970).
         /// </summary>
-        public double TimestampSeconds => Utilities.TimeTime();
+        public double TimestampSeconds => _utilitiesService.TimeTime();
 
         /// <summary>
         /// Gets a timestamp since Jan 1, 1970 in microseconds.
@@ -161,7 +163,7 @@
         private long ElapsedMicroseconds(TimeType type)
         {
             BoardException.ValidateResult(
-                Utilities.GpioTime(type, out var seconds, out var microseconds));
+                _utilitiesService.GpioTime(type, out var seconds, out var microseconds));
 
             return (seconds * SecondsToMicrosFactor) + microseconds;
         }

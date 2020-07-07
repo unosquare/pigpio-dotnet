@@ -7,7 +7,7 @@
     using NativeTypes;
 
     /// <summary>
-    /// In Process strategy pattern implementation.
+    /// IO Service In Process strategy pattern implementation.
     /// </summary>
     public class IOServiceInProcess : IIOService
     {

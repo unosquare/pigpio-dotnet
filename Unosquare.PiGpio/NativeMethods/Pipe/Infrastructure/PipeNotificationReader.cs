@@ -24,6 +24,8 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure
         public override void Dispose()
         {
             _cancelListening.Cancel();
+            _listenTask.Wait();
+            _cancelListening.Dispose();
             base.Dispose();
         }
 

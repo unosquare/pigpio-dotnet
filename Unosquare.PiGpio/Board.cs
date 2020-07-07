@@ -3,8 +3,10 @@
     using System;
     using ManagedModel;
     using NativeEnums;
-    using NativeMethods.InProcess.DllImports;
     using RaspberryIO.Abstractions;
+    using Swan.DependencyInjection;
+    using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Represents the Raspberry Pi Board and provides
@@ -17,9 +19,11 @@
         /// </summary>
         static Board()
         {
+            var utilitiesService = DependencyContainer.Current.Resolve<IUtilityService>();
+
             // Populate basic information
-            HardwareRevision = Utilities.GpioHardwareRevision();
-            LibraryVersion = Utilities.GpioVersion();
+            HardwareRevision = utilitiesService.GpioHardwareRevision();
+            LibraryVersion = utilitiesService.GpioVersion();
             BoardRevision = Constants.GetBoardRevision(HardwareRevision);
             BoardType = Constants.GetBoardType(HardwareRevision);
 

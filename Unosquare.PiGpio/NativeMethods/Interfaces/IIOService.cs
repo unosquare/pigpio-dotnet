@@ -5,7 +5,7 @@
     using InProcess.DllImports;
     using NativeTypes;
 
-    public interface IIOService
+    internal interface IIOService
     {
         ControllerMode Mode { get; }
 
@@ -186,7 +186,7 @@
         /// will be a latency.
         ///
         /// The tick value is the time stamp of the sample in microseconds, see
-        /// <see cref="Utilities.GpioTick"/> for more details.
+        /// <see cref="IUtilityService.GpioTick"/> for more details.
         ///
         /// </summary>
         /// <example>

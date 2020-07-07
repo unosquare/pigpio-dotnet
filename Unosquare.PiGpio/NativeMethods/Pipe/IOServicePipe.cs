@@ -96,7 +96,6 @@
                 default:
                     throw new Exception("Unknown mode returned by pigpiod: " + modeCode);
             }
-
         }
 
         /// <inheritdoc />
@@ -240,7 +239,6 @@
 
             // start notifications on the handle
             return _pigpioPipe.SendCommandWithResultCode($"nb {handle} {Math.Pow(2, (int)gpio)}");
-
         }
 
         /// <inheritdoc />

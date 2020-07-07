@@ -3,10 +3,10 @@
     using System;
     using System.Threading;
     using ManagedModel;
+    using NativeMethods.InProcess.DllImports;
     using Swan;
     using Swan.Logging;
     using Swan.Threading;
-    using NativeMethods.InProcess.DllImports;
 
     internal class Mpu6050 : RunnerBase
     {

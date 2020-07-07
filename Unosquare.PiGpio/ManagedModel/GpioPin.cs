@@ -326,7 +326,7 @@
                 {
                     if (level != LevelChange.NoChange)
                     {
-                        callback.Invoke(BcmPinNumber, (int) level, tick);
+                        callback.Invoke(BcmPinNumber, (int)level, tick);
                     }
                 });
                 _interruptRegistered = true;
