@@ -16,7 +16,7 @@
 
         protected override void OnSetup()
         {
-            _pin = Board.Pins[4];
+            _pin = Board.Pins[26];
             _pin.Direction = PinDirection.Input;
             _pin.PullMode = GpioPullMode.Off;
             _pin.Interrupts.EdgeDetection = EdgeDetection.EitherEdge;
@@ -46,7 +46,7 @@
         {
             while (!ct.IsCancellationRequested)
             {
-                Board.Timing.Sleep(50);
+                Thread.Sleep(50); //Board.Timing.Sleep(50));
             }
         }
 

@@ -282,7 +282,6 @@
         /// <summary>
         /// Initializes the controller given the initialization mode and pin numbering scheme.
         /// </summary>
-        /// <param name="mode">The mode.</param>
         /// <returns>True when successful.</returns>
         /// <exception cref="PlatformNotSupportedException">
         /// This library does not support the platform.

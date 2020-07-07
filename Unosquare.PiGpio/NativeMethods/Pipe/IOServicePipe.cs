@@ -15,6 +15,8 @@
         private readonly PipeWriter _pipeWriter;
         private readonly PipeReader _pipeReader;
         private readonly PipeReader _errorReader;
+        private readonly IDictionary<SystemGpio, PipeReader> _notificationPipes = new Dictionary<SystemGpio, PipeReader>();
+        private readonly IDictionary<SystemGpio, bool> _notificationLastLevel = new Dictionary<SystemGpio, bool>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IOServicePipe"/> class.
@@ -38,9 +40,6 @@
         public bool IsConnected { get; }
 
         #region Pipes
-        private FileStream WritePipe { get; }
-        private FileStream ReadPipe { get; }
-        private FileStream ErrorPipe { get; }
         private StreamWriter PipeWriter { get; }
         private StreamReader PipeReader { get; }
         private StreamReader ErrorReader { get; }
@@ -209,13 +208,93 @@
         /// <inheritdoc />
         public ResultCode GpioSetIsrFunc(SystemGpio gpio, EdgeDetection edge, int timeout, PiGpioIsrDelegate callback)
         {
-            throw new NotImplementedException();
+            var gpioMask = (uint)Math.Pow(2, (int)gpio);
+            if (_notificationPipes.ContainsKey(gpio)) return ResultCode.Ok;
+
+            // get a handle
+            string handle = SendCommandWithResult($"no");
+
+            // listen to the pipe
+            var reader = new PipeNotificationReader($"/dev/pigpio{handle}");
+            reader.OnNotification += (PigpioNotification[] notifications) =>
+            {
+                foreach (var notification in notifications)
+                {
+                    var level = (notification.Level & gpioMask) > 0;
+                    var hasOldLevel = _notificationLastLevel.ContainsKey(gpio);
+                    var oldLevel = hasOldLevel && _notificationLastLevel[gpio];
+                    LevelChange change;
+                    if (level && (!hasOldLevel || !oldLevel))
+                    {
+                        change = LevelChange.LowToHigh;
+                    }
+                    else if (!level && (!hasOldLevel || oldLevel))
+                    {
+                        change = LevelChange.HighToLow;
+                    }
+                    else
+                    {
+                        change = LevelChange.NoChange;
+                    }
+
+                    if (edge == EdgeDetection.EitherEdge
+                        || (edge == EdgeDetection.FallingEdge && change == LevelChange.HighToLow)
+                        || (edge == EdgeDetection.RisingEdge && change == LevelChange.LowToHigh))
+                    {
+                        callback(gpio, change, notification.Tick);
+                    }
+
+                    _notificationLastLevel[gpio] = level;
+                }
+            };
+            _notificationPipes[gpio] = reader;
+
+            // start notifications on the handle
+            return SendCommandWithResultCode($"nb {handle} {Math.Pow(2, (int)gpio)}");
+
         }
 
         /// <inheritdoc />
         public ResultCode GpioSetIsrFuncEx(SystemGpio gpio, EdgeDetection edge, int timeout, PiGpioIsrExDelegate callback, UIntPtr userData)
         {
-            throw new NotImplementedException();
+            var gpioMask = (uint)Math.Pow(2, (int)gpio);
+            if (_notificationPipes.ContainsKey(gpio)) return ResultCode.Ok;
+
+            // get a handle
+            string handle = SendCommandWithResult($"no");
+
+            // listen to the pipe
+            var reader = new PipeNotificationReader($"/dev/pigpio{handle}");
+            reader.OnNotification += notifications =>
+            {
+                foreach (var notification in notifications)
+                {
+                    var level = (notification.Level & gpioMask) > 0;
+                    var hasOldLevel = _notificationLastLevel.ContainsKey(gpio);
+                    var oldLevel = hasOldLevel && _notificationLastLevel[gpio];
+                    LevelChange change;
+                    if (level && (!hasOldLevel || !oldLevel))
+                    {
+                        change = LevelChange.LowToHigh;
+                    }
+                    else if (!level && (!hasOldLevel || oldLevel))
+                    {
+                        change = LevelChange.HighToLow;
+                    }
+                    else
+                    {
+                        change = LevelChange.NoChange;
+                    }
+
+                    callback(gpio, change, notification.Tick, userData);
+                    _notificationLastLevel[gpio] = level;
+                }
+            };
+            _notificationPipes[gpio] = reader;
+
+            // start notifications on the handle
+            return SendCommandWithResultCode($"nb {handle} {Math.Pow(2, (int)gpio)}");
+
         }
 
         /// <inheritdoc />
@@ -258,36 +337,42 @@
         /// <inheritdoc />
         public int GpioReadUnmanaged(SystemGpio gpio)
         {
-            throw new NotImplementedException();
+            return GpioRead(gpio) ? 1 : 0;
         }
 
         /// <inheritdoc />
         public ResultCode GpioWriteUnmanaged(SystemGpio gpio, DigitalValue value)
         {
-            throw new NotImplementedException();
+            return GpioWrite(gpio, value.ToBoolean());
         }
 
         /// <inheritdoc />
         public int GpioGetPadUnmanaged(GpioPadId pad)
         {
-            throw new NotImplementedException();
+            return (int)GpioGetPad(pad);
         }
 
         /// <inheritdoc />
         public int GpioGetModeUnmanaged(SystemGpio gpio)
         {
-            throw new NotImplementedException();
+            return (int)GpioGetMode(gpio);
         }
 
         /// <inheritdoc />
         public ResultCode GpioTriggerUnmanaged(UserGpio userGpio, uint pulseLength, DigitalValue value)
         {
-            throw new NotImplementedException();
+            return GpioTrigger(userGpio, pulseLength, value.ToBoolean());
         }
 
         /// <inheritdoc/>
         public void Dispose()
         {
+            foreach (var reader in _notificationPipes.Values)
+            {
+                reader.Dispose();
+            }
+
+            _notificationPipes.Clear();
             _pipeWriter.Dispose();
             _pipeReader.Dispose();
             _errorReader.Dispose();
@@ -316,6 +401,5 @@
             var code = Convert.ToInt32(result, CultureInfo.InvariantCulture);
             return (ResultCode)code;
         }
-
     }
 }
