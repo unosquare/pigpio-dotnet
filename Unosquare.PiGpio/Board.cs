@@ -1,11 +1,10 @@
-﻿using Unosquare.RaspberryIO.Abstractions;
-
-namespace Unosquare.PiGpio
+﻿namespace Unosquare.PiGpio
 {
+    using System;
     using ManagedModel;
     using NativeEnums;
-    using NativeMethods;
-    using System;
+    using NativeMethods.InProcess.DllImports;
+    using RaspberryIO.Abstractions;
 
     /// <summary>
     /// Represents the Raspberry Pi Board and provides
@@ -18,40 +17,6 @@ namespace Unosquare.PiGpio
         /// </summary>
         static Board()
         {
-            try
-            {
-                // Retrieve internal configuration
-                var config = (int)Setup.GpioCfgGetInternals();
-
-                // config = config.ApplyBits(false, 3, 2, 1, 0); // Clear debug flags
-                /*
-                MJA
-                If you use Visual Studio 2019 together with VSMonoDebugger and X11 remote debugging,
-                you need to enable the next line, otherwise Mono will catch the Signals and stop
-                debugging immediately although native started program will work ok
-                */
-                config = config | (int)ConfigFlags.NoSignalHandler;
-                Setup.GpioCfgSetInternals((ConfigFlags)config);
-
-                var initResultCode = Setup.GpioInitialise();
-
-                /*
-                MJA
-                Setup.GpioInitialise() gives back value greater than zero if it has success.
-                More in detail:
-                The given back number is the version of the library version you use on RasPi.
-                Therefore a greater or equal comparison would make potentially more sense.
-                */
-                // IsAvailable = initResultCode == ResultCode.Ok;
-                IsAvailable = initResultCode >= ResultCode.Ok;
-
-                // You will need to compile libgpio.h adding
-                // #define EMBEDDED_IN_VM
-                // Also, remove the atexit( ... call in pigpio.c
-                // So there is no output or signal handling
-            }
-            catch { IsAvailable = false; }
-
             // Populate basic information
             HardwareRevision = Utilities.GpioHardwareRevision();
             LibraryVersion = Utilities.GpioVersion();
@@ -71,7 +36,7 @@ namespace Unosquare.PiGpio
         /// <summary>
         /// Gets a value indicating whether the board has been initialized.
         /// </summary>
-        public static bool IsAvailable { get; private set; }
+        public static bool IsAvailable { get; internal set; }
 
         /// <summary>
         /// Gets the hardware revision number.
@@ -79,7 +44,7 @@ namespace Unosquare.PiGpio
         public static long HardwareRevision { get; }
 
         /// <summary>
-        /// Gets the hardware revision as the generic type
+        /// Gets the hardware revision as the generic type.
         /// </summary>
         public static BoardRevision BoardRevision { get; }
 
