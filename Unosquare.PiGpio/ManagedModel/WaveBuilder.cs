@@ -5,8 +5,9 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using NativeEnums;
-    using NativeTypes;
     using NativeMethods.InProcess.DllImports;
+    using NativeTypes;
+    using Unosquare.PiGpio.ExtensionMethods;
 
     /// <summary>
     /// Provides methods to build and render waveforms.
