@@ -100,8 +100,13 @@
         /// Writes the specified buffer.
         /// </summary>
         /// <param name="buffer">The buffer.</param>
-        public void Write(byte[] buffer) =>
-            Write(buffer, buffer.Length);
+        public void Write(byte[] buffer)
+        {
+            if (buffer != null)
+            {
+                Write(buffer, buffer.Length);
+            }
+        }
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
