@@ -104,9 +104,12 @@
         {
             var builder = new StringBuilder(32);
 
-            for (var i = bits.Length - 1; i >= 0; i--)
+            if (bits != null)
             {
-                builder.Append(bits[i] ? '1' : '0');
+                for (var i = bits.Length - 1; i >= 0; i--)
+                {
+                    builder.Append(bits[i] ? '1' : '0');
+                }
             }
 
             return builder.ToString();

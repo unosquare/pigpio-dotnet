@@ -72,7 +72,7 @@
         {
             var buffer = new byte[count];
             var result = BoardException.ValidateResult(Uart.SerRead(Handle, buffer, (uint)count));
-            if (result == 0) return new byte[0];
+            if (result == 0) return Array.Empty<byte>();
             if (result == count)
                 return buffer;
 

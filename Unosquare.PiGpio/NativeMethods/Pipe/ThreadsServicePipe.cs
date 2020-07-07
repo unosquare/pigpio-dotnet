@@ -58,7 +58,7 @@
         /// <inheritdoc />
         public void TimeSleep(double seconds)
         {
-            Thread.Sleep(Convert.ToInt32(1000*seconds));
+            Thread.Sleep(Convert.ToInt32(1000 * seconds));
         }
     }
 }

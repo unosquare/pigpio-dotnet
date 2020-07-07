@@ -6,7 +6,8 @@
     /// <summary>
     /// Extension methods for bit flags
     /// </summary>
-    public static class FlagsExtensions {
+    public static class FlagsExtensions
+    {
         /// <summary>
         /// Applies bit values according to the indexes.
         /// </summary>
