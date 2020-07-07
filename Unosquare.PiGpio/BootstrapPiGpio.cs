@@ -23,6 +23,10 @@
                 Resources.EmbeddedResources.ExtractAll();
 
                 var commsStrategy = Activator.CreateInstance<TCommsStrategy>() as IPiGpioCommsStrategy;
+                if (commsStrategy == null)
+                {
+                    throw new Exception("Invalid commsStrategy in bootstrap");
+                }
                 commsStrategy.RegisterServices();
                 Board.IsAvailable = commsStrategy.Initialize();
 
