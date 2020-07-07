@@ -43,6 +43,24 @@
             }
         }
 
+        public int SendCommandWithIntResult(string cmd)
+        {
+            lock (_syncLock)
+            {
+                PipeWriter.WriteLine(cmd);
+                return Convert.ToInt32(PipeReader.ReadLine(), CultureInfo.InvariantCulture);
+            }
+        }
+
+        public uint SendCommandWithUIntResult(string cmd)
+        {
+            lock (_syncLock)
+            {
+                PipeWriter.WriteLine(cmd);
+                return Convert.ToUInt32(PipeReader.ReadLine(), CultureInfo.InvariantCulture);
+            }
+        }
+
         public ResultCode SendCommandWithResultCode(string cmd)
         {
             lock (_syncLock)

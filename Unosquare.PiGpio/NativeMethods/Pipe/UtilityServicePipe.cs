@@ -20,17 +20,17 @@
 
         public uint GpioHardwareRevision()
         {
-            throw new NotImplementedException();
+            return _pigpioPipe.SendCommandWithUIntResult("hwver");
         }
 
         public uint GpioVersion()
         {
-            throw new NotImplementedException();
+            return _pigpioPipe.SendCommandWithUIntResult("pigpv");
         }
 
         public uint GpioTick()
         {
-            throw new NotImplementedException();
+            return _pigpioPipe.SendCommandWithUIntResult("t");
         }
 
         public int GpioTime(TimeType timeType, out int seconds, out int microseconds)
@@ -45,17 +45,34 @@
 
         public int GetBitInBytes(int bitPos, byte[] buf, int numBits)
         {
-            throw new NotImplementedException();
+            if (bitPos > numBits)
+            {
+                return 0;
+            }
+
+            var index = bitPos / 8;
+            var mask = 1 << (bitPos % 8);
+            return ((buf[index] & mask) > 0) ? 1 : 0;
         }
 
         public void PutBitInBytes(int bitPos, byte[] buf, int bit)
         {
-            throw new NotImplementedException();
+            var index = bitPos / 8;
+            byte mask = (byte)(1 << (bitPos % 8));
+            if (bit == 0)
+            {
+                var reset = 0xff ^ mask; // invert the mask with xor
+                buf[index] = (byte)(buf[index] & reset);
+            }
+            else 
+            {
+                buf[index] = (byte)(buf[index] | mask);
+            }
         }
 
         public ResultCode Shell(string scriptName, string scriptString)
         {
-            throw new NotImplementedException();
+            return _pigpioPipe.SendCommandWithResultCode($"shell {scriptName} {scriptString}");
         }
 
         public ResultCode GpioSetSignalFunc(uint signalNumber, PiGpioSignalDelegate f)

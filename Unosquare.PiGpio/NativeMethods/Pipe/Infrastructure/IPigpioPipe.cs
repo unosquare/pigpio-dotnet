@@ -6,6 +6,8 @@
     {
         void SendCommand(string cmd);
         string SendCommandWithResult(string cmd);
+        int SendCommandWithIntResult(string cmd);
+        uint SendCommandWithUIntResult(string cmd);
         ResultCode SendCommandWithResultCode(string cmd);
     }
 }
