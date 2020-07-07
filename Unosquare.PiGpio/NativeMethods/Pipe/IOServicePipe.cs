@@ -3,7 +3,6 @@
     using System;
     using System.Globalization;
     using System.IO;
-    using System.Text;
     using Interfaces;
     using NativeEnums;
     using NativeTypes;
@@ -11,21 +10,23 @@
     /// <summary>
     /// Pipe strategy pattern.
     /// </summary>
-    public class IOServicePipe : IIOService
+    public class IOServicePipe : IIOService, IDisposable
     {
+        private readonly PipeWriter _pipeWriter;
+        private readonly PipeReader _pipeReader;
+        private readonly PipeReader _errorReader;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="IOServicePipe"/> class.
         /// </summary>
         public IOServicePipe()
         {
-            // Named Pipe classes would be easier but they don't work on Linux in .Net Core
-            WritePipe = new FileStream(Constants.CommandPipeName, FileMode.Open, FileAccess.Write, FileShare.ReadWrite, 4096, FileOptions.WriteThrough);
-            ReadPipe = new FileStream(Constants.ResultPipeName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite, 4096, FileOptions.Asynchronous);
-            ErrorPipe = new FileStream(Constants.ErrorPipeName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-
-            PipeWriter = new StreamWriter(WritePipe, Encoding.ASCII) { AutoFlush = true };
-            PipeReader = new StreamReader(ReadPipe, Encoding.ASCII);
-            ErrorReader = new StreamReader(ErrorPipe, Encoding.ASCII);
+            _pipeWriter = new PipeWriter(Constants.CommandPipeName);
+            PipeWriter = _pipeWriter.Writer;
+            _pipeReader = new PipeReader(Constants.ResultPipeName);
+            PipeReader = _pipeReader.Reader;
+            _errorReader = new PipeReader(Constants.ErrorPipeName);
+            ErrorReader = _errorReader.Reader;
 
             IsConnected = true;
         }
@@ -284,6 +285,14 @@
             throw new NotImplementedException();
         }
 
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            _pipeWriter.Dispose();
+            _pipeReader.Dispose();
+            _errorReader.Dispose();
+        }
+
         private void SendCommand(string cmd)
         {
             PipeWriter.WriteLine(cmd);
@@ -307,5 +316,6 @@
             var code = Convert.ToInt32(result, CultureInfo.InvariantCulture);
             return (ResultCode)code;
         }
+
     }
 }
