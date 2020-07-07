@@ -7,7 +7,6 @@
     internal class LedBlinking : RunnerBase
     {
         private GpioPin _pin;
-        private bool value;
 
         public LedBlinking(bool isEnabled)
             : base(isEnabled) { }
