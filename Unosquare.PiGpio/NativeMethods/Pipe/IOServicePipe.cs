@@ -1,37 +1,29 @@
-﻿using System.Collections.Generic;
-using Swan;
-
-namespace Unosquare.PiGpio.NativeMethods.Pipe
+﻿namespace Unosquare.PiGpio.NativeMethods.Pipe
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
-    using System.IO;
     using Interfaces;
     using NativeEnums;
     using NativeTypes;
+    using Swan;
+    using Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure;
 
     /// <summary>
-    /// Pipe strategy pattern.
+    /// IO Service Pipe strategy pattern.
     /// </summary>
-    public class IOServicePipe : IIOService, IDisposable
+    internal class IOServicePipe : IIOService, IDisposable
     {
-        private readonly PipeWriter _pipeWriter;
-        private readonly PipeReader _pipeReader;
-        private readonly PipeReader _errorReader;
+        private readonly IPigpioPipe _pigpioPipe;
         private readonly IDictionary<SystemGpio, PipeReader> _notificationPipes = new Dictionary<SystemGpio, PipeReader>();
         private readonly IDictionary<SystemGpio, bool> _notificationLastLevel = new Dictionary<SystemGpio, bool>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IOServicePipe"/> class.
         /// </summary>
-        public IOServicePipe()
+        internal IOServicePipe(IPigpioPipe pipe)
         {
-            _pipeWriter = new PipeWriter(Constants.CommandPipeName);
-            PipeWriter = _pipeWriter.Writer;
-            _pipeReader = new PipeReader(Constants.ResultPipeName);
-            PipeReader = _pipeReader.Reader;
-            _errorReader = new PipeReader(Constants.ErrorPipeName);
-            ErrorReader = _errorReader.Reader;
+            _pigpioPipe = pipe;
 
             IsConnected = true;
         }
@@ -41,12 +33,6 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
 
         /// <inheritdoc />
         public bool IsConnected { get; }
-
-        #region Pipes
-        private StreamWriter PipeWriter { get; }
-        private StreamReader PipeReader { get; }
-        private StreamReader ErrorReader { get; }
-        #endregion
 
         /// <inheritdoc />
         public ResultCode GpioSetMode(SystemGpio gpio, PigpioPinMode mode)
@@ -82,13 +68,13 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
                     throw new ArgumentException("Unknown mode: " + mode);
             }
 
-            return SendCommandWithResultCode($"m {(int)gpio} {code}");
+            return _pigpioPipe.SendCommandWithResultCode($"m {(int)gpio} {code}");
         }
 
         /// <inheritdoc/>
         public PigpioPinMode GpioGetMode(SystemGpio gpio)
         {
-            char modeCode = SendCommandWithResult($"mg {(int)gpio}").ToUpperInvariant()[0];
+            char modeCode = _pigpioPipe.SendCommandWithResult($"mg {(int)gpio}").ToUpperInvariant()[0];
             switch (modeCode)
             {
                 case 'R':
@@ -132,26 +118,26 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
                     throw new ArgumentException("Unknown mode: " + pullMode);
             }
 
-            return SendCommandWithResultCode($"pud {(int)gpio} {code}");
+            return _pigpioPipe.SendCommandWithResultCode($"pud {(int)gpio} {code}");
         }
 
         /// <inheritdoc />
         public bool GpioRead(SystemGpio gpio)
         {
-            var result = SendCommandWithResult($"r {(int)gpio}");
+            var result = _pigpioPipe.SendCommandWithResult($"r {(int)gpio}");
             return result == "1";
         }
 
         /// <inheritdoc />
         public ResultCode GpioWrite(SystemGpio gpio, bool value)
         {
-            return SendCommandWithResultCode($"w {(int)gpio} {(value ? 1 : 0)}");
+            return _pigpioPipe.SendCommandWithResultCode($"w {(int)gpio} {(value ? 1 : 0)}");
         }
 
         /// <inheritdoc />
         public ResultCode GpioTrigger(UserGpio userGpio, uint pulseLength, bool value)
         {
-            return SendCommandWithResultCode($"trig {(int)userGpio} {pulseLength} {(value ? 1 : 0)}");
+            return _pigpioPipe.SendCommandWithResultCode($"trig {(int)userGpio} {pulseLength} {(value ? 1 : 0)}");
         }
 
         /// <inheritdoc />
@@ -205,7 +191,7 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
         /// <inheritdoc />
         public ResultCode GpioSetWatchdog(UserGpio userGpio, uint timeoutMilliseconds)
         {
-            return SendCommandWithResultCode($"wdog {(int)userGpio} {timeoutMilliseconds}");
+            return _pigpioPipe.SendCommandWithResultCode($"wdog {(int)userGpio} {timeoutMilliseconds}");
         }
 
         /// <inheritdoc />
@@ -215,7 +201,7 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
             if (_notificationPipes.ContainsKey(gpio)) return ResultCode.Ok;
 
             // get a handle
-            string handle = SendCommandWithResult($"no");
+            string handle = _pigpioPipe.SendCommandWithResult($"no");
 
             // listen to the pipe
             var reader = new PipeNotificationReader($"/dev/pigpio{handle}");
@@ -253,7 +239,7 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
             _notificationPipes[gpio] = reader;
 
             // start notifications on the handle
-            return SendCommandWithResultCode($"nb {handle} {Math.Pow(2, (int)gpio)}");
+            return _pigpioPipe.SendCommandWithResultCode($"nb {handle} {Math.Pow(2, (int)gpio)}");
 
         }
 
@@ -264,7 +250,7 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
             if (_notificationPipes.ContainsKey(gpio)) return ResultCode.Ok;
 
             // get a handle
-            string handle = SendCommandWithResult($"no");
+            string handle = _pigpioPipe.SendCommandWithResult($"no");
 
             // listen to the pipe
             var reader = new PipeNotificationReader($"/dev/pigpio{handle}");
@@ -296,8 +282,7 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
             _notificationPipes[gpio] = reader;
 
             // start notifications on the handle
-            return SendCommandWithResultCode($"nb {handle} {Math.Pow(2, (int)gpio)}");
-
+            return _pigpioPipe.SendCommandWithResultCode($"nb {handle} {Math.Pow(2, (int)gpio)}");
         }
 
         /// <inheritdoc />
@@ -315,26 +300,26 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
         /// <inheritdoc />
         public ResultCode GpioGlitchFilter(UserGpio userGpio, uint steadyMicroseconds)
         {
-            return SendCommandWithResultCode($"fg {(int)userGpio} {steadyMicroseconds}");
+            return _pigpioPipe.SendCommandWithResultCode($"fg {(int)userGpio} {steadyMicroseconds}");
         }
 
         /// <inheritdoc />
         public ResultCode GpioNoiseFilter(UserGpio userGpio, uint steadyMicroseconds, uint activeMicroseconds)
         {
-            return SendCommandWithResultCode($"fn {(int)userGpio} {steadyMicroseconds} {activeMicroseconds}");
+            return _pigpioPipe.SendCommandWithResultCode($"fn {(int)userGpio} {steadyMicroseconds} {activeMicroseconds}");
         }
 
         /// <inheritdoc />
         public GpioPadStrength GpioGetPad(GpioPadId pad)
         {
-            var result = SendCommandWithResult($"pads {(int)pad}");
+            var result = _pigpioPipe.SendCommandWithResult($"pads {(int)pad}");
             return (GpioPadStrength)Convert.ToInt32(result, CultureInfo.InvariantCulture);
         }
 
         /// <inheritdoc />
         public ResultCode GpioSetPad(GpioPadId pad, GpioPadStrength padStrength)
         {
-            return SendCommandWithResultCode($"pads {(int)pad} {padStrength}");
+            return _pigpioPipe.SendCommandWithResultCode($"pads {(int)pad} {padStrength}");
         }
 
         /// <inheritdoc />
@@ -376,33 +361,7 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
             }
 
             _notificationPipes.Clear();
-            _pipeWriter.Dispose();
-            _pipeReader.Dispose();
-            _errorReader.Dispose();
-        }
-
-        private void SendCommand(string cmd)
-        {
-            PipeWriter.WriteLine(cmd);
-        }
-
-        private string SendCommandWithResult(string cmd)
-        {
-            PipeWriter.WriteLine(cmd);
-            return PipeReader.ReadLine();
-        }
-
-        private ResultCode SendCommandWithResultCode(string cmd)
-        {
-            PipeWriter.WriteLine(cmd);
-            if (PipeReader.EndOfStream)
-            {
-                return ResultCode.Ok;
-            }
-
-            var result = PipeReader.ReadLine();
-            var code = Convert.ToInt32(result, CultureInfo.InvariantCulture);
-            return (ResultCode)code;
+            ((IDisposable)_pigpioPipe).Dispose();
         }
     }
 }

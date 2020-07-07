@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace Unosquare.PiGpio.NativeMethods.Pipe
+namespace Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure
 {
     [StructLayout(LayoutKind.Sequential, Pack = 4)]
     internal struct PigpioNotification

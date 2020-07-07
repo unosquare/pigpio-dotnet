@@ -2,7 +2,8 @@
 {
     using System;
     using RaspberryIO.Abstractions;
-    using NativeMethods.InProcess.DllImports;
+    using Swan.DependencyInjection;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Use this class to access threading methods using interop.
@@ -11,7 +12,16 @@
     public class PigpioThreading : IThreading
     {
         private readonly object _lock = new object();
+        private readonly IThreadsService _threadsService;
         private UIntPtr _currentThread;
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public PigpioThreading()
+        {
+            _threadsService = DependencyContainer.Current.Resolve<IThreadsService>();
+        }
 
         /// <inheritdoc />
         public void StartThread(Action worker)
@@ -51,7 +61,7 @@
                 throw new ArgumentNullException(nameof(worker));
 
             return BoardException.ValidateResult(
-                Threads.GpioStartThread(w => worker(w), userData));
+                _threadsService.GpioStartThread(w => worker(w), userData));
         }
 
         /// <inheritdoc />
@@ -60,7 +70,7 @@
             if (handle == UIntPtr.Zero)
                 return;
 
-            Threads.GpioStopThread(handle);
+            _threadsService.GpioStopThread(handle);
         }
     }
 }

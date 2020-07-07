@@ -2,9 +2,11 @@
 {
     using System;
     using System.Threading;
-    using NativeEnums;
-    using RaspberryIO.Abstractions;
-    using NativeMethods.InProcess.DllImports;
+    using Swan.DependencyInjection;
+    using Unosquare.PiGpio.NativeEnums;
+    using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
+    using Unosquare.RaspberryIO.Abstractions;
 
     /// <summary>
     /// Provides timing, date and delay functions.
@@ -14,6 +16,7 @@
     {
         private const long SecondsToMicrosFactor = 1000000L;
         private const long MillisToMicrosFactor = 1000L;
+        private readonly IThreadsService _threadsService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BoardTimingService"/> class.
@@ -21,6 +24,7 @@
         internal BoardTimingService()
         {
             Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            _threadsService = DependencyContainer.Current.Resolve<IThreadsService>();
         }
 
         /// <summary>
@@ -68,7 +72,7 @@
                 return 0L;
 
             if (microsecs <= uint.MaxValue)
-                return Threads.GpioDelay(Convert.ToUInt32(microsecs));
+                return _threadsService.GpioDelay(Convert.ToUInt32(microsecs));
 
             var componentSeconds = microsecs / SecondsToMicrosFactor;
             var componentMicrosecs = microsecs % SecondsToMicrosFactor;
@@ -76,7 +80,7 @@
             if (componentSeconds <= int.MaxValue && componentMicrosecs <= int.MaxValue)
             {
                 BoardException.ValidateResult(
-                    Threads.GpioSleep(
+                    _threadsService.GpioSleep(
                         TimeType.Relative,
                         Convert.ToInt32(componentSeconds),
                         Convert.ToInt32(componentMicrosecs)));
@@ -84,7 +88,7 @@
                 return microsecs;
             }
 
-            Threads.TimeSleep(componentSeconds + (componentMicrosecs / (double)SecondsToMicrosFactor));
+            _threadsService.TimeSleep(componentSeconds + (componentMicrosecs / (double)SecondsToMicrosFactor));
             return microsecs;
         }
 

@@ -46,7 +46,7 @@
         {
             while (!ct.IsCancellationRequested)
             {
-                Thread.Sleep(50); //Board.Timing.Sleep(50));
+                Board.Timing.Sleep(50);
             }
         }
 

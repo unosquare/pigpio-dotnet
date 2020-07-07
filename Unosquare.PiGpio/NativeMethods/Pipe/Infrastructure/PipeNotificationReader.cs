@@ -2,7 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Unosquare.PiGpio.NativeMethods.Pipe
+namespace Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure
 {
     internal class PipeNotificationReader : PipeReader
     {

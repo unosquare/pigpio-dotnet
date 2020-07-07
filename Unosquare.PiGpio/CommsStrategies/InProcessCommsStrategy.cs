@@ -1,23 +1,25 @@
-﻿using System;
-using Swan.DependencyInjection;
-using Unosquare.PiGpio.NativeMethods.InProcess;
-using Unosquare.PiGpio.NativeMethods.Interfaces;
-
-namespace Unosquare.PiGpio.CommsStrategies
+﻿namespace Unosquare.PiGpio.CommsStrategies
 {
+    using System;
+    using Swan.DependencyInjection;
     using Unosquare.PiGpio.NativeEnums;
+    using Unosquare.PiGpio.NativeMethods.InProcess;
     using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     public class InProcessCommsStrategy : IPiGpioCommsStrategy
     {
         /// <inheritdoc />
         public CommsStrategy CommsStrategy => CommsStrategy.InProcess;
 
+        /// <inheritdoc />
         public void RegisterServices()
         {
             DependencyContainer.Current.Register<IIOService>(new IOServiceInProcess());
+            DependencyContainer.Current.Register<IThreadsService>(new ThreadsServiceInProcess());
         }
 
+        /// <inheritdoc />
         public bool Initialize()
         {
             try

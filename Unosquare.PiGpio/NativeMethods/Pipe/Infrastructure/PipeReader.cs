@@ -1,9 +1,9 @@
-﻿namespace Unosquare.PiGpio.NativeMethods.Pipe
-{
-    using System;
-    using System.IO;
-    using System.Text;
+﻿using System;
+using System.IO;
+using System.Text;
 
+namespace Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure
+{
     internal class PipeReader : IDisposable
     {
         protected readonly FileStream Stream;

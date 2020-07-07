@@ -1,4 +1,4 @@
-﻿namespace Unosquare.PiGpio.NativeMethods.Pipe
+﻿namespace Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure
 {
     using System;
     using System.IO;
