@@ -16,13 +16,18 @@
             DependencyContainer.Current.Register<IThreadsService>(new ThreadsServiceSocket());
             DependencyContainer.Current.Register<IUtilityService>(new UtilityServiceSocket());
             DependencyContainer.Current.Register<IPwmService>(new PwmServiceSocket());
-
         }
 
         /// <inheritdoc />
         public bool Initialize()
         {
             return true;
+        }
+
+        /// <inheritdoc />
+        public void Terminate()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
