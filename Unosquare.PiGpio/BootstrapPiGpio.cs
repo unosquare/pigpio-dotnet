@@ -27,6 +27,7 @@
                 {
                     throw new Exception("Invalid commsStrategy in bootstrap");
                 }
+
                 commsStrategy.RegisterServices();
                 Board.IsAvailable = commsStrategy.Initialize();
 

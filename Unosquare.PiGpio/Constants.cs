@@ -1,6 +1,4 @@
-﻿using System.IO.Pipes;
-
-namespace Unosquare.PiGpio
+﻿namespace Unosquare.PiGpio
 {
     using NativeEnums;
     using System;

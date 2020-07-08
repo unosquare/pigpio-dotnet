@@ -18,6 +18,7 @@
             DependencyContainer.Current.Register<IIOService>(new IOServicePipe(pipe));
             DependencyContainer.Current.Register<IThreadsService>(new ThreadsServicePipe(pipe));
             DependencyContainer.Current.Register<IUtilityService>(new UtilityServicePipe(pipe));
+            DependencyContainer.Current.Register<IPwmService>(new PwmServicePipe(pipe));
         }
 
         /// <inheritdoc />

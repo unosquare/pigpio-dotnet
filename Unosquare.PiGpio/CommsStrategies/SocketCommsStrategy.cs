@@ -15,6 +15,7 @@
             DependencyContainer.Current.Register<IIOService>(new IOServiceSocket());
             DependencyContainer.Current.Register<IThreadsService>(new ThreadsServiceSocket());
             DependencyContainer.Current.Register<IUtilityService>(new UtilityServiceSocket());
+            DependencyContainer.Current.Register<IPwmService>(new PwmServiceSocket());
 
         }
 

@@ -7,9 +7,9 @@
     using Unosquare.PiGpio.NativeTypes;
 
     /// <summary>
-    /// Utility Service Pipe strategy pattern.
-    /// </summary>
-    internal class UtilityServicePipe : IUtilityService
+        /// Utility Service Pipe strategy pattern.
+        /// </summary>
+        internal class UtilityServicePipe : IUtilityService
     {
         private readonly IPigpioPipe _pigpioPipe;
 

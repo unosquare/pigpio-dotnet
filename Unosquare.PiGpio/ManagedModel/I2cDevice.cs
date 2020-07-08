@@ -1,4 +1,6 @@
-﻿namespace Unosquare.PiGpio.ManagedModel
+﻿using System.Globalization;
+
+namespace Unosquare.PiGpio.ManagedModel
 {
     using System;
     using System.Collections.Generic;
@@ -25,7 +27,7 @@
         /// <param name="address">The address.</param>
         internal I2cDevice(I2cBusId busId, byte address)
         {
-            Handle = I2c.I2cOpen(Convert.ToUInt32(busId), address);
+            Handle = I2c.I2cOpen(Convert.ToUInt32(busId, CultureInfo.InvariantCulture), address);
             Address = address;
             BusId = busId;
         }

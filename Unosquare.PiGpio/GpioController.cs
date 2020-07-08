@@ -4,12 +4,12 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using RaspberryIO.Abstractions;
-    using Swan;
-    using Swan.DependencyInjection;
     using ManagedModel;
     using NativeEnums;
     using NativeMethods.Interfaces;
+    using RaspberryIO.Abstractions;
+    using Swan;
+    using Swan.DependencyInjection;
 
     /// <summary>
     /// Represents the Raspberry Pi GPIO controller

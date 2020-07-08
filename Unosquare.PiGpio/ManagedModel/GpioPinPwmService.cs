@@ -3,7 +3,8 @@
     using System;
     using System.Linq;
     using NativeEnums;
-    using NativeMethods.InProcess.DllImports;
+    using Swan.DependencyInjection;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides hardware-based PWM services on the pin.
@@ -11,26 +12,25 @@
     /// <seealso cref="GpioPinServiceBase" />
     public sealed class GpioPinPwmService : GpioPinServiceBase
     {
-
         private static readonly int[] PwmChannelZeroPins = { 12, 18, 40, 52 };
         private static readonly int[] PwmChannelOnePins = { 13, 19, 41, 45, 53 };
+        private readonly IPwmService _pwmService;
 
         internal GpioPinPwmService(GpioPin pin)
            : base(pin)
         {
-            // placeholder
-            // TODO: Not fully implemented yet
+            _pwmService = DependencyContainer.Current.Resolve<IPwmService>();
         }
 
         /// <summary>
         /// Gets the range of the duty cycle.
         /// </summary>
-        public int Range => BoardException.ValidateResult(Pwm.GpioGetPwmRealRange((UserGpio)Pin.BcmPinNumber));
+        public int Range => BoardException.ValidateResult(_pwmService.GpioGetPwmRealRange((UserGpio)Pin.BcmPinNumber));
 
         /// <summary>
         /// Gets the frequency.
         /// </summary>
-        public int Frequency => BoardException.ValidateResult(Pwm.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber));
+        public int Frequency => BoardException.ValidateResult(_pwmService.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber));
 
         /// <summary>
         /// Gets the PWM channel, 0 or 1. A negative number mans there is no associated PWM channel.
@@ -46,7 +46,7 @@
         public void Start(int frequency, int dutyCycle)
         {
             BoardException.ValidateResult(
-                Pwm.GpioHardwarePwm(Pin.PinGpio, Convert.ToUInt32(frequency), Convert.ToUInt32(dutyCycle)));
+                _pwmService.GpioHardwarePwm(Pin.PinGpio, Convert.ToUInt32(frequency), Convert.ToUInt32(dutyCycle)));
         }
 
         /// <summary>
