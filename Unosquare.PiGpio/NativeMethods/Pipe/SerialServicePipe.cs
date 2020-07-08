@@ -1,9 +1,8 @@
-﻿using System.Linq;
-
-namespace Unosquare.PiGpio.NativeMethods.Pipe
+﻿namespace Unosquare.PiGpio.NativeMethods.Pipe
 {
+    using System.Linq;
     using Unosquare.PiGpio.NativeEnums;
-    using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
     using Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure;
 
     /// <summary>
@@ -13,12 +12,12 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe
     {
         private readonly IPigpioPipe _pigpioPipe;
 
-        /// <inheritdoc />
         internal SerialServicePipe(IPigpioPipe pipe)
         {
             _pigpioPipe = pipe;
         }
 
+        /// <inheritdoc />
         public ResultCode GpioSerialReadOpen(UserGpio userGpio, uint baudRate, uint dataBits)
         {
             return _pigpioPipe.SendCommandWithResultCode($"sero ${userGpio} ${baudRate} ${dataBits}");

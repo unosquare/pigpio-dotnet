@@ -1,8 +1,8 @@
-﻿using Unosquare.PiGpio.NativeEnums;
-using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
-
-namespace Unosquare.PiGpio.NativeMethods.Socket
+﻿namespace Unosquare.PiGpio.NativeMethods.Socket
 {
+    using Unosquare.PiGpio.NativeEnums;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
+
     /// <summary>
     /// Serial Service Socket strategy pattern.
     /// </summary>

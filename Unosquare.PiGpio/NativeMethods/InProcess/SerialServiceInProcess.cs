@@ -1,8 +1,9 @@
-﻿using Unosquare.PiGpio.NativeEnums;
-using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
-
-namespace Unosquare.PiGpio.NativeMethods.InProcess
+﻿namespace Unosquare.PiGpio.NativeMethods.InProcess
 {
+    using Unosquare.PiGpio.NativeEnums;
+    using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
+
     /// <summary>
     /// Serial Service In Process strategy pattern implementation.
     /// </summary>
