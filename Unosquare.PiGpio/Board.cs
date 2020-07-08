@@ -5,7 +5,6 @@
     using NativeEnums;
     using RaspberryIO.Abstractions;
     using Swan.DependencyInjection;
-    using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
     using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
@@ -36,6 +35,8 @@
             Peripherals = new BoardPeripheralsService();
             Waves = new BoardWaveService();
         }
+
+        internal static event Action OnRelease;
 
         /// <summary>
         /// Gets a value indicating whether the board has been initialized.
@@ -106,8 +107,8 @@
         public static void Release()
         {
             IsAvailable = false;
-            Setup.GpioTerminate();
             Console.CursorVisible = true;
+            OnRelease?.Invoke();
         }
     }
 }

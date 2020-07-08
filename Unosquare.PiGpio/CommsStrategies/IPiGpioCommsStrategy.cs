@@ -5,5 +5,6 @@
         CommsStrategy CommsStrategy { get; }
         void RegisterServices();
         bool Initialize();
+        void Terminate();
     }
 }

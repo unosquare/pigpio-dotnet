@@ -30,6 +30,7 @@
 
                 commsStrategy.RegisterServices();
                 Board.IsAvailable = commsStrategy.Initialize();
+                Board.OnRelease += () => commsStrategy.Terminate();
 
                 DependencyContainer.Current.Register<IGpioController>(new GpioController());
                 DependencyContainer.Current.Register<ISpiBus>(new SpiBus());

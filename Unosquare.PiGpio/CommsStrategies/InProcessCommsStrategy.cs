@@ -62,7 +62,12 @@
                 Console.WriteLine(e.Message);
                 return false;
             }
+        }
 
+        /// <inheritdoc />
+        public void Terminate()
+        {
+            Setup.GpioTerminate();
         }
     }
 }
