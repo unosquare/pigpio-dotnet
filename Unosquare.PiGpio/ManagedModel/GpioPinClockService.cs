@@ -1,9 +1,10 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
+    using NativeEnums;
+    using Swan.DependencyInjection;
     using System;
     using System.Linq;
-    using NativeEnums;
-    using NativeMethods.InProcess.DllImports;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides a hardware clock services on the associated pin.
@@ -12,6 +13,8 @@
     /// <seealso cref="GpioPinServiceBase" />
     public sealed class GpioPinClockService : GpioPinServiceBase
     {
+        private readonly IPwmService _pwmService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GpioPinClockService"/> class.
         /// </summary>
@@ -19,7 +22,7 @@
         internal GpioPinClockService(GpioPin pin)
             : base(pin)
         {
-            // placeholder
+            _pwmService = DependencyContainer.Current.Resolve<IPwmService>();
             if (Constants.HardwareClockPins0.Contains(Pin.BcmPinNumber))
                 ClockChannel = 0;
             else if (Constants.HardwareClockPins2.Contains(Pin.BcmPinNumber))
@@ -42,7 +45,7 @@
         public void Start(int frequency)
         {
             if (ClockChannel < 0) return;
-            BoardException.ValidateResult(Pwm.GpioHardwareClock(Pin.PinGpio, Convert.ToUInt32(frequency)));
+            BoardException.ValidateResult(_pwmService.GpioHardwareClock(Pin.PinGpio, Convert.ToUInt32(frequency)));
         }
 
         /// <summary>
@@ -51,7 +54,7 @@
         public void Stop()
         {
             if (ClockChannel < 0) return;
-            BoardException.ValidateResult(Pwm.GpioHardwareClock(Pin.PinGpio, 0));
+            BoardException.ValidateResult(_pwmService.GpioHardwareClock(Pin.PinGpio, 0));
         }
 
         /// <summary>

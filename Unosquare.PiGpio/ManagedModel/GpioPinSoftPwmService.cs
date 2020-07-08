@@ -1,8 +1,9 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
     using NativeEnums;
-    using NativeMethods.InProcess.DllImports;
+    using System;
+    using Swan.DependencyInjection;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides a software-based PWM service on the associated pin.
@@ -10,6 +11,8 @@
     /// <seealso cref="GpioPinServiceBase" />
     public class GpioPinSoftPwmService : GpioPinServiceBase
     {
+        private readonly IPwmService _pwmService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GpioPinSoftPwmService"/> class.
         /// </summary>
@@ -17,7 +20,7 @@
         internal GpioPinSoftPwmService(GpioPin pin)
             : base(pin)
         {
-            // placeholder
+            _pwmService = DependencyContainer.Current.Resolve<IPwmService>();
         }
 
         /// <summary>
@@ -25,8 +28,8 @@
         /// </summary>
         public int Range
         {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmRange((UserGpio)Pin.BcmPinNumber));
-            set => BoardException.ValidateResult(Pwm.GpioSetPwmRange((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
+            get => BoardException.ValidateResult(_pwmService.GpioGetPwmRange((UserGpio)Pin.BcmPinNumber));
+            set => BoardException.ValidateResult(_pwmService.GpioSetPwmRange((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>
@@ -35,8 +38,8 @@
         /// </summary>
         public int DutyCycle
         {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmDutyCycle((UserGpio)Pin.BcmPinNumber));
-            set => BoardException.ValidateResult(Pwm.GpioPwm((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
+            get => BoardException.ValidateResult(_pwmService.GpioGetPwmDutyCycle((UserGpio)Pin.BcmPinNumber));
+            set => BoardException.ValidateResult(_pwmService.GpioPwm((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>
@@ -44,8 +47,8 @@
         /// </summary>
         public int Frequency
         {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber));
-            set => BoardException.ValidateResult(Pwm.GpioSetPwmFrequency((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
+            get => BoardException.ValidateResult(_pwmService.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber));
+            set => BoardException.ValidateResult(_pwmService.GpioSetPwmFrequency((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>

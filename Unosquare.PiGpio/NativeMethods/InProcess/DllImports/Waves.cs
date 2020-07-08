@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
-    using System.Runtime.InteropServices;
     using NativeEnums;
     using NativeTypes;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Provides Waveform methods for the pigpio library. These are methods to send pulses on the pins

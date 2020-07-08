@@ -2,8 +2,8 @@
 {
     using System;
     using NativeEnums;
-    using RaspberryIO.Abstractions;
     using NativeMethods.Interfaces;
+    using RaspberryIO.Abstractions;
 
     /// <summary>
     /// A class representing a GPIO port (pin).
