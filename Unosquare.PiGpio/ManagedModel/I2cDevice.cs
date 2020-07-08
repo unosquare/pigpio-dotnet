@@ -50,7 +50,7 @@ namespace Unosquare.PiGpio.ManagedModel
         public I2cBusId BusId { get; }
 
         /// <summary>
-        /// Gets the devide address on the bus.
+        /// Gets the device address on the bus.
         /// </summary>
         public byte Address { get; }
 

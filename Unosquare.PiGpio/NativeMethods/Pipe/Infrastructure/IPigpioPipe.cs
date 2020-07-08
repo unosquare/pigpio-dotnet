@@ -8,6 +8,7 @@
         string SendCommandWithResult(string cmd);
         int SendCommandWithIntResult(string cmd);
         uint SendCommandWithUIntResult(string cmd);
+        byte[] SendCommandWithResultBlob(string cmd);
         ResultCode SendCommandWithResultCode(string cmd);
     }
 }

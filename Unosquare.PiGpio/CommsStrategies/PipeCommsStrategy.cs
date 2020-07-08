@@ -20,6 +20,7 @@
             DependencyContainer.Current.Register<IThreadsService>(new ThreadsServicePipe(_pipe));
             DependencyContainer.Current.Register<IUtilityService>(new UtilityServicePipe(_pipe));
             DependencyContainer.Current.Register<IPwmService>(new PwmServicePipe(_pipe));
+            DependencyContainer.Current.Register<ISerialService>(new SerialServicePipe(_pipe));
         }
 
         /// <inheritdoc />

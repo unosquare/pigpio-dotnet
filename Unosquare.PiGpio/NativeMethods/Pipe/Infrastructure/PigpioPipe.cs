@@ -1,4 +1,6 @@
-﻿namespace Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure
+﻿using System.Linq;
+
+namespace Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure
 {
     using System;
     using System.Globalization;
@@ -74,6 +76,25 @@
                 var result = PipeReader.ReadLine();
                 var code = Convert.ToInt32(result, CultureInfo.InvariantCulture);
                 return (ResultCode)code;
+            }
+        }
+
+        public byte[] SendCommandWithResultBlob(string cmd)
+        {
+            lock (_syncLock)
+            {
+                PipeWriter.WriteLine(cmd);
+                if (PipeReader.EndOfStream)
+                {
+                    return Array.Empty<byte>();
+                }
+
+                var text = PipeReader.ReadLine();
+                var numbers = ((text != null) ? text.Split(' ') : Array.Empty<string>())
+                    .Select(t => Convert.ToByte(t, CultureInfo.InvariantCulture))
+                    .ToArray();
+
+                return numbers;
             }
         }
 
