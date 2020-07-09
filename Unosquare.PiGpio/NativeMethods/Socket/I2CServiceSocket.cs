@@ -20,7 +20,7 @@
             throw new NotImplementedException();
         }
 
-        public ResultCode I2cWriteQuick(UIntPtr handle, I2cQuickMode bit)
+        public ResultCode I2cWriteQuick(UIntPtr handle, bool bit)
         {
             throw new NotImplementedException();
         }

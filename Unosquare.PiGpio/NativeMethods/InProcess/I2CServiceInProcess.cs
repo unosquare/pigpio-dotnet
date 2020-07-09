@@ -25,7 +25,7 @@ namespace Unosquare.PiGpio.NativeMethods.InProcess
         }
 
         /// <inheritdoc/>
-        public ResultCode I2cWriteQuick(UIntPtr handle, I2cQuickMode bit)
+        public ResultCode I2cWriteQuick(UIntPtr handle, bool bit)
         {
             return I2c.I2cWriteQuick(handle, bit);
         }

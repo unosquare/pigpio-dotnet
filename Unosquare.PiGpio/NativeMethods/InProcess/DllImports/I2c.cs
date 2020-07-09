@@ -64,9 +64,9 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
         /// <param name="bit">0-1, the value to write.</param>
         /// <returns>Returns 0 if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_WRITE_FAILED.</returns>
-        public static ResultCode I2cWriteQuick(UIntPtr handle, I2cQuickMode bit)
+        public static ResultCode I2cWriteQuick(UIntPtr handle, bool bit)
         {
-            return I2cWriteQuickUnmanaged(handle, (uint)bit);
+            return I2cWriteQuickUnmanaged(handle, (uint)(bit ? 1 : 0));
         }
 
         /// <summary>

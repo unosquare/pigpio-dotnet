@@ -19,8 +19,7 @@
         /// <inheritdoc />
         public ResultCode GpioPwm(UserGpio userGpio, uint dutyCycle)
         {
-            _pigpioPipe.SendCommand($"p {userGpio} {dutyCycle}");
-            return ResultCode.Ok;
+            return _pigpioPipe.SendCommandWithResultCode($"p {userGpio} {dutyCycle}");
         }
 
         /// <inheritdoc />
@@ -74,15 +73,13 @@
         /// <inheritdoc />
         public ResultCode GpioHardwareClock(SystemGpio gpio, uint clockFrequency)
         {
-            _pigpioPipe.SendCommand($"hc ${gpio} ${clockFrequency}");
-            return ResultCode.Ok;
+            return _pigpioPipe.SendCommandWithResultCode($"hc ${gpio} ${clockFrequency}");
         }
 
         /// <inheritdoc />
         public ResultCode GpioHardwarePwm(SystemGpio gpio, uint pwmFrequency, uint pwmDutyCycle)
         {
-            _pigpioPipe.SendCommand($"hp ${gpio} ${pwmFrequency} ${pwmDutyCycle}");
-            return ResultCode.Ok;
+            return _pigpioPipe.SendCommandWithResultCode($"hp ${gpio} ${pwmFrequency} ${pwmDutyCycle}");
         }
     }
 }

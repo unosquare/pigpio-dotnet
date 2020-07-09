@@ -71,7 +71,7 @@ namespace Unosquare.PiGpio.ManagedModel
         /// </summary>
         /// <param name="mode">The mode (write is 0, read is 1).</param>
         public void SetMode(I2cQuickMode mode) =>
-            BoardException.ValidateResult(I2c.I2cWriteQuick(Handle, mode));
+            BoardException.ValidateResult(I2c.I2cWriteQuick(Handle, mode == I2cQuickMode.Read));
 
         /// <summary>
         /// This sends a single byte to the device associated with handle.
