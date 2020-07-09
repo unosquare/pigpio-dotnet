@@ -1,9 +1,8 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.Interfaces
 {
     using System;
-    using NativeEnums;
-    using InProcess.DllImports;
-    using NativeTypes;
+    using Unosquare.PiGpio.NativeEnums;
+    using Unosquare.PiGpio.NativeTypes;
 
     internal interface IIOService
     {

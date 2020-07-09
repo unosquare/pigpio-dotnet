@@ -18,6 +18,7 @@
             DependencyContainer.Current.Register<IPwmService>(new PwmServiceSocket());
             DependencyContainer.Current.Register<ISerialService>(new SerialServiceSocket());
             DependencyContainer.Current.Register<IWavesService>(new WavesServiceSocket());
+            DependencyContainer.Current.Register<II2CService>(new I2CServiceSocket());
         }
 
         /// <inheritdoc />

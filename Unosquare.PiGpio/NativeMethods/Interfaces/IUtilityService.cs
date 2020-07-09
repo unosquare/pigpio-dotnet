@@ -2,7 +2,6 @@
 {
     using System;
     using Unosquare.PiGpio.NativeEnums;
-    using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
     using Unosquare.PiGpio.NativeTypes;
 
     internal interface IUtilityService
@@ -15,7 +14,7 @@
         /// /proc/cpuinfo.
         ///
         /// The revision number can be used to determine the assignment of GPIO
-        /// to pins (see <see cref="PiIO"/>).
+        /// to pins (see <see cref="IIOService"/>).
         ///
         /// There are at least three types of board.
         ///
