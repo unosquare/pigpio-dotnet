@@ -4,8 +4,7 @@
     using System.Runtime.InteropServices;
 
     /// <summary>
-    /// A pulse representing microseconds in the high position,
-    /// microseconds in the low position, and a delay measure.
+    /// A waveform entry consisting of GPIO bits to turn on, GPIO bits to turn off, and a delay before the next waveform entry.
     /// </summary>
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     public struct GpioPulse

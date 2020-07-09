@@ -5,9 +5,10 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using NativeEnums;
-    using NativeMethods.InProcess.DllImports;
     using NativeTypes;
+    using Swan.DependencyInjection;
     using Unosquare.PiGpio.ExtensionMethods;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides methods to build and render waveforms.
@@ -17,6 +18,7 @@
         private const string WaveAlreadyPreparedErrorMessage = "Wave was already prepared and cannot be modified.";
         private const string DisposedErrorMessage = "Wave was already disposed.";
         private static readonly object SyncLock = new object();
+        private readonly IWavesService _wavesService;
         private readonly List<GpioPulse> m_Pulses;
         private bool _isDisposed;
 
@@ -25,6 +27,7 @@
         /// </summary>
         internal WaveBuilder()
         {
+            _wavesService = DependencyContainer.Current.Resolve<IWavesService>();
             m_Pulses = new List<GpioPulse>(Board.Waves.MaxPulses);
         }
 
@@ -192,11 +195,11 @@
                 if (IsPrepared) return;
                 if (_isDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
 
-                Waves.GpioWaveClear();
+                _wavesService.GpioWaveClear();
                 BoardException.ValidateResult(
-                    Waves.GpioWaveAddGeneric(Convert.ToUInt32(m_Pulses.Count), m_Pulses.ToArray()));
+                    _wavesService.GpioWaveAddGeneric(Convert.ToUInt32(m_Pulses.Count), m_Pulses.ToArray()));
                 WaveId = BoardException.ValidateResult(
-                    Waves.GpioWaveCreate());
+                    _wavesService.GpioWaveCreate());
             }
         }
 
@@ -217,7 +220,7 @@
                 Prepare();
 
             if (IsPrepared)
-                BoardException.ValidateResult(Waves.GpioWaveTxSend(Convert.ToUInt32(WaveId), mode));
+                BoardException.ValidateResult(_wavesService.GpioWaveTxSend(Convert.ToUInt32(WaveId), mode));
         }
 
         /// <inheritdoc />
@@ -277,7 +280,7 @@
                     }
                 }
 
-                Waves.GpioWaveDelete(Convert.ToUInt32(WaveId));
+                _wavesService.GpioWaveDelete(Convert.ToUInt32(WaveId));
                 WaveId = -1;
             }
         }

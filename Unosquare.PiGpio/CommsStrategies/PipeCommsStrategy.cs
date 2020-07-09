@@ -21,6 +21,7 @@
             DependencyContainer.Current.Register<IUtilityService>(new UtilityServicePipe(_pipe));
             DependencyContainer.Current.Register<IPwmService>(new PwmServicePipe(_pipe));
             DependencyContainer.Current.Register<ISerialService>(new SerialServicePipe(_pipe));
+            DependencyContainer.Current.Register<IWavesService>(new WavesServicePipe(_pipe));
         }
 
         /// <inheritdoc />

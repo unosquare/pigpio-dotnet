@@ -1,6 +1,7 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeMethods.InProcess.DllImports;
+    using Swan.DependencyInjection;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides a a pin service to generate pulses with microsecond precision.
@@ -8,6 +9,8 @@
     /// <seealso cref="GpioPinServiceBase" />
     public sealed class BoardWaveService
     {
+        private readonly IWavesService _wavesService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BoardWaveService"/> class.
         /// </summary>
@@ -17,9 +20,12 @@
             // TODO: implementation is incomplete
             // see https://github.com/bschwind/ir-slinger/blob/master/irslinger.h
             // for usage
-            MaxPulses = Waves.GpioWaveGetMaxPulses();
-            MaxDmaControlBlocks = Waves.GpioWaveGetMaxCbs();
-            MaxDurationMicroSecs = Waves.GpioWaveGetMaxMicros();
+
+            _wavesService = DependencyContainer.Current.Resolve<IWavesService>();
+
+            MaxPulses = _wavesService.GpioWaveGetMaxPulses();
+            MaxDmaControlBlocks = _wavesService.GpioWaveGetMaxCbs();
+            MaxDurationMicroSecs = _wavesService.GpioWaveGetMaxMicros();
         }
 
         /// <summary>
@@ -40,7 +46,7 @@
         /// <summary>
         /// Gets a value indicating whether a waveform is being transmitted.
         /// </summary>
-        public bool IsBusy => Waves.GpioWaveTxBusy() > 0;
+        public bool IsBusy => _wavesService.GpioWaveTxBusy() > 0;
 
         /// <summary>
         /// Gets the current wave identifier.
@@ -49,7 +55,7 @@
         {
             get
             {
-                var waveId = Waves.GpioWaveTxAt();
+                var waveId = _wavesService.GpioWaveTxAt();
                 return waveId >= 0 && waveId < 9998 ? waveId : -1;
             }
         }
@@ -58,7 +64,7 @@
         /// Stops the current wave being transmitted.
         /// This is intended to stop waves that are generated with a cycling mode.
         /// </summary>
-        public void StopCurrent() => Waves.GpioWaveTxStop();
+        public void StopCurrent() => _wavesService.GpioWaveTxStop();
 
         /// <summary>
         /// Creates the wave.

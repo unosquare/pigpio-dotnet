@@ -4,7 +4,6 @@
     using Swan.DependencyInjection;
     using Unosquare.PiGpio.NativeEnums;
     using Unosquare.PiGpio.NativeMethods.InProcess;
-    using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
     using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     public class InProcessCommsStrategy : IPiGpioCommsStrategy
@@ -20,6 +19,7 @@
             DependencyContainer.Current.Register<IUtilityService>(new UtilityServiceInProcess());
             DependencyContainer.Current.Register<IPwmService>(new PwmServiceInProcess());
             DependencyContainer.Current.Register<ISerialService>(new SerialServiceInProcess());
+            DependencyContainer.Current.Register<IWavesService>(new WavesServiceInProcess());
         }
 
         /// <inheritdoc />

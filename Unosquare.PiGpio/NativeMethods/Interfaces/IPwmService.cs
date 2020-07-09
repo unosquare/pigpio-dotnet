@@ -1,7 +1,6 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.Interfaces
 {
     using Unosquare.PiGpio.NativeEnums;
-    using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
 
     internal interface IPwmService
     {
@@ -264,8 +263,8 @@
         /// Starts hardware PWM on a GPIO at the specified frequency and dutycycle.
         /// Frequencies above 30MHz are unlikely to work.
         ///
-        /// NOTE: Any waveform started by <see cref="Waves.GpioWaveTxSend"/>, or
-        /// <see cref="Waves.GpioWaveChain"/> will be cancelled.
+        /// NOTE: Any waveform started by <see cref="IWavesService.GpioWaveTxSend"/>, or
+        /// <see cref="IWavesService.GpioWaveChain"/> will be cancelled.
         ///
         /// This function is only valid if the pigpio main clock is PCM.  The
         /// main clock defaults to PCM but may be overridden by a call to

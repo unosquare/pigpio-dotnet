@@ -2,7 +2,8 @@
 {
     using System;
     using NativeEnums;
-    using NativeMethods.InProcess.DllImports;
+    using Swan.DependencyInjection;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides a software based (bit-banged Serial Port).
@@ -10,6 +11,8 @@
     public sealed class SoftSerialPort : IDisposable
     {
         private readonly GpioPin _transmitPin;
+        private readonly IWavesService _wavesService;
+        private readonly ISerialService _serialService;
         private bool _isDisposed;
 
         /// <summary>
@@ -22,8 +25,10 @@
         /// <param name="invert">if set to <c>true</c> [invert].</param>
         internal SoftSerialPort(GpioPin receivePin, GpioPin transmitPin, UartRate baudRate, int dataBits, bool invert)
         {
+            _wavesService = DependencyContainer.Current.Resolve<IWavesService>();
+            _serialService = DependencyContainer.Current.Resolve<ISerialService>();
             BoardException.ValidateResult(
-                Serial.GpioSerialReadOpen((UserGpio)receivePin.BcmPinNumber, Convert.ToUInt32(baudRate), Convert.ToUInt32(dataBits)));
+                _serialService.GpioSerialReadOpen((UserGpio)receivePin.BcmPinNumber, Convert.ToUInt32(baudRate), Convert.ToUInt32(dataBits)));
 
             Handle = (UserGpio)receivePin.BcmPinNumber;
             DataBits = dataBits;
@@ -31,7 +36,7 @@
 
             if (invert)
             {
-                Serial.GpioSerialReadInvert(Handle, true);
+                _serialService.GpioSerialReadInvert(Handle, true);
                 Invert = true;
             }
 
@@ -69,7 +74,7 @@
         /// <param name="count">The count.</param>
         /// <returns>The bytes that were read.</returns>
         public byte[] Read(int count) =>
-            Serial.GpioSerialRead(Handle, count);
+            _serialService.GpioSerialRead(Handle, count);
 
         /// <summary>
         /// Writes the specified buffer to the transmit pin as a free-form wave.
@@ -77,9 +82,9 @@
         /// <param name="buffer">The buffer.</param>
         public void Write(byte[] buffer)
         {
-            Waves.GpioWaveClear();
+            _wavesService.GpioWaveClear();
             BoardException.ValidateResult(
-                Waves.GpioWaveAddSerial(
+                _wavesService.GpioWaveAddSerial(
                     (UserGpio)_transmitPin.BcmPinNumber,
                     Convert.ToUInt32(BaudRate),
                     Convert.ToUInt32(DataBits),
@@ -89,14 +94,14 @@
                     buffer));
 
             var waveId = BoardException.ValidateResult(
-                Waves.GpioWaveCreate());
-            Waves.GpioWaveTxSend(Convert.ToUInt32(waveId), WaveMode.OneShotSync);
+                _wavesService.GpioWaveCreate());
+            _wavesService.GpioWaveTxSend(Convert.ToUInt32(waveId), WaveMode.OneShotSync);
 
             // Wait for the wave to finish sending
-            while (Waves.GpioWaveTxBusy() > 0)
+            while (_wavesService.GpioWaveTxBusy() > 0)
                 Board.Timing.Sleep(1);
 
-            Waves.GpioWaveDelete(Convert.ToUInt32(waveId));
+            _wavesService.GpioWaveDelete(Convert.ToUInt32(waveId));
         }
 
         /// <inheritdoc />
@@ -113,7 +118,7 @@
 
             if (alsoManaged)
             {
-                Serial.GpioSerialReadClose(Handle);
+                _serialService.GpioSerialReadClose(Handle);
             }
         }
     }
