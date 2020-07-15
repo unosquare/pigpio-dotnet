@@ -70,7 +70,7 @@
             throw new NotImplementedException();
         }
 
-        public int I2cBlockProcessCall(UIntPtr handle, byte register, byte[] buffer)
+        public uint I2cBlockProcessCall(UIntPtr handle, byte register, byte[] buffer)
         {
             throw new NotImplementedException();
         }
@@ -85,7 +85,7 @@
             throw new NotImplementedException();
         }
 
-        public int I2cReadDevice(UIntPtr handle, byte[] buffer)
+        public uint I2cReadDevice(UIntPtr handle, byte[] buffer)
         {
             throw new NotImplementedException();
         }

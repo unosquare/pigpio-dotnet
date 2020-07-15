@@ -11,7 +11,7 @@
     /// </summary>
     internal class I2CServicePipe : II2CService
     {
-        private PigpioPipe _pigpioPipe;
+        private readonly PigpioPipe _pigpioPipe;
 
         /// <inheritdoc/>
         public I2CServicePipe(PigpioPipe pipe)
@@ -93,7 +93,7 @@
         }
 
         /// <inheritdoc/>
-        public int I2cBlockProcessCall(UIntPtr handle, byte register, byte[] buffer)
+        public uint I2cBlockProcessCall(UIntPtr handle, byte register, byte[] buffer)
         {
             throw new NotImplementedException();
         }
@@ -111,7 +111,7 @@
         }
 
         /// <inheritdoc/>
-        public int I2cReadDevice(UIntPtr handle, byte[] buffer)
+        public uint I2cReadDevice(UIntPtr handle, byte[] buffer)
         {
             throw new NotImplementedException();
         }

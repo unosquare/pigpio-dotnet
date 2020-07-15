@@ -23,9 +23,9 @@
         }
 
         /// <inheritdoc />
-        public int GpioGetPwmDutyCycle(UserGpio userGpio)
+        public uint GpioGetPwmDutyCycle(UserGpio userGpio)
         {
-            return _pigpioPipe.SendCommandWithIntResult($"gdc ${userGpio}");
+            return BoardException.ValidateResult(_pigpioPipe.SendCommandWithIntResult($"gdc ${userGpio}"));
         }
 
         /// <inheritdoc />
@@ -35,9 +35,9 @@
         }
 
         /// <inheritdoc />
-        public int GpioGetServoPulseWidth(UserGpio userGpio)
+        public uint GpioGetServoPulseWidth(UserGpio userGpio)
         {
-            return _pigpioPipe.SendCommandWithIntResult($"gpw ${userGpio}");
+            return BoardException.ValidateResult(_pigpioPipe.SendCommandWithIntResult($"gpw ${userGpio}"));
         }
 
         /// <inheritdoc />
@@ -47,15 +47,15 @@
         }
 
         /// <inheritdoc />
-        public int GpioGetPwmRange(UserGpio userGpio)
+        public uint GpioGetPwmRange(UserGpio userGpio)
         {
-            return _pigpioPipe.SendCommandWithIntResult($"prg ${userGpio}");
+            return BoardException.ValidateResult(_pigpioPipe.SendCommandWithIntResult($"prg ${userGpio}"));
         }
 
         /// <inheritdoc />
-        public int GpioGetPwmRealRange(UserGpio userGpio)
+        public uint GpioGetPwmRealRange(UserGpio userGpio)
         {
-            return _pigpioPipe.SendCommandWithIntResult($"prrg ${userGpio}");
+            return BoardException.ValidateResult(_pigpioPipe.SendCommandWithIntResult($"prrg ${userGpio}"));
         }
 
         /// <inheritdoc />
@@ -65,9 +65,9 @@
         }
 
         /// <inheritdoc />
-        public int GpioGetPwmFrequency(UserGpio userGpio)
+        public uint GpioGetPwmFrequency(UserGpio userGpio)
         {
-            return _pigpioPipe.SendCommandWithIntResult($"pfg ${userGpio}");
+            return BoardException.ValidateResult(_pigpioPipe.SendCommandWithIntResult($"pfg ${userGpio}"));
         }
 
         /// <inheritdoc />

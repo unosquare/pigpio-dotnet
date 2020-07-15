@@ -42,7 +42,7 @@
         /// </summary>
         /// <param name="userGpio">The user gpio.</param>
         /// <returns>The PWM duty cycle.</returns>
-        internal static int GpioGetPwmDutyCycle(UserGpio userGpio)
+        internal static uint GpioGetPwmDutyCycle(UserGpio userGpio)
         {
             return BoardException.ValidateResult(GpioGetPwmDutyCycleUnmanaged(userGpio));
         }
@@ -103,7 +103,7 @@
         /// </summary>
         /// <param name="userGpio">The user gpio.</param>
         /// <returns>The Servo pulse width.</returns>
-        internal static int GpioGetServoPulseWidth(UserGpio userGpio)
+        internal static uint GpioGetServoPulseWidth(UserGpio userGpio)
         {
             return BoardException.ValidateResult(GpioGetServoPulseWidthUnmanaged(userGpio));
         }
@@ -169,7 +169,7 @@
         /// </example>
         /// <param name="userGpio">0-31.</param>
         /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
-        internal static int GpioGetPwmRealRange(UserGpio userGpio)
+        internal static uint GpioGetPwmRealRange(UserGpio userGpio)
         {
             return BoardException.ValidateResult(GpioGetPwmRealRangeUnmanaged(userGpio));
         }
@@ -370,7 +370,7 @@
         /// <param name="userGpio">0-31.</param>
         /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
         [DllImport(Constants.PiGpioLibrary, CallingConvention = CallingConvention.Cdecl, EntryPoint = "gpioGetPWMrealRange")]
-        private static extern int GpioGetPwmRealRangeUnmanaged(UserGpio userGpio);
+        internal static extern int GpioGetPwmRealRangeUnmanaged(UserGpio userGpio);
 
         #endregion
     }

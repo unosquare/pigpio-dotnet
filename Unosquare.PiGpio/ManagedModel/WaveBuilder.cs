@@ -198,8 +198,14 @@
                 _wavesService.GpioWaveClear();
                 BoardException.ValidateResult(
                     _wavesService.GpioWaveAddGeneric(Convert.ToUInt32(m_Pulses.Count), m_Pulses.ToArray()));
-                WaveId = BoardException.ValidateResult(
-                    _wavesService.GpioWaveCreate());
+                try
+                {
+                    WaveId = (int)BoardException.ValidateResult(_wavesService.GpioWaveCreate());
+                }
+                catch
+                {
+                    WaveId = -1;
+                }
             }
         }
 
@@ -220,7 +226,7 @@
                 Prepare();
 
             if (IsPrepared)
-                BoardException.ValidateResult(_wavesService.GpioWaveTxSend(Convert.ToUInt32(WaveId), mode));
+                BoardException.ValidateResult(_wavesService.GpioWaveTxSend((uint)WaveId, mode));
         }
 
         /// <inheritdoc />

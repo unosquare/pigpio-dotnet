@@ -214,7 +214,7 @@ namespace Unosquare.PiGpio.ManagedModel
                 return output;
 
             var result = new byte[count];
-            Buffer.BlockCopy(output, 0, result, 0, count);
+            Buffer.BlockCopy(output, 0, result, 0, (int)count);
             return result;
         }
 

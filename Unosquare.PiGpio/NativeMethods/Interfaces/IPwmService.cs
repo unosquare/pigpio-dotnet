@@ -1,4 +1,6 @@
-﻿namespace Unosquare.PiGpio.NativeMethods.Interfaces
+﻿using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;
+
+namespace Unosquare.PiGpio.NativeMethods.Interfaces
 {
     using Unosquare.PiGpio.NativeEnums;
 
@@ -35,8 +37,8 @@
         /// Gets the PWM duty cycle.
         /// </summary>
         /// <param name="userGpio">The user gpio.</param>
-        /// <returns>The PWM duty cycle.</returns>
-        int GpioGetPwmDutyCycle(UserGpio userGpio);
+        /// <returns>The PWM duty cycle, between 0 and Range.</returns>
+        uint GpioGetPwmDutyCycle(UserGpio userGpio);
 
         /// <summary>
         /// Starts servo pulses on the GPIO, 0 (off), 500 (most anti-clockwise) to
@@ -93,7 +95,7 @@
         /// </summary>
         /// <param name="userGpio">The user gpio.</param>
         /// <returns>The Servo pulse width.</returns>
-        int GpioGetServoPulseWidth(UserGpio userGpio);
+        uint GpioGetServoPulseWidth(UserGpio userGpio);
 
         /// <summary>
         /// Selects the dutycycle range to be used for the GPIO.  Subsequent calls
@@ -137,7 +139,7 @@
         /// </example>
         /// <param name="userGpio">0-31.</param>
         /// <returns>Returns the dutycycle range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
-        int GpioGetPwmRange(UserGpio userGpio);
+        uint GpioGetPwmRange(UserGpio userGpio);
 
         /// <summary>
         /// If a hardware clock is active on the GPIO the reported real
@@ -154,7 +156,7 @@
         /// </example>
         /// <param name="userGpio">0-31.</param>
         /// <returns>Returns the real range used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
-        int GpioGetPwmRealRange(UserGpio userGpio);
+        uint GpioGetPwmRealRange(UserGpio userGpio);
 
         /// <summary>
         /// Sets the frequency in hertz to be used for the GPIO.
@@ -226,7 +228,7 @@
         /// </example>
         /// <param name="userGpio">0-31.</param>
         /// <returns>Returns the frequency (in hertz) used for the GPIO if OK, otherwise PI_BAD_USER_GPIO.</returns>
-        int GpioGetPwmFrequency(UserGpio userGpio);
+        uint GpioGetPwmFrequency(UserGpio userGpio);
 
         /// <summary>
         /// Starts a hardware clock on a GPIO at the specified frequency.

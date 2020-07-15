@@ -25,13 +25,29 @@
         /// <summary>
         /// Gets the range of the duty cycle.
         /// </summary>
-        public int Range => BoardException.ValidateResult(_pwmService.GpioGetPwmRealRange((UserGpio)Pin.BcmPinNumber));
+        public uint Range
+        {
+            get => _pwmService.GpioGetPwmRealRange((UserGpio) Pin.BcmPinNumber);
+            set => BoardException.ValidateResult(_pwmService.GpioSetPwmRange((UserGpio)Pin.BcmPinNumber, value));
+        }
 
         /// <summary>
         /// Gets the frequency.
         /// </summary>
-        public int Frequency => BoardException.ValidateResult(_pwmService.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber));
+        public uint Frequency
+        {
+            get => _pwmService.GpioGetPwmFrequency((UserGpio) Pin.BcmPinNumber);
+            set => BoardException.ValidateResult(_pwmService.GpioSetPwmFrequency((UserGpio)Pin.BcmPinNumber, value));
+        }
 
+        /// <summary>
+        /// Gets the duty cycle.
+        /// </summary>
+        public uint DutyCycle
+        {
+            get => _pwmService.GpioGetPwmDutyCycle((UserGpio)Pin.BcmPinNumber);
+            set => BoardException.ValidateResult(_pwmService.GpioPwm((UserGpio)Pin.BcmPinNumber, value));
+        }
         /// <summary>
         /// Gets the PWM channel, 0 or 1. A negative number mans there is no associated PWM channel.
         /// </summary>

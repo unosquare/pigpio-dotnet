@@ -85,9 +85,9 @@ namespace Unosquare.PiGpio.NativeMethods.InProcess
         }
 
         /// <inheritdoc/>
-        public int I2cBlockProcessCall(UIntPtr handle, byte register, byte[] buffer)
+        public uint I2cBlockProcessCall(UIntPtr handle, byte register, byte[] buffer)
         {
-            return I2c.I2cBlockProcessCall(handle, register, buffer);
+            return BoardException.ValidateResult(I2c.I2cBlockProcessCall(handle, register, buffer));
         }
 
         /// <inheritdoc/>
@@ -103,7 +103,7 @@ namespace Unosquare.PiGpio.NativeMethods.InProcess
         }
 
         /// <inheritdoc/>
-        public int I2cReadDevice(UIntPtr handle, byte[] buffer)
+        public uint I2cReadDevice(UIntPtr handle, byte[] buffer)
         {
             return I2c.I2cReadDevice(handle, buffer);
         }

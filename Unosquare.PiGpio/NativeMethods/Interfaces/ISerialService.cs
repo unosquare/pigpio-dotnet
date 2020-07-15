@@ -48,7 +48,7 @@
         /// <param name="buffer">The buffer.</param>
         /// <param name="readLength">Length of the read.</param>
         /// <returns>The amount of bytes read.</returns>
-        int GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength);
+        uint GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength);
 
         /// <summary>
         /// This function copies up to bufSize bytes of data read from the

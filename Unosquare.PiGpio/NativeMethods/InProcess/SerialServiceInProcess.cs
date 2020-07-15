@@ -22,7 +22,7 @@
         }
 
         /// <inheritdoc />
-        public int GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
+        public uint GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
         {
             return Serial.GpioSerialRead(userGpio, buffer, readLength);
         }

@@ -26,9 +26,9 @@
         /// <summary>
         /// Gets or sets the range of the duty cycle.
         /// </summary>
-        public int Range
+        public uint Range
         {
-            get => BoardException.ValidateResult(_pwmService.GpioGetPwmRange((UserGpio)Pin.BcmPinNumber));
+            get => _pwmService.GpioGetPwmRange((UserGpio)Pin.BcmPinNumber);
             set => BoardException.ValidateResult(_pwmService.GpioSetPwmRange((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
@@ -36,18 +36,18 @@
         /// Gets or sets the duty cycle. Setting this property starts the PWM pulses.
         /// The default range is 255.
         /// </summary>
-        public int DutyCycle
+        public uint DutyCycle
         {
-            get => BoardException.ValidateResult(_pwmService.GpioGetPwmDutyCycle((UserGpio)Pin.BcmPinNumber));
+            get => _pwmService.GpioGetPwmDutyCycle((UserGpio)Pin.BcmPinNumber);
             set => BoardException.ValidateResult(_pwmService.GpioPwm((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>
         /// Gets or sets the frequency (in Hz) at which the PWM runs.
         /// </summary>
-        public int Frequency
+        public uint Frequency
         {
-            get => BoardException.ValidateResult(_pwmService.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber));
+            get => _pwmService.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber);
             set => BoardException.ValidateResult(_pwmService.GpioSetPwmFrequency((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 

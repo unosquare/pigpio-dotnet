@@ -9,7 +9,7 @@
     {
         private const int MinPulseWidth = GpioPinServoService.PulseWidthMin + 50;
         private const int MaxPulseWidth = GpioPinServoService.PulseWidthMax;
-        private const int InitialPulseWidth = GpioPinServoService.PulseWidthMin + 500;
+        private const uint InitialPulseWidth = GpioPinServoService.PulseWidthMin + 500;
         private GpioPin _pin;
 
         public Servo(bool isEnabled)
@@ -23,7 +23,7 @@
         protected override void DoBackgroundWork(CancellationToken ct)
         {
             var pulseWidth = InitialPulseWidth;
-            var pulseDelta = 10;
+            int pulseDelta = 10;
             while (ct.IsCancellationRequested == false)
             {
                 var flipDelta = false;
@@ -48,7 +48,7 @@
                     Board.Timing.Sleep(500);
                 }
 
-                pulseWidth = pulseWidth + pulseDelta;
+                pulseWidth = (uint)(pulseWidth + pulseDelta);
                 Board.Timing.SleepMicros(5000);
             }
         }

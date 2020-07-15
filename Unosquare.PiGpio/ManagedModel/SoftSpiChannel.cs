@@ -91,7 +91,7 @@
                 return receiveBuffer;
 
             var output = new byte[result];
-            Buffer.BlockCopy(receiveBuffer, 0, output, 0, result);
+            Buffer.BlockCopy(receiveBuffer, 0, output, 0, (int)result);
             return output;
         }
 

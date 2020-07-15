@@ -210,8 +210,8 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
         /// <param name="register">0-255, the register to write/read.</param>
         /// <param name="buffer">an array with the data to send and to receive the read data.</param>
-        /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        int I2cBlockProcessCall(UIntPtr handle, byte register, byte[] buffer);
+        /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise throws exception.</returns>
+        uint I2cBlockProcessCall(UIntPtr handle, byte register, byte[] buffer);
 
         /// <summary>
         /// This reads count bytes from the specified register of the device
@@ -252,8 +252,8 @@
         /// </remarks>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
         /// <param name="buffer">an array to receive the read data bytes.</param>
-        /// <returns>Returns count (&gt;0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        int I2cReadDevice(UIntPtr handle, byte[] buffer);
+        /// <returns>Returns count (&gt;0) if OK, otherwise throws exception.</returns>
+        uint I2cReadDevice(UIntPtr handle, byte[] buffer);
 
         /// <summary>
         /// This reads count bytes from the raw device into buf.

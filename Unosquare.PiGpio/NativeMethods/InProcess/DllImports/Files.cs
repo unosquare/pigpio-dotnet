@@ -94,7 +94,7 @@
             var buffer = new byte[count];
             var result = BoardException.ValidateResult(FileRead(handle, buffer, (uint)count));
             var outputBuffer = new byte[result];
-            Buffer.BlockCopy(buffer, 0, outputBuffer, 0, result);
+            Buffer.BlockCopy(buffer, 0, outputBuffer, 0, (int)result);
             return outputBuffer;
         }
 
@@ -122,7 +122,7 @@
         /// <param name="seekOffset">The seek offset.</param>
         /// <param name="seekFrom">The seek from.</param>
         /// <returns>The new byte position within the file.</returns>
-        public static int FileSeek(UIntPtr handle, int seekOffset, SeekMode seekFrom) => BoardException.ValidateResult(FileSeekUnmanaged(handle, seekOffset, seekFrom));
+        public static uint FileSeek(UIntPtr handle, int seekOffset, SeekMode seekFrom) => BoardException.ValidateResult(FileSeekUnmanaged(handle, seekOffset, seekFrom));
 
         /// <summary>
         /// Retrieves a list of files matching the given pattern. See <see cref="FileListUnmanaged" />.

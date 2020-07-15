@@ -257,11 +257,10 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
         /// <param name="register">0-255, the register to write/read.</param>
         /// <param name="buffer">an array with the data to send and to receive the read data.</param>
-        /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
+        /// <returns>Returns the number of bytes read (&gt;=0) if OK, otherwise throws an exception.</returns>
         public static int I2cBlockProcessCall(UIntPtr handle, byte register, byte[] buffer)
         {
-            var result = BoardException.ValidateResult(I2cBlockProcessCallUnmanaged(handle, register, buffer, Convert.ToUInt32(buffer.Length)));
-            return result;
+            return I2cBlockProcessCallUnmanaged(handle, register, buffer, Convert.ToUInt32(buffer?.Length ?? 0));
         }
 
         /// <summary>
@@ -285,7 +284,7 @@
                 return buffer;
 
             var output = new byte[result];
-            Buffer.BlockCopy(buffer, 0, output, 0, result);
+            Buffer.BlockCopy(buffer, 0, output, 0, (int)result);
             return output;
         }
 
@@ -317,7 +316,7 @@
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="I2cOpen"/>.</param>
         /// <param name="buffer">an array to receive the read data bytes.</param>
         /// <returns>Returns count (&gt;0) if OK, otherwise PI_BAD_HANDLE, PI_BAD_PARAM, or PI_I2C_READ_FAILED.</returns>
-        public static int I2cReadDevice(UIntPtr handle, byte[] buffer)
+        public static uint I2cReadDevice(UIntPtr handle, byte[] buffer)
         {
             return BoardException.ValidateResult(I2cReadDeviceUnmanaged(handle, buffer, Convert.ToUInt32(buffer.Length)));
         }
@@ -340,7 +339,7 @@
                 return buffer;
 
             var output = new byte[result];
-            Buffer.BlockCopy(buffer, 0, output, 0, result);
+            Buffer.BlockCopy(buffer, 0, output, 0, (int)result);
             return output;
         }
 

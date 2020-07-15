@@ -21,7 +21,7 @@
         }
 
         /// <inheritdoc />
-        public int GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
+        public uint GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
         {
             throw new System.NotImplementedException();
         }

@@ -42,7 +42,7 @@
         /// <summary>
         /// Gets the number of available bytes to read in the hardware buffer.
         /// </summary>
-        public int Available => BoardException.ValidateResult(Uart.SerDataAvailable(Handle));
+        public uint Available => BoardException.ValidateResult(Uart.SerDataAvailable(Handle));
 
         /// <summary>
         /// Reads the byte.
@@ -61,7 +61,7 @@
         /// Reads this instance.
         /// </summary>
         /// <returns>A buffer containing the bytes.</returns>
-        public byte[] Read() => Read(Available);
+        public byte[] Read() => Read((int)Available);
 
         /// <summary>
         /// Reads the specified number of bytes.
@@ -77,7 +77,7 @@
                 return buffer;
 
             var output = new byte[result];
-            Buffer.BlockCopy(buffer, 0, output, 0, result);
+            Buffer.BlockCopy(buffer, 0, output, 0, (int)result);
             return output;
         }
 

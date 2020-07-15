@@ -39,12 +39,12 @@
         /// </summary>
         /// <param name="resultCode">The result code.</param>
         /// <returns>The integer result.</returns>
-        internal static int ValidateResult(int resultCode)
+        internal static uint ValidateResult(int resultCode)
         {
             if (resultCode < 0)
                 throw new BoardException(resultCode);
 
-            return resultCode;
+            return (uint)resultCode;
         }
 
         /// <summary>

@@ -116,7 +116,7 @@
                 return buffer;
 
             var output = new byte[result];
-            Buffer.BlockCopy(buffer, 0, output, 0, result);
+            Buffer.BlockCopy(buffer, 0, output, 0, (int)result);
             return output;
         }
 
@@ -128,11 +128,10 @@
         /// </summary>
         /// <param name="handle">&gt;=0, as returned by a call to <see cref="SpiOpen"/>.</param>
         /// <param name="buffer">the data bytes to write.</param>
-        /// <returns>Returns the number of bytes transferred if OK, otherwise PI_BAD_HANDLE, PI_BAD_SPI_COUNT, or PI_SPI_XFER_FAILED.</returns>
+        /// <returns>Returns the number of bytes transferred if OK, otherwise throws an exception.</returns>
         public static int SpiWrite(UIntPtr handle, byte[] buffer)
         {
-            var reuslt = BoardException.ValidateResult(SpiWriteUnmanaged(handle, buffer, Convert.ToUInt32(buffer.Length)));
-            return reuslt;
+            return SpiWriteUnmanaged(handle, buffer, Convert.ToUInt32( buffer?.Length ?? 0));
         }
 
         /// <summary>
@@ -153,7 +152,7 @@
                 return receiveBuffer;
 
             var output = new byte[result];
-            Buffer.BlockCopy(receiveBuffer, 0, output, 0, result);
+            Buffer.BlockCopy(receiveBuffer, 0, output, 0, (int)result);
             return output;
         }
 

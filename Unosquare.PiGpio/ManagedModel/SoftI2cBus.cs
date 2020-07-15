@@ -105,7 +105,7 @@
                 return output;
 
             var result = new byte[outCount];
-            Buffer.BlockCopy(output, 0, result, 0, outCount);
+            Buffer.BlockCopy(output, 0, result, 0, (int)outCount);
             return result;
         }
 

@@ -30,22 +30,28 @@
         }
 
         /// <inheritdoc />
-        public int GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
+        public uint GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
         {
             var data = _pigpioPipe.SendCommandWithResultBlob($"serr ${userGpio} ${readLength}");
+            if (data.Length == 0)
+            {
+                return 0;
+            }
+
             // first byte is length and can be ignored
             for (var i = 1; i < data.Length; i++)
             {
                 buffer[i - 1] = data[i];
             }
 
-            return data.Length - 1;
+            return (uint)(data.Length - 1);
         }
 
         /// <inheritdoc />
         public byte[] GpioSerialRead(UserGpio userGpio, int readLength)
         {
             var data = _pigpioPipe.SendCommandWithResultBlob($"serr ${userGpio} ${readLength}");
+            
             // first byte is length and can be ignored
             return data.Skip(1).ToArray();
         }

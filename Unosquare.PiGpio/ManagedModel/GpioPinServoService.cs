@@ -41,10 +41,9 @@ namespace Unosquare.PiGpio.ManagedModel
         /// Value must be between 500 and 2500 microseconds.
         /// Setting to 0 will turn off the PWM.
         /// </summary>
-        public int PulseWidth
+        public uint PulseWidth
         {
-            get => BoardException.ValidateResult(
-                _pwmService.GpioGetServoPulseWidth((UserGpio)Pin.BcmPinNumber));
+            get => _pwmService.GpioGetServoPulseWidth((UserGpio)Pin.BcmPinNumber);
             set => BoardException.ValidateResult(
                 _pwmService.GpioServo((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
@@ -72,7 +71,7 @@ namespace Unosquare.PiGpio.ManagedModel
                 }
 
                 if (value > 1d) value = 1d;
-                PulseWidth = Convert.ToInt32(PulseWidthMin + (value * PulseWidthRange));
+                PulseWidth = Convert.ToUInt32(PulseWidthMin + (value * PulseWidthRange));
             }
         }
 

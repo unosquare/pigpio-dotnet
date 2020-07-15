@@ -50,10 +50,9 @@
         /// <param name="buffer">The buffer.</param>
         /// <param name="readLength">Length of the read.</param>
         /// <returns>The amount of bytes read.</returns>
-        public static int GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
+        public static uint GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
         {
-            var result = BoardException.ValidateResult(GpioSerialReadUnmanaged(userGpio, buffer, (uint)readLength));
-            return result;
+            return BoardException.ValidateResult(GpioSerialReadUnmanaged(userGpio, buffer, (uint)readLength));
         }
 
         /// <summary>
@@ -71,7 +70,7 @@
                 return buffer;
 
             var outputBuffer = new byte[result];
-            Buffer.BlockCopy(buffer, 0, outputBuffer, 0, result);
+            Buffer.BlockCopy(buffer, 0, outputBuffer, 0, (int)result);
             return outputBuffer;
         }
 

@@ -15,7 +15,7 @@
         }
 
         /// <inheritdoc />
-        public int GpioGetPwmDutyCycle(UserGpio userGpio)
+        public uint GpioGetPwmDutyCycle(UserGpio userGpio)
         {
             return Pwm.GpioGetPwmDutyCycle(userGpio);
         }
@@ -27,7 +27,7 @@
         }
 
         /// <inheritdoc />
-        public int GpioGetServoPulseWidth(UserGpio userGpio)
+        public uint GpioGetServoPulseWidth(UserGpio userGpio)
         {
             return Pwm.GpioGetServoPulseWidth(userGpio);
         }
@@ -39,15 +39,15 @@
         }
 
         /// <inheritdoc />
-        public int GpioGetPwmRange(UserGpio userGpio)
+        public uint GpioGetPwmRange(UserGpio userGpio)
         {
-            return Pwm.GpioGetPwmRange(userGpio);
+            return BoardException.ValidateResult(Pwm.GpioGetPwmRange(userGpio));
         }
 
         /// <inheritdoc />
-        public int GpioGetPwmRealRange(UserGpio userGpio)
+        public uint GpioGetPwmRealRange(UserGpio userGpio)
         {
-            return Pwm.GpioGetPwmRealRange(userGpio);
+            return BoardException.ValidateResult(Pwm.GpioGetPwmRealRangeUnmanaged(userGpio));
         }
 
         /// <inheritdoc />
@@ -57,9 +57,9 @@
         }
 
         /// <inheritdoc />
-        public int GpioGetPwmFrequency(UserGpio userGpio)
+        public uint GpioGetPwmFrequency(UserGpio userGpio)
         {
-            return Pwm.GpioGetPwmFrequency(userGpio);
+            return BoardException.ValidateResult(Pwm.GpioGetPwmFrequency(userGpio));
         }
 
         /// <inheritdoc />
