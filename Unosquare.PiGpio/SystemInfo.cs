@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio
 {
-    using System;
     using NativeEnums;
     using RaspberryIO.Abstractions;
     using Swan.DependencyInjection;
+    using System;
     using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>

@@ -7,7 +7,8 @@
     /// <summary>
     /// Utility Service In Process strategy pattern implementation.
     /// </summary>
-    public class PwmServiceInProcess : IPwmService {
+    public class PwmServiceInProcess : IPwmService
+    {
         /// <inheritdoc />
         public ResultCode GpioPwm(UserGpio userGpio, uint dutyCycle)
         {

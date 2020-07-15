@@ -1,10 +1,10 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
     using NativeEnums;
     using NativeMethods.Interfaces;
     using NativeTypes;
     using Swan.DependencyInjection;
+    using System;
 
     /// <summary>
     /// Provides Interrupt Service Routine callback services on the GPIO pin.

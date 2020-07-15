@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
+    using NativeEnums;
     using System;
     using System.Runtime.InteropServices;
-    using NativeEnums;
 
     /// <summary>
     /// Library setup and configuration methods.

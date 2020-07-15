@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
-    using System;
-    using System.Runtime.InteropServices;
     using NativeEnums;
     using NativeTypes;
+    using System;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Provides Methods for both, hardware based I2C and Bit-bang (Software) I2C bus communication.

@@ -1,10 +1,10 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
+    using NativeEnums;
     using System;
     using System.Collections.Generic;
     using System.Runtime.InteropServices;
     using System.Text;
-    using NativeEnums;
 
     /// <summary>
     /// A file may only be opened if permission is granted by an entry in

@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio
 {
-    using System;
     using RaspberryIO.Abstractions;
     using Swan.DependencyInjection;
+    using System;
     using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
@@ -14,7 +14,7 @@
         private readonly object _lock = new object();
         private readonly IThreadsService _threadsService;
         private UIntPtr _currentThread;
-        
+
         /// <summary>
         /// 
         /// </summary>

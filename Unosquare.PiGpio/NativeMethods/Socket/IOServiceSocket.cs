@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.Socket
 {
-    using System;
     using Interfaces;
     using NativeEnums;
     using NativeTypes;
+    using System;
 
     /// <summary>
     /// Socket strategy pattern

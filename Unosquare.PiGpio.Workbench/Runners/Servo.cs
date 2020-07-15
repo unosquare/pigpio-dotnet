@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
-    using System.Threading;
     using ManagedModel;
     using Swan.Logging;
     using Swan.Threading;
+    using System.Threading;
 
     internal class Servo : RunnerBase
     {

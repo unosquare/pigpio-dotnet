@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using System;
     using Swan.DependencyInjection;
+    using System;
     using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>

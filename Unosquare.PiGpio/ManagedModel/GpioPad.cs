@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using Swan.DependencyInjection;
     using NativeMethods.Interfaces;
+    using Swan.DependencyInjection;
 
     /// <summary>
     /// Represents an electrical pad which groups

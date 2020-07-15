@@ -1,15 +1,15 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
     using NativeEnums;
     using NativeMethods.Interfaces;
     using RaspberryIO.Abstractions;
     using Swan.DependencyInjection;
+    using System;
 
     /// <summary>
     /// A class representing a GPIO port (pin).
     /// </summary>
-    public sealed partial class GpioPin: IGpioPin, IDisposable
+    public sealed partial class GpioPin : IGpioPin, IDisposable
     {
         private readonly object _syncLock = new object();
 
@@ -27,7 +27,6 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="GpioPin"/> class.
         /// </summary>
-        /// <param name="ioService">Service providing IO via the chosen strategy.</param>
         /// <param name="gpio">The system gpio.</param>
         internal GpioPin(SystemGpio gpio)
             : this()
@@ -269,7 +268,7 @@
                             IOService.GpioSetPullUpDown(PinGpio, GpioPullMode.Up);
                             break;
                     }
-                    
+
                     _resistorPullMode = value;
                 }
             }

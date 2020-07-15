@@ -1,15 +1,15 @@
 ﻿namespace Unosquare.PiGpio
 {
-    using System;
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using ManagedModel;
     using NativeEnums;
     using NativeMethods.Interfaces;
     using RaspberryIO.Abstractions;
     using Swan;
     using Swan.DependencyInjection;
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// Represents the Raspberry Pi GPIO controller
@@ -336,11 +336,11 @@
         /// This header is the secondary header and it is rarely used.
         /// </summary>
         public ReadOnlyDictionary<int, GpioPin> HeaderP5 { get; }
-        
+
         /// <inheritdoc />
-                                                                         /// <summary>
-                                                                         /// Gets the number of registered pins in the controller.
-                                                                         /// </summary>
+        /// <summary>
+        /// Gets the number of registered pins in the controller.
+        /// </summary>
         public int Count => Pins.Count;
 
         /// <summary>

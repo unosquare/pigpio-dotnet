@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
-    using System;
-    using System.Runtime.InteropServices;
     using NativeEnums;
     using NativeTypes;
+    using System;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Raw waveform generation methods. These are advanced methods to send pulses on the pins

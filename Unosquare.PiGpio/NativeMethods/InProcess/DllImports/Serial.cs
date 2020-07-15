@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
+    using NativeEnums;
     using System;
     using System.Runtime.InteropServices;
-    using NativeEnums;
 
     /// <summary>
     /// Exposes methods to read from a serial transmission using bit-banging (software-based UART).

@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.Resources
 {
-    using System;
     using NativeTypes;
+    using System;
     using System.Collections.ObjectModel;
     using System.IO;
     using System.Reflection;

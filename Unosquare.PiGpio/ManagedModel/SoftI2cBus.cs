@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
     using NativeEnums;
     using NativeMethods.InProcess.DllImports;
+    using System;
 
     /// <summary>
     /// Provides a software based (bit-banged) I2C bus on 2 pins.

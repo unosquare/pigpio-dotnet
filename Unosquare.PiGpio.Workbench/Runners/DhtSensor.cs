@@ -94,7 +94,7 @@
                 {
                     if (ct.IsCancellationRequested)
                         break;
-                    
+
                     Board.Timing.Sleep(50);
                 }
             }

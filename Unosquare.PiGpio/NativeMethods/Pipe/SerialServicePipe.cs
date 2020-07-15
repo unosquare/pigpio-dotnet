@@ -51,7 +51,7 @@
         public byte[] GpioSerialRead(UserGpio userGpio, int readLength)
         {
             var data = _pigpioPipe.SendCommandWithResultBlob($"serr {(uint)userGpio} {readLength}");
-            
+
             // first byte is length and can be ignored
             return data.Skip(1).ToArray();
         }

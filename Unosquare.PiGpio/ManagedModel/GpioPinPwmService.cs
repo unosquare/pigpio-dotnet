@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
-    using System.Linq;
     using NativeEnums;
     using Swan.DependencyInjection;
+    using System;
+    using System.Linq;
     using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
@@ -27,7 +27,7 @@
         /// </summary>
         public uint Range
         {
-            get => _pwmService.GpioGetPwmRealRange((UserGpio) Pin.BcmPinNumber);
+            get => _pwmService.GpioGetPwmRealRange((UserGpio)Pin.BcmPinNumber);
             set => BoardException.ValidateResult(_pwmService.GpioSetPwmRange((UserGpio)Pin.BcmPinNumber, value));
         }
 
@@ -36,7 +36,7 @@
         /// </summary>
         public uint Frequency
         {
-            get => _pwmService.GpioGetPwmFrequency((UserGpio) Pin.BcmPinNumber);
+            get => _pwmService.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber);
             set => BoardException.ValidateResult(_pwmService.GpioSetPwmFrequency((UserGpio)Pin.BcmPinNumber, value));
         }
 

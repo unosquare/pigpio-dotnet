@@ -1,12 +1,12 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
+    using NativeEnums;
+    using NativeTypes;
+    using Swan.DependencyInjection;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using NativeEnums;
-    using NativeTypes;
-    using Swan.DependencyInjection;
     using Unosquare.PiGpio.ExtensionMethods;
     using Unosquare.PiGpio.NativeMethods.Interfaces;
 
@@ -240,7 +240,7 @@
         private static BitMask PinsToBitMask(IEnumerable<UserGpio> pins)
         {
             const int bitMask = 0;
-            
+
             if (pins != null)
             {
                 foreach (var pin in pins)

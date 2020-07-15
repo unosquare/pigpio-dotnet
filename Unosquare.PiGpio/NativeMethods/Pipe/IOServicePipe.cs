@@ -1,12 +1,12 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.Pipe
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
     using Interfaces;
     using NativeEnums;
     using NativeTypes;
     using Swan;
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
     using Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure;
 
     /// <summary>
@@ -64,7 +64,7 @@
                 case PigpioPinMode.Alt5:
                     code = '5';
                     break;
-                default: 
+                default:
                     throw new ArgumentException("Unknown mode: " + mode);
             }
 

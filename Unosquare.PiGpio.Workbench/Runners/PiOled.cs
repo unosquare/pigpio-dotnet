@@ -1,14 +1,14 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
     using RaspberryIO.Peripherals;
+    using Swan.Logging;
+    using Swan.Threading;
     using System;
     using System.Diagnostics;
     using System.Drawing;
     using System.Drawing.Drawing2D;
     using System.Drawing.Imaging;
     using System.Threading;
-    using Swan.Logging;
-    using Swan.Threading;
 
 #pragma warning disable CA1001 // Types that own disposable fields should be disposable
     internal class PiOled : RunnerBase

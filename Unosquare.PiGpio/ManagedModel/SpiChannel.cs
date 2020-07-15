@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
     using NativeEnums;
     using NativeMethods.InProcess.DllImports;
+    using System;
 
     /// <summary>
     /// Provides access to the Hardware SPI channels.

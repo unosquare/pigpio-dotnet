@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio
 {
-    using System.Collections.ObjectModel;
     using RaspberryIO.Abstractions;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// A simple wrapper for the I2c bus on the Raspberry Pi.

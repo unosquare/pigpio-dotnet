@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio
 {
     using NativeEnums;
+    using RaspberryIO.Abstractions;
     using System;
     using System.Collections.Generic;
-    using RaspberryIO.Abstractions;
 
     /// <summary>
     /// Defines the constants used by the libpigpio library.

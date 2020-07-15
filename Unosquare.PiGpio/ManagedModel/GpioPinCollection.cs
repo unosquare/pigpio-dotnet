@@ -1,11 +1,9 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
+    using NativeEnums;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using NativeEnums;
-    using Swan.DependencyInjection;
-    using NativeMethods.Interfaces;
 
     /// <summary>
     /// Represents a dictionary of all GPIO Pins.

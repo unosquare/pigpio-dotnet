@@ -1,10 +1,10 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
     using NativeEnums;
+    using NativeMethods.Interfaces;
     using NativeTypes;
     using Swan.DependencyInjection;
-    using NativeMethods.Interfaces;
+    using System;
 
     /// <summary>
     /// Provides GPIO pin functionality to report on alerts based

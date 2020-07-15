@@ -2,10 +2,10 @@
 
 namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
-    using System.Collections.Generic;
     using NativeEnums;
     using NativeMethods.InProcess.DllImports;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Represents a peripheral connected via the I2C/SM bus.

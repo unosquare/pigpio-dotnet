@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
-    using RaspberryIO.Abstractions;
     using NativeEnums;
+    using RaspberryIO.Abstractions;
+    using System;
 
     public partial class GpioPin
     {
@@ -122,7 +122,7 @@
 
         internal static readonly Lazy<GpioPin> Pin19 = new Lazy<GpioPin>(() => new GpioPin(BcmPin.Gpio19)
         {
-            Capabilities = PinCapabilities.GP | PinCapabilities.PWM| PinCapabilities.PWM | PinCapabilities.SPIMISO,
+            Capabilities = PinCapabilities.GP | PinCapabilities.PWM | PinCapabilities.PWM | PinCapabilities.SPIMISO,
             Name = "BCM 19 (MISO)",
         });
 

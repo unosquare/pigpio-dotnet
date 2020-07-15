@@ -1,12 +1,12 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
+    using NativeEnums;
+    using NativeMethods.Interfaces;
+    using Swan.DependencyInjection;
     using System;
     using System.Collections;
     using System.Linq;
     using System.Text;
-    using NativeEnums;
-    using Swan.DependencyInjection;
-    using NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides access to bulk GPIO read and write operations.

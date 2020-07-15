@@ -9,7 +9,7 @@
     /// <summary>
     /// Utility Service In Process strategy pattern implementation.
     /// </summary>
-    public class UtilityServiceInProcess : IUtilityService 
+    public class UtilityServiceInProcess : IUtilityService
     {
         /// <inheritdoc />
         public uint GpioHardwareRevision()

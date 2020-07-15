@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio
 {
-    using System;
     using CommsStrategies;
     using RaspberryIO.Abstractions;
     using Swan.DependencyInjection;
+    using System;
 
     /// <summary>
     /// Represents the bootstrap process to use PiGPio.

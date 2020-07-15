@@ -1,10 +1,10 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.InProcess
 {
-    using System;
     using DllImports;
     using Interfaces;
     using NativeEnums;
     using NativeTypes;
+    using System;
 
     /// <summary>
     /// IO Service In Process strategy pattern implementation.

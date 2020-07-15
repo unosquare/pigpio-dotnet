@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.CommsStrategies
 {
-    using System;
     using Swan.DependencyInjection;
+    using System;
     using Unosquare.PiGpio.NativeEnums;
     using Unosquare.PiGpio.NativeMethods.InProcess;
     using Unosquare.PiGpio.NativeMethods.InProcess.DllImports;

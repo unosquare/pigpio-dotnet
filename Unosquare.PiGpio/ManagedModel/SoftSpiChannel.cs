@@ -1,8 +1,8 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
     using NativeEnums;
     using NativeMethods.InProcess.DllImports;
+    using System;
 
     /// <summary>
     /// Provides a bit-banged version of a SPI channel.

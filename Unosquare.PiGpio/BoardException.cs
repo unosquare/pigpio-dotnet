@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio
 {
-    using System;
     using NativeEnums;
+    using System;
 
     /// <summary>
     /// Represents a PiGpio Library call exception.

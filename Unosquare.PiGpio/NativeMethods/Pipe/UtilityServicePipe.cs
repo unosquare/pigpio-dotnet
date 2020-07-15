@@ -7,9 +7,9 @@
     using Unosquare.PiGpio.NativeTypes;
 
     /// <summary>
-        /// Utility Service Pipe strategy pattern.
-        /// </summary>
-        internal class UtilityServicePipe : IUtilityService
+    /// Utility Service Pipe strategy pattern.
+    /// </summary>
+    internal class UtilityServicePipe : IUtilityService
     {
         private readonly IPigpioPipe _pigpioPipe;
 
@@ -64,7 +64,7 @@
                 var reset = 0xff ^ mask; // invert the mask with xor
                 buf[index] = (byte)(buf[index] & reset);
             }
-            else 
+            else
             {
                 buf[index] = (byte)(buf[index] | mask);
             }

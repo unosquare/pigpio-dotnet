@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
-    using System;
-    using System.Runtime.InteropServices;
     using NativeEnums;
     using NativeTypes;
+    using System;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Provides methods for SPI bus management.
@@ -131,7 +131,7 @@
         /// <returns>Returns the number of bytes transferred if OK, otherwise throws an exception.</returns>
         public static int SpiWrite(UIntPtr handle, byte[] buffer)
         {
-            return SpiWriteUnmanaged(handle, buffer, Convert.ToUInt32( buffer?.Length ?? 0));
+            return SpiWriteUnmanaged(handle, buffer, Convert.ToUInt32(buffer?.Length ?? 0));
         }
 
         /// <summary>

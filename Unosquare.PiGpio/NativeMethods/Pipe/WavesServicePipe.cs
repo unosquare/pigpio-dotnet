@@ -44,7 +44,7 @@
                 builder.Append(" ");
                 builder.Append(pulse.DurationMicroSecs);
             }
-            
+
             return _pigpioPipe.SendCommandWithIntResult($"wvag{builder}");
         }
 

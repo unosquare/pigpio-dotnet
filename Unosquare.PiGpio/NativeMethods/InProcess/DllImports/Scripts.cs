@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
-    using System.Runtime.InteropServices;
     using NativeEnums;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Provides access to scripting methods of the pigpio library. Scripts are used by the

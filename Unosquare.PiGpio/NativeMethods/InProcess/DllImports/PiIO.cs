@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.InProcess.DllImports
 {
-    using System;
-    using System.Runtime.InteropServices;
     using NativeEnums;
     using NativeTypes;
+    using System;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Defines fundamental IO methods for the GPIO Pins.

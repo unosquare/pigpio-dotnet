@@ -1,14 +1,14 @@
 ﻿namespace Unosquare.PiGpio.Workbench
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using CommsStrategies;
     using RaspberryIO;
     using Runners;
     using Swan;
     using Swan.Logging;
     using Swan.Threading;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     internal static class Program
     {
