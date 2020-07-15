@@ -1,10 +1,10 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
-    using NativeMethods.Interfaces;
-    using RaspberryIO.Abstractions;
-    using Swan.DependencyInjection;
     using System;
+    using Swan.DependencyInjection;
+    using Unosquare.PiGpio.NativeEnums;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
+    using Unosquare.RaspberryIO.Abstractions;
 
     /// <summary>
     /// A class representing a GPIO port (pin).

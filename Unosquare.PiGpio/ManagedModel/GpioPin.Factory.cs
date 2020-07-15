@@ -68,7 +68,7 @@
 
         internal static readonly Lazy<GpioPin> Pin10 = new Lazy<GpioPin>(() => new GpioPin(BcmPin.Gpio10)
         {
-            Capabilities = PinCapabilities.GP | PinCapabilities.SPIMOSI,
+            Capabilities = PinCapabilities.GP | PinCapabilities.PWM | PinCapabilities.SPIMOSI,
             Name = "BCM 10 (MOSI)",
         });
 
