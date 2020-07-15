@@ -8,7 +8,7 @@
     /// <summary>
     /// Provides Methods for both, hardware based I2C and Bit-bang (Software) I2C bus communication.
     /// </summary>
-    public static class I2c
+    internal static class I2c
     {
         /// <summary>
         /// This returns a handle for the device at the address on the I2C bus.

@@ -20,19 +20,19 @@
         /// <inheritdoc />
         public ResultCode GpioSerialReadOpen(UserGpio userGpio, uint baudRate, uint dataBits)
         {
-            return _pigpioPipe.SendCommandWithResultCode($"sero ${userGpio} ${baudRate} ${dataBits}");
+            return _pigpioPipe.SendCommandWithResultCode($"sero {(uint)userGpio} {baudRate} {dataBits}");
         }
 
         /// <inheritdoc />
         public ResultCode GpioSerialReadInvert(UserGpio userGpio, bool invert)
         {
-            return _pigpioPipe.SendCommandWithResultCode($"slri ${userGpio} ${(invert ? 1 : 0)}");
+            return _pigpioPipe.SendCommandWithResultCode($"slri {(uint)userGpio} {(invert ? 1 : 0)}");
         }
 
         /// <inheritdoc />
         public uint GpioSerialRead(UserGpio userGpio, byte[] buffer, int readLength)
         {
-            var data = _pigpioPipe.SendCommandWithResultBlob($"serr ${userGpio} ${readLength}");
+            var data = _pigpioPipe.SendCommandWithResultBlob($"serr {(uint)userGpio} {readLength}");
             if (data.Length == 0)
             {
                 return 0;
@@ -50,7 +50,7 @@
         /// <inheritdoc />
         public byte[] GpioSerialRead(UserGpio userGpio, int readLength)
         {
-            var data = _pigpioPipe.SendCommandWithResultBlob($"serr ${userGpio} ${readLength}");
+            var data = _pigpioPipe.SendCommandWithResultBlob($"serr {(uint)userGpio} {readLength}");
             
             // first byte is length and can be ignored
             return data.Skip(1).ToArray();
@@ -59,7 +59,7 @@
         /// <inheritdoc />
         public ResultCode GpioSerialReadClose(UserGpio userGpio)
         {
-            return _pigpioPipe.SendCommandWithResultCode($"serc ${userGpio}");
+            return _pigpioPipe.SendCommandWithResultCode($"serc {(uint)userGpio}");
         }
     }
 }

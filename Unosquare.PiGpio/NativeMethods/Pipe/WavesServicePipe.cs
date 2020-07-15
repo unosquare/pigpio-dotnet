@@ -50,7 +50,7 @@
 
         public int GpioWaveAddSerial(UserGpio userGpio, uint baudRate, uint dataBits, uint stopBits, uint offset, uint numBytes, byte[] str)
         {
-            return _pigpioPipe.SendCommandWithIntResult($"wvas {userGpio} {baudRate} {dataBits} {stopBits} {offset}{str.Select(b => " 0x" + Convert.ToString(b, 16))}");
+            return _pigpioPipe.SendCommandWithIntResult($"wvas {(uint)userGpio} {baudRate} {dataBits} {stopBits} {offset}{str.Select(b => " 0x" + Convert.ToString(b, 16))}");
         }
 
         public int GpioWaveCreate()

@@ -48,6 +48,7 @@
             get => _pwmService.GpioGetPwmDutyCycle((UserGpio)Pin.BcmPinNumber);
             set => BoardException.ValidateResult(_pwmService.GpioPwm((UserGpio)Pin.BcmPinNumber, value));
         }
+
         /// <summary>
         /// Gets the PWM channel, 0 or 1. A negative number mans there is no associated PWM channel.
         /// </summary>

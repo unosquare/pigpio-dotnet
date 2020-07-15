@@ -48,13 +48,12 @@
         /// <returns>The items in the collection.</returns>
         private static Dictionary<int, GpioPin> CreateInternalCollection()
         {
-            var ioService = DependencyContainer.Current.Resolve<IIOService>();
             var enumValues = Enum.GetValues(typeof(SystemGpio));
             var result = new Dictionary<int, GpioPin>(enumValues.Length);
 
             foreach (SystemGpio value in enumValues)
             {
-                result[(int)value] = new GpioPin(ioService, value);
+                result[(int)value] = new GpioPin(value);
             }
 
             return result;

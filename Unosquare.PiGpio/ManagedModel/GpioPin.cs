@@ -4,6 +4,7 @@
     using NativeEnums;
     using NativeMethods.Interfaces;
     using RaspberryIO.Abstractions;
+    using Swan.DependencyInjection;
 
     /// <summary>
     /// A class representing a GPIO port (pin).
@@ -18,14 +19,19 @@
         private bool _interruptRegistered = false;
         private IIOService IOService { get; }
 
+        private GpioPin()
+        {
+            IOService = DependencyContainer.Current.Resolve<IIOService>();
+        }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GpioPin"/> class.
         /// </summary>
         /// <param name="ioService">Service providing IO via the chosen strategy.</param>
         /// <param name="gpio">The system gpio.</param>
-        internal GpioPin(IIOService ioService, SystemGpio gpio)
+        internal GpioPin(SystemGpio gpio)
+            : this()
         {
-            IOService = ioService;
             PinGpio = gpio;
             BcmPinNumber = (int)gpio;
             IsUserGpio = gpio.GetIsUserGpio(Board.BoardType);
@@ -58,6 +64,7 @@
         /// </summary>
         /// <param name="bcmPin">The BCM gpio number.</param>
         internal GpioPin(BcmPin bcmPin)
+            : this()
         {
             BcmPin = bcmPin;
             BcmPinNumber = (int)bcmPin;

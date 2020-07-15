@@ -104,7 +104,7 @@
         /// <param name="handle">The handle.</param>
         /// <param name="buffer">The buffer.</param>
         /// <returns>The Result Code.</returns>
-        public static ResultCode FileWrite(UIntPtr handle, byte[] buffer) => FileWriteUnmanaged(handle, buffer, (uint)buffer.Length);
+        public static ResultCode FileWrite(UIntPtr handle, byte[] buffer) => FileWriteUnmanaged(handle, buffer, (uint)(buffer?.Length ?? 0));
 
         /// <summary>
         /// Writes the given buffer to a file handle.
