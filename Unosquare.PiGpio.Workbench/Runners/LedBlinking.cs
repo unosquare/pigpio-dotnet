@@ -27,7 +27,7 @@
 
         protected override void Cleanup()
         {
-            _pin.Value = !_pin.Value;
+            _pin.Value = false;
             Thread.Sleep(200);
         }
     }

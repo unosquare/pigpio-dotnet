@@ -23,7 +23,7 @@
         protected override void DoBackgroundWork(CancellationToken ct)
         {
             var pulseWidth = InitialPulseWidth;
-            int pulseDelta = 10;
+            var pulseDelta = 10;
             while (ct.IsCancellationRequested == false)
             {
                 var flipDelta = false;
