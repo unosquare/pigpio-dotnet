@@ -99,8 +99,17 @@
         /// Sleeps for the specified time span.
         /// </summary>
         /// <param name="timeSpan">The time span to sleep for.</param>
-        public void Sleep(TimeSpan timeSpan) =>
-            Sleep(Convert.ToInt64(timeSpan.TotalMilliseconds));
+        public void Sleep(TimeSpan timeSpan)
+        {
+            var micros = timeSpan.Ticks / (TimeSpan.TicksPerMillisecond / 1000);
+
+            if (micros > uint.MaxValue)
+            {
+                throw new ArgumentOutOfRangeException(nameof(timeSpan), "Sleep length is too long.");
+            }
+
+            SleepMicroseconds((uint)micros);
+        }
 
         /// <summary>
         /// Shortcut method to start a thread.
