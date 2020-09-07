@@ -229,12 +229,12 @@
         /// <returns>A bitmask with each pin as a position.</returns>
         private static BitMask PinsToBitMask(IEnumerable<UserGpio> pins)
         {
-            const int bitMask = 0;
+            int bitMask = 0;
             
             if (pins != null)
             {
                 foreach (var pin in pins)
-                    bitMask.SetBit((int)pin, true);
+                    bitMask = bitMask.SetBit((int)pin, true);
             }
 
             return (BitMask)bitMask;
