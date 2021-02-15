@@ -2,6 +2,8 @@
 
 # <img src="https://raw.githubusercontent.com/unosquare/pigpio-dotnet/master/Support/pigpio-dotnet.png" alt="pgipio-dotnet" style="width:16px; height:16px" /> Raspbery Pi - libpigpio for .net
 
+**WE ARE LOOKING FOR A NEW HOME FOR THIS PROJECT. APPLY AT:** https://adoptoposs.org/p/d3470190-942b-44ac-84fc-90259cbdee43
+
 *:star: Please star this project if you find it useful!*
 
 Provides complete managed access to the popular pigpio C library.
