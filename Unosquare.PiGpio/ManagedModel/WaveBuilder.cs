@@ -191,7 +191,6 @@
                 if (IsPrepared) return;
                 if (_isDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
 
-                Waves.GpioWaveClear();
                 BoardException.ValidateResult(
                     Waves.GpioWaveAddGeneric(Convert.ToUInt32(m_Pulses.Count), m_Pulses.ToArray()));
                 WaveId = BoardException.ValidateResult(
