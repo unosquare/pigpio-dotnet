@@ -24,6 +24,7 @@ namespace Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure
         public override void Dispose()
         {
             _cancelListening.Cancel();
+            // ReSharper disable once AsyncConverter.AsyncWait
             _listenTask.Wait();
             _cancelListening.Dispose();
             base.Dispose();

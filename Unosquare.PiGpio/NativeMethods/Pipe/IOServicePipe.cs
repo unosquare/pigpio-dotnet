@@ -1,12 +1,13 @@
 ﻿namespace Unosquare.PiGpio.NativeMethods.Pipe
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Globalization;
     using Interfaces;
     using NativeEnums;
     using NativeTypes;
     using Swan;
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
     using Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure;
 
     /// <summary>
@@ -15,8 +16,9 @@
     internal class IOServicePipe : IIOService, IDisposable
     {
         private readonly IPigpioPipe _pigpioPipe;
-        private readonly IDictionary<SystemGpio, PipeReader> _notificationPipes = new Dictionary<SystemGpio, PipeReader>();
-        private readonly IDictionary<SystemGpio, bool> _notificationLastLevel = new Dictionary<SystemGpio, bool>();
+        // a pipe handle maps to exactly one gpio. One gpio can be monitored by more than one handle
+        private readonly IDictionary<string, PipeReader> _notificationPipes = new ConcurrentDictionary<string, PipeReader>();
+        private readonly IDictionary<string, bool> _notificationLastLevels = new ConcurrentDictionary<string, bool>();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IOServicePipe"/> class.
@@ -197,20 +199,20 @@
         public ResultCode GpioSetIsrFunc(SystemGpio gpio, EdgeDetection edge, int timeout, PiGpioIsrDelegate callback)
         {
             var gpioMask = (uint)Math.Pow(2, (int)gpio);
-            if (_notificationPipes.ContainsKey(gpio)) return ResultCode.Ok;
-
             // get a handle
-            string handle = _pigpioPipe.SendCommandWithResult($"no");
+            var handle = _pigpioPipe.SendCommandWithResult($"no");
 
             // listen to the pipe
             var reader = new PipeNotificationReader($"/dev/pigpio{handle}");
+            _notificationPipes[handle] = reader;
+
+            // note - to avoid deadlock, always lock _notificationLastLevel second
             reader.OnNotification += (PigpioNotification[] notifications) =>
             {
                 foreach (var notification in notifications)
                 {
                     var level = (notification.Level & gpioMask) > 0;
-                    var hasOldLevel = _notificationLastLevel.ContainsKey(gpio);
-                    var oldLevel = hasOldLevel && _notificationLastLevel[gpio];
+                    var hasOldLevel = _notificationLastLevels.TryGetValue(handle, out bool oldLevel);
                     LevelChange change;
                     if (level && (!hasOldLevel || !oldLevel))
                     {
@@ -225,30 +227,27 @@
                         change = LevelChange.NoChange;
                     }
 
+                    _notificationLastLevels[handle] = level;
+
                     if (edge == EdgeDetection.EitherEdge
                         || (edge == EdgeDetection.FallingEdge && change == LevelChange.HighToLow)
                         || (edge == EdgeDetection.RisingEdge && change == LevelChange.LowToHigh))
                     {
                         callback(gpio, change, notification.Tick);
                     }
-
-                    _notificationLastLevel[gpio] = level;
                 }
             };
-            _notificationPipes[gpio] = reader;
 
             // start notifications on the handle
-            return _pigpioPipe.SendCommandWithResultCode($"nb {handle} {Math.Pow(2, (int)gpio)}");
+            return _pigpioPipe.SendCommandWithResultCode($"nb {handle} {gpioMask}");
         }
 
         /// <inheritdoc />
         public ResultCode GpioSetIsrFuncEx(SystemGpio gpio, EdgeDetection edge, int timeout, PiGpioIsrExDelegate callback, UIntPtr userData)
         {
             var gpioMask = (uint)Math.Pow(2, (int)gpio);
-            if (_notificationPipes.ContainsKey(gpio)) return ResultCode.Ok;
-
             // get a handle
-            string handle = _pigpioPipe.SendCommandWithResult($"no");
+            var handle = _pigpioPipe.SendCommandWithResult($"no");
 
             // listen to the pipe
             var reader = new PipeNotificationReader($"/dev/pigpio{handle}");
@@ -257,8 +256,7 @@
                 foreach (var notification in notifications)
                 {
                     var level = (notification.Level & gpioMask) > 0;
-                    var hasOldLevel = _notificationLastLevel.ContainsKey(gpio);
-                    var oldLevel = hasOldLevel && _notificationLastLevel[gpio];
+                    var hasOldLevel = _notificationLastLevels.TryGetValue(handle, out bool oldLevel);
                     LevelChange change;
                     if (level && (!hasOldLevel || !oldLevel))
                     {
@@ -274,13 +272,13 @@
                     }
 
                     callback(gpio, change, notification.Tick, userData);
-                    _notificationLastLevel[gpio] = level;
+                    _notificationLastLevels[handle] = level;
                 }
             };
-            _notificationPipes[gpio] = reader;
+            _notificationPipes[handle] = reader;
 
             // start notifications on the handle
-            return _pigpioPipe.SendCommandWithResultCode($"nb {handle} {Math.Pow(2, (int)gpio)}");
+            return _pigpioPipe.SendCommandWithResultCode($"nb {handle} {gpioMask}");
         }
 
         /// <inheritdoc />
@@ -359,6 +357,8 @@
             }
 
             _notificationPipes.Clear();
+            _notificationLastLevels.Clear();
+
             ((IDisposable)_pigpioPipe).Dispose();
         }
     }

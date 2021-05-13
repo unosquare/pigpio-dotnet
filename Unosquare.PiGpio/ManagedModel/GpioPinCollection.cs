@@ -44,7 +44,7 @@
         /// Creates the internal collection.
         /// </summary>
         /// <returns>The items in the collection.</returns>
-        private static Dictionary<int, GpioPin> CreateInternalCollection()
+        private static IDictionary<int, GpioPin> CreateInternalCollection()
         {
             var enumValues = Enum.GetValues(typeof(SystemGpio));
             var result = new Dictionary<int, GpioPin>(enumValues.Length);

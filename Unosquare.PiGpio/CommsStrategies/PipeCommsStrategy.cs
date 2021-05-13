@@ -1,11 +1,13 @@
-﻿namespace Unosquare.PiGpio.CommsStrategies
+﻿using System;
+
+namespace Unosquare.PiGpio.CommsStrategies
 {
     using Swan.DependencyInjection;
     using Unosquare.PiGpio.NativeMethods.Interfaces;
     using Unosquare.PiGpio.NativeMethods.Pipe;
     using Unosquare.PiGpio.NativeMethods.Pipe.Infrastructure;
 
-    public class PipeCommsStrategy : IPiGpioCommsStrategy
+    public class PipeCommsStrategy : IPiGpioCommsStrategy, IDisposable
     {
         private PigpioPipe _pipe;
 
@@ -35,6 +37,12 @@
         public void Terminate()
         {
             _pipe.Dispose();
+            _pipe = null;
+        }
+
+        public void Dispose()
+        {
+            ((IDisposable)_pipe)?.Dispose();
             _pipe = null;
         }
     }
