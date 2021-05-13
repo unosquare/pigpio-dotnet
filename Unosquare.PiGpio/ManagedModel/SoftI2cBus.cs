@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
+    using NativeMethods.InProcess.DllImports;
     using System;
 
     /// <summary>
@@ -29,8 +29,8 @@
         /// <param name="baudRate">The baud rate.</param>
         internal SoftI2cBus(GpioPin dataPin, GpioPin clockPin, int baudRate)
         {
-            BoardException.ValidateResult(I2c.BbI2COpen((UserGpio)dataPin.PinNumber, (UserGpio)clockPin.PinNumber, Convert.ToUInt32(baudRate)));
-            Handle = (UserGpio)dataPin.PinNumber;
+            BoardException.ValidateResult(I2c.BbI2COpen((UserGpio)dataPin.BcmPinNumber, (UserGpio)clockPin.BcmPinNumber, Convert.ToUInt32(baudRate)));
+            Handle = (UserGpio)dataPin.BcmPinNumber;
             DataPin = dataPin;
             ClockPin = clockPin;
             BaudRate = baudRate;
@@ -105,7 +105,7 @@
                 return output;
 
             var result = new byte[outCount];
-            Buffer.BlockCopy(output, 0, result, 0, outCount);
+            Buffer.BlockCopy(output, 0, result, 0, (int)outCount);
             return result;
         }
 

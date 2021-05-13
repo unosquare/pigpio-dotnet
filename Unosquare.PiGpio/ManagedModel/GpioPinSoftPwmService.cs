@@ -1,8 +1,9 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
+    using Swan.DependencyInjection;
     using System;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides a software-based PWM service on the associated pin.
@@ -10,6 +11,8 @@
     /// <seealso cref="GpioPinServiceBase" />
     public class GpioPinSoftPwmService : GpioPinServiceBase
     {
+        private readonly IPwmService _pwmService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GpioPinSoftPwmService"/> class.
         /// </summary>
@@ -17,35 +20,35 @@
         internal GpioPinSoftPwmService(GpioPin pin)
             : base(pin)
         {
-            // placeholder
+            _pwmService = DependencyContainer.Current.Resolve<IPwmService>();
         }
 
         /// <summary>
         /// Gets or sets the range of the duty cycle.
         /// </summary>
-        public int Range
+        public uint Range
         {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmRange((UserGpio)Pin.PinNumber));
-            set => BoardException.ValidateResult(Pwm.GpioSetPwmRange((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
+            get => _pwmService.GpioGetPwmRange((UserGpio)Pin.BcmPinNumber);
+            set => BoardException.ValidateResult(_pwmService.GpioSetPwmRange((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>
         /// Gets or sets the duty cycle. Setting this property starts the PWM pulses.
         /// The default range is 255.
         /// </summary>
-        public int DutyCycle
+        public uint DutyCycle
         {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmDutyCycle((UserGpio)Pin.PinNumber));
-            set => BoardException.ValidateResult(Pwm.GpioPwm((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
+            get => _pwmService.GpioGetPwmDutyCycle((UserGpio)Pin.BcmPinNumber);
+            set => BoardException.ValidateResult(_pwmService.GpioPwm((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>
         /// Gets or sets the frequency (in Hz) at which the PWM runs.
         /// </summary>
-        public int Frequency
+        public uint Frequency
         {
-            get => BoardException.ValidateResult(Pwm.GpioGetPwmFrequency((UserGpio)Pin.PinNumber));
-            set => BoardException.ValidateResult(Pwm.GpioSetPwmFrequency((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
+            get => _pwmService.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber);
+            set => BoardException.ValidateResult(_pwmService.GpioSetPwmFrequency((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>

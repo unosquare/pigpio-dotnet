@@ -1,9 +1,9 @@
 ﻿namespace Unosquare.PiGpio
 {
     using NativeEnums;
+    using RaspberryIO.Abstractions;
     using System;
     using System.Collections.Generic;
-    using RaspberryIO.Abstractions;
 
     /// <summary>
     /// Defines the constants used by the libpigpio library.
@@ -169,6 +169,10 @@
             { ResultCode.CustomErr999, "Documentation not available" },
         };
 
+        internal static string CommandPipeName => "/dev/pigpio";
+        internal static string ResultPipeName => "/dev/pigout";
+        internal static string ErrorPipeName => "/dev/pigerr";
+
         internal static string GetResultCodeMessage(int resultCode)
         {
             if (resultCode >= 0) return ResultCodeMessages[ResultCode.Ok];
@@ -280,5 +284,18 @@
         internal static bool IsBetween(this int number, int min, int max) => number >= min && number <= max;
 
         internal static bool IsBetween(this long number, long min, long max) => number >= min && number <= max;
+
+        internal static NativeEnums.EdgeDetection GetEdgeDetection(RaspberryIO.Abstractions.EdgeDetection edgeDetection)
+        {
+            switch (edgeDetection)
+            {
+                case RaspberryIO.Abstractions.EdgeDetection.RisingEdge:
+                    return NativeEnums.EdgeDetection.RisingEdge;
+                case RaspberryIO.Abstractions.EdgeDetection.FallingEdge:
+                    return NativeEnums.EdgeDetection.FallingEdge;
+                default:
+                    return NativeEnums.EdgeDetection.EitherEdge;
+            }
+        }
     }
 }

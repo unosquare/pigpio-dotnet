@@ -1,16 +1,20 @@
-﻿namespace Unosquare.PiGpio.ManagedModel
+﻿
+namespace Unosquare.PiGpio.ManagedModel
 {
-    using System;
     using NativeEnums;
-    using NativeMethods;
+    using Swan.DependencyInjection;
+    using System;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides a standard servo PWM service running at 50Hz.
-    /// The pulse width must be 0, or a number beween 500 and 2500.
+    /// The pulse width must be 0, or a number between 500 and 2500.
     /// </summary>
     /// <seealso cref="GpioPinServiceBase" />
     public sealed class GpioPinServoService : GpioPinServiceBase
     {
+        private readonly IPwmService _pwmService;
+
         /// <summary>
         /// The pulse width minimum in microseconds.
         /// </summary>
@@ -29,7 +33,7 @@
         internal GpioPinServoService(GpioPin pin)
             : base(pin)
         {
-            // placeholder
+            _pwmService = DependencyContainer.Current.Resolve<IPwmService>();
         }
 
         /// <summary>
@@ -37,12 +41,11 @@
         /// Value must be between 500 and 2500 microseconds.
         /// Setting to 0 will turn off the PWM.
         /// </summary>
-        public int PulseWidth
+        public uint PulseWidth
         {
-            get => BoardException.ValidateResult(
-                Pwm.GpioGetServoPulseWidth((UserGpio)Pin.PinNumber));
+            get => _pwmService.GpioGetServoPulseWidth((UserGpio)Pin.BcmPinNumber);
             set => BoardException.ValidateResult(
-                Pwm.GpioServo((UserGpio)Pin.PinNumber, Convert.ToUInt32(value)));
+                _pwmService.GpioServo((UserGpio)Pin.BcmPinNumber, Convert.ToUInt32(value)));
         }
 
         /// <summary>
@@ -68,7 +71,7 @@
                 }
 
                 if (value > 1d) value = 1d;
-                PulseWidth = Convert.ToInt32(PulseWidthMin + (value * PulseWidthRange));
+                PulseWidth = Convert.ToUInt32(PulseWidthMin + (value * PulseWidthRange));
             }
         }
 

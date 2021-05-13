@@ -16,7 +16,7 @@
 
         protected override void OnSetup()
         {
-            _pin = Board.Pins[4];
+            _pin = Board.Pins[26];
             _pin.Direction = PinDirection.Input;
             _pin.PullMode = GpioPullMode.Off;
             _pin.Interrupts.EdgeDetection = EdgeDetection.EitherEdge;

@@ -1,15 +1,15 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
-    using System.Threading;
     using ManagedModel;
     using Swan.Logging;
     using Swan.Threading;
+    using System.Threading;
 
     internal class Servo : RunnerBase
     {
         private const int MinPulseWidth = GpioPinServoService.PulseWidthMin + 50;
         private const int MaxPulseWidth = GpioPinServoService.PulseWidthMax;
-        private const int InitialPulseWidth = GpioPinServoService.PulseWidthMin + 500;
+        private const uint InitialPulseWidth = GpioPinServoService.PulseWidthMin + 500;
         private GpioPin _pin;
 
         public Servo(bool isEnabled)
@@ -48,7 +48,7 @@
                     Board.Timing.Sleep(500);
                 }
 
-                pulseWidth = pulseWidth + pulseDelta;
+                pulseWidth = (uint)(pulseWidth + pulseDelta);
                 Board.Timing.SleepMicros(5000);
             }
         }

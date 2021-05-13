@@ -1,7 +1,9 @@
-﻿namespace Unosquare.PiGpio.ManagedModel
+﻿using System.Globalization;
+
+namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
+    using NativeMethods.InProcess.DllImports;
     using System;
     using System.Collections.Generic;
 
@@ -25,7 +27,7 @@
         /// <param name="address">The address.</param>
         internal I2cDevice(I2cBusId busId, byte address)
         {
-            Handle = I2c.I2cOpen(Convert.ToUInt32(busId), address);
+            Handle = I2c.I2cOpen(Convert.ToUInt32(busId, CultureInfo.InvariantCulture), address);
             Address = address;
             BusId = busId;
         }
@@ -48,7 +50,7 @@
         public I2cBusId BusId { get; }
 
         /// <summary>
-        /// Gets the devide address on the bus.
+        /// Gets the device address on the bus.
         /// </summary>
         public byte Address { get; }
 
@@ -69,7 +71,7 @@
         /// </summary>
         /// <param name="mode">The mode (write is 0, read is 1).</param>
         public void SetMode(I2cQuickMode mode) =>
-            BoardException.ValidateResult(I2c.I2cWriteQuick(Handle, mode));
+            BoardException.ValidateResult(I2c.I2cWriteQuick(Handle, mode == I2cQuickMode.Read));
 
         /// <summary>
         /// This sends a single byte to the device associated with handle.
@@ -212,7 +214,7 @@
                 return output;
 
             var result = new byte[count];
-            Buffer.BlockCopy(output, 0, result, 0, count);
+            Buffer.BlockCopy(output, 0, result, 0, (int)count);
             return result;
         }
 

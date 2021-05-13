@@ -1,7 +1,8 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
+    using NativeMethods.Interfaces;
+    using Swan.DependencyInjection;
     using System;
     using System.Collections;
     using System.Linq;
@@ -28,19 +29,21 @@
             if (bankNumber != 1 && bankNumber != 2)
                 throw new ArgumentException("Bank number can only be either 1 or 2", nameof(bankNumber));
 
+            var ioService = DependencyContainer.Current.Resolve<IIOService>();
+
             BankNumber = bankNumber;
 
             _setBitsCallback = bankNumber == 1 ?
-                IO.GpioWriteBits00To31Set :
-                new SetClearBitsDelegate(IO.GpioWriteBits32To53Set);
+                ioService.GpioWriteBits00To31Set :
+                new SetClearBitsDelegate(ioService.GpioWriteBits32To53Set);
 
             _clearBitsCallback = bankNumber == 1 ?
-                IO.GpioWriteBits00To31Clear :
-                new SetClearBitsDelegate(IO.GpioWriteBits32To53Clear);
+                ioService.GpioWriteBits00To31Clear :
+                new SetClearBitsDelegate(ioService.GpioWriteBits32To53Clear);
 
             _readBitsCallback = bankNumber == 1 ?
-                IO.GpioReadBits00To31 :
-                new ReadBitsDelegate(IO.GpioReadBits32To53);
+                ioService.GpioReadBits00To31 :
+                new ReadBitsDelegate(ioService.GpioReadBits32To53);
 
             if (bankNumber == 1)
             {
@@ -101,9 +104,12 @@
         {
             var builder = new StringBuilder(32);
 
-            for (var i = bits.Length - 1; i >= 0; i--)
+            if (bits != null)
             {
-                builder.Append(bits[i] ? '1' : '0');
+                for (var i = bits.Length - 1; i >= 0; i--)
+                {
+                    builder.Append(bits[i] ? '1' : '0');
+                }
             }
 
             return builder.ToString();

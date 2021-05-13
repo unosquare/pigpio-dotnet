@@ -24,7 +24,7 @@
         /// Creates the internal collection.
         /// </summary>
         /// <returns>The items in the collection.</returns>
-        private static Dictionary<GpioPadId, GpioPad> CreateInternalCollection()
+        private static IDictionary<GpioPadId, GpioPad> CreateInternalCollection()
         {
             var enumValues = Enum.GetValues(typeof(GpioPadId));
             var result = new Dictionary<GpioPadId, GpioPad>(enumValues.Length);

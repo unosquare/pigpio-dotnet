@@ -1,9 +1,10 @@
 ﻿namespace Unosquare.PiGpio
 {
-    using System;
     using NativeEnums;
-    using NativeMethods;
     using RaspberryIO.Abstractions;
+    using Swan.DependencyInjection;
+    using System;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Represents the system info.
@@ -16,8 +17,9 @@
 
         static SystemInfo()
         {
-            HardwareRevision = Utilities.GpioHardwareRevision();
-            _libVersion = new Version(Convert.ToInt32(Utilities.GpioVersion()), 0);
+            var utilitiesService = DependencyContainer.Current.Resolve<IUtilityService>();
+            HardwareRevision = utilitiesService.GpioHardwareRevision();
+            _libVersion = new Version(Convert.ToInt32(utilitiesService.GpioVersion()), 0);
             _boardRevision = Constants.GetBoardRevision(HardwareRevision);
             BoardType = Constants.GetBoardType(HardwareRevision);
         }

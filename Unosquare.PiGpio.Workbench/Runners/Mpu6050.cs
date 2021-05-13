@@ -1,12 +1,12 @@
 ﻿namespace Unosquare.PiGpio.Workbench.Runners
 {
-    using System;
-    using System.Threading;
     using ManagedModel;
-    using NativeMethods;
     using Swan;
     using Swan.Logging;
     using Swan.Threading;
+    using System;
+    using System.Threading;
+    using Unosquare.PiGpio.ExtensionMethods;
 
     internal class Mpu6050 : RunnerBase
     {

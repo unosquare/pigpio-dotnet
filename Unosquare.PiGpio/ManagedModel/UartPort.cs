@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
+    using NativeMethods.InProcess.DllImports;
     using System;
 
     /// <summary>
@@ -42,7 +42,7 @@
         /// <summary>
         /// Gets the number of available bytes to read in the hardware buffer.
         /// </summary>
-        public int Available => BoardException.ValidateResult(Uart.SerDataAvailable(Handle));
+        public uint Available => BoardException.ValidateResult(Uart.SerDataAvailable(Handle));
 
         /// <summary>
         /// Reads the byte.
@@ -61,7 +61,7 @@
         /// Reads this instance.
         /// </summary>
         /// <returns>A buffer containing the bytes.</returns>
-        public byte[] Read() => Read(Available);
+        public byte[] Read() => Read((int)Available);
 
         /// <summary>
         /// Reads the specified number of bytes.
@@ -72,12 +72,12 @@
         {
             var buffer = new byte[count];
             var result = BoardException.ValidateResult(Uart.SerRead(Handle, buffer, (uint)count));
-            if (result == 0) return new byte[0];
+            if (result == 0) return Array.Empty<byte>();
             if (result == count)
                 return buffer;
 
             var output = new byte[result];
-            Buffer.BlockCopy(buffer, 0, output, 0, result);
+            Buffer.BlockCopy(buffer, 0, output, 0, (int)result);
             return output;
         }
 
@@ -100,8 +100,13 @@
         /// Writes the specified buffer.
         /// </summary>
         /// <param name="buffer">The buffer.</param>
-        public void Write(byte[] buffer) =>
-            Write(buffer, buffer.Length);
+        public void Write(byte[] buffer)
+        {
+            if (buffer != null)
+            {
+                Write(buffer, buffer.Length);
+            }
+        }
 
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.

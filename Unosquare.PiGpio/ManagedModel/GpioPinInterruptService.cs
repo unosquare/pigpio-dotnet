@@ -1,8 +1,9 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
+    using NativeMethods.Interfaces;
     using NativeTypes;
+    using Swan.DependencyInjection;
     using System;
 
     /// <summary>
@@ -19,7 +20,7 @@
         internal GpioPinInterruptService(GpioPin pin)
             : base(pin)
         {
-            // placeholder;
+            IOService = DependencyContainer.Current.Resolve<IIOService>();
         }
 
         /// <summary>
@@ -94,7 +95,7 @@
                     throw new ArgumentException("A callback is already registered. Clear the current callback before registering a new one.", nameof(callback));
 
                 BoardException.ValidateResult(
-                    IO.GpioSetIsrFunc(Pin.PinGpio, edgeDetection, timeoutMilliseconds, callback));
+                    IOService.GpioSetIsrFunc(Pin.PinGpio, edgeDetection, timeoutMilliseconds, callback));
 
                 m_EdgeDetection = edgeDetection;
                 m_TimeoutMilliseconds = timeoutMilliseconds;
@@ -124,7 +125,7 @@
             lock (SyncLock)
             {
                 BoardException.ValidateResult(
-                    IO.GpioSetIsrFunc(Pin.PinGpio, 0, 0, null));
+                    IOService.GpioSetIsrFunc(Pin.PinGpio, 0, 0, null));
                 Callback = null;
             }
         }
@@ -136,5 +137,7 @@
         /// True when the service is deemed as available.
         /// </returns>
         protected override bool ResolveAvailable() => true;
+
+        private IIOService IOService { get; }
     }
 }

@@ -1,9 +1,10 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
+    using Swan.DependencyInjection;
     using System;
     using System.Linq;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides hardware-based PWM services on the pin.
@@ -11,22 +12,42 @@
     /// <seealso cref="GpioPinServiceBase" />
     public sealed class GpioPinPwmService : GpioPinServiceBase
     {
+        private static readonly int[] PwmChannelZeroPins = { 12, 18, 40, 52 };
+        private static readonly int[] PwmChannelOnePins = { 13, 19, 41, 45, 53 };
+        private readonly IPwmService _pwmService;
+
         internal GpioPinPwmService(GpioPin pin)
            : base(pin)
         {
-            // placeholder
-            // TODO: Not fully implemented yet
+            _pwmService = DependencyContainer.Current.Resolve<IPwmService>();
         }
 
         /// <summary>
         /// Gets the range of the duty cycle.
         /// </summary>
-        public int Range => BoardException.ValidateResult(Pwm.GpioGetPwmRealRange((UserGpio)Pin.PinNumber));
+        public uint Range
+        {
+            get => _pwmService.GpioGetPwmRealRange((UserGpio)Pin.BcmPinNumber);
+            set => BoardException.ValidateResult(_pwmService.GpioSetPwmRange((UserGpio)Pin.BcmPinNumber, value));
+        }
 
         /// <summary>
         /// Gets the frequency.
         /// </summary>
-        public int Frequency => BoardException.ValidateResult(Pwm.GpioGetPwmFrequency((UserGpio)Pin.PinNumber));
+        public uint Frequency
+        {
+            get => _pwmService.GpioGetPwmFrequency((UserGpio)Pin.BcmPinNumber);
+            set => BoardException.ValidateResult(_pwmService.GpioSetPwmFrequency((UserGpio)Pin.BcmPinNumber, value));
+        }
+
+        /// <summary>
+        /// Gets the duty cycle.
+        /// </summary>
+        public uint DutyCycle
+        {
+            get => _pwmService.GpioGetPwmDutyCycle((UserGpio)Pin.BcmPinNumber);
+            set => BoardException.ValidateResult(_pwmService.GpioPwm((UserGpio)Pin.BcmPinNumber, value));
+        }
 
         /// <summary>
         /// Gets the PWM channel, 0 or 1. A negative number mans there is no associated PWM channel.
@@ -42,7 +63,7 @@
         public void Start(int frequency, int dutyCycle)
         {
             BoardException.ValidateResult(
-                Pwm.GpioHardwarePwm(Pin.PinGpio, Convert.ToUInt32(frequency), Convert.ToUInt32(dutyCycle)));
+                _pwmService.GpioHardwarePwm(Pin.PinGpio, Convert.ToUInt32(frequency), Convert.ToUInt32(dutyCycle)));
         }
 
         /// <summary>
@@ -55,7 +76,7 @@
         {
             if (Board.BoardType == BoardType.Type1 || Board.BoardType == BoardType.Type2)
             {
-                if (Pin.PinNumber == 18)
+                if (Pin.BcmPinNumber == 18)
                 {
                     Channel = 0;
                     return true;
@@ -65,13 +86,13 @@
                 return false;
             }
 
-            if ((new[] { 12, 18, 40, 52 }).Contains(Pin.PinNumber))
+            if (PwmChannelZeroPins.Contains(Pin.BcmPinNumber))
             {
                 Channel = 0;
                 return true;
             }
 
-            if ((new[] { 13, 19, 41, 45, 53 }).Contains(Pin.PinNumber))
+            if (PwmChannelOnePins.Contains(Pin.BcmPinNumber))
             {
                 Channel = 1;
                 return true;

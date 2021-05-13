@@ -1,9 +1,10 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
+    using Swan.DependencyInjection;
     using System;
     using System.Linq;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides a hardware clock services on the associated pin.
@@ -12,6 +13,8 @@
     /// <seealso cref="GpioPinServiceBase" />
     public sealed class GpioPinClockService : GpioPinServiceBase
     {
+        private readonly IPwmService _pwmService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="GpioPinClockService"/> class.
         /// </summary>
@@ -19,10 +22,10 @@
         internal GpioPinClockService(GpioPin pin)
             : base(pin)
         {
-            // placeholder
-            if (Constants.HardwareClockPins0.Contains(Pin.PinNumber))
+            _pwmService = DependencyContainer.Current.Resolve<IPwmService>();
+            if (Constants.HardwareClockPins0.Contains(Pin.BcmPinNumber))
                 ClockChannel = 0;
-            else if (Constants.HardwareClockPins2.Contains(Pin.PinNumber))
+            else if (Constants.HardwareClockPins2.Contains(Pin.BcmPinNumber))
                 ClockChannel = 2;
             else
                 ClockChannel = -1;
@@ -42,7 +45,7 @@
         public void Start(int frequency)
         {
             if (ClockChannel < 0) return;
-            BoardException.ValidateResult(Pwm.GpioHardwareClock(Pin.PinGpio, Convert.ToUInt32(frequency)));
+            BoardException.ValidateResult(_pwmService.GpioHardwareClock(Pin.PinGpio, Convert.ToUInt32(frequency)));
         }
 
         /// <summary>
@@ -51,7 +54,7 @@
         public void Stop()
         {
             if (ClockChannel < 0) return;
-            BoardException.ValidateResult(Pwm.GpioHardwareClock(Pin.PinGpio, 0));
+            BoardException.ValidateResult(_pwmService.GpioHardwareClock(Pin.PinGpio, 0));
         }
 
         /// <summary>
@@ -64,7 +67,7 @@
         {
             if (Board.BoardType == BoardType.Type1 || Board.BoardType == BoardType.Type2)
             {
-                if (Pin.PinNumber == 4)
+                if (Pin.BcmPinNumber == 4)
                 {
                     ClockChannel = 0;
                     return true;
@@ -76,13 +79,13 @@
                 }
             }
 
-            if (Constants.HardwareClockPins0.Contains(Pin.PinNumber))
+            if (Constants.HardwareClockPins0.Contains(Pin.BcmPinNumber))
             {
                 ClockChannel = 0;
                 return true;
             }
 
-            if (Constants.HardwareClockPins2.Contains(Pin.PinNumber))
+            if (Constants.HardwareClockPins2.Contains(Pin.BcmPinNumber))
             {
                 ClockChannel = 2;
                 return true;

@@ -13,7 +13,7 @@
 
         protected override void OnSetup()
         {
-            _pin = Board.Pins[17];
+            _pin = Board.Pins[16];
         }
 
         protected override void DoBackgroundWork(CancellationToken ct)
@@ -21,14 +21,14 @@
             while (!ct.IsCancellationRequested)
             {
                 _pin.Value = !_pin.Value;
-                Board.Timing.Sleep(500);
+                Thread.Sleep(500);
             }
         }
 
         protected override void Cleanup()
         {
             _pin.Value = false;
-            Board.Timing.Sleep(200);
+            Thread.Sleep(200);
         }
     }
 }

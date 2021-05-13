@@ -2,7 +2,7 @@
 {
     /// <summary>
     /// Enumerates the IO directions.
-    /// This enumeration is compatible with the <see cref="PinMode"/> enum.
+    /// This enumeration is compatible with the <see cref="PigpioPinMode"/> enum.
     /// </summary>
     public enum PinDirection
     {

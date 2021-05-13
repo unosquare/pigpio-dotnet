@@ -1,24 +1,30 @@
 ﻿namespace Unosquare.PiGpio.Workbench
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
+    using CommsStrategies;
     using RaspberryIO;
     using Runners;
     using Swan;
     using Swan.Logging;
     using Swan.Threading;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
 
     internal static class Program
     {
         public static void Main()
         {
-            Pi.Init<BootstrapPiGpio>();
+            Pi.Init<BootstrapPiGpio<PipeCommsStrategy>>();
+
+            if (!Board.IsAvailable)
+            {
+                throw new Exception("Pi Gpio library failed to initialise. Check that it is installed.");
+            }
 
             var workbenchItems = new List<RunnerBase>
             {
-                new BoardInfo(true),
-                new LedBlinking(false),
+                new BoardInfo(false),
+                new LedBlinking(true),
                 new Servo(false),
                 new Timers(false),
                 new ButtonInterrupts(false),

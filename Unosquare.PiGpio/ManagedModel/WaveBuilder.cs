@@ -1,12 +1,14 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
     using NativeTypes;
+    using Swan.DependencyInjection;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using Unosquare.PiGpio.ExtensionMethods;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
 
     /// <summary>
     /// Provides methods to build and render waveforms.
@@ -16,6 +18,7 @@
         private const string WaveAlreadyPreparedErrorMessage = "Wave was already prepared and cannot be modified.";
         private const string DisposedErrorMessage = "Wave was already disposed.";
         private static readonly object SyncLock = new object();
+        private readonly IWavesService _wavesService;
         private readonly List<GpioPulse> m_Pulses;
         private bool _isDisposed;
 
@@ -24,6 +27,7 @@
         /// </summary>
         internal WaveBuilder()
         {
+            _wavesService = DependencyContainer.Current.Resolve<IWavesService>();
             m_Pulses = new List<GpioPulse>(Board.Waves.MaxPulses);
         }
 
@@ -191,11 +195,17 @@
                 if (IsPrepared) return;
                 if (_isDisposed) throw new ObjectDisposedException(DisposedErrorMessage);
 
-                Waves.GpioWaveClear();
+                _wavesService.GpioWaveClear();
                 BoardException.ValidateResult(
-                    Waves.GpioWaveAddGeneric(Convert.ToUInt32(m_Pulses.Count), m_Pulses.ToArray()));
-                WaveId = BoardException.ValidateResult(
-                    Waves.GpioWaveCreate());
+                    _wavesService.GpioWaveAddGeneric(Convert.ToUInt32(m_Pulses.Count), m_Pulses.ToArray()));
+                try
+                {
+                    WaveId = (int)BoardException.ValidateResult(_wavesService.GpioWaveCreate());
+                }
+                catch
+                {
+                    WaveId = -1;
+                }
             }
         }
 
@@ -216,7 +226,7 @@
                 Prepare();
 
             if (IsPrepared)
-                BoardException.ValidateResult(Waves.GpioWaveTxSend(Convert.ToUInt32(WaveId), mode));
+                BoardException.ValidateResult(_wavesService.GpioWaveTxSend((uint)WaveId, mode));
         }
 
         /// <inheritdoc />
@@ -230,7 +240,7 @@
         private static BitMask PinsToBitMask(IEnumerable<UserGpio> pins)
         {
             const int bitMask = 0;
-            
+
             if (pins != null)
             {
                 foreach (var pin in pins)
@@ -246,7 +256,7 @@
         /// <param name="pins">The pins.</param>
         /// <returns>An array of UserGpio pins.</returns>
         private static IEnumerable<UserGpio> GpioPinsToUserGpios(IEnumerable<GpioPin> pins) =>
-            pins.Where(p => p.IsUserGpio).Select(p => (UserGpio)p.PinNumber).ToArray();
+            pins.Where(p => p.IsUserGpio).Select(p => (UserGpio)p.BcmPinNumber).ToArray();
 
         /// <summary>
         /// Releases unmanaged and - optionally - managed resources.
@@ -276,7 +286,7 @@
                     }
                 }
 
-                Waves.GpioWaveDelete(Convert.ToUInt32(WaveId));
+                _wavesService.GpioWaveDelete(Convert.ToUInt32(WaveId));
                 WaveId = -1;
             }
         }

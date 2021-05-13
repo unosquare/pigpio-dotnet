@@ -1,27 +1,53 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
-    using NativeEnums;
-    using NativeMethods;
     using System;
+    using Swan.DependencyInjection;
+    using Unosquare.PiGpio.NativeEnums;
+    using Unosquare.PiGpio.NativeMethods.Interfaces;
+    using Unosquare.RaspberryIO.Abstractions;
 
     /// <summary>
     /// A class representing a GPIO port (pin).
     /// </summary>
-    public sealed class GpioPin
+    public sealed partial class GpioPin : IGpioPin, IDisposable
     {
-        private GpioPullMode m_PullMode;
+        private readonly object _syncLock = new object();
+
+        private GpioPullMode _pullMode;
+        private GpioPinDriveMode _pinMode;
+        private GpioPinResistorPullMode _resistorPullMode;
+        private bool _interruptRegistered = false;
+        private IIOService IOService { get; }
+
+        private GpioPin()
+        {
+            IOService = DependencyContainer.Current.Resolve<IIOService>();
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GpioPin"/> class.
         /// </summary>
-        /// <param name="gpio">The gpio.</param>
+        /// <param name="gpio">The system gpio.</param>
         internal GpioPin(SystemGpio gpio)
+            : this()
         {
             PinGpio = gpio;
-            PinNumber = (int)gpio;
+            BcmPinNumber = (int)gpio;
             IsUserGpio = gpio.GetIsUserGpio(Board.BoardType);
             PadId = Constants.GetPad(PinGpio);
-            m_PullMode = Constants.GetDefaultPullMode(PinGpio);
+            _pullMode = Constants.GetDefaultPullMode(PinGpio);
+
+            BcmPin = (BcmPin)gpio;
+            try
+            {
+                PhysicalPinNumber = Definitions.BcmToPhysicalPinNumber(Board.BoardRevision, BcmPin);
+            }
+            catch
+            {
+                PhysicalPinNumber = 0;
+            }
+
+            Header = (BcmPinNumber >= 28 && BcmPinNumber <= 31) ? GpioHeader.P5 : GpioHeader.P1;
 
             // Instantiate the pin services
             Alerts = new GpioPinAlertService(this);
@@ -33,9 +59,72 @@
         }
 
         /// <summary>
-        /// Gets the BCM pin identifier.
+        /// Initializes a new instance of the <see cref="GpioPin"/> class.
         /// </summary>
-        public int PinNumber { get; }
+        /// <param name="bcmPin">The BCM gpio number.</param>
+        internal GpioPin(BcmPin bcmPin)
+            : this()
+        {
+            BcmPin = bcmPin;
+            BcmPinNumber = (int)bcmPin;
+            PinGpio = (SystemGpio)bcmPin;
+            IsUserGpio = PinGpio.GetIsUserGpio(Board.BoardType);
+            PadId = Constants.GetPad(PinGpio);
+            _pullMode = Constants.GetDefaultPullMode(PinGpio);
+
+            PhysicalPinNumber = Definitions.BcmToPhysicalPinNumber(Board.BoardRevision, bcmPin);
+            Header = (BcmPinNumber >= 28 && BcmPinNumber <= 31) ? GpioHeader.P5 : GpioHeader.P1;
+
+            // Instantiate the pin services
+            Alerts = new GpioPinAlertService(this);
+            Interrupts = new GpioPinInterruptService(this);
+            Servo = new GpioPinServoService(this);
+            SoftPwm = new GpioPinSoftPwmService(this);
+            Clock = new GpioPinClockService(this);
+            Pwm = new GpioPinPwmService(this);
+        }
+
+        /// <summary>
+        /// Finalizes an instance of the <see cref="GpioPin"/> class.
+        /// </summary>
+        ~GpioPin()
+        {
+            ReleaseUnmanagedResources();
+        }
+
+        /// <summary>
+        /// Gets the friendly name of the pin.
+        /// </summary>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Gets the hardware mode capabilities of this pin.
+        /// </summary>
+        public PinCapabilities Capabilities { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the digital value of the pin.
+        /// This call actively reads or writes the pin.
+        /// </summary>
+        public bool Value
+        {
+            get => IOService.GpioRead(PinGpio);
+            set => BoardException.ValidateResult(IOService.GpioWrite(PinGpio, value));
+        }
+
+        /// <inheritdoc />
+        public BcmPin BcmPin { get; }
+
+        /// <inheritdoc />
+        public int BcmPinNumber { get; }
+
+        /// <inheritdoc />
+        public int PhysicalPinNumber { get; }
+
+        /// <inheritdoc />
+        public GpioHeader Header { get; }
+
+        private IIOService IoService { get; }
 
         /// <summary>
         /// Gets the pin number as a system GPIO Identifier.
@@ -54,17 +143,22 @@
         public GpioPadId PadId { get; }
 
         /// <summary>
+        /// Gets the current pin mode.
+        /// </summary>
+        public PigpioPinMode Mode => IOService.GpioGetMode(PinGpio);
+
+        /// <summary>
         /// Gets or sets the resistor pull mode in input mode.
         /// You typically will need to set this to pull-up mode
         /// for most sensors to perform reliable reads.
         /// </summary>
         public GpioPullMode PullMode
         {
-            get => m_PullMode;
+            get => _pullMode;
             set
             {
-                BoardException.ValidateResult(IO.GpioSetPullUpDown(PinGpio, value));
-                m_PullMode = value;
+                BoardException.ValidateResult(IOService.GpioSetPullUpDown(PinGpio, value));
+                _pullMode = value;
             }
         }
 
@@ -79,8 +173,8 @@
         {
             get
             {
-                var result = IO.GpioGetMode(PinGpio);
-                if (result == PinMode.Input || result == PinMode.Output)
+                var result = IOService.GpioGetMode(PinGpio);
+                if (result == PigpioPinMode.Input || result == PigpioPinMode.Output)
                     return (PinDirection)result;
 
                 return PinDirection.Alternative;
@@ -91,24 +185,161 @@
                     throw new InvalidOperationException("Unable to set the pin mode to an alternative function.");
 
                 BoardException.ValidateResult(
-                    IO.GpioSetMode(PinGpio, (PinMode)value));
+                    IOService.GpioSetMode(PinGpio, (PigpioPinMode)value));
+            }
+        }
+
+        #region Hardware-Specific Properties
+
+        /// <inheritdoc />
+        /// <exception cref="T:System.NotSupportedException">Thrown when a pin does not support the given operation mode.</exception>
+        public GpioPinDriveMode PinMode
+        {
+            get => _pinMode;
+
+            set
+            {
+                lock (_syncLock)
+                {
+                    var mode = value;
+                    if ((mode == GpioPinDriveMode.GpioClock && !HasCapability(PinCapabilities.GPCLK)) ||
+                        (mode == GpioPinDriveMode.PwmOutput && !HasCapability(PinCapabilities.PWM)) ||
+                        (mode == GpioPinDriveMode.Input && !HasCapability(PinCapabilities.GP)) ||
+                        (mode == GpioPinDriveMode.Output && !HasCapability(PinCapabilities.GP)))
+                    {
+                        throw new NotSupportedException(
+                            $"Pin {BcmPinNumber} '{Name}' does not support mode '{mode}'. Pin capabilities are limited to: {Capabilities}");
+                    }
+
+                    switch (mode)
+                    {
+                        case GpioPinDriveMode.Input:
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Input);
+                            break;
+                        case GpioPinDriveMode.Output:
+                        case GpioPinDriveMode.PwmOutput:
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Output);
+                            break;
+                        case GpioPinDriveMode.Alt0:
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Alt0);
+                            break;
+                        case GpioPinDriveMode.Alt1:
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Alt1);
+                            break;
+                        case GpioPinDriveMode.Alt2:
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Alt2);
+                            break;
+                        case GpioPinDriveMode.Alt3:
+                            IOService.GpioSetMode(PinGpio, PigpioPinMode.Alt3);
+                            break;
+                    }
+
+                    _pinMode = mode;
+                }
+            }
+        }
+
+        /// <inheritdoc />
+        public GpioPinResistorPullMode InputPullMode
+        {
+            get => PinMode == GpioPinDriveMode.Input ? _resistorPullMode : GpioPinResistorPullMode.Off;
+
+            set
+            {
+                lock (_syncLock)
+                {
+                    if (PinMode != GpioPinDriveMode.Input)
+                    {
+                        _resistorPullMode = GpioPinResistorPullMode.Off;
+                        throw new InvalidOperationException(
+                            $"Unable to set the {nameof(InputPullMode)} for pin {BcmPinNumber} because operating mode is {PinMode}."
+                            + $" Setting the {nameof(InputPullMode)} is only allowed if {nameof(PinMode)} is set to {GpioPinDriveMode.Input}");
+                    }
+
+                    switch (value)
+                    {
+                        case GpioPinResistorPullMode.Off:
+                            IOService.GpioSetPullUpDown(PinGpio, GpioPullMode.Off);
+                            break;
+                        case GpioPinResistorPullMode.PullDown:
+                            IOService.GpioSetPullUpDown(PinGpio, GpioPullMode.Down);
+                            break;
+                        case GpioPinResistorPullMode.PullUp:
+                            IOService.GpioSetPullUpDown(PinGpio, GpioPullMode.Up);
+                            break;
+                    }
+
+                    _resistorPullMode = value;
+                }
             }
         }
 
         /// <summary>
-        /// Gets the current pin mode.
+        /// Gets the interrupt edge detection mode.
         /// </summary>
-        public PinMode Mode => IO.GpioGetMode(PinGpio);
+        public RaspberryIO.Abstractions.EdgeDetection InterruptEdgeDetection { get; private set; }
 
         /// <summary>
-        /// Gets or sets the digital value of the pin.
-        /// This call actively reads or writes the pin.
+        /// Determines whether the specified pin has certain capabilities.
         /// </summary>
-        public bool Value
+        /// <param name="capabilities">The capabilities.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified pin has capabilities; otherwise, <c>false</c>.
+        /// </returns>
+        public bool HasCapability(PinCapabilities capabilities) =>
+            (Capabilities & capabilities) == capabilities;
+
+        #endregion
+
+        #region Pin Read-Write
+
+        /// <inheritdoc />
+        public void Write(bool value) => IOService.GpioWrite(PinGpio, value);
+
+        /// <inheritdoc />
+        public void Write(GpioPinValue value) => IOService.GpioWrite(PinGpio, value == GpioPinValue.High);
+
+        /// <inheritdoc />
+        public bool WaitForValue(GpioPinValue status, int timeOutMillisecond)
         {
-            get => IO.GpioRead(PinGpio);
-            set => BoardException.ValidateResult(IO.GpioWrite(PinGpio, value));
+            throw new NotImplementedException();
         }
+
+        /// <inheritdoc />
+        public void RegisterInterruptCallback(RaspberryIO.Abstractions.EdgeDetection edgeDetection, Action callback)
+        {
+            lock (_syncLock)
+            {
+                InterruptEdgeDetection = edgeDetection;
+                IOService.GpioSetIsrFunc(PinGpio, Constants.GetEdgeDetection(edgeDetection), 0, (gpio, level, tick) =>
+                {
+                    if (level != LevelChange.NoChange)
+                    {
+                        callback.Invoke();
+                    }
+                });
+                _interruptRegistered = true;
+            }
+        }
+
+        /// <inheritdoc />
+        public void RegisterInterruptCallback(RaspberryIO.Abstractions.EdgeDetection edgeDetection, Action<int, int, uint> callback)
+        {
+            lock (_syncLock)
+            {
+                InterruptEdgeDetection = edgeDetection;
+                IOService.GpioSetIsrFunc(PinGpio, Constants.GetEdgeDetection(edgeDetection), 0, (gpio, level, tick) =>
+                {
+                    if (level != LevelChange.NoChange)
+                    {
+                        callback.Invoke(BcmPinNumber, (int)level, tick);
+                    }
+                });
+                _interruptRegistered = true;
+            }
+        }
+
+        #endregion
 
         /// <summary>
         /// Provides GPIO change alert services.
@@ -160,15 +391,15 @@
         public void Pulsate(int microSecs, bool value)
         {
             BoardException.ValidateResult(
-                IO.GpioTrigger((UserGpio)PinNumber, Convert.ToUInt32(microSecs), value));
+                IOService.GpioTrigger((UserGpio)BcmPinNumber, Convert.ToUInt32(microSecs), value));
         }
 
         /// <summary>
         /// The fastest way to read from the pin.
         /// No error checking is performed.
         /// </summary>
-        /// <returns>Returns a 0 or a 1 for success. A negative number for error.</returns>
-        public int Read() => IO.GpioReadUnmanaged(PinGpio);
+        /// <returns>Returns true for success. False for error.</returns>
+        public bool Read() => IOService.GpioReadUnmanaged(PinGpio) >= 0;
 
         /// <summary>
         /// The fastest way to write to the pin.
@@ -176,6 +407,21 @@
         /// </summary>
         /// <param name="value">The value.</param>
         /// <returns>The result code. 0 (OK) for success.</returns>
-        public ResultCode Write(int value) => IO.GpioWriteUnmanaged(PinGpio, (DigitalValue)(value == 0 ? 0 : 1));
+        public ResultCode Write(int value) => IOService.GpioWriteUnmanaged(PinGpio, (DigitalValue)(value == 0 ? 0 : 1));
+
+        /// <inheritdoc/>
+        public void Dispose()
+        {
+            ReleaseUnmanagedResources();
+            GC.SuppressFinalize(this);
+        }
+
+        private void ReleaseUnmanagedResources()
+        {
+            if (_interruptRegistered)
+            {
+                IOService.GpioSetIsrFunc(PinGpio, NativeEnums.EdgeDetection.EitherEdge, 0, null);
+            }
+        }
     }
 }

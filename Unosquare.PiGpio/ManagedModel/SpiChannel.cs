@@ -1,7 +1,7 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
+    using NativeMethods.InProcess.DllImports;
     using System;
 
     /// <summary>
@@ -77,7 +77,7 @@
         /// </summary>
         /// <param name="buffer">The buffer.</param>
         /// <returns>The number of bytes written.</returns>
-        public int Write(byte[] buffer) => Spi.SpiWrite(Handle, buffer);
+        public uint Write(byte[] buffer) => BoardException.ValidateResult(Spi.SpiWrite(Handle, buffer));
 
         /// <summary>
         /// Writes the specified buffer.
@@ -86,11 +86,11 @@
         /// <param name="offset">The offset.</param>
         /// <param name="count">The count.</param>
         /// <returns>The number of bytes written.</returns>
-        public int Write(byte[] buffer, int offset, int count)
+        public uint Write(byte[] buffer, int offset, int count)
         {
             var data = new byte[count];
             Buffer.BlockCopy(buffer, offset, data, 0, count);
-            return Spi.SpiWrite(Handle, data);
+            return BoardException.ValidateResult(Spi.SpiWrite(Handle, data));
         }
 
         /// <summary>

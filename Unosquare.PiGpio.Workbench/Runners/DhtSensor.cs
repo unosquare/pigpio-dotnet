@@ -78,7 +78,7 @@
                     var bytes = new byte[bits.Count / 8];
                     bitArray.CopyTo(bytes, 0);
 
-                    $"Bytes Received: {BitConverter.ToString(bytes).Replace("-", " ")}".Info(Name);
+                    $"Bytes Received: {BitConverter.ToString(bytes).Replace("-", " ", StringComparison.Ordinal)}".Info(Name);
 
                     var humidity = BitConverter.ToUInt16(bytes, 0);
                     var temperature = BitConverter.ToUInt16(bytes, 2);
@@ -94,7 +94,7 @@
                 {
                     if (ct.IsCancellationRequested)
                         break;
-                    
+
                     Board.Timing.Sleep(50);
                 }
             }

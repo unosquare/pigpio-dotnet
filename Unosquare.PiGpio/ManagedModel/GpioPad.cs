@@ -1,7 +1,8 @@
 ﻿namespace Unosquare.PiGpio.ManagedModel
 {
     using NativeEnums;
-    using NativeMethods;
+    using NativeMethods.Interfaces;
+    using Swan.DependencyInjection;
 
     /// <summary>
     /// Represents an electrical pad which groups
@@ -15,8 +16,11 @@
         /// <param name="padId">The pad identifier.</param>
         internal GpioPad(GpioPadId padId)
         {
+            IOService = DependencyContainer.Current.Resolve<IIOService>();
             PadId = padId;
         }
+
+        private IIOService IOService { get; }
 
         /// <summary>
         /// Gets the electrical pad identifier.
@@ -33,8 +37,8 @@
         /// </summary>
         public GpioPadStrength PadStrength
         {
-            get => IO.GpioGetPad(PadId);
-            set => BoardException.ValidateResult(IO.GpioSetPad(PadId, value));
+            get => IOService.GpioGetPad(PadId);
+            set => BoardException.ValidateResult(IOService.GpioSetPad(PadId, value));
         }
     }
 }
